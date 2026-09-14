@@ -34,6 +34,7 @@ export function useDiagnosticSession() {
   const [dAns, setDAns] = useState({});
   const [dConf, setDConf] = useState({});
   const [dFlags, setDFlags] = useState({});
+  const [dChecked, setDChecked] = useState({});
   const [dI, setDI] = useState(0);
   const [dSeconds, setDSeconds] = useState(0);
   const [dReveal, setDReveal] = useState(false);
@@ -45,10 +46,10 @@ export function useDiagnosticSession() {
     if (!dMap) return;
     try {
       window.localStorage.setItem(DIAG_KEY, JSON.stringify({
-        map: dMap, ans: dAns, conf: dConf, flags: dFlags, i: dI, seconds: dSeconds, savedAt: Date.now()
+        map: dMap, ans: dAns, conf: dConf, flags: dFlags, checked: dChecked, i: dI, seconds: dSeconds, savedAt: Date.now()
       }));
     } catch (e) { /* ignore */ }
-  }, [dMap, dAns, dConf, dFlags, dI, dSeconds]);
+  }, [dMap, dAns, dConf, dFlags, dChecked, dI, dSeconds]);
 
   // Elapsed-time counter only runs while actively viewing a test item.
   useEffect(() => {
@@ -59,7 +60,7 @@ export function useDiagnosticSession() {
 
   const startDiag = () => {
     setDMap(diagMap(DI));
-    setDAns({}); setDConf({}); setDFlags({}); setDI(0); setDSeconds(0);
+    setDAns({}); setDConf({}); setDFlags({}); setDChecked({}); setDI(0); setDSeconds(0);
     setDSaved(null);
     setDRevealUsed((used) => used || dReveal);
     setView('test');
@@ -72,6 +73,7 @@ export function useDiagnosticSession() {
     setDAns(dSaved.ans || {});
     setDConf(dSaved.conf || {});
     setDFlags(dSaved.flags || {});
+    setDChecked(dSaved.checked || {});
     setDI(dSaved.i || 0);
     setDSeconds(dSaved.seconds || 0);
     setDSaved(null);
@@ -94,13 +96,16 @@ export function useDiagnosticSession() {
   const dAnsweredCount = Object.keys(dAns).length;
   const dFlagCount = Object.values(dFlags).filter(Boolean).length;
   const dConfTag = dConf[dIdx] || null;
-  const dShown = !!dReveal && dPickedOrig !== undefined;
+  const dChecked_ = !!dChecked[dIdx];
+  const dShown = !!dReveal && dPickedOrig !== undefined && dChecked_;
+  const dCanCheck = !!dReveal && dPickedOrig !== undefined && !dChecked_;
   const dRight = dItem ? dPickedOrig === dItem.correct : false;
 
   const pickOption = (orig) => {
     if (dShown) return;
     setDAns((a) => ({ ...a, [dIdx]: orig }));
   };
+  const checkAnswer = () => setDChecked((c) => ({ ...c, [dIdx]: true }));
   const toggleFlag = () => setDFlags((f) => ({ ...f, [dIdx]: !f[dIdx] }));
   const setConfident = () => setDConf((c) => ({ ...c, [dIdx]: c[dIdx] === 'confident' ? null : 'confident' }));
   const setUnsure = () => setDConf((c) => ({ ...c, [dIdx]: c[dIdx] === 'unsure' ? null : 'unsure' }));
@@ -182,10 +187,10 @@ export function useDiagnosticSession() {
 
   return {
     view, setView, navigate, startDrill,
-    dTotal, dItem, dIdx, dOrder, dPickedOrig, dAnsweredCount, dFlagCount, dConfTag, dShown, dRight,
-    dAns, dConf, dFlags, dI,
+    dTotal, dItem, dIdx, dOrder, dPickedOrig, dAnsweredCount, dFlagCount, dConfTag, dShown, dCanCheck, dRight,
+    dAns, dConf, dFlags, dChecked, dI,
     dSaved, dReveal, dRevealUsed,
-    startDiag, resumeDiag, submitDiag, toggleReveal,
+    startDiag, resumeDiag, submitDiag, toggleReveal, checkAnswer,
     pickOption, toggleFlag, setConfident, setUnsure, dPrev, dNext, dGoTo, dGoGrid, dBackToTest,
     dWeighted, dDomainStats, dPlan, dMisinformed, dReview, dTopTwo,
     dAvgSec, dSkipped, EXAM_PACE

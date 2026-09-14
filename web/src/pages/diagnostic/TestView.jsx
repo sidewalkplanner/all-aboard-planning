@@ -107,6 +107,18 @@ export default function TestView(s) {
           })}
         </div>
 
+        {s.dCanCheck && (
+          <div style={{ marginTop: 16 }}>
+            <Hoverable
+              style={{ background: GREEN, border: 'none', color: '#FFFFFF', padding: '11px 20px', borderRadius: 9, fontSize: 14.5, fontWeight: 600 }}
+              hoverStyle={{ background: '#164C87' }}
+              onClick={s.checkAnswer}
+            >
+              Check answer
+            </Hoverable>
+          </div>
+        )}
+
         {s.dShown && (
           <div className="fade-up" style={{ marginTop: 22, background: '#FFFFFF', border: '1px solid #E4E6F0', borderLeft: `3px solid ${GREEN}`, borderRadius: '0 12px 12px 0', padding: '20px 22px' }}>
             <div style={{ fontSize: 15, fontWeight: 700, color: s.dRight ? '#14508C' : '#A32E20' }}>{s.dRight ? 'Correct' : 'Not quite'}</div>
