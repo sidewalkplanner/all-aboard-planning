@@ -20,8 +20,7 @@ export default function ReportView(s) {
 
   return (
     <div style={{ background: T.bg, color: T.ink, minHeight: '100vh' }}>
-      {/* Fixed brand-navy hero band, same treatment regardless of light/dark mode (matches the landing page hero). */}
-      <section style={{ background: '#10345E' }}>
+      <section style={{ background: s.dark ? T.bg : '#10345E', borderBottom: s.dark ? `1px solid ${T.line}` : 'none' }}>
         <div style={{ maxWidth: 1000, margin: '0 auto', padding: '56px 24px 52px' }}>
           <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#9FB8D6' }}>Your diagnostic report &middot; DIAG-1.0</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: 20, margin: '16px 0 0', flexWrap: 'wrap' }}>
