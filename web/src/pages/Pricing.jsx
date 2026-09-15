@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import Hoverable from '../components/Hoverable';
 import { PRICE } from '../data/domains';
 import { useUnlock } from '../context/UnlockContext';
+import { cardStyle } from '../lib/style';
+import { LIGHT } from '../lib/theme';
 
 export default function Pricing() {
   const navigate = useNavigate();
@@ -16,7 +18,7 @@ export default function Pricing() {
         The free quizzes use the same weighting and the same explanations as the full exam. Full Access opens the full-length 170-question exam and untimed drills in every domain.
       </p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 20, alignItems: 'start' }}>
-        <div style={{ background: '#FFFFFF', border: '1px solid #E4E6F0', borderRadius: 18, padding: 30 }}>
+        <div style={cardStyle(LIGHT, { radius: 18, padding: 30 })}>
           <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#636987' }}>Free</div>
           <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 44, fontWeight: 700, letterSpacing: '-0.03em', margin: '10px 0 4px' }}>$0</div>
           <p style={{ fontSize: 14.5, color: '#646A85', margin: '0 0 22px' }}>No account needed.</p>

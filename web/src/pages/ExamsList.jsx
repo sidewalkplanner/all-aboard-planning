@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import Hoverable from '../components/Hoverable';
 import { ASSESSMENTS, PRICE } from '../data/domains';
-import { chipStyle } from '../lib/style';
+import { chipStyle, cardStyle } from '../lib/style';
+import { LIGHT } from '../lib/theme';
 import { useUnlock } from '../context/UnlockContext';
 
-const cardStyle = { background: '#FFFFFF', border: '1px solid #E4E6F0', borderRadius: 16, padding: 24, display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 24, alignItems: 'center' };
+const rowCardStyle = { ...cardStyle(LIGHT, { padding: 24 }), display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 24, alignItems: 'center' };
 const ghostBtn = { background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600 };
 const ghostBtnHover = { border: '1px solid #1A1C2B', background: '#F6F7FB' };
 const primaryBtn = { background: '#1D5FA8', border: 'none', color: '#F6F7FB', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600 };
@@ -19,7 +20,7 @@ function Row({ a, unlocked, onPractice, onTimed, onUnlock }) {
   const timeLabel = (hrs ? hrs + 'h ' : '') + (mns ? mns + 'm' : '');
 
   return (
-    <div style={cardStyle}>
+    <div style={rowCardStyle}>
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 25, fontWeight: 700, margin: 0 }}>{a.title}</h2>

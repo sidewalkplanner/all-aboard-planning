@@ -7,6 +7,7 @@ import { sample, shuffle } from '../../lib/shuffle';
 import { useUnlock } from '../../context/UnlockContext';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { fmtHoursMinutes } from '../../lib/format';
+import { recordAttempt } from '../../lib/history';
 
 const DRILLPOOL = EXAM1_BANK.concat(EXAM2_BANK);
 
@@ -61,6 +62,7 @@ export function useExamSession() {
   const [flags, setFlags] = useState({});
   const [checked, setChecked] = useState({});
   const [seconds, setSeconds] = useState(active.mins * 60);
+  const [startedAt, setStartedAt] = useState(() => Date.now());
 
   // Guard: paid content requires unlock. Reset (or restore a saved attempt
   // for) session state whenever the assessment/mode/drill identity actually
@@ -81,6 +83,7 @@ export function useExamSession() {
       setFlags(saved ? saved.flags || {} : {});
       setChecked(saved ? saved.checked || {} : {});
       setSeconds(saved && saved.seconds !== undefined ? saved.seconds : active.mins * 60);
+      setStartedAt(saved && saved.startedAt ? saved.startedAt : Date.now());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionKey]);
@@ -90,8 +93,8 @@ export function useExamSession() {
   // than losing progress. Cleared once the attempt is submitted.
   useEffect(() => {
     if (lastKey.current !== sessionKey) return;
-    saveAttempt(sessionKey, { i, answers, flags, checked, seconds });
-  }, [sessionKey, i, answers, flags, checked, seconds]);
+    saveAttempt(sessionKey, { i, answers, flags, checked, seconds, startedAt });
+  }, [sessionKey, i, answers, flags, checked, seconds, startedAt]);
 
   // Countdown only runs while viewing a question, in timed mode — mirrors
   // the prototype pausing the clock on the review grid.
@@ -123,7 +126,16 @@ export function useExamSession() {
   const next = () => { if (i >= total - 1) setView('grid'); else setI((n) => n + 1); };
   const goGrid = () => setView('grid');
   const backToExam = () => setView('question');
-  const submit = () => { clearAttempt(sessionKey); setView('results'); };
+  const submit = () => {
+    const elapsedSeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
+    recordAttempt({
+      kind: 'exam', assessmentId: drill ? null : active.id, drillName: drill || null,
+      title: activeTitle, mode, pct, correctCount, total, answeredCount, flagCount, elapsedSeconds,
+      domainBreakdown: domainRows.filter((d) => d.n > 0).map((d) => ({ short: d.short, got: d.got, n: d.n }))
+    });
+    clearAttempt(sessionKey);
+    setView('results');
+  };
   const goAnswerReview = () => setView('review');
   const goTo = (idx) => { setI(idx); setView('question'); };
 

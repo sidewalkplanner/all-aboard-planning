@@ -1,15 +1,14 @@
-// The nine AICP Exam Content Outline domains, with exam weight and canned
-// (cross-session) mastery numbers used on the Progress dashboard.
+// The nine AICP Exam Content Outline domains and their exam weight.
 export const DOMAINS = [
-  { name: 'Fundamental Planning Knowledge', short: 'Fundamentals', pct: 15, mastery: 78, blurb: 'History, theory, law, and the foundations of the profession.' },
-  { name: 'Plan & Policy Development', short: 'Plan & Policy', pct: 15, mastery: 74, blurb: 'Visioning, goals and objectives, plan elements, and policy tools.' },
-  { name: 'Communication & Interaction', short: 'Communication', pct: 13, mastery: 72, blurb: 'Engagement, facilitation, equity in outreach, and public process.' },
-  { name: 'Plan Implementation', short: 'Implementation', pct: 12, mastery: 69, blurb: 'Zoning, subdivision, exactions, monitoring, and regulatory practice.' },
-  { name: 'Areas of Practice', short: 'Areas of Practice', pct: 12, mastery: 71, blurb: 'Transportation, housing, environment, hazards, and economic development.' },
-  { name: 'Research & Assessment Methods', short: 'Research', pct: 11, mastery: 58, blurb: 'Projections, statistics, GIS, and quantitative analysis.' },
-  { name: 'Code of Ethics & Professional Conduct', short: 'Ethics', pct: 10, mastery: 81, blurb: 'Aspirational principles, Rules of Conduct, and conflicts of interest.' },
-  { name: 'Administration & Management', short: 'Administration', pct: 6, mastery: 66, blurb: 'Budgeting, procurement, supervision, and office operations.' },
-  { name: 'Leadership', short: 'Leadership', pct: 6, mastery: 70, blurb: 'Leading teams, ethical advocacy, mentoring, and public trust.' }
+  { name: 'Fundamental Planning Knowledge', short: 'Fundamentals', pct: 15, blurb: 'History, theory, law, and the foundations of the profession.' },
+  { name: 'Plan & Policy Development', short: 'Plan & Policy', pct: 15, blurb: 'Visioning, goals and objectives, plan elements, and policy tools.' },
+  { name: 'Communication & Interaction', short: 'Communication', pct: 13, blurb: 'Engagement, facilitation, equity in outreach, and public process.' },
+  { name: 'Plan Implementation', short: 'Implementation', pct: 12, blurb: 'Zoning, subdivision, exactions, monitoring, and regulatory practice.' },
+  { name: 'Areas of Practice', short: 'Areas of Practice', pct: 12, blurb: 'Transportation, housing, environment, hazards, and economic development.' },
+  { name: 'Research & Assessment Methods', short: 'Research', pct: 11, blurb: 'Projections, statistics, GIS, and quantitative analysis.' },
+  { name: 'Code of Ethics & Professional Conduct', short: 'Ethics', pct: 10, blurb: 'Aspirational principles, Rules of Conduct, and conflicts of interest.' },
+  { name: 'Administration & Management', short: 'Administration', pct: 6, blurb: 'Budgeting, procurement, supervision, and office operations.' },
+  { name: 'Leadership', short: 'Leadership', pct: 6, blurb: 'Leading teams, ethical advocacy, mentoring, and public trust.' }
 ];
 
 export const PRICE = '$59';
@@ -101,12 +100,3 @@ export const QOTD = {
   correct: 1,
   explanation: 'The Code obligates planners to provide full, clear, and accurate information and to render thorough independent professional advice. Political pressure from a commission or the public does not relieve the planner of that duty, though the planner must still serve the decision-making body in good faith.'
 };
-
-// Canned recent activity for the Progress dashboard (cross-session data —
-// intentionally static in the frontend-only build, matching the prototype).
-export const ACTIVITY = [
-  { title: 'Practice Exam 1', meta: 'Timed · Mar 4', score: '76%' },
-  { title: 'Research drill', meta: '25 questions · Mar 2', score: '58%' },
-  { title: 'Plan & Policy drill', meta: '25 questions · Feb 27', score: '82%' },
-  { title: 'Practice Exam 2', meta: 'In progress · Feb 24', score: '—' }
-];

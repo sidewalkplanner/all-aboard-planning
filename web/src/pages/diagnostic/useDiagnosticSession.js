@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ITEMS } from '../../data/diagnostic-items';
-import { DIAG_DOMAINS, DIAG_KEY, EXAM_PACE, FORMAT_LABEL, bandFor } from '../../data/diagDomains';
+import { DIAG_DOMAINS, DIAG_KEY, DIAG_TITLE, EXAM_PACE, FORMAT_LABEL, bandFor } from '../../data/diagDomains';
 import { shuffle } from '../../lib/shuffle';
 import { parseExhibit } from '../../lib/format';
 import { LETTERS } from '../../data/domains';
+import { recordAttempt } from '../../lib/history';
+import { useDarkMode } from '../../context/DarkModeContext';
 
 const DI = ITEMS;
 const dTotal = DI.length;
@@ -28,6 +30,7 @@ const loadSaved = () => {
 
 export function useDiagnosticSession() {
   const navigate = useNavigate();
+  const { dark, toggleDark } = useDarkMode();
   const [view, setView] = useState('intro');
   const [dSaved, setDSaved] = useState(() => loadSaved());
   const [dMap, setDMap] = useState(null);
@@ -82,6 +85,12 @@ export function useDiagnosticSession() {
   };
 
   const submitDiag = () => {
+    recordAttempt({
+      kind: 'diagnostic', assessmentId: null, drillName: null, title: DIAG_TITLE, mode: null,
+      pct: Math.round(dWeighted * 10) / 10, correctCount: null, total: dTotal, answeredCount: dAnsweredCount,
+      flagCount: dFlagCount, elapsedSeconds: dSeconds,
+      domainBreakdown: dDomainStats.filter((x) => x.n > 0).map((x) => ({ short: x.d.short, got: x.correct, n: x.n }))
+    });
     try { window.localStorage.removeItem(DIAG_KEY); } catch (e) { /* ignore */ }
     setView('report');
     window.scrollTo(0, 0);
@@ -186,7 +195,7 @@ export function useDiagnosticSession() {
   const startDrill = (name) => navigate(`/exam/run?drill=${encodeURIComponent(name)}`);
 
   return {
-    view, setView, navigate, startDrill,
+    view, setView, navigate, startDrill, dark, toggleDark,
     dTotal, dItem, dIdx, dOrder, dPickedOrig, dAnsweredCount, dFlagCount, dConfTag, dShown, dCanCheck, dRight,
     dAns, dConf, dFlags, dChecked, dI,
     dSaved, dReveal, dRevealUsed,

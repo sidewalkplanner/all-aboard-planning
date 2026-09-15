@@ -25,3 +25,10 @@ export const fmtHoursMinutes = (mins) => {
   const m = mins % 60;
   return (h ? h + 'h ' : '') + (m ? m + 'm' : '');
 };
+
+export const fmtHoursMinutesFromSeconds = (totalSeconds) => {
+  const mins = Math.round(totalSeconds / 60);
+  return fmtHoursMinutes(mins) || '0m';
+};
+
+export const fmtShortDate = (ms) => new Date(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });

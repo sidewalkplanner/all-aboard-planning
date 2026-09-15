@@ -27,7 +27,8 @@ export default function QuestionView(s) {
             style={{ background: 'none', border: `1px solid ${T.line}`, padding: '7px 13px', borderRadius: 8, fontSize: 13.5, fontWeight: 600, fontFamily: 'inherit', color: T.mute }}
             hoverStyle={{ border: `1px solid ${T.ink}` }}
             onClick={s.toggleDark}
-            title={s.dark ? 'Light' : 'Dark'}
+            title={s.dark ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-pressed={s.dark}
           >
             {s.dark ? 'Light' : 'Dark'}
           </Hoverable>
@@ -51,6 +52,7 @@ export default function QuestionView(s) {
               border: `1px solid ${flagged ? RUST : T.line}`, background: flagged ? RUST : 'transparent', color: flagged ? '#FFF6F3' : T.mute
             }}
             onClick={s.toggleFlag}
+            aria-pressed={flagged}
           >
             {flagged ? 'Flagged' : 'Flag for review'}
           </Hoverable>

@@ -50,3 +50,21 @@ input {
 .fade-up {
   animation: fadeUp 0.22s ease both;
 }
+
+/* Header nav: full horizontal row above the breakpoint, a hamburger toggle
+   below it. Only display is set here so the rest of each element's styling
+   stays inline, consistent with the rest of the app. */
+.header-nav-desktop {
+  display: flex;
+}
+.header-nav-toggle {
+  display: none;
+}
+@media (max-width: 860px) {
+  .header-nav-desktop {
+    display: none;
+  }
+  .header-nav-toggle {
+    display: inline-flex;
+  }
+}
