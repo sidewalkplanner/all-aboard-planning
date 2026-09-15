@@ -18,7 +18,7 @@ export const ASSESSMENTS = [
   { id: 'q2', tier: 'free', title: 'Warm-up Quiz B', size: 25, mins: 30, blurb: 'A second free quiz drawn from questions Quiz A does not use.', taken: 'Not started' },
   { id: 'e1', tier: 'paid', title: 'Practice Exam 1', size: 170, mins: 210, blurb: 'The full-length exam, weighted to the nine domains of the APA content outline, with scenario clusters and combination items.', taken: 'No attempts yet' },
   { id: 'e2', tier: 'paid', title: 'Practice Exam 2', size: 170, mins: 210, blurb: 'A second full-length exam, all original items, delivered in randomized order across the nine domains.', taken: 'No attempts yet' },
-  { id: 'e3', tier: 'paid', title: 'Practice Exam 3', size: 170, mins: 210, soon: true, blurb: 'Hardest of the three. Save it for the two weeks before your test date.', taken: 'Questions in development' }
+  { id: 'e3', tier: 'paid', title: 'Practice Exam 3', size: 170, mins: 210, blurb: 'Heavier on law and case holdings than the other two, with eight scenario clusters and two data exhibits.', taken: 'No attempts yet' }
 ];
 
 // Sample question bank used only as an ultimate fallback (should never be

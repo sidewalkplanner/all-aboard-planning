@@ -40,7 +40,7 @@ export default function ResultsView(s) {
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            {s.domainRows.map((d) => (
+            {s.domainRows.filter((d) => d.n > 0).map((d) => (
               <div key={d.name}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, fontSize: 14, marginBottom: 6 }}>
                   <span style={{ fontWeight: 600 }}>{d.short}</span>

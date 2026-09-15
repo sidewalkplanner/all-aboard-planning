@@ -1,4 +1,5 @@
 import RichText from '../../components/RichText';
+import ExhibitTable from '../../components/ExhibitTable';
 import { chipStyle, cardStyle } from '../../lib/style';
 import { GREEN, themeTokens } from '../../lib/theme';
 
@@ -22,6 +23,7 @@ export default function AnswerReviewView(s) {
                   {r.scenario}
                 </div>
               )}
+              <ExhibitTable exhibit={r.exhibit} T={T} />
               <RichText as="p" text={r.text} style={{ fontSize: 17.5, fontWeight: 500, lineHeight: 1.55, margin: '16px 0 16px' }} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <div style={{ fontSize: 14.5, padding: '11px 14px', borderRadius: 9, background: T.accBg, border: `1px solid ${T.line}`, color: T.ink }}>

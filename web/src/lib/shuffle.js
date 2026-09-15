@@ -30,27 +30,19 @@ export const alloc = (size) => {
 };
 
 export const QUIZ_T = alloc(25);
-export const EXAM_T = alloc(170);
 
-// Draws a question set for a given assessment id from the two exam banks.
-export const sample = (bank, id, bank2) => {
+// Draws a question set for a given assessment id. Each full-length exam has its
+// own bank; the free warm-up quizzes take a domain-weighted slice of bank 1.
+export const sample = (bank, id, bank2, bank3) => {
   const a = ASSESSMENTS.find((x) => x.id === id) || ASSESSMENTS[0];
   if (a.id === 'e1') return bank.slice();
   if (a.id === 'e2') return bank2 && bank2.length ? shuffle(bank2.slice(), 6301) : bank.slice();
-  const t = a.tier === 'free' ? QUIZ_T : EXAM_T;
-  const examIdx = Math.max(0, ['e1', 'e2', 'e3'].indexOf(a.id));
+  if (a.id === 'e3') return bank3 && bank3.length ? shuffle(bank3.slice(), 5119) : bank.slice();
   const out = [];
   DOMAINS.forEach((d, di) => {
     const pool = shuffle(bank.filter((q) => q.domain === d.name), 9973 + di * 131);
-    if (a.tier === 'free') {
-      const k = a.id === 'q2' ? 1 : 0;
-      out.push(...pool.slice(k * t[d.name], (k + 1) * t[d.name]));
-    } else {
-      const rest = pool;
-      if (!rest.length) return;
-      const off = (examIdx * t[d.name]) % rest.length;
-      for (let i = 0; i < t[d.name]; i++) out.push(rest[(off + i) % rest.length]);
-    }
+    const k = a.id === 'q2' ? 1 : 0;
+    out.push(...pool.slice(k * QUIZ_T[d.name], (k + 1) * QUIZ_T[d.name]));
   });
   return shuffle(out.filter(Boolean), 4211 + id.charCodeAt(1) * 7);
 };

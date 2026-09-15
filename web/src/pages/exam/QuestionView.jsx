@@ -1,13 +1,15 @@
 import Hoverable from '../../components/Hoverable';
 import OptionButton from '../../components/OptionButton';
 import RichText from '../../components/RichText';
+import ExhibitTable from '../../components/ExhibitTable';
 import { LETTERS } from '../../data/domains';
 import { GREEN, RUST, themeTokens } from '../../lib/theme';
-import { fmtClock } from '../../lib/format';
+import { fmtClock, parseExhibit } from '../../lib/format';
 
 export default function QuestionView(s) {
   const T = themeTokens(s.dark);
   const flagged = !!s.flags[s.i];
+  const exhibit = parseExhibit(s.q.exhibit);
 
   return (
     <div style={{ background: T.bg, color: T.ink, minHeight: '100vh' }}>
@@ -63,6 +65,8 @@ export default function QuestionView(s) {
             <RichText as="p" text={s.q.scenario} style={{ fontSize: 15.5, lineHeight: 1.6, color: T.mute, margin: 0 }} />
           </div>
         )}
+
+        <ExhibitTable exhibit={exhibit} T={T} />
 
         <RichText as="p" text={s.q.text} style={{ fontSize: 'clamp(19px,2.1vw,23px)', fontWeight: 500, lineHeight: 1.5, letterSpacing: '-0.005em', margin: '20px 0 26px', textWrap: 'pretty', color: T.ink, whiteSpace: 'pre-line' }} />
 

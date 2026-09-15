@@ -3,13 +3,14 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ASSESSMENTS, DOMAINS } from '../../data/domains';
 import { BANK as EXAM1_BANK } from '../../data/exam1-questions';
 import { BANK as EXAM2_BANK } from '../../data/exam2-questions';
+import { BANK as EXAM3_BANK } from '../../data/exam3-questions';
 import { sample, shuffle } from '../../lib/shuffle';
 import { useUnlock } from '../../context/UnlockContext';
 import { useDarkMode } from '../../context/DarkModeContext';
-import { fmtHoursMinutes } from '../../lib/format';
+import { fmtHoursMinutes, parseExhibit } from '../../lib/format';
 import { recordAttempt } from '../../lib/history';
 
-const DRILLPOOL = EXAM1_BANK.concat(EXAM2_BANK);
+const DRILLPOOL = EXAM1_BANK.concat(EXAM2_BANK, EXAM3_BANK);
 
 const ATTEMPTS_KEY = 'aap-exam-attempts';
 
@@ -53,7 +54,7 @@ export function useExamSession() {
 
   const QS = useMemo(() => {
     if (drill) return shuffle(DRILLPOOL.filter((qq) => qq.domain === drill), 7717).slice(0, 25);
-    return sample(EXAM1_BANK, active.id, EXAM2_BANK);
+    return sample(EXAM1_BANK, active.id, EXAM2_BANK, EXAM3_BANK);
   }, [drill, active.id]);
 
   const [view, setView] = useState('question');
@@ -174,7 +175,7 @@ export function useExamSession() {
     return {
       idx, right,
       mark: right ? 'Correct' : 'Missed',
-      domain: qq.domain, text: qq.text, scenario: qq.scenario || '',
+      domain: qq.domain, text: qq.text, scenario: qq.scenario || '', exhibit: parseExhibit(qq.exhibit),
       numLabel: 'Question ' + (idx + 1),
       correctText: qq.options[qq.correct],
       showYours: yours !== undefined && !right,
