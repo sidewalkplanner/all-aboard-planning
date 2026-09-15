@@ -66,7 +66,7 @@ export const BANK = [
   "options": [
    "Comprehensive zoning is a valid exercise of the police power",
    "A temporary taking requires just compensation",
-   "Community aesthetics and appearance may be legitimate public purposes supporting the use of eminent domain",
+   "Aesthetics may be a legitimate public purpose for eminent domain",
    "Racially restrictive zoning is unconstitutional"
   ],
   "correct": 2,
@@ -96,8 +96,8 @@ export const BANK = [
   "options": [
    "A constitutional prohibition on urban growth boundaries",
    "A statewide inclusionary zoning mandate enacted by the legislature",
-   "That exclusionary zoning violates the federal Equal Protection Clause",
-   "A regional fair share obligation for municipalities to provide a realistic opportunity for affordable housing"
+   "That exclusionary zoning violates the Equal Protection Clause",
+   "A regional fair share obligation to provide affordable housing"
   ],
   "correct": 3,
   "explanation": "Mount Laurel rested on the state constitution's general welfare requirement and created a regional fair share obligation.",
@@ -122,12 +122,12 @@ export const BANK = [
  {
   "n": 9,
   "scenario": null,
-  "text": "Ebenezer Howard's Garden City concept included which of the following?",
+  "text": "Ebenezer Howard's Garden City concept included which of the following?\n\nI. A limited population on a fixed site, with further growth accommodated by founding new towns\nII. A permanent agricultural greenbelt surrounding the built area\nIII. Community ownership of the land, so that rising land value returns to the residents\nIV. Perpetual control of the town by a private corporation operating it for investor profit",
   "options": [
    "I and II only",
    "I, II, and III only",
    "II, III, and IV only",
-   "All of the above"
+   "I, II, III, and IV"
   ],
   "correct": 1,
   "explanation": "I, II, and III. Howard proposed community ownership of the land so rising value would return to residents; perpetual private corporate control was not part of the concept.",
@@ -141,7 +141,7 @@ export const BANK = [
   "options": [
    "A monumental civic plaza drawn from City Beautiful practice",
    "A central commercial main street with civic buildings at each end",
-   "An elementary school, with arterial streets at the boundaries and interior streets designed to discourage through traffic",
+   "An elementary school, with arterials at the boundaries",
    "A rail transit station within a half-mile walk"
   ],
   "correct": 2,
@@ -212,14 +212,14 @@ export const BANK = [
  {
   "n": 15,
   "scenario": null,
-  "text": "In The Death and Life of Great American Cities, Jane Jacobs identified conditions necessary to generate diversity on city streets, including:",
+  "text": "In The Death and Life of Great American Cities, Jane Jacobs identified conditions necessary to generate diversity on city streets, including:\n\nI. A district must serve more than one primary function\nII. Most blocks must be short, with frequent opportunities to turn corners\nIII. Buildings must vary in age and condition, including a share of older buildings\nIV. There must be a sufficiently dense concentration of people, including residents",
   "options": [
+   "I, II, III, and IV",
    "I and II only",
    "I, II, and III only",
-   "II, III, and IV only",
-   "All of the above"
+   "II, III, and IV only"
   ],
-  "correct": 3,
+  "correct": 0,
   "explanation": "All four. These are the generators of diversity in Death and Life.",
   "domain": "Fundamental Planning Knowledge",
   "difficulty": "Medium"
@@ -319,7 +319,7 @@ export const BANK = [
   "scenario": null,
   "text": "The greenbelt towns of the 1930s, including Greenbelt, Maryland, were developed under the direction of:",
   "options": [
-   "The Resettlement Administration under Rexford Tugwell",
+   "The Resettlement Administration",
    "The Federal Housing Administration",
    "The Tennessee Valley Authority",
    "The Public Works Administration"
@@ -335,9 +335,9 @@ export const BANK = [
   "text": "Section 701 of the Housing Act of 1954 is significant because it:",
   "options": [
    "Established the Federal Housing Administration",
-   "Provided federal grants supporting local and regional comprehensive planning",
-   "Created the public housing program",
-   "Created the Model Cities program"
+   "Provided federal grants for local and regional planning",
+   "Created the federal public housing program",
+   "Created the Model Cities demonstration program"
   ],
   "correct": 1,
   "explanation": "Section 701 grants funded local and regional comprehensive planning and shaped a generation of plans.",
@@ -352,7 +352,7 @@ export const BANK = [
    "Any project receiving state transportation funds",
    "Any project requiring a local rezoning",
    "Any private development exceeding a threshold size",
-   "Major federal actions significantly affecting the quality of the human environment"
+   "Major federal actions significantly affecting the environment"
   ],
   "correct": 3,
   "explanation": "NEPA's trigger is a major federal action significantly affecting the quality of the human environment.",
@@ -366,7 +366,7 @@ export const BANK = [
   "options": [
    "Authorize construction of the Interstate Highway System",
    "Set a 90/10 federal-to-state funding match for interstate construction",
-   "Require metropolitan planning organizations to conduct a continuing, cooperative, and comprehensive process",
+   "Require metropolitan planning organizations to be designated",
    "Establish the Highway Trust Fund"
   ],
   "correct": 2,
@@ -395,7 +395,7 @@ export const BANK = [
   "text": "In most states, the principal legal significance of an adopted comprehensive plan is that it:",
   "options": [
    "Is self-executing and directly binding on private property",
-   "Supplies the policy basis on which zoning and other land use regulations are justified",
+   "Supplies the policy basis on which zoning is justified",
    "Supersedes the zoning ordinance where the two conflict",
    "Is a federal precondition for HUD entitlement funding"
   ],
@@ -422,14 +422,14 @@ export const BANK = [
  {
   "n": 29,
   "scenario": null,
-  "text": "A city is beginning a comprehensive plan update. The following steps would generally occur in which order, from first to last?",
+  "text": "A city is beginning a comprehensive plan update. The following steps would generally occur in which order, from first to last?\n\nI. Adopt the plan and begin implementation\nII. Establish a community vision and plan goals\nIII. Develop and evaluate alternative growth scenarios\nIV. Scope the process and inventory existing conditions",
   "options": [
-   "IV, II, III, I",
    "II, IV, III, I",
+   "IV, II, III, I",
    "IV, III, II, I",
    "II, III, IV, I"
   ],
-  "correct": 0,
+  "correct": 1,
   "explanation": "Issues and stakeholders, then baseline data, then alternatives, then adoption.",
   "domain": "Plan & Policy Development",
   "difficulty": "Medium"
@@ -440,7 +440,7 @@ export const BANK = [
   "text": "Scenario planning is most appropriate when:",
   "options": [
    "A single trend extrapolation is known to be reliable",
-   "Future conditions are highly uncertain and shaped by forces outside local control",
+   "Future conditions are highly uncertain and outside local control",
    "Only one alternative is legally available to the jurisdiction",
    "The plan must be adopted on a compressed schedule"
   ],
@@ -454,10 +454,10 @@ export const BANK = [
   "scenario": null,
   "text": "A visioning process differs from a goal-setting workshop primarily in that visioning:",
   "options": [
-   "Is required by statute in every state",
-   "Is conducted exclusively by technical staff",
+   "Is required by statute in most states",
+   "Is conducted by technical staff alone",
    "Produces regulatory language for the zoning ordinance",
-   "Describes a desired long-range future condition in broad qualitative terms"
+   "Describes a desired long-range future condition"
   ],
   "correct": 3,
   "explanation": "Visioning produces a qualitative description of a desired future; goals and policies follow from it.",
@@ -470,7 +470,7 @@ export const BANK = [
   "text": "The capital improvements element of a comprehensive plan primarily serves to:",
   "options": [
    "Establish the boundaries of zoning districts",
-   "Connect plan policies to the scheduling and financing of public facilities",
+   "Connect plan policies to facility financing",
    "Satisfy federal environmental review requirements",
    "Set impact fee amounts by ordinance"
   ],
@@ -485,7 +485,7 @@ export const BANK = [
   "text": "A concurrency requirement provides that:",
   "options": [
    "Adjacent jurisdictions must adopt identical land use policies",
-   "Development may not be approved unless adequate public facilities will be available to serve it",
+   "Development may not be approved without adequate public facilities",
    "The comprehensive plan and the annual budget must be adopted at the same meeting",
    "Rezonings and plan amendments must be heard concurrently"
   ],
@@ -499,10 +499,10 @@ export const BANK = [
   "scenario": null,
   "text": "A small area plan is most appropriate when:",
   "options": [
-   "Citywide policy must be translated into block-level direction on design, access, and infrastructure",
+   "Citywide policy must be translated into block-level direction",
    "State law requires a periodic update of the comprehensive plan",
    "The jurisdiction wishes to limit the number of public hearings",
-   "A single zoning map amendment is the only action contemplated"
+   "A single zoning map amendment is the action contemplated"
   ],
   "correct": 0,
   "explanation": "Small area plans exist to take citywide policy down to blocks, access, and design.",
@@ -515,7 +515,7 @@ export const BANK = [
   "text": "Within the structure of a comprehensive plan, a policy is best described as:",
   "options": [
    "A funded project appearing in the capital budget",
-   "A course of action the jurisdiction commits to follow in pursuit of its goals and objectives",
+   "A course of action the jurisdiction commits to follow",
    "A measurable target with a completion date",
    "A general statement of a desired end condition"
   ],
@@ -544,7 +544,7 @@ export const BANK = [
   "scenario": null,
   "text": "To determine whether the city's land supply can physically accommodate the projected growth, staff should first prepare:",
   "options": [
-   "A buildable lands inventory and land capacity analysis",
+   "A buildable lands inventory",
    "A retail market feasibility study",
    "A corridor access management plan",
    "A fiscal impact analysis"
@@ -560,9 +560,9 @@ export const BANK = [
   "text": "For the arterial corridor, the tool most directly suited to shaping building placement, height, and street frontage over time is:",
   "options": [
    "A performance bond requirement",
-   "A development moratorium",
+   "A development moratorium on the corridor",
    "A form-based code or corridor overlay district",
-   "A revised impact fee schedule"
+   "A revised impact fee schedule for the corridor"
   ],
   "correct": 2,
   "explanation": "Form-based standards regulate placement, height, and frontage, which is what a strip corridor needs.",
@@ -574,10 +574,10 @@ export const BANK = [
   "scenario": null,
   "text": "Which plan policy would most effectively reduce long-term repetitive flood losses along the Ridge River?",
   "options": [
-   "Requiring all city residents to purchase flood insurance",
+   "Requiring city residents to purchase flood insurance",
    "Permitting fill in the floodway while requiring two feet of freeboard on new structures",
    "Rezoning floodplain parcels to a light industrial district",
-   "Directing new development away from the floodplain and acquiring repetitive-loss properties for permanent open space"
+   "Directing new development away from the floodplain"
   ],
   "correct": 3,
   "explanation": "Avoidance plus acquisition of repetitive-loss properties is the only option that reduces exposure permanently. Fill in the floodway is not permissible under NFIP standards.",
@@ -592,7 +592,7 @@ export const BANK = [
    "The project's effects on air, water, and habitat",
    "The number of vehicle trips the project will generate",
    "The effect of the project on surrounding land values",
-   "The net public costs and revenues the project generates for the jurisdiction"
+   "The net public costs and revenues the project generates"
   ],
   "correct": 3,
   "explanation": "Fiscal impact analysis compares public costs generated against revenues produced.",
@@ -619,9 +619,9 @@ export const BANK = [
   "scenario": null,
   "text": "A plan consistency requirement means that:",
   "options": [
-   "Zoning and development approvals must conform to the adopted comprehensive plan",
+   "Zoning and development approvals must conform to the adopted plan",
    "Each plan update must retain the policies of the prior plan",
-   "All jurisdictions in a region must adopt a single shared plan",
+   "Jurisdictions in a region must adopt a single shared plan",
    "The plan must be readopted annually"
   ],
   "correct": 0,
@@ -665,8 +665,8 @@ export const BANK = [
   "text": "A local greenhouse gas inventory is typically constructed from:",
   "options": [
    "State-level industrial emissions reporting",
-   "Regional vehicle miles traveled data alone",
-   "Community-wide and municipal operations emissions organized by sector",
+   "Regional vehicle miles traveled data",
+   "Community-wide and municipal emissions by sector",
    "Federal modeling of national averages applied to population"
   ],
   "correct": 2,
@@ -679,7 +679,7 @@ export const BANK = [
   "scenario": null,
   "text": "The primary purpose of an existing conditions report in a planning process is to:",
   "options": [
-   "Establish a shared factual baseline for subsequent plan decisions",
+   "Establish a shared factual baseline",
    "Provide the legal basis for individual rezonings",
    "Satisfy state open meetings requirements",
    "Recommend the policies the plan will adopt"
@@ -697,7 +697,7 @@ export const BANK = [
    "A single landowner has requested a change to the future land use map",
    "A neighboring jurisdiction has adopted a new plan",
    "Two new members have joined the city council",
-   "Population, employment, and housing conditions have diverged substantially from the assumptions on which the plan was built"
+   "Conditions have diverged substantially from the plan's assumptions"
   ],
   "correct": 3,
   "explanation": "When the conditions underlying the plan's assumptions have shifted materially, an amendment cannot carry the weight.",
@@ -712,7 +712,7 @@ export const BANK = [
    "Uses a longer time horizon",
    "Must be adopted by ordinance after public hearing",
    "Is legally binding on private property",
-   "Concentrates on a limited set of priority actions and organizational capacity over a shorter horizon"
+   "Concentrates on a limited set of priority actions"
   ],
   "correct": 3,
   "explanation": "Strategic plans are shorter, narrower, and focused on priorities and organizational capacity.",
@@ -722,14 +722,14 @@ export const BANK = [
  {
   "n": 49,
   "scenario": null,
-  "text": "A housing needs assessment would ordinarily include analysis of:",
+  "text": "A housing needs assessment would ordinarily include analysis of:\n\nI. Projected household growth by size, age, and tenure\nII. Current and projected cost burden by income band\nIII. The condition and age of the existing housing stock\nIV. The supply of land and its capacity for residential development",
   "options": [
    "I and II only",
-   "I, II, and III only",
    "I, III, and IV only",
-   "All of the above"
+   "I, II, III, and IV",
+   "II and IV only"
   ],
-  "correct": 3,
+  "correct": 2,
   "explanation": "All four are standard components of a housing needs assessment.",
   "domain": "Plan & Policy Development",
   "difficulty": "Medium"
@@ -739,10 +739,10 @@ export const BANK = [
   "scenario": null,
   "text": "The most commonly used planning measure of housing affordability is:",
   "options": [
-   "The share of households paying more than 30 percent of gross income for housing",
-   "Dwelling units per net acre",
+   "Households paying more than 30 percent of income",
+   "Dwelling units per net residential acre",
    "Median sales price of owner-occupied units",
-   "The rental vacancy rate"
+   "The rental vacancy rate by bedroom count"
   ],
   "correct": 0,
   "explanation": "Cost burden at 30 percent of gross income is the conventional measure.",
@@ -767,12 +767,12 @@ export const BANK = [
  {
   "n": 52,
   "scenario": null,
-  "text": "The Delphi technique is characterized by:",
+  "text": "The Delphi technique is characterized by:\n\nI. A panel of participants with relevant expertise\nII. Multiple iterative rounds of questionnaires\nIII. Controlled feedback of the group's responses between rounds\nIV. Anonymity among participants",
   "options": [
    "I and II only",
    "I, II, and III only",
    "II, III, and IV only",
-   "All of the above"
+   "I, II, III, and IV"
   ],
   "correct": 3,
   "explanation": "All four. Expert panel, iterative rounds, controlled feedback, anonymity.",
@@ -784,10 +784,10 @@ export const BANK = [
   "scenario": null,
   "text": "The nominal group technique differs from open brainstorming principally in that it:",
   "options": [
-   "Proceeds without a facilitator",
-   "Begins with silent individual idea generation, followed by round-robin sharing and structured ranking",
-   "Reaches conclusions solely by majority vote",
-   "Requires full anonymity throughout"
+   "Proceeds without a facilitator present",
+   "Silent idea generation, then structured ranking",
+   "Reaches conclusions by majority vote",
+   "Requires anonymity throughout the process"
   ],
   "correct": 1,
   "explanation": "NGT begins with silent individual generation, then round-robin sharing, then structured ranking.",
@@ -801,7 +801,7 @@ export const BANK = [
   "options": [
    "A quasi-judicial hearing on a development application",
    "A statistically valid survey method",
-   "An intensive, time-bounded collaborative design workshop that produces a feasible plan through short feedback loops",
+   "An intensive, time-bounded collaborative design workshop",
    "A mediation process required before litigation"
   ],
   "correct": 2,
@@ -815,7 +815,7 @@ export const BANK = [
   "text": "In a fishbowl format:",
   "options": [
    "Participants submit anonymous written comments that are read aloud",
-   "A small group discusses an issue while a larger audience observes, with opportunities to rotate into the inner circle",
+   "A small group discusses while a larger audience observes",
    "A randomly selected panel deliberates over several days and issues findings",
    "Stakeholders negotiate privately with a neutral mediator"
   ],
@@ -844,10 +844,10 @@ export const BANK = [
   "scenario": null,
   "text": "The distinction between a public hearing and a public meeting is best stated as:",
   "options": [
-   "A hearing is a formal proceeding that creates a record supporting a decision, while a meeting is generally for information exchange",
+   "A hearing creates a record supporting a decision",
    "A hearing may not receive testimony from the public",
    "A meeting requires that testimony be given under oath",
-   "The two are legally identical in all jurisdictions"
+   "The two are treated identically under state law"
   ],
   "correct": 0,
   "explanation": "Hearings build a record supporting a decision; meetings exchange information.",
@@ -862,7 +862,7 @@ export const BANK = [
    "Should be encouraged as a way to build consensus before the hearing",
    "Should be avoided, and if it occurs, disclosed on the record",
    "Is required as a matter of procedural due process",
-   "Applies only to legislative actions such as plan amendments"
+   "Applies to legislative actions such as plan amendments"
   ],
   "correct": 1,
   "explanation": "In quasi-judicial matters, ex parte contact should be avoided and, if it happens, disclosed on the record.",
@@ -889,7 +889,7 @@ export const BANK = [
   "scenario": null,
   "text": "A choropleth map is most appropriately used to display:",
   "options": [
-   "Rates or densities normalized by area or population across geographic units",
+   "Rates or densities normalized by area or population",
    "Travel times along a corridor",
    "Raw counts across units of widely varying size",
    "The precise location of individual incidents"
@@ -905,7 +905,7 @@ export const BANK = [
   "text": "A staff report on a rezoning application should primarily:",
   "options": [
    "Transmit the applicant's submittal materials without comment",
-   "Analyze the request against the adopted plan and code and state findings that support a recommendation",
+   "Analyze the request against the adopted plan and code",
    "Advance the applicant's case to the decision-making body",
    "Summarize polling of neighborhood opinion"
   ],
@@ -919,9 +919,9 @@ export const BANK = [
   "scenario": null,
   "text": "Asked by a reporter about a controversial application, the planner should:",
   "options": [
-   "Provide accurate factual information about the process and the proposal, leaving policy positions to elected officials",
+   "Provide accurate factual information about the process",
    "Share the draft staff recommendation before it is released publicly",
-   "Decline to comment on all aspects of the matter",
+   "Decline to comment on the matter",
    "Speculate about how the council is likely to vote"
   ],
   "correct": 0,
@@ -936,7 +936,7 @@ export const BANK = [
   "options": [
    "Negotiate the terms of a development agreement",
    "Build consensus among organized stakeholders",
-   "Measure how opinion is distributed across the general population",
+   "Measure how opinion is distributed across the population",
    "Refine the design of a specific site plan"
   ],
   "correct": 2,
@@ -951,7 +951,7 @@ export const BANK = [
   "options": [
    "Those attending are representative of the community as a whole",
    "Nonresponse can be disregarded",
-   "Those who attend differ systematically from the population, typically being more intensely affected or more opposed",
+   "Those who attend differ systematically from the population",
    "The attendees constitute a random sample"
   ],
   "correct": 2,
@@ -965,9 +965,9 @@ export const BANK = [
   "text": "The most appropriate first step for the planning staff is to:",
   "options": [
    "Announce the technically preferred site and then take comment",
-   "Engage residents early on the problem definition, the siting criteria, and the weighting of those criteria",
-   "Defer all engagement until the environmental review is complete",
-   "Meet only with the county's technical consultants"
+   "Engage residents early on the problem definition and criteria",
+   "Defer engagement until the environmental review is complete",
+   "Meet with the county's technical consultants"
   ],
   "correct": 1,
   "explanation": "Credibility is built by engaging on problem definition and siting criteria before a preferred site exists.",
@@ -979,10 +979,10 @@ export const BANK = [
   "scenario": null,
   "text": "The concentration of existing burdens in that neighborhood is most directly a question of:",
   "options": [
-   "Concurrency",
-   "Vested rights",
+   "Concurrency and level of service",
+   "Vested rights and estoppel",
    "Procedural due process",
-   "Distributive equity and cumulative impact"
+   "Distributive equity"
   ],
   "correct": 3,
   "explanation": "Concentrating burdens on a community that already bears them is a distributive equity and cumulative impact question.",
@@ -995,7 +995,7 @@ export const BANK = [
   "text": "Residents state that they were not notified of the earlier decision. To rebuild credibility, the most effective measure is to:",
   "options": [
    "Increase the size of the newspaper notice",
-   "Commit to a documented engagement plan with defined decision points and report back on how comments affected the outcome",
+   "Commit to a documented engagement plan and report back",
    "Note that legal notice requirements were satisfied in that case",
    "Add one additional public hearing at the end of the process"
   ],
@@ -1007,14 +1007,14 @@ export const BANK = [
  {
   "n": 68,
   "scenario": null,
-  "text": "Interest-based negotiation emphasizes:",
+  "text": "Interest-based negotiation emphasizes:\n\nI. Separating the people from the problem\nII. Focusing on underlying interests rather than stated positions\nIII. Generating options for mutual gain before deciding\nIV. Using objective criteria to evaluate the options",
   "options": [
-   "I and II only",
-   "I, II, and III only",
-   "II, III, and IV only",
-   "All of the above"
+   "I and III only",
+   "I, II, III, and IV",
+   "II and IV only",
+   "I, II, and IV only"
   ],
-  "correct": 3,
+  "correct": 1,
   "explanation": "All four are the core principles of interest-based negotiation.",
   "domain": "Communication & Interaction",
   "difficulty": "Medium"
@@ -1024,10 +1024,10 @@ export const BANK = [
   "scenario": null,
   "text": "The distinguishing feature of mediation, as compared to arbitration, is that the third party:",
   "options": [
-   "Must be appointed by a court",
-   "Assists the parties in reaching their own agreement but does not decide the matter",
+   "Must be appointed by a court of record",
+   "Assists the parties but does not decide the matter",
    "Imposes a decision binding on both parties",
-   "Takes testimony under oath"
+   "Takes testimony under oath at a hearing"
   ],
   "correct": 1,
   "explanation": "A mediator helps the parties reach their own agreement; an arbitrator decides.",
@@ -1040,7 +1040,7 @@ export const BANK = [
   "text": "When presenting technical findings to a lay audience, the planner should:",
   "options": [
    "Open with a detailed account of methodology and assumptions",
-   "Open with findings and their implications, making methods available to those who want them",
+   "Open with findings and their implications",
    "Present the underlying data tables without interpretation",
    "Avoid graphics, which can oversimplify"
   ],
@@ -1055,9 +1055,9 @@ export const BANK = [
   "text": "A leading question in a survey instrument:",
   "options": [
    "Improves the overall response rate",
-   "Suggests a preferred answer and biases the distribution of responses",
+   "Suggests a preferred answer and biases responses",
    "Is necessary for constructing a Likert scale",
-   "Reduces nonresponse bias"
+   "Reduces nonresponse bias in the sample"
   ],
   "correct": 1,
   "explanation": "Leading questions embed a preferred answer and skew the distribution of responses.",
@@ -1071,7 +1071,7 @@ export const BANK = [
   "options": [
    "Forecast expert consensus on future conditions",
    "Rank capital budget priorities against a fixed spending total",
-   "Elicit community reaction to images of development types in order to reveal design preferences",
+   "Elicit community reaction to images of development types",
    "Map community assets and gaps"
   ],
   "correct": 2,
@@ -1087,7 +1087,7 @@ export const BANK = [
    "Omit public comment from the record to avoid prejudicing the body",
    "Recommend denial in order to reflect neighborhood sentiment",
    "Recommend indefinite continuance until opposition subsides",
-   "Apply the adopted plan and code standards, while accurately conveying the substance of public comment to the decision makers"
+   "Apply the adopted plan and code, while conveying public comment"
   ],
   "correct": 3,
   "explanation": "The recommendation applies the adopted standards. Public comment goes to the decision makers accurately and completely, but sentiment is not a standard.",
@@ -1099,7 +1099,7 @@ export const BANK = [
   "scenario": null,
   "text": "A variance ordinarily requires a finding of:",
   "options": [
-   "Unnecessary hardship arising from conditions unique to the property and not created by the applicant",
+   "Unnecessary hardship from conditions unique to the property",
    "Demonstrated support from adjoining property owners",
    "A supermajority vote of the governing body",
    "Consistency with the goals of the comprehensive plan"
@@ -1144,10 +1144,10 @@ export const BANK = [
   "scenario": null,
   "text": "Amortization of a nonconforming use:",
   "options": [
-   "Permits the use to continue for a defined period, after which it must cease",
+   "Permits the use to continue for a defined period",
    "Terminates the use immediately upon adoption of the ordinance",
    "Is a method of financing public capital facilities",
-   "May be applied only to outdoor advertising signs"
+   "Applies to outdoor advertising signs"
   ],
   "correct": 0,
   "explanation": "Amortization gives a reasonable period of continued operation, then requires termination.",
@@ -1159,9 +1159,9 @@ export const BANK = [
   "scenario": null,
   "text": "Under the Nollan and Dolan line of cases, a development exaction must satisfy:",
   "options": [
-   "An essential nexus to a legitimate state interest and rough proportionality to the impact",
-   "Strict scrutiny review",
-   "Rational basis review only",
+   "An essential nexus and rough proportionality",
+   "Strict scrutiny of the condition",
+   "Rational basis review of the ordinance",
    "The three Penn Central factors"
   ],
   "correct": 0,
@@ -1177,7 +1177,7 @@ export const BANK = [
    "Federal approval of the credit registry",
    "A comprehensive plan amendment for each individual transfer",
    "Authority to condemn the sending parcels",
-   "Designated sending and receiving areas and sufficient development incentive in the receiving area to create demand for credits"
+   "Designated sending and receiving areas with credit demand"
   ],
   "correct": 3,
   "explanation": "Without demand in the receiving area, credits do not move and the program fails regardless of how carefully sending areas are mapped.",
@@ -1189,9 +1189,9 @@ export const BANK = [
   "scenario": null,
   "text": "Development impact fees must generally be:",
   "options": [
-   "Available for any general fund purpose",
-   "Roughly proportional to the demand the development creates and spent on facilities that benefit the fee payer within a reasonable time",
-   "Assessed only against residential construction",
+   "Deposited in the general fund for any purpose",
+   "Roughly proportional to the demand created",
+   "Assessed against residential construction",
    "Approved by referendum before collection"
   ],
   "correct": 1,
@@ -1204,7 +1204,7 @@ export const BANK = [
   "scenario": null,
   "text": "The principal advantage of a planned unit development is that it:",
   "options": [
-   "Allows flexibility in site design and mix of uses under a unified plan, in exchange for negotiated public benefits",
+   "Allows flexibility in site design and mix of uses",
    "Exempts the project from subdivision review",
    "Eliminates the requirement for a public hearing",
    "Guarantees the applicant a density bonus"
@@ -1219,9 +1219,9 @@ export const BANK = [
   "scenario": null,
   "text": "A form-based code regulates primarily:",
   "options": [
-   "Building form and placement and the character of the public realm",
+   "Building form and the public realm",
    "Environmental performance standards",
-   "Residential density alone",
+   "Residential density and lot coverage",
    "The use of land and buildings"
   ],
   "correct": 0,
@@ -1237,7 +1237,7 @@ export const BANK = [
    "Prohibits multifamily housing in single-family districts",
    "Establishes minimum lot sizes to protect property values",
    "Is a mechanism for amortizing nonconforming uses",
-   "Requires or incentivizes that a share of units in new development be affordable to specified income levels"
+   "Requires a share of new units to be affordable"
   ],
   "correct": 3,
   "explanation": "Inclusionary zoning requires or incentivizes a share of affordable units in new development.",
@@ -1250,9 +1250,9 @@ export const BANK = [
   "text": "Which growth management tool most directly limits the geographic extension of urban services?",
   "options": [
    "A maximum floor area ratio",
-   "Design review",
+   "Design review standards",
    "A local historic district",
-   "An urban growth boundary or urban service area"
+   "An urban growth boundary"
   ],
   "correct": 3,
   "explanation": "Urban growth boundaries and urban service areas define where urban services will be extended.",
@@ -1264,10 +1264,10 @@ export const BANK = [
   "scenario": null,
   "text": "Under the common law rule followed in most states, development rights vest when the developer:",
   "options": [
-   "Makes substantial expenditures in good faith reliance on a validly issued permit",
+   "Makes substantial expenditures under a permit",
    "Requests a rezoning of the property",
-   "Files a complete application",
-   "Holds a neighborhood meeting"
+   "Files a complete development application",
+   "Holds a required neighborhood meeting"
   ],
   "correct": 0,
   "explanation": "Vesting generally follows substantial expenditure in good faith reliance on a validly issued permit.",
@@ -1282,7 +1282,7 @@ export const BANK = [
    "The size and illumination of signs",
    "The permitted uses of buildings within districts",
    "Structural adequacy and life safety in construction",
-   "The division of land and the design and provision of infrastructure serving the resulting lots"
+   "The division of land and the infrastructure serving it"
   ],
   "correct": 3,
   "explanation": "Subdivision regulations govern the division of land and the infrastructure serving the resulting lots.",
@@ -1310,7 +1310,7 @@ export const BANK = [
   "text": "The salvage yard's status following annexation is best described as:",
   "options": [
    "A conditional use requiring a permit within 30 days",
-   "A legal nonconforming use that may continue subject to limits on expansion and rules on discontinuance",
+   "A legal nonconforming use that may continue",
    "An illegal use subject to immediate abatement",
    "A variance granted by operation of law"
   ],
@@ -1324,10 +1324,10 @@ export const BANK = [
   "scenario": null,
   "text": "If the city wishes to eliminate the salvage yard over time without paying compensation, the most defensible approach is:",
   "options": [
-   "An amortization schedule providing a reasonable period tied to the owner's recovery of investment",
-   "Denying all future building permits in the corridor",
-   "Condemnation of the parcel",
-   "Revoking the business license"
+   "An amortization schedule over a reasonable period",
+   "Denying future building permits in the corridor",
+   "Condemnation of the parcel with compensation",
+   "Revoking the owner's business license"
   ],
   "correct": 0,
   "explanation": "Amortization tied to a reasonable recovery period is the standard approach to ending a nonconforming use without compensation.",
@@ -1340,9 +1340,9 @@ export const BANK = [
   "text": "To obtain the multi-use path right-of-way as individual parcels redevelop, the city's exaction will be most defensible if it:",
   "options": [
    "Is applied uniformly at a fixed percentage of land area regardless of project type",
-   "Is supported by a study connecting the demand each project generates to the amount of land or improvement required",
+   "Is supported by a study connecting demand to the amount required",
    "Is negotiated case by case without written standards",
-   "Is imposed only on projects that request a variance"
+   "Is imposed on projects that request a variance"
   ],
   "correct": 1,
   "explanation": "A study connecting project-generated demand to the exaction is what satisfies nexus and rough proportionality.",
@@ -1355,9 +1355,9 @@ export const BANK = [
   "text": "An overlay district:",
   "options": [
    "Replaces the standards of the underlying zoning district",
-   "Applies supplemental standards in addition to those of the underlying district",
-   "May be applied only within mapped floodplains",
-   "Requires a variance for every application within its boundaries"
+   "Applies standards in addition to the underlying district",
+   "May be applied within mapped floodplains",
+   "Requires a variance for applications within its boundaries"
   ],
   "correct": 1,
   "explanation": "Overlays layer additional standards over the base district rather than replacing it.",
@@ -1369,8 +1369,8 @@ export const BANK = [
   "scenario": null,
   "text": "Tax increment financing captures:",
   "options": [
-   "Growth in local sales tax receipts only",
-   "The increase in property tax revenue above a frozen base within a designated district, to finance improvements in that district",
+   "Growth in local sales tax receipts",
+   "The increase in property tax revenue above a frozen base",
    "Federal grant revenue dedicated to redevelopment",
    "Special assessments levied on benefited properties"
   ],
@@ -1385,7 +1385,7 @@ export const BANK = [
   "text": "A development moratorium is most legally defensible when it is:",
   "options": [
    "Enacted without public notice to prevent a rush of applications",
-   "Limited in duration and geographic scope and tied to the preparation of identified regulations",
+   "Limited in duration and scope and tied to identified regulations",
    "Adopted for an indefinite term pending further study",
    "Directed at a single pending application"
   ],
@@ -1397,14 +1397,14 @@ export const BANK = [
  {
   "n": 94,
   "scenario": null,
-  "text": "The conventional four-step travel demand model proceeds in which order, from first to last?",
+  "text": "The conventional four-step travel demand model proceeds in which order, from first to last?\n\nI. Mode choice (modal split)\nII. Trip generation\nIII. Trip assignment to the network\nIV. Trip distribution",
   "options": [
-   "II, IV, I, III",
    "II, I, IV, III",
-   "IV, II, I, III",
-   "I, II, IV, III"
+   "I, II, IV, III",
+   "II, IV, I, III",
+   "IV, II, I, III"
   ],
-  "correct": 0,
+  "correct": 2,
   "explanation": "Generation, distribution, mode choice, assignment.",
   "domain": "Areas of Practice",
   "difficulty": "Medium"
@@ -1429,9 +1429,9 @@ export const BANK = [
   "scenario": null,
   "text": "A road diet most commonly involves:",
   "options": [
-   "Converting a four-lane undivided street to two through lanes with a center turn lane, freeing width for bicycle lanes or parking",
+   "Converting four lanes to two lanes with a center turn lane",
    "Prohibiting transit vehicles from a corridor",
-   "Removing all on-street parking to increase capacity",
+   "Removing on-street parking to increase capacity",
    "Adding a general purpose travel lane in each direction"
   ],
   "correct": 0,
@@ -1442,14 +1442,14 @@ export const BANK = [
  {
   "n": 97,
   "scenario": null,
-  "text": "Characteristics of transit-oriented development include:",
+  "text": "Characteristics of transit-oriented development include:\n\nI. Compact, moderate-to-high residential density near the station\nII. A mix of uses within walking distance of the station\nIII. A connected street network with pedestrian-oriented building frontage\nIV. Deep building setbacks with surface parking between the building and the street",
   "options": [
    "I and II only",
-   "I, II, and III only",
    "I, III, and IV only",
-   "All of the above"
+   "I, II, and III only",
+   "I, II, III, and IV"
   ],
-  "correct": 1,
+  "correct": 2,
   "explanation": "I, II, and III. Deep setbacks with frontage parking is the opposite of TOD form.",
   "domain": "Areas of Practice",
   "difficulty": "Medium"
@@ -1477,7 +1477,7 @@ export const BANK = [
    "Insuring mortgages on multifamily properties",
    "Making capital grants to local housing authorities",
    "Paying rent subsidies directly to qualifying tenants",
-   "Allocating federal tax credits that investors purchase, providing equity to qualifying developments"
+   "Allocating federal tax credits that investors purchase"
   ],
   "correct": 3,
   "explanation": "LIHTC allocates credits that investors purchase, supplying equity that reduces the debt a project must carry.",
@@ -1489,8 +1489,8 @@ export const BANK = [
   "scenario": null,
   "text": "The Housing First model is characterized by:",
   "options": [
-   "Providing permanent housing without preconditions, with supportive services offered but not required",
-   "Serving families with children exclusively",
+   "Providing permanent housing without preconditions",
+   "Serving families with children before individuals",
    "Providing congregate shelter as a transitional step",
    "Requiring sobriety and treatment compliance before placement"
   ],
@@ -1504,7 +1504,7 @@ export const BANK = [
   "scenario": null,
   "text": "Economic base theory holds that regional growth is driven principally by:",
   "options": [
-   "Basic industries that export goods or services and bring income into the region",
+   "Basic industries that export from the region",
    "The relative cost of local land",
    "Nonbasic industries serving local demand",
    "Population growth, which employment follows"
@@ -1519,9 +1519,9 @@ export const BANK = [
   "scenario": null,
   "text": "A business improvement district is funded principally by:",
   "options": [
-   "Annual federal appropriations",
-   "A self-imposed assessment on property or business owners within a defined boundary",
-   "Development impact fees",
+   "Annual federal appropriations to the city",
+   "A self-imposed assessment within a defined boundary",
+   "Development impact fees on new projects",
    "Rebates of state sales tax collections"
   ],
   "correct": 1,
@@ -1534,7 +1534,7 @@ export const BANK = [
   "scenario": null,
   "text": "A Phase I Environmental Site Assessment consists of:",
   "options": [
-   "Records review, site reconnaissance, and interviews to identify recognized environmental conditions",
+   "Records review, site reconnaissance, and interviews",
    "A negotiated covenant not to sue",
    "Soil boring and laboratory analysis of samples",
    "A remedial action plan with cost estimates"
@@ -1551,8 +1551,8 @@ export const BANK = [
   "options": [
    "Rehabilitation tax credits be granted to qualifying projects",
    "Property owners consent before a district may be listed",
-   "Local governments designate all properties over fifty years old",
-   "Federal agencies take into account the effects of their undertakings on properties listed in or eligible for the National Register"
+   "Local governments designate properties over fifty years old",
+   "Federal agencies consider effects on National Register properties"
   ],
   "correct": 3,
   "explanation": "Section 106 requires federal agencies to take into account effects on listed or eligible properties and consult with the SHPO.",
@@ -1567,7 +1567,7 @@ export const BANK = [
    "Prohibits the owner from altering or demolishing the property",
    "Requires the owner to provide public access",
    "Automatically creates a local historic district",
-   "Does not by itself restrict what an owner may do with the property using private funds"
+   "Does not by itself restrict what an owner may do"
   ],
   "correct": 3,
   "explanation": "National Register listing carries honorific and tax-credit consequences but does not by itself restrict what an owner does with private funds.",
@@ -1580,7 +1580,7 @@ export const BANK = [
   "text": "A local historic district ordinance typically operates through:",
   "options": [
    "Amortization of incompatible structures",
-   "Certificates of appropriateness issued after review against adopted design guidelines",
+   "Certificates of appropriateness reviewed against guidelines",
    "Review of building permits by the building official alone",
    "Variances granted by the board of adjustment"
   ],
@@ -1595,9 +1595,9 @@ export const BANK = [
   "text": "Participation in the National Flood Insurance Program requires a community to:",
   "options": [
    "Elevate existing structures within the base floodplain",
-   "Prohibit all development within the mapped floodplain",
-   "Purchase flood insurance on behalf of all property owners",
-   "Adopt and enforce floodplain management regulations meeting minimum federal standards"
+   "Prohibit development within the mapped floodplain",
+   "Purchase flood insurance for property owners",
+   "Adopt floodplain regulations meeting federal standards"
   ],
   "correct": 3,
   "explanation": "NFIP participation requires adoption and enforcement of floodplain management regulations meeting minimum federal standards.",
@@ -1610,9 +1610,9 @@ export const BANK = [
   "text": "To capture the development potential of the station area before land speculation raises assembly costs, the jurisdiction's most effective early action is to:",
   "options": [
    "Wait until ridership data are available after opening",
-   "Adopt a station area plan and rezone for the intended intensity in advance of construction",
+   "Adopt a station area plan and rezone in advance",
    "Require a traffic impact study for each individual application",
-   "Impose a moratorium on all permits in the station area"
+   "Impose a moratorium on permits in the station area"
   ],
   "correct": 1,
   "explanation": "Rezoning ahead of construction captures value and avoids the assembly costs that follow speculation.",
@@ -1624,8 +1624,8 @@ export const BANK = [
   "scenario": null,
   "text": "The presence of older rental buildings occupied by lower-income households indicates a need for policies addressing:",
   "options": [
-   "Displacement risk, including preservation of existing affordable units and tenant protections",
-   "Parking maximums only",
+   "Displacement risk and tenant protections",
+   "Parking maximums near transit",
    "Historic designation of the buildings",
    "Reduced setbacks along the arterial"
   ],
@@ -1642,7 +1642,7 @@ export const BANK = [
    "Utility relocation costs",
    "On-street parking supply",
    "Roadway level of service for through traffic",
-   "Pedestrian access and crossing safety between the station and surrounding blocks"
+   "Pedestrian access and crossing safety"
   ],
   "correct": 3,
   "explanation": "A high-volume arterial at the platform is primarily a pedestrian access and crossing safety problem; station access dies at an uncrossable street.",
@@ -1656,7 +1656,7 @@ export const BANK = [
   "options": [
    "A single block or the residents of one building",
    "A multi-county region",
-   "A service area of roughly a quarter to a half mile, generally the surrounding neighborhood",
+   "Roughly a quarter to a half mile",
    "The entire municipality"
   ],
   "correct": 2,
@@ -1670,7 +1670,7 @@ export const BANK = [
   "text": "Which is the best example of green stormwater infrastructure?",
   "options": [
    "Curb and gutter conveying runoff by pipe to a regional detention basin",
-   "Bioswales, rain gardens, and permeable pavement that infiltrate runoff near its source",
+   "Bioswales, rain gardens, and permeable pavement",
    "A combined sewer with an overflow outfall",
    "An earthen levee protecting a floodplain neighborhood"
   ],
@@ -1685,8 +1685,8 @@ export const BANK = [
   "text": "Food deserts are most commonly identified using:",
   "options": [
    "The number of restaurants per thousand residents",
-   "Distance to a full-service grocery store combined with household income and vehicle access",
-   "SNAP enrollment counts alone",
+   "Distance to a grocery store and vehicle access",
+   "SNAP enrollment counts by tract",
    "Acres of farmland within the county"
   ],
   "correct": 1,
@@ -1699,7 +1699,7 @@ export const BANK = [
   "scenario": null,
   "text": "The cohort survival method projects population by:",
   "options": [
-   "Advancing age cohorts forward in time while applying fertility, mortality, and migration rates",
+   "Advancing age cohorts with fertility, mortality, and migration rates",
    "Applying employment multipliers to basic sector jobs",
    "Extrapolating residential building permit activity",
    "Applying a single compound growth rate to the base population"
@@ -1729,10 +1729,10 @@ export const BANK = [
   "scenario": null,
   "text": "A location quotient greater than 1.0 for a local industry indicates that the industry:",
   "options": [
-   "Is more concentrated locally than nationally, suggesting production beyond local demand",
+   "Is more concentrated locally than nationally",
    "Is in long-term decline within the region",
    "Indicates a diversified local economy",
-   "Serves only local consumption"
+   "Serves mainly local consumption"
   ],
   "correct": 0,
   "explanation": "An LQ above 1.0 means local concentration exceeds national, implying production beyond local consumption.",
@@ -1759,10 +1759,10 @@ export const BANK = [
   "scenario": null,
   "text": "Shift-share analysis decomposes local employment change into:",
   "options": [
-   "Labor supply and labor demand",
-   "Fixed and variable costs",
-   "Basic and nonbasic employment",
-   "National growth, industry mix, and local competitive effects"
+   "Labor supply and labor demand effects",
+   "Fixed and variable cost components",
+   "Basic and nonbasic employment shares",
+   "National, industry mix, and competitive effects"
   ],
   "correct": 3,
   "explanation": "Shift-share separates national growth, industry mix, and local competitive effects.",
@@ -1777,7 +1777,7 @@ export const BANK = [
    "The dispersion of household income across a population",
    "The number of jobs accessible within a travel time threshold",
    "The ratio of housing cost to household income",
-   "The share of one group that would have to relocate to produce an even distribution across subareas"
+   "The share of a group that would need to relocate"
   ],
   "correct": 3,
   "explanation": "The index of dissimilarity gives the share of one group that would have to move for an even distribution.",
@@ -1789,10 +1789,10 @@ export const BANK = [
   "scenario": null,
   "text": "The Gini coefficient measures:",
   "options": [
-   "Inequality in a distribution, most often income, on a scale from 0 to 1",
+   "Inequality in a distribution, most often income",
    "Residential segregation between two groups",
-   "Regional accessibility",
-   "Gross residential density"
+   "Regional accessibility to jobs",
+   "Gross residential density by tract"
   ],
   "correct": 0,
   "explanation": "Gini runs from 0, perfect equality, to 1, perfect inequality.",
@@ -1806,8 +1806,8 @@ export const BANK = [
   "options": [
    "Is a complete enumeration of the population",
    "Is conducted once every twenty years",
-   "Is a continuous sample survey producing period estimates accompanied by margins of error",
-   "Excludes questions about housing"
+   "Is a continuous sample survey with period estimates",
+   "Excludes questions about housing cost"
   ],
   "correct": 2,
   "explanation": "The ACS is a rolling sample producing period estimates with margins of error, not a complete count.",
@@ -1820,9 +1820,9 @@ export const BANK = [
   "text": "A census tract level ACS estimate carries a margin of error nearly as large as the estimate itself. The planner should:",
   "options": [
    "Report the point estimate without qualification",
-   "Discard the variable entirely",
+   "Discard the variable from the analysis",
    "Substitute the statewide value for the tract",
-   "Aggregate geographies or multiple years to improve reliability, and report the margin of error alongside the estimate"
+   "Aggregate geographies and report the margin of error"
   ],
   "correct": 3,
   "explanation": "Aggregate up in geography or years and always publish the margin of error alongside the estimate.",
@@ -1851,8 +1851,8 @@ export const BANK = [
   "options": [
    "Reflects aggregate income in the community",
    "Is simpler to compute from published tables",
-   "Is always equal to the modal value",
-   "Is less sensitive to extreme values at the top of the distribution"
+   "Is close to the modal value",
+   "Is less sensitive to extreme values"
   ],
   "correct": 3,
   "explanation": "The median is resistant to high-income outliers that pull the mean upward.",
@@ -1880,7 +1880,7 @@ export const BANK = [
   "text": "To say that a finding is statistically significant means that:",
   "options": [
    "A causal relationship has been established",
-   "The observed result would be unlikely to arise by chance if the null hypothesis were true",
+   "The result would be unlikely to arise by chance",
    "The finding is large enough to matter for policy",
    "The sample is representative of the population"
   ],
@@ -1957,7 +1957,7 @@ export const BANK = [
    "Adjust historical dollars for inflation",
    "Account for the risk that the borrower will default",
    "Allocate shared costs among user groups",
-   "Express future streams of costs and benefits in present value terms"
+   "Express future costs and benefits in present value"
   ],
   "correct": 3,
   "explanation": "Discounting converts future costs and benefits into present value so they can be compared.",
@@ -1971,7 +1971,7 @@ export const BANK = [
   "options": [
    "Returns eight dollars of benefit for each dollar of cost",
    "Has a positive net present value",
-   "Returns 80 cents of benefit for each dollar of cost and is not economically justified on that measure",
+   "Returns 80 cents of benefit per dollar of cost",
    "Has an internal rate of return exceeding the discount rate"
   ],
   "correct": 2,
@@ -2032,7 +2032,7 @@ export const BANK = [
    "Accept, on the condition that the arrangement remain confidential",
    "Accept and simply recuse from that firm's pending files",
    "Accept, provided the work is performed outside normal working hours",
-   "Decline, or disclose the offer fully and obtain a determination on conflict of interest before taking any action"
+   "Decline, or disclose and obtain a conflict determination"
   ],
   "correct": 3,
   "explanation": "Decline, or disclose fully and get a determination before acting. Recusal after the fact does not cure the conflict.",
@@ -2047,7 +2047,7 @@ export const BANK = [
    "Comply, since the supervisor directs the content of staff work",
    "Release the omitted data to the press anonymously",
    "Resign from the position without taking any other step",
-   "Provide the decision makers with accurate and complete information relevant to the decision"
+   "Provide decision makers with accurate and complete information"
   ],
   "correct": 3,
   "explanation": "The Code requires that decision makers receive accurate and complete information relevant to the decision.",
@@ -2060,8 +2060,8 @@ export const BANK = [
   "text": "Information acquired in confidence in the course of professional work:",
   "options": [
    "May be disclosed once the project is complete",
-   "May never be disclosed under any circumstances",
-   "Shall not be disclosed unless required by law, or necessary to prevent a clear violation of law or substantial injury to the public",
+   "May not be disclosed under any circumstance",
+   "Shall not be disclosed unless required by law",
    "May be shared freely with professional colleagues for peer review"
   ],
   "correct": 2,
@@ -2076,7 +2076,7 @@ export const BANK = [
   "options": [
    "Accept, provided the value falls below the jurisdiction's gift threshold",
    "Accept and recuse from the application",
-   "Decline, because accepting may be perceived as an advantage related to the planner's public office",
+   "Decline, because acceptance may be perceived as an advantage",
    "Accept and disclose the gift after the hearing concludes"
   ],
   "correct": 2,
@@ -2089,9 +2089,9 @@ export const BANK = [
   "scenario": null,
   "text": "A planner's marketing materials describe credentials and project experience the planner does not actually have. This conduct violates the Code because members:",
   "options": [
-   "Must not make false or misleading claims about their qualifications or experience",
+   "Must not make false claims about qualifications",
    "Are prohibited from advertising professional services",
-   "May market services only through their APA chapter",
+   "May market services through their APA chapter",
    "May not compete with other members on the basis of fee"
   ],
   "correct": 0,
@@ -2119,7 +2119,7 @@ export const BANK = [
   "scenario": null,
   "text": "A member found to have violated the Rules of Conduct may be subject to:",
   "options": [
-   "Sanctions including reprimand, suspension, or expulsion from AICP",
+   "Reprimand, suspension, or expulsion from AICP",
    "Civil damages payable to the complainant",
    "Criminal penalties imposed by the AICP Commission",
    "Automatic revocation of a state professional license"
@@ -2134,7 +2134,7 @@ export const BANK = [
   "scenario": null,
   "text": "AICP members maintain certification through:",
   "options": [
-   "Certification Maintenance credits, including required credits in law and in ethics",
+   "Certification Maintenance credits, including law and ethics",
    "Continuous APA membership, with no additional requirement",
    "Reexamination on a fixed cycle",
    "Annual certification by the member's employer"
@@ -2150,9 +2150,9 @@ export const BANK = [
   "text": "The employment offer to Dana's spouse is best characterized as:",
   "options": [
    "Immaterial, because the spouse is not an AICP member",
-   "A question exclusively for the city attorney, with no implication under the Code",
+   "A question for the city attorney, with no implication under the Code",
    "An automatic violation requiring Dana's resignation from the city",
-   "A conflict of interest that Dana must disclose and from which Dana should withdraw from further participation in the matter"
+   "A conflict of interest Dana must disclose and withdraw from"
   ],
   "correct": 3,
   "explanation": "A spouse's employment offer from a party with a pending application is a conflict requiring disclosure and withdrawal from participation.",
@@ -2165,8 +2165,8 @@ export const BANK = [
   "text": "With respect to the consulting work performed three years earlier in another state, the most appropriate action is to:",
   "options": [
    "Direct the firm to withdraw its application",
-   "Decline all communication with the firm for the duration of the review",
-   "Disclose the prior professional relationship on the record so that decision makers may evaluate it",
+   "Decline communication with the firm during the review",
+   "Disclose the prior professional relationship on the record",
    "Say nothing, since the work was unrelated and in a different jurisdiction"
   ],
   "correct": 2,
@@ -2180,7 +2180,7 @@ export const BANK = [
   "text": "If Dana prepares and signs the staff recommendation without making either disclosure, and the relationships become public afterward, the conduct is best characterized as:",
   "options": [
    "Not a violation, provided the technical analysis in the recommendation was sound",
-   "A violation of the Rules of Conduct governing conflicts of interest and the appearance of impropriety",
+   "A violation of the Rules governing conflicts of interest",
    "A departure from an aspirational principle only, and therefore not actionable",
    "Insufficient information to respond"
   ],
@@ -2196,7 +2196,7 @@ export const BANK = [
   "options": [
    "Prepare two versions and allow the client to choose",
    "Prepare the analysis as directed, since the client defines the scope of work",
-   "Explain that the Code requires objective analysis and provide complete findings, including those adverse to the client's position",
+   "Explain that the Code requires objective analysis",
    "Withdraw from the assignment without explanation"
   ],
   "correct": 2,
@@ -2209,10 +2209,10 @@ export const BANK = [
   "scenario": null,
   "text": "The Code's aspirational principle concerning the long-range consequences of present actions directs planners to:",
   "options": [
-   "Consider the long-range consequences of present actions and the interrelatedness of decisions",
+   "Consider the long-range consequences of present actions",
    "Prioritize measurable near-term returns to the jurisdiction",
    "Defer to market outcomes where regulation would be contested",
-   "Weigh the interests of current residents above all others"
+   "Weigh the interests of current residents first"
   ],
   "correct": 0,
   "explanation": "Planners are directed to consider the long-range consequences of present actions and the interrelatedness of decisions.",
@@ -2222,14 +2222,14 @@ export const BANK = [
  {
   "n": 149,
   "scenario": null,
-  "text": "Which of the following appear in the Rules of Conduct rather than among the aspirational principles?",
+  "text": "Which of the following appear in the Rules of Conduct rather than among the aspirational principles?\n\nI. A planner shall not accept work beyond the planner’s professional competence\nII. A planner shall not disclose or use confidential information for personal gain\nIII. A planner shall not participate in a matter in which the planner has a financial interest without disclosure\nIV. A planner should aspire to expand choice and opportunity for all persons",
   "options": [
-   "I and II only",
    "I, II, and III only",
+   "I and II only",
    "III and IV only",
-   "All of the above"
+   "I, II, III, and IV"
   ],
-  "correct": 1,
+  "correct": 0,
   "explanation": "I, II, and III are stated as rules. IV uses aspirational language.",
   "domain": "Code of Ethics & Professional Conduct",
   "difficulty": "Medium"
@@ -2239,10 +2239,10 @@ export const BANK = [
   "scenario": null,
   "text": "A two-step RFQ–RFP procurement is used when the agency wants to:",
   "options": [
-   "Shortlist firms on qualifications before soliciting detailed technical and cost proposals from a limited field",
+   "Shortlist firms on qualifications, then seek proposals",
    "Justify a sole-source award to a preferred consultant",
    "Avoid procurement requirements for purchases below the small purchase threshold",
-   "Award solely on the basis of the lowest price"
+   "Award on the basis of the lowest price"
   ],
   "correct": 0,
   "explanation": "An RFQ shortlists on qualifications; the RFP that follows seeks detailed technical and cost proposals from the short list.",
@@ -2255,7 +2255,7 @@ export const BANK = [
   "text": "Qualifications-based selection means that the agency:",
   "options": [
    "Renews with the incumbent consultant unless performance was deficient",
-   "Ranks firms on qualifications and then negotiates a fee with the top-ranked firm",
+   "Ranks firms on qualifications, then negotiates a fee",
    "Rotates awards among prequalified firms",
    "Awards the contract to the lowest responsive bidder"
   ],
@@ -2270,8 +2270,8 @@ export const BANK = [
   "text": "A program budget differs from a line-item budget in that it:",
   "options": [
    "Organizes appropriations by object of expenditure such as salaries and supplies",
-   "Organizes appropriations by service or program, with associated outputs and outcomes",
-   "May be used only for capital expenditures",
+   "Organizes appropriations by service or program",
+   "May be used for capital expenditures",
    "Is prohibited for units of local government"
   ],
   "correct": 1,
@@ -2284,9 +2284,9 @@ export const BANK = [
   "scenario": null,
   "text": "Zero-based budgeting requires that:",
   "options": [
-   "Only capital funds be appropriated",
-   "All new programs be deferred until reserves are replenished",
-   "Every expenditure be justified anew each cycle rather than assumed from the prior year's base",
+   "Capital funds be appropriated first",
+   "New programs be deferred until reserves are replenished",
+   "Every expenditure be justified anew each cycle",
    "The prior year's appropriation be increased by a standard inflation factor"
   ],
   "correct": 2,
@@ -2301,8 +2301,8 @@ export const BANK = [
   "options": [
    "May not be used to finance capital facilities",
    "Are tax-exempt, while revenue bonds are taxable",
-   "Are backed by the full faith, credit, and taxing power of the issuer and commonly require voter approval",
-   "Are repaid solely from the revenues generated by the financed facility"
+   "Are backed by the full faith and credit of the issuer",
+   "Are repaid from the revenues of the financed facility"
   ],
   "correct": 2,
   "explanation": "GO bonds pledge full faith, credit, and taxing power, and generally require voter approval. Revenue bonds are repaid from project revenues.",
@@ -2317,7 +2317,7 @@ export const BANK = [
    "The rate of population growth in the jurisdiction",
    "The design quality of the financed project",
    "Prevailing interest rates set by the Federal Reserve",
-   "The issuer's creditworthiness and the likelihood that debt service will be paid"
+   "The issuer's creditworthiness and likelihood of repayment"
   ],
   "correct": 3,
   "explanation": "Ratings assess creditworthiness and the probability that debt service is paid.",
@@ -2330,7 +2330,7 @@ export const BANK = [
   "text": "Which of the following is an outcome measure for a planning department rather than an output or input measure?",
   "options": [
    "Number of public meetings held",
-   "Share of new housing units constructed within designated growth areas",
+   "Share of new housing within designated growth areas",
    "Staff hours devoted to development review",
    "Number of site plans reviewed during the fiscal year"
   ],
@@ -2346,8 +2346,8 @@ export const BANK = [
   "options": [
    "Add positions to the review staff",
    "Reduce the substantive standards applied in review",
-   "Map the current review process to identify delays, handoffs, and rework",
-   "Outsource all reviews to a private firm"
+   "Map the current review process to identify delays",
+   "Outsource reviews to a private firm"
   ],
   "correct": 2,
   "explanation": "Map the process first. Adding staff to an unexamined process buys less than removing handoffs and rework.",
@@ -2359,10 +2359,10 @@ export const BANK = [
   "scenario": null,
   "text": "Under a progressive discipline policy, the usual first step in addressing a performance problem is:",
   "options": [
-   "Termination for cause",
-   "Suspension without pay",
-   "Verbal counseling accompanied by documented expectations",
-   "Involuntary demotion"
+   "Immediate termination for cause",
+   "Suspension without pay for a week",
+   "Documented verbal counseling",
+   "Involuntary demotion in grade"
   ],
   "correct": 2,
   "explanation": "Progressive discipline begins with verbal counseling and documented expectations.",
@@ -2375,7 +2375,7 @@ export const BANK = [
   "text": "In a matrix organization, staff:",
   "options": [
    "Report to a single supervisor within a defined hierarchy",
-   "Report both to a functional supervisor and to a project or program manager",
+   "Report to both a functional and a project manager",
    "Operate without designated supervision",
    "Rotate among departments on a fixed annual schedule"
   ],
@@ -2389,7 +2389,7 @@ export const BANK = [
   "scenario": null,
   "text": "A planning department's workload substantially exceeds its capacity. The best management response is to:",
   "options": [
-   "Prioritize work against the governing body's adopted goals and communicate the resulting tradeoffs",
+   "Prioritize work against adopted goals and communicate tradeoffs",
    "Accept all assignments and allow deadlines to slip as necessary",
    "Decline to accept new development applications until the backlog clears",
    "Shorten public notice periods to accelerate the schedule"
@@ -2404,7 +2404,7 @@ export const BANK = [
   "scenario": null,
   "text": "Servant leadership is characterized primarily by:",
   "options": [
-   "Attention to the growth, capability, and effectiveness of the team and the community served",
+   "Attention to the growth and effectiveness of the team",
    "Maximizing the leader's positional authority",
    "Centralized decision authority and close supervision",
    "Retaining decisions rather than delegating them"
@@ -2421,7 +2421,7 @@ export const BANK = [
   "options": [
    "Call an immediate vote on the preferred alternative",
    "Circulate a draft intergovernmental agreement for signature",
-   "Establish shared ground rules, clarify roles, and build a common understanding of the problem",
+   "Establish shared ground rules and clarify roles",
    "Issue a joint press release announcing the effort"
   ],
   "correct": 2,
@@ -2437,7 +2437,7 @@ export const BANK = [
    "Exchange rewards and sanctions for specified performance",
    "Concentrate on enforcement of established rules",
    "Intervene primarily when performance deviates from standards",
-   "Articulate a compelling vision and motivate others to act beyond immediate self-interest"
+   "Articulate a vision and motivate beyond self-interest"
   ],
   "correct": 3,
   "explanation": "Transformational leaders motivate beyond immediate self-interest through a compelling vision; transactional leaders trade rewards for performance.",
@@ -2450,7 +2450,7 @@ export const BANK = [
   "text": "Mentoring an early-career planner is most effective when the mentor:",
   "options": [
    "Withholds critique in order to preserve the mentee's confidence",
-   "Provides progressively more challenging assignments paired with candid feedback and reflection",
+   "Progressively challenging assignments with candid feedback",
    "Assigns routine work until the mentee has several years of experience",
    "Limits the mentee's exposure to elected and appointed decision makers"
   ],
@@ -2466,7 +2466,7 @@ export const BANK = [
   "options": [
    "Resign in protest",
    "Publicly campaign against the decision",
-   "Implement the decision professionally, the professional recommendation having been documented on the record",
+   "Implement the decision professionally",
    "Delay implementation until the composition of the body changes"
   ],
   "correct": 2,
@@ -2481,7 +2481,7 @@ export const BANK = [
   "options": [
    "Reassign both to different projects",
    "Allow the disagreement to resolve itself over time",
-   "Meet with each to understand underlying interests, then convene a facilitated conversation focused on the work",
+   "Meet with each, then convene a facilitated conversation",
    "Decide the matter unilaterally and direct compliance"
   ],
   "correct": 2,
@@ -2496,7 +2496,7 @@ export const BANK = [
   "options": [
    "Scheduling the final public hearing as early as possible",
    "Launching a communications campaign describing the chosen solution",
-   "Engaging affected stakeholders early to frame the problem and explore the range of options",
+   "Engage affected stakeholders early to frame the problem",
    "Commissioning a consultant report to establish technical authority"
   ],
   "correct": 2,
@@ -2509,9 +2509,9 @@ export const BANK = [
   "scenario": null,
   "text": "Leading from the middle is best described as:",
   "options": [
-   "Exercising influence without formal authority, through relationships, credibility, and the framing of issues",
-   "Assuming leadership responsibilities only upon promotion to director",
-   "Delegating all substantive decisions to subordinates",
+   "Exercising influence without formal authority",
+   "Assuming leadership responsibilities upon promotion",
+   "Delegating substantive decisions to subordinates",
    "Avoiding direct interaction with elected officials"
   ],
   "correct": 0,
@@ -2526,8 +2526,8 @@ export const BANK = [
   "options": [
    "Convey the applicant's preferred outcome",
    "Recommend a specific vote in confidence",
-   "Explain the applicable standards and the contents of the record, avoiding ex parte discussion of the merits",
-   "Decline all communication with commissioners outside hearings"
+   "Explain the applicable standards and the record",
+   "Decline communication with commissioners outside hearings"
   ],
   "correct": 2,
   "explanation": "Explain the applicable standards and the record without discussing the merits ex parte.",
@@ -2542,7 +2542,7 @@ export const BANK = [
    "Growth in the department's operating budget",
    "The number of training sessions offered annually",
    "The number of plans adopted during the period",
-   "Internal promotion rates, staff retention, and demonstrated readiness for succession in key roles"
+   "Internal promotion rates, retention, and succession readiness"
   ],
   "correct": 3,
   "explanation": "Promotion, retention, and succession readiness measure whether development actually worked.",
