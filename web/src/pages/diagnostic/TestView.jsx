@@ -1,7 +1,6 @@
 import Hoverable from '../../components/Hoverable';
 import RichText from '../../components/RichText';
 import { LETTERS } from '../../data/domains';
-import { FORMAT_LABEL } from '../../data/diagDomains';
 import { GREEN, RUST, themeTokens } from '../../lib/theme';
 import { parseExhibit } from '../../lib/format';
 
@@ -49,7 +48,6 @@ export default function TestView(s) {
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '36px 24px 90px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
           <span style={{ fontSize: 12.5, fontWeight: 600, color: T.accFg, background: T.accBg, padding: '5px 10px', borderRadius: 6 }}>{it.domain}</span>
-          <span style={{ fontSize: 12.5, fontWeight: 600, color: T.mute, background: T.neutralBg, padding: '5px 10px', borderRadius: 6 }}>{FORMAT_LABEL[it.format] || it.format}</span>
           <Hoverable
             style={{ fontSize: 12.5, fontWeight: 600, padding: '5px 12px', borderRadius: 6, fontFamily: 'inherit', border: `1px solid ${flagged ? RUST : T.line}`, background: flagged ? RUST : 'transparent', color: flagged ? '#FFF6F3' : T.mute }}
             onClick={s.toggleFlag}
@@ -90,10 +88,6 @@ export default function TestView(s) {
         )}
 
         <RichText as="p" text={it.stem} style={{ fontSize: 'clamp(19px,2.1vw,23px)', fontWeight: 500, lineHeight: 1.5, letterSpacing: '-0.005em', margin: '22px 0 24px', textWrap: 'pretty', whiteSpace: 'pre-line', color: T.ink }} />
-
-        {it.calc && (
-          <p style={{ fontSize: 13.5, color: T.mute, margin: '-12px 0 20px' }}>A calculator is expected for this item. 1 acre = 43,560 sq ft.</p>
-        )}
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
           {s.dOrder.map((orig, pos) => {

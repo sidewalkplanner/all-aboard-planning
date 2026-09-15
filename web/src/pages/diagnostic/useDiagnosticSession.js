@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ITEMS } from '../../data/diagnostic-items';
-import { DIAG_DOMAINS, DIAG_KEY, DIAG_TITLE, EXAM_PACE, FORMAT_LABEL, bandFor } from '../../data/diagDomains';
+import { DIAG_DOMAINS, DIAG_KEY, DIAG_TITLE, EXAM_PACE, bandFor } from '../../data/diagDomains';
 import { shuffle } from '../../lib/shuffle';
 import { parseExhibit } from '../../lib/format';
 import { LETTERS } from '../../data/domains';
@@ -175,7 +175,6 @@ export function useDiagnosticSession() {
       numLabel: 'Item ' + (idx + 1),
       mark: yours === undefined ? 'Skipped' : right ? 'Correct' : 'Missed',
       domain: it.domain, subarea: it.subarea,
-      formatLabel: FORMAT_LABEL[it.format] || it.format,
       misinformed: conf === 'confident' && !right,
       scenario: it.scenario || '', hasScenario: !!it.scenario,
       exhibit, hasExhibit: !!exhibit,

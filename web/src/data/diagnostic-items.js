@@ -14,7 +14,7 @@ export const ITEMS = [
   "exhibit": null,
   "stem": "The U.S. Supreme Court's decision in Village of Euclid v. Ambler Realty Co. (1926) is foundational to American planning because it held that:",
   "options": [
-   "Comprehensive zoning is a valid exercise of the police power and is not facially unconstitutional",
+   "Comprehensive zoning is a valid exercise of the police power",
    "A zoning ordinance that reduces property value is a compensable taking",
    "Municipalities must adopt a comprehensive plan before adopting zoning",
    "Use districts may not be applied to industrial property"
@@ -113,7 +113,7 @@ export const ITEMS = [
    "The sample size is too small to produce a usable margin of error",
    "Online surveys cannot produce ordinal rankings suitable for analysis",
    "The survey measures opinion rather than behavior, which is never valid planning evidence",
-   "Respondents self-selected, so the sample likely over-represents residents already engaged with the city and under-represents renters"
+   "Respondents self-selected, so the sample is not representative"
   ],
   "correct": 3,
   "why": "A convenience sample recruited through city social media and an e-newsletter is self-selected. Coverage and self-selection bias, not sample size, are what make the 9 percent rental figure implausible in a city that is 44 percent renters.",
@@ -142,7 +142,7 @@ export const ITEMS = [
   "exhibit": null,
   "stem": "Staff used ACS 5-year estimates rather than 1-year estimates. The primary reason is that:",
   "options": [
-   "1-year estimates are not published for geographies below a population threshold that Riverton does not meet",
+   "1-year estimates are not published for small-population geographies",
    "5-year estimates are collected from a complete enumeration of households",
    "1-year estimates exclude group quarters population",
    "5-year estimates are released more frequently than 1-year estimates"
@@ -177,7 +177,7 @@ export const ITEMS = [
    "Not cost burdened",
    "Severely cost burdened",
    "Indeterminate without utility allowance data",
-   "Cost burdened, but not severely cost burdened"
+   "Cost burdened, but not severely"
   ],
   "correct": 3,
   "why": "$1,450 x 12 = $17,400; $17,400 / $46,000 = 37.8 percent of income. That exceeds the 30 percent cost-burden threshold but falls below the 50 percent severe-burden threshold.",
@@ -234,7 +234,7 @@ export const ITEMS = [
   "cog": "application",
   "scenarioId": "S-MIDTOWN",
   "scenarioOrder": 1,
-  "scenario": "The adopted Midtown Plan calls for mixed-use redevelopment along a transit corridor. A developer controls a 3.2-acre site in the MU district and has submitted a concept plan. The MU district standards are summarized in the table below. Assume 1 acre = 43,560 square feet.",
+  "scenario": "The adopted Midtown Plan calls for mixed-use redevelopment along a transit corridor. A developer controls a 3.2-acre site in the MU district and has submitted a concept plan. The MU district standards are summarized in the table below.",
   "exhibit": "| MU district standard | Requirement |\n|---|---|\n| Maximum floor area ratio | 2.5 |\n| Maximum building height | 8 stories |\n| Minimum off-street parking | 2 spaces per 1,000 sq ft of gross floor area |\n| Maximum lot coverage | 70% |",
   "stem": "What is the maximum gross floor area permitted on the site?",
   "options": [
@@ -266,7 +266,7 @@ export const ITEMS = [
   "cog": "application",
   "scenarioId": "S-MIDTOWN",
   "scenarioOrder": 2,
-  "scenario": "The adopted Midtown Plan calls for mixed-use redevelopment along a transit corridor. A developer controls a 3.2-acre site in the MU district and has submitted a concept plan. The MU district standards are summarized in the table below. Assume 1 acre = 43,560 square feet.",
+  "scenario": "The adopted Midtown Plan calls for mixed-use redevelopment along a transit corridor. A developer controls a 3.2-acre site in the MU district and has submitted a concept plan. The MU district standards are summarized in the table below.",
   "exhibit": null,
   "stem": "If the developer builds to the maximum permitted floor area, approximately how many off-street parking spaces does the ordinance require?",
   "options": [
@@ -298,11 +298,11 @@ export const ITEMS = [
   "cog": "analysis",
   "scenarioId": "S-MIDTOWN",
   "scenarioOrder": 3,
-  "scenario": "The adopted Midtown Plan calls for mixed-use redevelopment along a transit corridor. A developer controls a 3.2-acre site in the MU district and has submitted a concept plan. The MU district standards are summarized in the table below. Assume 1 acre = 43,560 square feet.",
+  "scenario": "The adopted Midtown Plan calls for mixed-use redevelopment along a transit corridor. A developer controls a 3.2-acre site in the MU district and has submitted a concept plan. The MU district standards are summarized in the table below.",
   "exhibit": null,
   "stem": "Structured parking at this ratio would consume most of the project's feasibility margin and conflicts with the plan's transit objectives. Which regulatory response most directly addresses the conflict while remaining consistent with the adopted plan?",
   "options": [
-   "Amend the MU district to establish parking maximums and allow shared parking and transit-proximity reductions",
+   "Amend the MU district to allow shared parking and transit-proximity reductions",
    "Grant a parking variance for this application",
    "Require the developer to build the full ratio and lease surplus spaces to the public",
    "Rezone the site to a district with no parking requirement"
@@ -330,7 +330,7 @@ export const ITEMS = [
   "cog": "application",
   "scenarioId": "S-MIDTOWN",
   "scenarioOrder": 4,
-  "scenario": "The adopted Midtown Plan calls for mixed-use redevelopment along a transit corridor. A developer controls a 3.2-acre site in the MU district and has submitted a concept plan. The MU district standards are summarized in the table below. Assume 1 acre = 43,560 square feet.",
+  "scenario": "The adopted Midtown Plan calls for mixed-use redevelopment along a transit corridor. A developer controls a 3.2-acre site in the MU district and has submitted a concept plan. The MU district standards are summarized in the table below.",
   "exhibit": null,
   "stem": "The city wants binding assurance that the developer will construct the public plaza and complete the affordable units in phase one, in exchange for vesting the approved density for 10 years. The appropriate instrument is:",
   "options": [
@@ -401,7 +401,7 @@ export const ITEMS = [
    "Repeat the open house format with better graphic displays and more advance notice",
    "Extend the written comment period by 30 days and publish the notice in the newspaper of record",
    "Convene a technical advisory committee of agency staff to represent neighborhood interests",
-   "Hold sessions at times and places residents already gather, with interpretation, childcare, and food, in partnership with trusted community organizations"
+   "Hold sessions where residents already gather, with interpretation and childcare"
   ],
   "correct": 3,
   "why": "Going to where people already are, removing the practical barriers of language, childcare, and timing, and working through organizations residents already trust addresses the actual reasons for non-participation.",
@@ -463,7 +463,7 @@ export const ITEMS = [
   "stem": "Six months later, the council asks whether the revised outreach worked. The most meaningful evaluation measure is:",
   "options": [
    "Total number of participants across all events compared with the previous effort",
-   "The demographic profile of participants compared with the demographic profile of the study area",
+   "The demographic profile of participants relative to the study area",
    "Number of website page views and social media impressions",
    "Whether the final plan was adopted unanimously"
   ],
@@ -526,7 +526,7 @@ export const ITEMS = [
   "exhibit": null,
   "stem": "A planner working for a nonprofit advocates publicly for a specific affordable housing proposal. The advocacy is consistent with professional obligations as long as the planner:",
   "options": [
-   "Identifies the interest being represented and does not misrepresent facts or suppress information the public needs to judge the proposal",
+   "Identifies the interest being represented and does not misrepresent facts",
    "Presents only the evidence favorable to the proposal, since advocacy requires a consistent message",
    "Refrains from advocacy altogether, because planners must remain neutral",
    "Obtains permission from the local APA chapter before speaking publicly"
@@ -559,7 +559,7 @@ export const ITEMS = [
   "stem": "A city conditions approval of a commercial building permit on the dedication of a public trail easement across the property. Under Nollan and Dolan, the city must demonstrate:",
   "options": [
    "That the exaction serves a legitimate public purpose and nothing more",
-   "An essential nexus between the condition and the impact of the development, and rough proportionality between the condition and that impact",
+   "An essential nexus and rough proportionality to the development's impact",
    "That the property owner consented to the condition in writing",
    "That the value of the easement does not exceed 10 percent of project cost"
   ],
@@ -591,7 +591,7 @@ export const ITEMS = [
   "stem": "A city adopts an ordinance requiring that 12 percent of units in projects over 50 units be affordable at 60 percent of area median income, and offers a 20 percent density increase to offset the cost. The density increase functions as:",
   "options": [
    "An inclusionary requirement",
-   "A cost offset intended to preserve project feasibility and strengthen the program's legal footing",
+   "A cost offset",
    "A form of impact fee",
    "A transfer of development rights"
   ],
@@ -688,7 +688,7 @@ export const ITEMS = [
   "options": [
    "A moratorium",
    "Inverse condemnation",
-   "Amortization over a period reasonably related to recovery of the owner's investment",
+   "Amortization",
    "A variance"
   ],
   "correct": 2,
@@ -815,7 +815,7 @@ export const ITEMS = [
   "stem": "A council rejects the staff recommendation and adopts a rezoning that the planner analyzed as inconsistent with the adopted plan. The planner's appropriate course is to:",
   "options": [
    "Publicly state that the council acted improperly and request reconsideration",
-   "Ensure the record accurately reflects the analysis and the decision, implement the decision, and recommend a plan amendment if the council's policy direction has genuinely changed",
+   "Ensure the record is accurate and implement the decision",
    "Refuse to process the implementing paperwork",
    "Resign, since continuing to serve implies agreement"
   ],
@@ -849,7 +849,7 @@ export const ITEMS = [
    "Created a federal zoning code applicable in all states",
    "Required every municipality to prepare a housing element",
    "Established the first national building code",
-   "Provided a model delegating the state's police power to local governments to zone, which most states adopted in some form"
+   "Delegated the state's police power to local governments to zone"
   ],
   "correct": 3,
   "why": "Zoning authority flows from the state police power. The SZEA supplied a model statute for delegating that authority to localities, and its structure, including the board of adjustment, still shapes most state zoning law.",
@@ -977,7 +977,7 @@ export const ITEMS = [
    "Grant the variance, since equal treatment among neighbors is required",
    "Grant the variance if the applicant agrees to conditions",
    "Refer the request to the governing body for a use variance",
-   "Deny the variance, because a variance requires a hardship arising from unique physical characteristics of the property, and reduced profitability is not such a hardship"
+   "Deny the variance, because reduced profitability is not a legal hardship"
   ],
   "correct": 3,
   "why": "Variance standards generally require unnecessary hardship or practical difficulty arising from the physical characteristics of the parcel, not self-created or economic circumstances.",
@@ -1104,7 +1104,7 @@ export const ITEMS = [
   "options": [
    "Adopt the position held by the larger of the two organized groups",
    "Remain neutral and present the two positions without analysis",
-   "Take deliberate steps to surface the interests of the unrepresented group and weigh long-term and community-wide consequences, not only the views expressed",
+   "Surface the interests of the unrepresented group and weigh community-wide consequences",
    "Defer entirely to the governing body, since the public interest is a political determination"
   ],
   "correct": 2,
@@ -1134,7 +1134,7 @@ export const ITEMS = [
   "exhibit": null,
   "stem": "A city takes title to a blighted parcel through eminent domain and conveys it to a private developer as part of an adopted redevelopment plan. Under Kelo v. City of New London, this is:",
   "options": [
-   "Permissible, because economic development pursuant to a carefully considered plan can satisfy the public use requirement",
+   "Permissible, because economic development can be a public use",
    "Impermissible, because transfer to a private party can never be a public use",
    "Permissible only if the property is left in public ownership",
    "Impermissible unless the owner is paid double the appraised value"
@@ -1361,7 +1361,7 @@ export const ITEMS = [
    "Outcome measures, because they describe the effect of the department's work",
    "Impact measures suitable for evaluating plan performance",
    "Benchmarks, because they can be compared to other cities",
-   "Output and efficiency measures, which describe volume and process speed rather than the results achieved"
+   "Output and efficiency measures, which describe volume and process speed"
   ],
   "correct": 3,
   "why": "Counts of work produced are outputs and processing time is an efficiency measure. Outcomes would describe conditions in the community, such as housing units delivered or compliance rates.",
@@ -1423,7 +1423,7 @@ export const ITEMS = [
   "stem": "Which statement best distinguishes the police power from eminent domain?",
   "options": [
    "The police power applies only to public property; eminent domain applies only to private property",
-   "The police power regulates the use of property without compensation; eminent domain acquires a property interest and requires just compensation",
+   "The police power regulates use; eminent domain acquires property and compensates",
    "The police power requires a comprehensive plan; eminent domain does not",
    "The police power is a federal authority; eminent domain is reserved to states"
   ],
@@ -1454,7 +1454,7 @@ export const ITEMS = [
   "exhibit": null,
   "stem": "A private owner objects to a proposed National Register listing, believing it will prevent alterations to the building. The planner should explain that National Register listing alone:",
   "options": [
-   "Imposes no restrictions on a private owner acting without federal funding, licensing, or permitting, though it triggers review when a federal undertaking is involved and may confer tax credit eligibility",
+   "Imposes no restrictions on a purely private owner",
    "Prohibits demolition and exterior alteration by the owner",
    "Transfers a preservation easement to the federal government",
    "Requires the owner to open the property to the public"
@@ -1488,7 +1488,7 @@ export const ITEMS = [
   "options": [
    "Is too narrow in scope to guide decisions",
    "Uses the word 'city' rather than naming a department",
-   "Provides no direction, standard, or accountability, so it cannot guide a future decision or be evaluated",
+   "Provides no measurable standard or accountability",
    "Addresses a subject better left to the private market"
   ],
   "correct": 2,
@@ -1615,7 +1615,7 @@ export const ITEMS = [
   "stem": "A planner must present a complex traffic analysis to a city council with no technical background and 10 minutes on the agenda. The most effective approach is to:",
   "options": [
    "Walk through the model's assumptions and calibration in sequence so the council can verify the work",
-   "Lead with the recommendation and its two or three decisive findings, using simple graphics, and offer technical detail on request",
+   "Lead with the recommendation and its decisive findings, with detail on request",
    "Distribute the full consultant report and summarize its table of contents",
    "Defer the presentation to the consultant, who understands the model best"
   ],
@@ -1777,7 +1777,7 @@ export const ITEMS = [
    "The change in property values on adjacent parcels",
    "The number of construction and permanent jobs created in the region",
    "The projected internal rate of return to the developer",
-   "The public service and facility costs generated by the development relative to the public revenues it produces"
+   "Public service costs relative to the public revenues generated"
   ],
   "correct": 3,
   "why": "Fiscal impact analysis compares the costs of serving new development with the revenues it generates for the jurisdiction, typically over a defined period.",
@@ -1870,7 +1870,7 @@ export const ITEMS = [
   "exhibit": null,
   "stem": "A small firm is offered a transportation modeling assignment that no one on staff is qualified to perform. Under the Code, the firm's AICP principal may:",
   "options": [
-   "Accept the work only if it is performed under the direction of, or in association with, someone competent to do it, and the client is informed",
+   "Accept the work only in association with someone competent, and inform the client",
    "Accept the work and learn the method during the engagement, since professional growth is encouraged",
    "Accept the work and subcontract it without informing the client, since the client contracted with the firm",
    "Accept the work at a reduced fee reflecting the firm's inexperience"
@@ -1904,7 +1904,7 @@ export const ITEMS = [
   "options": [
    "Decline to comment on anything and refer the reporter to the city attorney",
    "Share the planner's personal opinion about the merits, clearly labeled as personal",
-   "Provide factual information about the application, the process, and the schedule, and refer questions about the council's position to elected officials",
+   "Provide factual information and refer policy questions to elected officials",
    "Provide the staff recommendation before it is released to the commission, to get ahead of the story"
   ],
   "correct": 2,
@@ -2062,7 +2062,7 @@ export const ITEMS = [
   "exhibit": null,
   "stem": "All of the following are typical components of a form-based code EXCEPT:",
   "options": [
-   "A use table listing permitted, conditional, and prohibited uses as the primary regulatory device",
+   "A use table listing permitted and prohibited uses",
    "A regulating plan assigning standards to specific blocks and street frontages",
    "Building form standards addressing height, placement, and frontage type",
    "Public space and thoroughfare standards"
@@ -2159,7 +2159,7 @@ export const ITEMS = [
   "stem": "A consultant's qualifications package states that the firm 'prepared' a regional plan, when in fact the firm served as a subconsultant responsible for one chapter. This most directly implicates the Code's requirements regarding:",
   "options": [
    "Confidential information",
-   "Accurate representation of professional qualifications and experience when seeking work",
+   "Representation of professional qualifications",
    "Conflicts of interest with a public employer",
    "Participation in continuing professional education"
   ],
@@ -2385,7 +2385,7 @@ export const ITEMS = [
    "Produces a single deterministic figure rather than a range",
    "Requires no assumptions about future conditions",
    "Can only be applied at the state level or above",
-   "Applies separate rates of fertility, mortality, and migration to each age-sex group"
+   "Applies fertility, mortality, and migration rates by age group"
   ],
   "correct": 3,
   "why": "Cohort-component disaggregates the population by age and sex and ages each cohort forward using specific fertility, mortality, and migration assumptions, which is why it can describe changing age structure.",
@@ -2513,7 +2513,7 @@ export const ITEMS = [
    "Reassign the reports to a senior planner to protect the schedule",
    "Note the pattern in the annual performance review",
    "Send a department-wide reminder about deadlines",
-   "Meet with the planner to identify the specific cause of the delays, set clear interim milestones, and follow up on a defined schedule"
+   "Meet with the planner to identify the cause of the delays"
   ],
   "correct": 3,
   "why": "Effective supervision diagnoses the specific cause, sets concrete expectations, and provides timely follow-up rather than deferring feedback or working around the employee.",
@@ -2545,7 +2545,7 @@ export const ITEMS = [
    "Retake the certification examination at fixed intervals",
    "Hold a degree from an accredited planning program",
    "Serve on a local board or commission during each reporting period",
-   "Complete continuing professional education on a recurring reporting cycle, including credits in ethics and in law"
+   "Complete continuing professional education each reporting cycle"
   ],
   "correct": 3,
   "why": "Certification maintenance is based on continuing professional education within recurring reporting periods, with required credits in professional ethics and planning law.",
@@ -2640,7 +2640,7 @@ export const ITEMS = [
   "options": [
    "Splitting the difference between the two stated positions",
    "Referring the dispute to the governing body for a binding vote",
-   "Identifying the underlying interests behind each position, such as child safety and project feasibility, and searching for options that serve both",
+   "Identifying the interests behind each position, not just the positions",
    "Asking each party to submit a final offer for arbitration"
   ],
   "correct": 2,
@@ -2864,7 +2864,7 @@ export const ITEMS = [
   "options": [
    "Remove the finding, since the council sets policy and the report serves the council",
    "Retain the finding and publicly accuse the council member of interference",
-   "Retain the finding and present it accurately, while working with the council member to explain its significance and the available options",
+   "Retain the finding and present it accurately, explaining the available options",
    "Withdraw the staff report entirely until after the vote"
   ],
   "correct": 2,
@@ -2958,7 +2958,7 @@ export const ITEMS = [
   "exhibit": null,
   "stem": "A region facing deep uncertainty about future water supply and employment growth should most appropriately use:",
   "options": [
-   "Scenario planning that develops several internally consistent futures and tests strategies against each",
+   "Scenario planning across several plausible futures",
    "A single trend-based forecast with a confidence interval",
    "A cost-benefit analysis of the preferred alternative",
    "A build-out analysis of current zoning"
@@ -3024,7 +3024,7 @@ export const ITEMS = [
   "options": [
    "Diagnose health conditions among individual residents near the site",
    "Replace the environmental review required under federal law",
-   "Evaluate the potential effects of the proposed decision on population health outcomes and their distribution, and recommend modifications",
+   "Evaluate the decision's effects on population health and their distribution",
    "Determine the medical cost liability of the project sponsor"
   ],
   "correct": 2,
@@ -3055,7 +3055,7 @@ export const ITEMS = [
   "stem": "In a state with a statutory consistency requirement, the practical effect on local decision-making is that:",
   "options": [
    "The comprehensive plan must conform to the existing zoning map",
-   "Zoning and development approvals must conform to the adopted comprehensive plan, making the plan legally operative rather than advisory",
+   "Zoning must conform to the adopted comprehensive plan",
    "Local plans must be approved by the state legislature",
    "Comprehensive plans may not be amended more than once per year"
   ],
@@ -3120,7 +3120,7 @@ export const ITEMS = [
   "options": [
    "Add a design review board with discretion to approve or deny based on compatibility",
    "Reduce the maximum permitted density to prevent any change in character",
-   "Establish measurable standards for height, setback, massing, and frontage that reflect the documented existing pattern",
+   "Establish measurable standards for height, setback, and massing",
    "Require that all new buildings replicate bungalow architectural details"
   ],
   "correct": 2,

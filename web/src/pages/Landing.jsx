@@ -67,7 +67,6 @@ export default function Landing() {
             </div>
             <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
               <span style={{ fontSize: 12.5, fontWeight: 600, color: '#14508C', background: '#E6EEF9', padding: '5px 10px', borderRadius: 6 }}>{QOTD.domain}</span>
-              <span style={{ fontSize: 12.5, fontWeight: 600, color: '#8A6420', background: '#FCF0DB', padding: '5px 10px', borderRadius: 6 }}>{QOTD.difficulty}</span>
             </div>
             <p style={{ fontSize: 17.5, fontWeight: 500, lineHeight: 1.5, letterSpacing: '-0.005em', margin: '14px 0 16px' }}>{QOTD.text}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>

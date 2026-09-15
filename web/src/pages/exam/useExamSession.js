@@ -174,7 +174,7 @@ export function useExamSession() {
     return {
       idx, right,
       mark: right ? 'Correct' : 'Missed',
-      domain: qq.domain, difficulty: qq.difficulty, text: qq.text, scenario: qq.scenario || '',
+      domain: qq.domain, text: qq.text, scenario: qq.scenario || '',
       numLabel: 'Question ' + (idx + 1),
       correctText: qq.options[qq.correct],
       showYours: yours !== undefined && !right,

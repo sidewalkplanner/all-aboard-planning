@@ -45,7 +45,6 @@ export default function QuestionView(s) {
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '40px 24px 90px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
           <span style={{ fontSize: 12.5, fontWeight: 600, color: T.accFg, background: T.accBg, padding: '5px 10px', borderRadius: 6 }}>{s.q.domain}</span>
-          <span style={{ fontSize: 12.5, fontWeight: 600, color: T.warnFg, background: T.warnBg, padding: '5px 10px', borderRadius: 6 }}>{s.q.difficulty}</span>
           <Hoverable
             style={{
               marginLeft: 'auto', fontSize: 12.5, fontWeight: 600, padding: '5px 12px', borderRadius: 6, fontFamily: 'inherit',

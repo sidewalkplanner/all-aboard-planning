@@ -15,7 +15,6 @@ export default function AnswerReviewView(s) {
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                 <span style={chipStyle(r.right ? T.accBg : T.errBg, r.right ? T.accFg : T.errFg)}>{r.mark}</span>
                 <span style={chipStyle(T.accBg, T.accFg)}>{r.domain}</span>
-                <span style={chipStyle(T.warnBg, T.warnFg)}>{r.difficulty}</span>
                 <span style={{ fontSize: 13, color: T.mute, marginLeft: 'auto' }}>{r.numLabel}</span>
               </div>
               {r.scenario && (

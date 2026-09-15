@@ -158,7 +158,7 @@ export default function ReportView(s) {
               <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
                 <span style={chipStyle(r.mark === 'Skipped' ? T.neutralBg : r.mark === 'Correct' ? T.accBg : T.errBg, r.mark === 'Skipped' ? T.mute : r.mark === 'Correct' ? T.accFg : T.errFg)}>{r.mark}</span>
                 <span style={{ fontSize: 13, fontWeight: 600, color: T.mute }}>{r.numLabel}</span>
-                <span style={{ fontSize: 13, color: T.mute }}>{r.domain} &middot; {r.subarea} &middot; {r.formatLabel}</span>
+                <span style={{ fontSize: 13, color: T.mute }}>{r.domain} &middot; {r.subarea}</span>
               </div>
               {r.misinformed && (
                 <div style={{ fontSize: 12.5, fontWeight: 700, color: T.errFg, background: T.errBg, padding: '6px 10px', borderRadius: 6, marginTop: 12, display: 'inline-block' }}>Confident and wrong &mdash; check this first</div>

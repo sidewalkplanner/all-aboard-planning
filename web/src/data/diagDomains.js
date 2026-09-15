@@ -25,7 +25,3 @@ export const DIAG_BANDS = [
 
 export const bandFor = (pct) => DIAG_BANDS.find((b) => pct >= b.min) || DIAG_BANDS[DIAG_BANDS.length - 1];
 
-export const FORMAT_LABEL = {
-  single: 'Single best answer', roman: 'Multi-select', negative: 'Negative stem',
-  ordering: 'Sequencing', calculation: 'Calculation', exhibit: 'Exhibit', ethics_case: 'Ethics case'
-};
