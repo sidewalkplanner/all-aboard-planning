@@ -91,17 +91,25 @@ export default function TestView(s) {
             let lbg = on ? GREEN : '#ECEDF6';
             let lfg = on ? '#FFFFFF' : '#646A85';
             let weight = on ? 600 : 400;
-            if (s.dShown && orig === it.correct) { border = `1.5px solid ${GREEN}`; bg = '#E6EEF9'; lbg = GREEN; lfg = '#FFFFFF'; weight = 600; }
-            else if (s.dShown && on) { border = `1.5px solid ${RUST}`; bg = '#FCEAE6'; lbg = RUST; lfg = '#FFFFFF'; weight = 600; }
+            let glyph = null, glyphColor = null;
+            if (s.dShown && orig === it.correct) { border = `1.5px solid ${GREEN}`; bg = '#E6EEF9'; lbg = GREEN; lfg = '#FFFFFF'; weight = 600; glyph = '✓'; glyphColor = GREEN; }
+            else if (s.dShown && on) { border = `1.5px solid ${RUST}`; bg = '#FCEAE6'; lbg = RUST; lfg = '#FFFFFF'; weight = 600; glyph = '✕'; glyphColor = RUST; }
+            const stateLabel = glyph === '✓' ? ', correct answer' : glyph === '✕' ? ', your answer, incorrect' : on ? ', selected' : '';
             return (
               <button
                 key={orig}
                 onClick={() => s.pickOption(orig)}
                 disabled={s.dShown}
+                aria-label={`Option ${LETTERS[pos]}: ${it.options[orig]}${stateLabel}`}
                 style={{ display: 'flex', gap: 14, alignItems: 'flex-start', textAlign: 'left', width: '100%', padding: '15px 17px', borderRadius: 12, fontSize: 16, fontFamily: 'inherit', transition: 'border-color .12s', border, background: bg, fontWeight: weight, color: '#1A1C2B' }}
               >
                 <span style={{ flex: '0 0 auto', width: 26, height: 26, borderRadius: 7, background: lbg, color: lfg, fontSize: 13.5, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{LETTERS[pos]}</span>
                 <RichText as="span" text={it.options[orig]} style={{ flex: 1, lineHeight: 1.5 }} />
+                {glyph && (
+                  <span aria-hidden="true" style={{ flex: '0 0 auto', width: 26, height: 26, borderRadius: '50%', color: glyphColor, fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    {glyph}
+                  </span>
+                )}
               </button>
             );
           })}

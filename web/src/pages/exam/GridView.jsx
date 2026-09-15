@@ -1,4 +1,5 @@
 import Hoverable from '../../components/Hoverable';
+import FlagIcon from '../../components/FlagIcon';
 import { GREEN, RUST, themeTokens } from '../../lib/theme';
 
 export default function GridView(s) {
@@ -11,9 +12,9 @@ export default function GridView(s) {
           {s.answeredCount} of {s.total} answered &middot; {s.flagCount} flagged. Unanswered questions are scored as incorrect.
         </p>
         <div style={{ display: 'flex', gap: 18, fontSize: 13.5, color: '#646A85', marginBottom: 18, flexWrap: 'wrap' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 7 }}><span style={{ width: 13, height: 13, borderRadius: 4, background: GREEN, display: 'block' }} />Answered</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 7 }}><span style={{ width: 13, height: 13, borderRadius: 4, background: GREEN, display: 'block' }} />Answered ({'✓'})</span>
           <span style={{ display: 'flex', alignItems: 'center', gap: 7 }}><span style={{ width: 13, height: 13, borderRadius: 4, background: '#FFFFFF', border: '1px solid #D2D6E6', display: 'block' }} />Unanswered</span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 7 }}><span style={{ width: 13, height: 13, borderRadius: 4, background: RUST, display: 'block' }} />Flagged</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 7 }}><span style={{ width: 13, height: 13, borderRadius: 4, background: RUST, display: 'block' }} />Flagged (<FlagIcon size={9} color={RUST} />)</span>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(52px,1fr))', gap: 9 }}>
           {s.QS.map((_, idx) => {
@@ -24,9 +25,12 @@ export default function GridView(s) {
               <button
                 key={idx}
                 onClick={() => s.goTo(idx)}
-                style={{ aspectRatio: '1', borderRadius: 9, border: `1px solid ${f ? RUST : a ? GREEN : T.line}`, background: bg, color: fg, fontSize: 14.5, fontWeight: 600, fontFamily: 'inherit' }}
+                aria-label={`Question ${idx + 1}${f ? ', flagged' : ''}${a ? ', answered' : ', not answered'}${idx === s.i ? ', current' : ''}`}
+                style={{ aspectRatio: '1', borderRadius: 9, border: `1px solid ${f ? RUST : a ? GREEN : T.line}`, background: bg, color: fg, fontSize: 14.5, fontWeight: 600, fontFamily: 'inherit', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2 }}
               >
-                {idx + 1}
+                <span>{idx + 1}</span>
+                {f && <FlagIcon size={9} />}
+                {!f && a && <span aria-hidden="true" style={{ fontSize: 10, lineHeight: 1 }}>{'✓'}</span>}
               </button>
             );
           })}

@@ -22,10 +22,17 @@ export default function OptionButton({ letter, text, variant = 'default', onClic
   const fontSize = size === 'sm' ? 14.5 : 16;
   const letterSize = size === 'sm' ? 22 : 26;
 
+  // Correctness is never color-only: a checkmark/x glyph backs up the
+  // green/red styling for colorblind users, and the aria-label spells out
+  // the state for screen readers.
+  const stateGlyph = variant === 'correct' ? '✓' : variant === 'wrong' ? '✕' : null;
+  const stateLabel = variant === 'correct' ? ', correct answer' : variant === 'wrong' ? ', your answer, incorrect' : variant === 'picked' ? ', selected' : '';
+
   return (
     <button
       onClick={onClick}
       disabled={disabled}
+      aria-label={`Option ${letter}: ${typeof text === 'string' ? text : ''}${stateLabel}`}
       style={{
         display: 'flex', gap: size === 'sm' ? 12 : 14, alignItems: 'flex-start', textAlign: 'left', width: '100%',
         padding: pad, borderRadius: 12, fontSize, fontFamily: 'inherit', transition: 'border-color .12s, background .12s',
@@ -39,6 +46,15 @@ export default function OptionButton({ letter, text, variant = 'default', onClic
         {letter}
       </span>
       <RichText as="span" text={text} style={{ flex: 1, lineHeight: 1.5 }} />
+      {stateGlyph && (
+        <span aria-hidden="true" style={{
+          flex: '0 0 auto', width: letterSize, height: letterSize, borderRadius: '50%',
+          color: variant === 'correct' ? GREEN : RUST, fontSize: size === 'sm' ? 14 : 16, fontWeight: 700,
+          display: 'flex', alignItems: 'center', justifyContent: 'center'
+        }}>
+          {stateGlyph}
+        </span>
+      )}
     </button>
   );
 }

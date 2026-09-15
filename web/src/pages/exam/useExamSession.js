@@ -10,6 +10,33 @@ import { fmtHoursMinutes } from '../../lib/format';
 
 const DRILLPOOL = EXAM1_BANK.concat(EXAM2_BANK);
 
+const ATTEMPTS_KEY = 'aap-exam-attempts';
+
+const loadAttempts = () => {
+  try {
+    const raw = window.localStorage.getItem(ATTEMPTS_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    return {};
+  }
+};
+
+const saveAttempt = (sessionKey, patch) => {
+  try {
+    const all = loadAttempts();
+    all[sessionKey] = { ...patch, savedAt: Date.now() };
+    window.localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(all));
+  } catch (e) { /* ignore */ }
+};
+
+const clearAttempt = (sessionKey) => {
+  try {
+    const all = loadAttempts();
+    delete all[sessionKey];
+    window.localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(all));
+  } catch (e) { /* ignore */ }
+};
+
 export function useExamSession() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
@@ -32,10 +59,13 @@ export function useExamSession() {
   const [i, setI] = useState(0);
   const [answers, setAnswers] = useState({});
   const [flags, setFlags] = useState({});
+  const [checked, setChecked] = useState({});
   const [seconds, setSeconds] = useState(active.mins * 60);
 
-  // Guard: paid content requires unlock. Reset session state whenever the
-  // assessment/mode/drill identity actually changes (not on every render).
+  // Guard: paid content requires unlock. Reset (or restore a saved attempt
+  // for) session state whenever the assessment/mode/drill identity actually
+  // changes (not on every render), so switching between exams — or a
+  // reload — never silently drops progress the way it used to.
   const lastKey = useRef(null);
   useEffect(() => {
     if ((active.tier === 'paid' && !active.soon && !unlocked) || (drill && !unlocked)) {
@@ -44,14 +74,24 @@ export function useExamSession() {
     }
     if (lastKey.current !== sessionKey) {
       lastKey.current = sessionKey;
+      const saved = loadAttempts()[sessionKey];
       setView('question');
-      setI(0);
-      setAnswers({});
-      setFlags({});
-      setSeconds(active.mins * 60);
+      setI(saved ? saved.i || 0 : 0);
+      setAnswers(saved ? saved.answers || {} : {});
+      setFlags(saved ? saved.flags || {} : {});
+      setChecked(saved ? saved.checked || {} : {});
+      setSeconds(saved && saved.seconds !== undefined ? saved.seconds : active.mins * 60);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionKey]);
+
+  // Autosave the in-progress attempt for this exact assessment/mode/drill,
+  // so a reload (or switching to a different exam and back) resumes rather
+  // than losing progress. Cleared once the attempt is submitted.
+  useEffect(() => {
+    if (lastKey.current !== sessionKey) return;
+    saveAttempt(sessionKey, { i, answers, flags, checked, seconds });
+  }, [sessionKey, i, answers, flags, checked, seconds]);
 
   // Countdown only runs while viewing a question, in timed mode — mirrors
   // the prototype pausing the clock on the review grid.
@@ -68,7 +108,8 @@ export function useExamSession() {
   const picked = answers[i];
   const answeredThis = picked !== undefined;
   const practice = mode === 'practice';
-  const revealed = practice && answeredThis;
+  const revealed = practice && answeredThis && !!checked[i];
+  const canCheck = practice && answeredThis && !checked[i];
   const activeTitle = drill ? drill + ' drill' : active.title;
   const totalSeconds = active.mins * 60;
 
@@ -76,12 +117,13 @@ export function useExamSession() {
     if (revealed) return;
     setAnswers((a) => ({ ...a, [i]: idx }));
   };
+  const checkAnswer = () => setChecked((c) => ({ ...c, [i]: true }));
   const toggleFlag = () => setFlags((f) => ({ ...f, [i]: !f[i] }));
   const prev = () => setI((n) => Math.max(0, n - 1));
   const next = () => { if (i >= total - 1) setView('grid'); else setI((n) => n + 1); };
   const goGrid = () => setView('grid');
   const backToExam = () => setView('question');
-  const submit = () => setView('results');
+  const submit = () => { clearAttempt(sessionKey); setView('results'); };
   const goAnswerReview = () => setView('review');
   const goTo = (idx) => { setI(idx); setView('question'); };
 
@@ -130,10 +172,10 @@ export function useExamSession() {
   }).sort((a, b) => (a.mark === 'Missed' ? -1 : 1) - (b.mark === 'Missed' ? -1 : 1)), [QS, answers]);
 
   return {
-    aid, mode, drill, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed,
+    aid, mode, drill, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
     seconds, totalSeconds, dark, toggleDark, view,
-    answers, flags, answeredCount, flagCount,
-    pick, toggleFlag, prev, next, goGrid, backToExam, submit, goAnswerReview, goTo,
+    answers, flags, checked, answeredCount, flagCount,
+    pick, checkAnswer, toggleFlag, prev, next, goGrid, backToExam, submit, goAnswerReview, goTo,
     domainRows, correctCount, pct, weakestDomain, timeUsed, timeUsedNote, reviewItems,
     navigate
   };

@@ -1,4 +1,5 @@
 import Hoverable from '../../components/Hoverable';
+import FlagIcon from '../../components/FlagIcon';
 import { GREEN, RUST } from '../../lib/theme';
 import { ITEMS } from '../../data/diagnostic-items';
 
@@ -16,9 +17,12 @@ export default function DiagGridView(s) {
             <button
               key={idx}
               onClick={() => s.dGoTo(idx)}
-              style={{ aspectRatio: '1', borderRadius: 9, border: `1px solid ${f ? RUST : a ? GREEN : '#D2D6E6'}`, background: f ? RUST : a ? GREEN : '#FFFFFF', color: f || a ? '#FFFFFF' : '#646A85', fontSize: 13, fontWeight: 600, fontFamily: 'inherit' }}
+              aria-label={`Item ${idx + 1}${f ? ', flagged' : ''}${a ? ', answered' : ', not answered'}`}
+              style={{ aspectRatio: '1', borderRadius: 9, border: `1px solid ${f ? RUST : a ? GREEN : '#D2D6E6'}`, background: f ? RUST : a ? GREEN : '#FFFFFF', color: f || a ? '#FFFFFF' : '#646A85', fontSize: 13, fontWeight: 600, fontFamily: 'inherit', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2 }}
             >
-              {idx + 1}
+              <span>{idx + 1}</span>
+              {f && <FlagIcon size={8} />}
+              {!f && a && <span aria-hidden="true" style={{ fontSize: 9, lineHeight: 1 }}>{'✓'}</span>}
             </button>
           );
         })}
