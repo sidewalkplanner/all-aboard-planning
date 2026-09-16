@@ -526,7 +526,7 @@ export const BANK = [
  },
  {
   "n": 36,
-  "scenario": null,
+  "scenario": "Fairview (population 62,000) is updating its comprehensive plan. The City Council has directed that the update assume no further annexation, so the municipal boundary is fixed for the twenty-year horizon. Staff project demand for roughly 4,500 additional housing units over that period. The city’s main north-south arterial is an aging commercial strip of shallow lots and large surface parking lots, and the Ridge River corridor along the east side has flooded three times in the past fifteen years, with repeat claims on the same properties.",
   "text": "Given the Council's directive, the plan will most likely need to accommodate projected growth principally through:",
   "options": [
    "Extraterritorial jurisdiction agreements with the county",
@@ -541,7 +541,7 @@ export const BANK = [
  },
  {
   "n": 37,
-  "scenario": null,
+  "scenario": "Fairview (population 62,000) is updating its comprehensive plan. The City Council has directed that the update assume no further annexation, so the municipal boundary is fixed for the twenty-year horizon. Staff project demand for roughly 4,500 additional housing units over that period. The city’s main north-south arterial is an aging commercial strip of shallow lots and large surface parking lots, and the Ridge River corridor along the east side has flooded three times in the past fifteen years, with repeat claims on the same properties.",
   "text": "To determine whether the city's land supply can physically accommodate the projected growth, staff should first prepare:",
   "options": [
    "A buildable lands inventory",
@@ -556,7 +556,7 @@ export const BANK = [
  },
  {
   "n": 38,
-  "scenario": null,
+  "scenario": "Fairview (population 62,000) is updating its comprehensive plan. The City Council has directed that the update assume no further annexation, so the municipal boundary is fixed for the twenty-year horizon. Staff project demand for roughly 4,500 additional housing units over that period. The city’s main north-south arterial is an aging commercial strip of shallow lots and large surface parking lots, and the Ridge River corridor along the east side has flooded three times in the past fifteen years, with repeat claims on the same properties.",
   "text": "For the arterial corridor, the tool most directly suited to shaping building placement, height, and street frontage over time is:",
   "options": [
    "A performance bond requirement",
@@ -571,7 +571,7 @@ export const BANK = [
  },
  {
   "n": 39,
-  "scenario": null,
+  "scenario": "Fairview (population 62,000) is updating its comprehensive plan. The City Council has directed that the update assume no further annexation, so the municipal boundary is fixed for the twenty-year horizon. Staff project demand for roughly 4,500 additional housing units over that period. The city’s main north-south arterial is an aging commercial strip of shallow lots and large surface parking lots, and the Ridge River corridor along the east side has flooded three times in the past fifteen years, with repeat claims on the same properties.",
   "text": "Which plan policy would most effectively reduce long-term repetitive flood losses along the Ridge River?",
   "options": [
    "Requiring city residents to purchase flood insurance",
@@ -1306,7 +1306,7 @@ export const BANK = [
  },
  {
   "n": 88,
-  "scenario": null,
+  "scenario": "A city annexes 300 acres along a county highway. Within the annexed area is a salvage yard that has operated lawfully under county regulations for twenty years; the zoning district the city applies to the site does not permit salvage yards. The city’s adopted plan also calls for a multi-use path along the highway frontage, to be assembled from individual parcels as they redevelop.",
   "text": "The salvage yard's status following annexation is best described as:",
   "options": [
    "A conditional use requiring a permit within 30 days",
@@ -1321,7 +1321,7 @@ export const BANK = [
  },
  {
   "n": 89,
-  "scenario": null,
+  "scenario": "A city annexes 300 acres along a county highway. Within the annexed area is a salvage yard that has operated lawfully under county regulations for twenty years; the zoning district the city applies to the site does not permit salvage yards. The city’s adopted plan also calls for a multi-use path along the highway frontage, to be assembled from individual parcels as they redevelop.",
   "text": "If the city wishes to eliminate the salvage yard over time without paying compensation, the most defensible approach is:",
   "options": [
    "An amortization schedule over a reasonable period",
@@ -1336,7 +1336,7 @@ export const BANK = [
  },
  {
   "n": 90,
-  "scenario": null,
+  "scenario": "A city annexes 300 acres along a county highway. Within the annexed area is a salvage yard that has operated lawfully under county regulations for twenty years; the zoning district the city applies to the site does not permit salvage yards. The city’s adopted plan also calls for a multi-use path along the highway frontage, to be assembled from individual parcels as they redevelop.",
   "text": "To obtain the multi-use path right-of-way as individual parcels redevelop, the city's exaction will be most defensible if it:",
   "options": [
    "Is applied uniformly at a fixed percentage of land area regardless of project type",
@@ -1606,7 +1606,7 @@ export const BANK = [
  },
  {
   "n": 108,
-  "scenario": null,
+  "scenario": "A regional rail line is under construction, with a new station scheduled to open in three years. The half-mile area around the station is zoned for low-intensity commercial use and contains several older rental buildings occupied largely by lower-income households. A six-lane arterial runs directly past the station platform, separating it from the neighborhood to the north.",
   "text": "To capture the development potential of the station area before land speculation raises assembly costs, the jurisdiction's most effective early action is to:",
   "options": [
    "Wait until ridership data are available after opening",
@@ -1621,7 +1621,7 @@ export const BANK = [
  },
  {
   "n": 109,
-  "scenario": null,
+  "scenario": "A regional rail line is under construction, with a new station scheduled to open in three years. The half-mile area around the station is zoned for low-intensity commercial use and contains several older rental buildings occupied largely by lower-income households. A six-lane arterial runs directly past the station platform, separating it from the neighborhood to the north.",
   "text": "The presence of older rental buildings occupied by lower-income households indicates a need for policies addressing:",
   "options": [
    "Displacement risk and tenant protections",
@@ -1636,7 +1636,7 @@ export const BANK = [
  },
  {
   "n": 110,
-  "scenario": null,
+  "scenario": "A regional rail line is under construction, with a new station scheduled to open in three years. The half-mile area around the station is zoned for low-intensity commercial use and contains several older rental buildings occupied largely by lower-income households. A six-lane arterial runs directly past the station platform, separating it from the neighborhood to the north.",
   "text": "The arterial crossing at the platform presents primarily a question of:",
   "options": [
    "Utility relocation costs",
@@ -1937,7 +1937,7 @@ export const BANK = [
  {
   "n": 130,
   "scenario": null,
-  "text": "If each parking space and its share of drive aisles requires an average of 350 square feet, the parking area required in the preceding question would be approximately:",
+  "text": "A retail center requires 240 parking spaces. If each space and its share of drive aisles averages 350 square feet, the parking area required is approximately:",
   "options": [
    "More than 4 acres",
    "Between 2 and 3 acres",
