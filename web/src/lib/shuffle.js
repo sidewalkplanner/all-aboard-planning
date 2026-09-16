@@ -30,19 +30,28 @@ export const alloc = (size) => {
 };
 
 export const QUIZ_T = alloc(25);
+export const EXAM_T = alloc(170);
 
-// Draws a question set for a given assessment id. Each full-length exam has its
-// own bank; the free warm-up quizzes take a domain-weighted slice of bank 1.
+// Takes `t[domain]` items from each domain, so a set matches the content
+// outline's weights even when the bank runs deeper in some domains than others.
+// `skip` steps past that many full sets, which is how Quiz B draws questions
+// Quiz A does not use.
+const weighted = (bank, t, seed, skip = 0) => {
+  const out = [];
+  DOMAINS.forEach((d, di) => {
+    const pool = shuffle(bank.filter((q) => q.domain === d.name), seed + di * 131);
+    out.push(...pool.slice(skip * t[d.name], (skip + 1) * t[d.name]));
+  });
+  return shuffle(out, seed + 7);
+};
+
+// Draws a question set for a given assessment id. Exams 1 and 2 are each
+// exactly one bank; Exam 3's bank carries extra depth in the legal and
+// areas-of-practice domains, so it is weighted down to 170.
 export const sample = (bank, id, bank2, bank3) => {
   const a = ASSESSMENTS.find((x) => x.id === id) || ASSESSMENTS[0];
   if (a.id === 'e1') return bank.slice();
   if (a.id === 'e2') return bank2 && bank2.length ? shuffle(bank2.slice(), 6301) : bank.slice();
-  if (a.id === 'e3') return bank3 && bank3.length ? shuffle(bank3.slice(), 5119) : bank.slice();
-  const out = [];
-  DOMAINS.forEach((d, di) => {
-    const pool = shuffle(bank.filter((q) => q.domain === d.name), 9973 + di * 131);
-    const k = a.id === 'q2' ? 1 : 0;
-    out.push(...pool.slice(k * QUIZ_T[d.name], (k + 1) * QUIZ_T[d.name]));
-  });
-  return shuffle(out.filter(Boolean), 4211 + id.charCodeAt(1) * 7);
+  if (a.id === 'e3') return bank3 && bank3.length ? weighted(bank3, EXAM_T, 5119) : bank.slice();
+  return weighted(bank, QUIZ_T, 9973, a.id === 'q2' ? 1 : 0);
 };

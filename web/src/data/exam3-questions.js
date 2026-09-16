@@ -1084,7 +1084,7 @@ export const BANK = [
   ],
   "correct": 2,
   "explanation": "Leadership that promotes the value of planning involves building coalitions and clearly communicating planning's public benefits to diverse audiences.",
-  "domain": "Communication & Interaction",
+  "domain": "Leadership",
   "difficulty": "Medium"
  },
  {
@@ -1100,7 +1100,7 @@ export const BANK = [
   ],
   "correct": 3,
   "explanation": "Organizational silos are best addressed through cross-departmental coordination built around shared goals.",
-  "domain": "Communication & Interaction",
+  "domain": "Leadership",
   "difficulty": "Medium"
  },
  {
@@ -1196,7 +1196,7 @@ export const BANK = [
   ],
   "correct": 0,
   "explanation": "Golden v. Planning Board of Ramapo (1972) upheld a phased (timed) growth system tied to the availability of capital improvements.",
-  "domain": "Fundamental Planning Knowledge",
+  "domain": "Plan Implementation",
   "difficulty": "Medium"
  },
  {
@@ -1212,7 +1212,7 @@ export const BANK = [
   ],
   "correct": 3,
   "explanation": "Construction Industry Association v. City of Petaluma (1975) upheld an annual cap on residential building permits as a valid growth-management tool.",
-  "domain": "Fundamental Planning Knowledge",
+  "domain": "Plan Implementation",
   "difficulty": "Medium"
  },
  {
@@ -1228,7 +1228,7 @@ export const BANK = [
   ],
   "correct": 3,
   "explanation": "The Mount Laurel doctrine requires a municipality to provide a realistic opportunity for its fair share of the region's affordable housing need.",
-  "domain": "Fundamental Planning Knowledge",
+  "domain": "Plan & Policy Development",
   "difficulty": "Medium"
  },
  {
@@ -1356,7 +1356,7 @@ export const BANK = [
   ],
   "correct": 3,
   "explanation": "Spot zoning is generally invalid when it singles out a small parcel for treatment inconsistent with the surrounding area and comprehensive plan, chiefly benefiting the owner.",
-  "domain": "Fundamental Planning Knowledge",
+  "domain": "Plan Implementation",
   "difficulty": "Medium"
  },
  {
@@ -1372,7 +1372,7 @@ export const BANK = [
   ],
   "correct": 1,
   "explanation": "Fasano v. Board of County Commissioners treats certain site-specific rezonings as quasi-judicial acts requiring findings and procedural fairness.",
-  "domain": "Fundamental Planning Knowledge",
+  "domain": "Plan Implementation",
   "difficulty": "Medium"
  },
  {
@@ -1388,7 +1388,7 @@ export const BANK = [
   ],
   "correct": 0,
   "explanation": "A use variance requires a showing of unnecessary hardship that is unique to the property and not self-created.",
-  "domain": "Fundamental Planning Knowledge",
+  "domain": "Plan Implementation",
   "difficulty": "Medium"
  },
  {
@@ -1404,7 +1404,7 @@ export const BANK = [
   ],
   "correct": 1,
   "explanation": "Amortization of a nonconforming use means requiring the use to cease after a reasonable period allowing the owner to recoup their investment.",
-  "domain": "Fundamental Planning Knowledge",
+  "domain": "Plan Implementation",
   "difficulty": "Medium"
  },
  {
@@ -1420,7 +1420,7 @@ export const BANK = [
   ],
   "correct": 3,
   "explanation": "Contract (conditional) zoning is most vulnerable when it bargains away the police power or violates uniformity and plan-consistency requirements.",
-  "domain": "Fundamental Planning Knowledge",
+  "domain": "Plan Implementation",
   "difficulty": "Medium"
  },
  {
@@ -1436,7 +1436,7 @@ export const BANK = [
   ],
   "correct": 2,
   "explanation": "Vested rights generally protect a developer who has made substantial good-faith expenditures in reliance on a validly issued permit.",
-  "domain": "Fundamental Planning Knowledge",
+  "domain": "Plan Implementation",
   "difficulty": "Medium"
  },
  {
@@ -2428,7 +2428,7 @@ export const BANK = [
   ],
   "correct": 3,
   "explanation": "Effective mentoring provides guidance, feedback, and real opportunities for an emerging planner's professional growth.",
-  "domain": "Administration & Management",
+  "domain": "Leadership",
   "difficulty": "Medium"
  },
  {
@@ -2508,7 +2508,7 @@ export const BANK = [
   ],
   "correct": 0,
   "explanation": "An organizational structure that empowers frontline planners to make routine decisions reflects decentralization/delegation.",
-  "domain": "Administration & Management",
+  "domain": "Leadership",
   "difficulty": "Medium"
  },
  {
@@ -2717,6 +2717,582 @@ export const BANK = [
   "correct": 3,
   "explanation": "Reed v. Town of Gilbert held that a sign ordinance classifying signs by their communicative content is content-based on its face and therefore subject to strict scrutiny, regardless of the municipality’s benign motive.",
   "domain": "Plan Implementation",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 171,
+  "scenario": null,
+  "exhibit": null,
+  "text": "The AICP Code is organized into aspirational Principles and Rules of Conduct. The practical difference is that:",
+  "options": [
+   "Only the Rules of Conduct can support a charge of misconduct",
+   "Only the Principles can support a charge of misconduct",
+   "Both are enforceable through the ethics process",
+   "Neither is enforceable; the Code is advisory"
+  ],
+  "correct": 0,
+  "explanation": "The aspirational Principles state what members should strive toward and cannot by themselves support a charge. The Rules of Conduct are the enforceable provisions.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 172,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A planner employed by a city holds a financial interest in a parcel now under review by the planning department. Under the Rules, the planner must:",
+  "options": [
+   "Proceed unless a party objects on the record",
+   "Mention the interest informally to a supervisor",
+   "Disclose the interest and withdraw from the matter",
+   "Sell the interest and continue handling the file"
+  ],
+  "correct": 2,
+  "explanation": "A member must not participate as a planner in a matter in which they have a financial or personal interest, and must disclose the interest rather than manage it privately.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 173,
+  "scenario": null,
+  "exhibit": null,
+  "text": "Information a planner acquires in confidence during professional work:",
+  "options": [
+   "May be disclosed once the project concludes",
+   "May be shared with professional colleagues for peer review",
+   "May not be disclosed under any circumstance",
+   "Must not be disclosed unless the law requires it"
+  ],
+  "correct": 3,
+  "explanation": "Confidential information may not be disclosed or used for personal gain. Narrow exceptions exist, including disclosure required by law or needed to prevent a substantial injury to the public.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 174,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A firm is offered an engagement requiring a modeling method no one on staff has used. The Rules permit the firm to:",
+  "options": [
+   "Accept it and learn the method during the engagement",
+   "Accept it under direction of someone competent",
+   "Accept it and subcontract without telling the client",
+   "Accept it at a reduced fee reflecting the inexperience"
+  ],
+  "correct": 1,
+  "explanation": "A member must not accept work beyond their professional competence unless it is performed under the direction of, or in association with, someone competent to do it, with the client informed.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 175,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A planner's website lists a certification the planner has not earned. This violates the Rule that members must:",
+  "options": [
+   "Not make false claims about their qualifications",
+   "Refrain from advertising professional services",
+   "Market services only through their APA chapter",
+   "Avoid competing with other members on fee"
+  ],
+  "correct": 0,
+  "explanation": "Members must accurately represent their qualifications, education and experience when seeking work, and must not make false or misleading claims.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 176,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A developer with an application pending before the planner’s agency offers season tickets. The planner should:",
+  "options": [
+   "Accept if the value is under the local gift threshold",
+   "Accept and disclose the gift after the hearing",
+   "Accept and recuse from that application",
+   "Decline, since it could appear to trade on office"
+  ],
+  "correct": 3,
+  "explanation": "Members must not seek or offer a benefit intended to influence the exercise of public duties. Even a gift within a local threshold can create the appearance of trading on public office.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 177,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A charge of misconduct under the AICP Code may be filed by:",
+  "options": [
+   "Members of AICP in good standing",
+   "The planner's employer or client",
+   "Any person",
+   "An elected official of the jurisdiction"
+  ],
+  "correct": 2,
+  "explanation": "The ethics process is open to anyone. A charge of misconduct may be filed by any person, not only by members or affected parties.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 178,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A member unsure whether a planned course of action complies with the Code should formally:",
+  "options": [
+   "Ask a colleague and document the conversation",
+   "Request an advisory opinion from the Ethics Officer",
+   "Proceed and wait for any complaint",
+   "Rely on the city attorney, whose opinion binds AICP"
+  ],
+  "correct": 1,
+  "explanation": "The Code provides for advisory opinions. A member may request one from the Ethics Officer before acting, which is the formal route for prospective guidance.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 179,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A member found to have violated the Rules of Conduct may face:",
+  "options": [
+   "Civil damages payable to the complainant",
+   "Criminal penalties imposed by AICP",
+   "Automatic revocation of a state license",
+   "Reprimand, suspension, or expulsion from AICP"
+  ],
+  "correct": 3,
+  "explanation": "AICP sanctions are professional, not legal: reprimand, suspension, or expulsion. AICP cannot award damages, impose criminal penalties, or revoke a state license.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 180,
+  "scenario": null,
+  "exhibit": null,
+  "text": "Maintaining AICP certification requires a member to:",
+  "options": [
+   "Complete Certification Maintenance credits",
+   "Retake the certification examination on a fixed cycle",
+   "Maintain continuous APA membership and nothing further",
+   "Be certified annually by the member’s employer"
+  ],
+  "correct": 0,
+  "explanation": "Certification is maintained through Certification Maintenance credits earned on a recurring reporting cycle, which must include credits in both law and ethics.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 181,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A supervisor directs a planner to remove a finding unfavorable to a project the administration supports. The planner should:",
+  "options": [
+   "Remove it, since the supervisor directs staff work",
+   "Resign rather than sign the report",
+   "Present the findings accurately to the decision makers",
+   "Release the finding to the press anonymously"
+  ],
+  "correct": 2,
+  "explanation": "Members must provide independent professional judgment and must not knowingly misrepresent facts or professional opinion. Elected officials may still decide otherwise once the record is accurate.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 182,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A planner in private practice serving a paying client owes the public interest:",
+  "options": [
+   "Nothing, since the client defines the engagement",
+   "A special obligation that may constrain the work",
+   "Deference only where the two do not conflict",
+   "An obligation discharged by following the contract"
+  ],
+  "correct": 1,
+  "explanation": "The Code states a special obligation to serve the public interest. That obligation persists in private practice and can limit what a member will do for a client.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 183,
+  "scenario": null,
+  "exhibit": null,
+  "text": "When advocating a client’s position at a public hearing, a member must:",
+  "options": [
+   "Present only evidence favorable to the client",
+   "Refrain from advocacy, since planners stay neutral",
+   "Obtain chapter approval before speaking publicly",
+   "Identify the interest represented and not misrepresent facts"
+  ],
+  "correct": 3,
+  "explanation": "Advocacy is permitted. What the Code requires is that the member disclose whose interest is being represented and not misrepresent facts or suppress information the public needs.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 184,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A planner leaves a consulting firm for a city job and is assigned a file the former firm is working on. The appropriate step is to:",
+  "options": [
+   "Say nothing, since the employment has ended",
+   "Disclose the prior relationship on the record",
+   "Decline to speak with the firm during the review",
+   "Ask the firm to withdraw its application"
+  ],
+  "correct": 1,
+  "explanation": "A prior professional relationship can create an appearance of impropriety. Disclosing it on the record lets decision makers weigh it; concealment is what the Rules forbid.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 185,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A client asks a planner to produce an analysis supporting a conclusion the client has already reached. The planner should:",
+  "options": [
+   "Explain that the Code requires complete, objective findings",
+   "Prepare it as directed, since the client sets the scope",
+   "Prepare two versions and let the client choose",
+   "Withdraw from the assignment without explanation"
+  ],
+  "correct": 0,
+  "explanation": "Members must not prepare analysis intended to mislead. The professional response is to explain the obligation and report findings fully, including those adverse to the client.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 186,
+  "scenario": null,
+  "exhibit": null,
+  "text": "The Code’s aspirational Principle on the long-range consequences of present actions directs planners to:",
+  "options": [
+   "Weigh the interests of current residents first",
+   "Prioritize measurable near-term returns",
+   "Defer to market outcomes where regulation is contested",
+   "Consider the long-range consequences of decisions"
+  ],
+  "correct": 3,
+  "explanation": "The Principles direct members to have special concern for the long-range consequences of present actions and to recognize that decisions are interrelated.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 187,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A member asked to give an expert opinion in litigation against a former client must:",
+  "options": [
+   "Accept, since the engagement has concluded",
+   "Accept only if the former client consents in writing",
+   "Decline all work adverse to any former client",
+   "Refuse to disclose that the prior relationship existed"
+  ],
+  "correct": 1,
+  "explanation": "The duty of confidentiality survives the engagement. Work adverse to a former client turns on informed consent and on not using or disclosing what was learned in confidence.",
+  "domain": "Code of Ethics & Professional Conduct",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 188,
+  "scenario": null,
+  "exhibit": null,
+  "text": "Transformational leadership differs from transactional leadership chiefly in that transformational leaders:",
+  "options": [
+   "Exchange rewards and sanctions for defined performance",
+   "Intervene mainly when performance slips",
+   "Articulate a vision that motivates beyond self-interest",
+   "Concentrate on enforcing established procedure"
+  ],
+  "correct": 2,
+  "explanation": "Transactional leadership trades rewards for performance. Transformational leadership works through a compelling vision that moves people past immediate self-interest.",
+  "domain": "Leadership",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 189,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A mid-level planner wants to move a corridor initiative that crosses several departments, none of which report to them. The most effective approach is to:",
+  "options": [
+   "Wait for a directive from the city manager",
+   "Escalate each disagreement to the department heads",
+   "Build relationships and frame the shared problem",
+   "Document the obstacles for the annual report"
+  ],
+  "correct": 2,
+  "explanation": "Leading from the middle means exercising influence without formal authority, through credibility, relationships and the way an issue is framed for others.",
+  "domain": "Leadership",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 190,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A planning director preparing the department for an anticipated wave of retirements should focus first on:",
+  "options": [
+   "Raising salaries across the department",
+   "Developing internal candidates",
+   "Contracting the affected functions to consultants",
+   "Deferring the vacancies until budgets improve"
+  ],
+  "correct": 1,
+  "explanation": "Succession planning is a leadership function: build readiness in existing staff and capture institutional knowledge before it leaves with the retiring cohort.",
+  "domain": "Leadership",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 191,
+  "scenario": null,
+  "exhibit": null,
+  "text": "Two neighboring jurisdictions with a history of disputes must plan a shared corridor. The leader’s most useful first move is to:",
+  "options": [
+   "Circulate a draft agreement for signature",
+   "Call an early vote on the preferred alternative",
+   "Issue a joint press release announcing the effort",
+   "Set ground rules and build a shared problem statement"
+  ],
+  "correct": 3,
+  "explanation": "Where trust is low, agreement on process and on what the problem is must precede substance. Voting or drafting first tends to harden the existing positions.",
+  "domain": "Leadership",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 192,
+  "scenario": null,
+  "exhibit": null,
+  "text": "Within a comprehensive plan, the correct relationship among a goal, an objective and a policy is that:",
+  "options": [
+   "A policy is broader than a goal, which is broader than an objective",
+   "A goal is broad, an objective is measurable, a policy guides decisions",
+   "The three are interchangeable drafting conventions",
+   "An objective is adopted by referendum and a goal is not"
+  ],
+  "correct": 1,
+  "explanation": "A goal states a broad desired end, an objective sets a measurable target toward it, and a policy is the standing guide for decisions and actions.",
+  "domain": "Plan & Policy Development",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 193,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A jurisdiction whose growth projections have diverged sharply from the assumptions behind its plan should respond with:",
+  "options": [
+   "A targeted amendment to the future land use map",
+   "A moratorium while staff study the divergence",
+   "A full plan update revisiting the assumptions",
+   "An annual report noting the discrepancy"
+  ],
+  "correct": 2,
+  "explanation": "Targeted amendments handle discrete changes. When the underlying assumptions no longer hold, the analytical basis of the plan itself needs to be rebuilt.",
+  "domain": "Plan & Policy Development",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 194,
+  "scenario": null,
+  "exhibit": null,
+  "text": "The implementation element of a comprehensive plan is most useful when it:",
+  "options": [
+   "Restates the goals in regulatory language",
+   "Lists every project the jurisdiction may undertake",
+   "Assigns actions, responsible parties and timeframes",
+   "Defers sequencing to the annual budget process"
+  ],
+  "correct": 2,
+  "explanation": "An implementation element converts policy into assigned work: who does what, by when, and with what resources. Without that, adopted policy rarely moves.",
+  "domain": "Plan & Policy Development",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 195,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A small area plan is the right instrument when:",
+  "options": [
+   "State law requires a periodic comprehensive plan update",
+   "Citywide policy needs block-level direction on form and access",
+   "A single map amendment is the only action contemplated",
+   "The jurisdiction wants to reduce the number of hearings"
+  ],
+  "correct": 1,
+  "explanation": "Small area plans translate citywide policy to a scale where design, access and infrastructure decisions can actually be made for specific blocks.",
+  "domain": "Plan & Policy Development",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 196,
+  "scenario": null,
+  "exhibit": null,
+  "text": "Plan monitoring is most credible when the indicators are:",
+  "options": [
+   "Tied to adopted objectives and baselined at adoption",
+   "Selected after the first monitoring cycle reports",
+   "Limited to measures the department already collects",
+   "Chosen by the consultant preparing the plan"
+  ],
+  "correct": 0,
+  "explanation": "Indicators must trace to the objectives they measure and have a baseline recorded when the plan is adopted, or later readings cannot show movement.",
+  "domain": "Plan & Policy Development",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 197,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A climate adaptation element differs from a mitigation element in that adaptation addresses:",
+  "options": [
+   "Reducing greenhouse gas emissions at their source",
+   "Preparing for impacts that are already expected",
+   "The energy efficiency of municipal buildings",
+   "Vehicle miles traveled across the region"
+  ],
+  "correct": 1,
+  "explanation": "Mitigation reduces the emissions driving climate change. Adaptation prepares the community for the heat, flooding and other impacts now anticipated regardless.",
+  "domain": "Plan & Policy Development",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 198,
+  "scenario": null,
+  "exhibit": null,
+  "text": "When a plan’s housing policy calling for density conflicts with a natural-resource policy limiting it, the planner should:",
+  "options": [
+   "Surface the tradeoff for the decision makers",
+   "Adopt both and resolve conflicts case by case",
+   "Give precedence to the housing policy",
+   "Remove both policies from the draft"
+  ],
+  "correct": 0,
+  "explanation": "Plans routinely contain policies in tension. The professional obligation is to make the tradeoff explicit and let the adopted priorities resolve it, not to hide it.",
+  "domain": "Plan & Policy Development",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 199,
+  "scenario": null,
+  "exhibit": null,
+  "text": "An area plan adopted by resolution rather than incorporated into the comprehensive plan generally:",
+  "options": [
+   "Binds subsequent rezonings in the area",
+   "Supersedes the comprehensive plan locally",
+   "Takes effect only after state certification",
+   "Carries less weight in a consistency review"
+  ],
+  "correct": 3,
+  "explanation": "Where consistency requirements apply, they run to the adopted comprehensive plan. A freestanding resolution carries advisory weight unless it is folded into that plan.",
+  "domain": "Plan & Policy Development",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 200,
+  "scenario": null,
+  "exhibit": null,
+  "text": "Setting a level of service standard in the plan commits the jurisdiction to:",
+  "options": [
+   "Funding the facilities needed to meet it",
+   "Denying any application that lowers service",
+   "Reviewing the standard before each budget",
+   "Matching the standards of peer jurisdictions"
+  ],
+  "correct": 0,
+  "explanation": "An adopted level of service standard is a commitment with fiscal consequences: the capital program has to be able to deliver the facilities the standard assumes.",
+  "domain": "Plan & Policy Development",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 201,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A staff report to the planning commission communicates most effectively when the recommendation appears:",
+  "options": [
+   "In an appendix with the supporting exhibits",
+   "In the oral presentation rather than the document",
+   "At the beginning, before the supporting analysis",
+   "Distributed through the narrative without a summary"
+  ],
+  "correct": 2,
+  "explanation": "Decision makers read for the conclusion first. Leading with the recommendation and its basis, then supplying the analysis, matches how the document is actually used.",
+  "domain": "Communication & Interaction",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 202,
+  "scenario": null,
+  "exhibit": null,
+  "text": "Presenting a corridor alternative to a neighborhood group, the most effective visual is:",
+  "options": [
+   "A table of the full model output by segment",
+   "A simple diagram showing what changes on the street",
+   "An aerial photograph with the parcel lines shown",
+   "The consultant’s methodology flowchart"
+  ],
+  "correct": 1,
+  "explanation": "Lay audiences need to see the consequence, not the derivation. A clear before-and-after of the street answers the question people actually brought.",
+  "domain": "Communication & Interaction",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 203,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A public hearing differs from a public workshop principally in that a hearing:",
+  "options": [
+   "Is open to the public while a workshop is not",
+   "Requires testimony to be given under oath",
+   "May not receive comment from applicants",
+   "Creates a record supporting a formal decision"
+  ],
+  "correct": 3,
+  "explanation": "A hearing is a formal proceeding that builds the record for a decision. A workshop is for exchange and development of ideas and carries no such record.",
+  "domain": "Communication & Interaction",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 204,
+  "scenario": null,
+  "exhibit": null,
+  "text": "In a negotiation over a contested site plan, focusing on interests rather than positions means:",
+  "options": [
+   "Uncovering the needs behind each stated demand",
+   "Splitting the difference between the demands",
+   "Holding the stated demand until the other side moves",
+   "Referring the dispute for a binding decision"
+  ],
+  "correct": 0,
+  "explanation": "Positions are what parties say they want. Interests are why, and options that satisfy the underlying needs of both sides are usually invisible at the level of positions.",
+  "domain": "Communication & Interaction",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 205,
+  "scenario": null,
+  "exhibit": null,
+  "text": "Defective public notice for a quasi-judicial hearing most directly risks:",
+  "options": [
+   "A reduction in public attendance",
+   "Invalidation of the resulting decision",
+   "A conflict with the adopted plan",
+   "Loss of state planning assistance"
+  ],
+  "correct": 1,
+  "explanation": "Notice is a due-process requirement in quasi-judicial proceedings. A decision reached on defective notice is vulnerable to challenge regardless of its merits.",
+  "domain": "Communication & Interaction",
+  "difficulty": "Medium"
+ },
+ {
+  "n": 206,
+  "scenario": null,
+  "exhibit": null,
+  "text": "A planner summarizing 600 written comments for the commission should:",
+  "options": [
+   "Reproduce every comment in full as an exhibit",
+   "Report only the comments staff considers well founded",
+   "Group them by theme and report the range of views",
+   "Report the count for and against the proposal"
+  ],
+  "correct": 2,
+  "explanation": "A thematic summary conveys what the public actually raised. Raw counts treat comment as a vote, and filtering by staff judgment distorts the record.",
+  "domain": "Communication & Interaction",
   "difficulty": "Medium"
  }
 ];
