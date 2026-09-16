@@ -507,7 +507,7 @@ export const BANK = [
    "Kevin Lynch"
   ],
   "correct": 2,
-  "explanation": "Norman Krumholz led equity planning as Cleveland's planning director emphasizing choices that benefit those with the fewest resources The remaining planning director, emphasizing choices that benefit those with the fewest resources.",
+  "explanation": "Norman Krumholz led equity planning as Cleveland's planning director, emphasizing choices that benefit those with the fewest resources.",
   "domain": "Fundamental Planning Knowledge",
   "difficulty": "Medium"
  },
@@ -965,10 +965,10 @@ export const BANK = [
   "exhibit": null,
   "text": "\"Active listening\" in community engagement primarily involves:",
   "options": [
-   "Preparing a rebuttal while others speak B Recording attendance C Reflecting back what was heard to confirm understanding D Speaking speak",
-   "Recording attendance",
-   "Reflecting back what was heard to confirm understanding",
-   "Speaking more than participants"
+   "Preparing a rebuttal while others speak",
+   "Recording attendance at the meeting",
+   "Reflecting back what was heard",
+   "Speaking more than the participants do"
   ],
   "correct": 2,
   "explanation": "Active listening means reflecting back what was heard to confirm understanding, not preparing rebuttals or dominating the conversation.",
@@ -1363,7 +1363,7 @@ export const BANK = [
   "n": 86,
   "scenario": null,
   "exhibit": null,
-  "text": "The Oregon decision Fasano v. Board of County Commissioners is known for treating certain rezonings as: A Legislative acts entitled to deference B Quasi-judicial acts requiring findings and rezonings as:",
+  "text": "The Oregon decision Fasano v. Board of County Commissioners is known for treating certain rezonings as:",
   "options": [
    "Legislative acts entitled to deference",
    "Quasi-judicial acts requiring findings",
@@ -1541,10 +1541,10 @@ export const BANK = [
   "exhibit": null,
   "text": "Loretto v. Teleprompter Manhattan CATV (1982) held that:",
   "options": [
-   "Temporary regulations are takings",
-   "Rent control is a per se taking",
-   "A permanent physical occupation",
-   "Landmarking is a per se taking"
+   "Temporary regulations are compensable takings",
+   "Rent control is a per se physical taking",
+   "A permanent physical occupation is a per se taking",
+   "Landmark designation is a per se taking"
   ],
   "correct": 2,
   "explanation": "Loretto v. Teleprompter Manhattan CATV (1982) held that a permanent physical occupation, however minor, is a per se taking.",
@@ -1574,7 +1574,7 @@ export const BANK = [
   "text": "Lingle v. Chevron (2005) clarified that:",
   "options": [
    "The \"substantially advances\" formula is a valid takings test",
-   "It is a due-process inquiry, not a takings test",
+   "The \"substantially advances\" test is a due-process inquiry",
    "Agins is fully overruled as to nexus",
    "Monetary exactions are categorically exempt"
   ],
@@ -2488,7 +2488,7 @@ export const BANK = [
    "Accurate reporting and accountability",
    "Withholding financial details",
    "Minimizing external audits",
-   "Sharing results with the funder"
+   "Reporting only favorable results"
   ],
   "correct": 0,
   "explanation": "Transparency in a grant-funded program requires accurate reporting, documentation, and accountability for the use of funds.",
@@ -2582,9 +2582,9 @@ export const BANK = [
   "text": "The Secretary of the Interior's Standards for the Treatment of Historic Properties comprise:",
   "options": [
    "Demolition, clearance, and redevelopment",
-   "Zoning, subdivision, and platting",
-   "Inform, consult, involve, collaborate",
-   "Preservation, rehabilitation, and restoration"
+   "Zoning, subdivision, and site plan review",
+   "Inform, consult, involve, and collaborate",
+   "Preservation, rehabilitation, restoration, and reconstruction"
   ],
   "correct": 3,
   "explanation": "The Secretary of the Interior's Standards comprise four treatments: preservation, rehabilitation, restoration, and reconstruction.",
@@ -2661,9 +2661,9 @@ export const BANK = [
   "exhibit": null,
   "text": "A food desert is best defined as:",
   "options": [
-   "An arid agricultural region",
-   "Limited access to healthy food",
-   "A farmland-preservation zone",
+   "An arid region unsuitable for farming",
+   "An area with limited access to healthy food",
+   "A farmland-preservation district",
    "A restaurant and bar district"
   ],
   "correct": 1,
@@ -2710,12 +2710,12 @@ export const BANK = [
   "text": "Reed v. Town of Gilbert (2015) held that a sign ordinance classifying signs by their communicative content is:",
   "options": [
    "Valid as a time-place-manner rule",
-   "Content neutral on its face",
+   "Content neutral on its face and valid",
    "Exempt from the First Amendment",
-   "Content-based regulation"
+   "Content-based and subject to strict scrutiny"
   ],
   "correct": 3,
-  "explanation": "Reed v. Town of Gilbert held that a sign ordinance classifying signs by their communicative content is content-based on its face and therefore subject to strict scrutiny, regardless of the municipality’s benign motive.",
+  "explanation": "Reed v. Town of Gilbert held that a sign ordinance classifying signs by their communicative content is content-based on its face and therefore subject to strict scrutiny, regardless of the municipality's benign motive.",
   "domain": "Plan Implementation",
   "difficulty": "Medium"
  },
@@ -2803,7 +2803,7 @@ export const BANK = [
   "n": 176,
   "scenario": null,
   "exhibit": null,
-  "text": "A developer with an application pending before the planner’s agency offers season tickets. The planner should:",
+  "text": "A developer with an application pending before the planner's agency offers season tickets. The planner should:",
   "options": [
    "Accept if the value is under the local gift threshold",
    "Accept and disclose the gift after the hearing",
@@ -2872,7 +2872,7 @@ export const BANK = [
    "Complete Certification Maintenance credits",
    "Retake the certification examination on a fixed cycle",
    "Maintain continuous APA membership and nothing further",
-   "Be certified annually by the member’s employer"
+   "Be certified annually by the member's employer"
   ],
   "correct": 0,
   "explanation": "Certification is maintained through Certification Maintenance credits earned on a recurring reporting cycle, which must include credits in both law and ethics.",
@@ -2915,7 +2915,7 @@ export const BANK = [
   "n": 183,
   "scenario": null,
   "exhibit": null,
-  "text": "When advocating a client’s position at a public hearing, a member must:",
+  "text": "When advocating a client's position at a public hearing, a member must:",
   "options": [
    "Present only evidence favorable to the client",
    "Refrain from advocacy, since planners stay neutral",
@@ -2963,7 +2963,7 @@ export const BANK = [
   "n": 186,
   "scenario": null,
   "exhibit": null,
-  "text": "The Code’s aspirational Principle on the long-range consequences of present actions directs planners to:",
+  "text": "The Code's aspirational Principle on the long-range consequences of present actions directs planners to:",
   "options": [
    "Weigh the interests of current residents first",
    "Prioritize measurable near-term returns",
@@ -2979,15 +2979,15 @@ export const BANK = [
   "n": 187,
   "scenario": null,
   "exhibit": null,
-  "text": "A member asked to give an expert opinion in litigation against a former client must:",
+  "text": "A member retained to testify in litigation against a former client is constrained chiefly by the duty to:",
   "options": [
-   "Accept, since the engagement has concluded",
-   "Accept only if the former client consents in writing",
-   "Decline all work adverse to any former client",
-   "Refuse to disclose that the prior relationship existed"
+   "Decline any engagement adverse to a former client",
+   "Obtain the former client's written permission",
+   "Protect information learned in confidence",
+   "Disclose the prior relationship only if asked"
   ],
-  "correct": 1,
-  "explanation": "The duty of confidentiality survives the engagement. Work adverse to a former client turns on informed consent and on not using or disclosing what was learned in confidence.",
+  "correct": 2,
+  "explanation": "The duty of confidentiality survives the engagement. It does not bar adverse work outright, but it does bar using or disclosing information learned in confidence during the earlier work.",
   "domain": "Code of Ethics & Professional Conduct",
   "difficulty": "Medium"
  },
@@ -3043,7 +3043,7 @@ export const BANK = [
   "n": 191,
   "scenario": null,
   "exhibit": null,
-  "text": "Two neighboring jurisdictions with a history of disputes must plan a shared corridor. The leader’s most useful first move is to:",
+  "text": "Two neighboring jurisdictions with a history of disputes must plan a shared corridor. The leader's most useful first move is to:",
   "options": [
    "Circulate a draft agreement for signature",
    "Call an early vote on the preferred alternative",
@@ -3155,7 +3155,7 @@ export const BANK = [
   "n": 198,
   "scenario": null,
   "exhibit": null,
-  "text": "When a plan’s housing policy calling for density conflicts with a natural-resource policy limiting it, the planner should:",
+  "text": "When a plan's housing policy calling for density conflicts with a natural-resource policy limiting it, the planner should:",
   "options": [
    "Surface the tradeoff for the decision makers",
    "Adopt both and resolve conflicts case by case",
@@ -3224,7 +3224,7 @@ export const BANK = [
    "A table of the full model output by segment",
    "A simple diagram showing what changes on the street",
    "An aerial photograph with the parcel lines shown",
-   "The consultant’s methodology flowchart"
+   "The consultant's methodology flowchart"
   ],
   "correct": 1,
   "explanation": "Lay audiences need to see the consequence, not the derivation. A clear before-and-after of the street answers the question people actually brought.",
