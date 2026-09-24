@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 import Hoverable from './Hoverable';
@@ -11,10 +11,13 @@ import { useDarkMode } from '../context/DarkModeContext';
 export default function Header() {
   const location = useLocation();
   const { dark } = useDarkMode();
-  const [open, setOpen] = useState(false);
 
-  // Close the mobile menu whenever the route changes.
-  useEffect(() => { setOpen(false); }, [location.pathname, location.search]);
+  // The mobile menu tracks the location it was opened on, so any navigation
+  // (a link here, the back button, a link in the page) closes it.
+  const [openAt, setOpenAt] = useState(null);
+  const here = location.pathname + location.search;
+  const open = openAt === here;
+  const toggle = () => setOpenAt(open ? null : here);
 
   // Dark mode only exists within the exam runner and diagnostic flows; the
   // header only goes dark while one of those is rendering dark content.
@@ -82,7 +85,7 @@ export default function Header() {
 
         <button
           className="header-nav-toggle"
-          onClick={() => setOpen((o) => !o)}
+          onClick={toggle}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           aria-controls="mobile-nav"

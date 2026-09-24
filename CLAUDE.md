@@ -28,12 +28,15 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     lib/paths.js            Route constants — always build links from these
     lib/nav.js              Header/footer navigation config
     lib/theme.js            JS copies of the colour tokens (used by inline-styled exam UI)
-    components/             Header, Footer, Layout pieces, LessonBody, MembershipGate, ...
+    components/             Header, Footer, LessonBody, MembershipGate, ContentPage, ...
+    hooks/                  usePageTitle, useMembership (the one place to swap in real membership)
     content/aicp/
       curriculum.js         Domains + ordered lesson metadata (the course's source of truth)
       lessons/*.md          One Markdown file per lesson body
       studyPlans.js         8- and 12-week schedules (reference lesson slugs)
-      examInfo.js / faq.js  Structured content for the Exam Info and FAQ pages
+      freeQuizRefs.js       Which Exam 1 items the free quizzes serve (checked by npm run check)
+    content/pages/*.md      Exam Info and About page bodies (Markdown, same renderer as lessons)
+    content/site.js         Owner settings (CONTACT_EMAIL placeholder)
     data/                   Question banks (exam1/2/3), diagnostic items, domain weights
     pages/                  Route components; pages/aicp/* are the prep section pages
     pages/exam/             Exam runner (quizzes, exams, domain drills, lesson practice sets)
@@ -149,7 +152,8 @@ Build on the existing look; don't introduce a new visual language.
    A short recap paragraph or bullets.
    ```
    Optional extra sections (for example `## Exam tips` or `## Worked examples`) may go
-   between "Key terms" and "Summary". Tables, blockquotes, and `> **Exam tip:**` callouts are
+   anywhere after "Key concepts" and before "Summary". A short `>` note above
+   "Learning objectives" is allowed (the ethics lessons use one). Tables, blockquotes, and `> **Exam tip:**` callouts are
    supported. Link to other lessons with `/aicp/lessons/<slug>`.
 4. **Flag uncertain facts** with `<!-- VERIFY: … -->` and add them to `REVIEW.md`.
 5. **Add it to the study plans** in `studyPlans.js` if it should be scheduled.
@@ -170,7 +174,7 @@ Run `npm run check` after touching the banks or the sampler.
 ## Membership placeholder
 
 There is no login or payment system. Paid content is wrapped in `<MembershipGate>`
-(`src/components/MembershipGate.jsx`), which currently reads the demo `UnlockContext`. When a
-real membership tool is added, replace the check inside `MembershipGate` and
+(`src/components/MembershipGate.jsx`), which asks `src/hooks/useMembership.js`; that hook currently reads the demo `UnlockContext`. When a
+real membership tool is added, replace the check inside `useMembership` and
 `useExamSession`'s guard — nothing else should need to change. Note that gated lesson text is
 still shipped in the JS bundle; real protection needs server-side delivery.

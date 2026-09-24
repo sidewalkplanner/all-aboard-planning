@@ -1,10 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Hoverable from '../components/Hoverable';
 import { ASSESSMENTS, PRICE } from '../data/domains';
 import { chipStyle, cardStyle } from '../lib/style';
 import { LIGHT } from '../lib/theme';
 import { useUnlock } from '../context/UnlockContext';
 import { P } from '../lib/paths';
+import usePageTitle from '../hooks/usePageTitle';
 
 const rowCardStyle = { ...cardStyle(LIGHT, { padding: 24 }), display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 24, alignItems: 'center' };
 const ghostBtn = { background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600 };
@@ -60,6 +61,7 @@ function Row({ a, unlocked, onPractice, onTimed, onUnlock }) {
 }
 
 export default function ExamsList() {
+  usePageTitle('Practice exams');
   const navigate = useNavigate();
   const { unlocked } = useUnlock();
   const freeExams = ASSESSMENTS.filter((a) => a.tier === 'free');
@@ -76,6 +78,12 @@ export default function ExamsList() {
         Every quiz and exam is drawn to the nine domains of the APA Exam Content Outline, in the same proportions as the real test. Start with the two free quizzes.
       </p>
 
+      <div className="callout" style={{ marginBottom: 28 }}>
+        <p className="body-text" style={{ margin: 0 }}>
+          Studying a specific topic? Every <Link to={P.course} className="link-underline">course lesson</Link> has its own practice set,
+          and the <Link to={P.studyPlan} className="link-underline">study plans</Link> tell you when to take each exam.
+        </p>
+      </div>
       <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#636987', marginBottom: 14 }}>Free</div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         {freeExams.map((a) => (

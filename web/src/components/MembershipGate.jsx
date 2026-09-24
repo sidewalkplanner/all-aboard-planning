@@ -1,20 +1,15 @@
 import { Link } from 'react-router-dom';
-import { useUnlock } from '../context/UnlockContext';
+import useMembership from '../hooks/useMembership';
 import { P } from '../lib/paths';
 
 // MEMBERSHIP PLACEHOLDER
 // Wraps Full Access content. There is no login or payment system yet, so this
-// reads the session-only demo toggle in UnlockContext. When a real membership
-// tool is added, replace the `unlocked` check below (and the matching guard in
-// pages/exam/useExamSession.js); callers shouldn't need to change.
+// reads the session-only demo toggle via hooks/useMembership.js. When a real
+// membership tool is added, replace the check in that hook (and the matching
+// guard in pages/exam/useExamSession.js); callers shouldn't need to change.
 //
 // Note: gated content still ships in the JavaScript bundle. Real protection
 // needs the content delivered from a server only to signed-in members.
-export function useMembership() {
-  const { unlocked, unlock } = useUnlock();
-  return { isMember: unlocked, demoUnlock: unlock };
-}
-
 export default function MembershipGate({ children, what = 'the rest of this lesson' }) {
   const { isMember, demoUnlock } = useMembership();
   if (isMember) return children;

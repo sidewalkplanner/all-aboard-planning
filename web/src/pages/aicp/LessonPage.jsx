@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumb';
 import LessonBody from '../../components/LessonBody';
-import MembershipGate, { useMembership } from '../../components/MembershipGate';
+import MembershipGate from '../../components/MembershipGate';
+import useMembership from '../../hooks/useMembership';
 import NotFound from '../NotFound';
 import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
@@ -102,14 +103,14 @@ export default function LessonPage() {
   const { slug } = useParams();
   const lesson = lessonBySlug(slug);
   const { isMember } = useMembership();
-  const [body, setBody] = useState(null);
+  const [loaded, setLoaded] = useState({ slug: null, body: null });
+  const body = lesson && loaded.slug === lesson.slug ? loaded.body : null;
   usePageTitle(lesson ? lesson.title : 'Lesson not found');
 
   useEffect(() => {
     let live = true;
-    setBody(null);
     const load = lesson && bodyLoader(lesson.slug);
-    if (load) load().then((m) => { if (live) setBody(m.default); });
+    if (load) load().then((m) => { if (live) setLoaded({ slug: lesson.slug, body: m.default }); });
     return () => { live = false; };
   }, [lesson]);
 

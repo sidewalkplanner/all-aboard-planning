@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Hoverable from '../components/Hoverable';
 import { DOMAINS } from '../data/domains';
 import { BANK as EXAM1_BANK } from '../data/exam1-questions';
@@ -8,10 +8,12 @@ import { barStyle, cardStyle } from '../lib/style';
 import { GREEN, RUST, LIGHT } from '../lib/theme';
 import { useUnlock } from '../context/UnlockContext';
 import { P } from '../lib/paths';
+import usePageTitle from '../hooks/usePageTitle';
 
 const countInBank = (name) => EXAM1_BANK.filter((q) => q.domain === name).length;
 
 export default function StudyByDomain() {
+  usePageTitle('Domain drills');
   const navigate = useNavigate();
   const { unlocked } = useUnlock();
   const domainTotals = useMemo(() => summarizeHistory(getHistory()).domainTotals, []);
@@ -27,8 +29,9 @@ export default function StudyByDomain() {
 
   return (
     <section style={{ maxWidth: 1180, margin: '0 auto', padding: '56px 24px 80px' }}>
-      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 42, fontWeight: 700, letterSpacing: '-0.022em', margin: 0 }}>Study by domain</h1>
-      <p style={{ fontSize: 16.5, color: '#646A85', margin: '10px 0 34px', maxWidth: '62ch' }}>{studyNote}</p>
+      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 42, fontWeight: 700, letterSpacing: '-0.022em', margin: 0 }}>Domain drills</h1>
+      <p style={{ fontSize: 16.5, color: '#646A85', margin: '10px 0 12px', maxWidth: '62ch' }}>{studyNote}</p>
+      <p className="small" style={{ margin: '0 0 30px' }}>Want to learn the material before drilling it? <Link to={P.course} className="link-underline">Browse the lessons by domain</Link>.</p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 16 }}>
         {DOMAINS.map((d) => {
           const t = domainTotals[d.short];

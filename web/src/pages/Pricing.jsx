@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
 import usePageTitle from '../hooks/usePageTitle';
-import { useMembership } from '../components/MembershipGate';
+import useMembership from '../hooks/useMembership';
 import { P } from '../lib/paths';
 import { PRICE } from '../data/domains';
 import { LESSONS } from '../content/aicp/curriculum';

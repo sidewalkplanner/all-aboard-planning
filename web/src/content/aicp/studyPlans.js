@@ -1,7 +1,7 @@
 // Week-by-week study schedules. `lessons` are lesson slugs from curriculum.js
 // (the checker verifies them); `practice` entries are { label, to } where `to`
 // is a route from lib/paths.js. Both plans cover every lesson exactly once.
-import { P } from '../../lib/paths';
+import { P } from '../../lib/paths.js';
 
 const diag = { label: 'Take the free diagnostic (about 2 hours, untimed)', to: P.diagnostic };
 const quizA = { label: 'Warm-up Quiz A (25 questions)', to: P.runExam('q1', 'practice') };

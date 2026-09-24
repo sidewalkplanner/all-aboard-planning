@@ -1,4 +1,4 @@
-import { P } from './paths';
+import { P } from './paths.js';
 
 // Primary navigation for the AICP prep section (header).
 export const AICP_NAV = [

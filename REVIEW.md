@@ -1,0 +1,168 @@
+# REVIEW: AICP course build
+
+This is the hand-off for the build described in `PLAN.md`: what was built, the assumptions behind it, every fact flagged for verification, and what's left.
+
+## Summary of what was built
+
+### Structure
+- **All prep content now lives under `/aicp/`.** `/` redirects to `/aicp` for now; replace that redirect in `web/src/App.jsx` with a consulting homepage when it exists. Firm-level pages (`/about`, `/contact`) sit at the root.
+- **Old URLs redirect** to their new homes with query strings intact (`/exams`, `/exam/run?…`, `/diagnostic`, `/study` → `/aicp/drills`, `/progress`, `/pricing`, `/signin`), so existing bookmarks and shared links keep working.
+- All routes are defined once in `web/src/lib/paths.js`, and navigation config lives in `web/src/lib/nav.js`.
+
+### Design system
+- Design tokens are CSS custom properties in `web/src/index.css`, taken from the existing palette and fonts: Bricolage Grotesque and Figtree, navy, blue, and coral, with white cards on `#F6F7FB`. The file also has shared classes for layout, buttons, cards, chips, callouts, long-form prose, the lesson layout, the course list, study-plan weeks, the FAQ, and the footer.
+- **New header:** real `<a>` links, `aria-current` on the active item, and a menu toggle below 1100px. **New footer:** a sitemap in three groups and the APA non-affiliation notice.
+- **Accessibility:** a skip link; on each route change, scroll to top (or to the `#hash` target) and move focus into the new content; a global `:focus-visible` ring; one `<h1>` per page (verified by the crawl); per-page `<title>`; alt text or `aria-hidden` on every image and SVG. Muted-text colours were checked for AA contrast, and one low-contrast grey was fixed.
+- **Mobile:** every page was checked at 360px wide with no horizontal overflow.
+
+### Course
+- **38 lessons across the 9 domains** (`web/src/content/aicp/lessons/*.md`, with metadata in `web/src/content/aicp/curriculum.js`). Each lesson has learning objectives, key concepts, key terms, real-world examples, and a summary; several also have exam tips or worked calculations. The shared template (`web/src/pages/aicp/LessonPage.jsx`) adds the domain badge, the outline sub-areas, the reading time, an "In this lesson" table of contents, a practice block, and Previous/Next navigation that runs across the whole course. Lessons total roughly 53,000 words.
+- **Lesson practice sets:** 544 question references that map every lesson to real questions from Practice Exams 1–3. They run in the existing exam runner at `/aicp/exam/run?set=<slug>`. Free lessons serve only the questions that already appear in the free warm-up quizzes, so no paid question is given away.
+- **Course overview** (`/aicp/course`): every lesson grouped by domain, with weights, reading times, and free or paid status.
+- **Study plans** (`/aicp/study-plan`): an 8-week and a 12-week plan, each covering all 38 lessons exactly once, plus the diagnostic, both quizzes, drills, and all three exams.
+- **The diagnostic report** now links each ranked domain to its lessons. **Exam results** link the weakest domain to its lessons, and a lesson practice set returns you to its lesson. The practice-exam and drills pages link to the course.
+
+### Supporting pages
+- **Prep homepage** (`/aicp`): what the course offers, who it's for, how it works, how the exam is weighted, the diagnostic promo, the question of the day, and calls to action.
+- **Exam Info** (`/aicp/exam-info`): format, scoring, eligibility, registration, exam day, and certification maintenance, pointing to APA as the authority throughout.
+- **FAQ** (`/aicp/faq`), **Pricing** (`/aicp/pricing`, with three tiers), **About** (`/about`), and **Contact** (`/contact`).
+
+### Tooling
+- **Build-time Markdown rendering** (a Vite plugin plus `web/scripts/markdown.mjs`). No Markdown parser ships to the browser, and each lesson body is its own lazily loaded chunk. `marked` was added as a dev dependency.
+- **`npm run check`** (`web/scripts/check-content.mjs`) validates every lesson's required sections and their order, practice references, free-quiz membership, study-plan coverage, internal links, query parameters, anchors, and VERIFY reasons. I confirmed it fails on deliberately broken input.
+- **Verification before finishing:** `npm run build` passes. `npm run lint` reports no errors (the warnings that remain were there before this build). `npm run check` passes. A headless-browser crawl of the production build visited 80 URLs with **zero broken internal links, zero missing anchors, zero pages with more or fewer than one `<h1>`, and no mobile overflow**. The only console errors came from the sandbox blocking Google Fonts. Functional tests covered the paid gate and demo unlock, a paid 18-question practice set, a free 3-question practice set, and Previous/Next navigation with scroll reset.
+
+### Existing content I changed (worth knowing)
+- The question of the day was tagged "Areas of Practice" but is an ethics question, so it's now tagged Code of Ethics.
+- The exam results screen used to say "Passing range" and "You cleared the range where candidates typically pass" for scores of 70% or more. APA doesn't publish a passing percentage, and the site's own diagnostic says so, so the screen now reads "70% or better" and presents 70% as a practice benchmark rather than a prediction.
+- The old landing page (`Landing.jsx`) was replaced by the prep homepage. Its question-of-the-day card now lives in `components/QuestionOfTheDay.jsx`. Stale copy on the old landing and pricing pages ("340 questions across two exams", "Two full-length exams") was corrected to reflect three exams.
+- "Study by domain" was renamed "Domain drills" (at `/aicp/drills`) so it isn't confused with the course lessons.
+- The sign-in page now carries a visible "Accounts placeholder" notice.
+
+## Assumptions
+
+1. **The content outline.** I used the nine domains, weights, and sub-area codes already in the repo (`uploads/aicp-diagnostic-exam-spec.md` and `uploads/aicp-diagnostic-DIAG-1.0-items.csv`), not outside knowledge. **Please check these against APA's official outline:**
+
+   | # | Domain | Weight |
+   |---|---|---|
+   | 1 | Research and Assessment Methods | 11% |
+   | 2 | Fundamental Planning Knowledge | 15% |
+   | 3 | Communication and Interaction | 13% |
+   | 4 | Plan and Policy Development | 15% |
+   | 5 | Plan Implementation | 12% |
+   | 6 | Administration and Management | 6% |
+   | 7 | Leadership | 6% |
+   | 8 | Areas of Practice | 12% |
+   | 9 | AICP Code of Ethics and Professional Conduct | 10% |
+
+   Lessons list only the outline sub-area codes that appear in the repo's diagnostic CSV; I didn't invent codes for sub-areas I couldn't confirm. The CSV has two different "7.6" labels ("A planner's comprehensive approach to complex problems" and "The ethics of equity, diversity, and inclusivity in practice"). It also uses 8.19, although the spec says Areas of Practice has 18 sub-areas. Worth checking against APA's outline.
+2. **Course order follows outline order** (domain 1 first), matching the diagnostic. The study plans use a teaching order instead, starting with history, law, and ethics.
+3. **Free versus paid:** the first lesson in each domain is free (9 lessons), and the rest are Full Access. Lesson practice sets on free lessons give free users only the questions already in the free quizzes.
+4. **One paid tier.** Full Access keeps the existing `$59` placeholder (`PRICE` in `web/src/data/domains.js`), with "one time, no renewal", "access until your test date", and "refund within 7 days" carried over from the existing page. I added a "Teams and agencies: let's talk" tier with no price. All prices are placeholders.
+5. **The membership placeholder** is visible to visitors: a dashed box labelled "Membership placeholder" with a demo unlock, as you asked for a clearly marked placeholder. Gated lesson text still ships in the JavaScript bundle, so real protection needs server-side delivery.
+6. **Contact:** no email address was available, so the page shows a "Contact placeholder" until `CONTACT_EMAIL` is set in `web/src/content/site.js`. I didn't use your personal email.
+7. **About:** I wrote no founder biography, to avoid inventing details. There's a `<!-- PLACEHOLDER -->` comment in `web/src/content/pages/about.md` where a bio should go.
+8. **Lessons are Markdown files** with metadata in `curriculum.js`, rather than JSX. This keeps them easy for you to edit and lets `<!-- VERIFY -->` comments work naturally; they also end up in the page as invisible HTML comments.
+9. **Real-world examples are illustrative composites** ("a city", "a county"). None describes a real, named jurisdiction's project, so none can be mistaken for a factual claim. Named cases, statutes, and people are real, and anything I wasn't sure of is flagged below.
+10. **The root prototype files** (`*.dc.html`, `support.js`, and the root-level `*.js` banks) and `uploads/` were left untouched, as reference material.
+11. **Deployment is unchanged.** The existing GitHub Actions Pages workflow builds `web/` on every push to `main`, and the SPA 404 redirect already handles `/aicp/...` deep links. I pushed to the working branch, not `main`, so nothing is live until you merge.
+
+## VERIFY flags
+
+There are 75 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
+
+| Location | What to check |
+|---|---|
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:15` | confirm to whom the Code currently applies (AICP members, and whether candidates are covered). |
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:1` | confirm the current Code version (a revised Code took effect in 2021, with later amendments possible) and link to it. |
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:40` | confirm that the current Code's principles include explicit language on racial and economic equity and on eliminating historic inequities. |
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:57` | the wording and grouping of these principles are paraphrased from our understanding of the Code; check each against the current text. |
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:78` | confirm the current names and process for informal advice and formal advisory opinions under the Code's procedures. |
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:87` | confirm the current complaint procedure steps, the name of the deciding body, and the list of available sanctions (for example, whether a "letter of admonition" still exists). |
+| `web/src/content/aicp/lessons/comprehensive-plans.md:48` | confirm the names of the principles and processes in APA's Comprehensive Plan Standards for Sustaining Places, and whether APA has updated them. |
+| `web/src/content/aicp/lessons/comprehensive-plans.md:58` | confirm which states to cite as consistency states (Oregon, Florida, and California are commonly cited) and how each applies the requirement. |
+| `web/src/content/aicp/lessons/conflicts-of-interest-and-rules-of-conduct.md:1` | check each paraphrased rule theme below against the current Rules of Conduct text. |
+| `web/src/content/aicp/lessons/consensus-and-negotiation.md:77` | this five-part typology is usually attributed to Christopher Moore's "circle of conflict"; confirm the attribution if named. |
+| `web/src/content/aicp/lessons/economic-development.md:52` | this is the Main Street America "Four Point Approach"; confirm current terminology if named. |
+| `web/src/content/aicp/lessons/economic-development.md:81` | Opportunity Zone rules were modified by 2025 federal tax legislation; confirm current program terms before describing details. |
+| `web/src/content/aicp/lessons/economic-development.md:83` | confirm the current status of the New Markets Tax Credit and EDA programs if expanded. |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:19` | federal NEPA implementing procedures changed substantially in 2025 (CEQ regulations rescinded, agency procedures revised); confirm the current process terms before publishing detailed steps. |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:46` | confirm the five-year update cycle and which FEMA grant programs currently require an approved plan. |
+| `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:39` | confirm the current status of federal LEP guidance (Executive Order 13166 and agency guidance), which may have changed in 2025. |
+| `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:40` | federal environmental justice executive orders have been revoked or amended since 2025; confirm the current status of EO 12898 before relying on it. |
+| `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:55` | confirm the 2024 DOJ Title II web accessibility rule's standard (WCAG 2.1 AA) and its current compliance dates. |
+| `web/src/content/aicp/lessons/federal-policy-and-planning.md:24` | confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. |
+| `web/src/content/aicp/lessons/federal-policy-and-planning.md:29` | confirm the 1962 Act as the origin of the 3C planning requirement. |
+| `web/src/content/aicp/lessons/goals-objectives-policies.md:57` | "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. |
+| `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:22` | confirm the SmartCode transect zone numbering (T1–T6) and names if you want to teach them precisely. |
+| `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:32` | performance zoning is often associated with Lane Kendig's work in Bucks County, Pennsylvania, in the 1970s; confirm before attributing. |
+| `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:70` | Florida's statewide concurrency mandate was substantially relaxed in 2011 (except for certain facilities); confirm the current status before describing it. |
+| `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:80` | confirm details sometimes cited for these cases (Ramapo's roughly 18-year capital program; Petaluma's cap of about 500 units a year) before adding them. |
+| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:41` | confirm the USDA food access thresholds (commonly 1 mile urban / 10 miles rural, with additional 0.5- and 20-mile variants) before citing numbers. |
+| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:64` | service radii by park type vary by source (older NRPA guidance); confirm figures before citing specific distances beyond the neighborhood park range. |
+| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:74` | confirm the descriptions of Portland Metro and the Twin Cities Metropolitan Council if expanded. |
+| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:78` | the Twin Cities Fiscal Disparities program (1971) is the usual example; confirm before naming it. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:24` | HUD's extremely low/very low/low categories are 30/50/80% of area median; "moderate" is defined by individual programs and states. Confirm wording if used for specific programs. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:39` | LIHTC was created by the Tax Reform Act of 1986; confirm current affordability periods and the 9%/4% credit structure if added. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:55` | HUD's AFFH rule has been issued, rescinded, and reissued several times; confirm its current status before describing specific requirements. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:59` | Mount Laurel I is usually dated 1975 and Mount Laurel II (builder's remedy) 1983; confirm before adding dates. |
+| `web/src/content/aicp/lessons/implementation-math.md:126` | confirm what calculator tools are available on the current exam. |
+| `web/src/content/aicp/lessons/land-use-law-foundations.md:55` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
+| `web/src/content/aicp/lessons/leadership-in-planning.md:22` | adaptive leadership is usually attributed to Ronald Heifetz; confirm before attributing. |
+| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:66` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
+| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:67` | confirm which advanced specialty certifications AICP currently offers. |
+| `web/src/content/aicp/lessons/planning-history.md:26` | the "make no little plans" quotation's attribution to Burnham is disputed; keep the "popularly attributed" hedge or remove. |
+| `web/src/content/aicp/lessons/planning-history.md:33` | Hartford 1907 as the first official municipal planning commission is commonly cited; confirm before publishing. |
+| `web/src/content/aicp/lessons/planning-history.md:35` | SZEA publication history is given variously as 1922, 1924, and 1926; confirm the dates you want to teach. |
+| `web/src/content/aicp/lessons/planning-history.md:70` | Oregon's statewide land use planning law (Senate Bill 100) is commonly dated to 1973; confirm. |
+| `web/src/content/aicp/lessons/planning-history.md:74` | confirm the founding years 1917 (ACPI/AIP) and 1934 (ASPO). |
+| `web/src/content/aicp/lessons/planning-history.md:78` | confirm CNU's founding year (1993). |
+| `web/src/content/aicp/lessons/planning-history.md:79` | confirm Maryland Smart Growth program year (1997). |
+| `web/src/content/aicp/lessons/planning-theory.md:43` | Krumholz served as Cleveland planning director roughly 1969–1979, and the Cleveland Policy Planning Report is usually dated 1975; confirm if dates are added. |
+| `web/src/content/aicp/lessons/planning-theory.md:60` | confirm the conflict labels in Campbell's planner's triangle (property, resource, development) and the 1996 date. |
+| `web/src/content/aicp/lessons/project-and-contract-management.md:59` | the federal QBS requirement for A/E services comes from the Brooks Act (1972); confirm it applies to the planning services in question. |
+| `web/src/content/aicp/lessons/research-design-and-data.md:48` | confirm that the 65,000-population threshold for ACS 1-year estimates is current, and that the 3-year product remains discontinued. |
+| `web/src/content/aicp/lessons/subdivision-and-development-review.md:53` | vesting rules vary widely by state; if specific states are named, confirm them. |
+| `web/src/content/aicp/lessons/transportation-planning.md:26` | confirm current federal rules on MTP update cycles (commonly every 4 years in nonattainment/maintenance areas and 5 in attainment areas) and the minimum TIP period (4 years). |
+| `web/src/content/aicp/lessons/transportation-planning.md:54` | California's SB 743 (2013) directed the shift from LOS to VMT for CEQA transportation analysis; confirm details if expanded. |
+| `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:67` | this is Section 4(f) of the Department of Transportation Act of 1966; confirm wording before naming it. |
+| `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:86` | confirm the credit remains 20% and the current rules on claiming it (spread over five years since 2017), and that the 10% non-historic credit remains repealed. |
+| `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:41` | identify which states currently follow Fasano if a list is added. |
+| `web/src/content/pages/exam-info.md:1` | confirm this URL is still APA's main AICP certification page. |
+| `web/src/content/pages/exam-info.md:21` | domain names and weights are taken from uploads/aicp-diagnostic-exam-spec.md in this repo; confirm them against APA's current published content outline. |
+| `web/src/content/pages/exam-info.md:28` | confirm the current question count and time limit with APA. |
+| `web/src/content/pages/exam-info.md:29` | confirm that APA still includes unscored pretest items, and how many. |
+| `web/src/content/pages/exam-info.md:30` | confirm the current vendor (historically Prometric) and whether remote proctoring is still offered. |
+| `web/src/content/pages/exam-info.md:31` | confirm APA's current scoring policy on unanswered questions. |
+| `web/src/content/pages/exam-info.md:35` | confirm the current score scale and passing score with APA. |
+| `web/src/content/pages/exam-info.md:53` | the education/experience table reflects APA's historical requirements; confirm every row against APA's current eligibility rules before publishing. |
+| `web/src/content/pages/exam-info.md:55` | confirm APA's current definition of qualifying professional planning experience. |
+| `web/src/content/pages/exam-info.md:57` | confirm the current name, rules, and availability of APA's candidate program for students and recent graduates. |
+| `web/src/content/pages/exam-info.md:59` | confirm whether APA membership is required to apply for, take, or hold AICP certification. |
+| `web/src/content/pages/exam-info.md:66` | confirm whether the application still requires written responses about experience (historically called "criteria" essays). |
+| `web/src/content/pages/exam-info.md:69` | confirm APA's accommodation request process and deadline. |
+| `web/src/content/pages/exam-info.md:70` | confirm current testing window months. |
+| `web/src/content/pages/exam-info.md:80` | confirm calculator and scratch-paper policies with APA's current candidate guide. |
+| `web/src/content/pages/exam-info.md:84` | confirm the current CM credit total, reporting period, and required topic credits. |
+| `web/src/content/pages/exam-info.md:88` | confirm URL. |
+| `web/src/content/pages/exam-info.md:89` | confirm URL. |
+| `web/src/content/pages/exam-info.md:90` | confirm URL. |
+| `web/src/pages/aicp/AicpHome.jsx:138` | domain weights come from uploads/aicp-diagnostic-exam-spec.md; confirm against APA's current published content outline. |
+Other placeholders, which aren't VERIFY flags:
+- `web/src/content/pages/about.md` has `<!-- PLACEHOLDER -->` for the founder bio.
+- `web/src/content/site.js` has `CONTACT_EMAIL = null`.
+- `web/src/pages/Pricing.jsx` has `PLACEHOLDER PRICE` comments.
+- `web/src/hooks/useMembership.js`, `web/src/components/MembershipGate.jsx`, and `web/src/pages/exam/useExamSession.js` have `MEMBERSHIP PLACEHOLDER` comments.
+- `web/src/pages/SignIn.jsx` has an `ACCOUNT PLACEHOLDER` comment.
+
+## Not finished, and suggested next steps
+
+1. **Fact-check the VERIFY list,** starting with `web/src/content/pages/exam-info.md` (eligibility, format, scoring, windows) and the three ethics lessons against the current AICP Code. Remove each flag once it's confirmed.
+2. **Have a subject-matter expert review the lessons.** I wrote them carefully, but a planner with AICP credentials should review the law lessons in particular (lessons 8, 9, and 20), since case holdings are summarized briefly.
+3. **Membership and payments:** replace the check in `web/src/hooks/useMembership.js` and the guard in `useExamSession.js` with a real membership tool, and move paid lesson bodies behind server-side delivery if the content must be protected.
+4. **Set real prices** (`PRICE` in `web/src/data/domains.js`), the contact email, and the founder bio.
+5. **Improve practice coverage:** some lessons have small practice sets (Implementation math has 7 questions; Research design has only 2 free ones). Consider writing new questions targeted to specific lessons, and tagging exam questions with lesson slugs directly.
+6. **SEO:** the app sets per-page titles, but meta descriptions and canonical URLs are still global (`web/index.html`). Pre-rendering or per-route meta would help lessons get indexed.
+7. **Consulting homepage:** when it's ready, add it at `/` in `web/src/App.jsx` (replacing the redirect), add a firm group to `FOOTER_NAV`, and consider a firm-level header nav alongside `AICP_NAV`.
+8. **Nice to have:** a collapsible "In this lesson" menu on phones (it currently sits above the lesson body); lesson completion tracking on the Progress page; and a print stylesheet for lessons.
+9. **Lint warnings that were already there** (unused `catch (e)` parameters, a React Compiler memoization note in the diagnostic hook) are untouched.

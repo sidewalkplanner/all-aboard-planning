@@ -7,12 +7,14 @@ import { barStyle, cardStyle } from '../lib/style';
 import { GREEN, RUST, TEAL_TXT, LIGHT } from '../lib/theme';
 import { fmtHoursMinutesFromSeconds, fmtShortDate } from '../lib/format';
 import { P } from '../lib/paths';
+import usePageTitle from '../hooks/usePageTitle';
 
 const statCard = cardStyle(LIGHT, { radius: 14, padding: 22 });
 const statNum = { fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 34, fontWeight: 700 };
 const statLabel = { fontSize: 13.5, color: '#646A85', marginTop: 3 };
 
 export default function Progress() {
+  usePageTitle('Your progress');
   const navigate = useNavigate();
   const summary = useMemo(() => summarizeHistory(getHistory()), []);
   const examsTotal = useMemo(() => ASSESSMENTS.filter((a) => !a.soon).length, []);
