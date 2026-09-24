@@ -1,6 +1,7 @@
 // Exam 1 items that appear in the free warm-up quizzes (Quiz A and Quiz B).
-// Free lessons serve only these items from their practice sets without Full
-// Access, so no paid exam question is given away.
+// When paid plans are enabled (lib/access.js), free lessons serve only these
+// items from their practice sets without Full Access, so no paid exam
+// question is given away.
 //
 // This list is derived from the seeded sampler in lib/shuffle.js;
 // `npm run check` recomputes it and fails if it has drifted (for example
@@ -20,12 +21,14 @@ const refOrder = (a, b) => {
   return ba === bb ? Number(na) - Number(nb) : ba.localeCompare(bb);
 };
 
-// The refs a visitor may open for a lesson: all of them with Full Access; on a
-// free lesson without it, only the free-quiz items; otherwise none. Sorted by
-// bank and item number so scenario clusters stay together.
-export const accessibleRefs = (lesson, unlocked) => {
+// The refs a visitor may open for a lesson, given { signedIn, fullAccess }
+// from hooks/useAccess.js: all of them with full access; signed in without
+// full access (only possible once paid plans exist), a free lesson's
+// free-quiz items; signed out, none. Sorted by bank and item number so
+// scenario clusters stay together.
+export const accessibleRefs = (lesson, { signedIn, fullAccess }) => {
   const refs = (lesson.practice || []).slice().sort(refOrder);
-  if (unlocked) return refs;
-  if (lesson.access === 'free') return refs.filter((r) => FREE_QUIZ_REFS.has(r));
+  if (fullAccess) return refs;
+  if (signedIn && lesson.access === 'free') return refs.filter((r) => FREE_QUIZ_REFS.has(r));
   return [];
 };

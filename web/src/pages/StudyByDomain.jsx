@@ -6,7 +6,7 @@ import { BANK as EXAM1_BANK } from '../data/exam1-questions';
 import { getHistory, summarizeHistory } from '../lib/history';
 import { barStyle, cardStyle } from '../lib/style';
 import { GREEN, RUST, LIGHT } from '../lib/theme';
-import { useUnlock } from '../context/UnlockContext';
+import useAccess from '../hooks/useAccess';
 import { P } from '../lib/paths';
 import usePageTitle from '../hooks/usePageTitle';
 
@@ -15,16 +15,13 @@ const countInBank = (name) => EXAM1_BANK.filter((q) => q.domain === name).length
 export default function StudyByDomain() {
   usePageTitle('Domain drills');
   const navigate = useNavigate();
-  const { unlocked } = useUnlock();
+  const access = useAccess();
   const domainTotals = useMemo(() => summarizeHistory(getHistory()).domainTotals, []);
 
-  const studyNote = unlocked
-    ? 'Untimed drills pulled from the same bank. No clock, no score on the line — every answer is explained as soon as you pick it.'
-    : 'Untimed drills pulled from the same bank, up to 25 questions per domain, every answer explained as you pick it. Domain drills are part of Full Access.';
+  const studyNote = 'Untimed drills pulled from the practice exam banks, up to 25 questions per domain. No clock, no score on the line: every answer is explained as soon as you pick it.';
 
   const startDrill = (name) => {
-    if (!unlocked) { navigate(P.pricing); return; }
-    navigate(P.runDrill(name));
+    navigate(access.canDrill ? P.runDrill(name) : access.blockedTarget(P.runDrill(name)));
   };
 
   return (
@@ -45,7 +42,7 @@ export default function StudyByDomain() {
             >
               <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 21, fontWeight: 700, lineHeight: 1.25, color: '#1A1C2B' }}>{d.name}</div>
               <div style={{ fontSize: 14.5, color: '#646A85', lineHeight: 1.55 }}>{d.blurb}</div>
-              <div style={{ fontSize: 13.5, fontWeight: 600, color: '#14508C' }}>{unlocked ? 'Start drill' : 'Unlock to drill'}</div>
+              <div style={{ fontSize: 13.5, fontWeight: 600, color: '#14508C' }}>{access.canDrill ? 'Start drill' : 'Unlock to drill'}</div>
               <div style={{ marginTop: 'auto', width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: '#646A85', marginBottom: 6 }}>
                   <span>{countInBank(d.name)} questions</span><span>{pct === null ? 'No attempts yet' : pct + '% correct'}</span>

@@ -1,4 +1,5 @@
 import { P } from './paths.js';
+import { PAID_TIER_ENABLED } from './access.js';
 
 // Primary navigation for the AICP prep section (header).
 export const AICP_NAV = [
@@ -8,7 +9,8 @@ export const AICP_NAV = [
   { label: 'Diagnostic', to: P.diagnostic },
   { label: 'Progress', to: P.progress },
   { label: 'Exam info', to: P.examInfo, match: [P.examInfo, P.faq] },
-  { label: 'Pricing', to: P.pricing },
+  // Pricing returns to the header when paid plans launch (lib/access.js).
+  ...(PAID_TIER_ENABLED ? [{ label: 'Pricing', to: P.pricing }] : []),
 ];
 
 // Footer sitemap, grouped. The last group is firm-level; when the consulting
@@ -22,7 +24,7 @@ export const FOOTER_NAV = [
       { label: 'Study plans', to: P.studyPlan },
       { label: 'Exam info', to: P.examInfo },
       { label: 'FAQ', to: P.faq },
-      { label: 'Pricing', to: P.pricing },
+      { label: PAID_TIER_ENABLED ? 'Pricing' : 'Pricing (it\u2019s free)', to: P.pricing },
     ],
   },
   {

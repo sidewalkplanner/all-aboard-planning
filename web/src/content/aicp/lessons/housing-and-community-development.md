@@ -44,6 +44,10 @@ A **housing needs assessment** is the analytical foundation of a housing element
 - **Housing First**: an approach to homelessness that provides **permanent housing without preconditions** (such as sobriety or treatment compliance), then offers voluntary support services.
 - Local tools include **housing trust funds**, **community land trusts** (which keep land in nonprofit ownership so homes stay affordable over resales), and inclusionary zoning (see [Growth management and innovative land use tools](/aicp/lessons/growth-management-and-innovative-tools)).
 
+:::video How the Low-Income Housing Tax Credit finances a building | about 3 min
+Follows the credits from the federal government to a state agency, a developer, and an investor, and shows how the investor's equity keeps rents affordable.
+:::
+
 ### Fair housing
 
 The **Fair Housing Act** (1968, amended in 1988) prohibits discrimination in housing because of **race, color, religion, national origin, sex, disability, and familial status**. For planners, key points:

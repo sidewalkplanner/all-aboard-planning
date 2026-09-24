@@ -84,6 +84,10 @@ A **higher discount rate** lowers the present value of future benefits and costs
 
 The **benefit-cost ratio** is the present value of benefits divided by the present value of costs. A ratio above 1.0 means benefits exceed costs. A ratio of **0.8** means the project returns only 80 cents of benefit for each dollar of cost.
 
+:::video Present value and benefit-cost ratios | about 3 min
+Discounts a future benefit to today's dollars, shows how a higher discount rate changes the answer, and reads a benefit-cost ratio above and below 1.0.
+:::
+
 ## Key terms
 
 - **Mean**: The arithmetic average of a set of values.

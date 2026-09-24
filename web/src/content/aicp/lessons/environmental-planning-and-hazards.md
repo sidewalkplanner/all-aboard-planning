@@ -18,6 +18,10 @@ The **National Environmental Policy Act** requires federal agencies to consider 
 
 NEPA is **procedural**: it requires study and disclosure, not the least harmful choice. Many states have their own environmental review laws, some of which reach local decisions. <!-- VERIFY: federal NEPA implementing procedures changed substantially in 2025 (CEQ regulations rescinded, agency procedures revised); confirm the current process terms before publishing detailed steps. -->
 
+:::video The NEPA process: categorical exclusion, EA, or EIS? | about 3 min
+A decision-tree walkthrough of which level of review a project needs and what each ends in (a FONSI or a record of decision).
+:::
+
 ### Brownfields
 
 A **brownfield** is a property whose expansion, redevelopment, or reuse is **complicated by the presence or potential presence of contamination**: old gas stations, dry cleaners, rail yards, factories. Redeveloping them reuses infrastructure and cleans up neighborhoods, but buyers fear liability.
@@ -40,6 +44,10 @@ A **brownfield** is a property whose expansion, redevelopment, or reuse is **com
 - Communities that exceed the minimums (for example, with "freeboard" above base flood elevation) can earn insurance discounts for residents through FEMA's Community Rating System.
 
 The most effective long-term policy for reducing repetitive flood losses is **directing new development away from the floodplain** in the first place.
+
+:::video What a "100-year flood" really means | about 2 min
+Explains the 1% annual chance and why it adds up to roughly a one-in-four chance over a 30-year mortgage.
+:::
 
 ### Hazard mitigation planning
 

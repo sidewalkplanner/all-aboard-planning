@@ -3,11 +3,11 @@ import PageHeader from '../../components/PageHeader';
 import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
 import { DOMAINS, LESSONS, TOTAL_MINUTES } from '../../content/aicp/curriculum';
+import { PAID_TIER_ENABLED } from '../../lib/access';
 
 export default function CourseOverview() {
   usePageTitle('Course overview');
   const hours = Math.round(TOTAL_MINUTES / 60);
-  const freeCount = LESSONS.filter((l) => l.access === 'free').length;
 
   return (
     <>
@@ -22,7 +22,7 @@ export default function CourseOverview() {
           <Link className="btn btn-secondary" to={P.diagnostic}>Find your weak spots first</Link>
         </div>
         <p className="small" style={{ margin: '16px 0 0' }}>
-          About {hours} hours of reading in total. The first lesson in each domain is free ({freeCount} lessons); the rest are part of Full Access.
+          About {hours} hours of reading in total. Every lesson is free with an account{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.
         </p>
       </PageHeader>
 
@@ -63,7 +63,9 @@ export default function CourseOverview() {
                       </span>
                       <span className="lesson-meta" style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
                         <span className="small" style={{ whiteSpace: 'nowrap' }}>{l.minutes} min</span>
-                        <span className={`chip ${l.access === 'free' ? 'chip-ok' : 'chip-neutral'}`}>{l.access === 'free' ? 'Free' : 'Full Access'}</span>
+                        {PAID_TIER_ENABLED && (
+                          <span className={`chip ${l.access === 'free' ? 'chip-ok' : 'chip-neutral'}`}>{l.access === 'free' ? 'Free' : 'Full Access'}</span>
+                        )}
                       </span>
                     </Link>
                   </li>

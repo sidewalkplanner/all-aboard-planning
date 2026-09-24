@@ -8,7 +8,8 @@
 //  - every study plan covers every lesson exactly once, with valid links;
 //  - every internal link in lessons, content pages, study plans, and
 //    navigation points to a real route, lesson, and (if given) anchor;
-//  - every <!-- VERIFY: ... --> flag in content has a reason.
+//  - every <!-- VERIFY: ... --> flag in content has a reason;
+//  - every :::video slot has a title and length (and an https URL if any).
 //
 // Needs no dependencies beyond the site's own (marked, via markdown.mjs).
 import { readFileSync, readdirSync } from 'node:fs';
@@ -71,6 +72,11 @@ for (const l of LESSONS) {
   }
   if (ids[0] !== 'learning-objectives') err(`Lesson ${l.slug}: the first section must be Learning objectives`);
   if (ids[ids.length - 1] !== 'summary') err(`Lesson ${l.slug}: the last section must be Summary`);
+  for (const v of r.videos) {
+    if (!v.title || !v.length) err(`Lesson ${l.slug}: a :::video block needs "Title | length"`);
+    if (v.url && !/^https:\/\//.test(v.url)) err(`Lesson ${l.slug}: video URL must be https (${v.url})`);
+  }
+  if (/^:::video/m.test(md) && !r.videos.length) err(`Lesson ${l.slug}: malformed :::video block`);
   const words = md.replace(/<!--[\s\S]*?-->/g, '').split(/\s+/).length;
   if (words < 700) warn(`Lesson ${l.slug}: only ${words} words`);
 }
@@ -178,7 +184,9 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
 
 // ------------------------------------------------------------------ report
 const totalRefs = LESSONS.reduce((s, l) => s + (l.practice || []).length, 0);
-console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} practice refs, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags.`);
+const videos = [...rendered.values()].flatMap((r) => r.videos);
+const placeholders = videos.filter((v) => !v.url).length;
+console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} practice refs, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders).`);
 warnings.forEach((w) => console.log(`  warning: ${w}`));
 if (errors.length) {
   errors.forEach((e) => console.error(`  ERROR: ${e}`));

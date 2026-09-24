@@ -22,6 +22,10 @@ Plans move from the general to the specific. The terms vary a little from plan t
 
 A quick test: **a goal is broad, an objective is measurable, and a policy guides decisions.** "Improve walkability" is a goal. "Increase the share of residents living within a ten-minute walk of a park from 60% to 80% by 2035" is an objective.
 
+:::video From vision to action: the plan hierarchy | about 2 min
+Builds one example from a vision statement down to an assigned action, so the difference between a goal, an objective, and a policy is easy to see.
+:::
+
 ### Writing good objectives
 
 Objectives are how you'll know whether the plan is working. Many planners use the **SMART** test: **S**pecific, **M**easurable, **A**chievable, **R**elevant, and **T**ime-bound. A good objective:

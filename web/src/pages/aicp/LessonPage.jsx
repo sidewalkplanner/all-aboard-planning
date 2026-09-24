@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumb';
 import LessonBody from '../../components/LessonBody';
-import MembershipGate from '../../components/MembershipGate';
-import useMembership from '../../hooks/useMembership';
+import AccessGate from '../../components/AccessGate';
+import useAccess from '../../hooks/useAccess';
 import NotFound from '../NotFound';
 import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
 import { LESSONS, domainById, lessonBySlug, neighbors } from '../../content/aicp/curriculum';
-import { FREE_QUIZ_REFS } from '../../content/aicp/freeQuizRefs';
+import { accessibleRefs } from '../../content/aicp/freeQuizRefs';
 
 // Lesson bodies are code-split: each Markdown file becomes its own chunk,
 // fetched only when that lesson is opened.
 const BODIES = import.meta.glob('../../content/aicp/lessons/*.md');
 const bodyLoader = (slug) => BODIES[`../../content/aicp/lessons/${slug}.md`];
 
-// For locked lessons, show everything up to the second <h2> (the learning
-// objectives) as a preview.
+// For locked lessons (signed out, or without Full Access once paid plans
+// exist), show everything up to the second <h2> (the learning objectives).
 const previewHtml = (html) => {
   const first = html.indexOf('<h2');
   const second = first >= 0 ? html.indexOf('<h2', first + 3) : -1;
@@ -26,11 +26,14 @@ const previewHtml = (html) => {
 const BANK_LABEL = { e1: 'Practice Exam 1', e2: 'Practice Exam 2', e3: 'Practice Exam 3' };
 
 function PracticeBlock({ lesson, domain }) {
-  const { isMember } = useMembership();
+  const access = useAccess();
+  const { pathname } = useLocation();
   const refs = lesson.practice || [];
-  const freeCount = lesson.access === 'free' ? refs.filter((r) => FREE_QUIZ_REFS.has(r)).length : 0;
+  const open = accessibleRefs(lesson, access).length;
   const banks = [...new Set(refs.map((r) => r.split(':')[0]))].sort().map((b) => BANK_LABEL[b]);
   const sources = banks.length > 1 ? `${banks.slice(0, -1).join(', ')} and ${banks[banks.length - 1]}` : banks[0];
+  const setPath = P.runSet(lesson.slug);
+  const drillPath = P.runDrill(domain.bankName);
 
   return (
     <section aria-labelledby="practice-heading" className="card" style={{ marginTop: 40 }}>
@@ -43,28 +46,32 @@ function PracticeBlock({ lesson, domain }) {
         </p>
       )}
       <div className="row-wrap">
-        {refs.length > 0 && isMember && (
-          <Link className="btn btn-primary" to={P.runSet(lesson.slug)}>Start the practice set ({refs.length})</Link>
+        {refs.length > 0 && open > 0 && (
+          <Link className="btn btn-primary" to={setPath}>
+            {open === refs.length ? `Start the practice set (${refs.length})` : `Try ${open} free ${open === 1 ? 'question' : 'questions'}`}
+          </Link>
         )}
-        {refs.length > 0 && !isMember && freeCount > 0 && (
-          <Link className="btn btn-primary" to={P.runSet(lesson.slug)}>Try {freeCount} free {freeCount === 1 ? 'question' : 'questions'}</Link>
+        {refs.length > 0 && open < refs.length && (
+          <Link className={`btn ${open ? 'btn-secondary' : 'btn-primary'}`} to={access.blockedTarget(setPath)}>
+            {access.signedIn ? `Unlock all ${refs.length} questions` : `Sign in to practice (${refs.length} questions)`}
+          </Link>
         )}
-        {refs.length > 0 && !isMember && (
-          <Link className="btn btn-secondary" to={P.pricing}>{freeCount > 0 ? `Unlock all ${refs.length}` : `Unlock the practice set (${refs.length})`}</Link>
-        )}
-        <Link className="btn btn-secondary" to={isMember ? P.runDrill(domain.bankName) : P.pricing}>
-          {isMember ? `Drill ${domain.short}` : `${domain.short} drill (Full Access)`}
+        <Link className="btn btn-secondary" to={access.canDrill ? drillPath : access.blockedTarget(drillPath)}>
+          Drill {domain.short}
         </Link>
       </div>
-      {!isMember && freeCount > 0 && (
-        <p className="small" style={{ margin: '12px 0 0' }}>
-          The free questions also appear in the free warm-up quizzes. Full Access opens the rest of the set.
+      {!access.signedIn && (
+        <p className="small" style={{ margin: '14px 0 0' }}>
+          Practice sets, drills, and exams are free with an account, so your scores are saved.{' '}
+          <Link to={P.signinNext(pathname, 'create')} className="link-underline">Create one</Link>, or try{' '}
+          <Link to={P.runExam('q1', 'practice')} className="link-underline">Warm-up Quiz A</Link> first, no account needed.
         </p>
       )}
-      <p className="small" style={{ margin: '14px 0 0' }}>
-        Also free: the <Link to={P.exams} className="link-underline">warm-up quizzes</Link> and
-        the <Link to={P.diagnostic} className="link-underline">diagnostic</Link>, which shows where to focus next.
-      </p>
+      {access.signedIn && (
+        <p className="small" style={{ margin: '14px 0 0' }}>
+          Not sure where to focus? The <Link to={P.diagnostic} className="link-underline">diagnostic</Link> ranks the nine domains by how many points each is costing you.
+        </p>
+      )}
     </section>
   );
 }
@@ -102,7 +109,7 @@ function Pager({ slug }) {
 export default function LessonPage() {
   const { slug } = useParams();
   const lesson = lessonBySlug(slug);
-  const { isMember } = useMembership();
+  const access = useAccess();
   const [loaded, setLoaded] = useState({ slug: null, body: null });
   const body = lesson && loaded.slug === lesson.slug ? loaded.body : null;
   usePageTitle(lesson ? lesson.title : 'Lesson not found');
@@ -116,7 +123,7 @@ export default function LessonPage() {
 
   if (!lesson) return <NotFound />;
   const domain = domainById(lesson.domainId);
-  const locked = lesson.access === 'paid' && !isMember;
+  const locked = !access.canReadLesson(lesson);
 
   return (
     <article>
@@ -129,7 +136,9 @@ export default function LessonPage() {
         ]} />
         <div className="row-wrap" style={{ gap: 8 }}>
           <Link to={P.domain(domain.id)} className="chip chip-brand">Domain {domain.code} &middot; {domain.name} &middot; {domain.weight}% of the exam</Link>
-          <span className={`chip ${lesson.access === 'free' ? 'chip-ok' : 'chip-neutral'}`}>{lesson.access === 'free' ? 'Free lesson' : 'Full Access'}</span>
+          {access.paidTier && (
+            <span className={`chip ${lesson.access === 'free' ? 'chip-ok' : 'chip-neutral'}`}>{lesson.access === 'free' ? 'Free lesson' : 'Full Access'}</span>
+          )}
         </div>
         <h1 className="h1" style={{ marginTop: 16, maxWidth: '24ch' }}>{lesson.title}</h1>
         <p className="lead">{lesson.description}</p>
@@ -146,7 +155,7 @@ export default function LessonPage() {
             {body && (locked ? (
               <>
                 <LessonBody html={previewHtml(body.html)} />
-                <MembershipGate what="the rest of this lesson" />
+                <AccessGate what="the rest of this lesson" />
               </>
             ) : (
               <LessonBody html={body.html} />
@@ -163,7 +172,7 @@ export default function LessonPage() {
                   {body.headings.map((h, i) => (
                     <li key={h.id}>
                       {locked && i > 0
-                        ? <span style={{ display: 'block', padding: '6px 10px', color: 'var(--muted)' }}>{h.text} <span className="visually-hidden">(Full Access)</span></span>
+                        ? <span style={{ display: 'block', padding: '6px 10px', color: 'var(--muted)' }}>{h.text} <span className="visually-hidden">(sign in to read)</span></span>
                         : <a href={`#${h.id}`}>{h.text}</a>}
                     </li>
                   ))}

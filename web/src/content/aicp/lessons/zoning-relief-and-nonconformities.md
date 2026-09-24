@@ -27,6 +27,10 @@ A **variance** is permission to depart from the ordinance's literal terms becaus
 4. The variance **won't alter the essential character** of the area or harm neighbors or the public.
 5. It's the **minimum variance** necessary to relieve the hardship.
 
+:::video Area versus use variances: the hardship test in practice | about 3 min
+Applies the typical variance findings to two contrasting requests (an oddly shaped lot and a request for more profit) to show what counts as a hardship and what doesn't.
+:::
+
 ### Rezonings: legislative or quasi-judicial?
 
 In most states, a rezoning is a **legislative** act. Courts defer to it heavily, presuming validity and upholding it if the question is "fairly debatable."

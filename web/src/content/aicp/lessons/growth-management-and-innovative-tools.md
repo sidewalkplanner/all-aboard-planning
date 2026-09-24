@@ -62,6 +62,10 @@ A workable TDR program needs, at a minimum, **designated sending and receiving a
 
 **Purchase of development rights (PDR)** uses **public (or nonprofit) funds** to buy development rights directly, typically as a **conservation easement**. It's common for protecting farmland at the urban fringe. Unlike TDR, PDR doesn't depend on a private market for credits, but it does require a funding source.
 
+:::video How a TDR program moves development | about 3 min
+Follows one development right from a farm in a sending area to a building in a receiving area, and explains why programs fail without real demand for credits.
+:::
+
 ### Growth management
 
 **Growth management** coordinates the **location, timing, and rate** of growth with infrastructure and resources.

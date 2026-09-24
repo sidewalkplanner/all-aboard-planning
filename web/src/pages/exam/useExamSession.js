@@ -1,17 +1,18 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { ASSESSMENTS, DOMAINS } from '../../data/domains';
 import { BANK as EXAM1_BANK } from '../../data/exam1-questions';
 import { BANK as EXAM2_BANK } from '../../data/exam2-questions';
 import { BANK as EXAM3_BANK } from '../../data/exam3-questions';
 import { sample, shuffle } from '../../lib/shuffle';
-import { useUnlock } from '../../context/UnlockContext';
+import useAccess from '../../hooks/useAccess';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { fmtHoursMinutes, parseExhibit } from '../../lib/format';
 import { recordAttempt } from '../../lib/history';
 import { P } from '../../lib/paths';
 import { lessonBySlug, DOMAINS as CURRICULUM_DOMAINS } from '../../content/aicp/curriculum';
 import { accessibleRefs } from '../../content/aicp/freeQuizRefs';
+import { scopedKey } from '../../lib/userStorage';
 
 const DRILLPOOL = EXAM1_BANK.concat(EXAM2_BANK, EXAM3_BANK);
 const BANKS = { e1: EXAM1_BANK, e2: EXAM2_BANK, e3: EXAM3_BANK };
@@ -24,7 +25,7 @@ const ATTEMPTS_KEY = 'aap-exam-attempts';
 
 const loadAttempts = () => {
   try {
-    const raw = window.localStorage.getItem(ATTEMPTS_KEY);
+    const raw = window.localStorage.getItem(scopedKey(ATTEMPTS_KEY));
     return raw ? JSON.parse(raw) : {};
   } catch (e) {
     return {};
@@ -35,7 +36,7 @@ const saveAttempt = (sessionKey, patch) => {
   try {
     const all = loadAttempts();
     all[sessionKey] = { ...patch, savedAt: Date.now() };
-    window.localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(all));
+    window.localStorage.setItem(scopedKey(ATTEMPTS_KEY), JSON.stringify(all));
   } catch (e) { /* ignore */ }
 };
 
@@ -43,14 +44,15 @@ const clearAttempt = (sessionKey) => {
   try {
     const all = loadAttempts();
     delete all[sessionKey];
-    window.localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(all));
+    window.localStorage.setItem(scopedKey(ATTEMPTS_KEY), JSON.stringify(all));
   } catch (e) { /* ignore */ }
 };
 
 export function useExamSession() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const { unlocked } = useUnlock();
+  const location = useLocation();
+  const access = useAccess();
   const { dark, toggleDark } = useDarkMode();
 
   const aid = params.get('aid') || 'q1';
@@ -61,8 +63,8 @@ export function useExamSession() {
     const slug = params.get('set');
     return slug ? lessonBySlug(slug) : null;
   }, [params]);
-  const setRefs = useMemo(() => (setLesson ? accessibleRefs(setLesson, unlocked) : []), [setLesson, unlocked]);
-  const sessionKey = setLesson ? `set:${setLesson.slug}|${unlocked ? 'full' : 'free'}` : `${aid}|${mode}|${drill}`;
+  const setRefs = useMemo(() => (setLesson ? accessibleRefs(setLesson, access) : []), [setLesson, access.signedIn, access.fullAccess]); // eslint-disable-line react-hooks/exhaustive-deps
+  const sessionKey = setLesson ? `set:${setLesson.slug}|${access.fullAccess ? 'full' : 'free'}` : `${aid}|${mode}|${drill}`;
 
   const active = useMemo(() => ASSESSMENTS.find((x) => x.id === aid) || ASSESSMENTS[0], [aid]);
 
@@ -80,18 +82,17 @@ export function useExamSession() {
   const [seconds, setSeconds] = useState(active.mins * 60);
   const [startedAt, setStartedAt] = useState(() => Date.now());
 
-  // Guard: paid content requires unlock. Reset (or restore a saved attempt
+  // Guard: gated content requires sign-in (see useAccess). Reset (or restore a saved attempt
   // for) session state whenever the assessment/mode/drill identity actually
   // changes (not on every render), so switching between exams — or a
   // reload — never silently drops progress the way it used to.
   const lastKey = useRef(null);
   useEffect(() => {
-    // MEMBERSHIP PLACEHOLDER: `unlocked` is the session-only demo toggle.
-    // Swap in the real membership check here when one exists.
-    if (setLesson) {
-      if (!setRefs.length) { navigate(P.pricing, { replace: true }); return; }
-    } else if ((active.tier === 'paid' && !active.soon && !unlocked) || (drill && !unlocked)) {
-      navigate(P.pricing, { replace: true });
+    // Access rules live in hooks/useAccess.js (sign-in today; sign-in plus
+    // membership once paid plans are enabled in lib/access.js).
+    const allowed = setLesson ? setRefs.length > 0 : drill ? access.canDrill : access.canOpenAssessment(active);
+    if (!allowed) {
+      navigate(access.blockedTarget(location.pathname + location.search), { replace: true });
       return;
     }
     if (lastKey.current !== sessionKey) {
@@ -208,10 +209,10 @@ export function useExamSession() {
   const weakDomain = CURRICULUM_DOMAINS.find((d) => d.short === weakestDomain);
   const weakestLink = weakDomain ? P.domain(weakDomain.id) : null;
   const backTo = setLesson ? { to: P.lesson(setLesson.slug), label: 'Back to the lesson' } : { to: P.exams, label: 'Back to exams' };
-  const partialSet = !!setLesson && !unlocked && setRefs.length < (setLesson.practice || []).length;
+  const partialSet = !!setLesson && !access.fullAccess && setRefs.length < (setLesson.practice || []).length;
 
   return {
-    aid, mode, drill, setLesson, backTo, partialSet, weakestLink, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
+    aid, mode, drill, setLesson, backTo, partialSet, weakestLink, signedIn: access.signedIn, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
     seconds, totalSeconds, dark, toggleDark, view,
     answers, flags, checked, answeredCount, flagCount,
     pick, checkAnswer, toggleFlag, prev, next, goGrid, backToExam, submit, goAnswerReview, goTo,

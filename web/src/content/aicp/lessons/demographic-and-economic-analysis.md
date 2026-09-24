@@ -89,6 +89,10 @@ Location quotients assume that local consumption patterns and productivity match
 - Industry-mix share: 1,000 × (12% − 5%) = **70 jobs**
 - If the local industry actually grew by 150 jobs, the local share is 150 − 50 − 70 = 30 jobs, a sign of local competitive advantage.
 
+:::video Location quotients and shift-share, worked through | about 4 min
+Calculates a location quotient from a simple employment table, then splits one industry's growth into national, industry-mix, and local shares.
+:::
+
 ### Measuring segregation and inequality
 
 - The **index of dissimilarity** measures how evenly two groups are spread across the subareas (usually tracts) of a region. It runs from 0 (perfectly even) to 100 (completely separated). It can be read as the percentage of one group that would have to move to a different tract for the two groups to be evenly distributed.

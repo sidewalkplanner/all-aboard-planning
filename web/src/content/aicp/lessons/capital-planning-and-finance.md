@@ -50,6 +50,10 @@ A **bond rating** (from a credit rating agency) reflects the issuer's **creditwo
 
 Many states require a finding that the area is blighted or that development wouldn't occur "but for" the public investment. Critics note that TIF can divert revenue that schools and other bodies would otherwise receive, and that it can capture growth that would have happened anyway.
 
+:::video How tax increment financing works | about 3 min
+Animates a TIF district's frozen base and growing increment over time, and shows where the increment goes and why school districts often care.
+:::
+
 ### Special assessments and special districts
 
 - A **special assessment** charges properties that receive a **special benefit** from a public improvement, such as a new sidewalk, street lighting, or a sewer line. Assessments must be **proportional to the benefit** each property receives.

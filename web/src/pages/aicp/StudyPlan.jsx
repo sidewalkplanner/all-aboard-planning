@@ -4,6 +4,7 @@ import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
 import { lessonBySlug } from '../../content/aicp/curriculum';
 import { STUDY_PLANS } from '../../content/aicp/studyPlans';
+import { PAID_TIER_ENABLED } from '../../lib/access';
 
 function Plan({ plan }) {
   return (
@@ -33,7 +34,7 @@ function Plan({ plan }) {
                         return (
                           <li key={slug}>
                             <Link to={P.lesson(slug)}>{l.number}. {l.title}</Link>
-                            <span className="small"> &middot; {l.minutes} min{l.access === 'free' ? ' · free' : ''}</span>
+                            <span className="small"> &middot; {l.minutes} min{PAID_TIER_ENABLED && l.access === 'free' ? ' · free' : ''}</span>
                           </li>
                         );
                       })}

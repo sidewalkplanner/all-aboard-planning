@@ -39,6 +39,10 @@ Most regulatory takings claims are decided under a balancing test:
 
   The Court looked at the **parcel as a whole**, not just the airspace, and noted the owner could still earn a reasonable return, and could transfer development rights to nearby sites.
 
+:::video Penn Central's three factors, applied | about 3 min
+Takes one landmark-designation dispute through economic impact, investment-backed expectations, and the character of the government action, then shows why the whole parcel is the unit of analysis.
+:::
+
 ### Per se (categorical) takings
 
 In a few situations, a taking is automatic, with no balancing:
@@ -66,6 +70,10 @@ An **exaction** is a condition on a development approval that requires the devel
 - ***Sheetz v. County of El Dorado*** **(2024)** held that *legislatively* adopted fees, such as fees set by a general schedule, aren't exempt from the *Nollan*/*Dolan* tests simply because a legislature set them. The Court left open how the tests apply to fees assessed on a class of properties.
 
 Many state courts had long used a similar **rational nexus** test for impact fees. See [Capital planning and public finance](/aicp/lessons/capital-planning-and-finance).
+
+:::video Nollan and Dolan: the two-part test for exactions | about 4 min
+Walks a single dedication request through the essential nexus question and then rough proportionality, using a simple flowchart, and shows how *Koontz* (money demands and denials) and *Sheetz* (legislative fees) extend the test.
+:::
 
 ### Takings cases at a glance
 

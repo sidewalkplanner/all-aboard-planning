@@ -44,6 +44,10 @@ The International Association for Public Participation's **Spectrum of Public Pa
 
 No level is always "right." A water main repair may need only *inform*; a neighborhood plan may call for *collaborate*. The ethical failure is **promising one level and delivering a lower one**.
 
+:::video Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min
+Places common engagement techniques on both frameworks and shows how to spot tokenism in a process that looks participatory.
+:::
+
 ### Designing an engagement strategy
 
 A good strategy, often written as a **communications and engagement plan**, answers:

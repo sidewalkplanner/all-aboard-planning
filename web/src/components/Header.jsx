@@ -7,10 +7,12 @@ import { GREEN, themeTokens } from '../lib/theme';
 import { AICP_NAV, isActive } from '../lib/nav';
 import { P, isDarkCapableRoute } from '../lib/paths';
 import { useDarkMode } from '../context/DarkModeContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function Header() {
   const location = useLocation();
   const { dark } = useDarkMode();
+  const { user, signOut } = useAuth();
 
   // The mobile menu tracks the location it was opened on, so any navigation
   // (a link here, the back button, a link in the page) closes it.
@@ -48,18 +50,35 @@ export default function Header() {
     );
   });
 
-  const signIn = (mobile) => (
-    <Hoverable
-      as={Link}
-      to={P.signin}
-      style={mobile
-        ? { display: 'block', marginTop: 8, background: T.ink, color: T.bg, padding: '12px 18px', borderRadius: 9, fontSize: 15.5, fontWeight: 700, textAlign: 'center' }
-        : { marginLeft: 8, background: T.ink, color: T.bg, padding: '9px 18px', borderRadius: 9, fontSize: 14.5, fontWeight: 700, whiteSpace: 'nowrap' }}
-      hoverStyle={{ background: GREEN, color: '#FFFFFF' }}
-    >
-      Sign in
-    </Hoverable>
-  );
+  const accountBtn = (mobile) => {
+    const box = mobile
+      ? { display: 'block', width: '100%', marginTop: 8, padding: '12px 18px', borderRadius: 9, fontSize: 15.5, fontWeight: 700, textAlign: 'center' }
+      : { marginLeft: 8, padding: '9px 18px', borderRadius: 9, fontSize: 14.5, fontWeight: 700, whiteSpace: 'nowrap' };
+    if (!user) {
+      return (
+        <Hoverable as={Link} to={P.signin} style={{ ...box, background: T.ink, color: T.bg }} hoverStyle={{ background: GREEN, color: '#FFFFFF' }}>
+          Sign in
+        </Hoverable>
+      );
+    }
+    // ACCOUNT PLACEHOLDER: a real account menu (profile, settings) goes here.
+    return (
+      <span style={{ display: mobile ? 'block' : 'inline-flex', alignItems: 'center', gap: 8, marginLeft: mobile ? 0 : 8 }}>
+        <span style={{ display: mobile ? 'block' : 'inline', fontSize: 14, color: T.mute, padding: mobile ? '12px 10px 0' : 0, maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <span className="visually-hidden">Signed in as </span>{user.name}
+        </span>
+        <Hoverable
+          as="button"
+          type="button"
+          onClick={() => { setOpenAt(null); signOut(); }}
+          style={{ ...box, background: 'none', border: `1px solid ${T.line}`, color: T.ink, marginLeft: mobile ? 0 : 4 }}
+          hoverStyle={{ border: `1px solid ${T.ink}` }}
+        >
+          Sign out
+        </Hoverable>
+      </span>
+    );
+  };
 
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 20, background: headerBg, backdropFilter: 'blur(8px)', borderBottom: `1px solid ${T.line}` }}>
@@ -80,7 +99,7 @@ export default function Header() {
 
         <nav aria-label="AICP exam prep" className="header-nav-desktop" style={{ gap: 2, marginLeft: 'auto', alignItems: 'center' }}>
           {links(false)}
-          {signIn(false)}
+          {accountBtn(false)}
         </nav>
 
         <button
@@ -100,7 +119,7 @@ export default function Header() {
           {links(true)}
           <Hoverable as={Link} to={P.drills} style={{ ...navLinkStyle, display: 'block', padding: '12px 10px', fontSize: 16 }} hoverStyle={navLinkHover}>Domain drills</Hoverable>
           <Hoverable as={Link} to={P.faq} style={{ ...navLinkStyle, display: 'block', padding: '12px 10px', fontSize: 16 }} hoverStyle={navLinkHover}>FAQ</Hoverable>
-          {signIn(true)}
+          {accountBtn(true)}
         </nav>
       )}
     </header>

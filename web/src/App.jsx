@@ -6,6 +6,8 @@ import ErrorBoundary from './components/ErrorBoundary';
 import PageLoading from './components/PageLoading';
 import ScrollManager from './components/ScrollManager';
 import { UnlockProvider } from './context/UnlockContext';
+import { AuthProvider } from './context/AuthContext';
+import RequireSignIn from './components/RequireSignIn';
 import { DarkModeProvider } from './context/DarkModeContext';
 import { P } from './lib/paths';
 import AicpHome from './pages/aicp/AicpHome';
@@ -54,6 +56,7 @@ function LegacyRedirect({ to }) {
 export default function App() {
   return (
     <ErrorBoundary>
+      <AuthProvider>
       <UnlockProvider>
         <DarkModeProvider>
           <BrowserRouter basename={import.meta.env.BASE_URL}>
@@ -75,9 +78,9 @@ export default function App() {
                   <Route path={P.faq} element={<Faq />} />
                   <Route path={P.pricing} element={<Pricing />} />
                   <Route path={P.exams} element={<ExamsList />} />
-                  <Route path={P.drills} element={<StudyByDomain />} />
-                  <Route path={P.progress} element={<Progress />} />
-                  <Route path={P.diagnostic} element={<DiagnosticFlow />} />
+                  <Route path={P.drills} element={<RequireSignIn title="Domain drills" what="the domain drills"><StudyByDomain /></RequireSignIn>} />
+                  <Route path={P.progress} element={<RequireSignIn title="Your progress" what="your progress"><Progress /></RequireSignIn>} />
+                  <Route path={P.diagnostic} element={<RequireSignIn title="Diagnostic" what="the diagnostic"><DiagnosticFlow /></RequireSignIn>} />
                   <Route path={P.run} element={<ExamRunner />} />
                   <Route path={P.signin} element={<SignIn />} />
 
@@ -97,6 +100,7 @@ export default function App() {
           </BrowserRouter>
         </DarkModeProvider>
       </UnlockProvider>
+      </AuthProvider>
     </ErrorBoundary>
   );
 }

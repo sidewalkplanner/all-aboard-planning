@@ -10,8 +10,9 @@ Everything prep-related therefore lives under `/aicp/`; firm-level pages (`/abou
 `/contact`, and eventually a consulting homepage at `/`) live at the root.
 
 - Live URL: `https://sidewalkplanner.github.io/all-aboard-planning/`
-- The app is **frontend only**: no backend, no real accounts, no payments. "Full Access" is a
-  session-only demo toggle (`UnlockContext`). Attempt history lives in `localStorage`.
+- The app is **frontend only**: no backend, no payments. The course is **free**, but everything
+  except Warm-up Quiz A requires a (placeholder, browser-only) account so progress is tracked
+  per person. See "Access, accounts, and the future paid tier" below.
 
 ## Repository layout
 
@@ -28,8 +29,11 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     lib/paths.js            Route constants — always build links from these
     lib/nav.js              Header/footer navigation config
     lib/theme.js            JS copies of the colour tokens (used by inline-styled exam UI)
-    components/             Header, Footer, LessonBody, MembershipGate, ContentPage, ...
-    hooks/                  usePageTitle, useMembership (the one place to swap in real membership)
+    components/             Header, Footer, LessonBody, AccessGate, RequireSignIn, ContentPage, ...
+    hooks/                  usePageTitle, useAccess (who can open what), useMembership (future paid tier)
+    context/AuthContext.jsx Placeholder accounts (browser-only); swap for a real auth provider
+    lib/access.js           PAID_TIER_ENABLED switch + PUBLIC_ASSESSMENTS (open without an account)
+    lib/userStorage.js      Per-account localStorage keys (scopedKey)
     content/aicp/
       curriculum.js         Domains + ordered lesson metadata (the course's source of truth)
       lessons/*.md          One Markdown file per lesson body
@@ -123,14 +127,14 @@ Build on the existing look; don't introduce a new visual language.
      title: 'My new lesson',
      description: 'One sentence shown on the course overview and in search results.',
      minutes: 20,                        // estimated reading time
-     access: 'paid',                     // 'free' or 'paid' (paid = behind MembershipGate)
+     access: 'paid',                     // 'free' or 'paid'; only matters once PAID_TIER_ENABLED is on
      outline: ['5.1 Develop and interpret rules and regulations'], // outline sub-areas (optional)
      practice: ['e1:74', 'e2:91'],       // question refs: e1/e2/e3 = exam bank, number = item "n"
    }
    ```
-   `practice` refs must exist in `src/data/exam{1,2,3}-questions.js`. For `access: 'free'`
-   lessons, refs must be questions that already appear in the free warm-up quizzes (the checker
-   enforces this so paid items aren't given away).
+   `practice` refs must exist in `src/data/exam{1,2,3}-questions.js`. (If paid plans are
+   enabled later, signed-in non-members see only the refs on free lessons that also appear in
+   the warm-up quizzes, so paid items aren't given away.)
 3. **Create the body** at `web/src/content/aicp/lessons/my-new-lesson.md`. Don't repeat the
    title — the template renders the header, domain badge, practice block, and Previous/Next
    navigation. Use these `##` sections, in this order (the checker enforces them):
@@ -155,6 +159,16 @@ Build on the existing look; don't introduce a new visual language.
    anywhere after "Key concepts" and before "Summary". A short `>` note above
    "Learning objectives" is allowed (the ethics lessons use one). Tables, blockquotes, and `> **Exam tip:**` callouts are
    supported. Link to other lessons with `/aicp/lessons/<slug>`.
+
+   **Video slots.** Where a short video would help with a high-impact or visual topic, add:
+   ```markdown
+   :::video Nollan and Dolan: the two-part test for exactions | about 4 min
+   One or two sentences on what the video will cover.
+   :::
+   ```
+   It renders a "Video coming soon" placeholder. When the video exists, add its embed URL as a
+   third field (`Title | about 4 min | https://www.youtube-nocookie.com/embed/ID`) and it renders
+   the player instead. `npm run check` validates the blocks and counts remaining placeholders.
 4. **Flag uncertain facts** with `<!-- VERIFY: … -->` and add them to `REVIEW.md`.
 5. **Add it to the study plans** in `studyPlans.js` if it should be scheduled.
 6. Run `npm run check && npm run build` in `web/`.
@@ -163,18 +177,36 @@ Build on the existing look; don't introduce a new visual language.
 
 `/aicp/exam/run` takes one of:
 - `?aid=q1|q2|e1|e2|e3&mode=practice|timed`: quizzes and full exams (`ASSESSMENTS` in `data/domains.js`)
-- `?drill=<domain name>`: a 25-question untimed drill (Full Access)
-- `?set=<lesson slug>`: a lesson's practice set, untimed, with explanations. Free when the
-  lesson is free; otherwise Full Access.
+- `?drill=<domain name>`: a 25-question untimed drill (account required)
+- `?set=<lesson slug>`: a lesson's practice set, untimed, with explanations (account required)
+
+Only assessments in `PUBLIC_ASSESSMENTS` (Warm-up Quiz A) open without an account; anything
+else redirects to `/aicp/signin?next=...` and returns there after sign-in.
 
 Question sampling is deterministic (seeded) in `lib/shuffle.js`; changing seeds or bank order
 changes which items appear in Quiz A/B, which would invalidate free lessons' practice refs.
 Run `npm run check` after touching the banks or the sampler.
 
-## Membership placeholder
+## Access, accounts, and the future paid tier
 
-There is no login or payment system. Paid content is wrapped in `<MembershipGate>`
-(`src/components/MembershipGate.jsx`), which asks `src/hooks/useMembership.js`; that hook currently reads the demo `UnlockContext`. When a
-real membership tool is added, replace the check inside `useMembership` and
-`useExamSession`'s guard — nothing else should need to change. Note that gated lesson text is
-still shipped in the JS bundle; real protection needs server-side delivery.
+- **Who can open what** is decided in one hook, `src/hooks/useAccess.js`, from two settings in
+  `src/lib/access.js`: `PAID_TIER_ENABLED` (false today) and `PUBLIC_ASSESSMENTS` (`['q1']`).
+  Today: signed-out visitors get Warm-up Quiz A, all marketing pages, the course overview, the
+  study plans, and each lesson's learning objectives; everything else is free with an account.
+- **Gating UI:** `components/AccessGate.jsx` (inline "create a free account" box) and
+  `components/RequireSignIn.jsx` (route wrapper used for the diagnostic, drills, and progress).
+  Never check `user` directly in a page; ask `useAccess()`.
+- **Accounts are a placeholder** (`src/context/AuthContext.jsx`): accounts, SHA-256-hashed
+  passwords, and the session live in this browser's localStorage. It isn't real security and
+  doesn't sync across devices. To go live, replace the bodies of `signUp`, `signIn`, `signOut`
+  and the initial session read with a hosted provider (Supabase, Firebase, Auth0, Clerk...) and
+  move history to its database; keep the `{ user, signUp, signIn, signOut }` shape.
+- **Progress is per account:** history, saved exam attempts, and the saved diagnostic use
+  `scopedKey()` from `lib/userStorage.js`. Signed-out visitors use the unscoped keys; on sign-up,
+  guest history is adopted into the new account.
+- **Turning on paid plans later:** set `PAID_TIER_ENABLED = true`. Lessons/exams tagged `paid`
+  and domain drills then need Full Access from `hooks/useMembership.js` (currently the demo
+  `UnlockContext` toggle; replace it with the real membership check), the Pricing page switches
+  to the paid tiers (`PaidPricing` in `pages/Pricing.jsx`, placeholder prices), and the
+  Free/Full Access labels and header Pricing link reappear. Gated text still ships in the JS
+  bundle, so real protection needs server-side delivery.

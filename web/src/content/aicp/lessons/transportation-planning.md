@@ -48,6 +48,10 @@ The conventional regional travel model estimates future travel in four steps, **
 
 Many large MPOs now also use **activity-based models**, which simulate individuals' daily schedules and tours of activity rather than isolated trips.
 
+:::video The four-step travel demand model | about 4 min
+Animates trip generation, distribution, mode choice, and assignment for a small region, so the order of the steps sticks.
+:::
+
 ### Measuring performance: LOS and VMT
 
 - **Level of service (LOS)** grades traffic operations from **A** (free flow) to **F** (breakdown). At **signalized intersections**, LOS is conventionally measured by **average control delay per vehicle**. LOS measures driver delay. Using it as a development standard tends to penalize infill and favor road widening.

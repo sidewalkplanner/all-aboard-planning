@@ -87,16 +87,3 @@ export const QUESTIONS = [
 ];
 
 export const LETTERS = ['A', 'B', 'C', 'D'];
-
-export const QOTD = {
-  domain: 'Code of Ethics & Professional Conduct', difficulty: 'Medium',
-  text: 'A developer applies for a permit that fully complies with the zoning ordinance, but neighbors organize against it and the planning commission asks staff to recommend denial. What does the AICP Code of Ethics require of the planner?',
-  options: [
-    'Recommend denial, because the commission directs staff work',
-    'Provide an accurate, independent professional recommendation even if it is unpopular',
-    'Withhold a recommendation and let the commission decide without staff input',
-    'Recommend approval only if the neighbors withdraw their opposition'
-  ],
-  correct: 1,
-  explanation: 'The Code obligates planners to provide full, clear, and accurate information and to render thorough independent professional advice. Political pressure from a commission or the public does not relieve the planner of that duty, though the planner must still serve the decision-making body in good faith.'
-};

@@ -23,6 +23,9 @@ export const P = {
   drills: `${AICP}/drills`,
   progress: `${AICP}/progress`,
   signin: `${AICP}/signin`,
+  // Sign-in (or account creation) that returns to `next` afterward.
+  signinNext: (next, mode) => `${AICP}/signin?${mode === 'create' ? 'mode=create&' : ''}next=${encodeURIComponent(next || '')}`,
+  createAccount: (next) => `${AICP}/signin?mode=create${next ? `&next=${encodeURIComponent(next)}` : ''}`,
 
   run: `${AICP}/exam/run`,
   runExam: (aid, mode = 'practice') => `${AICP}/exam/run?aid=${aid}&mode=${mode}`,

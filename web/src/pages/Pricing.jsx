@@ -5,6 +5,8 @@ import useMembership from '../hooks/useMembership';
 import { P } from '../lib/paths';
 import { PRICE } from '../data/domains';
 import { LESSONS } from '../content/aicp/curriculum';
+import { PAID_TIER_ENABLED } from '../lib/access';
+import useAccess from '../hooks/useAccess';
 
 // PLACEHOLDER PRICES: the owner hasn't set final pricing. Full Access uses
 // PRICE from data/domains.js (shared with the rest of the site); the
@@ -12,10 +14,9 @@ import { LESSONS } from '../content/aicp/curriculum';
 const FREE_FEATURES = [
   'The 100-item diagnostic with a ranked study list',
   'Two 25-question warm-up quizzes',
-  'The first lesson in each of the nine domains',
+  'Free account: the first lesson in each of the nine domains',
   'Free questions from those lessons’ practice sets',
   '8- and 12-week study plans',
-  'Question of the day',
 ];
 const FULL_FEATURES = [
   'Everything in Free',
@@ -43,7 +44,9 @@ const FeatureList = ({ items, color }) => (
   </ul>
 );
 
-export default function Pricing() {
+// The paid-plans version of this page. Shown only when PAID_TIER_ENABLED
+// (lib/access.js) is true. PLACEHOLDER PRICES throughout.
+function PaidPricing() {
   usePageTitle('Pricing');
   const navigate = useNavigate();
   const { isMember, demoUnlock } = useMembership();
@@ -115,4 +118,67 @@ export default function Pricing() {
       </div>
     </>
   );
+}
+
+const FREE_NOW = [
+  `All ${LESSONS.length} lessons across the nine exam domains`,
+  'A practice set for every lesson',
+  'Three full-length 170-question practice exams, timed or untimed',
+  'Both 25-question warm-up quizzes',
+  'Untimed drills in every domain',
+  'The 100-item diagnostic with a ranked study list',
+  '8- and 12-week study plans',
+  'Progress tracking across every attempt',
+];
+
+function FreeAccess() {
+  usePageTitle('Pricing');
+  const { signedIn } = useAccess();
+  return (
+    <>
+      <PageHeader
+        eyebrow="Pricing"
+        title="The whole course is free."
+        lead="Every lesson, practice set, exam, drill, and the diagnostic, at no cost. All you need is a free account, which keeps your scores and progress in one place."
+      />
+      <div className="container" style={{ paddingBottom: 72 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 20, alignItems: 'stretch' }}>
+          <section className="card card-dark" aria-labelledby="tier-account" style={{ display: 'flex', flexDirection: 'column', padding: 30 }}>
+            <h2 id="tier-account" className="eyebrow" style={{ color: 'var(--coral-soft)' }}>Free account</h2>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 700, letterSpacing: '-0.03em', margin: '4px 0 4px' }}>$0</div>
+            <p style={{ fontSize: 14.5, color: 'var(--on-navy-muted)', margin: '0 0 22px' }}>No credit card. Just a name, email, and password.</p>
+            <FeatureList items={FREE_NOW} color="#E8EFF8" />
+            <div style={{ marginTop: 'auto', paddingTop: 26 }}>
+              {signedIn
+                ? <Link className="btn btn-coral btn-block" to={P.course}>Go to the course</Link>
+                : <Link className="btn btn-coral btn-block" to={P.createAccount(P.course)}>Create a free account</Link>}
+            </div>
+          </section>
+          <section className="card" aria-labelledby="tier-guest" style={{ display: 'flex', flexDirection: 'column', padding: 30 }}>
+            <h2 id="tier-guest" className="eyebrow">No account</h2>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 700, letterSpacing: '-0.03em', margin: '10px 0 4px' }}>Try it first</div>
+            <p className="small" style={{ margin: '0 0 22px' }}>See how the questions and explanations work before you sign up.</p>
+            <FeatureList items={['Warm-up Quiz A (25 questions)', 'Full explanation on every answer', 'A preview of every lesson\u2019s learning objectives']} color="var(--text)" />
+            <div style={{ marginTop: 'auto', paddingTop: 26 }}>
+              <Link className="btn btn-secondary btn-block" to={P.runExam('q1', 'practice')}>Take Warm-up Quiz A</Link>
+            </div>
+          </section>
+          <section className="card" aria-labelledby="tier-team" style={{ display: 'flex', flexDirection: 'column', padding: 30 }}>
+            <h2 id="tier-team" className="eyebrow">Teams and classes</h2>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 700, letterSpacing: '-0.03em', margin: '10px 0 4px' }}>Also free</div>
+            <p className="small" style={{ margin: '0 0 22px' }}>Studying as a department, firm, or university class? Everyone just creates their own account.</p>
+            <FeatureList items={['Each person tracks their own progress', 'Share the study plans with your group', 'Questions about group use? Get in touch']} color="var(--text)" />
+            <div style={{ marginTop: 'auto', paddingTop: 26 }}>
+              <Link className="btn btn-secondary btn-block" to={P.contact}>Contact us</Link>
+            </div>
+          </section>
+        </div>
+        <p className="small" style={{ margin: '24px 0 0' }}>More answers are on the <Link to={P.faq} className="link-underline">FAQ page</Link>.</p>
+      </div>
+    </>
+  );
+}
+
+export default function Pricing() {
+  return PAID_TIER_ENABLED ? <PaidPricing /> : <FreeAccess />;
 }

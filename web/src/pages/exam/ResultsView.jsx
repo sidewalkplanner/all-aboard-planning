@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { P } from '../../lib/paths';
 import Hoverable from '../../components/Hoverable';
 import { barStyle, chipStyle, cardStyle } from '../../lib/style';
 import { GREEN, RUST, themeTokens } from '../../lib/theme';
@@ -54,6 +55,17 @@ export default function ResultsView(s) {
             ))}
           </div>
         </div>
+        {!s.signedIn && (
+          <div style={{ ...cardStyle(T, { radius: 14, padding: 22 }), marginTop: 20, borderColor: T.accFg }}>
+            <div style={{ fontSize: 17, fontWeight: 700 }}>Save this score and keep going</div>
+            <p style={{ fontSize: 15, color: T.mute, lineHeight: 1.6, margin: '6px 0 14px' }}>
+              Create a free account to keep this result, then unlock every lesson, three full-length exams, domain drills, and the diagnostic.
+            </p>
+            <Link to={P.createAccount(P.progress)} style={{ display: 'inline-block', background: GREEN, color: '#FFFFFF', padding: '12px 20px', borderRadius: 10, fontSize: 15, fontWeight: 700 }}>
+              Create a free account
+            </Link>
+          </div>
+        )}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 16, marginTop: 20 }}>
           <div style={cardStyle(T, { radius: 14, padding: 20 })}>
             <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 30, fontWeight: 700 }}>{s.timeUsed}</div>

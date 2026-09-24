@@ -79,6 +79,10 @@ The **American Institute of Planners** (founded in 1917 as the American City Pla
 - **Smart Growth**, from the 1990s, focused on regional growth policy: directing development to existing communities and infrastructure, protecting open space and farmland, and offering transportation choices. Maryland's Smart Growth program (1997) is an often-cited state example. <!-- VERIFY: confirm Maryland Smart Growth program year (1997). -->
 - The 1987 Brundtland Commission report, *Our Common Future*, popularized **sustainable development**: meeting present needs without compromising the ability of future generations to meet theirs. Planners often frame sustainability as the "three E's": **environment, economy, and equity**.
 
+:::video American planning history on one timeline | about 4 min
+A visual timeline from sanitary reform to Smart Growth, pairing each movement with the problem it responded to and the people associated with it.
+:::
+
 ## Key terms
 
 - **Sanitary reform**: Nineteenth-century public health improvements such as water and sewer systems.

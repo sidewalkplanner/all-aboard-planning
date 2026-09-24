@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom';
-import QuestionOfTheDay from '../../components/QuestionOfTheDay';
 import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
 import { DOMAINS, LESSONS } from '../../content/aicp/curriculum';
-import { PRICE } from '../../data/domains';
+import useAccess from '../../hooks/useAccess';
 
 const OFFERS = [
   { title: `${LESSONS.length} lessons in nine domains`, body: 'Plain-language lessons organized by the AICP exam content outline, each with objectives, key terms, real planning examples, and a summary.', to: P.course, cta: 'Browse the course' },
   { title: '8- and 12-week study plans', body: 'Week-by-week schedules that sequence every lesson, drill, and practice exam so you always know what to do next.', to: P.studyPlan, cta: 'See the plans' },
-  { title: 'A 100-item diagnostic', body: 'A free placement test that scores all nine domains and ranks them by how many points each is likely costing you.', to: P.diagnostic, cta: 'Take the diagnostic' },
-  { title: 'Three full-length practice exams', body: '170 questions each, timed to the real exam, with scenario sets, data exhibits, and an explanation for every answer.', to: P.exams, cta: 'See practice exams' },
+  { title: 'A 100-item diagnostic', body: 'A placement test that scores all nine domains and ranks them by how many points each is likely costing you.', to: P.diagnostic, cta: 'Take the diagnostic' },
+  { title: 'Three full-length practice exams', body: '170 questions each, timed to the real exam, with scenario sets, data exhibits, and an explanation for every answer. Warm-up Quiz A is open to everyone.', to: P.exams, cta: 'See practice exams' },
   { title: 'Practice sets and domain drills', body: 'Every lesson links to exam-style questions on its topics. Untimed domain drills let you work one area until it sticks.', to: P.drills, cta: 'See domain drills' },
   { title: 'Progress tracking', body: 'Your scores by domain across every quiz, exam, and drill, so each study session starts where it matters most.', to: P.progress, cta: 'See your progress' },
 ];
@@ -29,6 +28,7 @@ const STEPS = [
 
 export default function AicpHome() {
   usePageTitle('');
+  const { signedIn } = useAccess();
   const maxPct = Math.max(...DOMAINS.map((d) => d.weight));
 
   return (
@@ -38,7 +38,7 @@ export default function AicpHome() {
         <div className="container" style={{ paddingTop: 72, paddingBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 56, alignItems: 'center' }}>
           <div>
             <span style={{ display: 'inline-flex', padding: '7px 14px', borderRadius: 99, background: 'rgba(255,112,89,0.20)', color: 'var(--coral-soft)', fontSize: 13, fontWeight: 700, letterSpacing: '0.02em' }}>
-              AICP exam prep: lessons, study plans, and practice
+              Free AICP exam prep: lessons, study plans, and practice
             </span>
             <h1 className="display" style={{ margin: '22px 0 0', color: '#FFFFFF' }}>
               Learn it, practice it, and walk in ready.
@@ -49,7 +49,9 @@ export default function AicpHome() {
             </p>
             <div className="row-wrap" style={{ marginTop: 30 }}>
               <Link className="btn btn-coral btn-lg" to={P.course}>Browse the course</Link>
-              <Link className="btn btn-ghost-light btn-lg" to={P.diagnostic}>Take the free diagnostic</Link>
+              {signedIn
+                ? <Link className="btn btn-ghost-light btn-lg" to={P.diagnostic}>Take the diagnostic</Link>
+                : <Link className="btn btn-ghost-light btn-lg" to={P.createAccount(P.course)}>Create a free account</Link>}
             </div>
             <dl style={{ display: 'flex', gap: 40, marginTop: 44, flexWrap: 'wrap', borderTop: '1px solid rgba(255,255,255,0.18)', paddingTop: 24, marginBottom: 0 }}>
               {[[LESSONS.length, 'lessons'], ['3', 'full-length exams'], ['9', 'exam domains']].map(([n, label]) => (
@@ -63,7 +65,23 @@ export default function AicpHome() {
               ))}
             </dl>
           </div>
-          <QuestionOfTheDay />
+          <div style={{ background: '#FFFFFF', color: 'var(--ink)', borderRadius: 20, padding: 28, boxShadow: '0 30px 60px -24px rgba(6,20,44,0.55)' }}>
+            <span className="eyebrow eyebrow-brand">Try it now, no account needed</span>
+            <h2 className="h3" style={{ fontSize: 24 }}>Warm-up Quiz A</h2>
+            <p className="body-text" style={{ margin: '8px 0 18px' }}>
+              25 questions weighted like the real exam, untimed, with an explanation for every answer. See how the course
+              teaches before you sign up.
+            </p>
+            <Link className="btn btn-primary btn-block" to={P.runExam('q1', 'practice')}>Start the free quiz</Link>
+            <div style={{ borderTop: '1px solid var(--line)', marginTop: 22, paddingTop: 18 }}>
+              <h3 style={{ margin: 0, fontSize: 15.5 }}>Then, with a free account</h3>
+              <ul className="body-text" style={{ margin: '8px 0 0', paddingLeft: 20, fontSize: 15 }}>
+                <li>All {LESSONS.length} lessons and their practice sets</li>
+                <li>Three full-length exams and domain drills</li>
+                <li>The diagnostic and progress tracking</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -154,7 +172,7 @@ export default function AicpHome() {
       <section className="band-warm" aria-labelledby="diag-heading">
         <div className="container section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 40, alignItems: 'center' }}>
           <div>
-            <span className="chip chip-err">Free &middot; 100 items &middot; no time limit</span>
+            <span className="chip chip-err">100 items &middot; no time limit &middot; free with an account</span>
             <h2 id="diag-heading" className="h2" style={{ marginTop: 18 }}>Start by finding out where you actually stand.</h2>
             <p className="body-text" style={{ fontSize: 16.5, margin: '14px 0 0', maxWidth: '54ch', color: '#5A4A42' }}>
               The diagnostic isn&rsquo;t a mock exam. It gives you a reliable read on each of the nine domains, so your study
@@ -184,15 +202,16 @@ export default function AicpHome() {
         <div className="container">
           <div className="card card-dark" style={{ padding: 'clamp(28px,5vw,48px)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 28, alignItems: 'center' }}>
             <div>
-              <h2 id="cta-heading" className="h2" style={{ color: '#FFFFFF' }}>Start free. Upgrade when you&rsquo;re ready.</h2>
+              <h2 id="cta-heading" className="h2" style={{ color: '#FFFFFF' }}>Free, start to finish.</h2>
               <p style={{ color: 'var(--on-navy-muted)', fontSize: 16.5, lineHeight: 1.6, margin: '12px 0 0', maxWidth: '52ch' }}>
-                The diagnostic, both warm-up quizzes, the study plans, and the first lesson in every domain are free.
-                Full Access ({PRICE}) opens everything else.
+                Every lesson, practice set, exam, drill, and the diagnostic is free. Create an account to keep your progress, or try Warm-up Quiz A first.
               </p>
             </div>
             <div className="row-wrap" style={{ justifyContent: 'flex-end' }}>
-              <Link className="btn btn-coral btn-lg" to={P.lesson(LESSONS[0].slug)}>Start the first lesson</Link>
-              <Link className="btn btn-ghost-light btn-lg" to={P.pricing}>See pricing</Link>
+              {signedIn
+                ? <Link className="btn btn-coral btn-lg" to={P.lesson(LESSONS[0].slug)}>Start the first lesson</Link>
+                : <Link className="btn btn-coral btn-lg" to={P.createAccount(P.lesson(LESSONS[0].slug))}>Create a free account</Link>}
+              <Link className="btn btn-ghost-light btn-lg" to={P.runExam('q1', 'practice')}>Try the free quiz</Link>
             </div>
           </div>
         </div>

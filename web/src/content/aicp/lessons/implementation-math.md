@@ -31,6 +31,10 @@ FAR controls bulk without dictating shape: a FAR of 2.0 allows a two-story build
 - Footprint: 87,120 × 0.50 = 43,560 sq ft
 - Stories: 174,240 ÷ 43,560 = **4** (or simply 2.0 ÷ 0.50 = 4)
 
+:::video Solving FAR problems step by step | about 4 min
+Works the two-acre, FAR 2.0 example on screen, including the shortcut of dividing FAR by lot coverage to get the number of stories.
+:::
+
 ### Lot coverage
 
 > **Lot coverage = building footprint (or impervious area) ÷ lot area**
@@ -49,6 +53,10 @@ Net density is always higher than gross density for the same project. Always che
 - Net area: 40 × (1 − 0.25) = 30 acres
 - Units: 30 × 6 = **180**
 - Gross density: 180 ÷ 40 = 4.5 units per gross acre
+
+:::video Gross versus net density | about 3 min
+Shows, with a site diagram, what gets subtracted to get net acreage, and why the same project can have very different gross and net densities.
+:::
 
 ### Minimum lot area per unit
 

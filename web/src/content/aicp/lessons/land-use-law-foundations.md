@@ -26,6 +26,10 @@ In ***Village of Euclid v. Ambler Realty Co.*** **(1926)**, the U.S. Supreme Cou
 
 *Euclid* was a **facial** challenge to the ordinance as a whole. Two years later, in ***Nectow v. City of Cambridge*** **(1928)**, the Court struck down a zoning classification **as applied** to one particular parcel. The residential zoning there didn't promote the public welfare in light of the parcel's surroundings. The lesson: an ordinance that is valid overall can still be unconstitutional as applied to a specific property.
 
+:::video Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min
+Contrasts the facial challenge in *Euclid* with the as-applied challenge in *Nectow*, and explains what each means for defending a zoning decision today.
+:::
+
 ### Due process
 
 The Fourteenth Amendment bars states (and their local governments) from depriving any person of "life, liberty, or property, without due process of law."

@@ -70,6 +70,10 @@ When a planner finds that a colleague's work contains misleading figures, for ex
 - Issue: independent professional judgment and accurate information.
 - Response: **provide an accurate, independent professional recommendation** grounded in the code, even though it's unpopular, and convey the public's concerns fairly.
 
+:::video Working an ethics scenario with the five-step method | about 5 min
+Talks through a multi-part conflict-of-interest scenario from start to finish, showing why the most passive and most aggressive answers are usually wrong.
+:::
+
 ### Common traps
 
 - **"It was a small gift."** The rule turns on the reasonable perception of influence, not value.

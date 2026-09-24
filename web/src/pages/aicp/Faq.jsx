@@ -3,7 +3,6 @@ import PageHeader from '../../components/PageHeader';
 import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
 import { LESSONS } from '../../content/aicp/curriculum';
-import { PRICE } from '../../data/domains';
 
 const GROUPS = [
   {
@@ -36,23 +35,27 @@ const GROUPS = [
     ],
   },
   {
-    heading: 'Access and pricing',
+    heading: 'Access and accounts',
     items: [
       {
-        q: 'What can I use for free?',
-        a: <p>The 100-item diagnostic, both 25-question warm-up quizzes, the question of the day, both study plans, and the first lesson in every domain, including those lessons&rsquo; free practice questions.</p>,
+        q: 'Is it really free?',
+        a: <p>Yes. Every lesson, lesson practice set, full-length practice exam, domain drill, the diagnostic, and both study plans are free. See <Link to={P.pricing}>pricing</Link> for the details.</p>,
       },
       {
-        q: 'What does Full Access include?',
-        a: <p>Every lesson, every lesson practice set, all three 170-question practice exams, and untimed drills in all nine domains. It&rsquo;s currently listed at {PRICE}. See <Link to={P.pricing}>pricing</Link>.</p>,
+        q: 'Why do I need an account?',
+        a: <p>So your scores and progress are saved in one place and the <Link to={P.progress}>progress page</Link> can show which domains need work. Without an account you can take <Link to={P.runExam('q1', 'practice')}>Warm-up Quiz A</Link> and preview each lesson&rsquo;s learning objectives.</p>,
       },
       {
-        q: 'Do I need an account?',
-        a: <p>Not yet. Accounts are coming soon. For now, your quiz and exam history is saved in this browser on this device, and clearing your browser data erases it.</p>,
+        q: 'Where is my account stored?',
+        a: <p>For now, accounts and progress are kept only in the browser you signed up in. An account created on your phone won&rsquo;t appear on your laptop, and clearing your browser data removes it. We plan to move accounts to a secure online service so progress follows you across devices.</p>,
       },
       {
-        q: 'Do you offer group or agency pricing?',
-        a: <p>We&rsquo;re happy to talk about pricing for planning departments, firms, and university programs. <Link to={P.contact}>Get in touch</Link>.</p>,
+        q: 'I took Warm-up Quiz A before signing up. Is my score lost?',
+        a: <p>No. When you create an account in the same browser, results from before you signed up are added to your new account.</p>,
+      },
+      {
+        q: 'Can my team or class use it?',
+        a: <p>Yes, and it&rsquo;s free for groups too. Each person creates their own account. <Link to={P.contact}>Get in touch</Link> if you have questions about group use.</p>,
       },
     ],
   },

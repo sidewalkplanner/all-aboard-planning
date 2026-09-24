@@ -27,6 +27,10 @@ The Code also contains **procedures** for advisory opinions, charges, investigat
 
 So the commitment to seek social justice by expanding choice and opportunity for everyone is an **aspirational principle**, not a rule, while the prohibition on accepting gifts that could reasonably appear to influence your judgment is a **Rule of Conduct**.
 
+:::video Principles versus Rules of Conduct | about 2 min
+Sorts a handful of obligations into aspirational principles and enforceable rules, the single most tested idea about the Code's structure.
+:::
+
 ### The aspirational principles
 
 The principles are grouped by the three relationships a planner has. In summary:

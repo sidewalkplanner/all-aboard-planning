@@ -1,5 +1,54 @@
 # REVIEW: AICP course build
 
+## Update: free for now, accounts, video slots
+
+These changes followed the first build (described below). They supersede anything later in this file about Full Access, pricing, or the question of the day.
+
+### What changed
+- **The whole course is free.** One switch, `PAID_TIER_ENABLED` in `web/src/lib/access.js`, is set to `false`. Every lesson, practice set, exam, drill, and the diagnostic is free. The paid-tier code, labels, and pricing page are kept and come back when you flip the switch.
+- **Everything except Warm-up Quiz A needs an account.** Signed-out visitors can still use the homepage, course overview, study plans, Exam Info, FAQ, Pricing, About, and Contact, and they can see each lesson's learning objectives. Everything else shows a "Create a free account" prompt, or sends them to sign-in and back to the page they wanted.
+  - The diagnostic, domain drills, and progress page are gated at the route level.
+  - Quiz B, the three exams, and lesson practice sets are gated in the exam runner.
+  - Lesson bodies past the objectives are gated inline.
+- **Progress is tracked per account.** History, in-progress exams, and the saved diagnostic are all stored per account. If someone takes Quiz A and then signs up in the same browser, the new account keeps that result. After a quiz, signed-out visitors see a "Save this score" prompt.
+- **The question of the day is gone.** I removed the card, its data, and every mention of it. On the homepage its spot now holds a "Try Warm-up Quiz A, no account needed" card.
+- **Pricing now says "The whole course is free"** and offers three options: a free account, trying it without an account, and teams and classes (also free). The Pricing link left the header and stays in the footer as "Pricing (it's free)".
+- **Video slots:** a new `:::video` block in lesson Markdown adds a "Video coming soon" placeholder for high-impact topics. There are 19 slots in 16 lessons (listed below). Add an embed URL as a third field and the slot becomes a real player.
+
+### Assumptions in this update
+1. **"Behind a login" uses placeholder accounts, not real ones.** There's no backend yet, so accounts (with hashed passwords) and progress live in each visitor's browser. That gives you the login wall and per-person progress today. The catch is that accounts don't sync across devices and aren't real security. The site says so plainly: there's an "Accounts placeholder" box on the sign-in page and an FAQ answer about it. **Next step: pick a hosted auth provider** (Supabase is a good fit for a static GitHub Pages site). `web/src/context/AuthContext.jsx` explains exactly what to replace.
+2. **The one free quiz is Warm-up Quiz A.** Quiz B needs an account.
+3. **I didn't announce future pricing anywhere public.** The site says the course is free and doesn't say it will become paid. One FAQ answer says accounts will move to "a secure online service," so remove that line if you'd rather not commit to it.
+4. **I read "for the plans" as the lessons.** The video slots sit inside the lesson pages, at the points where a short video helps most. The study plans link to those lessons, so the videos reach them too.
+
+### Video slots
+
+| Location | Video | Length |
+|---|---|---|
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:30` | Principles versus Rules of Conduct | about 2 min |
+| `web/src/content/aicp/lessons/capital-planning-and-finance.md:53` | How tax increment financing works | about 3 min |
+| `web/src/content/aicp/lessons/demographic-and-economic-analysis.md:92` | Location quotients and shift-share, worked through | about 4 min |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:21` | The NEPA process: categorical exclusion, EA, or EIS? | about 3 min |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:48` | What a "100-year flood" really means | about 2 min |
+| `web/src/content/aicp/lessons/goals-objectives-policies.md:25` | From vision to action: the plan hierarchy | about 2 min |
+| `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:65` | How a TDR program moves development | about 3 min |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:47` | How the Low-Income Housing Tax Credit finances a building | about 3 min |
+| `web/src/content/aicp/lessons/implementation-math.md:34` | Solving FAR problems step by step | about 4 min |
+| `web/src/content/aicp/lessons/implementation-math.md:57` | Gross versus net density | about 3 min |
+| `web/src/content/aicp/lessons/land-use-law-foundations.md:29` | Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min |
+| `web/src/content/aicp/lessons/planning-history.md:82` | American planning history on one timeline | about 4 min |
+| `web/src/content/aicp/lessons/public-engagement-design.md:47` | Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min |
+| `web/src/content/aicp/lessons/solving-ethics-questions.md:73` | Working an ethics scenario with the five-step method | about 5 min |
+| `web/src/content/aicp/lessons/statistics-for-planners.md:87` | Present value and benefit-cost ratios | about 3 min |
+| `web/src/content/aicp/lessons/takings-and-exactions.md:42` | Penn Central's three factors, applied | about 3 min |
+| `web/src/content/aicp/lessons/takings-and-exactions.md:74` | Nollan and Dolan: the two-part test for exactions | about 4 min |
+| `web/src/content/aicp/lessons/transportation-planning.md:51` | The four-step travel demand model | about 4 min |
+| `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:30` | Area versus use variances: the hardship test in practice | about 3 min |
+
+---
+
+## Original build (for reference)
+
 This is the hand-off for the build described in `PLAN.md`: what was built, the assumptions behind it, every fact flagged for verification, and what's left.
 
 ## Summary of what was built
@@ -75,10 +124,10 @@ There are 75 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 |---|---|
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:15` | confirm to whom the Code currently applies (AICP members, and whether candidates are covered). |
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:1` | confirm the current Code version (a revised Code took effect in 2021, with later amendments possible) and link to it. |
-| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:40` | confirm that the current Code's principles include explicit language on racial and economic equity and on eliminating historic inequities. |
-| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:57` | the wording and grouping of these principles are paraphrased from our understanding of the Code; check each against the current text. |
-| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:78` | confirm the current names and process for informal advice and formal advisory opinions under the Code's procedures. |
-| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:87` | confirm the current complaint procedure steps, the name of the deciding body, and the list of available sanctions (for example, whether a "letter of admonition" still exists). |
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:44` | confirm that the current Code's principles include explicit language on racial and economic equity and on eliminating historic inequities. |
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:61` | the wording and grouping of these principles are paraphrased from our understanding of the Code; check each against the current text. |
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:82` | confirm the current names and process for informal advice and formal advisory opinions under the Code's procedures. |
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:91` | confirm the current complaint procedure steps, the name of the deciding body, and the list of available sanctions (for example, whether a "letter of admonition" still exists). |
 | `web/src/content/aicp/lessons/comprehensive-plans.md:48` | confirm the names of the principles and processes in APA's Comprehensive Plan Standards for Sustaining Places, and whether APA has updated them. |
 | `web/src/content/aicp/lessons/comprehensive-plans.md:58` | confirm which states to cite as consistency states (Oregon, Florida, and California are commonly cited) and how each applies the requirement. |
 | `web/src/content/aicp/lessons/conflicts-of-interest-and-rules-of-conduct.md:1` | check each paraphrased rule theme below against the current Rules of Conduct text. |
@@ -87,27 +136,27 @@ There are 75 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/economic-development.md:81` | Opportunity Zone rules were modified by 2025 federal tax legislation; confirm current program terms before describing details. |
 | `web/src/content/aicp/lessons/economic-development.md:83` | confirm the current status of the New Markets Tax Credit and EDA programs if expanded. |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:19` | federal NEPA implementing procedures changed substantially in 2025 (CEQ regulations rescinded, agency procedures revised); confirm the current process terms before publishing detailed steps. |
-| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:46` | confirm the five-year update cycle and which FEMA grant programs currently require an approved plan. |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:54` | confirm the five-year update cycle and which FEMA grant programs currently require an approved plan. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:39` | confirm the current status of federal LEP guidance (Executive Order 13166 and agency guidance), which may have changed in 2025. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:40` | federal environmental justice executive orders have been revoked or amended since 2025; confirm the current status of EO 12898 before relying on it. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:55` | confirm the 2024 DOJ Title II web accessibility rule's standard (WCAG 2.1 AA) and its current compliance dates. |
 | `web/src/content/aicp/lessons/federal-policy-and-planning.md:24` | confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. |
 | `web/src/content/aicp/lessons/federal-policy-and-planning.md:29` | confirm the 1962 Act as the origin of the 3C planning requirement. |
-| `web/src/content/aicp/lessons/goals-objectives-policies.md:57` | "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. |
+| `web/src/content/aicp/lessons/goals-objectives-policies.md:61` | "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:22` | confirm the SmartCode transect zone numbering (T1–T6) and names if you want to teach them precisely. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:32` | performance zoning is often associated with Lane Kendig's work in Bucks County, Pennsylvania, in the 1970s; confirm before attributing. |
-| `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:70` | Florida's statewide concurrency mandate was substantially relaxed in 2011 (except for certain facilities); confirm the current status before describing it. |
-| `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:80` | confirm details sometimes cited for these cases (Ramapo's roughly 18-year capital program; Petaluma's cap of about 500 units a year) before adding them. |
+| `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:74` | Florida's statewide concurrency mandate was substantially relaxed in 2011 (except for certain facilities); confirm the current status before describing it. |
+| `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:84` | confirm details sometimes cited for these cases (Ramapo's roughly 18-year capital program; Petaluma's cap of about 500 units a year) before adding them. |
 | `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:41` | confirm the USDA food access thresholds (commonly 1 mile urban / 10 miles rural, with additional 0.5- and 20-mile variants) before citing numbers. |
 | `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:64` | service radii by park type vary by source (older NRPA guidance); confirm figures before citing specific distances beyond the neighborhood park range. |
 | `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:74` | confirm the descriptions of Portland Metro and the Twin Cities Metropolitan Council if expanded. |
 | `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:78` | the Twin Cities Fiscal Disparities program (1971) is the usual example; confirm before naming it. |
 | `web/src/content/aicp/lessons/housing-and-community-development.md:24` | HUD's extremely low/very low/low categories are 30/50/80% of area median; "moderate" is defined by individual programs and states. Confirm wording if used for specific programs. |
 | `web/src/content/aicp/lessons/housing-and-community-development.md:39` | LIHTC was created by the Tax Reform Act of 1986; confirm current affordability periods and the 9%/4% credit structure if added. |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:55` | HUD's AFFH rule has been issued, rescinded, and reissued several times; confirm its current status before describing specific requirements. |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:59` | Mount Laurel I is usually dated 1975 and Mount Laurel II (builder's remedy) 1983; confirm before adding dates. |
-| `web/src/content/aicp/lessons/implementation-math.md:126` | confirm what calculator tools are available on the current exam. |
-| `web/src/content/aicp/lessons/land-use-law-foundations.md:55` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:59` | HUD's AFFH rule has been issued, rescinded, and reissued several times; confirm its current status before describing specific requirements. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:63` | Mount Laurel I is usually dated 1975 and Mount Laurel II (builder's remedy) 1983; confirm before adding dates. |
+| `web/src/content/aicp/lessons/implementation-math.md:134` | confirm what calculator tools are available on the current exam. |
+| `web/src/content/aicp/lessons/land-use-law-foundations.md:59` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
 | `web/src/content/aicp/lessons/leadership-in-planning.md:22` | adaptive leadership is usually attributed to Ronald Heifetz; confirm before attributing. |
 | `web/src/content/aicp/lessons/mentoring-and-professional-development.md:66` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
 | `web/src/content/aicp/lessons/mentoring-and-professional-development.md:67` | confirm which advanced specialty certifications AICP currently offers. |
@@ -124,10 +173,10 @@ There are 75 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/research-design-and-data.md:48` | confirm that the 65,000-population threshold for ACS 1-year estimates is current, and that the 3-year product remains discontinued. |
 | `web/src/content/aicp/lessons/subdivision-and-development-review.md:53` | vesting rules vary widely by state; if specific states are named, confirm them. |
 | `web/src/content/aicp/lessons/transportation-planning.md:26` | confirm current federal rules on MTP update cycles (commonly every 4 years in nonattainment/maintenance areas and 5 in attainment areas) and the minimum TIP period (4 years). |
-| `web/src/content/aicp/lessons/transportation-planning.md:54` | California's SB 743 (2013) directed the shift from LOS to VMT for CEQA transportation analysis; confirm details if expanded. |
+| `web/src/content/aicp/lessons/transportation-planning.md:58` | California's SB 743 (2013) directed the shift from LOS to VMT for CEQA transportation analysis; confirm details if expanded. |
 | `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:67` | this is Section 4(f) of the Department of Transportation Act of 1966; confirm wording before naming it. |
 | `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:86` | confirm the credit remains 20% and the current rules on claiming it (spread over five years since 2017), and that the 10% non-historic credit remains repealed. |
-| `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:41` | identify which states currently follow Fasano if a list is added. |
+| `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:45` | identify which states currently follow Fasano if a list is added. |
 | `web/src/content/pages/exam-info.md:1` | confirm this URL is still APA's main AICP certification page. |
 | `web/src/content/pages/exam-info.md:21` | domain names and weights are taken from uploads/aicp-diagnostic-exam-spec.md in this repo; confirm them against APA's current published content outline. |
 | `web/src/content/pages/exam-info.md:28` | confirm the current question count and time limit with APA. |
@@ -147,20 +196,23 @@ There are 75 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/pages/exam-info.md:88` | confirm URL. |
 | `web/src/content/pages/exam-info.md:89` | confirm URL. |
 | `web/src/content/pages/exam-info.md:90` | confirm URL. |
-| `web/src/pages/aicp/AicpHome.jsx:138` | domain weights come from uploads/aicp-diagnostic-exam-spec.md; confirm against APA's current published content outline. |
+| `web/src/pages/aicp/AicpHome.jsx:156` | domain weights come from uploads/aicp-diagnostic-exam-spec.md; confirm against APA's current published content outline. |
+
 Other placeholders, which aren't VERIFY flags:
 - `web/src/content/pages/about.md` has `<!-- PLACEHOLDER -->` for the founder bio.
 - `web/src/content/site.js` has `CONTACT_EMAIL = null`.
 - `web/src/pages/Pricing.jsx` has `PLACEHOLDER PRICE` comments.
-- `web/src/hooks/useMembership.js`, `web/src/components/MembershipGate.jsx`, and `web/src/pages/exam/useExamSession.js` have `MEMBERSHIP PLACEHOLDER` comments.
-- `web/src/pages/SignIn.jsx` has an `ACCOUNT PLACEHOLDER` comment.
+- `web/src/hooks/useMembership.js` has a `MEMBERSHIP PLACEHOLDER` comment (future paid tier).
+- `web/src/context/AuthContext.jsx`, `web/src/pages/SignIn.jsx`, and `web/src/components/Header.jsx` have `ACCOUNT PLACEHOLDER` comments.
+- Lesson Markdown has 19 `:::video` slots (listed at the top of this file).
 
 ## Not finished, and suggested next steps
 
 1. **Fact-check the VERIFY list,** starting with `web/src/content/pages/exam-info.md` (eligibility, format, scoring, windows) and the three ethics lessons against the current AICP Code. Remove each flag once it's confirmed.
 2. **Have a subject-matter expert review the lessons.** I wrote them carefully, but a planner with AICP credentials should review the law lessons in particular (lessons 8, 9, and 20), since case holdings are summarized briefly.
-3. **Membership and payments:** replace the check in `web/src/hooks/useMembership.js` and the guard in `useExamSession.js` with a real membership tool, and move paid lesson bodies behind server-side delivery if the content must be protected.
-4. **Set real prices** (`PRICE` in `web/src/data/domains.js`), the contact email, and the founder bio.
+3. **Accounts:** replace the browser-only placeholder in `web/src/context/AuthContext.jsx` with a hosted auth provider, and move progress history to its database so it syncs across devices. Later, for paid plans, set `PAID_TIER_ENABLED` in `web/src/lib/access.js` and replace the check in `web/src/hooks/useMembership.js` with a real membership check.
+3a. **Videos:** record the 19 videos listed at the top, then add each embed URL as the third field of its `:::video` line.
+4. **Set the contact email and the founder bio** (and real prices in `PRICE`, `web/src/data/domains.js`, when paid plans launch).
 5. **Improve practice coverage:** some lessons have small practice sets (Implementation math has 7 questions; Research design has only 2 free ones). Consider writing new questions targeted to specific lessons, and tagging exam questions with lesson slugs directly.
 6. **SEO:** the app sets per-page titles, but meta descriptions and canonical URLs are still global (`web/index.html`). Pre-rendering or per-route meta would help lessons get indexed.
 7. **Consulting homepage:** when it's ready, add it at `/` in `web/src/App.jsx` (replacing the redirect), add a firm group to `FOOTER_NAV`, and consider a firm-level header nav alongside `AICP_NAV`.

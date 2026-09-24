@@ -6,8 +6,8 @@ import { CONTACT_EMAIL } from '../../content/site';
 
 const TOPICS = [
   ['Report an error', 'Tell us the lesson or exam, the question text, and what looks wrong. Accuracy matters to us.'],
-  ['Group and agency pricing', 'Full Access for a department, firm, or university class.'],
-  ['Account or access questions', 'Anything about Full Access or your practice history.'],
+  ['Group use', 'Using the course with a department, firm, or university class.'],
+  ['Account questions', 'Anything about your account or your practice history.'],
   ['Planning consulting', 'All Aboard Planning will offer consulting services. Get in touch if you would like to talk about a project.'],
 ];
 
