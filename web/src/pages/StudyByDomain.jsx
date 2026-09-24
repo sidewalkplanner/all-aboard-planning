@@ -7,6 +7,7 @@ import { getHistory, summarizeHistory } from '../lib/history';
 import { barStyle, cardStyle } from '../lib/style';
 import { GREEN, RUST, LIGHT } from '../lib/theme';
 import { useUnlock } from '../context/UnlockContext';
+import { P } from '../lib/paths';
 
 const countInBank = (name) => EXAM1_BANK.filter((q) => q.domain === name).length;
 
@@ -20,8 +21,8 @@ export default function StudyByDomain() {
     : 'Untimed drills pulled from the same bank, up to 25 questions per domain, every answer explained as you pick it. Domain drills are part of Full Access.';
 
   const startDrill = (name) => {
-    if (!unlocked) { navigate('/pricing'); return; }
-    navigate(`/exam/run?drill=${encodeURIComponent(name)}`);
+    if (!unlocked) { navigate(P.pricing); return; }
+    navigate(P.runDrill(name));
   };
 
   return (

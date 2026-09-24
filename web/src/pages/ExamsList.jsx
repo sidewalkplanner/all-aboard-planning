@@ -4,6 +4,7 @@ import { ASSESSMENTS, PRICE } from '../data/domains';
 import { chipStyle, cardStyle } from '../lib/style';
 import { LIGHT } from '../lib/theme';
 import { useUnlock } from '../context/UnlockContext';
+import { P } from '../lib/paths';
 
 const rowCardStyle = { ...cardStyle(LIGHT, { padding: 24 }), display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 24, alignItems: 'center' };
 const ghostBtn = { background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600 };
@@ -64,9 +65,9 @@ export default function ExamsList() {
   const freeExams = ASSESSMENTS.filter((a) => a.tier === 'free');
   const paidExams = ASSESSMENTS.filter((a) => a.tier === 'paid');
 
-  const practice = (id) => navigate(`/exam/run?aid=${id}&mode=practice`);
-  const timed = (id) => navigate(`/exam/run?aid=${id}&mode=timed`);
-  const goUnlock = () => navigate('/pricing');
+  const practice = (id) => navigate(P.runExam(id, 'practice'));
+  const timed = (id) => navigate(P.runExam(id, 'timed'));
+  const goUnlock = () => navigate(P.pricing);
 
   return (
     <section style={{ maxWidth: 1180, margin: '0 auto', padding: '56px 24px 80px' }}>

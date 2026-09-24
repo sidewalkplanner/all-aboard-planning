@@ -6,6 +6,7 @@ import { getHistory, summarizeHistory } from '../lib/history';
 import { barStyle, cardStyle } from '../lib/style';
 import { GREEN, RUST, TEAL_TXT, LIGHT } from '../lib/theme';
 import { fmtHoursMinutesFromSeconds, fmtShortDate } from '../lib/format';
+import { P } from '../lib/paths';
 
 const statCard = cardStyle(LIGHT, { radius: 14, padding: 22 });
 const statNum = { fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 34, fontWeight: 700 };
@@ -78,7 +79,7 @@ export default function Progress() {
           <Hoverable
             style={{ marginTop: 20, background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600, width: '100%' }}
             hoverStyle={{ border: '1px solid #1A1C2B', background: '#F6F7FB' }}
-            onClick={() => navigate('/study')}
+            onClick={() => navigate(P.drills)}
           >
             Drill your weakest domain
           </Hoverable>

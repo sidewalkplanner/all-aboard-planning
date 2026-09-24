@@ -9,8 +9,16 @@ import { useUnlock } from '../../context/UnlockContext';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { fmtHoursMinutes, parseExhibit } from '../../lib/format';
 import { recordAttempt } from '../../lib/history';
+import { P } from '../../lib/paths';
+import { lessonBySlug, DOMAINS as CURRICULUM_DOMAINS } from '../../content/aicp/curriculum';
+import { accessibleRefs } from '../../content/aicp/freeQuizRefs';
 
 const DRILLPOOL = EXAM1_BANK.concat(EXAM2_BANK, EXAM3_BANK);
+const BANKS = { e1: EXAM1_BANK, e2: EXAM2_BANK, e3: EXAM3_BANK };
+const resolveRef = (ref) => {
+  const [b, n] = ref.split(':');
+  return (BANKS[b] || []).find((q) => q.n === Number(n)) || null;
+};
 
 const ATTEMPTS_KEY = 'aap-exam-attempts';
 
@@ -46,16 +54,23 @@ export function useExamSession() {
   const { dark, toggleDark } = useDarkMode();
 
   const aid = params.get('aid') || 'q1';
-  const mode = params.get('mode') || 'practice';
+  const mode = params.get('set') ? 'practice' : (params.get('mode') || 'practice');
   const drill = params.get('drill') || null;
-  const sessionKey = `${aid}|${mode}|${drill}`;
+  // ?set=<lesson slug>: that lesson's practice set (untimed, explained).
+  const setLesson = useMemo(() => {
+    const slug = params.get('set');
+    return slug ? lessonBySlug(slug) : null;
+  }, [params]);
+  const setRefs = useMemo(() => (setLesson ? accessibleRefs(setLesson, unlocked) : []), [setLesson, unlocked]);
+  const sessionKey = setLesson ? `set:${setLesson.slug}|${unlocked ? 'full' : 'free'}` : `${aid}|${mode}|${drill}`;
 
   const active = useMemo(() => ASSESSMENTS.find((x) => x.id === aid) || ASSESSMENTS[0], [aid]);
 
   const QS = useMemo(() => {
+    if (setLesson) return setRefs.map(resolveRef).filter(Boolean);
     if (drill) return shuffle(DRILLPOOL.filter((qq) => qq.domain === drill), 7717).slice(0, 25);
     return sample(EXAM1_BANK, active.id, EXAM2_BANK, EXAM3_BANK);
-  }, [drill, active.id]);
+  }, [drill, active.id, setLesson, setRefs]);
 
   const [view, setView] = useState('question');
   const [i, setI] = useState(0);
@@ -71,8 +86,12 @@ export function useExamSession() {
   // reload — never silently drops progress the way it used to.
   const lastKey = useRef(null);
   useEffect(() => {
-    if ((active.tier === 'paid' && !active.soon && !unlocked) || (drill && !unlocked)) {
-      navigate('/pricing', { replace: true });
+    // MEMBERSHIP PLACEHOLDER: `unlocked` is the session-only demo toggle.
+    // Swap in the real membership check here when one exists.
+    if (setLesson) {
+      if (!setRefs.length) { navigate(P.pricing, { replace: true }); return; }
+    } else if ((active.tier === 'paid' && !active.soon && !unlocked) || (drill && !unlocked)) {
+      navigate(P.pricing, { replace: true });
       return;
     }
     if (lastKey.current !== sessionKey) {
@@ -114,7 +133,7 @@ export function useExamSession() {
   const practice = mode === 'practice';
   const revealed = practice && answeredThis && !!checked[i];
   const canCheck = practice && answeredThis && !checked[i];
-  const activeTitle = drill ? drill + ' drill' : active.title;
+  const activeTitle = setLesson ? `${setLesson.title}: practice set` : drill ? drill + ' drill' : active.title;
   const totalSeconds = active.mins * 60;
 
   const pick = (idx) => {
@@ -130,7 +149,8 @@ export function useExamSession() {
   const submit = () => {
     const elapsedSeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
     recordAttempt({
-      kind: 'exam', assessmentId: drill ? null : active.id, drillName: drill || null,
+      kind: 'exam', assessmentId: drill || setLesson ? null : active.id, drillName: drill || null,
+      lessonSlug: setLesson ? setLesson.slug : null,
       title: activeTitle, mode, pct, correctCount, total, answeredCount, flagCount, elapsedSeconds,
       domainBreakdown: domainRows.filter((d) => d.n > 0).map((d) => ({ short: d.short, got: d.got, n: d.n }))
     });
@@ -184,8 +204,14 @@ export function useExamSession() {
     };
   }).sort((a, b) => (a.mark === 'Missed' ? -1 : 1) - (b.mark === 'Missed' ? -1 : 1)), [QS, answers]);
 
+  // Where "back" goes from results: the lesson for a practice set, else the exams list.
+  const weakDomain = CURRICULUM_DOMAINS.find((d) => d.short === weakestDomain);
+  const weakestLink = weakDomain ? P.domain(weakDomain.id) : null;
+  const backTo = setLesson ? { to: P.lesson(setLesson.slug), label: 'Back to the lesson' } : { to: P.exams, label: 'Back to exams' };
+  const partialSet = !!setLesson && !unlocked && setRefs.length < (setLesson.practice || []).length;
+
   return {
-    aid, mode, drill, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
+    aid, mode, drill, setLesson, backTo, partialSet, weakestLink, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
     seconds, totalSeconds, dark, toggleDark, view,
     answers, flags, checked, answeredCount, flagCount,
     pick, checkAnswer, toggleFlag, prev, next, goGrid, backToExam, submit, goAnswerReview, goTo,

@@ -1,50 +1,47 @@
-import { useNavigate } from 'react-router-dom';
-import Hoverable from '../components/Hoverable';
+import { Link, useNavigate } from 'react-router-dom';
+import PageHeader from '../components/PageHeader';
+import usePageTitle from '../hooks/usePageTitle';
+import { P } from '../lib/paths';
 
 const inputStyle = {
-  border: '1px solid #D2D6E6', background: '#FFFFFF', borderRadius: 10, padding: '13px 14px',
-  fontSize: 15.5, fontFamily: 'inherit', fontWeight: 400, color: '#1A1C2B'
+  border: '1px solid var(--line-strong)', background: '#FFFFFF', borderRadius: 10, padding: '13px 14px',
+  fontSize: 15.5, fontWeight: 400, color: 'var(--ink)'
 };
+const labelStyle = { display: 'flex', flexDirection: 'column', gap: 7, fontSize: 14, fontWeight: 600, color: 'var(--text)' };
 
+// ACCOUNT PLACEHOLDER: there is no login system. This form is a visual
+// placeholder for the future membership tool; submitting it just goes to the course.
 export default function SignIn() {
+  usePageTitle('Sign in');
   const navigate = useNavigate();
   return (
-    <section style={{ maxWidth: 430, margin: '0 auto', padding: '80px 24px 100px' }}>
-      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 38, fontWeight: 700, letterSpacing: '-0.02em', margin: 0 }}>Sign in</h1>
-      <p style={{ fontSize: 15.5, color: '#646A85', margin: '8px 0 30px' }}>Your progress and past exam results follow your account.</p>
-      <form
-        style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
-        onSubmit={(e) => { e.preventDefault(); navigate('/exams'); }}
-      >
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 14, fontWeight: 600, color: '#3A3F57' }}>
-          Email
-          <input type="email" placeholder="you@city.gov" style={inputStyle} />
-        </label>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 14, fontWeight: 600, color: '#3A3F57' }}>
-          Password
-          <input type="password" placeholder="••••••••" style={inputStyle} />
-        </label>
-        <Hoverable
-          as="button"
-          style={{ background: '#1D5FA8', color: '#F6F7FB', border: 'none', padding: 14, borderRadius: 10, fontSize: 16, fontWeight: 600, marginTop: 6 }}
-          hoverStyle={{ background: '#164C87' }}
-        >
-          Continue
-        </Hoverable>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#A3A8BE', fontSize: 13 }}>
-          <span style={{ flex: 1, height: 1, background: '#E4E6F0' }} />or<span style={{ flex: 1, height: 1, background: '#E4E6F0' }} />
+    <>
+      <PageHeader title="Sign in" lead="Your progress and past exam results will follow your account." narrow />
+      <div className="container-narrow" style={{ maxWidth: 480, paddingBottom: 90 }}>
+        <div className="placeholder-box" style={{ marginBottom: 24 }}>
+          <span className="chip chip-warn">Accounts placeholder</span>
+          <p className="body-text" style={{ margin: '10px 0 0', fontSize: 15 }}>
+            Accounts aren&rsquo;t available yet. Your practice history is saved in this browser for now, and nothing you enter here is sent anywhere.
+          </p>
         </div>
-        <Hoverable
-          as="button"
-          style={{ background: '#FFFFFF', color: '#1A1C2B', border: '1px solid #D2D6E6', padding: 13, borderRadius: 10, fontSize: 15.5, fontWeight: 600 }}
-          hoverStyle={{ border: '1px solid #1A1C2B' }}
+        <form
+          style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
+          onSubmit={(e) => { e.preventDefault(); navigate(P.course); }}
         >
-          Continue with Google
-        </Hoverable>
-        <p style={{ fontSize: 14, color: '#646A85', textAlign: 'center', margin: '10px 0 0' }}>
-          New here? <a href="#create-account" style={{ fontWeight: 600 }}>Create an account</a>
-        </p>
-      </form>
-    </section>
+          <label style={labelStyle}>
+            Email
+            <input type="email" autoComplete="email" placeholder="you@city.gov" style={inputStyle} />
+          </label>
+          <label style={labelStyle}>
+            Password
+            <input type="password" autoComplete="current-password" style={inputStyle} />
+          </label>
+          <button type="submit" className="btn btn-primary btn-block" style={{ marginTop: 6 }}>Continue</button>
+          <p className="small" style={{ textAlign: 'center', margin: '10px 0 0' }}>
+            New here? Everything free works without an account. <Link className="link-underline" to={P.course}>Browse the course</Link>
+          </p>
+        </form>
+      </div>
+    </>
   );
 }

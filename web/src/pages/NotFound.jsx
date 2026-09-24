@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Hoverable from '../components/Hoverable';
+import { P } from '../lib/paths';
 
 export default function NotFound() {
   const navigate = useNavigate();
@@ -16,16 +17,16 @@ export default function NotFound() {
         <Hoverable
           style={{ background: '#1A1C2B', color: '#F6F7FB', border: 'none', padding: '13px 24px', borderRadius: 10, fontSize: 15.5, fontWeight: 600 }}
           hoverStyle={{ background: '#1D5FA8' }}
-          onClick={() => navigate('/')}
+          onClick={() => navigate(P.aicp)}
         >
           Back to home
         </Hoverable>
         <Hoverable
           style={{ background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: '13px 22px', borderRadius: 10, fontSize: 15.5, fontWeight: 600 }}
           hoverStyle={{ border: '1px solid #1A1C2B' }}
-          onClick={() => navigate('/exams')}
+          onClick={() => navigate(P.course)}
         >
-          Browse practice exams
+          Browse the course
         </Hoverable>
       </div>
     </section>

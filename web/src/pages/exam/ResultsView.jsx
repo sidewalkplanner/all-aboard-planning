@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Hoverable from '../../components/Hoverable';
 import { barStyle, chipStyle, cardStyle } from '../../lib/style';
 import { GREEN, RUST, themeTokens } from '../../lib/theme';
@@ -15,12 +16,12 @@ export default function ResultsView(s) {
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginTop: 10 }}>
               <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 66, lineHeight: 1, fontWeight: 700 }}>{s.pct}%</div>
-              <div style={chipStyle(passing ? T.accBg : T.errBg, passing ? T.accFg : T.errFg)}>{passing ? 'Passing range' : 'Below passing'}</div>
+              <div style={chipStyle(passing ? T.accBg : T.errBg, passing ? T.accFg : T.errFg)}>{passing ? '70% or better' : 'Below 70%'}</div>
             </div>
             <p style={{ fontSize: 15.5, color: T.mute, lineHeight: 1.6, margin: '14px 0 0', maxWidth: '44ch' }}>
               {passing
-                ? 'You cleared the range where candidates typically pass. Keep the weaker domains warm and take Exam 2 in about a week.'
-                : 'Not there yet, and that is normal on a first attempt. Work the two weakest domains before you retake this exam.'}
+                ? 'A strong practice score. APA doesn\u2019t publish a passing percentage and the real exam is scaled, so treat 70% as a benchmark, not a prediction. Keep your weaker domains warm and try another exam in about a week.'
+                : 'Not there yet, and that is normal on a first attempt. Review the lessons for your two weakest domains and drill them before you retake this exam.'}
             </p>
             <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap' }}>
               <Hoverable
@@ -33,9 +34,9 @@ export default function ResultsView(s) {
               <Hoverable
                 style={{ background: 'none', border: `1px solid ${T.line}`, color: T.ink, padding: '13px 22px', borderRadius: 10, fontSize: 15.5, fontWeight: 600 }}
                 hoverStyle={{ border: `1px solid ${T.ink}` }}
-                onClick={() => s.navigate('/exams')}
+                onClick={() => s.navigate(s.backTo.to)}
               >
-                Back to exams
+                {s.backTo.label}
               </Hoverable>
             </div>
           </div>
@@ -64,6 +65,9 @@ export default function ResultsView(s) {
           </div>
           <div style={cardStyle(T, { radius: 14, padding: 20 })}>
             <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 30, fontWeight: 700 }}>{s.weakestDomain}</div>
+            {s.weakestLink && (
+              <Link to={s.weakestLink} style={{ display: 'inline-block', marginTop: 6, fontSize: 13.5, fontWeight: 600, color: T.accFg, textDecoration: 'underline' }}>Review this domain&rsquo;s lessons</Link>
+            )}
             <div style={{ fontSize: 13.5, color: T.mute, marginTop: 3 }}>Weakest domain</div>
           </div>
         </div>

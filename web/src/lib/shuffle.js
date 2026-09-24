@@ -1,4 +1,4 @@
-import { DOMAINS, ASSESSMENTS } from '../data/domains';
+import { DOMAINS, ASSESSMENTS } from '../data/domains.js';
 
 // Deterministic seeded PRNG (LCG) so the same seed always produces the same
 // shuffle — question order is stable across a given quiz/exam id and render.

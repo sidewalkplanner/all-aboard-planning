@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
 import Hoverable from '../../components/Hoverable';
+import { P } from '../../lib/paths';
+import { domainByBankName } from '../../content/aicp/curriculum';
 import RichText from '../../components/RichText';
 import { barStyle, chipStyle, cardStyle } from '../../lib/style';
 import { GREEN, themeTokens } from '../../lib/theme';
@@ -72,7 +75,7 @@ export default function ReportView(s) {
           <p style={{ fontSize: 16, color: T.mute, margin: '10px 0 28px', maxWidth: '66ch' }}>Ranked by exam weight times points lost. A soft spot in a heavy domain costs you more than a bad score in a light one, so this order is not the same as sorting by percentage.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             {s.dPlan.map((p) => (
-              <div key={p.name} style={{ ...cardStyle(T, { radius: 14, padding: '20px 22px' }), display: 'grid', gridTemplateColumns: '44px 1fr auto', gap: 18, alignItems: 'center' }}>
+              <div key={p.name} style={{ ...cardStyle(T, { radius: 14, padding: '20px 22px' }), display: 'grid', gridTemplateColumns: '44px minmax(0,1fr)', gap: '14px 18px', alignItems: 'center' }} className="plan-row">
                 <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 30, fontWeight: 700, color: '#C93B2C', letterSpacing: '-0.03em' }}>{p.rank}</div>
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
@@ -83,13 +86,25 @@ export default function ReportView(s) {
                   {p.hasTopics && <div style={{ fontSize: 14, color: T.mute, marginTop: 8 }}>Missed items touched: {p.topics}</div>}
                   {p.sampled && <div style={{ fontSize: 13, color: T.warnFg, marginTop: 8 }}>This domain has 18 sub-areas and 12 items on the form &mdash; it is sampled, not covered.</div>}
                 </div>
-                <Hoverable
-                  style={{ background: 'none', border: `1px solid ${T.line}`, color: T.accFg, padding: '11px 18px', borderRadius: 9, fontSize: 14.5, fontWeight: 600, whiteSpace: 'nowrap' }}
-                  hoverStyle={{ border: `1px solid ${T.accFg}`, background: T.accBg }}
-                  onClick={() => s.startDrill(p.drill)}
-                >
-                  Drill this domain
-                </Hoverable>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {domainByBankName(p.drill) && (
+                    <Hoverable
+                      as={Link}
+                      to={P.domain(domainByBankName(p.drill).id)}
+                      style={{ display: 'block', background: T.accBg, border: `1px solid ${T.accBg}`, color: T.accFg, padding: '11px 18px', borderRadius: 9, fontSize: 14.5, fontWeight: 600, whiteSpace: 'nowrap', textAlign: 'center' }}
+                      hoverStyle={{ border: `1px solid ${T.accFg}` }}
+                    >
+                      Read the lessons
+                    </Hoverable>
+                  )}
+                  <Hoverable
+                    style={{ background: 'none', border: `1px solid ${T.line}`, color: T.accFg, padding: '11px 18px', borderRadius: 9, fontSize: 14.5, fontWeight: 600, whiteSpace: 'nowrap' }}
+                    hoverStyle={{ border: `1px solid ${T.accFg}`, background: T.accBg }}
+                    onClick={() => s.startDrill(p.drill)}
+                  >
+                    Drill this domain
+                  </Hoverable>
+                </div>
               </div>
             ))}
           </div>
@@ -132,7 +147,7 @@ export default function ReportView(s) {
           </div>
           <div style={cardStyle(T, { radius: 14, padding: '22px 24px' })}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: T.accFg }}>Next step</div>
-            <p style={{ fontSize: 15, lineHeight: 1.6, color: T.mute, margin: '10px 0 14px' }}>Work your top two priority domains as untimed drills, then take a full-length timed exam to test pace.</p>
+            <p style={{ fontSize: 15, lineHeight: 1.6, color: T.mute, margin: '10px 0 14px' }}>Read the lessons for your top two priority domains, work them as untimed drills, then take a full-length timed exam to test pace. The <Link to={P.studyPlan} style={{ color: T.accFg, fontWeight: 600, textDecoration: 'underline' }}>study plans</Link> put it all on a calendar.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {s.dTopTwo.map((t) => (
                 <Hoverable
@@ -220,7 +235,7 @@ export default function ReportView(s) {
           <Hoverable
             style={{ background: s.dark ? GREEN : '#1A1C2B', color: '#F6F7FB', border: 'none', padding: '14px 24px', borderRadius: 11, fontSize: 15.5, fontWeight: 700 }}
             hoverStyle={{ background: '#1D5FA8' }}
-            onClick={() => s.navigate('/exams')}
+            onClick={() => s.navigate(P.exams)}
           >
             Take a full-length exam
           </Hoverable>

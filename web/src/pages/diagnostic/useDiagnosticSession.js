@@ -7,6 +7,7 @@ import { parseExhibit } from '../../lib/format';
 import { LETTERS } from '../../data/domains';
 import { recordAttempt } from '../../lib/history';
 import { useDarkMode } from '../../context/DarkModeContext';
+import { P } from '../../lib/paths';
 
 const DI = ITEMS;
 const dTotal = DI.length;
@@ -191,7 +192,7 @@ export function useDiagnosticSession() {
 
   const dTopTwo = dPlan.slice(0, 2);
 
-  const startDrill = (name) => navigate(`/exam/run?drill=${encodeURIComponent(name)}`);
+  const startDrill = (name) => navigate(P.runDrill(name));
 
   return {
     view, setView, navigate, startDrill, dark, toggleDark,

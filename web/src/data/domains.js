@@ -89,7 +89,7 @@ export const QUESTIONS = [
 export const LETTERS = ['A', 'B', 'C', 'D'];
 
 export const QOTD = {
-  domain: 'Areas of Practice', difficulty: 'Medium',
+  domain: 'Code of Ethics & Professional Conduct', difficulty: 'Medium',
   text: 'A developer applies for a permit that fully complies with the zoning ordinance, but neighbors organize against it and the planning commission asks staff to recommend denial. What does the AICP Code of Ethics require of the planner?',
   options: [
     'Recommend denial, because the commission directs staff work',
