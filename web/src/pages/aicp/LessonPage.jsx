@@ -27,7 +27,7 @@ const previewHtml = (html) => {
 
 const BANK_LABEL = { e1: 'Practice Exam 1', e2: 'Practice Exam 2', e3: 'Practice Exam 3' };
 
-function PracticeBlock({ lesson, domain }) {
+function PracticeBlock({ lesson }) {
   const access = useAccess();
   const { pathname } = useLocation();
   const refs = lesson.practice || [];
@@ -35,7 +35,6 @@ function PracticeBlock({ lesson, domain }) {
   const banks = [...new Set(refs.map((r) => r.split(':')[0]))].sort().map((b) => BANK_LABEL[b]);
   const sources = banks.length > 1 ? `${banks.slice(0, -1).join(', ')} and ${banks[banks.length - 1]}` : banks[0];
   const setPath = P.runSet(lesson.slug);
-  const drillPath = P.runDrill(domain.bankName);
 
   return (
     <section aria-labelledby="practice-heading" className="card" style={{ marginTop: 40 }}>
@@ -58,13 +57,10 @@ function PracticeBlock({ lesson, domain }) {
             {access.signedIn ? `Unlock all ${refs.length} questions` : `Sign in to practice (${refs.length} questions)`}
           </Link>
         )}
-        <Link className="btn btn-secondary" to={access.canDrill ? drillPath : access.blockedTarget(drillPath)}>
-          Drill {domain.short}
-        </Link>
       </div>
       {!access.signedIn && (
         <p className="small" style={{ margin: '14px 0 0' }}>
-          Practice sets, drills, and exams are free with an account, so your scores are saved.{' '}
+          Practice sets and exams need an account, so your scores are saved.{' '}
           <Link to={P.signinNext(pathname, 'create')} className="link-underline">Create one</Link>, or try{' '}
           <Link to={P.runExam('q1', 'practice')} className="link-underline">Warm-up Quiz A</Link> first, no account needed.
         </p>
@@ -211,7 +207,7 @@ export default function LessonPage() {
                 </section>
               </>
             ))}
-            <PracticeBlock lesson={lesson} domain={domain} />
+            <PracticeBlock lesson={lesson} />
             <Pager slug={lesson.slug} />
           </div>
 

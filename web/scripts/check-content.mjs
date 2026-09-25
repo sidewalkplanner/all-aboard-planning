@@ -43,7 +43,7 @@ const warn = (m) => warnings.push(m);
 const KNOWN_ROUTES = new Set([
   '/', '/about', '/contact',
   '/aicp', '/aicp/course', '/aicp/study-plan', '/aicp/exam-info', '/aicp/faq', '/aicp/pricing',
-  '/aicp/exams', '/aicp/diagnostic', '/aicp/drills', '/aicp/progress', '/aicp/signin', '/aicp/exam/run',
+  '/aicp/exams', '/aicp/diagnostic', '/aicp/progress', '/aicp/signin', '/aicp/exam/run',
   '/aicp/review', '/aicp/review/flashcards', '/aicp/review/quick-reference', '/aicp/review/exam-strategy',
 ]);
 const REQUIRED_SECTIONS = ['learning-objectives', 'key-concepts', 'key-terms', 'real-world-examples', 'summary'];
@@ -185,9 +185,9 @@ function checkLink(href, where) {
   if (path === '/aicp/exam/run') {
     const q = new URLSearchParams(query || '');
     if (q.get('aid') && !validAids.has(q.get('aid'))) err(`${where}: unknown exam id in ${href}`);
-    if (q.get('drill') && !bankNames.has(q.get('drill'))) err(`${where}: unknown drill domain in ${href}`);
+    if (q.get('drill')) err(`${where}: domain drills were retired; link to the domain's lessons instead: ${href}`);
     if (q.get('set') && !slugs.has(q.get('set'))) err(`${where}: unknown practice set in ${href}`);
-    if (!q.get('aid') && !q.get('drill') && !q.get('set')) err(`${where}: exam runner link without aid, drill, or set: ${href}`);
+    if (!q.get('aid') && !q.get('set')) err(`${where}: exam runner link without aid or set: ${href}`);
   }
   if (hash) {
     const anchors = anchorsFor(path);

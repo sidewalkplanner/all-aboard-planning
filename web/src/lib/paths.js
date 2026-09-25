@@ -24,6 +24,7 @@ export const P = {
   pricing: `${AICP}/pricing`,
   exams: `${AICP}/exams`,
   diagnostic: `${AICP}/diagnostic`,
+  // Retired: domain drills. The route only redirects to the course now.
   drills: `${AICP}/drills`,
   progress: `${AICP}/progress`,
   signin: `${AICP}/signin`,
@@ -33,7 +34,6 @@ export const P = {
 
   run: `${AICP}/exam/run`,
   runExam: (aid, mode = 'practice') => `${AICP}/exam/run?aid=${aid}&mode=${mode}`,
-  runDrill: (domainName) => `${AICP}/exam/run?drill=${encodeURIComponent(domainName)}`,
   runSet: (slug) => `${AICP}/exam/run?set=${encodeURIComponent(slug)}&mode=practice`,
 };
 

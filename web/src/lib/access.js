@@ -5,7 +5,7 @@
 //
 // To launch paid plans later, set PAID_TIER_ENABLED = true. Everything tagged
 // `access: 'paid'` (lessons in curriculum.js) or `tier: 'paid'` (exams in
-// data/domains.js), plus domain drills, then needs Full Access, which comes
+// data/domains.js) then needs Full Access, which comes
 // from hooks/useMembership.js. Pricing copy and "Free / Full Access" labels
 // reappear automatically.
 export const PAID_TIER_ENABLED = false;

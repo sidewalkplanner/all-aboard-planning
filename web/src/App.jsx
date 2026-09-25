@@ -10,6 +10,7 @@ import { AuthProvider } from './context/AuthContext';
 import RequireSignIn from './components/RequireSignIn';
 import { DarkModeProvider } from './context/DarkModeContext';
 import { P } from './lib/paths';
+import { PAID_TIER_ENABLED } from './lib/access';
 import AicpHome from './pages/aicp/AicpHome';
 import CourseOverview from './pages/aicp/CourseOverview';
 import LessonPage from './pages/aicp/LessonPage';
@@ -24,11 +25,9 @@ import Pricing from './pages/Pricing';
 import NotFound from './pages/NotFound';
 import Review from './pages/aicp/Review';
 
-// Route-split: these three pull in the large bundled question banks
-// (~660KB combined) via useExamSession/useDiagnosticSession/the domain
-// count on the drills page. Lazy-loading them keeps that weight out of
-// the main bundle, which never needs it.
-const StudyByDomain = lazy(() => import('./pages/StudyByDomain'));
+// Route-split: these pull in the large bundled question banks (~660KB
+// combined) via useExamSession/useDiagnosticSession. Lazy-loading them
+// keeps that weight out of the main bundle, which never needs it.
 const ExamRunner = lazy(() => import('./pages/exam/ExamRunner'));
 const DiagnosticFlow = lazy(() => import('./pages/diagnostic/DiagnosticFlow'));
 // The dashboard and flashcards carry the full flashcard deck.
@@ -85,9 +84,11 @@ export default function App() {
                   <Route path={P.strategy} element={<RequireSignIn title="Exam strategy guide" what="the exam strategy guide"><ExamStrategy /></RequireSignIn>} />
                   <Route path={P.examInfo} element={<ExamInfo />} />
                   <Route path={P.faq} element={<Faq />} />
-                  <Route path={P.pricing} element={<Pricing />} />
+                  {/* Everything is free for now: pricing only exists once paid plans launch. */}
+                  <Route path={P.pricing} element={PAID_TIER_ENABLED ? <Pricing /> : <Navigate to={P.aicp} replace />} />
                   <Route path={P.exams} element={<ExamsList />} />
-                  <Route path={P.drills} element={<RequireSignIn title="Domain drills" what="the domain drills"><StudyByDomain /></RequireSignIn>} />
+                  {/* Domain drills were retired in favour of lessons; old links land on the course. */}
+                  <Route path={P.drills} element={<Navigate to={P.course} replace />} />
                   <Route path={P.progress} element={<RequireSignIn title="Dashboard" what="your dashboard"><Progress /></RequireSignIn>} />
                   <Route path={P.diagnostic} element={<RequireSignIn title="Diagnostic" what="the diagnostic"><DiagnosticFlow /></RequireSignIn>} />
                   <Route path={P.run} element={<ExamRunner />} />
@@ -97,7 +98,7 @@ export default function App() {
                   <Route path="/exams" element={<LegacyRedirect to={P.exams} />} />
                   <Route path="/exam/run" element={<LegacyRedirect to={P.run} />} />
                   <Route path="/diagnostic" element={<LegacyRedirect to={P.diagnostic} />} />
-                  <Route path="/study" element={<LegacyRedirect to={P.drills} />} />
+                  <Route path="/study" element={<Navigate to={P.course} replace />} />
                   <Route path="/progress" element={<LegacyRedirect to={P.progress} />} />
                   <Route path="/pricing" element={<LegacyRedirect to={P.pricing} />} />
                   <Route path="/signin" element={<LegacyRedirect to={P.signin} />} />

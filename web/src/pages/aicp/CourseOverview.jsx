@@ -20,6 +20,8 @@ export default function CourseOverview() {
       <PageHeader
         eyebrow="AICP exam prep course"
         title="Course overview"
+        art="page-books" artW={420} artH={310} artTilt={1.5}
+        artAlt="A stack of planning books labelled Zoning, Plan Making, Ethics and GIS & Data, with a plant and a mug of coffee"
         lead={`${LESSONS.length} lessons across the nine domains of the AICP exam content outline, in outline order. Each lesson has checkpoint questions after its key sections, plus key terms, real planning examples, exam tips, a summary, and a practice set of exam-style questions.`}
       >
         <div className="row-wrap" style={{ marginTop: 22 }}>
@@ -41,7 +43,7 @@ export default function CourseOverview() {
         )}
         <p className="small" style={{ margin: '16px 0 0' }}>
           New to the exam? Read the <Link to={P.strategy} className="link-underline">test-taking strategy guide</Link> first.
-          About {hours} of reading in total. Every lesson is free with an account{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.
+          About {hours} of reading in total. Every lesson opens once you sign in{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.
         </p>
       </PageHeader>
 
@@ -97,8 +99,7 @@ export default function CourseOverview() {
                 ))}
               </ol>
               <p className="small" style={{ margin: '10px 0 0' }}>
-                {lessons.length} lessons &middot; about {mins} minutes &middot;{' '}
-                <Link to={P.drills} className="link-underline">Drill this domain</Link>
+                {lessons.length} lessons &middot; about {mins} minutes
               </p>
             </section>
           );

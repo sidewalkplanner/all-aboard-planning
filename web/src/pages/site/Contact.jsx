@@ -15,7 +15,7 @@ export default function Contact() {
   usePageTitle('Contact');
   return (
     <>
-      <PageHeader eyebrow="Contact" title="Get in touch" lead="Questions, corrections, and group pricing. We read everything." narrow />
+      <PageHeader eyebrow="Contact" title="Get in touch" lead="Questions, corrections, and group use. We read everything." art="page-postcard" artW={500} artH={320} artTilt={-1} artAlt="A postcard reading Hello from the station, with a streetcar stamp" narrow />
       <div className="container-narrow" style={{ paddingBottom: 72 }}>
         {CONTACT_EMAIL ? (
           <div className="card">

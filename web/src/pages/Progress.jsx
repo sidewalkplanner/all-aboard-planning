@@ -216,7 +216,7 @@ export default function Progress() {
                   </ol>
                 </>
               ) : (
-                <p className="small" style={{ margin: 0 }}>Answer lesson checkpoints or take a quiz, exam, or drill, and the lessons behind anything you miss will show up here.</p>
+                <p className="small" style={{ margin: 0 }}>Answer lesson checkpoints or take a quiz or exam, and the lessons behind anything you miss will show up here.</p>
               )}
             </section>
 
@@ -246,7 +246,7 @@ export default function Progress() {
               ))}
               <div className="row-wrap" style={{ marginTop: 14 }}>
                 <Link className="btn btn-secondary btn-sm" to={P.exams}>Practice</Link>
-                <Link className="btn btn-secondary btn-sm" to={P.drills}>Domain drills</Link>
+                <Link className="btn btn-secondary btn-sm" to={P.course}>Lessons</Link>
               </div>
             </section>
           </div>

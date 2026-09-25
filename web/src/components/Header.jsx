@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
-import Hoverable from './Hoverable';
 import MenuIcon from './MenuIcon';
-import { GREEN, themeTokens } from '../lib/theme';
 import { AICP_NAV, isActive } from '../lib/nav';
 import { P, isDarkCapableRoute } from '../lib/paths';
 import { useDarkMode } from '../context/DarkModeContext';
@@ -21,96 +19,87 @@ export default function Header() {
   const open = openAt === here;
   const toggle = () => setOpenAt(open ? null : here);
 
-  // Dark mode only exists within the exam runner and diagnostic flows; the
-  // header only goes dark while one of those is rendering dark content.
+  // Blueprint (dark) mode only exists within the exam runner and diagnostic;
+  // the header only goes dark while one of those is rendering dark content.
   const showDark = dark && isDarkCapableRoute(location.pathname);
-  const T = themeTokens(showDark);
-  const navLinkStyle = {
-    display: 'inline-block', padding: '8px 11px', borderRadius: 8,
-    fontSize: 14.5, fontWeight: 600, whiteSpace: 'nowrap', color: T.mute
-  };
-  const navLinkHover = { background: T.neutralBg, color: T.ink };
-  const activeStyle = { color: T.ink, background: T.neutralBg };
-  const headerBg = showDark ? 'rgba(16,19,32,0.92)' : 'rgba(246,247,251,0.92)';
+  const ink = showDark ? '#EEF3FA' : 'var(--ink)';
+  const linkClass = `nav-link${showDark ? ' nav-link--dark' : ''}`;
 
   const links = (mobile) => AICP_NAV.map((item) => {
     const active = isActive(item, location.pathname);
-    const base = mobile ? { ...navLinkStyle, display: 'block', padding: '12px 10px', fontSize: 16 } : navLinkStyle;
     return (
-      <Hoverable
-        as={Link}
+      <Link
         key={item.to}
         to={item.to}
+        className={linkClass}
         aria-current={active ? 'page' : undefined}
-        style={active ? { ...base, ...activeStyle } : base}
-        hoverStyle={navLinkHover}
+        style={mobile ? { display: 'block', width: 'fit-content', padding: '12px 8px', fontSize: 18 } : undefined}
       >
         {item.label}
-      </Hoverable>
+      </Link>
     );
   });
 
-  const accountBtn = (mobile) => {
-    const box = mobile
-      ? { display: 'block', width: '100%', marginTop: 8, padding: '12px 18px', borderRadius: 9, fontSize: 15.5, fontWeight: 700, textAlign: 'center' }
-      : { marginLeft: 8, padding: '9px 18px', borderRadius: 9, fontSize: 14.5, fontWeight: 700, whiteSpace: 'nowrap' };
+  const account = (mobile) => {
     if (!user) {
       return (
-        <Hoverable as={Link} to={P.signin} style={{ ...box, background: T.ink, color: T.bg }} hoverStyle={{ background: GREEN, color: '#FFFFFF' }}>
+        <Link to={P.signin} className={`btn btn--sm btn-coral${mobile ? ' btn-block' : ''}`} style={mobile ? { marginTop: 12 } : { marginLeft: 10 }}>
           Sign in
-        </Hoverable>
+        </Link>
       );
     }
     // ACCOUNT PLACEHOLDER: a real account menu (profile, settings) goes here.
     const onDash = location.pathname === P.progress;
     return (
-      <span style={{ display: mobile ? 'block' : 'inline-flex', alignItems: 'center', gap: 6, marginLeft: mobile ? 0 : 8 }}>
-        {mobile && <span style={{ display: 'block', fontSize: 14, color: T.mute, padding: '12px 10px 0' }}>Signed in as {user.name}</span>}
-        <Hoverable
-          as={Link}
+      <span style={{ display: mobile ? 'flex' : 'inline-flex', flexDirection: mobile ? 'column' : 'row', alignItems: mobile ? 'stretch' : 'center', gap: mobile ? 10 : 4, marginLeft: mobile ? 0 : 10, marginTop: mobile ? 12 : 0 }}>
+        {mobile && <span className="hand" style={{ fontSize: 22, color: showDark ? '#F4C95D' : 'var(--tomato-deep)', padding: '4px 8px 0' }}>Signed in as {user.name}</span>}
+        <Link
           to={P.progress}
           aria-current={onDash ? 'page' : undefined}
           title={mobile ? undefined : `Signed in as ${user.name}`}
-          style={{ ...box, background: T.ink, color: T.bg, marginLeft: 0 }}
-          hoverStyle={{ background: GREEN, color: '#FFFFFF' }}
+          className={`btn btn--sm btn-coral${mobile ? ' btn-block' : ''}`}
         >
           Dashboard
-        </Hoverable>
-        <Hoverable
-          as="button"
+        </Link>
+        <button
           type="button"
           onClick={() => { setOpenAt(null); signOut(); }}
-          style={mobile
-            ? { ...box, background: 'none', border: `1px solid ${T.line}`, color: T.ink }
-            : { background: 'none', border: 'none', color: T.mute, fontSize: 14, fontWeight: 600, padding: '9px 8px', whiteSpace: 'nowrap' }}
-          hoverStyle={{ color: T.ink }}
+          className={mobile ? 'btn btn--sm btn-secondary btn-block' : linkClass}
         >
           Sign out
-        </Hoverable>
+        </button>
       </span>
     );
   };
 
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 20, background: headerBg, backdropFilter: 'blur(8px)', borderBottom: `1px solid ${T.line}` }}>
-      <div style={{ maxWidth: 1180, margin: '0 auto', padding: '14px var(--gutter)', display: 'flex', alignItems: 'center', gap: 16 }}>
+    <header
+      style={{
+        position: 'sticky', top: 0, zIndex: 30,
+        background: showDark ? 'rgba(21,41,74,0.94)' : 'rgba(247,240,226,0.9)',
+        backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
+        borderBottom: `2px solid ${showDark ? 'rgba(143,176,218,0.35)' : 'rgba(39,35,58,0.85)'}`
+      }}
+    >
+      <div style={{ maxWidth: 1180, margin: '0 auto', padding: '10px var(--gutter)', display: 'flex', alignItems: 'center', gap: 16 }}>
         <Link
           to={P.aicp}
           aria-label="All Aboard Planning: AICP exam prep home"
-          style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0, color: T.ink }}
+          className="wiggle-on-hover"
+          style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0, color: ink }}
         >
-          <Logo />
+          <Logo size={40} />
           <span style={{
-            fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 'clamp(17px,4.2vw,21px)', fontWeight: 600, letterSpacing: '-0.01em',
-            color: T.ink, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
+            fontFamily: 'var(--font-display)', fontVariationSettings: "'SOFT' 100, 'WONK' 1", fontSize: 'clamp(18px,4.4vw,22px)',
+            fontWeight: 750, letterSpacing: '-0.02em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: 1
           }}>
-            All Aboard Planning
+            All Aboard <span style={{ fontFamily: 'var(--font-hand)', fontWeight: 700, fontSize: '1.2em', color: showDark ? '#F4C95D' : 'var(--tomato-deep)', letterSpacing: 0 }}>Planning</span>
           </span>
         </Link>
 
         <nav aria-label="AICP exam prep" className="header-nav-desktop" style={{ gap: 2, marginLeft: 'auto', alignItems: 'center' }}>
           {links(false)}
-          {accountBtn(false)}
+          {account(false)}
         </nav>
 
         <button
@@ -119,17 +108,26 @@ export default function Header() {
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          style={{ marginLeft: 'auto', background: 'none', border: `1px solid ${T.line}`, borderRadius: 8, width: 38, height: 38, alignItems: 'center', justifyContent: 'center', color: T.ink, flex: '0 0 auto' }}
+          style={{
+            marginLeft: 'auto', background: showDark ? 'transparent' : 'var(--surface)', border: `2px solid ${ink}`, borderRadius: '10px 12px 9px 13px',
+            width: 42, height: 42, alignItems: 'center', justifyContent: 'center', color: ink, flex: '0 0 auto',
+            boxShadow: showDark ? 'none' : '2px 3px 0 var(--ink)'
+          }}
         >
           <MenuIcon open={open} />
         </button>
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="AICP exam prep" style={{ borderTop: `1px solid ${T.line}`, background: T.bg, padding: '10px var(--gutter) 18px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <nav
+          id="mobile-nav"
+          aria-label="AICP exam prep"
+          className={`fade-up ${showDark ? 'blueprint-bg' : 'paper-bg'}`}
+          style={{ borderTop: `2px dashed ${showDark ? 'rgba(143,176,218,0.35)' : 'rgba(39,35,58,0.3)'}`, padding: '10px var(--gutter) 20px', display: 'flex', flexDirection: 'column', gap: 2 }}
+        >
           {links(true)}
-          <Hoverable as={Link} to={P.faq} style={{ ...navLinkStyle, display: 'block', padding: '12px 10px', fontSize: 16 }} hoverStyle={navLinkHover}>FAQ</Hoverable>
-          {accountBtn(true)}
+          <Link to={P.faq} className={linkClass} style={{ display: 'block', width: 'fit-content', padding: '12px 8px', fontSize: 18 }}>FAQ</Link>
+          {account(true)}
         </nav>
       )}
     </header>

@@ -8,6 +8,8 @@ export default function ExamStrategy() {
     <ContentPage
       eyebrow="Review"
       title="Exam strategy guide"
+      art="spot-compass" artW={300} artH={300}
+      artAlt="A paper compass rose"
       lead="How to read, pace, and reason through the AICP exam, so what you know shows up in your score."
       body={body}
       after={(

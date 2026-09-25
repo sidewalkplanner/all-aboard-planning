@@ -8,6 +8,7 @@ import { LETTERS } from '../../data/domains';
 import { recordAttempt } from '../../lib/history';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { P } from '../../lib/paths';
+import { domainByBankName } from '../../content/aicp/curriculum';
 import { scopedKey } from '../../lib/userStorage';
 
 const DI = ITEMS;
@@ -88,12 +89,12 @@ export function useDiagnosticSession() {
 
   const submitDiag = () => {
     recordAttempt({
-      kind: 'diagnostic', assessmentId: null, drillName: null, title: DIAG_TITLE, mode: null,
+      kind: 'diagnostic', assessmentId: null, title: DIAG_TITLE, mode: null,
       pct: Math.round(dWeighted * 10) / 10, correctCount: null, total: dTotal, answeredCount: dAnsweredCount,
       flagCount: dFlagCount, elapsedSeconds: dSeconds,
       domainBreakdown: dDomainStats.filter((x) => x.n > 0).map((x) => ({ short: x.d.short, got: x.correct, n: x.n })),
       // Top study priorities (question-bank domain names), shown on the dashboard.
-      priorities: dPlan.slice(0, 3).map((x) => x.drill)
+      priorities: dPlan.slice(0, 3).map((x) => x.bankName)
     });
     try { window.localStorage.removeItem(scopedKey(DIAG_KEY)); } catch (e) { /* ignore */ }
     setView('report');
@@ -149,7 +150,7 @@ export function useDiagnosticSession() {
       topics: x.missedTopics.slice(0, 5).join(' · '),
       hasTopics: x.missedTopics.length > 0,
       sampled: x.d.code === 8,
-      drill: x.d.drill
+      bankName: x.d.bankName
     })), [dDomainStats]);
 
   const dMisinformed = useMemo(() => DI.map((it, idx) => ({ it, idx }))
@@ -189,16 +190,20 @@ export function useDiagnosticSession() {
       why: it.why,
       distractors: it.options.map((text, oi) => ({ key: 'o' + oi, letter: displayLetter(oi), text, note: it.dist[oi], isKey: oi === it.correct })).filter((o) => !o.isKey),
       source: it.source,
-      drill: (DIAG_DOMAINS.find((dd) => dd.code === it.dcode) || {}).drill
+      bankName: (DIAG_DOMAINS.find((dd) => dd.code === it.dcode) || {}).bankName
     };
   }).sort((a, b) => a.sortKey - b.sortKey), [dAns, dConf, dMap]);
 
   const dTopTwo = dPlan.slice(0, 2);
 
-  const startDrill = (name) => navigate(P.runDrill(name));
+  // Open a domain's lessons in the course, by its question-bank name.
+  const openDomain = (bankName) => {
+    const d = domainByBankName(bankName);
+    navigate(d ? P.domain(d.id) : P.course);
+  };
 
   return {
-    view, setView, navigate, startDrill, dark, toggleDark,
+    view, setView, navigate, openDomain, dark, toggleDark,
     dTotal, dItem, dIdx, dOrder, dPickedOrig, dAnsweredCount, dFlagCount, dConfTag, dShown, dCanCheck, dRight,
     dAns, dConf, dFlags, dChecked, dI,
     dSaved, dReveal, dRevealUsed,

@@ -19,7 +19,6 @@ export default function useAccess() {
     paidTier: PAID_TIER_ENABLED,
     canOpenAssessment: (a) => PUBLIC_ASSESSMENTS.includes(a.id) || tierOk(a.tier),
     canReadLesson: (lesson) => tierOk(lesson.access),
-    canDrill: fullAccess,
     // Where to send someone who can't open `next` (a route path, e.g. from useLocation).
     blockedTarget: (next) => (signedIn ? P.pricing : P.signinNext(next)),
   };

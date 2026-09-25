@@ -47,8 +47,8 @@ const GROUPS = [
     heading: 'Access and accounts',
     items: [
       {
-        q: 'Is it really free?',
-        a: <p>Yes. Every lesson, lesson practice set, full-length practice exam, domain drill, the diagnostic, and both study plans are free. See <Link to={P.pricing}>pricing</Link> for the details.</p>,
+        q: 'Do I need to pay for anything?',
+        a: <p>No. Everything in the course is open to anyone with an account: every lesson, all three full-length practice exams, the diagnostic, the review tools, and both study plans.</p>,
       },
       {
         q: 'Why do I need an account?',
@@ -64,7 +64,7 @@ const GROUPS = [
       },
       {
         q: 'Can my team or class use it?',
-        a: <p>Yes, and it&rsquo;s free for groups too. Each person creates their own account. <Link to={P.contact}>Get in touch</Link> if you have questions about group use.</p>,
+        a: <p>Yes. Each person creates their own account. <Link to={P.contact}>Get in touch</Link> if you have questions about group use.</p>,
       },
     ],
   },
@@ -108,7 +108,7 @@ export default function Faq() {
   usePageTitle('FAQ');
   return (
     <>
-      <PageHeader eyebrow="Help" title="Frequently asked questions" lead="Answers about the course, access, the practice tools, and the exam itself." narrow />
+      <PageHeader eyebrow="Help" title="Frequently asked questions" lead="Answers about the course, access, the practice tools, and the exam itself." art="page-faq" artW={450} artH={320} artTilt={1} artAlt="Two speech bubbles, one with a question mark and one with a checked answer, under a lightbulb" narrow />
       <div className="container-narrow faq" style={{ paddingBottom: 72 }}>
         {GROUPS.map((g) => (
           <section key={g.heading} aria-labelledby={`faq-${g.heading.replace(/\W+/g, '-')}`} style={{ marginTop: 32 }}>

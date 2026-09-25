@@ -23,7 +23,6 @@ const FULL_FEATURES = [
   `All ${LESSONS.length} lessons across the nine domains`,
   'A practice set for every lesson',
   'Three full-length 170-question practice exams, timed or untimed',
-  'Untimed drills in every domain',
   'Progress tracking across attempts',
 ];
 const TEAM_FEATURES = [
@@ -125,7 +124,6 @@ const FREE_NOW = [
   'A practice set for every lesson',
   'Three full-length 170-question practice exams, timed or untimed',
   'Both 25-question warm-up quizzes',
-  'Untimed drills in every domain',
   'The 100-item diagnostic with a ranked study list',
   '8- and 12-week study plans',
   'Progress tracking across every attempt',
@@ -139,7 +137,7 @@ function FreeAccess() {
       <PageHeader
         eyebrow="Pricing"
         title="The whole course is free."
-        lead="Every lesson, practice set, exam, drill, and the diagnostic, at no cost. All you need is a free account, which keeps your scores and progress in one place."
+        lead="Every lesson, exam, and the diagnostic, at no cost. All you need is an account, which keeps your scores and progress in one place."
       />
       <div className="container" style={{ paddingBottom: 72 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 20, alignItems: 'stretch' }}>

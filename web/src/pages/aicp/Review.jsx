@@ -17,6 +17,8 @@ export default function Review() {
       <PageHeader
         eyebrow="Review"
         title="Review tools"
+        art="page-cards" artW={550} artH={330} artTilt={-1}
+        artAlt="A kraft index-card box with coloured tabs and two flashcards: Euclid v. Ambler and FAR"
         lead="The lessons teach the material. These tools help you remember it and perform on test day. Use them throughout your prep, and lean on them in the final weeks."
       />
       <div className="container" style={{ paddingBottom: 72 }}>
@@ -29,7 +31,7 @@ export default function Review() {
             </Link>
           ))}
         </div>
-        <p className="small" style={{ margin: '20px 0 0' }}>All review tools are free with an account.</p>
+        <p className="small" style={{ margin: '20px 0 0' }}>All review tools open once you sign in.</p>
       </div>
     </>
   );

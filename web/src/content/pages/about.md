@@ -27,5 +27,5 @@ All Aboard Planning is not affiliated with, endorsed by, or sponsored by the Ame
 
 ## Where to start
 
-- New here? Read [how the course works](/aicp), then take the free [diagnostic](/aicp/diagnostic).
+- New here? Read [how the course works](/aicp), then take the [diagnostic](/aicp/diagnostic).
 - Ready to study? Browse the [course overview](/aicp/course) or pick a [study plan](/aicp/study-plan).

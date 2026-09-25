@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import useAccess from '../hooks/useAccess';
 import { P } from '../lib/paths';
 
-// Shown in place of gated content. Signed-out visitors get a free-account
+// Shown in place of gated content. Signed-out visitors get a create-an-account
 // prompt. Once paid plans are enabled (lib/access.js), signed-in visitors
 // without Full Access get a pricing prompt instead.
 //
@@ -29,16 +29,16 @@ export default function AccessGate({ what = 'the rest of this lesson', headingLe
 
   return (
     <section className="card" aria-labelledby="gate-heading" style={{ marginTop: 32, borderColor: 'var(--brand)', borderWidth: 2 }}>
-      <span className="chip chip-ok">Free with an account</span>
+      <span className="chip chip-ok">Open with an account</span>
       <H id="gate-heading" className={headingLevel === 1 ? 'h1' : 'h3'} style={{ margin: '14px 0 8px' }}>
-        Create a free account to see {what}
+        Create an account to see {what}
       </H>
       <p className="body-text" style={{ margin: '0 0 18px', maxWidth: '60ch' }}>
-        Every lesson, practice set, full-length exam, domain drill, and the diagnostic are free. An account keeps your
-        scores and progress in one place so you can see where to study next.
+        Every lesson, full-length exam, and the diagnostic is open to you. An account keeps your scores and progress
+        in one place so you can see where to study next.
       </p>
       <div className="row-wrap">
-        <Link className="btn btn-primary" to={P.signinNext(next, 'create')}>Create a free account</Link>
+        <Link className="btn btn-primary" to={P.signinNext(next, 'create')}>Create an account</Link>
         <Link className="btn btn-secondary" to={P.signinNext(next)}>Sign in</Link>
       </div>
       <p className="small" style={{ margin: '16px 0 0' }}>

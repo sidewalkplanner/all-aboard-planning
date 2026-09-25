@@ -4,13 +4,13 @@ import { ASSESSMENTS, DOMAINS } from '../../data/domains';
 import { BANK as RAW_EXAM1 } from '../../data/exam1-questions';
 import { BANK as RAW_EXAM2 } from '../../data/exam2-questions';
 import { BANK as RAW_EXAM3 } from '../../data/exam3-questions';
-import { sample, shuffle } from '../../lib/shuffle';
+import { sample } from '../../lib/shuffle';
 import useAccess from '../../hooks/useAccess';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { fmtHoursMinutes, parseExhibit } from '../../lib/format';
 import { recordAttempt } from '../../lib/history';
 import { P } from '../../lib/paths';
-import { lessonBySlug, lessonsToReview, DOMAINS as CURRICULUM_DOMAINS } from '../../content/aicp/curriculum';
+import { lessonBySlug, lessonsToReview, domainByBankName, DOMAINS as CURRICULUM_DOMAINS } from '../../content/aicp/curriculum';
 import { accessibleRefs } from '../../content/aicp/freeQuizRefs';
 import { scopedKey } from '../../lib/userStorage';
 
@@ -20,7 +20,6 @@ const tagged = (bank, b) => bank.map((q) => ({ ...q, ref: `${b}:${q.n}` }));
 const EXAM1_BANK = tagged(RAW_EXAM1, 'e1');
 const EXAM2_BANK = tagged(RAW_EXAM2, 'e2');
 const EXAM3_BANK = tagged(RAW_EXAM3, 'e3');
-const DRILLPOOL = EXAM1_BANK.concat(EXAM2_BANK, EXAM3_BANK);
 const BANKS = { e1: EXAM1_BANK, e2: EXAM2_BANK, e3: EXAM3_BANK };
 const resolveRef = (ref) => {
   const [b, n] = ref.split(':');
@@ -63,22 +62,22 @@ export function useExamSession() {
 
   const aid = params.get('aid') || 'q1';
   const mode = params.get('set') ? 'practice' : (params.get('mode') || 'practice');
-  const drill = params.get('drill') || null;
+  // Domain drills were retired: an old ?drill= link opens that domain's lessons.
+  const retiredDrill = params.get('drill');
   // ?set=<lesson slug>: that lesson's practice set (untimed, explained).
   const setLesson = useMemo(() => {
     const slug = params.get('set');
     return slug ? lessonBySlug(slug) : null;
   }, [params]);
   const setRefs = useMemo(() => (setLesson ? accessibleRefs(setLesson, access) : []), [setLesson, access.signedIn, access.fullAccess]); // eslint-disable-line react-hooks/exhaustive-deps
-  const sessionKey = setLesson ? `set:${setLesson.slug}|${access.fullAccess ? 'full' : 'free'}` : `${aid}|${mode}|${drill}`;
+  const sessionKey = setLesson ? `set:${setLesson.slug}|${access.fullAccess ? 'full' : 'free'}` : `${aid}|${mode}|null`;
 
   const active = useMemo(() => ASSESSMENTS.find((x) => x.id === aid) || ASSESSMENTS[0], [aid]);
 
   const QS = useMemo(() => {
     if (setLesson) return setRefs.map(resolveRef).filter(Boolean);
-    if (drill) return shuffle(DRILLPOOL.filter((qq) => qq.domain === drill), 7717).slice(0, 25);
     return sample(EXAM1_BANK, active.id, EXAM2_BANK, EXAM3_BANK);
-  }, [drill, active.id, setLesson, setRefs]);
+  }, [active.id, setLesson, setRefs]);
 
   const [view, setView] = useState('question');
   const [i, setI] = useState(0);
@@ -89,14 +88,19 @@ export function useExamSession() {
   const [startedAt, setStartedAt] = useState(() => Date.now());
 
   // Guard: gated content requires sign-in (see useAccess). Reset (or restore a saved attempt
-  // for) session state whenever the assessment/mode/drill identity actually
+  // for) session state whenever the assessment/mode/set identity actually
   // changes (not on every render), so switching between exams — or a
   // reload — never silently drops progress the way it used to.
   const lastKey = useRef(null);
   useEffect(() => {
     // Access rules live in hooks/useAccess.js (sign-in today; sign-in plus
     // membership once paid plans are enabled in lib/access.js).
-    const allowed = setLesson ? setRefs.length > 0 : drill ? access.canDrill : access.canOpenAssessment(active);
+    if (retiredDrill) {
+      const d = domainByBankName(retiredDrill);
+      navigate(d ? P.domain(d.id) : P.course, { replace: true });
+      return;
+    }
+    const allowed = setLesson ? setRefs.length > 0 : access.canOpenAssessment(active);
     if (!allowed) {
       navigate(access.blockedTarget(location.pathname + location.search), { replace: true });
       return;
@@ -115,7 +119,7 @@ export function useExamSession() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionKey]);
 
-  // Autosave the in-progress attempt for this exact assessment/mode/drill,
+  // Autosave the in-progress attempt for this exact assessment/mode/set,
   // so a reload (or switching to a different exam and back) resumes rather
   // than losing progress. Cleared once the attempt is submitted.
   useEffect(() => {
@@ -140,7 +144,7 @@ export function useExamSession() {
   const practice = mode === 'practice';
   const revealed = practice && answeredThis && !!checked[i];
   const canCheck = practice && answeredThis && !checked[i];
-  const activeTitle = setLesson ? `${setLesson.title}: practice set` : drill ? drill + ' drill' : active.title;
+  const activeTitle = setLesson ? `${setLesson.title}: practice set` : active.title;
   const totalSeconds = active.mins * 60;
 
   const pick = (idx) => {
@@ -156,7 +160,7 @@ export function useExamSession() {
   const submit = () => {
     const elapsedSeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
     recordAttempt({
-      kind: 'exam', assessmentId: drill || setLesson ? null : active.id, drillName: drill || null,
+      kind: 'exam', assessmentId: setLesson ? null : active.id,
       lessonSlug: setLesson ? setLesson.slug : null,
       title: activeTitle, mode, pct, correctCount, total, answeredCount, flagCount, elapsedSeconds,
       missedRefs: QS.filter((qq, idx) => answers[idx] !== qq.correct).map((qq) => qq.ref),
@@ -223,7 +227,7 @@ export function useExamSession() {
   const partialSet = !!setLesson && !access.fullAccess && setRefs.length < (setLesson.practice || []).length;
 
   return {
-    aid, mode, drill, setLesson, backTo, partialSet, weakestLink, signedIn: access.signedIn, reviewLessons, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
+    aid, mode, setLesson, backTo, partialSet, weakestLink, signedIn: access.signedIn, reviewLessons, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
     seconds, totalSeconds, dark, toggleDark, view,
     answers, flags, checked, answeredCount, flagCount,
     pick, checkAnswer, toggleFlag, prev, next, goGrid, backToExam, submit, goAnswerReview, goTo,
