@@ -6,7 +6,7 @@ import { renderMarkdown, extractKeyTerms } from './scripts/markdown.mjs'
 
 // Lesson bodies are authored as Markdown (src/content/aicp/lessons/*.md) and
 // rendered to HTML here, at build time, so no Markdown parser ships to the
-// browser. Each .md module exports { html, headings }.
+// browser. Each .md module exports { html, headings, checkpoints }.
 function lessonMarkdown() {
   let base = '/'
   return {
@@ -16,8 +16,8 @@ function lessonMarkdown() {
     },
     transform(code, id) {
       if (!id.split('?')[0].endsWith('.md')) return null
-      const { html, headings } = renderMarkdown(code, { base })
-      return { code: `export default ${JSON.stringify({ html, headings })};`, map: null }
+      const { html, headings, checkpoints } = renderMarkdown(code, { base })
+      return { code: `export default ${JSON.stringify({ html, headings, checkpoints })};`, map: null }
     },
   }
 }

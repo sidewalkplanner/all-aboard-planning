@@ -31,6 +31,8 @@ So the commitment to seek social justice by expanding choice and opportunity for
 Sorts a handful of obligations into aspirational principles and enforceable rules, the single most tested idea about the Code's structure.
 :::
 
+:::checkpoint e3:171
+
 ### The aspirational principles
 
 The principles are grouped by the three relationships a planner has. In summary:
@@ -60,6 +62,8 @@ The principles are grouped by the three relationships a planner has. In summary:
 
 <!-- VERIFY: the wording and grouping of these principles are paraphrased from our understanding of the Code; check each against the current text. -->
 
+:::checkpoint e3:186
+
 ### The Rules of Conduct (overview)
 
 The Rules of Conduct turn the most important obligations into enforceable standards. They're covered in detail in [Conflicts of interest and the Rules of Conduct](/aicp/lessons/conflicts-of-interest-and-rules-of-conduct). Their main themes are:
@@ -81,6 +85,8 @@ A member who's **unsure whether a contemplated course of action complies with th
 
 Asking for advice *before* acting is the appropriate professional step when a situation is genuinely uncertain. <!-- VERIFY: confirm the current names and process for informal advice and formal advisory opinions under the Code's procedures. -->
 
+:::checkpoint e1:144
+
 ### Charges, investigation, and sanctions
 
 - **Who can file:** **any person**, whether or not they're a planner or APA member, may file a charge of misconduct alleging that an AICP member violated the Rules of Conduct.
@@ -89,6 +95,8 @@ Asking for advice *before* acting is the appropriate professional step when a si
 - Filing a charge **known to be frivolous** is itself a violation.
 
 <!-- VERIFY: confirm the current complaint procedure steps, the name of the deciding body, and the list of available sanctions (for example, whether a "letter of admonition" still exists). -->
+
+:::checkpoint e3:179
 
 ### Reading exam questions about the Code
 

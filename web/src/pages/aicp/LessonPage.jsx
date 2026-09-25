@@ -131,6 +131,11 @@ export default function LessonPage() {
   const domain = domainById(lesson.domainId);
   const locked = !readable;
   const complete = !!study.completed[lesson.slug];
+  const checkpointRefs = body ? body.checkpoints.flat() : [];
+  const cpAnswers = study.checkpoints[lesson.slug] || {};
+  const cpAnswered = checkpointRefs.filter((r) => cpAnswers[r]).length;
+  const cpCorrect = checkpointRefs.filter((r) => cpAnswers[r] && cpAnswers[r].correct).length;
+  const cpAllDone = cpAnswered === checkpointRefs.length;
   const { next } = neighbors(lesson.slug);
   const toc = body && body.headings.length > 0 && (
     <ul className="toc">
@@ -141,7 +146,7 @@ export default function LessonPage() {
             : <a href={`#${h.id}`}>{h.text}</a>}
         </li>
       ))}
-      {!locked && <li><a href="#quick-check-heading">Check yourself</a></li>}
+      {!locked && <li><a href="#quick-check-heading">Lesson review</a></li>}
       <li><a href="#practice-heading">Practice questions</a></li>
     </ul>
   );
@@ -181,15 +186,24 @@ export default function LessonPage() {
               </>
             ) : (
               <>
-                <LessonBody html={body.html} />
-                <QuickCheck lesson={lesson} />
+                <LessonBody html={body.html} slug={lesson.slug} />
+                <QuickCheck lesson={lesson} exclude={checkpointRefs} />
                 <section aria-label="Lesson completion" className="card" style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 14, alignItems: 'center', justifyContent: 'space-between', ...(complete ? { borderColor: 'var(--ok-fg)', background: 'var(--ok-bg)' } : {}) }}>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 16.5 }}>{complete ? 'Lesson complete' : 'Finished this lesson?'}</div>
-                    <div className="small">{complete ? 'It counts toward your course progress and study plan.' : 'Mark it complete to track your course progress and study plan.'}</div>
+                    {checkpointRefs.length > 0 && (
+                      <div className="small" style={{ fontWeight: 600, color: 'var(--ink)', margin: '2px 0' }}>
+                        Checkpoints: {cpAnswered} of {checkpointRefs.length} answered{cpAnswered ? `, ${cpCorrect} correct` : ''}
+                      </div>
+                    )}
+                    <div className="small">
+                      {complete ? 'It counts toward your course progress and study plan.'
+                        : cpAllDone ? 'Mark it complete to track your course progress and study plan.'
+                          : 'Answer every checkpoint in the lesson to finish it.'}
+                    </div>
                   </div>
                   <div className="row-wrap">
-                    <button type="button" className={`btn ${complete ? 'btn-secondary' : 'btn-primary'}`} aria-pressed={complete} onClick={() => setLessonComplete(lesson.slug, !complete)}>
+                    <button type="button" className={`btn ${complete ? 'btn-secondary' : 'btn-primary'}`} aria-pressed={complete} disabled={!complete && !cpAllDone} onClick={() => setLessonComplete(lesson.slug, !complete)}>
                       {complete ? 'Mark as not complete' : 'Mark lesson complete'}
                     </button>
                     {complete && next && <Link className="btn btn-primary" to={P.lesson(next.slug)}>Next: {next.title}</Link>}

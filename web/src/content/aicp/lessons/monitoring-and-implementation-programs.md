@@ -27,6 +27,8 @@ An implementation element (or action plan) turns policies into work. It's **most
 
 The action table should use the tools the jurisdiction actually has: **regulations** (zoning and subdivision amendments), **capital investments** (the CIP), **programs and services**, **incentives**, **partnerships**, and **further planning** (area and functional plans). Pursuing grants and partnerships that advance plan objectives, and prioritizing capital projects that implement plan goals, are both core ways to **align funding with the plan**.
 
+:::checkpoint e1:90
+
 ### Strategic partnerships
 
 No single agency can implement a comprehensive plan alone. Partners bring money, land, expertise, and credibility:
@@ -52,9 +54,13 @@ Good partnerships have a shared goal, clear roles, a written agreement where nee
 
 Pursuing projects together to gain efficiencies, such as repaving a street, replacing the water main underneath, and adding bike lanes in one project, is sometimes called **integration** or coordinated project delivery. It saves money and avoids tearing up the same street three times.
 
+:::checkpoint e1:93
+
 ### Level-of-service standards
 
 A **level-of-service (LOS) standard** defines a **measurable threshold** for public facilities: acres of parkland per 1,000 residents, response times for fire service, gallons of water capacity, or intersection delay. LOS standards are used to plan capital needs, calculate impact fees, and (under concurrency) decide whether development can proceed. **Setting an LOS standard in the plan commits the jurisdiction to funding the facilities needed to meet it**, so standards should be realistic and affordable.
+
+:::checkpoint e3:200
 
 ### Monitoring and evaluation
 
@@ -64,6 +70,8 @@ The purpose of monitoring is to **track progress against the plan's objectives**
 - **Outcome monitoring**: Is it making a difference? (Did the share of residents within a 10-minute walk of a park rise?)
 
 Monitoring is **most credible when indicators are tied to adopted objectives and baselined at adoption**, measured the same way each time, and reported publicly on a regular schedule (often an annual report card or dashboard). Good indicators are relevant, measurable with available data, understandable, and sensitive to change within a reasonable period.
+
+:::checkpoint e3:196
 
 ### Updating the plan
 

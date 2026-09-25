@@ -26,6 +26,8 @@ A quick test: **a goal is broad, an objective is measurable, and a policy guides
 Builds one example from a vision statement down to an assigned action, so the difference between a goal, an objective, and a policy is easy to see.
 :::
 
+:::checkpoint e1:41
+
 ### Writing good objectives
 
 Objectives are how you'll know whether the plan is working. Many planners use the **SMART** test: **S**pecific, **M**easurable, **A**chievable, **R**elevant, and **T**ime-bound. A good objective:
@@ -47,9 +49,13 @@ Policies are applied again and again: in staff reports, rezonings, capital budge
 - **Stay within authority.** Don't write policies the jurisdiction has no power to carry out.
 - **Keep the logic visible.** Each policy should trace up to a goal and down to actions.
 
+:::checkpoint cp:goals-shall
+
 ### Visioning versus goal-setting
 
 A **visioning process** asks participants to describe the community's desired **long-range future condition**: what it will be like to live there. A goal-setting workshop turns that picture into specific, organized statements of intent. Visioning comes first and is deliberately broad; it builds a shared picture before debating the details.
+
+:::checkpoint e2:31
 
 ### An equity framework
 
@@ -61,6 +67,8 @@ An **equity lens** examines how the benefits and burdens of a policy are distrib
 - **Target resources.** Design universal goals but reach them with strategies tailored to groups that are furthest from them. This approach is sometimes called "targeted universalism." <!-- VERIFY: "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. -->
 - **Track and report** progress on those disparities over time.
 
+:::checkpoint e1:39
+
 ### Priorities
 
 Plans usually contain more actions than a community can fund at once. **Priority statements** and phasing tell implementers what to do first. Common criteria: the degree of impact on key goals, urgency (safety, legal deadlines), cost and available funding, readiness, equity, and whether an action unlocks others.
@@ -68,6 +76,8 @@ Plans usually contain more actions than a community can fund at once. **Priority
 ### Measuring "character"
 
 When residents want to "preserve rural character," the planner's job is to **translate that value into measurable standards** without dismissing it. What does rural character mean here? Views of open fields from the road? Low building coverage? Narrow roads without curbs? Farm operations? Once named, each quality can become an objective and a policy, such as a maximum lot coverage, a scenic road setback, or a conservation subdivision standard.
+
+:::checkpoint cp:goals-character
 
 ## Key terms
 

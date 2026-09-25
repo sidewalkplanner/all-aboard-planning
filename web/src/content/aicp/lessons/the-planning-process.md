@@ -38,6 +38,8 @@ Most planning processes follow a version of the rational model (see [Planning th
 
 In practice the steps **overlap and loop back**: engagement runs throughout, new data can reopen goals, and evaluation can send the team back to refine alternatives. When an exam question asks for the *first substantive step* after scoping, the usual answer is **inventorying existing conditions**, which comes before drafting goals or maps.
 
+:::checkpoint e2:29
+
 ### The existing conditions report
 
 An **existing conditions report** (or community profile) establishes a **shared factual baseline** that residents, staff, and officials can all work from. It typically covers:
@@ -53,11 +55,15 @@ An **existing conditions report** (or community profile) establishes a **shared 
 
 Natural constraints and hazard risk belong early in the analysis, because they limit where growth can safely go. A plan's approach to a floodplain should be shaped first by an analysis of the hazard, not by a preferred land use pattern that's later squeezed around it.
 
+:::checkpoint e2:46
+
 ### Planning as multivariate analysis
 
 A comprehensive plan juggles many variables at once: housing, jobs, transportation, the environment, infrastructure cost, equity, and community character. Changing one affects the others. Adding housing capacity near transit affects school enrollment, traffic, tree canopy, and the tax base.
 
 When goals conflict, for example a housing policy calling for more density in an area where a natural-resource policy limits it, the planner's job isn't to quietly pick a winner. It's to **analyze and surface the tradeoff for decision-makers**: what each option achieves, what it costs, and who's affected. Then elected officials make the value choice, and the plan records it.
+
+:::checkpoint e1:50
 
 ### Amend or update?
 
@@ -68,9 +74,13 @@ Plans age. Two kinds of change keep them current:
 
 Many communities schedule a full review every five to ten years; some states require periodic updates. Frequent piecemeal amendments that pull the plan in different directions are a sign that a full update is overdue.
 
+:::checkpoint e3:193
+
 ### Strategic plans versus comprehensive plans
 
 A **departmental strategic plan** concentrates on a limited set of priority actions for an organization over a few years, often using tools like SWOT analysis (strengths, weaknesses, opportunities, threats). A **comprehensive plan** covers the whole community, all its physical development topics, over a long horizon. See [Comprehensive plans, elements, and consistency](/aicp/lessons/comprehensive-plans).
+
+:::checkpoint e2:48
 
 ## Key terms
 

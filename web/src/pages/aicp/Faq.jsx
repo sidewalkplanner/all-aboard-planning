@@ -20,7 +20,7 @@ const GROUPS = [
         q: 'What\u2019s the best way to use the course?',
         a: (
           <>
-            <p>Take the <Link to={P.diagnostic}>diagnostic</Link>, follow a <Link to={P.studyPlan}>study plan</Link>, and for each lesson: read it, answer its three-question check without looking back, mark it complete, and do its practice set. Spend ten minutes a day on <Link to={P.flashcards}>flashcards</Link>.</p>
+            <p>Take the <Link to={P.diagnostic}>diagnostic</Link>, follow a <Link to={P.studyPlan}>study plan</Link>, and for each lesson: read it, answer each checkpoint as you reach it, do the lesson review without scrolling back, mark it complete, and do its practice set. Spend ten minutes a day on <Link to={P.flashcards}>flashcards</Link>.</p>
             <p>Midway through, retake the diagnostic. In the final weeks, take full-length timed exams, reread the lessons your <Link to={P.progress}>dashboard</Link> lists for review, and read the <Link to={P.strategy}>exam strategy guide</Link> and <Link to={P.quickRef}>quick reference</Link>.</p>
           </>
         ),

@@ -961,7 +961,7 @@ export const BANK = [
  },
  {
   "n": 65,
-  "scenario": null,
+  "scenario": "A county is siting a new regional wastewater treatment facility. Three candidate sites have been identified. One is adjacent to a historically Black neighborhood that already hosts a landfill and a rail yard. Residents there have organized in opposition and distrust the county after a prior siting decision made with little notice.",
   "text": "The most appropriate first step for the planning staff is to:",
   "options": [
    "Announce the technically preferred site and then take comment",
@@ -976,7 +976,7 @@ export const BANK = [
  },
  {
   "n": 66,
-  "scenario": null,
+  "scenario": "A county is siting a new regional wastewater treatment facility. Three candidate sites have been identified. One is adjacent to a historically Black neighborhood that already hosts a landfill and a rail yard. Residents there have organized in opposition and distrust the county after a prior siting decision made with little notice.",
   "text": "The concentration of existing burdens in that neighborhood is most directly a question of:",
   "options": [
    "Concurrency and level of service",
@@ -991,7 +991,7 @@ export const BANK = [
  },
  {
   "n": 67,
-  "scenario": null,
+  "scenario": "A county is siting a new regional wastewater treatment facility. Three candidate sites have been identified. One is adjacent to a historically Black neighborhood that already hosts a landfill and a rail yard. Residents there have organized in opposition and distrust the county after a prior siting decision made with little notice.",
   "text": "Residents state that they were not notified of the earlier decision. To rebuild credibility, the most effective measure is to:",
   "options": [
    "Increase the size of the newspaper notice",
@@ -2146,7 +2146,7 @@ export const BANK = [
  },
  {
   "n": 144,
-  "scenario": null,
+  "scenario": "Dana, AICP, is the planning director of a small city. A development firm has a major rezoning pending before the planning commission. Three years earlier, before joining the city, Dana performed private consulting work for that firm on an unrelated project in a different state. While the rezoning is under review, the firm's principal offers Dana's spouse a position with the company.",
   "text": "The employment offer to Dana's spouse is best characterized as:",
   "options": [
    "Immaterial, because the spouse is not an AICP member",
@@ -2161,7 +2161,7 @@ export const BANK = [
  },
  {
   "n": 145,
-  "scenario": null,
+  "scenario": "Dana, AICP, is the planning director of a small city. A development firm has a major rezoning pending before the planning commission. Three years earlier, before joining the city, Dana performed private consulting work for that firm on an unrelated project in a different state. While the rezoning is under review, the firm's principal offers Dana's spouse a position with the company.",
   "text": "With respect to the consulting work performed three years earlier in another state, the most appropriate action is to:",
   "options": [
    "Direct the firm to withdraw its application",
@@ -2176,7 +2176,7 @@ export const BANK = [
  },
  {
   "n": 146,
-  "scenario": null,
+  "scenario": "Dana, AICP, is the planning director of a small city. A development firm has a major rezoning pending before the planning commission. Three years earlier, before joining the city, Dana performed private consulting work for that firm on an unrelated project in a different state. While the rezoning is under review, the firm's principal offers Dana's spouse a position with the company.",
   "text": "If Dana prepares and signs the staff recommendation without making either disclosure, and the relationships become public afterward, the conduct is best characterized as:",
   "options": [
    "Not a violation, provided the technical analysis in the recommendation was sound",

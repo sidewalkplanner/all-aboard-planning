@@ -18,6 +18,8 @@ A **capital improvements program (CIP)** is a **multi-year schedule** (typically
 
 **Capital versus operating spending:** capital spending buys or builds assets that last many years; operating spending pays for ongoing services (salaries, maintenance, supplies). A new fire station is capital; the firefighters' salaries are operating costs, and every new facility creates **ongoing operating costs** the CIP should acknowledge.
 
+:::checkpoint e1:36
+
 ### Why the CIP matters to planners
 
 Public investment shapes private development more than almost any regulation. A sewer extension, a new interchange, or a park can decide where growth goes. **Aligning the CIP with the comprehensive plan** ensures that investments **implement adopted goals**, rather than undercutting them (for example, by extending sewer into an area the plan designates for rural use).
@@ -40,6 +42,8 @@ Common CIP ranking criteria include public health and safety, legal mandates, co
 
 A **bond rating** (from a credit rating agency) reflects the issuer's **creditworthiness**, meaning the likelihood of timely repayment. Higher ratings mean lower borrowing costs. State law usually sets **debt limits**.
 
+:::checkpoint e2:154
+
 ### Tax increment financing
 
 **Tax increment financing (TIF)** funds improvements in a defined district using the **growth in property tax revenue** the improvements are expected to generate:
@@ -54,11 +58,15 @@ Many states require a finding that the area is blighted or that development woul
 Animates a TIF district's frozen base and growing increment over time, and shows where the increment goes and why school districts often care.
 :::
 
+:::checkpoint e2:92
+
 ### Special assessments and special districts
 
 - A **special assessment** charges properties that receive a **special benefit** from a public improvement, such as a new sidewalk, street lighting, or a sewer line. Assessments must be **proportional to the benefit** each property receives.
 - A **business improvement district (BID)** is funded primarily by a **self-imposed assessment** that property owners (or businesses) in a defined district agree to pay. It pays for services beyond what the city provides: cleaning, security, marketing, and events.
 - Other **special districts** (community facilities districts, utility districts) finance infrastructure for new development through assessments or special taxes.
+
+:::checkpoint e3:137
 
 ### Impact fees
 
@@ -69,6 +77,8 @@ Animates a TIF district's frozen base and growing increment over time, and shows
 - be **roughly proportional** to the demand the development creates (the *Nollan*/*Dolan*/*Koontz*/*Sheetz* line applies. See [Takings, exactions, and property rights](/aicp/lessons/takings-and-exactions));
 - fund **new capacity**, not existing deficiencies or operating costs; and
 - be **spent within a reasonable time** in the area it was collected, or refunded.
+
+:::checkpoint e1:81
 
 ### Grants and partnerships
 

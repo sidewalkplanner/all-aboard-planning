@@ -21,6 +21,8 @@ Practices that help:
 - **A visible record**: notes on flip charts or screens so people can see they were heard.
 - **Neutrality**: if you're also the project's technical lead, consider bringing in a separate facilitator for high-conflict sessions.
 
+:::checkpoint e1:59
+
 ### Active listening
 
 **Active (reflective) listening** means paying full attention and **reflecting back** what you heard before responding:
@@ -40,6 +42,8 @@ Reflecting back confirms understanding, shows respect, and often reveals the **i
 - **Consensus isn't unanimity.** It usually means every participant can at least "live with" the agreement, even if it isn't their first choice. Gradients of agreement (from "fully endorse" to "can live with it" to "block") help groups see where they stand.
 - Good consensus processes start by agreeing on **ground rules and roles**, build a **shared understanding of the problem**, often through joint fact-finding, and only then generate options.
 
+:::checkpoint e1:63
+
 ### Structured group techniques
 
 | Technique | How it works | Best for |
@@ -48,6 +52,8 @@ Reflecting back confirms understanding, shows respect, and often reveals the **i
 | **Nominal group technique** | Individuals generate ideas **silently** in writing, share them round-robin, discuss them for clarity, then **rank or vote** individually | Getting everyone's input and a clear priority list without domination by a few voices |
 | **Delphi technique** | A panel of experts answers questionnaires over **multiple anonymous rounds**; a coordinator summarizes the responses and feeds them back between rounds, so views can converge | Building expert consensus or forecasts without face-to-face pressure or status effects |
 | **Dot voting** | Participants place a limited number of stickers (or digital votes) on options | Quick, visible prioritization |
+
+:::checkpoint e2:52
 
 ### Negotiation: positions and interests
 
@@ -62,6 +68,8 @@ In **positional bargaining**, each side stakes out a position and concedes grudg
 
 A party's **BATNA** (best alternative to a negotiated agreement) is what it will do if talks fail. Knowing your BATNA, and theirs, tells you when to accept a deal and when to walk away.
 
+:::checkpoint e2:68
+
 ### Third-party help: facilitation, mediation, arbitration
 
 These are forms of **alternative dispute resolution**:
@@ -71,6 +79,8 @@ These are forms of **alternative dispute resolution**:
 - **Arbitration**: a neutral arbitrator **hears the arguments and decides**. The decision may be binding or advisory, depending on the agreement.
 
 The distinction the exam tests most often: a mediator assists; an arbitrator decides.
+
+:::checkpoint e2:69
 
 ### Understanding the conflict
 

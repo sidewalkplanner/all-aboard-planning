@@ -169,6 +169,17 @@ Build on the existing look; don't introduce a new visual language.
    "Learning objectives" is allowed (the ethics lessons use one). Tables, blockquotes, and `> **Exam tip:**` callouts are
    supported. Link to other lessons with `/aicp/lessons/<slug>`.
 
+   **Checkpoints (required, at least 3 per lesson).** After a key `###` section, add a line:
+   ```markdown
+   :::checkpoint e3:104
+   ```
+   It renders an interactive question right there. Use a practice-bank ref that tests that
+   section (standalone items are best; scenario items show their scenario; items with exhibits
+   aren't allowed), or an original question (`:::checkpoint cp:my-id`) defined in
+   `src/content/aicp/checkpoints.js`. Several refs on one line make a multi-question checkpoint.
+   Readers must answer every checkpoint before they can mark the lesson complete; answers are
+   saved per account. Don't reuse a ref twice in one lesson (the checker enforces this).
+
    **Video slots.** Where a short video would help with a high-impact or visual topic, add:
    ```markdown
    :::video Nollan and Dolan: the two-part test for exactions | about 4 min
@@ -225,9 +236,12 @@ Run `npm run check` after touching the banks or the sampler.
 - **Site map for learners:** Course (lessons) · Study plan · Practice (`/aicp/exams`: diagnostic,
   quizzes, full exams, drills) · Review (`/aicp/review`: exam strategy guide, flashcards, quick
   reference) · Exam info · Dashboard (`/aicp/progress`, signed in).
-- **Lesson page** (`pages/aicp/LessonPage.jsx`): body, then `QuickCheck` (three standalone
-  questions from the lesson's practice refs, answered inline), a "Mark lesson complete" toggle,
-  the practice block, and Previous/Next. Opening a lesson records it as `lastLesson`.
+- **Lesson page** (`pages/aicp/LessonPage.jsx`): body with mid-lesson checkpoints
+  (`LessonBody` portals a `Checkpoint` into each `:::checkpoint` slot; answers go to
+  `studyState.checkpoints`), then `QuickCheck` (the "Lesson review": three standalone questions
+  the checkpoints didn't use), a "Mark lesson complete" toggle that unlocks once every
+  checkpoint is answered, the practice block, and Previous/Next. Opening a lesson records it as
+  `lastLesson`. Questions load through `lib/questionBank.js`.
 - **Flashcards** are generated from every lesson's `## Key terms` bullets, which must be written
   `- **Term**: definition` (the checker enforces this). Leitner boxes live in `studyState.cards`.
 - **Study plans**: "Follow this plan" stores `studyState.plan`; lessons tick off from lesson

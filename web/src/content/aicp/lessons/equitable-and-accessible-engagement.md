@@ -26,6 +26,8 @@ Common barriers and how to lower them:
 
 When partnering with community organizations, **pay them** for their time and expertise. They're doing real work, and relying on unpaid labor from under-resourced groups repeats the inequity you're trying to address.
 
+:::checkpoint e2:56
+
 ### Three kinds of equity
 
 - **Procedural equity**: who takes part in decisions, and whether the process is fair, transparent, and accessible.
@@ -33,6 +35,8 @@ When partnering with community organizations, **pay them** for their time and ex
 - **Structural (or intergenerational) equity**: whether decisions correct, or entrench, historical harms such as redlining and urban renewal, and what they pass on to future generations.
 
 Good engagement advances procedural equity. It should also give residents a say in the distributive questions. When residents raise concerns such as displacement from a new amenity, the planner's job is to analyze those concerns and potential responses as part of the project, not set them aside as "out of scope."
+
+:::checkpoint e2:66
 
 ### Civil rights foundations
 
@@ -48,6 +52,8 @@ Culturally appropriate communication adapts **language, format, setting, and mes
 - Use formats people trust and use: community radio, social media groups, faith institutions, school networks, ethnic media.
 - Recognize different norms around speaking up in public, disagreeing with officials, or discussing money.
 - Practice **cultural humility**: recognize the limits of your own perspective, learn from community members as experts in their own lives, and address the power imbalance between agency and resident. It's an ongoing practice, not a credential. (It's often contrasted with *cultural competence*, which can suggest a body of knowledge you can master.)
+
+:::checkpoint e3:64
 
 ### Accessible materials and digital engagement
 
@@ -65,6 +71,8 @@ Practical checklist for planning materials:
 - Accessible meeting venues, sign language interpreters or real-time captioning on request, and materials available in advance.
 
 Accessibility primarily benefits people with disabilities, and it also helps older residents, people on phones, people with slow connections, and people reading in a second language.
+
+:::checkpoint e1:57
 
 ## Key terms
 

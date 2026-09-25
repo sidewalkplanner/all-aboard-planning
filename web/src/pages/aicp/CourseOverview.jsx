@@ -20,7 +20,7 @@ export default function CourseOverview() {
       <PageHeader
         eyebrow="AICP exam prep course"
         title="Course overview"
-        lead={`${LESSONS.length} lessons across the nine domains of the AICP exam content outline, in outline order. Each lesson covers objectives, key concepts, key terms, real planning examples, a summary, and a practice set of exam-style questions.`}
+        lead={`${LESSONS.length} lessons across the nine domains of the AICP exam content outline, in outline order. Each lesson has checkpoint questions after its key sections, plus key terms, real planning examples, exam tips, a summary, and a practice set of exam-style questions.`}
       >
         <div className="row-wrap" style={{ marginTop: 22 }}>
           <Link className="btn btn-primary" to={P.lesson(nextLesson.slug)}>

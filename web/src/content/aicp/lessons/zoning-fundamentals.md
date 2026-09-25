@@ -14,6 +14,8 @@
 
 Zoning is one of several **plan implementation tools**, alongside subdivision regulations, the capital improvements program, the official map, incentives, and public-private partnerships. The comprehensive plan sets long-range policy; the zoning ordinance turns it into enforceable, parcel-level rules. A comprehensive plan is a policy guide; the zoning ordinance is a regulation.
 
+:::checkpoint e1:82
+
 ### The map and the text
 
 A zoning ordinance has two parts:
@@ -22,6 +24,8 @@ A zoning ordinance has two parts:
 - **The text** defines the districts, lists uses, sets standards, and establishes procedures for permits, amendments, variances, appeals, and enforcement.
 
 Changing the map is a **map amendment (rezoning)**; changing the rules is a **text amendment**. Both are usually **legislative** acts adopted by the governing body after a planning commission recommendation and a public hearing. (Some states treat site-specific rezonings as quasi-judicial. See [Variances, rezonings, and nonconformities](/aicp/lessons/zoning-relief-and-nonconformities).)
+
+:::checkpoint cp:zoning-map-text
 
 ### Euclidean zoning
 
@@ -35,6 +39,8 @@ Conventional zoning is called **Euclidean zoning**, after the *Euclid* case. It 
 
 Early ordinances were often **cumulative (pyramidal)**: "higher" uses such as single-family homes were allowed in "lower" districts such as commercial or industrial, but not the reverse. Most modern ordinances are **exclusive (non-cumulative)**, with each district listing its own permitted uses, to protect industrial land from residential encroachment.
 
+:::checkpoint cp:zoning-cumulative
+
 ### Kinds of uses
 
 | Category | What it means |
@@ -45,6 +51,8 @@ Early ordinances were often **cumulative (pyramidal)**: "higher" uses such as si
 | **Prohibited use** | Not allowed in the district. Getting it requires a rezoning or text amendment (not a variance, in most states). |
 
 Conditional use approvals are **quasi-judicial**: the decision applies stated criteria to a specific application, so it needs notice, a hearing, and findings.
+
+:::checkpoint e2:75
 
 ### Dimensional (bulk) standards
 
@@ -60,10 +68,14 @@ Each district also controls the size and placement of buildings:
 
 See [Implementation math](/aicp/lessons/implementation-math) for worked examples of these calculations.
 
+:::checkpoint cp:zoning-far
+
 ### Overlay and floating zones
 
 - An **overlay district** applies **additional requirements (or incentives) on top of the underlying base district** without changing the base zoning. Common examples are historic districts, floodplains, airport height zones, wellhead protection areas, and transit corridors. A parcel in an overlay must meet both the base district's rules and the overlay's.
 - A **floating zone** is described in the ordinance text but **not mapped** until an owner applies and meets its criteria. Then it "lands" on the property through a rezoning. It's often used for uses like large mixed-use centers whose location can't be predicted in advance.
+
+:::checkpoint e1:74
 
 ### Who administers zoning
 

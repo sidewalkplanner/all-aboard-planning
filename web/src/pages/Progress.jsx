@@ -40,10 +40,25 @@ export default function Progress() {
   const priorities = (diag && diag.priorities ? diag.priorities : []).map(domainByBankName).filter(Boolean);
 
   const missed = useMemo(() => history.slice(-20).flatMap((h) => h.missedRefs || []), [history]);
-  const review = useMemo(() => lessonsToReview(missed, 5), [missed]);
+  // Lessons to review: missed practice questions, plus checkpoints currently answered wrong.
+  const review = useMemo(() => {
+    const counts = {};
+    lessonsToReview(missed, 40).forEach(({ lesson, misses }) => { counts[lesson.slug] = misses; });
+    Object.entries(study.checkpoints || {}).forEach(([slug, answers]) => {
+      const wrong = Object.values(answers).filter((a) => !a.correct).length;
+      if (wrong) counts[slug] = (counts[slug] || 0) + wrong;
+    });
+    return Object.entries(counts)
+      .map(([slug, misses]) => ({ lesson: lessonBySlug(slug), misses }))
+      .filter((x) => x.lesson)
+      .sort((x, y) => y.misses - x.misses || x.lesson.number - y.lesson.number)
+      .slice(0, 5);
+  }, [missed, study.checkpoints]);
 
   const mastered = ALL_CARDS.filter((c) => study.cards[c.id] && study.cards[c.id].box >= MASTERED_BOX).length;
   const seenCards = ALL_CARDS.filter((c) => study.cards[c.id]).length;
+  const cpAll = Object.values(study.checkpoints || {}).flatMap((m) => Object.values(m));
+  const cpPct = cpAll.length ? Math.round((cpAll.filter((a) => a.correct).length / cpAll.length) * 100) : null;
   const examsTotal = ASSESSMENTS.filter((a) => !a.soon).length;
   const firstName = user && user.name ? user.name.split(' ')[0] : '';
 
@@ -149,7 +164,8 @@ export default function Progress() {
           {[
             [`${doneCount}/${LESSONS.length}`, 'Lessons complete'],
             [summary.avgScore === null ? '—' : summary.avgScore + '%', 'Average practice score'],
-            [summary.questionsAttempted, 'Questions answered'],
+            [cpPct === null ? '—' : cpPct + '%', `Checkpoints correct (${cpAll.length} answered)`],
+            [summary.questionsAttempted, 'Practice questions answered'],
             [`${mastered}/${ALL_CARDS.length}`, 'Flashcards mastered'],
             [summary.timeSeconds ? fmtHoursMinutesFromSeconds(summary.timeSeconds) : '—', 'Time in practice'],
           ].map(([n, label]) => (
@@ -192,7 +208,7 @@ export default function Progress() {
               <h2 id="dash-review" className="h3" style={{ marginBottom: 6 }}>Lessons to review</h2>
               {review.length ? (
                 <>
-                  <p className="small" style={{ margin: '0 0 12px' }}>Based on the questions you&rsquo;ve missed in your recent attempts, most-missed first.</p>
+                  <p className="small" style={{ margin: '0 0 12px' }}>Based on the practice questions and checkpoints you&rsquo;ve missed, most-missed first.</p>
                   <ol style={{ margin: 0, paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 6, fontSize: 15 }}>
                     {review.map(({ lesson, misses }) => (
                       <li key={lesson.slug}><Link to={P.lesson(lesson.slug)}>{lesson.title}</Link> <span className="small">&middot; {misses} missed</span></li>
@@ -200,7 +216,7 @@ export default function Progress() {
                   </ol>
                 </>
               ) : (
-                <p className="small" style={{ margin: 0 }}>Take a quiz, exam, drill, or lesson practice set, and the lessons behind any questions you miss will show up here.</p>
+                <p className="small" style={{ margin: 0 }}>Answer lesson checkpoints or take a quiz, exam, or drill, and the lessons behind anything you miss will show up here.</p>
               )}
             </section>
 

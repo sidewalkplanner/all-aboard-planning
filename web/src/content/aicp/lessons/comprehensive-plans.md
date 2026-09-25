@@ -21,6 +21,8 @@ A comprehensive plan is **not a regulation**. The **zoning ordinance** is the re
 
 A key tool inside the plan is the **future land use map**, which shows the intended pattern of land uses over the plan horizon. It's often confused with the **zoning map**, which shows the regulations in force now. The two will differ where the plan anticipates change.
 
+:::checkpoint e1:31
+
 ### Common elements
 
 State law often requires certain elements; communities add others. Common ones include:
@@ -43,9 +45,13 @@ Newer plans often add elements on **health, equity, climate and energy, food sys
 
 A plan should be **internally consistent**: its elements must work together. A housing element that calls for more homes shouldn't be undercut by a land use map with no room for them.
 
+:::checkpoint e2:51
+
 ### Sustaining places
 
 APA has promoted a set of standards for comprehensive plans built around sustainability principles: a livable built environment, harmony with nature, a resilient economy, interwoven equity, a healthy community, and responsible regionalism, supported by authentic participation and accountable implementation. They're a useful checklist for whether a plan addresses the full range of community needs. <!-- VERIFY: confirm the names of the principles and processes in APA's Comprehensive Plan Standards for Sustaining Places, and whether APA has updated them. -->
+
+:::checkpoint e1:104
 
 ### How much legal weight does the plan carry?
 
@@ -59,6 +65,8 @@ Oregon, Florida, and California are frequently cited as strong consistency state
 
 In consistency states, **the plan comes first**: if a parcel's zoning conflicts with the plan's designation, the usual fix is to rezone the parcel to match the plan, not to grant a variance or quietly ignore the conflict. And a planner reviewing a project that's inconsistent with the adopted plan must **report the inconsistency** in the staff analysis.
 
+:::checkpoint e2:27
+
 ### Other kinds of plans
 
 | Plan type | Scope | When to use it |
@@ -69,6 +77,8 @@ In consistency states, **the plan comes first**: if a parcel's zoning conflicts 
 | **Strategic plan** | An organization's priorities | For a limited set of near-term actions, usually three to five years |
 
 An area plan that's **adopted as an amendment to the comprehensive plan** carries the plan's legal weight. One adopted merely **by resolution** as a guidance document generally **carries less weight** in a consistency review.
+
+:::checkpoint e3:195
 
 ### Community character and form
 

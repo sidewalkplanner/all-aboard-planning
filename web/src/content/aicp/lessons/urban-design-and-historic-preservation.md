@@ -39,6 +39,8 @@ Observational research shaped modern practice. **William H. Whyte**'s studies of
 
 CPTED is about design; it doesn't include criminal justice measures such as sentencing. Apply it carefully so it doesn't become a pretext for excluding people from public space.
 
+:::checkpoint e1:109
+
 ### Design review and standards
 
 Communities guide design through **design guidelines** (advisory or discretionary) and **design standards** (objective, enforceable), administered by staff or a design review board.
@@ -55,6 +57,8 @@ The **National Historic Preservation Act (NHPA)** of 1966 created the core syste
 - **Listing is largely honorific for private owners.** It does **not by itself restrict what a private owner may do** with their property using private funds. It does make the property eligible for certain incentives and triggers review of *federal* actions affecting it.
 - **State Historic Preservation Offices (SHPOs)** and **Tribal Historic Preservation Offices (THPOs)** run surveys, nominations, and review. Local governments can become **Certified Local Governments** to take a formal role and qualify for certain grants.
 
+:::checkpoint e3:163
+
 ### Section 106 review
 
 **Section 106** of the NHPA requires **federal agencies to take into account the effects of their undertakings** (projects they fund, permit, or carry out) on properties **listed in or eligible for** the National Register, and to consult. The basic steps:
@@ -66,9 +70,13 @@ The **National Historic Preservation Act (NHPA)** of 1966 created the core syste
 
 Like NEPA, Section 106 is **procedural**: it requires consideration and consultation, not preservation. (Transportation projects also face a separate federal rule that restricts the use of historic sites and parks when a prudent and feasible alternative exists.) <!-- VERIFY: this is Section 4(f) of the Department of Transportation Act of 1966; confirm wording before naming it. -->
 
+:::checkpoint e2:104
+
 ### Local historic districts
 
 The strongest protection for historic buildings is **local**. A local preservation ordinance creates a **historic preservation commission** and designates landmarks and districts. Changes to designated properties usually require a **certificate of appropriateness**, reviewed against adopted **design guidelines**. Many ordinances also regulate or delay **demolition**.
+
+:::checkpoint e2:106
 
 ### The Secretary of the Interior's Standards
 
@@ -80,6 +88,8 @@ The **Secretary of the Interior's Standards for the Treatment of Historic Proper
 | **Rehabilitation** | Make possible a compatible **new use** while preserving the features that convey historic character. It's the most common treatment. |
 | **Restoration** | Accurately depict the property as it appeared at a particular period, removing later features |
 | **Reconstruction** | Re-create a vanished or non-surviving building or feature with new construction |
+
+:::checkpoint e3:162
 
 ### The federal rehabilitation tax credit
 

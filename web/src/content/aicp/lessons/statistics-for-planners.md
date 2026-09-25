@@ -16,6 +16,8 @@
 
 Income, home prices, and lot sizes are usually **right-skewed**: most values cluster low, with a long tail of very high values. In a right-skewed distribution the **mean is higher than the median**. That's why planners report *median* household income. A handful of very high earners would inflate the mean and misrepresent a typical household.
 
+:::checkpoint e3:16
+
 ### Describing a dataset: spread
 
 - **Range**: the maximum minus the minimum. It's simple but driven by the two most extreme values.
@@ -42,6 +44,8 @@ A **correlation coefficient** (*r*) runs from −1 to +1 and describes the stren
 
 **Correlation is not causation.** Ice cream sales and drownings both rise in summer. Neither causes the other; a **confounding variable** (hot weather) drives both. Before concluding that a policy caused an outcome, ask what else changed at the same time.
 
+:::checkpoint e3:10
+
 ### Statistical significance
 
 A result is **statistically significant** when it would be unlikely to occur by chance alone if there were really no effect. By convention, researchers often use a threshold of *p* < 0.05: less than a 5% probability of seeing a result this strong by chance. Significance doesn't mean the effect is large or important. With a big enough sample, trivial differences become "significant."
@@ -57,6 +61,8 @@ Common tests and when to use them:
 
 **P-hacking** is running many analyses and reporting only the ones that come out significant. The best safeguard is to **pre-specify the analysis plan** before looking at the data.
 
+:::checkpoint e2:126
+
 ### Margins of error and confidence intervals
 
 Sample estimates come with uncertainty. ACS estimates are published with a **margin of error at the 90% confidence level**. If an ACS table reports 1,200 renter households ± 350, the true value likely falls between 850 and 1,550.
@@ -66,6 +72,8 @@ Practical rules:
 - If two estimates' confidence intervals overlap substantially, don't claim they're different without a formal test.
 - If the margin of error is nearly as large as the estimate, the estimate isn't usable on its own. Aggregate geographies (combine tracts), use a longer period, or report the margin of error prominently.
 - Always report margins of error for small-area estimates.
+
+:::checkpoint e3:2
 
 ### Discounting: costs and benefits over time
 
@@ -87,6 +95,8 @@ The **benefit-cost ratio** is the present value of benefits divided by the prese
 :::video Present value and benefit-cost ratios | about 3 min
 Discounts a future benefit to today's dollars, shows how a higher discount rate changes the answer, and reads a benefit-cost ratio above and below 1.0.
 :::
+
+:::checkpoint e2:131
 
 ## Key terms
 

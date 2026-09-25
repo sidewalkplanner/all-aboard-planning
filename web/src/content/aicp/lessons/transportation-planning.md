@@ -15,6 +15,8 @@
 - **Transit agencies** plan and run bus and rail service.
 - **Local governments** plan and manage local streets, sidewalks, parking, and land use.
 
+:::checkpoint e3:124
+
 ### MPO plans and programs
 
 | Product | What it is |
@@ -52,10 +54,14 @@ Many large MPOs now also use **activity-based models**, which simulate individua
 Animates trip generation, distribution, mode choice, and assignment for a small region, so the order of the steps sticks.
 :::
 
+:::checkpoint e2:94
+
 ### Measuring performance: LOS and VMT
 
 - **Level of service (LOS)** grades traffic operations from **A** (free flow) to **F** (breakdown). At **signalized intersections**, LOS is conventionally measured by **average control delay per vehicle**. LOS measures driver delay. Using it as a development standard tends to penalize infill and favor road widening.
 - **Vehicle miles traveled (VMT)** measures the total amount of driving. As an impact metric, VMT **favors compact infill near transit** (which produces less driving per person) and penalizes dispersed development. **VMT per capita** is the best metric for evaluating a project's effect on regional greenhouse gas emissions. California's shift from LOS to VMT in environmental review is the best-known example. <!-- VERIFY: California's SB 743 (2013) directed the shift from LOS to VMT for CEQA transportation analysis; confirm details if expanded. -->
+
+:::checkpoint e2:95
 
 ### Induced demand
 
@@ -68,6 +74,8 @@ Adding road capacity lowers the "price" of driving (in time), which **generates 
 - **Traffic calming** uses physical design (narrower lanes, speed humps, curb extensions, roundabouts) to slow vehicles.
 - **Vision Zero** is a framework **aimed at eliminating traffic deaths and serious injuries**. It treats them as preventable, and relies on the **safe system approach**: humans make mistakes, so the system (street design, speeds, vehicles) must be forgiving of them.
 
+:::checkpoint e2:96
+
 ### Transit-oriented development
 
 **Transit-oriented development (TOD)** concentrates housing, jobs, and services within walking distance of transit stations, generally **a quarter to a half mile**. Its characteristics:
@@ -78,6 +86,8 @@ Adding road capacity lowers the "price" of driving (in time), which **generates 
 - **reduced or eliminated parking minimums**, with parking managed rather than maximized.
 
 Station-area planning should also address **displacement risk**, because new transit can raise land values quickly. Pair TOD plans with preservation, inclusionary requirements, and tenant protections. Adopting a station area plan and rezoning in advance helps capture development potential before speculation raises land costs.
+
+:::checkpoint e2:97
 
 ### Travel demand management
 

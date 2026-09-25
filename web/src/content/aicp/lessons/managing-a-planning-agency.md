@@ -16,6 +16,8 @@
 
 Planning departments are often combined with building, code enforcement, economic development, or housing into a **community development** department.
 
+:::checkpoint e1:151
+
 ### Organizational structures
 
 | Structure | How it works | Strengths and risks |
@@ -52,9 +54,13 @@ Outcomes are what the public cares about, but they're harder to measure and infl
 
 **Results-oriented management** links resources to **measurable outcomes**, sets targets, reports progress, and uses the results to adjust priorities and budgets. For example, if a director wants to shorten development review times, the best first step is to **map the current review process** to find where delays actually happen before changing anything.
 
+:::checkpoint e2:156
+
 ### Managing workload
 
 When a department's workload exceeds its capacity, the right response is to **prioritize work against adopted goals** (the comprehensive plan, the council's priorities, legal deadlines) and **communicate the tradeoffs** openly to leadership, rather than quietly letting some work slide or promising everything.
+
+:::checkpoint e2:160
 
 ### Supervising and motivating staff
 
@@ -64,11 +70,15 @@ When a department's workload exceeds its capacity, the right response is to **pr
 - If problems continue, follow **progressive discipline**, which usually begins with **documented verbal counseling**, then moves to a written warning, then more serious steps. Document each step and follow the organization's personnel rules.
 - Motivation comes from meaningful work, growth opportunities, recognition, reasonable autonomy, and fair treatment, not just pay.
 
+:::checkpoint e2:158
+
 ### Open meetings and public records
 
 - **Open-meetings ("sunshine") laws** generally require that **public bodies meet openly, with advance public notice** of the time, place, and agenda, and keep minutes. Closed sessions are allowed only for narrow, specified purposes. A majority of a body discussing public business outside a noticed meeting, including through a chain of emails ("serial meetings"), can violate these laws.
 - **Public-records (FOIA-type) laws** give the public a right to government records. When a request arrives, staff should **release non-exempt records on time** as the law requires, withholding only what a specific exemption covers. Emails and texts about public business are usually public records, whatever device was used.
 - Agencies should follow **records retention schedules** so records are kept, and disposed of, lawfully.
+
+:::checkpoint e3:149
 
 ### Accountability for public funds
 

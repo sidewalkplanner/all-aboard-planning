@@ -35,6 +35,8 @@ For **prior professional relationships**, such as a consultant who worked for an
 
 **Outside work:** A public-sector planner offered paid consulting by a firm with **applications pending in the planner's own jurisdiction** should **decline**, or at minimum disclose and obtain a conflict determination before doing anything, which in practice usually means declining.
 
+:::checkpoint e3:184
+
 ### Gifts, favors, and advantage
 
 The Rules prohibit accepting gifts, favors, or other benefits that **could reasonably be perceived as intended to influence** a planner's professional judgment. The classic exam scenario: a developer with an application pending before your agency offers concert or sports tickets, a nice dinner, or a "thank-you" gift. The answer is to **decline**. Value, good intentions, and "everyone does it" don't change it.
@@ -44,21 +46,29 @@ Related rules prohibit:
 - using the **power of your office** to seek special advantage for yourself or others that isn't in the public interest; and
 - suggesting you can influence decisions by **improper means** to win clients or work.
 
+:::checkpoint e3:176
+
 ### Confidential information
 
 A planner may **not disclose information acquired in confidence** during professional work unless **required by law** (or in the narrow circumstances the Code allows, such as preventing a clear violation of law). Nor may a planner **use confidential information for personal gain**.
 
 The classic scenario: a planner learns confidentially that a new highway interchange will be built near a rural parcel, and buys the parcel before the news is public. That's a violation of the rules on confidential information and personal advantage. The duty to protect confidential information also **continues after a relationship ends**: a planner retained to testify against a former client must still protect what was learned in confidence from that client.
 
+:::checkpoint e1:140
+
 ### Competence
 
 A planner may accept only work they're **competent** to perform, or work that will be done **under the direction of someone who is**. A firm offered work requiring a modeling method no one on staff has used may **accept it if it's performed under the supervision of a competent professional**, for example by teaming with a qualified subconsultant or hiring qualified staff. Accepting it and learning on the client's dime without supervision would violate the rule.
+
+:::checkpoint e3:174
 
 ### Honesty about yourself and others
 
 - **Don't make false or exaggerated claims about your qualifications**: degrees, certifications, experience, or project roles. Listing a certification you haven't earned, or claiming credit for projects you didn't do, violates the Rules.
 - **Don't misrepresent the views, findings, or qualifications of other professionals.**
 - **Don't knowingly misrepresent facts** or produce analysis designed to mislead.
+
+:::checkpoint e3:175
 
 ### Advocacy and representation
 

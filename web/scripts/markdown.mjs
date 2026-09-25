@@ -53,7 +53,35 @@ const videoExtension = (videos) => ({
   },
 });
 
-// Returns { html, headings, links, videos }.
+// CHECKPOINTS. A line like
+//
+//   :::checkpoint e3:104
+//
+// marks where a checkpoint question appears mid-lesson. Refs are bank
+// questions ("e1:115") or original checkpoint questions ("cp:…", defined in
+// src/content/aicp/checkpoints.js); several refs separated by spaces make a
+// multi-question checkpoint. It renders an empty slot that LessonBody fills
+// with an interactive question.
+const checkpointExtension = (checkpoints) => ({
+  name: 'checkpoint',
+  level: 'block',
+  start(src) {
+    const m = src.match(/^:::checkpoint/m);
+    return m ? m.index : undefined;
+  },
+  tokenizer(src) {
+    const m = /^:::checkpoint[ \t]+([^\n]+)(?:\n|$)/.exec(src);
+    if (!m) return undefined;
+    const refs = m[1].trim().split(/\s+/);
+    checkpoints.push(refs);
+    return { type: 'checkpoint', raw: m[0], refs };
+  },
+  renderer(token) {
+    return `<div class="checkpoint-slot" data-refs="${escapeAttr(token.refs.join(' '))}"></div>\n`;
+  },
+});
+
+// Returns { html, headings, links, videos, checkpoints }.
 // - headings: every h2 as { id, text }, in order (drives "In this lesson").
 // - links: every href as written in the source (for the link checker).
 // Root-relative links ("/aicp/...") get the deploy base path prepended so
@@ -63,10 +91,11 @@ export function renderMarkdown(src, { base = '/' } = {}) {
   const headings = [];
   const links = [];
   const videos = [];
+  const checkpoints = [];
   const used = new Map();
   const basePrefix = base.replace(/\/$/, '');
   const marked = new Marked({ gfm: true });
-  marked.use({ extensions: [videoExtension(videos)] });
+  marked.use({ extensions: [videoExtension(videos), checkpointExtension(checkpoints)] });
   marked.use({
     renderer: {
       heading({ tokens, depth }) {
@@ -96,7 +125,7 @@ export function renderMarkdown(src, { base = '/' } = {}) {
     }
   });
   const html = marked.parse(src);
-  return { html, headings, links, videos };
+  return { html, headings, links, videos, checkpoints };
 }
 
 // Flashcards: every "- **Term**: definition" bullet in a lesson's

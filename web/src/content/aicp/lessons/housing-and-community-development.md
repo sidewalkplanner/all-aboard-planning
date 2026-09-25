@@ -34,6 +34,8 @@ A **housing needs assessment** is the analytical foundation of a housing element
 - needs of specific groups: seniors, people with disabilities, people experiencing homelessness, large families, farmworkers; and
 - the development pipeline, land capacity, and regulatory barriers.
 
+:::checkpoint e2:49
+
 ### Federal and state programs
 
 - **Low-Income Housing Tax Credit (LIHTC).** The largest source of new affordable rental housing. The federal government allocates tax credits to states; **state housing finance agencies award them to developments** through a competitive process guided by a qualified allocation plan. Developers sell the credits to **investors**, whose equity reduces the debt the project must carry, so rents can be kept affordable for a long compliance period. <!-- VERIFY: LIHTC was created by the Tax Reform Act of 1986; confirm current affordability periods and the 9%/4% credit structure if added. -->
@@ -48,6 +50,8 @@ A **housing needs assessment** is the analytical foundation of a housing element
 Follows the credits from the federal government to a state agency, a developer, and an investor, and shows how the investor's equity keeps rents affordable.
 :::
 
+:::checkpoint e2:98
+
 ### Fair housing
 
 The **Fair Housing Act** (1968, amended in 1988) prohibits discrimination in housing because of **race, color, religion, national origin, sex, disability, and familial status**. For planners, key points:
@@ -58,15 +62,21 @@ The **Fair Housing Act** (1968, amended in 1988) prohibits discrimination in hou
 - ***City of Edmonds v. Oxford House*** **(1995)** held that a zoning code's definition of "family" limiting the number of unrelated people living together isn't a "maximum occupancy restriction" exempt from the Act. It could therefore be challenged as applied to a group home for people in recovery.
 - The Act also requires federal agencies and grantees to **affirmatively further fair housing (AFFH)**: taking meaningful actions to overcome segregation and foster inclusive communities. <!-- VERIFY: HUD's AFFH rule has been issued, rescinded, and reissued several times; confirm its current status before describing specific requirements. -->
 
+:::checkpoint e3:119
+
 ### Fair share: *Mount Laurel*
 
 In the ***Mount Laurel*** decisions, the New Jersey Supreme Court held that developing municipalities may not use zoning to exclude low- and moderate-income housing, and have an obligation under the state constitution to provide a realistic opportunity for their **fair share of the region's need** for such housing. Later decisions added remedies, including a "builder's remedy" allowing developers to build inclusionary projects when towns didn't comply. <!-- VERIFY: Mount Laurel I is usually dated 1975 and Mount Laurel II (builder's remedy) 1983; confirm before adding dates. -->
+
+:::checkpoint e2:7
 
 ### Expanding supply
 
 - **Missing middle housing**: house-scale buildings with multiple units, such as **duplexes, triplexes, fourplexes, townhouses, and courtyard apartments**. They were common before mid-century zoning banned them from most residential districts.
 - **Accessory dwelling units (ADUs)**: backyard cottages, garage apartments, and basement units that add **gentle density** and housing supply within existing neighborhoods.
 - **Zoning reforms**: allowing more units per lot, reducing minimum lot sizes, eliminating parking minimums, streamlining approvals, and upzoning near transit and jobs.
+
+:::checkpoint e3:116
 
 ### Displacement and gentrification
 

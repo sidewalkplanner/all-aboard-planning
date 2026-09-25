@@ -9,11 +9,12 @@ import { scopedKey } from './userStorage';
 //   plan:       { id, startedAt } | null            the study plan being followed
 //   planChecks: { [itemKey]: timestamp }            practice items ticked off in a plan
 //   cards:      { [cardId]: { box, seen } }         flashcard boxes (0 = new/missed … 4 = mastered)
+//   checkpoints:{ [lessonSlug]: { [ref]: { pick, correct, at } } }  mid-lesson checkpoint answers
 //
 // ACCOUNT PLACEHOLDER: like history, this lives in localStorage today; move it
 // to the auth provider's database along with history when accounts go live.
 const BASE = 'aap-study';
-const EMPTY = { completed: {}, lastLesson: null, plan: null, planChecks: {}, cards: {} };
+const EMPTY = { completed: {}, lastLesson: null, plan: null, planChecks: {}, cards: {}, checkpoints: {} };
 
 const listeners = new Set();
 let cache = { key: null, raw: undefined, value: EMPTY };
@@ -82,4 +83,15 @@ export const resetCards = (ids) => writeState((s) => {
   const cards = { ...s.cards };
   ids.forEach((id) => { delete cards[id]; });
   return { ...s, cards };
+});
+
+// Mid-lesson checkpoints: the latest answer to each question, per lesson.
+export const recordCheckpoint = (slug, ref, pick, correct) => writeState((s) => ({
+  ...s,
+  checkpoints: { ...s.checkpoints, [slug]: { ...(s.checkpoints[slug] || {}), [ref]: { pick, correct, at: Date.now() } } },
+}));
+export const clearCheckpoint = (slug, ref) => writeState((s) => {
+  const mine = { ...(s.checkpoints[slug] || {}) };
+  delete mine[ref];
+  return { ...s, checkpoints: { ...s.checkpoints, [slug]: mine } };
 });

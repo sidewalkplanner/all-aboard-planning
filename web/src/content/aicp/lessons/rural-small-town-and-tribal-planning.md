@@ -28,6 +28,8 @@ Good rural planning is practical and proportionate: simple, clear codes that vol
 - **Transfer and purchase of development rights** (TDR and PDR) compensate landowners for keeping land undeveloped. PDR uses public funds; TDR relies on developers buying rights for use in designated receiving areas. See [Growth management and innovative land use tools](/aicp/lessons/growth-management-and-innovative-tools).
 - **Rural character** is best protected by naming what it means (views of open fields from the road, dark skies, narrow roads) and turning each quality into a measurable standard. See [Vision, goals, objectives, and policies](/aicp/lessons/goals-objectives-policies).
 
+:::checkpoint e1:48 cp:rural-right-to-farm
+
 ### Directing rural growth
 
 Scattered, large-lot, septic-based subdivisions spread across the countryside are the classic rural planning problem. They:
@@ -38,6 +40,8 @@ Scattered, large-lot, septic-based subdivisions spread across the countryside ar
 - often **erode the rural character** residents value.
 
 With limited capacity, the most efficient approach is usually to **direct growth to places that already have, or can affordably get, adequate services**: existing towns, villages, and crossroads, with public water and sewer where possible. That's paired with strong protection for the working landscape between them. Some states give cities limited planning authority just outside their limits, known as extraterritorial jurisdiction, to coordinate growth at the fringe. <!-- VERIFY: extraterritorial jurisdiction exists in some states (for example, Texas and North Carolina historically); confirm before naming states. -->
+
+:::checkpoint cp:rural-growth
 
 ### Small towns and main streets
 
@@ -53,12 +57,16 @@ For planners, the practical consequences are:
 - **Land status is complex.** Within a reservation, some land may be held in trust by the federal government for a tribe or individual tribal members, and some may be privately owned "fee" land. Which government's rules apply can depend on the status of the parcel and who owns it. Generally, state and local zoning doesn't apply to tribal trust land. <!-- VERIFY: confirm this general statement on the application of state and local zoning to trust land; jurisdiction over fee land within reservations is complex and case-specific. -->
 - **Consultation is required in many federal processes.** Under Section 106 of the National Historic Preservation Act, federal agencies must consult with tribes about properties of religious and cultural significance to them, including places off reservation lands. Tribal Historic Preservation Offices (THPOs) play a role similar to a SHPO's. See [Urban design and historic preservation](/aicp/lessons/urban-design-and-historic-preservation).
 
+:::checkpoint e3:164
+
 ### Working respectfully with tribes
 
 - **Engage as governments, not stakeholders.** A tribe isn't one more interest group at a public meeting. Formal consultation happens between governments, often through established protocols and designated officials.
 - **Start early and build relationships** before a project needs a decision.
 - **Respect cultural knowledge and data.** Information about sacred sites or cultural resources may be confidential; tribes decide what's shared and how it's used.
 - **Coordinate across boundaries.** Transportation, water, emergency services, and economic development often cross reservation lines, and joint planning and intergovernmental agreements serve everyone.
+
+:::checkpoint cp:rural-tribal
 
 ## Key terms
 

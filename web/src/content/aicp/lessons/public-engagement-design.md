@@ -32,6 +32,8 @@ Sherry Arnstein's "A Ladder of Citizen Participation" (1969) ranks participation
 
 The key exam point is that **informing and consultation are forms of tokenism**. Telling residents about a decision already made, or collecting comments that carry no weight, gives the *appearance* of participation without shifting power. **Citizen control** is the top rung.
 
+:::checkpoint e2:20
+
 ### The IAP2 spectrum
 
 The International Association for Public Participation's **Spectrum of Public Participation** describes five levels of public influence. Each carries an implied commitment from the agency (the descriptions below are our summaries):
@@ -48,6 +50,8 @@ No level is always "right." A water main repair may need only *inform*; a neighb
 Places common engagement techniques on both frameworks and shows how to spot tokenism in a process that looks participatory.
 :::
 
+:::checkpoint e3:55
+
 ### Designing an engagement strategy
 
 A good strategy, often written as a **communications and engagement plan**, answers:
@@ -59,6 +63,8 @@ A good strategy, often written as a **communications and engagement plan**, answ
 5. **What messages, through which channels and messengers?** Define audiences, key messages, methods, and timing.
 6. **How will we report back?** "Closing the loop," showing people how their input was used, is what builds trust.
 7. **How will we evaluate it?**
+
+:::checkpoint e1:73
 
 ### Common techniques
 
@@ -74,6 +80,8 @@ A good strategy, often written as a **communications and engagement plan**, answ
 - **Pop-up engagement**: going to where people already are (markets, transit stops, festivals, schools).
 - **Online tools**: interactive maps, comment platforms, and virtual meetings, which extend reach but miss people without reliable internet.
 - **Participatory budgeting**: residents directly decide how to spend part of a public budget, at the upper end of the spectrum.
+
+:::checkpoint e2:55
 
 ### Public hearings versus public meetings
 
@@ -91,6 +99,8 @@ Ask both *process* and *outcome* questions:
 - **Did participants understand the choices and feel heard?** Short exit surveys help.
 
 The most reliable single indicator of effective outreach to an underrepresented community is **participation that reflects that community**.
+
+:::checkpoint e3:59
 
 ## Key terms
 

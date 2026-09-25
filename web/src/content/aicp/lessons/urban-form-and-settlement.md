@@ -20,6 +20,8 @@ Early twentieth-century sociologists and economists tried to explain where diffe
 
 The multiple nuclei model fits modern metropolitan regions best, with their many job and retail centers.
 
+:::checkpoint e3:36
+
 ### Central place theory
 
 **Walter Christaller** (1933) explained the size, number, and spacing of settlements by the goods and services they provide to surrounding areas.
@@ -29,6 +31,8 @@ The multiple nuclei model fits modern metropolitan regions best, with their many
 - **Hierarchy**: many small places offer everyday goods, and fewer, larger places offer specialized ones. On a uniform plain, market areas form a hexagonal pattern.
 
 Central place ideas still inform retail market analysis and regional service planning.
+
+:::checkpoint e1:17
 
 ### Suburbanization and decentralization
 
@@ -52,6 +56,8 @@ American residential segregation didn't simply happen; public policy and private
 
 The **Fair Housing Act** of 1968 prohibited discrimination in housing transactions. Planners today use HOLC maps, covenant research, and segregation measures such as the index of dissimilarity (see [Population projections and economic analysis](/aicp/lessons/demographic-and-economic-analysis)) to understand present-day disparities in health, wealth, and environmental burden.
 
+:::checkpoint e1:25
+
 ### How people read the city: Kevin Lynch
 
 In ***The Image of the City*** (1960), **Kevin Lynch** studied how people form mental maps of cities. He identified five elements:
@@ -64,9 +70,13 @@ In ***The Image of the City*** (1960), **Kevin Lynch** studied how people form m
 
 A city with strong, clear elements has high **imageability**, meaning it's easy to understand and navigate. Lynch's elements are a practical vocabulary for urban design analysis (see [Urban design and historic preservation](/aicp/lessons/urban-design-and-historic-preservation)).
 
+:::checkpoint e3:33
+
 ### Natural, social, and economic systems
 
 Settlements sit inside interlocking systems. Paving a watershed changes stormwater runoff and flooding downstream; a new highway interchange changes land values, commuting patterns, and air quality; a factory closure ripples through tax revenue, school enrollment, and public health. Calling these systems **interrelated** means an intervention in one affects the others, so good planning analysis traces those connections rather than studying each topic in isolation.
+
+:::checkpoint e3:45
 
 ## Key terms
 

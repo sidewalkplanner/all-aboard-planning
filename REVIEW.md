@@ -1,5 +1,25 @@
 # REVIEW: AICP course build
 
+## Update 3: interactive lessons
+
+Every lesson now has **checkpoints**: questions placed right after the key sections, answered in place with instant feedback and an explanation. Before this, lessons were 20 or more minutes of reading with questions only at the end, so early sections had faded by the time you were tested on them. Answering soon after reading is one of the most reliable ways to make material stick, and it catches misunderstandings (nexus versus proportionality, variance versus conditional use) before they harden.
+
+- **201 checkpoints across 40 lessons**, three to seven per lesson (about five on average), one after each of the most important sections.
+- **Most reuse the reviewed practice-exam questions,** matched to the section they test. I matched them automatically by comparing each question's wording with each section's text, then reviewed every match by hand and dropped weak or duplicate ones.
+- **24 are new, original questions** (`web/src/content/aicp/checkpoints.js`) for important sections no bank question covered: the math lesson's calculations, zoning map-versus-text amendments, policy wording, sensitivity analysis, the economic base multiplier, rural and tribal planning, infrastructure life-cycle cost, and a few more. Every calculation is worked out in its explanation so you can check it.
+- **Required to finish a lesson.** "Mark lesson complete" unlocks only after every checkpoint is answered. It doesn't have to be answered correctly: a wrong answer shows the explanation and a "Try again" option. I didn't hide later sections behind the checkpoints, because people return to lessons as a reference.
+- **Saved per account.** Answers persist, the lesson shows "Checkpoints: X of Y answered, Z correct", the dashboard shows overall checkpoint accuracy, and checkpoints you currently have wrong feed the dashboard's "Lessons to review" list.
+- **The end-of-lesson block is now a "Lesson review"** of three questions the checkpoints didn't use, so it's fresh recall rather than repetition.
+- **Checker rules:** every lesson needs at least three checkpoints; refs must resolve; no repeats within a lesson; no questions that need a data exhibit; and every original question must be well-formed and used.
+
+### A bug I found and fixed along the way
+Practice Exam 2 had **two scenario sets missing their scenario text** (questions 65–67, a wastewater facility siting dispute, and 144–146, the "Dana" conflict-of-interest case). Candidates were answering "The concentration of existing burdens in that neighborhood…" with no neighborhood described. I restored both scenarios from `uploads/aicp-practice-exam-2.md`. Exams 1 and 3 were checked and are complete.
+
+### Worth reviewing
+- The 24 original checkpoint questions in `web/src/content/aicp/checkpoints.js` are new content. They're short and restate facts from the lessons, but a planner should read them before launch.
+
+---
+
 ## Update 2: full-site review
 
 I reviewed the whole site as a candidate would use it: signed in, over several weeks, with test day as the goal. The content was solid, but the product was mostly a library of pages to read. For exam prep that's the weak spot: people retain what they practice recalling, not what they reread, and they need to know what to do next. These changes turn it into a guided study loop.

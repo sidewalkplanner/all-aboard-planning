@@ -17,6 +17,8 @@
 
 The theory holds that **regional growth is driven principally by basic industries**: when they grow, the new income they bring in supports more nonbasic jobs.
 
+:::checkpoint e2:101
+
 ### The economic base multiplier
 
 > **Economic base multiplier = total employment ÷ basic employment**
@@ -28,15 +30,21 @@ The theory holds that **regional growth is driven principally by basic industrie
 
 Multipliers are rough. They vary by industry and region, and they assume stable relationships over time.
 
+:::checkpoint cp:econ-multiplier
+
 ### Finding the export base with location quotients
 
 A **location quotient (LQ)** above 1.0 means an industry is more concentrated locally than nationally, a sign it's likely exporting. An LQ well below 1.0 (for example, manufacturing at 0.63) suggests the local economy **imports** those goods. See [Population projections and economic analysis](/aicp/lessons/demographic-and-economic-analysis) for the formula.
 
 Relying solely on LQs to identify the export base **assumes that local consumption patterns and productivity are similar** to the nation's. A retirement community may have a high health care LQ simply because its residents use more health care, not because it exports care to other regions. Supplement LQs with local knowledge and data on where customers come from.
 
+:::checkpoint cp:econ-lq-assumption
+
 ### Clusters
 
 A **cluster** is a **geographically concentrated group of interconnected firms, specialized suppliers, service providers, and institutions** (universities, training programs, trade associations) in a related field. Michael Porter popularized the concept. **Cluster-based development** strengthens the whole ecosystem, through workforce training, supplier networks, research partnerships, and shared infrastructure, rather than recruiting one firm at a time.
+
+:::checkpoint e1:110
 
 ### Economic development strategies
 
@@ -51,6 +59,8 @@ A **cluster** is a **geographically concentrated group of interconnected firms, 
 
 Many downtown and main street programs follow a structured approach that combines organization, promotion, design, and economic vitality. <!-- VERIFY: this is the Main Street America "Four Point Approach"; confirm current terminology if named. -->
 
+:::checkpoint cp:econ-bre
+
 ### Retail market analysis
 
 Planners assess whether a trade area can support more retail, and which kinds:
@@ -64,6 +74,8 @@ Planners assess whether a trade area can support more retail, and which kinds:
 > **Capture rate = local sales in a category ÷ trade-area spending in that category**
 
 **Worked example.** Trade-area residents spend $50 million a year on apparel, and local stores sell $10 million. The capture rate is 10 ÷ 50 = **20%**: local stores capture 20% of area spending, and 80% leaks elsewhere.
+
+:::checkpoint e3:140
 
 ### Incentives and their risks
 

@@ -18,6 +18,8 @@ Rapid industrialization packed immigrants and workers into dense, unsanitary ten
 - **Tenement reform** set minimum standards for light, air, and sanitation. Jacob Riis's photographs in *How the Other Half Lives* (1890) built public pressure. New York's **Tenement House Act of 1901**, associated with reformer Lawrence Veiller, required better light, ventilation, and sanitation in new tenements.
 - **Parks** were seen as the "lungs of the city." **Frederick Law Olmsted** and **Calvert Vaux** designed Central Park, and later **Riverside, Illinois (1869)**, one of the earliest planned suburbs in the U.S., with curving streets that followed the land.
 
+:::checkpoint e2:13
+
 ### 2. The City Beautiful (1890s to 1910s)
 
 The **1893 World's Columbian Exposition** in Chicago, with its "White City" of classical buildings planned under **Daniel Burnham**, launched the **City Beautiful movement**. Its belief was that monumental civic design, grand boulevards, and unified public buildings would inspire civic virtue and order.
@@ -26,6 +28,8 @@ The **1893 World's Columbian Exposition** in Chicago, with its "White City" of c
 - The **1909 Plan of Chicago** by Burnham and Edward Bennett is the movement's landmark: a regional vision of boulevards, lakefront parks, rail consolidation, and civic centers. Its ambition is often summed up by "make no little plans," a line popularly attributed to Burnham. <!-- VERIFY: the "make no little plans" quotation's attribution to Burnham is disputed; keep the "popularly attributed" hedge or remove. -->
 
 Critics said City Beautiful focused on appearances and civic monuments while neglecting housing and social conditions. The next wave, sometimes called the "City Practical" or "City Efficient," emphasized engineering, zoning, and administration.
+
+:::checkpoint e3:21
 
 ### 3. The profession and zoning take shape (1900s to 1920s)
 
@@ -36,6 +40,8 @@ Critics said City Beautiful focused on appearances and civic monuments while neg
 - The Supreme Court upheld zoning in ***Village of Euclid v. Ambler Realty Co.*** **(1926)**. See [Foundations of land use law](/aicp/lessons/land-use-law-foundations).
 - In 1925, **Cincinnati** became the first major U.S. city to officially adopt a comprehensive plan.
 
+:::checkpoint e1:1
+
 ### 4. The Garden City and the regional planners (1898 to 1930s)
 
 **Ebenezer Howard**'s *To-Morrow: A Peaceful Path to Real Reform* (1898), reissued in 1902 as ***Garden Cities of To-Morrow***, proposed self-contained towns of limited size, about 32,000 people, surrounded by a permanent **greenbelt** of farmland, with land held in common so rising land values would benefit the community. When a town reached its limit, growth would go to a new garden city, forming a linked cluster Howard called the "social city." Letchworth and Welwyn Garden City in England were built on these ideas.
@@ -45,6 +51,8 @@ In the U.S., the ideas spread through:
 - **Clarence Perry's neighborhood unit** (published in the 1929 *Regional Plan of New York and Its Environs*): a residential area sized to support an **elementary school** at its center, with arterial streets at the edges rather than running through it, local shops at the corners, and small parks throughout.
 - **Radburn, New Jersey (1929)**, designed by **Clarence Stein and Henry Wright**: "a town for the motor age," with **superblocks**, **cul-de-sacs**, homes facing interior parks, and pedestrian paths separated from car traffic by underpasses.
 - The **Regional Planning Association of America** (founded in 1923), including **Lewis Mumford**, Stein, Wright, and Benton MacKaye (who proposed the Appalachian Trail). It argued for planning at the scale of whole regions and ecosystems.
+
+:::checkpoint e1:2
 
 ### 5. The New Deal (1930s)
 
@@ -68,6 +76,8 @@ The Depression brought the federal government into planning.
 - **Paul Davidoff**'s "Advocacy and Pluralism in Planning" (1965) and **Sherry Arnstein**'s "A Ladder of Citizen Participation" (1969) challenged top-down planning. See [Planning theory](/aicp/lessons/planning-theory).
 - McHarg's *Design with Nature* (1969) and the **National Environmental Policy Act** (signed January 1, 1970) brought environmental analysis into mainstream planning.
 - Some states began reclaiming land use authority from localities, a shift sometimes called the "quiet revolution" in land use control. Oregon's statewide planning program, with its urban growth boundaries, dates from 1973. <!-- VERIFY: Oregon's statewide land use planning law (Senate Bill 100) is commonly dated to 1973; confirm. -->
+
+:::checkpoint e1:8
 
 ### 8. The profession consolidates (1978)
 

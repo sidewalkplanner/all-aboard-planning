@@ -32,6 +32,7 @@ const [{ DOMAINS, LESSONS }, { FREE_QUIZ_REFS }, { STUDY_PLANS }, nav, shuffle, 
   imp('data/exam2-questions.js'),
   imp('data/exam3-questions.js'),
 ]);
+const { CHECKPOINTS } = await imp('content/aicp/checkpoints.js');
 
 const errors = [];
 const warnings = [];
@@ -55,6 +56,9 @@ if (slugs.size !== LESSONS.length) err('Duplicate lesson slugs in curriculum.js'
 
 const rendered = new Map(); // slug -> { headings, links, html }
 let totalCards = 0;
+let totalCheckpoints = 0;
+const usedCp = new Set();
+const BANKS_EARLY = { e1: b1.BANK, e2: b2.BANK, e3: b3.BANK };
 for (const l of LESSONS) {
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(l.slug)) err(`Lesson slug "${l.slug}" is not kebab-case`);
   for (const f of ['title', 'description', 'minutes', 'access']) if (!l[f]) err(`Lesson ${l.slug}: missing ${f}`);
@@ -82,6 +86,18 @@ for (const l of LESSONS) {
   if (cards.length !== bullets) err(`Lesson ${l.slug}: ${bullets - cards.length} Key terms bullet(s) aren't in "- **Term**: definition" form`);
   if (cards.length < 6) warn(`Lesson ${l.slug}: only ${cards.length} key terms (flashcards)`);
   totalCards += cards.length;
+  // Checkpoints: every ref must resolve, no repeats, at least three per lesson.
+  const cpRefs = r.checkpoints.flat();
+  if (cpRefs.length < 3) err(`Lesson ${l.slug}: only ${r.checkpoints.length} checkpoints (need at least 3)`);
+  if (new Set(cpRefs).size !== cpRefs.length) err(`Lesson ${l.slug}: a checkpoint question is used twice`);
+  for (const ref of cpRefs) {
+    if (ref.startsWith('cp:')) { if (!CHECKPOINTS[ref]) err(`Lesson ${l.slug}: checkpoint ${ref} isn't defined in checkpoints.js`); usedCp.add(ref); continue; }
+    const [b, n] = ref.split(':');
+    const q = BANKS_EARLY[b] && BANKS_EARLY[b].find((x) => x.n === Number(n));
+    if (!q) err(`Lesson ${l.slug}: checkpoint ref ${ref} doesn't exist`);
+    else if (q.exhibit) err(`Lesson ${l.slug}: checkpoint ${ref} needs an exhibit, which checkpoints don't show`);
+  }
+  totalCheckpoints += r.checkpoints.length;
   for (const v of r.videos) {
     if (!v.title || !v.length) err(`Lesson ${l.slug}: a :::video block needs "Title | length"`);
     if (v.url && !/^https:\/\//.test(v.url)) err(`Lesson ${l.slug}: video URL must be https (${v.url})`);
@@ -121,6 +137,12 @@ for (const l of LESSONS) {
   }).length;
   if (standalone < 3) warn(`Lesson ${l.slug}: only ${standalone} standalone practice questions, so its quick check shows fewer than 3`);
   if (l.access === 'free' && !(l.practice || []).some((r) => FREE_QUIZ_REFS.has(r))) warn(`Free lesson ${l.slug}: no free-quiz questions, so its set is locked for free users`);
+}
+
+// Original checkpoint questions: well-formed, and each used somewhere.
+for (const [id, q] of Object.entries(CHECKPOINTS)) {
+  if (!q.text || !Array.isArray(q.options) || q.options.length !== 4 || !(q.correct >= 0 && q.correct < 4) || !q.explanation) err(`checkpoints.js: ${id} is malformed (needs text, 4 options, correct 0-3, explanation)`);
+  if (!usedCp.has(id)) warn(`checkpoints.js: ${id} isn't used in any lesson`);
 }
 
 // FREE_QUIZ_REFS must match the sampler.
@@ -203,7 +225,7 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
 const totalRefs = LESSONS.reduce((s, l) => s + (l.practice || []).length, 0);
 const videos = [...rendered.values()].flatMap((r) => r.videos);
 const placeholders = videos.filter((v) => !v.url).length;
-console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} practice refs, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders), ${totalCards} flashcards.`);
+console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} practice refs, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders), ${totalCards} flashcards, ${totalCheckpoints} checkpoints.`);
 warnings.forEach((w) => console.log(`  warning: ${w}`));
 if (errors.length) {
   errors.forEach((e) => console.error(`  ERROR: ${e}`));

@@ -31,6 +31,8 @@ A **variance** is permission to depart from the ordinance's literal terms becaus
 Applies the typical variance findings to two contrasting requests (an oddly shaped lot and a request for more profit) to show what counts as a hardship and what doesn't.
 :::
 
+:::checkpoint e2:74
+
 ### Rezonings: legislative or quasi-judicial?
 
 In most states, a rezoning is a **legislative** act. Courts defer to it heavily, presuming validity and upholding it if the question is "fairly debatable."
@@ -44,6 +46,8 @@ In ***Fasano v. Board of County Commissioners*** **(Oregon, 1973)**, the Oregon 
 
 Several other states have adopted the *Fasano* approach in some form. <!-- VERIFY: identify which states currently follow Fasano if a list is added. -->
 
+:::checkpoint e3:86
+
 ### Spot zoning
 
 **Spot zoning** is the rezoning of a small parcel to a classification inconsistent with the surrounding pattern and the comprehensive plan, **primarily for the benefit of the owner** rather than the public. Courts look at:
@@ -54,6 +58,8 @@ Several other states have adopted the *Fasano* approach in some form. <!-- VERIF
 - whether the **public benefits**, or only the owner.
 
 A small-parcel rezoning isn't automatically illegal. It's defensible when it implements the plan and serves a public purpose. The vice is singling out one parcel for special treatment.
+
+:::checkpoint e2:76
 
 ### Contract zoning and conditional zoning
 
@@ -77,6 +83,8 @@ Ordinances typically aim for nonconformities to fade away over time:
 
 **Amortization** requires a nonconforming use to **cease after a set period** that's meant to let the owner recoup their investment, with no compensation. Many state courts accept amortization if the period is reasonable given the investment and the harm the use causes; some states reject it. It's most often applied to billboards and to incompatible uses like junkyards or adult businesses.
 
+:::checkpoint e3:88
+
 ### Moratoria
 
 A **development moratorium** temporarily halts certain approvals while the jurisdiction studies and adopts new regulations. Courts uphold moratoria that are:
@@ -86,6 +94,8 @@ A **development moratorium** temporarily halts certain approvals while the juris
 - pursued diligently, with a real work plan.
 
 Under *Tahoe-Sierra* (2002), a moratorium isn't a per se taking. See [Takings, exactions, and property rights](/aicp/lessons/takings-and-exactions).
+
+:::checkpoint e2:93
 
 ## Key terms
 

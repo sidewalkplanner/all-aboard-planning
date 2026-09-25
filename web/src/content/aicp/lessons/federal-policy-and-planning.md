@@ -23,11 +23,15 @@ Land use regulation is mostly a state and local power, but federal money and fed
 
 <!-- VERIFY: confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. -->
 
+:::checkpoint e3:46
+
 ### Transportation
 
 - The **Federal-Aid Highway Act of 1956** created the **Highway Trust Fund**, financed by fuel taxes, and paid 90% of the cost of the **Interstate Highway System**. It accelerated suburbanization and routed freeways through many central-city neighborhoods, especially Black neighborhoods. It did *not* create metropolitan planning organizations.
 - The **Federal-Aid Highway Act of 1962** required a "continuing, comprehensive, and cooperative" ("3C") urban transportation planning process for federal highway funding in urbanized areas, the root of today's **metropolitan planning organizations (MPOs)**. <!-- VERIFY: confirm the 1962 Act as the origin of the 3C planning requirement. -->
 - The **Intermodal Surface Transportation Efficiency Act (ISTEA)** of **1991** gave MPOs more authority and flexibility, allowing highway money to be spent on transit, bicycle, and pedestrian projects. Later surface transportation laws built on it. See [Transportation planning](/aicp/lessons/transportation-planning).
+
+:::checkpoint e2:25
 
 ### The environment
 
@@ -38,9 +42,13 @@ Land use regulation is mostly a state and local power, but federal money and fed
 - The **Endangered Species Act** (1973) protects listed species and their critical habitat, and can shape local development through habitat conservation plans.
 - **CERCLA** (1980), known as Superfund, governs cleanup of hazardous waste sites and liability for contamination. The 2002 **Brownfields** amendments added liability protections and grants for redeveloping contaminated sites.
 
+:::checkpoint e2:24
+
 ### Preservation
 
 The **National Historic Preservation Act** (1966) created the **National Register of Historic Places**, State Historic Preservation Offices, and the **Section 106** review process, which requires federal agencies to consider effects on historic properties. See [Urban design and historic preservation](/aicp/lessons/urban-design-and-historic-preservation).
+
+:::checkpoint cp:fed-nhpa
 
 ### Civil rights, fair housing, and accessibility
 
@@ -48,11 +56,15 @@ The **National Historic Preservation Act** (1966) created the **National Registe
 - The **Fair Housing Act** (Title VIII of the Civil Rights Act of **1968**) prohibits discrimination in the sale, rental, and financing of housing based on race, color, religion, and national origin; **sex** was added in 1974; and **disability** and **familial status** were added by the **Fair Housing Amendments Act of 1988**. It also requires federal agencies and grantees to **affirmatively further fair housing**.
 - The **Americans with Disabilities Act** (1990) prohibits disability discrimination and sets accessibility requirements for public facilities, public rights-of-way, and programs, including public meetings and digital communication.
 
+:::checkpoint e2:26
+
 ### Hazards
 
 - The **National Flood Insurance Act of 1968** created the **National Flood Insurance Program (NFIP)**, which makes flood insurance available in communities that adopt floodplain management regulations.
 - The **Robert T. Stafford Disaster Relief and Emergency Assistance Act** (1988) governs federal disaster declarations and assistance.
 - The **Disaster Mitigation Act of 2000** amended the Stafford Act to require state and local **hazard mitigation plans** as a condition of certain FEMA mitigation funding.
+
+:::checkpoint cp:fed-dma
 
 ## Key terms
 

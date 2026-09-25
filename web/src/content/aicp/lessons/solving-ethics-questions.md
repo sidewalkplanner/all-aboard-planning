@@ -20,6 +20,8 @@ Ethics questions make up about a tenth of the exam and reward a consistent metho
 
 Some questions give answer choices such as "definitely violates," "possibly violates," "does not violate," or "insufficient information." Use "insufficient information" only when a fact that would change the answer is genuinely missing, not as a way to avoid a judgment call.
 
+:::checkpoint cp:ethics-principle
+
 ### Political pressure and accurate analysis
 
 Planners must provide decision-makers and the public with **accurate and complete information**. When a supervisor or elected official directs a planner to **omit or alter an unfavorable finding** in a public report:
@@ -31,6 +33,8 @@ Planners must provide decision-makers and the public with **accurate and complet
 
 The planner can respect that **policy choices belong to elected officials** while refusing to falsify the facts those choices rest on. There's a difference between "the council may decide differently from my recommendation" (acceptable) and "change the numbers so they support the council's preference" (not acceptable).
 
+:::checkpoint e3:181
+
 ### Serving private clients
 
 Consultants owe clients loyalty and **independent professional judgment**, but the Code places a planner's **primary obligation with the public interest**. A planner in private practice therefore carries a **special obligation to the public interest that may constrain the work** they do for paying clients.
@@ -39,9 +43,13 @@ Consultants owe clients loyalty and **independent professional judgment**, but t
 - When advocating for a client at a public hearing, **identify the client** and **don't misrepresent facts**.
 - Accept a client's decisions about the objectives of the work, **unless** a course of action is illegal or plainly inconsistent with the public interest.
 
+:::checkpoint e3:185
+
 ### Colleagues' misconduct
 
 When a planner finds that a colleague's work contains misleading figures, for example a traffic study that understated impacts, the appropriate first step is to **raise the discrepancy through appropriate channels**: with the colleague, the project manager, or the client. Say what's wrong and ask for correction. Going public first, or ignoring it, are both wrong answers. If the problem is serious and isn't corrected, further steps, including a charge of misconduct, may be warranted.
+
+:::checkpoint e1:136
 
 ### Worked scenarios
 
@@ -73,6 +81,8 @@ When a planner finds that a colleague's work contains misleading figures, for ex
 :::video Working an ethics scenario with the five-step method | about 5 min
 Talks through a multi-part conflict-of-interest scenario from start to finish, showing why the most passive and most aggressive answers are usually wrong.
 :::
+
+:::checkpoint e2:146
 
 ### Common traps
 

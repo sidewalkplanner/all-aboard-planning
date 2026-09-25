@@ -6,7 +6,7 @@ import useAccess from '../../hooks/useAccess';
 import { useStudyState } from '../../lib/studyState';
 
 const OFFERS = [
-  { title: `${LESSONS.length} lessons in nine domains`, body: 'Plain-language lessons organized by the AICP exam content outline, each with key terms, real planning examples, exam tips, and a three-question check at the end.', to: P.course, cta: 'Browse the course' },
+  { title: `${LESSONS.length} lessons in nine domains`, body: 'Plain-language lessons organized by the AICP exam content outline, with checkpoint questions after every key section, key terms, real planning examples, and exam tips.', to: P.course, cta: 'Browse the course' },
   { title: '8- and 12-week study plans', body: 'Week-by-week schedules for every lesson, drill, and exam. Follow one and your dashboard shows exactly what\u2019s due this week.', to: P.studyPlan, cta: 'See the plans' },
   { title: 'A 100-item diagnostic', body: 'A placement test that scores all nine domains and ranks them by how many points each is likely costing you.', to: P.diagnostic, cta: 'Take the diagnostic' },
   { title: 'Three full-length practice exams', body: '170 questions each, on the real 3.5-hour clock, with scenario sets and data exhibits. Results list the lessons behind every miss.', to: P.exams, cta: 'See practice exams' },

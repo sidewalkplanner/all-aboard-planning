@@ -35,11 +35,15 @@ FAR controls bulk without dictating shape: a FAR of 2.0 allows a two-story build
 Works the two-acre, FAR 2.0 example on screen, including the shortcut of dividing FAR by lot coverage to get the number of stories.
 :::
 
+:::checkpoint e2:127
+
 ### Lot coverage
 
 > **Lot coverage = building footprint (or impervious area) ÷ lot area**
 
 **Worked example.** A 10,000 sq ft lot has a 2,500 sq ft house and a 500 sq ft garage. Building coverage = 3,000 ÷ 10,000 = **30%**.
+
+:::checkpoint cp:math-coverage
 
 ### Gross and net density
 
@@ -58,11 +62,15 @@ Net density is always higher than gross density for the same project. Always che
 Shows, with a site diagram, what gets subtracted to get net acreage, and why the same project can have very different gross and net densities.
 :::
 
+:::checkpoint e2:128
+
 ### Minimum lot area per unit
 
 Some codes set density as a minimum amount of land per dwelling unit.
 
 **Worked example.** A 12,000 sq ft lot is in a district requiring 1,500 sq ft of lot area per unit. Units allowed: 12,000 ÷ 1,500 = **8**. (Round *down* when a result isn't a whole number. You can't build part of a unit, and rounding up would exceed the limit, unless the code says otherwise.)
+
+:::checkpoint cp:math-lot-area
 
 ### Density bonuses
 
@@ -80,6 +88,8 @@ Some codes set density as a minimum amount of land per dwelling unit.
 - 84,000 ÷ 43,560 ≈ **1.93 acres**, just under two acres, which is larger than the building's own footprint on a one-story center.
 
 This is why parking minimums matter so much for land use. Many cities have reduced or eliminated them, especially near transit.
+
+:::checkpoint e2:130
 
 ### Trip generation
 
@@ -104,6 +114,8 @@ The standard planning benchmark: a household is **cost-burdened** when it spends
 - Affordable at 30%: 42,000 × 0.30 ÷ 12 = **$1,050 a month**
 - Income as a share of AMI: 42,000 ÷ 84,000 = **50% of AMI**
 
+:::checkpoint cp:math-affordable
+
 ### Percent change and growth rates
 
 > **Percent change = (new − old) ÷ old × 100**
@@ -111,6 +123,8 @@ The standard planning benchmark: a household is **cost-burdened** when it spends
 **Worked example.** Employment rose from 8,000 to 9,200 jobs. Percent change: (9,200 − 8,000) ÷ 8,000 = 0.15 = **15%**.
 
 For projections, location quotients, and shift-share, see [Population projections and economic analysis](/aicp/lessons/demographic-and-economic-analysis). For present value and benefit-cost ratios, see [Statistics and quantitative evaluation](/aicp/lessons/statistics-for-planners).
+
+:::checkpoint cp:math-percent
 
 ## Key terms
 

@@ -113,7 +113,7 @@ export default function ExamsList() {
             </Link>
             <Link to={P.course} className="card card-link">
               <h3 className="h3">Lesson practice sets</h3>
-              <p className="body-text" style={{ margin: 0, fontSize: 15 }}>Every lesson ends with a three-question check and a full practice set on exactly the topics it teaches.</p>
+              <p className="body-text" style={{ margin: 0, fontSize: 15 }}>Every lesson has checkpoints as you read, a lesson review, and a full practice set on exactly the topics it teaches.</p>
               <span className="link-arrow" style={{ marginTop: 'auto' }}>Browse the lessons</span>
             </Link>
             <Link to={P.flashcards} className="card card-link">

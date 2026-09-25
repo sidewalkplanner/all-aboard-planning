@@ -16,6 +16,8 @@ The Fifth Amendment ends: "nor shall private property be taken for public use, w
 
 A property owner who believes a regulation has effectively taken their property, without any formal condemnation, can sue for compensation. This is called **inverse condemnation**.
 
+:::checkpoint cp:takings-inverse
+
 ### Eminent domain and "public use"
 
 When government condemns property outright, the main legal question is whether the taking is for a **public use**. The Court has read that phrase broadly as "public purpose."
@@ -23,6 +25,8 @@ When government condemns property outright, the main legal question is whether t
 - ***Berman v. Parker*** **(1954)** upheld a Washington, D.C., urban renewal plan that took a non-blighted department store as part of clearing a blighted area. The Court said the public welfare is broad and includes aesthetic values, and that it's within the legislature's power to decide a community should be beautiful as well as healthy.
 - ***Hawaii Housing Authority v. Midkiff*** **(1984)** upheld taking land from large landowners and transferring it to tenants to break up concentrated ownership.
 - ***Kelo v. City of New London*** **(2005)** held, 5–4, that taking private homes for a comprehensive **economic development** plan that would transfer land to private developers satisfied the public use requirement. The backlash was immediate. Most states responded by passing laws or constitutional amendments restricting eminent domain for economic development.
+
+:::checkpoint e2:5
 
 ### Regulatory takings
 
@@ -43,6 +47,8 @@ Most regulatory takings claims are decided under a balancing test:
 Takes one landmark-designation dispute through economic impact, investment-backed expectations, and the character of the government action, then shows why the whole parcel is the unit of analysis.
 :::
 
+:::checkpoint e3:96
+
 ### Per se (categorical) takings
 
 In a few situations, a taking is automatic, with no balancing:
@@ -50,6 +56,8 @@ In a few situations, a taking is automatic, with no balancing:
 - ***Loretto v. Teleprompter Manhattan CATV Corp.*** **(1982)**: a **permanent physical occupation** authorized by government is a taking, no matter how small. The case involved cable boxes attached to an apartment building.
 - ***Lucas v. South Carolina Coastal Council*** **(1992)**: a regulation that deprives land of **all economically beneficial use** is a taking unless the use was already prohibited by "background principles" of the state's property and nuisance law. Lucas had bought beachfront lots, and a later law barred building on them.
 - ***Cedar Point Nursery v. Hassid*** **(2021)**: a regulation that grants third parties a right to **physically access** private property (here, union organizers entering farms for limited hours) is a per se physical taking, even though the access isn't continuous.
+
+:::checkpoint e3:98
 
 ### Clarifications and procedure
 
@@ -59,6 +67,8 @@ In a few situations, a taking is automatic, with no balancing:
 - ***Lingle v. Chevron U.S.A.*** **(2005)**: the old test of whether a regulation "substantially advances" a legitimate interest belongs to **due process**, not takings. Takings analysis focuses on the burden on the owner.
 - ***Murr v. Wisconsin*** **(2017)** addressed the **"denominator problem"**: which property counts as "the parcel" when measuring a regulation's impact. The Court used a multi-factor test and treated two adjacent, commonly owned lots that state and local law had merged as a single parcel.
 - ***Knick v. Township of Scott*** **(2019)** held that a property owner may bring a takings claim in **federal court** right away, without first seeking compensation in state court. This overruled part of *Williamson County* (1985).
+
+:::checkpoint e3:105
 
 ### Exactions
 
@@ -74,6 +84,8 @@ Many state courts had long used a similar **rational nexus** test for impact fee
 :::video Nollan and Dolan: the two-part test for exactions | about 4 min
 Walks a single dedication request through the essential nexus question and then rough proportionality, using a simple flowchart, and shows how *Koontz* (money demands and denials) and *Sheetz* (legislative fees) extend the test.
 :::
+
+:::checkpoint e3:104
 
 ### Takings cases at a glance
 

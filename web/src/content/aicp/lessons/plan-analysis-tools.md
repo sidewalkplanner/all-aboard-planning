@@ -19,6 +19,8 @@ Once a planning process has two or more alternatives, it needs a fair way to com
 
 A **goals-achievement matrix** lays out alternatives in columns and criteria in rows, scoring how well each alternative advances each goal, sometimes with weights. **Multi-criteria analysis** is the broader family of methods for this. **Sensitivity analysis** tests whether the preferred alternative changes when weights or assumptions change. If a small change in weights flips the result, decision-makers should know that.
 
+:::checkpoint cp:analysis-sensitivity
+
 ### Scenario planning
 
 **Scenario planning** develops several plausible, internally consistent pictures of the future and uses them to test strategies. It's most useful when a community faces **deep uncertainty about conditions largely outside its control**: shifts in the economy, climate impacts, technology such as automated vehicles, or demographic change.
@@ -33,6 +35,8 @@ A typical process:
 
 Scenarios are **not predictions**. Some processes use *exploratory* scenarios (what could happen?) and others *normative* ones (what do we want to happen, and how do we get there?).
 
+:::checkpoint e1:35
+
 ### Buildable lands and capacity analysis
 
 Before a plan can say where growth goes, it needs to know how much land can take it. A **buildable lands inventory** (or land capacity analysis):
@@ -43,6 +47,8 @@ Before a plan can say where growth goes, it needs to know how much land can take
 4. compares the resulting **capacity** with **projected demand** for housing and jobs.
 
 If demand exceeds capacity, and the jurisdiction can't or won't expand outward (because of an urban growth boundary, for example), the plan must accommodate growth through **infill, redevelopment, and increased intensity** on underused land.
+
+:::checkpoint cp:analysis-buildable
 
 ### Fiscal impact analysis
 
@@ -60,6 +66,8 @@ Common methods:
 
 Fiscal impact is one input, not the answer. A development can be fiscally negative and still be the right choice. Affordable housing and parks are examples. The analysis simply makes the tradeoff visible. Development patterns matter too: compact development generally costs less to serve per household than dispersed development, because pipes, roads, and service routes are shorter.
 
+:::checkpoint e1:132
+
 ### Greenhouse gas inventories
 
 A local **greenhouse gas (GHG) inventory** is the baseline for a climate action plan. It usually includes:
@@ -68,6 +76,8 @@ A local **greenhouse gas (GHG) inventory** is the baseline for a climate action 
 - **government operations** emissions (the city's own buildings, fleet, and facilities).
 
 Emissions are often grouped by **scope**: Scope 1 covers direct emissions, Scope 2 covers purchased electricity, and Scope 3 covers other indirect emissions. Once you have the baseline, you set reduction targets, model strategies, and re-inventory periodically to track progress.
+
+:::checkpoint e2:45
 
 ### Innovations and best practices
 

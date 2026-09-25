@@ -23,6 +23,8 @@ Many form-based codes are organized by the **transect**, a gradient of contexts 
 
 Form-based codes are especially useful for corridors and downtowns where the goal is a predictable, walkable street frontage over time.
 
+:::checkpoint e2:82
+
 ### Planned unit developments
 
 A **planned unit development (PUD)** treats a larger site as a single unit. Instead of applying district standards lot by lot, the developer and jurisdiction agree on a master plan that allows **flexibility in site design, lot sizes, and mix of uses**, typically **in exchange for public benefits** such as open space, better design, or infrastructure. PUDs are usually approved through a rezoning or special process, and later phases must conform to the approved plan.
@@ -30,6 +32,8 @@ A **planned unit development (PUD)** treats a larger site as a single unit. Inst
 ### Performance zoning
 
 **Performance zoning** regulates the **measurable impacts** of development, such as traffic generated, noise, impervious surface, density, and open space ratios, **rather than listing permitted uses**. Any use that meets the performance standards is allowed. It offers flexibility but can be complex to administer. <!-- VERIFY: performance zoning is often associated with Lane Kendig's work in Bucks County, Pennsylvania, in the 1970s; confirm before attributing. -->
+
+:::checkpoint e1:91
 
 ### Cluster (conservation) subdivisions
 
@@ -66,6 +70,8 @@ A workable TDR program needs, at a minimum, **designated sending and receiving a
 Follows one development right from a farm in a sending area to a building in a receiving area, and explains why programs fail without real demand for credits.
 :::
 
+:::checkpoint e2:79
+
 ### Growth management
 
 **Growth management** coordinates the **location, timing, and rate** of growth with infrastructure and resources.
@@ -76,6 +82,8 @@ Follows one development right from a farm in a sending area to a building in a r
 - **Agricultural zoning** protects farmland with very large minimum lot sizes and limits on non-farm uses, often paired with TDR or PDR.
 - **Phased growth and rate caps** tie the timing or amount of development to infrastructure.
 
+:::checkpoint e1:38
+
 ### Two landmark growth-control cases
 
 - ***Golden v. Planning Board of Town of Ramapo*** **(New York, 1972)** upheld a **phased growth** system. Residential development required a special permit awarded through a point system based on the availability of public services (sewer, drainage, parks, roads, firehouses), tied to the town's long-range capital improvement program. The court accepted timing controls as a legitimate way to match growth to facilities.
@@ -84,6 +92,8 @@ Follows one development right from a farm in a sending area to a building in a r
 <!-- VERIFY: confirm details sometimes cited for these cases (Ramapo's roughly 18-year capital program; Petaluma's cap of about 500 units a year) before adding them. -->
 
 Growth controls can protect services and character, but tight caps and boundaries without enough capacity inside them can raise housing costs and push growth to neighboring jurisdictions. Good growth management pairs limits with enough zoned capacity to meet projected needs.
+
+:::checkpoint e3:75
 
 ## Key terms
 

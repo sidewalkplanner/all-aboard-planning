@@ -25,6 +25,8 @@ The **scope of work** is the project's foundation. A good one states:
 
 **Scope creep**, the gradual addition of work beyond the original scope, is best controlled by a **clear scope with a change-order process**. When new work is requested, the change is documented and its cost and schedule effects are agreed before the work proceeds.
 
+:::checkpoint e3:146
+
 ### Schedules: Gantt charts and the critical path
 
 A **Gantt chart** displays **tasks as bars on a timeline**, showing each task's start, duration, and end, and often dependencies and milestones. It's the most common way to communicate a schedule.
@@ -45,6 +47,8 @@ Path A → C → D = 3 + 2 + 3 = **8 months** (the critical path). Path B → C 
 
 Another technique, **PERT** (Program Evaluation and Review Technique), estimates task durations from optimistic, most likely, and pessimistic values, to account for uncertainty.
 
+:::checkpoint e1:155
+
 ### Procurement
 
 Public agencies buy consulting services through formal procurement. The main solicitation types are:
@@ -58,6 +62,8 @@ Public agencies buy consulting services through formal procurement. The main sol
 - A **two-step RFQ–RFP** process **shortlists firms on qualifications**, then asks only the shortlisted firms for detailed proposals.
 - **Qualifications-based selection (QBS)** means the agency **ranks firms on qualifications, then negotiates a fee** with the top-ranked firm (moving to the next firm if negotiations fail). Federal law requires QBS for architecture and engineering services on federally funded projects, and many states follow similar rules. <!-- VERIFY: the federal QBS requirement for A/E services comes from the Brooks Act (1972); confirm it applies to the planning services in question. -->
 - Selection must be fair and documented: published criteria, a conflict-free evaluation panel, scoring records, and no private contact with competing firms during the process.
+
+:::checkpoint e2:151
 
 ### Contract types
 
@@ -76,9 +82,13 @@ Managing an external consultant well requires:
 - early warning of problems, and a documented change-order process; and
 - **evaluation at closeout**, to inform future selections.
 
+:::checkpoint e3:154
+
 ### Quality control
 
 **Quality assurance (QA)** is the set of processes that prevent errors (templates, standards, training). **Quality control (QC)** checks work products **before release**. For planning deliverables, the most reliable QA/QC is **structured peer review**: a qualified colleague not involved in the work reviews it against a checklist (data sources, calculations, maps, consistency with adopted policy, plain language, accessibility) before it goes to the public or decision-makers.
+
+:::checkpoint e1:160
 
 ## Key terms
 

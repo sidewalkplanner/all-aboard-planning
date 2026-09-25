@@ -19,6 +19,8 @@ Water, sewer, roads, energy, and broadband don't just serve development; they **
 
 When an infrastructure plan and a land use plan disagree, the infrastructure usually wins, because private development follows capacity.
 
+:::checkpoint e2:33
+
 ### Asset management and life-cycle cost
 
 Building infrastructure is the cheap part; owning it isn't. **Asset management** means knowing what you own, its condition, its remaining useful life, and what it will cost to maintain and replace, then budgeting accordingly.
@@ -26,6 +28,8 @@ Building infrastructure is the cheap part; owning it isn't. **Asset management**
 - **Life-cycle cost** includes design, construction, operation, maintenance, and eventual replacement.
 - **Deferred maintenance** (postponing repairs) usually raises long-term costs and risks failures.
 - Development patterns matter: serving dispersed development requires more pipe and road per household, which means higher life-cycle costs per resident.
+
+:::checkpoint cp:infra-lifecycle
 
 ### Water supply
 
@@ -41,6 +45,8 @@ Water supply planning forecasts demand (often from population projections and pe
 - **Septic (on-site) systems** serve rural areas but can fail and contaminate groundwater where soils or density are wrong. See [Rural, small-town, and tribal planning](/aicp/lessons/rural-small-town-and-tribal-planning).
 - **Combined sewer systems**, common in older cities, carry both sewage and stormwater in the same pipes. In heavy rain they can overflow into rivers (**combined sewer overflows**), which is a major driver of green infrastructure and sewer separation projects.
 
+:::checkpoint cp:infra-cso
+
 ### Stormwater
 
 Development replaces soil and vegetation with **impervious surfaces**, increasing runoff volume, speed, and pollution. Under the Clean Water Act, many municipalities hold stormwater permits (often called MS4 permits) requiring them to manage runoff pollution. <!-- VERIFY: MS4 = municipal separate storm sewer system permits under the NPDES program; confirm terminology before expanding. --> Responses include **green stormwater infrastructure** (bioswales, rain gardens, permeable pavement, green roofs), limits on impervious coverage, and updated design standards for heavier storms. See [Environmental planning, hazards, and resilience](/aicp/lessons/environmental-planning-and-hazards).
@@ -54,6 +60,8 @@ Planners influence energy use and supply through land use, codes, and siting:
 - **Renewable energy siting**: zoning for rooftop solar, community solar, and utility-scale solar and wind, with standards for setbacks, screening, glare, farmland, wildlife, and **decommissioning** (requiring removal and site restoration at the end of a project's life).
 - **Electric vehicle charging**: requirements or incentives for chargers in new parking.
 - **The grid**: planners coordinate with utilities, which are typically regulated by state utility commissions, on substations and transmission corridors. <!-- VERIFY: confirm the general statement that investor-owned utilities are regulated by state public utility commissions. -->
+
+:::checkpoint cp:infra-decommissioning
 
 ### Broadband and "dig once"
 

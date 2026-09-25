@@ -850,3 +850,80 @@ img, svg {
   .prose .table-wrap table:has(th:nth-child(3)) { min-width: 600px; }
   .prose th, .prose td { padding: 8px 10px; }
 }
+
+/* ==========================================================================
+   Mid-lesson checkpoints (:::checkpoint slots filled by Checkpoint.jsx)
+   ========================================================================== */
+.prose .checkpoint-slot:empty { display: none; }
+.checkpoint {
+  margin: 28px 0 32px;
+  padding: 20px 22px 22px;
+  border: 2px solid var(--brand);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.checkpoint-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.checkpoint-label h3 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-strong);
+}
+.checkpoint-badge {
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  border-radius: 99px;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 800;
+}
+.checkpoint-q + .checkpoint-q { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+.checkpoint-scenario {
+  margin: 0 0 10px;
+  padding-left: 12px;
+  border-left: 2px solid var(--line-strong);
+  color: var(--text);
+  font-size: 15px;
+}
+.checkpoint-stem {
+  margin: 0 0 12px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: pre-line;
+}
+.checkpoint-feedback {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  border-left: 4px solid var(--ok-fg);
+  background: var(--ok-bg);
+  color: var(--ink);
+  font-size: 15px;
+}
+.checkpoint-feedback.is-wrong { border-left-color: var(--rust); background: var(--err-bg); }
+.checkpoint-retry {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-strong);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

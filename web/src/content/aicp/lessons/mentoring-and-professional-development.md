@@ -22,6 +22,8 @@ Match the task to the person's readiness, and increase the challenge over time. 
 
 When two staff members are in an escalating dispute, the leader's best approach is usually to **meet with each separately** to understand their perspectives, then **convene a facilitated conversation** focused on their underlying **interests** and the work, not on personalities or blame. Agree on specific next steps and follow up. Ignoring conflict lets it spread; imposing a solution without listening rarely lasts.
 
+:::checkpoint e2:166
+
 ### Coaching, mentoring, and sponsorship
 
 - **Coaching** focuses on specific skills or performance, usually over a defined period: presenting to a commission, writing staff reports, running a meeting.
@@ -29,6 +31,8 @@ When two staff members are in an escalating dispute, the leader's best approach 
 - **Sponsorship** means using your influence to open doors, such as recommending a junior planner for a visible assignment or a promotion.
 
 Mentoring an early-career planner is most effective when the mentor provides **progressively challenging assignments with candid feedback**, plus **guidance and opportunity**: exposure to decision-makers, networks, and stretch projects. Mentoring serves the individual, and it also **develops the profession's future capacity**.
+
+:::checkpoint e2:164
 
 ### Succession planning
 
@@ -42,6 +46,8 @@ Many planning agencies face waves of retirements. A director preparing for turno
 
 The effectiveness of leadership development is best measured by **internal promotion rates, retention, and succession readiness**, not by the number of trainings held.
 
+:::checkpoint e3:190
+
 ### Institutional structures and accountability
 
 Leaders build accountability into how an organization works, not just into individual behavior:
@@ -53,6 +59,8 @@ Leaders build accountability into how an organization works, not just into indiv
 - structures that let staff raise concerns without retaliation.
 
 A professional planning leader demonstrates accountability by upholding the Code, being transparent about decisions, and taking responsibility for results.
+
+:::checkpoint e1:169
 
 ### Equity, diversity, and inclusion in practice
 
@@ -66,6 +74,8 @@ The profession expects planners to keep learning throughout their careers:
 - **Certification Maintenance (CM)**: to keep the AICP credential, members earn CM credits over each reporting period. Historically the requirement has been **32 CM credits every two years**, including set minimums in **ethics**, **planning law**, **equity**, and **sustainability and resilience**. <!-- VERIFY: confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). -->
 - AICP also offers **advanced specialty certifications** for experienced planners in fields such as environmental planning, transportation planning, and urban design. <!-- VERIFY: confirm which advanced specialty certifications AICP currently offers. -->
 - APA chapters and divisions, conferences, and volunteer roles on boards and commissions are common routes to growth and to giving back.
+
+:::checkpoint e2:143
 
 ## Key terms
 

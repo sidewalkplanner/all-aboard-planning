@@ -30,6 +30,8 @@ Population at the next step = current population + births − deaths + net migra
 
 Because it tracks age structure, the method answers questions trend lines can't: how many school-age children or residents over 75 there will be. That makes it the right choice for school, senior-service, and housing-type planning. (The **cohort-survival** method is the same idea; the term is sometimes used for projections that age cohorts forward with survival rates and then add migration and births.)
 
+:::checkpoint e2:114
+
 ### Simpler trend methods
 
 When you need only a total, or have limited data, simpler extrapolation can work, especially over short horizons.
@@ -53,6 +55,8 @@ The **housing-unit method** estimates population from housing:
 **Worked example.** A town issued permits for 500 new homes. Occupancy is 96% and the average household size is 2.4.
 500 × 0.96 × 2.4 = **1,152** new residents.
 
+:::checkpoint e1:130
+
 ### Dependency ratio
 
 The **total dependency ratio** compares people usually outside working age with those of working age:
@@ -75,6 +79,8 @@ A **location quotient (LQ)** compares an industry's share of local employment wi
 
 Location quotients assume that local consumption patterns and productivity match the nation's, which isn't always true. Treat them as a screening tool, not proof. The [economic development lesson](/aicp/lessons/economic-development) shows how LQs feed economic base analysis.
 
+:::checkpoint e3:5
+
 ### Shift-share analysis
 
 **Shift-share analysis** splits local employment change in an industry into three parts:
@@ -93,10 +99,14 @@ Location quotients assume that local consumption patterns and productivity match
 Calculates a location quotient from a simple employment table, then splits one industry's growth into national, industry-mix, and local shares.
 :::
 
+:::checkpoint e3:6
+
 ### Measuring segregation and inequality
 
 - The **index of dissimilarity** measures how evenly two groups are spread across the subareas (usually tracts) of a region. It runs from 0 (perfectly even) to 100 (completely separated). It can be read as the percentage of one group that would have to move to a different tract for the two groups to be evenly distributed.
 - The **Gini coefficient** measures inequality in a distribution, most often of income. It runs from 0 (everyone has the same income) to 1 (one person has all of it).
+
+:::checkpoint e2:120
 
 ## Key terms
 

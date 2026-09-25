@@ -36,6 +36,8 @@ Most planning studies combine the two. For example, you might pair ACS income da
 
 **Triangulation** means checking a finding with more than one method or source. If a survey shows low park use and focus groups explain that residents feel unsafe walking there after dark, the two methods reinforce each other and point toward a solution.
 
+:::checkpoint e3:7
+
 ### The census and the American Community Survey
 
 The **decennial census** is a complete count of the population every ten years. Its core purpose is apportioning seats in the U.S. House of Representatives, and it collects a short list of basic items (age, sex, race, Hispanic origin, household relationship, and tenure). Because it's a full count, it's the benchmark for population totals.
@@ -49,6 +51,8 @@ The **American Community Survey** is a continuous *sample* survey run by the Cen
 
 > **Exam tip:** For detailed characteristics (like median household income) of a small area such as a neighborhood or tract, the answer is almost always ACS 5-year estimates. For a complete population count used for apportionment, it's the decennial census.
 
+:::checkpoint e3:1
+
 ### Sampling
 
 You can rarely survey everyone, so you survey a sample and generalize. How you choose the sample decides whether you can generalize at all.
@@ -60,6 +64,8 @@ You can rarely survey everyone, so you survey a sample and generalize. How you c
   - *Systematic sampling:* pick every *k*th unit from a list after a random start.
 - **Nonprobability sampling** includes convenience samples, snowball samples, and **self-selected** samples, such as an online survey open to anyone who wants to respond. These are useful for engagement and idea generation, but you can't treat the results as representative.
 
+:::checkpoint e3:12
+
 ### Bias and error
 
 - **Coverage (sampling-frame) bias:** some people can't be selected. A park survey done only on weekday mornings misses everyone who works then.
@@ -67,6 +73,8 @@ You can rarely survey everyone, so you survey a sample and generalize. How you c
 - **Nonresponse bias:** selected people who don't respond differ systematically from those who do.
 - **Question-wording bias:** a **leading question** ("Don't you agree the new bike lanes are dangerous?") pushes respondents toward an answer.
 - **Implicit bias:** the researcher's unconscious assumptions shape which questions get asked, how categories are defined, or how results are read. Pre-testing a survey with a diverse group of residents helps catch this.
+
+:::checkpoint e2:64
 
 ### Validity and reliability
 
@@ -82,6 +90,8 @@ A measure can be reliable without being valid: a scale that is always five pound
 ### Research ethics
 
 When you collect information from people, you owe them informed consent, confidentiality, and a clear explanation of how their information will be used. This matters most when data is sensitive, as in health, immigration status, or income, or when participants are vulnerable. Store identifiable data securely and report results in ways that don't reveal individuals.
+
+:::checkpoint e3:9
 
 ## Key terms
 

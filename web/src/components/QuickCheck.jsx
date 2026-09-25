@@ -2,48 +2,34 @@ import { useEffect, useState } from 'react';
 import OptionButton from './OptionButton';
 import RichText from './RichText';
 import { LETTERS } from '../data/domains';
+import { loadQuestions } from '../lib/questionBank';
 
-// Three questions from a lesson's practice set, answered right on the lesson
-// page with instant feedback: retrieval practice at the moment it helps most.
-// The question banks are large, so they load only when this block mounts.
-const LOADERS = {
-  e1: () => import('../data/exam1-questions'),
-  e2: () => import('../data/exam2-questions'),
-  e3: () => import('../data/exam3-questions'),
-};
-
-// Stable pseudo-random order per lesson, so the same three questions appear
-// each visit (and different lessons don't all start with their first ref).
+// End-of-lesson review: three questions from the lesson's practice set,
+// answered on the page with instant feedback. It prefers questions the
+// lesson's mid-lesson checkpoints didn't use, so the review is fresh recall.
+// Stable pseudo-random order per lesson, so the same questions appear each visit.
 const hash = (str) => [...str].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
 
-async function pickQuestions(slug, refs, count) {
-  const banks = [...new Set(refs.map((r) => r.split(':')[0]))];
-  const loaded = Object.fromEntries(await Promise.all(banks.map(async (b) => [b, (await LOADERS[b]()).BANK])));
-  const qs = refs
-    .map((ref) => {
-      const [b, n] = ref.split(':');
-      const q = loaded[b].find((x) => x.n === Number(n));
-      return q ? { ...q, ref } : null;
-    })
-    .filter(Boolean)
+async function pickQuestions(slug, refs, exclude, count) {
+  const qs = (await loadQuestions(refs))
     // Standalone items read best out of context: skip scenario and exhibit items.
     .filter((q) => !q.scenario && !q.exhibit)
-    .sort((a, b) => hash(slug + a.ref) - hash(slug + b.ref));
+    .sort((a, b) => (exclude.includes(a.ref) - exclude.includes(b.ref)) || hash(slug + a.ref) - hash(slug + b.ref));
   return qs.slice(0, count);
 }
 
-export default function QuickCheck({ lesson, count = 3 }) {
+export default function QuickCheck({ lesson, exclude = [], count = 3 }) {
   const [state, setState] = useState({ slug: null, qs: [] });
   const [picks, setPicks] = useState({});
   const qs = state.slug === lesson.slug ? state.qs : [];
 
   useEffect(() => {
     let live = true;
-    pickQuestions(lesson.slug, lesson.practice || [], count).then((picked) => {
+    pickQuestions(lesson.slug, lesson.practice || [], exclude, count).then((picked) => {
       if (live) { setState({ slug: lesson.slug, qs: picked }); setPicks({}); }
     });
     return () => { live = false; };
-  }, [lesson.slug, lesson.practice, count]);
+  }, [lesson.slug, lesson.practice, count, exclude.join(' ')]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!qs.length) return null;
   const answered = qs.filter((q) => picks[q.ref] !== undefined).length;
@@ -51,10 +37,10 @@ export default function QuickCheck({ lesson, count = 3 }) {
 
   return (
     <section aria-labelledby="quick-check-heading" className="card" style={{ marginTop: 40 }}>
-      <span className="eyebrow eyebrow-brand">Check yourself</span>
-      <h2 id="quick-check-heading" className="h3" style={{ marginBottom: 6 }}>Three quick questions</h2>
+      <span className="eyebrow eyebrow-brand">Lesson review</span>
+      <h2 id="quick-check-heading" className="h3" style={{ marginBottom: 6 }}>Three more questions on the whole lesson</h2>
       <p className="body-text" style={{ margin: '0 0 18px' }}>
-        Answer before you look back at the lesson. Trying to recall is what makes it stick.
+        Answer without scrolling back up. Pulling it from memory is what makes it stick.
       </p>
       <ol style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 26 }}>
         {qs.map((q, qi) => {

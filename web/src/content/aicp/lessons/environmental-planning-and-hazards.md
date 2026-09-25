@@ -30,11 +30,15 @@ A **brownfield** is a property whose expansion, redevelopment, or reuse is **com
 - A **Phase II** assessment samples soil, groundwater, or building materials to confirm and characterize contamination.
 - Cleanup standards often depend on the planned use, with residential stricter than industrial, and institutional controls may restrict future uses.
 
+:::checkpoint e2:103
+
 ### Water, wetlands, and stormwater
 
 - Filling **wetlands** and other waters generally requires a **Clean Water Act Section 404** permit. Regulators apply a **mitigation sequence**: first **avoid** impacts, then **minimize** them, then **compensate** for unavoidable losses (restoration, creation, or mitigation banking).
 - Conventional stormwater systems pipe runoff away quickly. **Green stormwater infrastructure** manages it where it falls, with **bioswales, rain gardens, permeable pavement**, green roofs, and street trees, reducing flooding and pollution and cooling neighborhoods.
 - **Scattered septic-based subdivisions** in rural areas threaten **groundwater** quality and raise the long-term cost of extending infrastructure.
+
+:::checkpoint e2:112
 
 ### Floodplains and the NFIP
 
@@ -48,6 +52,8 @@ The most effective long-term policy for reducing repetitive flood losses is **di
 :::video What a "100-year flood" really means | about 2 min
 Explains the 1% annual chance and why it adds up to roughly a one-in-four chance over a 30-year mortgage.
 :::
+
+:::checkpoint e2:107
 
 ### Hazard mitigation planning
 
@@ -68,6 +74,8 @@ Elevating structures and restoring dunes is **adaptation, not mitigation**. A pl
 
 **Resilience** is the ability of a community to prepare for, absorb, recover from, and adapt to shocks and stresses.
 
+:::checkpoint e3:197
+
 ### Managed retreat
 
 **Managed retreat** means planned **relocation of people and assets away from high-risk areas**, often through voluntary **buyouts** of repeatedly flooded properties, which are then kept as open space. It's often the most effective long-term response to chronic flooding or erosion, but it raises hard equity questions: who moves, where to, and what happens to community ties and the tax base.
@@ -75,6 +83,8 @@ Elevating structures and restoring dunes is **adaptation, not mitigation**. A pl
 ### Wildfire
 
 The **wildland-urban interface (WUI)** is where development meets or mingles with undeveloped wildland vegetation. Planning responses include limiting new development in the highest-risk areas, requiring **defensible space** and fire-resistant construction, ensuring evacuation routes and water supply, and community wildfire protection planning.
+
+:::checkpoint e3:169
 
 ## Key terms
 
