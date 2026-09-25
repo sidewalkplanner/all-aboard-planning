@@ -18,7 +18,7 @@ Rapid industrialization packed immigrants and workers into dense, unsanitary ten
 - **Tenement reform** set minimum standards for light, air, and sanitation. Jacob Riis's photographs in *How the Other Half Lives* (1890) built public pressure. New York's **Tenement House Act of 1901**, associated with reformer Lawrence Veiller, required better light, ventilation, and sanitation in new tenements.
 - **Parks** were seen as the "lungs of the city." **Frederick Law Olmsted** and **Calvert Vaux** designed Central Park, and later **Riverside, Illinois (1869)**, one of the earliest planned suburbs in the U.S., with curving streets that followed the land.
 
-:::checkpoint e2:13
+:::checkpoint cp:hist-riis
 
 ### 2. The City Beautiful (1890s to 1910s)
 
@@ -29,7 +29,7 @@ The **1893 World's Columbian Exposition** in Chicago, with its "White City" of c
 
 Critics said City Beautiful focused on appearances and civic monuments while neglecting housing and social conditions. The next wave, sometimes called the "City Practical" or "City Efficient," emphasized engineering, zoning, and administration.
 
-:::checkpoint e3:21
+:::checkpoint cp:hist-cb-critique
 
 ### 3. The profession and zoning take shape (1900s to 1920s)
 
@@ -40,7 +40,7 @@ Critics said City Beautiful focused on appearances and civic monuments while neg
 - The Supreme Court upheld zoning in ***Village of Euclid v. Ambler Realty Co.*** **(1926)**. See [Foundations of land use law](/aicp/lessons/land-use-law-foundations).
 - In 1925, **Cincinnati** became the first major U.S. city to officially adopt a comprehensive plan.
 
-:::checkpoint e1:1
+:::checkpoint cp:hist-model-acts
 
 ### 4. The Garden City and the regional planners (1898 to 1930s)
 
@@ -52,7 +52,7 @@ In the U.S., the ideas spread through:
 - **Radburn, New Jersey (1929)**, designed by **Clarence Stein and Henry Wright**: "a town for the motor age," with **superblocks**, **cul-de-sacs**, homes facing interior parks, and pedestrian paths separated from car traffic by underpasses.
 - The **Regional Planning Association of America** (founded in 1923), including **Lewis Mumford**, Stein, Wright, and Benton MacKaye (who proposed the Appalachian Trail). It argued for planning at the scale of whole regions and ecosystems.
 
-:::checkpoint e1:2
+:::checkpoint cp:hist-neighborhood-unit
 
 ### 5. The New Deal (1930s)
 
@@ -77,7 +77,7 @@ The Depression brought the federal government into planning.
 - McHarg's *Design with Nature* (1969) and the **National Environmental Policy Act** (signed January 1, 1970) brought environmental analysis into mainstream planning.
 - Some states began reclaiming land use authority from localities, a shift sometimes called the "quiet revolution" in land use control. Oregon's statewide planning program, with its urban growth boundaries, dates from 1973. <!-- VERIFY: Oregon's statewide land use planning law (Senate Bill 100) is commonly dated to 1973; confirm. -->
 
-:::checkpoint e1:8
+:::checkpoint cp:hist-eyes
 
 ### 8. The profession consolidates (1978)
 

@@ -21,7 +21,7 @@ Practices that help:
 - **A visible record**: notes on flip charts or screens so people can see they were heard.
 - **Neutrality**: if you're also the project's technical lead, consider bringing in a separate facilitator for high-conflict sessions.
 
-:::checkpoint e1:59
+:::checkpoint cp:consensus-parking-lot
 
 ### Active listening
 
@@ -42,7 +42,7 @@ Reflecting back confirms understanding, shows respect, and often reveals the **i
 - **Consensus isn't unanimity.** It usually means every participant can at least "live with" the agreement, even if it isn't their first choice. Gradients of agreement (from "fully endorse" to "can live with it" to "block") help groups see where they stand.
 - Good consensus processes start by agreeing on **ground rules and roles**, build a **shared understanding of the problem**, often through joint fact-finding, and only then generate options.
 
-:::checkpoint e1:63
+:::checkpoint cp:consensus-live-with
 
 ### Structured group techniques
 
@@ -53,7 +53,7 @@ Reflecting back confirms understanding, shows respect, and often reveals the **i
 | **Delphi technique** | A panel of experts answers questionnaires over **multiple anonymous rounds**; a coordinator summarizes the responses and feeds them back between rounds, so views can converge | Building expert consensus or forecasts without face-to-face pressure or status effects |
 | **Dot voting** | Participants place a limited number of stickers (or digital votes) on options | Quick, visible prioritization |
 
-:::checkpoint e2:52
+:::checkpoint cp:consensus-ngt
 
 ### Negotiation: positions and interests
 
@@ -68,7 +68,7 @@ In **positional bargaining**, each side stakes out a position and concedes grudg
 
 A party's **BATNA** (best alternative to a negotiated agreement) is what it will do if talks fail. Knowing your BATNA, and theirs, tells you when to accept a deal and when to walk away.
 
-:::checkpoint e2:68
+:::checkpoint cp:consensus-interest
 
 ### Third-party help: facilitation, mediation, arbitration
 
@@ -80,7 +80,7 @@ These are forms of **alternative dispute resolution**:
 
 The distinction the exam tests most often: a mediator assists; an arbitrator decides.
 
-:::checkpoint e2:69
+:::checkpoint cp:consensus-arbitration
 
 ### Understanding the conflict
 

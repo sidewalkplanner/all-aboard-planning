@@ -34,7 +34,7 @@ A **health impact assessment (HIA)** is used to **evaluate the potential health 
 
 HIAs often involve collecting information about individuals. Protect confidentiality and obtain informed consent.
 
-:::checkpoint e3:166
+:::checkpoint cp:health-hia-screening
 
 ### Food systems planning
 
@@ -50,7 +50,7 @@ Planning tools include:
 - transit connections to grocery stores; and
 - **food policy councils** that bring together growers, retailers, health agencies, and residents.
 
-:::checkpoint e2:113
+:::checkpoint cp:health-food-tools
 
 ### Parks, recreation, and open space
 
@@ -69,7 +69,7 @@ Planning tools include:
 
 Park systems have traditionally been measured by a **level of service** in **acres per 1,000 residents**. Many cities now also measure **access**, for example the share of residents within a **10-minute walk** of a park, because acreage alone can hide neighborhoods with no park nearby. Other tools include **joint-use agreements** that open schoolyards to the public, **cap (deck) parks** built over sunken freeways to reconnect neighborhoods, and park equity analyses that direct investment to underserved areas. See [Vision, goals, objectives, and policies](/aicp/lessons/goals-objectives-policies) for an example objective.
 
-:::checkpoint e2:111
+:::checkpoint cp:health-park-access
 
 ### Regional and multijurisdictional planning
 
@@ -85,13 +85,13 @@ Many problems ignore city limits: traffic, housing markets, watersheds, air qual
 
 Regional planning succeeds when there's a shared problem, a fair process, and some mix of incentives and requirements, since local governments rarely give up authority voluntarily.
 
-:::checkpoint e1:98
+:::checkpoint cp:health-cog
 
 ### Smart cities and data
 
 Sensors, cameras, app data, and connected infrastructure promise better traffic management, maintenance, and services. They also raise **privacy, surveillance, and equity** concerns: who collects the data, who can access it, how long it's kept, whether it's used for enforcement, and whether benefits reach everyone. Good practice includes data governance policies, privacy impact assessments, data minimization, transparency, and community oversight.
 
-:::checkpoint e3:42
+:::checkpoint cp:health-data-governance
 
 ## Key terms
 

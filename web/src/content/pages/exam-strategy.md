@@ -90,7 +90,7 @@ Check what's allowed on test day, such as an on-screen calculator, in APA's cand
 
 ## How to study so it sticks
 
-- **Test yourself instead of rereading.** Recalling an answer strengthens memory far more than reading it again. That's why every lesson ends with a quick check and a practice set, and why the flashcards exist.
+- **Test yourself instead of rereading.** Recalling an answer strengthens memory far more than reading it again. That's why every lesson has checkpoint questions, and why the flashcards exist.
 - **Space it out.** Short, frequent sessions beat long cramming sessions. Ten minutes of flashcards a day adds up.
 - **Mix it up.** Once you've covered a few domains, mixed practice (the warm-up quizzes and full exams) trains you to recognize what kind of question you're facing, which is exactly what the exam demands.
 - **Keep an error log.** For every miss, note *why*: didn't know it, misread it, fell for a distractor, or ran out of time. Each needs a different fix. The dashboard's "Lessons to review" list is a head start.

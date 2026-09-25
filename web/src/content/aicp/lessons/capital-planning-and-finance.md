@@ -18,7 +18,7 @@ A **capital improvements program (CIP)** is a **multi-year schedule** (typically
 
 **Capital versus operating spending:** capital spending buys or builds assets that last many years; operating spending pays for ongoing services (salaries, maintenance, supplies). A new fire station is capital; the firefighters' salaries are operating costs, and every new facility creates **ongoing operating costs** the CIP should acknowledge.
 
-:::checkpoint e1:36
+:::checkpoint cp:cip-capital-budget
 
 ### Why the CIP matters to planners
 
@@ -42,7 +42,7 @@ Common CIP ranking criteria include public health and safety, legal mandates, co
 
 A **bond rating** (from a credit rating agency) reflects the issuer's **creditworthiness**, meaning the likelihood of timely repayment. Higher ratings mean lower borrowing costs. State law usually sets **debt limits**.
 
-:::checkpoint e2:154
+:::checkpoint cp:cip-revenue-bond
 
 ### Tax increment financing
 
@@ -58,7 +58,7 @@ Many states require a finding that the area is blighted or that development woul
 Animates a TIF district's frozen base and growing increment over time, and shows where the increment goes and why school districts often care.
 :::
 
-:::checkpoint e2:92
+:::checkpoint cp:cip-tif-schools
 
 ### Special assessments and special districts
 
@@ -66,7 +66,7 @@ Animates a TIF district's frozen base and growing increment over time, and shows
 - A **business improvement district (BID)** is funded primarily by a **self-imposed assessment** that property owners (or businesses) in a defined district agree to pay. It pays for services beyond what the city provides: cleaning, security, marketing, and events.
 - Other **special districts** (community facilities districts, utility districts) finance infrastructure for new development through assessments or special taxes.
 
-:::checkpoint e3:137
+:::checkpoint cp:cip-special-assessment
 
 ### Impact fees
 
@@ -78,7 +78,7 @@ Animates a TIF district's frozen base and growing increment over time, and shows
 - fund **new capacity**, not existing deficiencies or operating costs; and
 - be **spent within a reasonable time** in the area it was collected, or refunded.
 
-:::checkpoint e1:81
+:::checkpoint cp:cip-impact-fee-use
 
 ### Grants and partnerships
 

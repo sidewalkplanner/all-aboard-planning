@@ -31,7 +31,7 @@ A **variance** is permission to depart from the ordinance's literal terms becaus
 Applies the typical variance findings to two contrasting requests (an oddly shaped lot and a request for more profit) to show what counts as a hardship and what doesn't.
 :::
 
-:::checkpoint e2:74
+:::checkpoint cp:relief-financial
 
 ### Rezonings: legislative or quasi-judicial?
 
@@ -46,7 +46,7 @@ In ***Fasano v. Board of County Commissioners*** **(Oregon, 1973)**, the Oregon 
 
 Several other states have adopted the *Fasano* approach in some form. <!-- VERIFY: identify which states currently follow Fasano if a list is added. -->
 
-:::checkpoint e3:86
+:::checkpoint cp:relief-fasano-burden
 
 ### Spot zoning
 
@@ -59,7 +59,7 @@ Several other states have adopted the *Fasano* approach in some form. <!-- VERIF
 
 A small-parcel rezoning isn't automatically illegal. It's defensible when it implements the plan and serves a public purpose. The vice is singling out one parcel for special treatment.
 
-:::checkpoint e2:76
+:::checkpoint cp:relief-spot-defensible
 
 ### Contract zoning and conditional zoning
 
@@ -83,7 +83,7 @@ Ordinances typically aim for nonconformities to fade away over time:
 
 **Amortization** requires a nonconforming use to **cease after a set period** that's meant to let the owner recoup their investment, with no compensation. Many state courts accept amortization if the period is reasonable given the investment and the harm the use causes; some states reject it. It's most often applied to billboards and to incompatible uses like junkyards or adult businesses.
 
-:::checkpoint e3:88
+:::checkpoint cp:relief-rebuild
 
 ### Moratoria
 
@@ -95,7 +95,7 @@ A **development moratorium** temporarily halts certain approvals while the juris
 
 Under *Tahoe-Sierra* (2002), a moratorium isn't a per se taking. See [Takings, exactions, and property rights](/aicp/lessons/takings-and-exactions).
 
-:::checkpoint e2:93
+:::checkpoint cp:relief-moratorium-weak
 
 ## Key terms
 

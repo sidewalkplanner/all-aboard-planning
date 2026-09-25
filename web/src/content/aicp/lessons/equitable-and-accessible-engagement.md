@@ -26,7 +26,7 @@ Common barriers and how to lower them:
 
 When partnering with community organizations, **pay them** for their time and expertise. They're doing real work, and relying on unpaid labor from under-resourced groups repeats the inequity you're trying to address.
 
-:::checkpoint e2:56
+:::checkpoint cp:equity-pay-cbos
 
 ### Three kinds of equity
 
@@ -36,7 +36,7 @@ When partnering with community organizations, **pay them** for their time and ex
 
 Good engagement advances procedural equity. It should also give residents a say in the distributive questions. When residents raise concerns such as displacement from a new amenity, the planner's job is to analyze those concerns and potential responses as part of the project, not set them aside as "out of scope."
 
-:::checkpoint e2:66
+:::checkpoint cp:equity-structural
 
 ### Civil rights foundations
 
@@ -53,7 +53,7 @@ Culturally appropriate communication adapts **language, format, setting, and mes
 - Recognize different norms around speaking up in public, disagreeing with officials, or discussing money.
 - Practice **cultural humility**: recognize the limits of your own perspective, learn from community members as experts in their own lives, and address the power imbalance between agency and resident. It's an ongoing practice, not a credential. (It's often contrasted with *cultural competence*, which can suggest a body of knowledge you can master.)
 
-:::checkpoint e3:64
+:::checkpoint cp:equity-humility
 
 ### Accessible materials and digital engagement
 
@@ -72,7 +72,7 @@ Practical checklist for planning materials:
 
 Accessibility primarily benefits people with disabilities, and it also helps older residents, people on phones, people with slow connections, and people reading in a second language.
 
-:::checkpoint e1:57
+:::checkpoint cp:equity-wcag
 
 ## Key terms
 

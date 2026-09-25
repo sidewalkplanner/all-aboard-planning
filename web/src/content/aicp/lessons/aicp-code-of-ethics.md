@@ -31,7 +31,7 @@ So the commitment to seek social justice by expanding choice and opportunity for
 Sorts a handful of obligations into aspirational principles and enforceable rules, the single most tested idea about the Code's structure.
 :::
 
-:::checkpoint e3:171
+:::checkpoint cp:code-which-rule
 
 ### The aspirational principles
 
@@ -62,7 +62,7 @@ The principles are grouped by the three relationships a planner has. In summary:
 
 <!-- VERIFY: the wording and grouping of these principles are paraphrased from our understanding of the Code; check each against the current text. -->
 
-:::checkpoint e3:186
+:::checkpoint cp:code-first-relationship
 
 ### The Rules of Conduct (overview)
 
@@ -85,7 +85,7 @@ A member who's **unsure whether a contemplated course of action complies with th
 
 Asking for advice *before* acting is the appropriate professional step when a situation is genuinely uncertain. <!-- VERIFY: confirm the current names and process for informal advice and formal advisory opinions under the Code's procedures. -->
 
-:::checkpoint e1:144
+:::checkpoint cp:code-informal-advice
 
 ### Charges, investigation, and sanctions
 
@@ -96,7 +96,7 @@ Asking for advice *before* acting is the appropriate professional step when a si
 
 <!-- VERIFY: confirm the current complaint procedure steps, the name of the deciding body, and the list of available sanctions (for example, whether a "letter of admonition" still exists). -->
 
-:::checkpoint e3:179
+:::checkpoint cp:code-who-files
 
 ### Reading exam questions about the Code
 

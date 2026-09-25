@@ -26,7 +26,7 @@ Terms vary, but the typical sequence is:
 
 Many codes offer a simpler **minor subdivision** or lot-split process for divisions of just a few lots that need no new streets.
 
-:::checkpoint e1:80
+:::checkpoint cp:subdiv-preliminary
 
 ### Improvement guarantees and dedications
 
@@ -50,13 +50,13 @@ For discretionary applications, staff assess whether the proposal is consistent 
 
 When a proposal is **inconsistent with the adopted plan**, the planner's professional obligation is to **report the inconsistency clearly in the staff analysis**, even if the project is popular. Decision-makers may still approve an amendment, but they should do so knowingly.
 
-:::checkpoint e1:86
+:::checkpoint cp:subdiv-popular
 
 ### Vested rights
 
 **Vested rights** protect a developer's right to proceed under the rules in place at a certain point, even if the rules later change. Under the **common law rule** followed in most states, rights vest when the developer has **made substantial expenditures (or incurred substantial obligations) in good-faith reliance on a validly issued permit**, usually a building permit. Some states vest earlier by statute, for example at the filing of a complete application or at approval of a preliminary plat. <!-- VERIFY: vesting rules vary widely by state; if specific states are named, confirm them. -->
 
-:::checkpoint e2:85
+:::checkpoint cp:subdiv-vesting-statute
 
 ### Development agreements
 
@@ -67,7 +67,7 @@ A **development agreement** is a contract between a local government and a devel
 
 Development agreements are adopted through a public process and must stay within the jurisdiction's statutory authority.
 
-:::checkpoint e1:83
+:::checkpoint cp:subdiv-da-benefits
 
 ### Negotiated exactions
 
@@ -77,7 +77,7 @@ When a developer offers improvements beyond what the code strictly requires, suc
 
 An **official map** is an adopted map that **reserves the locations of future streets, parks, and other public facilities**. It shows property owners and developers where public improvements are planned, so they aren't built over. Because it can restrict private land for long periods, many states limit how long a reservation lasts before the government must acquire the land or release it.
 
-:::checkpoint e1:89
+:::checkpoint cp:subdiv-map-limit
 
 ## Key terms
 

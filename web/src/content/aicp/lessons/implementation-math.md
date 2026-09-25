@@ -35,7 +35,7 @@ FAR controls bulk without dictating shape: a FAR of 2.0 allows a two-story build
 Works the two-acre, FAR 2.0 example on screen, including the shortcut of dividing FAR by lot coverage to get the number of stories.
 :::
 
-:::checkpoint e2:127
+:::checkpoint cp:math-far-stories
 
 ### Lot coverage
 
@@ -62,7 +62,7 @@ Net density is always higher than gross density for the same project. Always che
 Shows, with a site diagram, what gets subtracted to get net acreage, and why the same project can have very different gross and net densities.
 :::
 
-:::checkpoint e2:128
+:::checkpoint cp:math-net-units
 
 ### Minimum lot area per unit
 
@@ -89,7 +89,7 @@ Some codes set density as a minimum amount of land per dwelling unit.
 
 This is why parking minimums matter so much for land use. Many cities have reduced or eliminated them, especially near transit.
 
-:::checkpoint e2:130
+:::checkpoint cp:math-parking-spaces
 
 ### Trip generation
 

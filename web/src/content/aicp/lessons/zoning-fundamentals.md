@@ -14,7 +14,7 @@
 
 Zoning is one of several **plan implementation tools**, alongside subdivision regulations, the capital improvements program, the official map, incentives, and public-private partnerships. The comprehensive plan sets long-range policy; the zoning ordinance turns it into enforceable, parcel-level rules. A comprehensive plan is a policy guide; the zoning ordinance is a regulation.
 
-:::checkpoint e1:82
+:::checkpoint cp:zoning-plan-vs-code
 
 ### The map and the text
 
@@ -52,7 +52,7 @@ Early ordinances were often **cumulative (pyramidal)**: "higher" uses such as si
 
 Conditional use approvals are **quasi-judicial**: the decision applies stated criteria to a specific application, so it needs notice, a hearing, and findings.
 
-:::checkpoint e2:75
+:::checkpoint cp:zoning-accessory
 
 ### Dimensional (bulk) standards
 
@@ -75,7 +75,7 @@ See [Implementation math](/aicp/lessons/implementation-math) for worked examples
 - An **overlay district** applies **additional requirements (or incentives) on top of the underlying base district** without changing the base zoning. Common examples are historic districts, floodplains, airport height zones, wellhead protection areas, and transit corridors. A parcel in an overlay must meet both the base district's rules and the overlay's.
 - A **floating zone** is described in the ordinance text but **not mapped** until an owner applies and meets its criteria. Then it "lands" on the property through a rezoning. It's often used for uses like large mixed-use centers whose location can't be predicted in advance.
 
-:::checkpoint e1:74
+:::checkpoint cp:zoning-floating
 
 ### Who administers zoning
 

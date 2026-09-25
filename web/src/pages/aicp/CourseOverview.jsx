@@ -22,7 +22,7 @@ export default function CourseOverview() {
         title="Course overview"
         art="page-books" artW={420} artH={310} artTilt={1.5}
         artAlt="A stack of planning books labelled Zoning, Plan Making, Ethics and GIS & Data, with a plant and a mug of coffee"
-        lead={`${LESSONS.length} lessons across the nine domains of the AICP exam content outline, in outline order. Each lesson has checkpoint questions after its key sections, plus key terms, real planning examples, exam tips, a summary, and a practice set of exam-style questions.`}
+        lead={`${LESSONS.length} lessons across the nine domains of the AICP exam content outline, in outline order. Each lesson has checkpoint questions after its key sections, plus key terms, real planning examples, exam tips, and a summary. Exam-style questions live in the full-length practice exams.`}
       >
         <div className="row-wrap" style={{ marginTop: 22 }}>
           <Link className="btn btn-primary" to={P.lesson(nextLesson.slug)}>

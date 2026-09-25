@@ -35,7 +35,7 @@ A typical process:
 
 Scenarios are **not predictions**. Some processes use *exploratory* scenarios (what could happen?) and others *normative* ones (what do we want to happen, and how do we get there?).
 
-:::checkpoint e1:35
+:::checkpoint cp:analysis-robust
 
 ### Buildable lands and capacity analysis
 
@@ -66,7 +66,7 @@ Common methods:
 
 Fiscal impact is one input, not the answer. A development can be fiscally negative and still be the right choice. Affordable housing and parks are examples. The analysis simply makes the tradeoff visible. Development patterns matter too: compact development generally costs less to serve per household than dispersed development, because pipes, roads, and service routes are shorter.
 
-:::checkpoint e1:132
+:::checkpoint cp:analysis-marginal
 
 ### Greenhouse gas inventories
 
@@ -77,7 +77,7 @@ A local **greenhouse gas (GHG) inventory** is the baseline for a climate action 
 
 Emissions are often grouped by **scope**: Scope 1 covers direct emissions, Scope 2 covers purchased electricity, and Scope 3 covers other indirect emissions. Once you have the baseline, you set reduction targets, model strategies, and re-inventory periodically to track progress.
 
-:::checkpoint e2:45
+:::checkpoint cp:analysis-scope2
 
 ### Innovations and best practices
 

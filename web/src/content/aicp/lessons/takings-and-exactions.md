@@ -26,7 +26,7 @@ When government condemns property outright, the main legal question is whether t
 - ***Hawaii Housing Authority v. Midkiff*** **(1984)** upheld taking land from large landowners and transferring it to tenants to break up concentrated ownership.
 - ***Kelo v. City of New London*** **(2005)** held, 5–4, that taking private homes for a comprehensive **economic development** plan that would transfer land to private developers satisfied the public use requirement. The backlash was immediate. Most states responded by passing laws or constitutional amendments restricting eminent domain for economic development.
 
-:::checkpoint e2:5
+:::checkpoint cp:takings-kelo-backlash
 
 ### Regulatory takings
 
@@ -47,7 +47,7 @@ Most regulatory takings claims are decided under a balancing test:
 Takes one landmark-designation dispute through economic impact, investment-backed expectations, and the character of the government action, then shows why the whole parcel is the unit of analysis.
 :::
 
-:::checkpoint e3:96
+:::checkpoint cp:takings-whole-parcel
 
 ### Per se (categorical) takings
 
@@ -57,7 +57,7 @@ In a few situations, a taking is automatic, with no balancing:
 - ***Lucas v. South Carolina Coastal Council*** **(1992)**: a regulation that deprives land of **all economically beneficial use** is a taking unless the use was already prohibited by "background principles" of the state's property and nuisance law. Lucas had bought beachfront lots, and a later law barred building on them.
 - ***Cedar Point Nursery v. Hassid*** **(2021)**: a regulation that grants third parties a right to **physically access** private property (here, union organizers entering farms for limited hours) is a per se physical taking, even though the access isn't continuous.
 
-:::checkpoint e3:98
+:::checkpoint cp:takings-loretto
 
 ### Clarifications and procedure
 
@@ -68,7 +68,7 @@ In a few situations, a taking is automatic, with no balancing:
 - ***Murr v. Wisconsin*** **(2017)** addressed the **"denominator problem"**: which property counts as "the parcel" when measuring a regulation's impact. The Court used a multi-factor test and treated two adjacent, commonly owned lots that state and local law had merged as a single parcel.
 - ***Knick v. Township of Scott*** **(2019)** held that a property owner may bring a takings claim in **federal court** right away, without first seeking compensation in state court. This overruled part of *Williamson County* (1985).
 
-:::checkpoint e3:105
+:::checkpoint cp:takings-moratorium
 
 ### Exactions
 
@@ -85,7 +85,7 @@ Many state courts had long used a similar **rational nexus** test for impact fee
 Walks a single dedication request through the essential nexus question and then rough proportionality, using a simple flowchart, and shows how *Koontz* (money demands and denials) and *Sheetz* (legislative fees) extend the test.
 :::
 
-:::checkpoint e3:104
+:::checkpoint cp:takings-proportional
 
 ### Takings cases at a glance
 

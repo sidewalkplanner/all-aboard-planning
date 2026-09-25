@@ -1,5 +1,27 @@
 # REVIEW: AICP course build
 
+## Update 4: collage design, lessons without exam questions
+
+### The look
+The whole site now uses a **whimsical, hand-drawn paper collage** style: cream drawing paper, inked cut-paper cards, washi tape, pins, stamps, pencil notes, torn-edge bands, and a transit theme. Every illustration is original and drawn in code (`web/art/`, `npm run art`), then rendered to WebP. See CLAUDE.md, "Design rules".
+
+### Domain drills are gone
+"Study by domain" (`/aicp/drills`) was removed. Studying by domain now means reading that domain's lessons. Old drill links redirect to the domain's lessons, and the diagnostic report and study plans point to lessons instead of drills.
+
+### Lessons no longer show exam questions
+Before this update, lessons served exam items in three places: most checkpoints were exam-bank questions, the end-of-lesson "Lesson review" drew three more, and each lesson had a "practice set" of its exam items. Anyone who studied the lessons had already seen much of Practice Exams 1 to 3, so exam scores overstated readiness.
+
+- **Every checkpoint is now an original question.** 178 new questions replace the exam items (plus the 24 original ones already there), across all 40 lessons. They're written from each section's own text and test the same idea from a different angle, so they never paraphrase an exam item. They live in `web/src/content/aicp/checkpoints/d1-*.js` through `d9-*.js`.
+- **Removed:** the "Lesson review" quick check (`QuickCheck.jsx`), lesson practice sets (`?set=`, now redirected to the lesson), and `freeQuizRefs.js`.
+- **Kept, but hidden:** each lesson's `practice` list of the exam items it teaches. Exam results use it to send missed questions back to the right lessons.
+- **The end of each lesson** now points to the full-length exams and the diagnostic.
+- **The checker enforces it:** `npm run check` fails if a lesson checkpoint uses an exam item or links to a practice set.
+
+### Worth reviewing
+- **The 178 new checkpoint questions are new content.** They restate facts from the lessons and avoid anything carrying a VERIFY flag, but a planner should read them before launch, as with the first 24.
+- **Warm-up Quizzes A and B draw from the Exam 1 bank.** Their 50 items also appear in Practice Exam 1. This was already true and I didn't change it; if it matters, the quizzes need their own questions too.
+- **Accounts are still a placeholder** (browser-only, no server). See CLAUDE.md, "Access, accounts, and the future paid tier".
+
 ## Update 3: interactive lessons
 
 Every lesson now has **checkpoints**: questions placed right after the key sections, answered in place with instant feedback and an explanation. Before this, lessons were 20 or more minutes of reading with questions only at the end, so early sections had faded by the time you were tested on them. Answering soon after reading is one of the most reliable ways to make material stick, and it catches misunderstandings (nexus versus proportionality, variance versus conditional use) before they harden.

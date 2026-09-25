@@ -22,14 +22,15 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
   public/404.html           GitHub Pages SPA fallback (encodes deep links; do not remove)
   vite.config.js            base path '/all-aboard-planning/' + the lesson Markdown plugin
   scripts/markdown.mjs      Shared Markdown → HTML renderer (used by Vite plugin and checker)
-  scripts/check-content.mjs `npm run check`: validates lessons, practice refs, internal links
+  scripts/check-content.mjs `npm run check`: validates lessons, checkpoints, internal links
+  art/                      Illustration pipeline (`npm run art`): hand-drawn SVG scenes -> public/art/*.webp
   src/
     App.jsx                 All routes (firm-level, /aicp/*, and legacy redirects)
     index.css               Design tokens (CSS custom properties) + shared classes
     lib/paths.js            Route constants — always build links from these
     lib/nav.js              Header/footer navigation config
     lib/theme.js            JS copies of the colour tokens (used by inline-styled exam UI)
-    components/             Header, Footer, LessonBody, QuickCheck, AccessGate, RequireSignIn, ContentPage, ...
+    components/             Header, Footer, PageHeader, Art, LessonBody, Checkpoint, AccessGate, RequireSignIn, ...
     hooks/                  usePageTitle, useAccess (who can open what), useMembership (future paid tier)
     context/AuthContext.jsx Placeholder accounts (browser-only); swap for a real auth provider
     lib/access.js           PAID_TIER_ENABLED switch + PUBLIC_ASSESSMENTS (open without an account)
@@ -40,13 +41,13 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
       curriculum.js         Domains + ordered lesson metadata (the course's source of truth)
       lessons/*.md          One Markdown file per lesson body
       studyPlans.js         8- and 12-week schedules (reference lesson slugs)
-      freeQuizRefs.js       Which Exam 1 items the free quizzes serve (checked by npm run check)
+      checkpoints.js        Original lesson checkpoint questions (+ checkpoints/d1..d9 per domain)
       flashcards.js         The flashcard deck (built from every lesson's Key terms by a Vite plugin)
     content/pages/*.md      Exam Info, About, Exam strategy, Quick reference bodies (same renderer as lessons)
     content/site.js         Owner settings (CONTACT_EMAIL placeholder)
     data/                   Question banks (exam1/2/3), diagnostic items, domain weights
     pages/                  Route components; pages/aicp/* are the prep section pages
-    pages/exam/             Exam runner (quizzes, exams, domain drills, lesson practice sets)
+    pages/exam/             Exam runner (warm-up quizzes and full-length exams)
     pages/diagnostic/       100-item diagnostic
 uploads/                    Source specs for the question banks and diagnostic (reference only)
 *.dc.html, support.js, root *.js   Original design prototypes (reference only; not deployed)
@@ -81,25 +82,39 @@ Deployment is automatic: pushing to `main` runs the Pages workflow. There is no 
 
 ## Design rules
 
-Build on the existing look; don't introduce a new visual language.
+The look is a **whimsical, hand-drawn paper collage**: cream drawing paper, cut-paper shapes
+with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit theme
+(streetcars, tickets, station signs). Build on it; don't introduce a new visual language.
 
-- **Fonts:** headings `Bricolage Grotesque` (700, tight letter-spacing); body `Figtree`.
+- **Fonts:** headings `Fraunces` (display serif); body `Figtree`; handwritten notes `Caveat`
+  (`.hand`). Use the handwriting sparingly, for short notes and labels, never for body copy.
 - **Colour tokens** (defined once in `src/index.css` `:root`, mirrored in `lib/theme.js`):
-  `--bg #F6F7FB`, `--surface #FFFFFF`, `--line #E4E6F0`, `--ink #1A1C2B`,
-  `--text #3A3F57`, `--muted #5B6180`, `--brand #1D5FA8`, `--brand-strong #14508C`,
-  `--navy #10345E`, `--coral #FF7059` (only on dark navy backgrounds), `--rust #C93B2C`.
-  Never put coral text on white (fails contrast); use `--rust` / `--err-fg` instead.
-- **Layout classes:** `.container` (1180px), `.container-narrow` (820px), `.section`,
-  `.page-head`, `.eyebrow`, `.lead`, `.grid-cards`.
-- **Components:** `.btn` + `.btn-primary | .btn-secondary | .btn-dark | .btn-coral | .btn-ghost-light`,
-  `.card`, `.chip` (+ `.chip-brand | .chip-warn | .chip-neutral`), `.callout`
-  (+ `.callout-warn`), `.prose` for long-form text, `.breadcrumb`.
-- New pages use these classes. The exam runner and diagnostic still use inline styles with
-  `themeTokens(dark)` because they support dark mode; leave that pattern in place there.
+  paper `--bg #F7F0E2`, card `--surface #FFFDF8`, ink `--ink #27233A`, body `--text #3F3A4F`,
+  `--muted #5A5468`; cut-paper colours `--butter`, `--tomato`, `--civic`, `--leaf`, `--lavender`,
+  `--kraft`, `--sky`. The original role names are kept as aliases: `--brand #2F6CB3` (civic blue),
+  `--navy #15294A` (blueprint bands), `--coral` (= butter, an accent on blueprint only),
+  `--rust #C23F35`. Never put butter or blush text on paper (fails contrast); use `--rust` /
+  `--err-fg` or `--brand-strong` for coloured text.
+- **Surfaces:** `.card` is inked card stock with a slight tilt (set `--r` for the angle) and
+  hand-cut corners; `.card-dark` is blueprint. Bands: `.band-white | .band-warm | .band-navy`
+  (torn edges built in), backgrounds `.paper-bg | .kraft-bg | .blueprint-bg`.
+- **Components:** `.btn` + `.btn-primary | .btn-secondary | .btn-dark | .btn-coral | .btn-rust |
+  .btn-ghost-light`; `.chip` variants; `.tape`, `.pin`, `.stamp`; `.callout`; `.meter`;
+  `.ticket` (exam cards); `.prose` for long-form text (key terms become index cards, exam tips a
+  sticky note, video slots a film strip); `.breadcrumb`; `PageHeader` with optional `art`.
+- **Illustrations** come from the pipeline in `web/art/` (see its README): scenes are drawn in
+  code with perfect-freehand strokes, rendered to WebP in `public/art/`, and placed with
+  `<Art name=... w h alt />`. Don't hotlink or drop in stock art; add a scene and run
+  `npm run art <name>`. Paper textures come from `npm run art:textures`.
+- **Motion:** gentle (float, sway, the hero streetcar). Everything respects
+  `prefers-reduced-motion`.
+- The exam runner and diagnostic use inline styles with `themeTokens(dark)` because they
+  support a blueprint dark mode; leave that pattern in place there.
 - **Accessibility:** exactly one `<h1>` per page, headings in order, every image/SVG either has
   alt text or `aria-hidden`, visible focus (global `:focus-visible` ring), AA contrast, links
   are `<a>`, buttons are `<button>`. Set the page title with `usePageTitle()`.
-- Mobile first: every layout must work at 360px wide. Use `auto-fit/minmax` grids.
+- Mobile first: every layout must work at 360px wide with no horizontal scroll. Use
+  `auto-fit/minmax` grids.
 
 ## Content conventions
 
@@ -135,11 +150,9 @@ Build on the existing look; don't introduce a new visual language.
      practice: ['e1:74', 'e2:91'],       // question refs: e1/e2/e3 = exam bank, number = item "n"
    }
    ```
-   `practice` refs must exist in `src/data/exam{1,2,3}-questions.js`. Include at least three
-   standalone items (no scenario or exhibit): the lesson's on-page "Check yourself" block
-   shows three of them. (If paid plans are
-   enabled later, signed-in non-members see only the refs on free lessons that also appear in
-   the warm-up quizzes, so paid items aren't given away.)
+   `practice` refs must exist in `src/data/exam{1,2,3}-questions.js`. They list the exam items
+   the lesson teaches and are **never shown in the lesson**; exam results use them to send
+   each missed question back to the lessons that cover it.
 3. **Create the body** at `web/src/content/aicp/lessons/my-new-lesson.md`. Don't repeat the
    title — the template renders the header, domain badge, practice block, and Previous/Next
    navigation. Use these `##` sections, in this order (the checker enforces them):
@@ -171,12 +184,14 @@ Build on the existing look; don't introduce a new visual language.
 
    **Checkpoints (required, at least 3 per lesson).** After a key `###` section, add a line:
    ```markdown
-   :::checkpoint e3:104
+   :::checkpoint cp:zoning-floating
    ```
-   It renders an interactive question right there. Use a practice-bank ref that tests that
-   section (standalone items are best; scenario items show their scenario; items with exhibits
-   aren't allowed), or an original question (`:::checkpoint cp:my-id`) defined in
-   `src/content/aicp/checkpoints.js`. Several refs on one line make a multi-question checkpoint.
+   It renders an interactive question right there. **Checkpoints are original questions only**
+   (`:::checkpoint cp:my-id`), defined in `src/content/aicp/checkpoints/d<N>-*.js` for the
+   lesson's domain. Never use an exam item (`e1:`/`e2:`/`e3:`): lessons must not give away exam
+   questions, and the checker fails if one appears. Write each from the section's own text,
+   testing the idea from a different angle than the exam items do; vary which option is correct.
+   Several refs on one line make a multi-question checkpoint.
    Readers must answer every checkpoint before they can mark the lesson complete; answers are
    saved per account. Don't reuse a ref twice in one lesson (the checker enforces this).
 
@@ -197,15 +212,17 @@ Build on the existing look; don't introduce a new visual language.
 
 `/aicp/exam/run` takes one of:
 - `?aid=q1|q2|e1|e2|e3&mode=practice|timed`: quizzes and full exams (`ASSESSMENTS` in `data/domains.js`)
-- `?drill=<domain name>`: a 25-question untimed drill (account required)
-- `?set=<lesson slug>`: a lesson's practice set, untimed, with explanations (account required)
+
+Domain drills (`?drill=`) and lesson practice sets (`?set=`) were retired: old links redirect to
+the domain's lessons or the lesson itself. Don't reintroduce them; exam items live only in the
+quizzes and exams.
 
 Only assessments in `PUBLIC_ASSESSMENTS` (Warm-up Quiz A) open without an account; anything
 else redirects to `/aicp/signin?next=...` and returns there after sign-in.
 
 Question sampling is deterministic (seeded) in `lib/shuffle.js`; changing seeds or bank order
-changes which items appear in Quiz A/B, which would invalidate free lessons' practice refs.
-Run `npm run check` after touching the banks or the sampler.
+changes which items appear in Quiz A/B. Note that Quiz A and B draw from the Exam 1 bank, so
+their items also appear in Practice Exam 1.
 
 ## Access, accounts, and the future paid tier
 
@@ -214,7 +231,7 @@ Run `npm run check` after touching the banks or the sampler.
   Today: signed-out visitors get Warm-up Quiz A, all marketing pages, the course overview, the
   study plans, and each lesson's learning objectives; everything else is free with an account.
 - **Gating UI:** `components/AccessGate.jsx` (inline "create a free account" box) and
-  `components/RequireSignIn.jsx` (route wrapper used for the diagnostic, drills, and progress).
+  `components/RequireSignIn.jsx` (route wrapper used for the diagnostic and progress).
   Never check `user` directly in a page; ask `useAccess()`.
 - **Accounts are a placeholder** (`src/context/AuthContext.jsx`): accounts, SHA-256-hashed
   passwords, and the session live in this browser's localStorage. It isn't real security and
@@ -225,7 +242,7 @@ Run `npm run check` after touching the banks or the sampler.
   `scopedKey()` from `lib/userStorage.js`. Signed-out visitors use the unscoped keys; on sign-up,
   guest history is adopted into the new account.
 - **Turning on paid plans later:** set `PAID_TIER_ENABLED = true`. Lessons/exams tagged `paid`
-  and domain drills then need Full Access from `hooks/useMembership.js` (currently the demo
+  then need Full Access from `hooks/useMembership.js` (currently the demo
   `UnlockContext` toggle; replace it with the real membership check), the Pricing page switches
   to the paid tiers (`PaidPricing` in `pages/Pricing.jsx`, placeholder prices), and the
   Free/Full Access labels and header Pricing link reappear. Gated text still ships in the JS
@@ -234,13 +251,12 @@ Run `npm run check` after touching the banks or the sampler.
 ## Study features (how the pieces fit)
 
 - **Site map for learners:** Course (lessons) · Study plan · Practice (`/aicp/exams`: diagnostic,
-  quizzes, full exams, drills) · Review (`/aicp/review`: exam strategy guide, flashcards, quick
+  quizzes, full exams) · Review (`/aicp/review`: exam strategy guide, flashcards, quick
   reference) · Exam info · Dashboard (`/aicp/progress`, signed in).
 - **Lesson page** (`pages/aicp/LessonPage.jsx`): body with mid-lesson checkpoints
   (`LessonBody` portals a `Checkpoint` into each `:::checkpoint` slot; answers go to
-  `studyState.checkpoints`), then `QuickCheck` (the "Lesson review": three standalone questions
-  the checkpoints didn't use), a "Mark lesson complete" toggle that unlocks once every
-  checkpoint is answered, the practice block, and Previous/Next. Opening a lesson records it as
+  `studyState.checkpoints`), a "Mark lesson complete" toggle that unlocks once every
+  checkpoint is answered, a practice block pointing to the full exams, and Previous/Next. Opening a lesson records it as
   `lastLesson`. Questions load through `lib/questionBank.js`.
 - **Flashcards** are generated from every lesson's `## Key terms` bullets, which must be written
   `- **Term**: definition` (the checker enforces this). Leitner boxes live in `studyState.cards`.

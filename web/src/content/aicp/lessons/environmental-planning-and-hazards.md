@@ -30,7 +30,7 @@ A **brownfield** is a property whose expansion, redevelopment, or reuse is **com
 - A **Phase II** assessment samples soil, groundwater, or building materials to confirm and characterize contamination.
 - Cleanup standards often depend on the planned use, with residential stricter than industrial, and institutional controls may restrict future uses.
 
-:::checkpoint e2:103
+:::checkpoint cp:env-phase2
 
 ### Water, wetlands, and stormwater
 
@@ -38,7 +38,7 @@ A **brownfield** is a property whose expansion, redevelopment, or reuse is **com
 - Conventional stormwater systems pipe runoff away quickly. **Green stormwater infrastructure** manages it where it falls, with **bioswales, rain gardens, permeable pavement**, green roofs, and street trees, reducing flooding and pollution and cooling neighborhoods.
 - **Scattered septic-based subdivisions** in rural areas threaten **groundwater** quality and raise the long-term cost of extending infrastructure.
 
-:::checkpoint e2:112
+:::checkpoint cp:env-mitigation-sequence
 
 ### Floodplains and the NFIP
 
@@ -53,7 +53,7 @@ The most effective long-term policy for reducing repetitive flood losses is **di
 Explains the 1% annual chance and why it adds up to roughly a one-in-four chance over a 30-year mortgage.
 :::
 
-:::checkpoint e2:107
+:::checkpoint cp:env-30-year
 
 ### Hazard mitigation planning
 
@@ -74,7 +74,7 @@ Elevating structures and restoring dunes is **adaptation, not mitigation**. A pl
 
 **Resilience** is the ability of a community to prepare for, absorb, recover from, and adapt to shocks and stresses.
 
-:::checkpoint e3:197
+:::checkpoint cp:env-mitigation-example
 
 ### Managed retreat
 
@@ -84,7 +84,7 @@ Elevating structures and restoring dunes is **adaptation, not mitigation**. A pl
 
 The **wildland-urban interface (WUI)** is where development meets or mingles with undeveloped wildland vegetation. Planning responses include limiting new development in the highest-risk areas, requiring **defensible space** and fire-resistant construction, ensuring evacuation routes and water supply, and community wildfire protection planning.
 
-:::checkpoint e3:169
+:::checkpoint cp:env-defensible-space
 
 ## Key terms
 

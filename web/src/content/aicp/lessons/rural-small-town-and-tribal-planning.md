@@ -28,7 +28,7 @@ Good rural planning is practical and proportionate: simple, clear codes that vol
 - **Transfer and purchase of development rights** (TDR and PDR) compensate landowners for keeping land undeveloped. PDR uses public funds; TDR relies on developers buying rights for use in designated receiving areas. See [Growth management and innovative land use tools](/aicp/lessons/growth-management-and-innovative-tools).
 - **Rural character** is best protected by naming what it means (views of open fields from the road, dark skies, narrow roads) and turning each quality into a measurable standard. See [Vision, goals, objectives, and policies](/aicp/lessons/goals-objectives-policies).
 
-:::checkpoint e1:48 cp:rural-right-to-farm
+:::checkpoint cp:rural-cluster cp:rural-right-to-farm
 
 ### Directing rural growth
 
@@ -57,7 +57,7 @@ For planners, the practical consequences are:
 - **Land status is complex.** Within a reservation, some land may be held in trust by the federal government for a tribe or individual tribal members, and some may be privately owned "fee" land. Which government's rules apply can depend on the status of the parcel and who owns it. Generally, state and local zoning doesn't apply to tribal trust land. <!-- VERIFY: confirm this general statement on the application of state and local zoning to trust land; jurisdiction over fee land within reservations is complex and case-specific. -->
 - **Consultation is required in many federal processes.** Under Section 106 of the National Historic Preservation Act, federal agencies must consult with tribes about properties of religious and cultural significance to them, including places off reservation lands. Tribal Historic Preservation Offices (THPOs) play a role similar to a SHPO's. See [Urban design and historic preservation](/aicp/lessons/urban-design-and-historic-preservation).
 
-:::checkpoint e3:164
+:::checkpoint cp:rural-trust-land
 
 ### Working respectfully with tribes
 

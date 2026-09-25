@@ -16,7 +16,7 @@
 
 Income, home prices, and lot sizes are usually **right-skewed**: most values cluster low, with a long tail of very high values. In a right-skewed distribution the **mean is higher than the median**. That's why planners report *median* household income. A handful of very high earners would inflate the mean and misrepresent a typical household.
 
-:::checkpoint e3:16
+:::checkpoint cp:stat-mode
 
 ### Describing a dataset: spread
 
@@ -44,7 +44,7 @@ A **correlation coefficient** (*r*) runs from −1 to +1 and describes the stren
 
 **Correlation is not causation.** Ice cream sales and drownings both rise in summer. Neither causes the other; a **confounding variable** (hot weather) drives both. Before concluding that a policy caused an outcome, ask what else changed at the same time.
 
-:::checkpoint e3:10
+:::checkpoint cp:stat-r2
 
 ### Statistical significance
 
@@ -61,7 +61,7 @@ Common tests and when to use them:
 
 **P-hacking** is running many analyses and reporting only the ones that come out significant. The best safeguard is to **pre-specify the analysis plan** before looking at the data.
 
-:::checkpoint e2:126
+:::checkpoint cp:stat-chisq
 
 ### Margins of error and confidence intervals
 
@@ -73,7 +73,7 @@ Practical rules:
 - If the margin of error is nearly as large as the estimate, the estimate isn't usable on its own. Aggregate geographies (combine tracts), use a longer period, or report the margin of error prominently.
 - Always report margins of error for small-area estimates.
 
-:::checkpoint e3:2
+:::checkpoint cp:stat-moe-use
 
 ### Discounting: costs and benefits over time
 
@@ -96,7 +96,7 @@ The **benefit-cost ratio** is the present value of benefits divided by the prese
 Discounts a future benefit to today's dollars, shows how a higher discount rate changes the answer, and reads a benefit-cost ratio above and below 1.0.
 :::
 
-:::checkpoint e2:131
+:::checkpoint cp:stat-bcr
 
 ## Key terms
 

@@ -23,7 +23,7 @@ Land use regulation is mostly a state and local power, but federal money and fed
 
 <!-- VERIFY: confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. -->
 
-:::checkpoint e3:46
+:::checkpoint cp:fed-cdbg
 
 ### Transportation
 
@@ -31,7 +31,7 @@ Land use regulation is mostly a state and local power, but federal money and fed
 - The **Federal-Aid Highway Act of 1962** required a "continuing, comprehensive, and cooperative" ("3C") urban transportation planning process for federal highway funding in urbanized areas, the root of today's **metropolitan planning organizations (MPOs)**. <!-- VERIFY: confirm the 1962 Act as the origin of the 3C planning requirement. -->
 - The **Intermodal Surface Transportation Efficiency Act (ISTEA)** of **1991** gave MPOs more authority and flexibility, allowing highway money to be spent on transit, bicycle, and pedestrian projects. Later surface transportation laws built on it. See [Transportation planning](/aicp/lessons/transportation-planning).
 
-:::checkpoint e2:25
+:::checkpoint cp:fed-istea
 
 ### The environment
 
@@ -42,7 +42,7 @@ Land use regulation is mostly a state and local power, but federal money and fed
 - The **Endangered Species Act** (1973) protects listed species and their critical habitat, and can shape local development through habitat conservation plans.
 - **CERCLA** (1980), known as Superfund, governs cleanup of hazardous waste sites and liability for contamination. The 2002 **Brownfields** amendments added liability protections and grants for redeveloping contaminated sites.
 
-:::checkpoint e2:24
+:::checkpoint cp:fed-nepa-procedural
 
 ### Preservation
 
@@ -56,7 +56,7 @@ The **National Historic Preservation Act** (1966) created the **National Registe
 - The **Fair Housing Act** (Title VIII of the Civil Rights Act of **1968**) prohibits discrimination in the sale, rental, and financing of housing based on race, color, religion, and national origin; **sex** was added in 1974; and **disability** and **familial status** were added by the **Fair Housing Amendments Act of 1988**. It also requires federal agencies and grantees to **affirmatively further fair housing**.
 - The **Americans with Disabilities Act** (1990) prohibits disability discrimination and sets accessibility requirements for public facilities, public rights-of-way, and programs, including public meetings and digital communication.
 
-:::checkpoint e2:26
+:::checkpoint cp:fed-title-vi
 
 ### Hazards
 

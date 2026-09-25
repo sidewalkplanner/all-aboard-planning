@@ -19,7 +19,7 @@ Water, sewer, roads, energy, and broadband don't just serve development; they **
 
 When an infrastructure plan and a land use plan disagree, the infrastructure usually wins, because private development follows capacity.
 
-:::checkpoint e2:33
+:::checkpoint cp:infra-steers-growth
 
 ### Asset management and life-cycle cost
 

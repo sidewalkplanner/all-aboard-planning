@@ -26,25 +26,25 @@ It remains the backbone of how plans are organized, and of many exam questions a
 
 **Herbert Simon** argued that decision-makers have **bounded rationality**: limited information, time, and ability to process choices. Instead of finding the optimal solution, people **satisfice**, choosing the first option that's good enough.
 
-:::checkpoint e1:11
+:::checkpoint cp:theory-satisfice
 
 ### Incrementalism
 
 **Charles Lindblom**'s essay "The Science of 'Muddling Through'" (1959) argued that real policymaking proceeds by **successive limited comparisons**: small steps from the current situation, compared with only a few nearby alternatives, adjusted as results come in. This is **disjointed incrementalism**. It's realistic and politically workable, but critics say it favors the status quo and can't handle problems that need bold change.
 
-:::checkpoint e1:12
+:::checkpoint cp:theory-incremental-critique
 
 ### Mixed scanning
 
 **Amitai Etzioni** proposed **mixed scanning** (1967) as a middle path: take a broad, shallow look at the whole field to set fundamental direction, then examine selected areas in detail. A planner who does a big-picture scan for major decisions but handles routine ones incrementally is using mixed scanning.
 
-:::checkpoint e3:31
+:::checkpoint cp:theory-mixed-scan
 
 ### Advocacy planning
 
 **Paul Davidoff**, in "Advocacy and Pluralism in Planning" (1965), rejected the idea of one unitary public interest that a neutral technical planner could discover. Communities hold competing interests, he argued, and planners should openly **advocate** for groups, especially low-income and minority communities, whose interests were underrepresented in official plans. Advocacy planning brought competing plans into the open and changed how planners think about their role.
 
-:::checkpoint e2:16
+:::checkpoint cp:theory-advocacy
 
 ### Equity planning
 
@@ -55,7 +55,7 @@ It remains the backbone of how plans are organized, and of many exam questions a
 - **John Friedmann**'s **transactive planning** centers on face-to-face dialogue and **mutual learning** between planners, who bring technical knowledge, and the people affected, who bring experiential knowledge.
 - **Communicative (collaborative) planning** treats planning as a process of structured dialogue and consensus building among stakeholders. **John Forester** examined how planners' everyday communication, including what they emphasize, omit, or frame, shapes power and outcomes. **Judith Innes** and **Patsy Healey** developed collaborative and consensus-building approaches.
 
-:::checkpoint e2:19
+:::checkpoint cp:theory-forester
 
 ### The just city
 

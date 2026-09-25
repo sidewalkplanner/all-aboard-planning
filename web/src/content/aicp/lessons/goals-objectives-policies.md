@@ -26,7 +26,7 @@ A quick test: **a goal is broad, an objective is measurable, and a policy guides
 Builds one example from a vision statement down to an assigned action, so the difference between a goal, an objective, and a policy is easy to see.
 :::
 
-:::checkpoint e1:41
+:::checkpoint cp:goals-policy-level
 
 ### Writing good objectives
 
@@ -55,7 +55,7 @@ Policies are applied again and again: in staff reports, rezonings, capital budge
 
 A **visioning process** asks participants to describe the community's desired **long-range future condition**: what it will be like to live there. A goal-setting workshop turns that picture into specific, organized statements of intent. Visioning comes first and is deliberately broad; it builds a shared picture before debating the details.
 
-:::checkpoint e2:31
+:::checkpoint cp:goals-vision-first
 
 ### An equity framework
 
@@ -67,7 +67,7 @@ An **equity lens** examines how the benefits and burdens of a policy are distrib
 - **Target resources.** Design universal goals but reach them with strategies tailored to groups that are furthest from them. This approach is sometimes called "targeted universalism." <!-- VERIFY: "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. -->
 - **Track and report** progress on those disparities over time.
 
-:::checkpoint e1:39
+:::checkpoint cp:goals-redlining
 
 ### Priorities
 

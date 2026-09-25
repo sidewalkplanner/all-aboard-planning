@@ -24,7 +24,7 @@
 
 A common exam distinction: **transformational leaders motivate through vision and development; transactional leaders motivate through exchange.**
 
-:::checkpoint e2:163
+:::checkpoint cp:lead-adaptive
 
 ### Leading from the middle
 
@@ -38,7 +38,7 @@ Most planners don't control the departments, agencies, or elected bodies whose c
 
 When jurisdictions or departments have a history of disputes, the most useful first move is to **establish shared ground rules, clarify roles, and build a shared problem statement** before debating solutions. See [Facilitation, consensus building, and negotiation](/aicp/lessons/consensus-and-negotiation).
 
-:::checkpoint e3:189
+:::checkpoint cp:lead-disputes
 
 ### The public interest
 
@@ -56,7 +56,7 @@ Susan Fainstein's "just city" framework of equity, diversity, and democracy is o
 
 When a proposed decision would serve a **vocal interest group** but conflict with the **broader public interest**, the planning leader should **advocate for the public interest and explain why**, openly, with evidence, and respectfully.
 
-:::checkpoint e1:170
+:::checkpoint cp:lead-public-interest
 
 ### The ethics of advocacy
 
@@ -69,7 +69,7 @@ Planners advocate for plans, policies, and communities. Ethical advocacy is:
 
 When the governing body **rejects your professional recommendation** and adopts a **lawful alternative within its authority**, you **implement the decision professionally**. You can keep making the case in future cycles, but you don't undermine a lawful decision. (If a directive would require unethical or illegal conduct, the analysis is different. See [Working through ethics scenarios](/aicp/lessons/solving-ethics-questions).)
 
-:::checkpoint e2:165
+:::checkpoint cp:lead-advocacy
 
 ### A comprehensive approach to complex problems
 
@@ -79,7 +79,7 @@ Planning leaders look at problems as systems. Housing affordability involves lan
 
 Durable support for an **unpopular but necessary** policy is **best begun by engaging affected stakeholders early** to help frame the problem, rather than presenting a finished solution. The same goes inside government: involving department heads early in setting goals builds ownership that a memo from the top can't.
 
-:::checkpoint e2:167
+:::checkpoint cp:lead-dept-heads
 
 ### Promoting the value of planning
 

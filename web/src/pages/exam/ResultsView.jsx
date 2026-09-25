@@ -73,7 +73,7 @@ export default function ResultsView(s) {
             )}
           </div>
         </div>
-        {s.reviewLessons.length > 0 && !s.setLesson && (
+        {s.reviewLessons.length > 0 && (
           <div style={{ ...cardStyle(T, { radius: 14, padding: 24 }), marginTop: 24 }}>
             <div className="hand" style={{ fontSize: 28, color: T.errFg }}>Lessons to review</div>
             <p style={{ fontSize: 15, color: T.mute, lineHeight: 1.6, margin: '6px 0 14px' }}>

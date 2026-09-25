@@ -17,7 +17,7 @@
 
 The theory holds that **regional growth is driven principally by basic industries**: when they grow, the new income they bring in supports more nonbasic jobs.
 
-:::checkpoint e2:101
+:::checkpoint cp:econ-basic-example
 
 ### The economic base multiplier
 
@@ -44,7 +44,7 @@ Relying solely on LQs to identify the export base **assumes that local consumpti
 
 A **cluster** is a **geographically concentrated group of interconnected firms, specialized suppliers, service providers, and institutions** (universities, training programs, trade associations) in a related field. Michael Porter popularized the concept. **Cluster-based development** strengthens the whole ecosystem, through workforce training, supplier networks, research partnerships, and shared infrastructure, rather than recruiting one firm at a time.
 
-:::checkpoint e1:110
+:::checkpoint cp:econ-cluster-approach
 
 ### Economic development strategies
 
@@ -75,7 +75,7 @@ Planners assess whether a trade area can support more retail, and which kinds:
 
 **Worked example.** Trade-area residents spend $50 million a year on apparel, and local stores sell $10 million. The capture rate is 10 ÷ 50 = **20%**: local stores capture 20% of area spending, and 80% leaks elsewhere.
 
-:::checkpoint e3:140
+:::checkpoint cp:econ-leakage
 
 ### Incentives and their risks
 

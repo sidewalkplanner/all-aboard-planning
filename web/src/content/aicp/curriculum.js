@@ -1,17 +1,17 @@
 // The AICP course: domains and lessons, in course order.
 //
 // Source of truth for the course overview, lesson pages, Previous/Next
-// navigation, study plans, and lesson practice sets. Lesson bodies live in
+// navigation, and study plans. Lesson bodies live in
 // ./lessons/<slug>.md. See CLAUDE.md, "How to add a new lesson".
 //
 // Domains follow the nine areas of the AICP exam content outline, in outline
 // order, with the weights recorded in uploads/aicp-diagnostic-exam-spec.md.
-// `bankName` is the domain name the question banks and drills use.
+// `bankName` is the domain name the question banks use.
 //
-// `practice` lists question refs: "e1:115" = item n=115 in Practice Exam 1's
-// bank (src/data/exam1-questions.js); e2/e3 likewise. Refs that also appear in
-// the free warm-up quizzes are served free on free lessons; everything else
-// needs Full Access.
+// `practice` lists the exam items a lesson teaches: "e1:115" = item n=115 in
+// Practice Exam 1's bank (src/data/exam1-questions.js); e2/e3 likewise. They
+// are never shown in the lesson. Exam results use them to point each missed
+// question back to the lessons that cover it (see lessonsToReview).
 
 export const DOMAINS = [
   {
@@ -332,7 +332,9 @@ export const neighbors = (slug) => {
   return { prev: i > 0 ? LESSONS[i - 1] : null, next: i >= 0 && i < LESSONS.length - 1 ? LESSONS[i + 1] : null };
 };
 
-// Reverse index: question ref -> slugs of the lessons whose practice sets use it.
+// Reverse index: exam question ref -> slugs of the lessons that teach it.
+// Lessons never show these items (their checkpoints are original); the map
+// only lets exam results point missed questions back to lessons.
 export const LESSONS_FOR_REF = LESSONS.reduce((m, l) => {
   (l.practice || []).forEach((r) => { (m[r] = m[r] || []).push(l.slug); });
   return m;

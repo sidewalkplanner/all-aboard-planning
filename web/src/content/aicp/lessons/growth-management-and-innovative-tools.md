@@ -23,7 +23,7 @@ Many form-based codes are organized by the **transect**, a gradient of contexts 
 
 Form-based codes are especially useful for corridors and downtowns where the goal is a predictable, walkable street frontage over time.
 
-:::checkpoint e2:82
+:::checkpoint cp:growth-regulating-plan
 
 ### Planned unit developments
 
@@ -33,7 +33,7 @@ A **planned unit development (PUD)** treats a larger site as a single unit. Inst
 
 **Performance zoning** regulates the **measurable impacts** of development, such as traffic generated, noise, impervious surface, density, and open space ratios, **rather than listing permitted uses**. Any use that meets the performance standards is allowed. It offers flexibility but can be complex to administer. <!-- VERIFY: performance zoning is often associated with Lane Kendig's work in Bucks County, Pennsylvania, in the 1970s; confirm before attributing. -->
 
-:::checkpoint e1:91
+:::checkpoint cp:growth-performance-any-use
 
 ### Cluster (conservation) subdivisions
 
@@ -70,7 +70,7 @@ A workable TDR program needs, at a minimum, **designated sending and receiving a
 Follows one development right from a farm in a sending area to a building in a receiving area, and explains why programs fail without real demand for credits.
 :::
 
-:::checkpoint e2:79
+:::checkpoint cp:growth-pdr
 
 ### Growth management
 
@@ -82,7 +82,7 @@ Follows one development right from a farm in a sending area to a building in a r
 - **Agricultural zoning** protects farmland with very large minimum lot sizes and limits on non-farm uses, often paired with TDR or PDR.
 - **Phased growth and rate caps** tie the timing or amount of development to infrastructure.
 
-:::checkpoint e1:38
+:::checkpoint cp:growth-service-boundary
 
 ### Two landmark growth-control cases
 
@@ -93,7 +93,7 @@ Follows one development right from a farm in a sending area to a building in a r
 
 Growth controls can protect services and character, but tight caps and boundaries without enough capacity inside them can raise housing costs and push growth to neighboring jurisdictions. Good growth management pairs limits with enough zoned capacity to meet projected needs.
 
-:::checkpoint e3:75
+:::checkpoint cp:growth-petaluma
 
 ## Key terms
 

@@ -30,7 +30,7 @@ A staff report is the main written channel between planners and decision-makers.
 
 A staff recommendation must follow the adopted plan and code. If an application meets every standard in the code, the recommendation should say so even if public comment is overwhelmingly opposed. The report should still convey the public's concerns accurately to the decision-makers.
 
-:::checkpoint e3:206
+:::checkpoint cp:decide-meets-code
 
 ### Evidence-based arguments
 
@@ -42,7 +42,7 @@ A persuasive recommendation rests on **data, analysis, and documented community 
 - Address the strongest counterarguments.
 - Draw a conclusion that follows from the evidence.
 
-:::checkpoint e3:62
+:::checkpoint cp:decide-uncertainty
 
 ### Communicating technical information
 
@@ -53,7 +53,7 @@ For lay audiences (and busy officials):
 - Use **simple, relevant visuals**. A clear diagram showing what would change on a street works better than an engineering cross-section full of dimensions.
 - Translate risk into relatable terms. A "100-year flood" has a **1% chance** of happening in any given year, which works out to roughly a **26% chance** over a 30-year mortgage (1 − 0.99³⁰ ≈ 0.26). That's far more meaningful to a homeowner than "once a century."
 
-:::checkpoint e3:63
+:::checkpoint cp:decide-flood-odds
 
 ### Hearings, notice, and the record
 
@@ -79,13 +79,13 @@ Staff often meet with applicants before they file. Give every applicant the **sa
 - In a crisis, share **confirmed** information promptly, say what you don't yet know, and update regularly.
 - When an official or community member makes an inaccurate public claim (for example, "this plan eliminates all single-family homes"), **correct the record** calmly through official channels, such as a factual memo, a clarifying statement, or an FAQ, rather than arguing in public.
 
-:::checkpoint e1:60
+:::checkpoint cp:decide-media
 
 ### Political pressure
 
 Planners work in political settings. When an elected official or supervisor presses you to change a technical finding, **keep the analysis accurate**, document it, and present the options honestly. You can acknowledge the policy choice belongs to officials while refusing to misrepresent the facts. See [Working through ethics scenarios](/aicp/lessons/solving-ethics-questions).
 
-:::checkpoint e3:65
+:::checkpoint cp:decide-role
 
 ## Key terms
 

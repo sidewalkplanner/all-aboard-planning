@@ -3,8 +3,9 @@
 // Fails (exit 1) if any of these are wrong:
 //  - every curriculum lesson has a Markdown body, and every body has a lesson;
 //  - every lesson body has the required sections, in order;
-//  - every practice ref resolves to a real question, with no duplicates;
-//  - FREE_QUIZ_REFS matches what the seeded quiz sampler actually serves;
+//  - every practice ref (the exam items a lesson teaches, used to point
+//    missed exam questions back to lessons) is real, with no duplicates;
+//  - lesson checkpoints are original cp: questions, never exam items;
 //  - every study plan covers every lesson exactly once, with valid links;
 //  - every internal link in lessons, content pages, study plans, and
 //    navigation points to a real route, lesson, and (if given) anchor;
@@ -21,12 +22,10 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const src = join(root, 'src');
 const imp = (p) => import(join(src, p));
 
-const [{ DOMAINS, LESSONS }, { FREE_QUIZ_REFS }, { STUDY_PLANS }, nav, shuffle, domainsData, b1, b2, b3] = await Promise.all([
+const [{ DOMAINS, LESSONS }, { STUDY_PLANS }, nav, domainsData, b1, b2, b3] = await Promise.all([
   imp('content/aicp/curriculum.js'),
-  imp('content/aicp/freeQuizRefs.js'),
   imp('content/aicp/studyPlans.js'),
   imp('lib/nav.js'),
-  imp('lib/shuffle.js'),
   imp('data/domains.js'),
   imp('data/exam1-questions.js'),
   imp('data/exam2-questions.js'),
@@ -58,7 +57,6 @@ const rendered = new Map(); // slug -> { headings, links, html }
 let totalCards = 0;
 let totalCheckpoints = 0;
 const usedCp = new Set();
-const BANKS_EARLY = { e1: b1.BANK, e2: b2.BANK, e3: b3.BANK };
 for (const l of LESSONS) {
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(l.slug)) err(`Lesson slug "${l.slug}" is not kebab-case`);
   for (const f of ['title', 'description', 'minutes', 'access']) if (!l[f]) err(`Lesson ${l.slug}: missing ${f}`);
@@ -86,16 +84,15 @@ for (const l of LESSONS) {
   if (cards.length !== bullets) err(`Lesson ${l.slug}: ${bullets - cards.length} Key terms bullet(s) aren't in "- **Term**: definition" form`);
   if (cards.length < 6) warn(`Lesson ${l.slug}: only ${cards.length} key terms (flashcards)`);
   totalCards += cards.length;
-  // Checkpoints: every ref must resolve, no repeats, at least three per lesson.
+  // Checkpoints: original questions only (never exam items, so reading a
+  // lesson never gives away an exam question), no repeats, at least three.
   const cpRefs = r.checkpoints.flat();
   if (cpRefs.length < 3) err(`Lesson ${l.slug}: only ${r.checkpoints.length} checkpoints (need at least 3)`);
   if (new Set(cpRefs).size !== cpRefs.length) err(`Lesson ${l.slug}: a checkpoint question is used twice`);
   for (const ref of cpRefs) {
-    if (ref.startsWith('cp:')) { if (!CHECKPOINTS[ref]) err(`Lesson ${l.slug}: checkpoint ${ref} isn't defined in checkpoints.js`); usedCp.add(ref); continue; }
-    const [b, n] = ref.split(':');
-    const q = BANKS_EARLY[b] && BANKS_EARLY[b].find((x) => x.n === Number(n));
-    if (!q) err(`Lesson ${l.slug}: checkpoint ref ${ref} doesn't exist`);
-    else if (q.exhibit) err(`Lesson ${l.slug}: checkpoint ${ref} needs an exhibit, which checkpoints don't show`);
+    if (!ref.startsWith('cp:')) { err(`Lesson ${l.slug}: checkpoint ${ref} is an exam item; write an original cp: question instead`); continue; }
+    if (!CHECKPOINTS[ref]) err(`Lesson ${l.slug}: checkpoint ${ref} isn't defined in checkpoints.js`);
+    usedCp.add(ref);
   }
   totalCheckpoints += r.checkpoints.length;
   for (const v of r.videos) {
@@ -128,28 +125,13 @@ for (const l of LESSONS) {
     const [b, n] = ref.split(':');
     if (!BANKS[b] || !BANKS[b].some((q) => q.n === Number(n))) err(`Lesson ${l.slug}: practice ref ${ref} doesn't exist`);
   }
-  if (!(l.practice || []).length) warn(`Lesson ${l.slug}: no practice questions`);
-  // The on-page "Check yourself" block uses standalone items (no scenario or exhibit).
-  const standalone = (l.practice || []).filter((ref) => {
-    const [b, n] = ref.split(':');
-    const q = (BANKS[b] || []).find((x) => x.n === Number(n));
-    return q && !q.scenario && !q.exhibit;
-  }).length;
-  if (standalone < 3) warn(`Lesson ${l.slug}: only ${standalone} standalone practice questions, so its quick check shows fewer than 3`);
-  if (l.access === 'free' && !(l.practice || []).some((r) => FREE_QUIZ_REFS.has(r))) warn(`Free lesson ${l.slug}: no free-quiz questions, so its set is locked for free users`);
+  if (!(l.practice || []).length) warn(`Lesson ${l.slug}: no exam items mapped to it`);
 }
 
 // Original checkpoint questions: well-formed, and each used somewhere.
 for (const [id, q] of Object.entries(CHECKPOINTS)) {
   if (!q.text || !Array.isArray(q.options) || q.options.length !== 4 || !(q.correct >= 0 && q.correct < 4) || !q.explanation) err(`checkpoints.js: ${id} is malformed (needs text, 4 options, correct 0-3, explanation)`);
   if (!usedCp.has(id)) warn(`checkpoints.js: ${id} isn't used in any lesson`);
-}
-
-// FREE_QUIZ_REFS must match the sampler.
-const actualFree = new Set(['q1', 'q2'].flatMap((id) => shuffle.sample(b1.BANK, id).map((q) => `e1:${q.n}`)));
-const declared = [...FREE_QUIZ_REFS];
-if (declared.length !== actualFree.size || declared.some((r) => !actualFree.has(r))) {
-  err(`freeQuizRefs.js is out of date. The quizzes currently serve: ${[...actualFree].sort().join(', ')}`);
 }
 
 // ------------------------------------------------------------ study plans
@@ -186,8 +168,8 @@ function checkLink(href, where) {
     const q = new URLSearchParams(query || '');
     if (q.get('aid') && !validAids.has(q.get('aid'))) err(`${where}: unknown exam id in ${href}`);
     if (q.get('drill')) err(`${where}: domain drills were retired; link to the domain's lessons instead: ${href}`);
-    if (q.get('set') && !slugs.has(q.get('set'))) err(`${where}: unknown practice set in ${href}`);
-    if (!q.get('aid') && !q.get('set')) err(`${where}: exam runner link without aid or set: ${href}`);
+    if (q.get('set')) err(`${where}: lesson practice sets were retired; link to the lesson or the exams instead: ${href}`);
+    if (!q.get('aid')) err(`${where}: exam runner link without aid: ${href}`);
   }
   if (hash) {
     const anchors = anchorsFor(path);
@@ -225,7 +207,7 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
 const totalRefs = LESSONS.reduce((s, l) => s + (l.practice || []).length, 0);
 const videos = [...rendered.values()].flatMap((r) => r.videos);
 const placeholders = videos.filter((v) => !v.url).length;
-console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} practice refs, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders), ${totalCards} flashcards, ${totalCheckpoints} checkpoints.`);
+console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} exam items mapped to lessons, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders), ${totalCards} flashcards, ${totalCheckpoints} checkpoints.`);
 warnings.forEach((w) => console.log(`  warning: ${w}`));
 if (errors.length) {
   errors.forEach((e) => console.error(`  ERROR: ${e}`));

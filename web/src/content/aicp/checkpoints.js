@@ -1,8 +1,31 @@
-// Original checkpoint questions, written for specific lesson sections that the
-// practice exam banks don't cover. Referenced from lesson Markdown as
-// `:::checkpoint cp:<id>`. Same shape as bank questions: four options, the
-// index of the correct one, and an explanation. `npm run check` validates them.
+// Original checkpoint questions, written for the lessons only. None of them
+// appear in the practice exams or quizzes, so answering them never gives
+// away an exam item. Referenced from lesson Markdown as `:::checkpoint cp:<id>`.
+// Same shape as bank questions: four options, the index of the correct one,
+// and an explanation. `npm run check` validates them.
+//
+// The questions below were the first ones written; the rest live in one file
+// per domain under ./checkpoints/.
+import d1 from './checkpoints/d1-research.js';
+import d2 from './checkpoints/d2-fundamentals.js';
+import d3 from './checkpoints/d3-communication.js';
+import d4 from './checkpoints/d4-plan-policy.js';
+import d5 from './checkpoints/d5-implementation.js';
+import d6 from './checkpoints/d6-administration.js';
+import d7 from './checkpoints/d7-leadership.js';
+import d8 from './checkpoints/d8-practice.js';
+import d9 from './checkpoints/d9-ethics.js';
+
 export const CHECKPOINTS = {
+  ...d1,
+  ...d2,
+  ...d3,
+  ...d4,
+  ...d5,
+  ...d6,
+  ...d7,
+  ...d8,
+  ...d9,
   'cp:takings-inverse': {
     text: 'A landowner believes a new regulation has effectively taken her property, even though the government never formally condemned it. She sues for compensation. This kind of claim is called:',
     options: ['Eminent domain', 'Inverse condemnation', 'An exaction', 'Spot zoning'],

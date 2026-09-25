@@ -22,7 +22,7 @@ Match the task to the person's readiness, and increase the challenge over time. 
 
 When two staff members are in an escalating dispute, the leader's best approach is usually to **meet with each separately** to understand their perspectives, then **convene a facilitated conversation** focused on their underlying **interests** and the work, not on personalities or blame. Agree on specific next steps and follow up. Ignoring conflict lets it spread; imposing a solution without listening rarely lasts.
 
-:::checkpoint e2:166
+:::checkpoint cp:mentor-ignore-conflict
 
 ### Coaching, mentoring, and sponsorship
 
@@ -32,7 +32,7 @@ When two staff members are in an escalating dispute, the leader's best approach 
 
 Mentoring an early-career planner is most effective when the mentor provides **progressively challenging assignments with candid feedback**, plus **guidance and opportunity**: exposure to decision-makers, networks, and stretch projects. Mentoring serves the individual, and it also **develops the profession's future capacity**.
 
-:::checkpoint e2:164
+:::checkpoint cp:mentor-sponsorship
 
 ### Succession planning
 
@@ -46,7 +46,7 @@ Many planning agencies face waves of retirements. A director preparing for turno
 
 The effectiveness of leadership development is best measured by **internal promotion rates, retention, and succession readiness**, not by the number of trainings held.
 
-:::checkpoint e3:190
+:::checkpoint cp:mentor-succession-measure
 
 ### Institutional structures and accountability
 
@@ -60,7 +60,7 @@ Leaders build accountability into how an organization works, not just into indiv
 
 A professional planning leader demonstrates accountability by upholding the Code, being transparent about decisions, and taking responsibility for results.
 
-:::checkpoint e1:169
+:::checkpoint cp:mentor-structures
 
 ### Equity, diversity, and inclusion in practice
 
@@ -75,7 +75,7 @@ The profession expects planners to keep learning throughout their careers:
 - AICP also offers **advanced specialty certifications** for experienced planners in fields such as environmental planning, transportation planning, and urban design. <!-- VERIFY: confirm which advanced specialty certifications AICP currently offers. -->
 - APA chapters and divisions, conferences, and volunteer roles on boards and commissions are common routes to growth and to giving back.
 
-:::checkpoint e2:143
+:::checkpoint cp:mentor-competence
 
 ## Key terms
 

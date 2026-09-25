@@ -19,7 +19,7 @@ A **geographic information system (GIS)** stores, analyzes, and displays data ti
 
 Rule of thumb: boundaries and networks call for vector; surfaces call for raster.
 
-:::checkpoint e1:127
+:::checkpoint cp:gis-vector
 
 ### Core analysis operations
 
@@ -35,7 +35,7 @@ Landscape architect and planner **Ian McHarg**, in *Design with Nature* (1969), 
 
 A suitability analysis is only as good as its weights. Deciding how much slope matters compared with transit access is a value judgment, so it should be made transparently and, ideally, with stakeholders.
 
-:::checkpoint e1:7
+:::checkpoint cp:gis-weights
 
 ### Mapping without misleading
 
@@ -49,7 +49,7 @@ The **modifiable areal unit problem (MAUP)** is the fact that results change dep
 
 The **ecological fallacy** is inferring something about individuals from area-level data. A tract with high average income may still have many low-income households.
 
-:::checkpoint e3:13
+:::checkpoint cp:gis-ecological
 
 ### The gravity model
 
@@ -58,7 +58,7 @@ The **gravity model** borrows from physics: interaction between two places incre
 - distribute trips between zones in the travel demand model (the *trip distribution* step, covered in the [transportation lesson](/aicp/lessons/transportation-planning)); and
 - estimate retail trade areas: how far shoppers will travel to a larger center rather than a nearer, smaller one.
 
-:::checkpoint e1:133
+:::checkpoint cp:gis-gravity
 
 ### Choosing the right chart
 
@@ -70,7 +70,7 @@ The **gravity model** borrows from physics: interaction between two places incre
 | Relationship between two variables | Scatter plot |
 | Values across geography | Map (choropleth for rates, graduated symbols for counts) |
 
-:::checkpoint e2:59
+:::checkpoint cp:gis-line-chart
 
 ## Key terms
 

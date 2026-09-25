@@ -73,7 +73,7 @@ function Plan({ plan, study, signedIn }) {
                 )}
                 <div className="eyebrow" style={{ margin: '14px 0 6px' }}>Practice</div>
                 <ul style={{ margin: 0, padding: following ? 0 : '0 0 0 20px', listStyle: following ? 'none' : undefined, display: 'flex', flexDirection: 'column', gap: 6 }} className="body-text">
-                  {w.lessons.length > 0 && !following && <li>Each lesson&rsquo;s quick check and practice set, right after you read it</li>}
+                  {w.lessons.length > 0 && !following && <li>Each lesson&rsquo;s checkpoints, answered as you read</li>}
                   {w.practice.map((p) => {
                     const key = planItemKey(plan.id, i, p.label);
                     const done = !!study.planChecks[key];
@@ -128,7 +128,7 @@ export default function StudyPlan() {
           <div className="card">
             <h2 className="h3">How to use a plan</h2>
             <ul className="body-text" style={{ margin: '10px 0 0', paddingLeft: 20 }}>
-              <li>Read each lesson, then do its practice set the same day, while it&rsquo;s fresh.</li>
+              <li>Answer each lesson&rsquo;s checkpoints as you reach them, before reading on.</li>
               <li>Take full exams timed and in one sitting, the way you will on test day.</li>
               <li>After each exam, review every miss before moving on.</li>
             </ul>

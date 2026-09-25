@@ -34,7 +34,6 @@ export const P = {
 
   run: `${AICP}/exam/run`,
   runExam: (aid, mode = 'practice') => `${AICP}/exam/run?aid=${aid}&mode=${mode}`,
-  runSet: (slug) => `${AICP}/exam/run?set=${encodeURIComponent(slug)}&mode=practice`,
 };
 
 // Routes that render dark-mode-capable screens (the header follows their theme).

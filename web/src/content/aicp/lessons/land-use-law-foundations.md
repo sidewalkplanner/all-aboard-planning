@@ -18,13 +18,13 @@
 - **Home rule** states give cities (sometimes counties) broad authority over local affairs without a specific grant, subject to state law.
 - **Preemption**: state or federal law can override local rules. Examples include federal limits on regulating telecommunications towers, and federal fair housing and disability laws.
 
-:::checkpoint e3:39
+:::checkpoint cp:law-police-power
 
 ### The foundation case: *Euclid*
 
 In ***Village of Euclid v. Ambler Realty Co.*** **(1926)**, the U.S. Supreme Court upheld comprehensive zoning against a challenge that it violated due process by sharply reducing the value of Ambler's land. The Court held that separating uses into districts is a valid exercise of the police power unless it is "clearly arbitrary and unreasonable, having no substantial relation to the public health, safety, morals, or general welfare." Justice Sutherland compared a misplaced use to a nuisance, "like a pig in the parlor instead of the barnyard." The case established **Euclidean zoning** (named for the village, not the geometer) as the national norm. Alfred Bettman's amicus brief supporting the village is often credited with influencing the result.
 
-:::checkpoint e3:78
+:::checkpoint cp:law-euclid-standard
 
 ### Facial versus as-applied challenges: *Nectow*
 
@@ -34,7 +34,7 @@ In ***Village of Euclid v. Ambler Realty Co.*** **(1926)**, the U.S. Supreme Cou
 Contrasts the facial challenge in *Euclid* with the as-applied challenge in *Nectow*, and explains what each means for defending a zoning decision today.
 :::
 
-:::checkpoint e2:8
+:::checkpoint cp:law-as-applied
 
 ### Due process
 
@@ -58,7 +58,7 @@ Key cases:
 - ***City of Cleburne v. Cleburne Living Center*** **(1985)** held that requiring a special use permit for a group home for people with intellectual disabilities, when similar uses didn't need one, violated equal protection *even under rational basis review*. The requirement rested on irrational prejudice.
 - ***Village of Willowbrook v. Olech*** **(2000)** recognized a **"class of one"** equal protection claim: a single property owner can sue if intentionally treated differently from others similarly situated, with no rational basis.
 
-:::checkpoint e3:83
+:::checkpoint cp:law-cleburne
 
 ### The First Amendment
 
@@ -68,7 +68,7 @@ Land use rules that touch speech, assembly, or religion get closer scrutiny.
 - **Adult businesses** may be regulated through reasonable time, place, and manner rules aimed at their **secondary effects** (such as crime and blight) rather than at the content of their speech, as long as reasonable alternative locations remain (*City of Renton v. Playtime Theatres*, 1986).
 - **Religious uses.** The federal **Religious Land Use and Institutionalized Persons Act (RLUIPA)** (2000) bars land use regulations that impose a *substantial burden* on religious exercise unless they're the least restrictive means of serving a compelling interest. It also bars treating religious assemblies on less than equal terms with nonreligious ones.
 
-:::checkpoint e3:170
+:::checkpoint cp:law-rluipa
 
 ### Plans and the law
 

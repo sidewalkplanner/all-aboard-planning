@@ -15,13 +15,12 @@ const FREE_FEATURES = [
   'The 100-item diagnostic with a ranked study list',
   'Two 25-question warm-up quizzes',
   'Free account: the first lesson in each of the nine domains',
-  'Free questions from those lessons’ practice sets',
   '8- and 12-week study plans',
 ];
 const FULL_FEATURES = [
   'Everything in Free',
   `All ${LESSONS.length} lessons across the nine domains`,
-  'A practice set for every lesson',
+  'Original checkpoint questions in every lesson',
   'Three full-length 170-question practice exams, timed or untimed',
   'Progress tracking across attempts',
 ];
@@ -121,7 +120,7 @@ function PaidPricing() {
 
 const FREE_NOW = [
   `All ${LESSONS.length} lessons across the nine exam domains`,
-  'A practice set for every lesson',
+  'Original checkpoint questions in every lesson',
   'Three full-length 170-question practice exams, timed or untimed',
   'Both 25-question warm-up quizzes',
   'The 100-item diagnostic with a ranked study list',

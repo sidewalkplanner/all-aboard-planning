@@ -3,14 +3,12 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumb';
 import LessonBody from '../../components/LessonBody';
 import AccessGate from '../../components/AccessGate';
-import QuickCheck from '../../components/QuickCheck';
 import { useStudyState, setLessonComplete, noteLessonOpened } from '../../lib/studyState';
 import useAccess from '../../hooks/useAccess';
 import NotFound from '../NotFound';
 import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
 import { LESSONS, domainById, lessonBySlug, neighbors } from '../../content/aicp/curriculum';
-import { accessibleRefs } from '../../content/aicp/freeQuizRefs';
 
 // Lesson bodies are code-split: each Markdown file becomes its own chunk,
 // fetched only when that lesson is opened.
@@ -25,49 +23,31 @@ const previewHtml = (html) => {
   return second > 0 ? html.slice(0, second) : html;
 };
 
-const BANK_LABEL = { e1: 'Practice Exam 1', e2: 'Practice Exam 2', e3: 'Practice Exam 3' };
-
+// Lessons never show exam items: their checkpoints are original questions
+// (content/aicp/checkpoints.js). Exam-style practice lives in the exams,
+// whose results link missed questions back to the lessons that teach them.
 function PracticeBlock({ lesson }) {
   const access = useAccess();
   const { pathname } = useLocation();
-  const refs = lesson.practice || [];
-  const open = accessibleRefs(lesson, access).length;
-  const banks = [...new Set(refs.map((r) => r.split(':')[0]))].sort().map((b) => BANK_LABEL[b]);
-  const sources = banks.length > 1 ? `${banks.slice(0, -1).join(', ')} and ${banks[banks.length - 1]}` : banks[0];
-  const setPath = P.runSet(lesson.slug);
-
+  const domain = domainById(lesson.domainId);
   return (
     <section aria-labelledby="practice-heading" className="card" style={{ marginTop: 40 }}>
       <span className="eyebrow eyebrow-rust">Practice</span>
-      <h2 id="practice-heading" className="h3" style={{ marginBottom: 8 }}>Test yourself on this lesson</h2>
-      {refs.length > 0 && (
-        <p className="body-text" style={{ margin: '0 0 16px' }}>
-          This lesson&rsquo;s practice set has <strong>{refs.length} questions</strong> on these topics, taken from {sources}.
-          It&rsquo;s untimed, and you can check each answer and read the explanation as you go.
-        </p>
-      )}
+      <h2 id="practice-heading" className="h3" style={{ marginBottom: 8 }}>Ready for exam-style questions?</h2>
+      <p className="body-text" style={{ margin: '0 0 16px' }}>
+        The checkpoints in this lesson were written for it alone, so they never give away an exam question.
+        To see how the {domain.short} domain is tested, take a full-length practice exam. It mixes all nine domains in exam
+        proportions, and your results point you back to the lessons behind every question you miss.
+      </p>
       <div className="row-wrap">
-        {refs.length > 0 && open > 0 && (
-          <Link className="btn btn-primary" to={setPath}>
-            {open === refs.length ? `Start the practice set (${refs.length})` : `Try ${open} free ${open === 1 ? 'question' : 'questions'}`}
-          </Link>
-        )}
-        {refs.length > 0 && open < refs.length && (
-          <Link className={`btn ${open ? 'btn-secondary' : 'btn-primary'}`} to={access.blockedTarget(setPath)}>
-            {access.signedIn ? `Unlock all ${refs.length} questions` : `Sign in to practice (${refs.length} questions)`}
-          </Link>
-        )}
+        <Link className="btn btn-primary" to={P.exams}>See the practice exams</Link>
+        <Link className="btn btn-secondary" to={P.diagnostic}>Take the diagnostic</Link>
       </div>
       {!access.signedIn && (
         <p className="small" style={{ margin: '14px 0 0' }}>
-          Practice sets and exams need an account, so your scores are saved.{' '}
+          Exams need an account, so your scores are saved.{' '}
           <Link to={P.signinNext(pathname, 'create')} className="link-underline">Create one</Link>, or try{' '}
           <Link to={P.runExam('q1', 'practice')} className="link-underline">Warm-up Quiz A</Link> first, no account needed.
-        </p>
-      )}
-      {access.signedIn && (
-        <p className="small" style={{ margin: '14px 0 0' }}>
-          Not sure where to focus? The <Link to={P.diagnostic} className="link-underline">diagnostic</Link> ranks the nine domains by how many points each is costing you.
         </p>
       )}
     </section>
@@ -142,8 +122,7 @@ export default function LessonPage() {
             : <a href={`#${h.id}`}>{h.text}</a>}
         </li>
       ))}
-      {!locked && <li><a href="#quick-check-heading">Lesson review</a></li>}
-      <li><a href="#practice-heading">Practice questions</a></li>
+      <li><a href="#practice-heading">Practice exams</a></li>
     </ul>
   );
 
@@ -183,7 +162,6 @@ export default function LessonPage() {
             ) : (
               <>
                 <LessonBody html={body.html} slug={lesson.slug} />
-                <QuickCheck lesson={lesson} exclude={checkpointRefs} />
                 <section aria-label="Lesson completion" className="card" style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 14, alignItems: 'center', justifyContent: 'space-between', ...(complete ? { borderColor: 'var(--ok-fg)', background: 'var(--ok-bg)' } : {}) }}>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 16.5 }}>{complete ? 'Lesson complete' : 'Finished this lesson?'}</div>

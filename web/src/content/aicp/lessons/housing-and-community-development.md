@@ -34,7 +34,7 @@ A **housing needs assessment** is the analytical foundation of a housing element
 - needs of specific groups: seniors, people with disabilities, people experiencing homelessness, large families, farmworkers; and
 - the development pipeline, land capacity, and regulatory barriers.
 
-:::checkpoint e2:49
+:::checkpoint cp:housing-tenure
 
 ### Federal and state programs
 
@@ -50,7 +50,7 @@ A **housing needs assessment** is the analytical foundation of a housing element
 Follows the credits from the federal government to a state agency, a developer, and an investor, and shows how the investor's equity keeps rents affordable.
 :::
 
-:::checkpoint e2:98
+:::checkpoint cp:housing-vouchers
 
 ### Fair housing
 
@@ -62,13 +62,13 @@ The **Fair Housing Act** (1968, amended in 1988) prohibits discrimination in hou
 - ***City of Edmonds v. Oxford House*** **(1995)** held that a zoning code's definition of "family" limiting the number of unrelated people living together isn't a "maximum occupancy restriction" exempt from the Act. It could therefore be challenged as applied to a group home for people in recovery.
 - The Act also requires federal agencies and grantees to **affirmatively further fair housing (AFFH)**: taking meaningful actions to overcome segregation and foster inclusive communities. <!-- VERIFY: HUD's AFFH rule has been issued, rescinded, and reissued several times; confirm its current status before describing specific requirements. -->
 
-:::checkpoint e3:119
+:::checkpoint cp:housing-disparate-impact
 
 ### Fair share: *Mount Laurel*
 
 In the ***Mount Laurel*** decisions, the New Jersey Supreme Court held that developing municipalities may not use zoning to exclude low- and moderate-income housing, and have an obligation under the state constitution to provide a realistic opportunity for their **fair share of the region's need** for such housing. Later decisions added remedies, including a "builder's remedy" allowing developers to build inclusionary projects when towns didn't comply. <!-- VERIFY: Mount Laurel I is usually dated 1975 and Mount Laurel II (builder's remedy) 1983; confirm before adding dates. -->
 
-:::checkpoint e2:7
+:::checkpoint cp:housing-builders-remedy
 
 ### Expanding supply
 
@@ -76,7 +76,7 @@ In the ***Mount Laurel*** decisions, the New Jersey Supreme Court held that deve
 - **Accessory dwelling units (ADUs)**: backyard cottages, garage apartments, and basement units that add **gentle density** and housing supply within existing neighborhoods.
 - **Zoning reforms**: allowing more units per lot, reducing minimum lot sizes, eliminating parking minimums, streamlining approvals, and upzoning near transit and jobs.
 
-:::checkpoint e3:116
+:::checkpoint cp:housing-missing-middle
 
 ### Displacement and gentrification
 

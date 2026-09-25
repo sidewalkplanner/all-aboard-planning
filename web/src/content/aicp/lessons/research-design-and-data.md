@@ -36,7 +36,7 @@ Most planning studies combine the two. For example, you might pair ACS income da
 
 **Triangulation** means checking a finding with more than one method or source. If a survey shows low park use and focus groups explain that residents feel unsafe walking there after dark, the two methods reinforce each other and point toward a solution.
 
-:::checkpoint e3:7
+:::checkpoint cp:rd-triangulation
 
 ### The census and the American Community Survey
 
@@ -51,7 +51,7 @@ The **American Community Survey** is a continuous *sample* survey run by the Cen
 
 > **Exam tip:** For detailed characteristics (like median household income) of a small area such as a neighborhood or tract, the answer is almost always ACS 5-year estimates. For a complete population count used for apportionment, it's the decennial census.
 
-:::checkpoint e3:1
+:::checkpoint cp:rd-acs-moe
 
 ### Sampling
 
@@ -64,7 +64,7 @@ You can rarely survey everyone, so you survey a sample and generalize. How you c
   - *Systematic sampling:* pick every *k*th unit from a list after a random start.
 - **Nonprobability sampling** includes convenience samples, snowball samples, and **self-selected** samples, such as an online survey open to anyone who wants to respond. These are useful for engagement and idea generation, but you can't treat the results as representative.
 
-:::checkpoint e3:12
+:::checkpoint cp:rd-stratified
 
 ### Bias and error
 
@@ -74,7 +74,7 @@ You can rarely survey everyone, so you survey a sample and generalize. How you c
 - **Question-wording bias:** a **leading question** ("Don't you agree the new bike lanes are dangerous?") pushes respondents toward an answer.
 - **Implicit bias:** the researcher's unconscious assumptions shape which questions get asked, how categories are defined, or how results are read. Pre-testing a survey with a diverse group of residents helps catch this.
 
-:::checkpoint e2:64
+:::checkpoint cp:rd-leading
 
 ### Validity and reliability
 
@@ -91,7 +91,7 @@ A measure can be reliable without being valid: a scale that is always five pound
 
 When you collect information from people, you owe them informed consent, confidentiality, and a clear explanation of how their information will be used. This matters most when data is sensitive, as in health, immigration status, or income, or when participants are vulnerable. Store identifiable data securely and report results in ways that don't reveal individuals.
 
-:::checkpoint e3:9
+:::checkpoint cp:rd-ethics
 
 ## Key terms
 

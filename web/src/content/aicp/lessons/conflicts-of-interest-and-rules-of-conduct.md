@@ -35,7 +35,7 @@ For **prior professional relationships**, such as a consultant who worked for an
 
 **Outside work:** A public-sector planner offered paid consulting by a firm with **applications pending in the planner's own jurisdiction** should **decline**, or at minimum disclose and obtain a conflict determination before doing anything, which in practice usually means declining.
 
-:::checkpoint e3:184
+:::checkpoint cp:coi-disclose-not-enough
 
 ### Gifts, favors, and advantage
 
@@ -46,7 +46,7 @@ Related rules prohibit:
 - using the **power of your office** to seek special advantage for yourself or others that isn't in the public interest; and
 - suggesting you can influence decisions by **improper means** to win clients or work.
 
-:::checkpoint e3:176
+:::checkpoint cp:coi-improper-means
 
 ### Confidential information
 
@@ -54,13 +54,13 @@ A planner may **not disclose information acquired in confidence** during profess
 
 The classic scenario: a planner learns confidentially that a new highway interchange will be built near a rural parcel, and buys the parcel before the news is public. That's a violation of the rules on confidential information and personal advantage. The duty to protect confidential information also **continues after a relationship ends**: a planner retained to testify against a former client must still protect what was learned in confidence from that client.
 
-:::checkpoint e1:140
+:::checkpoint cp:coi-confidential-after
 
 ### Competence
 
 A planner may accept only work they're **competent** to perform, or work that will be done **under the direction of someone who is**. A firm offered work requiring a modeling method no one on staff has used may **accept it if it's performed under the supervision of a competent professional**, for example by teaming with a qualified subconsultant or hiring qualified staff. Accepting it and learning on the client's dime without supervision would violate the rule.
 
-:::checkpoint e3:174
+:::checkpoint cp:coi-competent-team
 
 ### Honesty about yourself and others
 
@@ -68,7 +68,7 @@ A planner may accept only work they're **competent** to perform, or work that wi
 - **Don't misrepresent the views, findings, or qualifications of other professionals.**
 - **Don't knowingly misrepresent facts** or produce analysis designed to mislead.
 
-:::checkpoint e3:175
+:::checkpoint cp:coi-project-credit
 
 ### Advocacy and representation
 

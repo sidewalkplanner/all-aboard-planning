@@ -14,13 +14,13 @@ const GROUPS = [
       },
       {
         q: 'How is the course organized?',
-        a: <p>There are {LESSONS.length} lessons grouped under the nine domains of the AICP exam content outline. Each lesson has learning objectives, plain-language explanations, key terms, real-world examples, a summary, and a practice set of exam-style questions. See the <Link to={P.course}>course overview</Link>.</p>,
+        a: <p>There are {LESSONS.length} lessons grouped under the nine domains of the AICP exam content outline. Each lesson has learning objectives, plain-language explanations, key terms, real-world examples, a summary, and original checkpoint questions written just for that lesson. See the <Link to={P.course}>course overview</Link>.</p>,
       },
       {
         q: 'What\u2019s the best way to use the course?',
         a: (
           <>
-            <p>Take the <Link to={P.diagnostic}>diagnostic</Link>, follow a <Link to={P.studyPlan}>study plan</Link>, and for each lesson: read it, answer each checkpoint as you reach it, do the lesson review without scrolling back, mark it complete, and do its practice set. Spend ten minutes a day on <Link to={P.flashcards}>flashcards</Link>.</p>
+            <p>Take the <Link to={P.diagnostic}>diagnostic</Link>, follow a <Link to={P.studyPlan}>study plan</Link>, and for each lesson: read it, answer each checkpoint as you reach it, and mark it complete. Every few weeks, take a full-length practice exam and reread the lessons it points you to. Spend ten minutes a day on <Link to={P.flashcards}>flashcards</Link>.</p>
             <p>Midway through, retake the diagnostic. In the final weeks, take full-length timed exams, reread the lessons your <Link to={P.progress}>dashboard</Link> lists for review, and read the <Link to={P.strategy}>exam strategy guide</Link> and <Link to={P.quickRef}>quick reference</Link>.</p>
           </>
         ),
