@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from 'react';
-import { scopedKey } from './userStorage';
+import { scopedKey, noteWrite } from './userStorage';
 
 // Per-account study state that isn't a scored attempt (scored attempts live in
 // lib/history.js). One small JSON document per account:
@@ -11,8 +11,8 @@ import { scopedKey } from './userStorage';
 //   cards:      { [cardId]: { box, seen } }         flashcard boxes (0 = new/missed … 4 = mastered)
 //   checkpoints:{ [lessonSlug]: { [ref]: { pick, correct, at } } }  mid-lesson checkpoint answers
 //
-// ACCOUNT PLACEHOLDER: like history, this lives in localStorage today; move it
-// to the auth provider's database along with history when accounts go live.
+// Like history, it lives in localStorage and is synced to the learner's
+// Supabase account by lib/cloudSync.js.
 const BASE = 'aap-study';
 const EMPTY = { completed: {}, lastLesson: null, plan: null, planChecks: {}, cards: {}, checkpoints: {} };
 
@@ -33,6 +33,7 @@ function readState() {
 function writeState(update) {
   const next = update(readState());
   try { window.localStorage.setItem(scopedKey(BASE), JSON.stringify(next)); } catch { /* ignore */ }
+  noteWrite(BASE);
   listeners.forEach((l) => l());
 }
 

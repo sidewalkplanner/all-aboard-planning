@@ -6,6 +6,7 @@ import useAccess from '../hooks/useAccess';
 import usePageTitle from '../hooks/usePageTitle';
 import { PUBLIC_ASSESSMENTS } from '../lib/access';
 import { getHistory } from '../lib/history';
+import { useSyncVersion } from '../lib/cloudSync';
 import { P } from '../lib/paths';
 
 const fmtTime = (mins) => {
@@ -68,7 +69,8 @@ function Ticket({ a, i, access, attempts }) {
 export default function ExamsList() {
   usePageTitle('Practice');
   const access = useAccess();
-  const history = useMemo(() => (access.signedIn ? getHistory() : []), [access.signedIn]);
+  const synced = useSyncVersion();
+  const history = useMemo(() => (access.signedIn ? getHistory() : []), [access.signedIn, synced]); // eslint-disable-line react-hooks/exhaustive-deps
   const attemptsFor = (id) => history.filter((h) => h.kind === 'exam' && h.assessmentId === id).sort((x, y) => x.completedAt - y.completedAt);
   const exams = ASSESSMENTS;
 

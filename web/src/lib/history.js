@@ -1,7 +1,7 @@
-import { scopedKey } from './userStorage';
+import { scopedKey, noteWrite } from './userStorage';
 
-// Real (frontend-only, localStorage) attempt history, kept per account
-// (see lib/userStorage.js) — replaces the
+// Attempt history, kept per account in localStorage (see lib/userStorage.js)
+// and synced to the learner's Supabase account by lib/cloudSync.js — replaces the
 // hardcoded "canned" numbers the Progress dashboard used to show. Every
 // completed exam attempt is appended here on submit;
 // Progress.jsx derives all of its stats from this instead of static data.
@@ -25,6 +25,7 @@ export const recordAttempt = (entry) => {
     // Keep the file bounded — oldest entries drop off first.
     while (list.length > MAX_ENTRIES) list.shift();
     window.localStorage.setItem(scopedKey(HISTORY_KEY), JSON.stringify(list));
+    noteWrite(HISTORY_KEY);
   } catch (e) { /* ignore */ }
 };
 

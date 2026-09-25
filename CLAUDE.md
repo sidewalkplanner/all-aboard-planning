@@ -11,7 +11,7 @@ Everything prep-related therefore lives under `/aicp/`; firm-level pages (`/abou
 
 - Live URL: `https://allaboardplanning.com/` (Cloudflare Workers, static assets)
 - The app is **frontend only**: no backend, no payments. The course is **free**, but lessons,
-  exams, and the review tools require a (placeholder, browser-only) account so
+  exams, and the review tools require a free account (Supabase Auth) so
   progress is tracked per person. See "Access, accounts, and the future paid tier" below.
 
 ## Repository layout
@@ -31,7 +31,9 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     lib/theme.js            JS copies of the colour tokens (used by inline-styled exam UI)
     components/             Header, Footer, PageHeader, Art, LessonBody, Checkpoint, AccessGate, RequireSignIn, ...
     hooks/                  usePageTitle, useAccess (who can open what), useMembership (future paid tier)
-    context/AuthContext.jsx Placeholder accounts (browser-only); swap for a real auth provider
+    context/AuthContext.jsx Accounts via Supabase Auth: sign up/in/out, password reset
+    lib/supabase.js         Supabase client (project URL + publishable key)
+    lib/cloudSync.js        Syncs each learner's progress between localStorage and Supabase
     lib/access.js           PAID_TIER_ENABLED switch + PUBLIC_ASSESSMENTS (open without an account)
     lib/userStorage.js      Per-account localStorage keys (scopedKey)
     lib/studyState.js       Per-account lesson completion, chosen study plan, plan checkboxes, flashcard boxes
@@ -48,6 +50,7 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     pages/                  Route components; pages/aicp/* are the prep section pages
     pages/exam/             Exam runner (the three full-length practice exams)
 wrangler.jsonc              Cloudflare config (repo root): builds web/, serves web/dist, SPA fallback, custom domain
+supabase/migrations/        Database schema (the user_data table and its row-level security)
 uploads/                    Source specs for the question banks and diagnostic (reference only)
 *.dc.html, support.js, root *.js   Original design prototypes (reference only; not deployed)
 ```
@@ -250,14 +253,27 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
 - **Gating UI:** `components/AccessGate.jsx` (inline "create a free account" box) and
   `components/RequireSignIn.jsx` (route wrapper used for the dashboard and review tools).
   Never check `user` directly in a page; ask `useAccess()`.
-- **Accounts are a placeholder** (`src/context/AuthContext.jsx`): accounts, SHA-256-hashed
-  passwords, and the session live in this browser's localStorage. It isn't real security and
-  doesn't sync across devices. To go live, replace the bodies of `signUp`, `signIn`, `signOut`
-  and the initial session read with a hosted provider (Supabase, Firebase, Auth0, Clerk...) and
-  move history to its database; keep the `{ user, signUp, signIn, signOut }` shape.
-- **Progress is per account:** history and saved exam attempts use
-  `scopedKey()` from `lib/userStorage.js`. Signed-out visitors use the unscoped keys; on sign-up,
-  guest history is adopted into the new account.
+- **Accounts are Supabase Auth** (project `all-aboard-planning`, ref `eawdxearyzkkloivokdh`,
+  free plan) behind `src/context/AuthContext.jsx`, which exposes
+  `{ user, signUp, signIn, signOut, resetPassword, updatePassword, recovering }` with `user` as
+  `{ id, name, email }` (name lives in the auth user's metadata). The publishable key in
+  `lib/supabase.js` is meant to be public; row-level security protects the data. Email links
+  (confirmation, password reset) return to `/aicp/signin`, which handles `?mode=forgot|reset`.
+- **Auth settings live in the Supabase dashboard, not the repo:** Site URL
+  `https://allaboardplanning.com`, redirect URLs for the site, and **"Confirm email" on** (new
+  accounts must click a link before signing in). Auth emails go out through **Resend** as custom
+  SMTP (`smtp.resend.com`, sender `bobby@allaboardplanning.com`, domain verified in Resend with
+  DNS records on Cloudflare). Don't switch back to Supabase's built-in email: it only reaches the
+  project team's addresses, so public sign-ups and password resets would fail. Resend's free plan
+  allows 3,000 emails a month (100 a day).
+- **Progress syncs to Supabase:** history, study state, and in-progress exams are still read and
+  written in localStorage under `scopedKey()` from `lib/userStorage.js`; each write calls
+  `noteWrite(base)`, and `lib/cloudSync.js` pushes it to the `user_data` table (one row per
+  learner per document, RLS: own rows only). On sign-in it pulls; unpushed local changes are
+  merged, never overwritten, and nothing is pushed before the first pull. A guest's data and data
+  from the retired browser-only accounts (same email) are adopted on sign-in.
+- **Database changes** go in `supabase/migrations/` as new numbered files, applied with the
+  Supabase tools, and keep RLS on every table.
 - **Turning on paid plans later:** set `PAID_TIER_ENABLED = true`. Lessons/exams tagged `paid`
   then need Full Access from `hooks/useMembership.js` (currently the demo
   `UnlockContext` toggle; replace it with the real membership check), the Pricing page switches

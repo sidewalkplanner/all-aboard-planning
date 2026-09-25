@@ -48,7 +48,7 @@ export default function Header() {
         </Link>
       );
     }
-    // ACCOUNT PLACEHOLDER: a real account menu (profile, settings) goes here.
+    // A fuller account menu (profile, settings) could go here later.
     const onDash = location.pathname === P.progress;
     return (
       <span style={{ display: mobile ? 'flex' : 'inline-flex', flexDirection: mobile ? 'column' : 'row', alignItems: mobile ? 'stretch' : 'center', gap: mobile ? 10 : 4, marginLeft: mobile ? 0 : 10, marginTop: mobile ? 12 : 0 }}>

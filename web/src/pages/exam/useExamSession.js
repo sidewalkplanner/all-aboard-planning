@@ -11,7 +11,7 @@ import { fmtHoursMinutes, parseExhibit } from '../../lib/format';
 import { recordAttempt } from '../../lib/history';
 import { P } from '../../lib/paths';
 import { lessonBySlug, lessonsToReview, domainByBankName, DOMAINS as CURRICULUM_DOMAINS } from '../../content/aicp/curriculum';
-import { scopedKey } from '../../lib/userStorage';
+import { scopedKey, noteWrite } from '../../lib/userStorage';
 
 // Tag every question with its ref ("e1:115") so missed items can be mapped
 // back to the lessons that teach them (curriculum.js LESSONS_FOR_REF).
@@ -37,6 +37,7 @@ const saveAttempt = (sessionKey, patch) => {
     const all = loadAttempts();
     all[sessionKey] = { ...patch, savedAt: Date.now() };
     window.localStorage.setItem(scopedKey(ATTEMPTS_KEY), JSON.stringify(all));
+    noteWrite(ATTEMPTS_KEY);
   } catch (e) { /* ignore */ }
 };
 
@@ -45,6 +46,7 @@ const clearAttempt = (sessionKey) => {
     const all = loadAttempts();
     delete all[sessionKey];
     window.localStorage.setItem(scopedKey(ATTEMPTS_KEY), JSON.stringify(all));
+    noteWrite(ATTEMPTS_KEY);
   } catch (e) { /* ignore */ }
 };
 
