@@ -17,7 +17,7 @@ const MODES = {
   },
   create: {
     title: 'Get your ticket.',
-    lede: 'An account keeps your scores, lesson progress, and diagnostic report in one place.',
+    lede: 'An account keeps your scores, lesson progress, and study priorities in one place.',
     submit: 'Create my account',
     note: 'All aboard! The first stop is lesson one.'
   }

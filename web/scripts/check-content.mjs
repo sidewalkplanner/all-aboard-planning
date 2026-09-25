@@ -42,7 +42,7 @@ const warn = (m) => warnings.push(m);
 const KNOWN_ROUTES = new Set([
   '/', '/about', '/contact',
   '/aicp', '/aicp/course', '/aicp/study-plan', '/aicp/exam-info', '/aicp/faq', '/aicp/pricing',
-  '/aicp/exams', '/aicp/diagnostic', '/aicp/progress', '/aicp/signin', '/aicp/exam/run',
+  '/aicp/exams', '/aicp/progress', '/aicp/signin', '/aicp/exam/run',
   '/aicp/review', '/aicp/review/flashcards', '/aicp/review/quick-reference', '/aicp/review/exam-strategy',
 ]);
 const REQUIRED_SECTIONS = ['learning-objectives', 'key-concepts', 'key-terms', 'real-world-examples', 'summary'];

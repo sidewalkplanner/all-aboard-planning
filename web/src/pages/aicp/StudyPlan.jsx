@@ -112,14 +112,14 @@ export default function StudyPlan() {
         eyebrow="Study plans"
         title="A schedule you can actually keep"
         art="page-route" artW={960} artH={270} artTilt={-1}
-        artAlt="A winding red route from start through the diagnostic, the lessons and exam 1 to a flag marked exam day"
-        lead="Two week-by-week plans that cover every lesson, every practice exam, and the diagnostic. Pick the one that fits your calendar, then adjust it with your diagnostic results."
+        artAlt="A winding red route from start through a baseline exam and the lessons to a flag marked exam day"
+        lead="Two week-by-week plans that cover every lesson and every practice exam. Pick the one that fits your calendar, then adjust it with your exam results."
       >
         <div className="row-wrap" style={{ marginTop: 22 }}>
           {STUDY_PLANS.map((p) => (
             <a key={p.id} className="btn btn-secondary" href={`#${p.id}`}>{p.title}</a>
           ))}
-          <Link className="btn btn-primary" to={P.diagnostic}>Start with the diagnostic</Link>
+          <Link className="btn btn-primary" to={P.runExam('e1', 'practice')}>Start with your baseline exam</Link>
         </div>
       </PageHeader>
 
@@ -134,10 +134,10 @@ export default function StudyPlan() {
             </ul>
           </div>
           <div className="card">
-            <h2 className="h3">Adjust with your diagnostic</h2>
+            <h2 className="h3">Adjust with your exam results</h2>
             <p className="body-text" style={{ margin: '10px 0 0' }}>
-              The diagnostic ranks the nine domains by how many points each is costing you. Give your top two
-              priority domains an extra study session each week, and move lightly through the ones marked Strong.
+              Every practice exam ranks the nine domains by how many points each is costing you. Give your top two
+              domains an extra study session each week, and move lightly through the ones you scored well on.
             </p>
           </div>
           <div className="card">

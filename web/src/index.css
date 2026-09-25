@@ -1593,11 +1593,8 @@ img, svg { max-width: 100%; }
   .town__lane { transform: translateX(13.5%); }
 }
 
-@media (max-width: 700px) {
-  .diag-card { grid-template-columns: 1fr !important; justify-items: start; }
-}
 
-/* Diagnostic report: ranked study list rows. */
+/* Exam results: the ranked "Study in this order" rows. */
 .plan-row {
   display: grid;
   grid-template-columns: 44px minmax(0, 1fr) auto;

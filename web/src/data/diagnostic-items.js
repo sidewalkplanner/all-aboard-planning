@@ -1,3 +1,8 @@
+// RETIRED, KEPT FOR LATER USE. These are the 100 original questions from the
+// "Where Should I Study?" diagnostic, which was retired once every practice
+// exam began ranking the domains to study. Nothing imports this file, so it
+// isn't in the site bundle. None of these items appear in the practice exams;
+// they could later become lesson checkpoints or other practice.
 export const DIAG_VERSION = "DIAG-1.0";
 export const ITEMS = [
  {

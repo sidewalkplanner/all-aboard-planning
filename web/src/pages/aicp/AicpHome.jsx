@@ -11,8 +11,8 @@ import { art, badgeFor, DOMAIN_COLOR } from '../../lib/art';
 const OFFERS = [
   { title: `${LESSONS.length} lessons in nine domains`, body: 'Plain-language lessons organized by the AICP exam content outline, with checkpoint questions after every key section, key terms, real planning examples, and exam tips.', to: P.course, cta: 'Browse the course', tape: 'tape' },
   { title: '8- and 12-week study plans', body: 'Week-by-week schedules for every lesson and exam. Follow one and your dashboard shows exactly what’s due this week.', to: P.studyPlan, cta: 'See the plans', tape: 'pin' },
-  { title: 'A 100-item diagnostic', body: 'A placement test that scores all nine domains and ranks them by how many points each is likely costing you.', to: P.diagnostic, cta: 'Take the diagnostic', tape: 'tape tape--mint' },
-  { title: 'Three full-length practice exams', body: '170 questions each, on the real 3.5-hour clock, with scenario sets and data exhibits. Results list the lessons behind every miss.', to: P.exams, cta: 'See practice exams', tape: 'pin' },
+  { title: 'Three full-length practice exams', body: '170 questions each, on the real 3.5-hour clock, with scenario sets and data exhibits. Results rank the domains to study first and list the lessons behind every miss.', to: P.exams, cta: 'See practice exams', tape: 'tape tape--mint' },
+  { title: 'A dashboard for your prep', body: 'Lessons finished, exam scores, the domains to study first, and the lessons to reread, all in one place.', to: P.progress, cta: 'Open your dashboard', tape: 'pin' },
   { title: 'Flashcards and quick reference', body: `Hundreds of flashcards built from every lesson's key terms, plus one page of cases, laws, people, formulas, and key numbers.`, to: P.review, cta: 'See the review tools', tape: 'tape tape--blush' },
   { title: 'An exam strategy guide', body: 'How the exam asks questions, a pacing plan for 3.5 hours, and the reasoning that separates the best answer from a merely true one.', to: P.strategy, cta: 'Read the guide', tape: 'pin' },
 ];
@@ -24,28 +24,28 @@ const AUDIENCES = [
 ];
 
 const STEPS = [
-  ['01', 'Diagnose', 'Take the diagnostic. Your report ranks the nine domains by exam weight times points lost.', 'spot-compass', 300, 300, 'var(--sky)'],
+  ['01', 'Baseline', 'Take Practice Exam 1 in practice mode. Your results rank the nine domains by how many points each is costing you.', 'spot-compass', 300, 300, 'var(--sky)'],
   ['02', 'Learn', 'Work through the lessons on a study plan, starting with your priority domains.', 'page-books', 420, 310, 'var(--butter)'],
   ['03', 'Check', 'Answer each lesson’s checkpoints as you read, and circle back to anything you miss.', 'spot-flag', 320, 240, 'var(--blush)'],
   ['04', 'Rehearse', 'Take full-length timed exams to build pace and stamina, and review every miss.', 'spot-mode', 320, 220, 'var(--mint)'],
 ];
 
-// The diagnostic, as the first thing to do. Rendered beside the headline on
+// Practice Exam 1 as the baseline, the first thing to do. Rendered beside the headline on
 // wide screens and below the town on narrow ones (see .hero-card--wide).
 function FirstStop({ signedIn, className = '' }) {
   return (
     <div className={`card hero-card ${className}`} style={{ '--r': '1deg' }}>
       <span className="tape" aria-hidden="true" />
-      <span className="hand" style={{ display: 'block', fontSize: 26, color: 'var(--brand-strong)' }}>First stop</span>
+      <span className="hand" style={{ display: 'block', fontSize: 26, color: 'var(--brand-strong)' }}>First stop: your baseline</span>
       <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginTop: 6 }}>
         <div style={{ width: 88, flex: 'none' }}><Art name="spot-score" w={320} h={240} eager /></div>
-        <h2 className="h3" style={{ fontSize: 26 }}>The diagnostic</h2>
+        <h2 className="h3" style={{ fontSize: 26 }}>Practice Exam 1</h2>
       </div>
       <p className="body-text" style={{ margin: '8px 0 16px' }}>
-        100 untimed questions across all nine domains. Your report ranks the domains by how many points each is
-        costing you, so you know which lessons to start with.
+        170 questions in practice mode, untimed and saved as you go. Your results rank the domains
+        costing you the most points, so you know where to start.
       </p>
-      <Link className="btn btn-primary btn-block" to={signedIn ? P.diagnostic : P.createAccount(P.diagnostic)}>Take the diagnostic</Link>
+      <Link className="btn btn-primary btn-block" to={signedIn ? P.runExam('e1', 'practice') : P.createAccount(P.runExam('e1', 'practice'))}>Start Practice Exam 1</Link>
     </div>
   );
 }
@@ -78,7 +78,7 @@ export default function AicpHome() {
 
       {/* HERO: headline and the first-stop card over the paper town */}
       <section style={{ position: 'relative', overflow: 'hidden' }}>
-        <img src={art('hero-cloud-a')} alt="" aria-hidden="true" className="sky-bit sky-bit--cloud" style={{ width: 190, top: 34, left: '40%' }} />
+        <img src={art('hero-cloud-a')} alt="" aria-hidden="true" className="sky-bit sky-bit--cloud" style={{ width: 190, top: 6, left: '50%' }} />
         <img src={art('hero-cloud-b')} alt="" aria-hidden="true" className="sky-bit sky-bit--cloud-b" style={{ width: 140, top: 300, left: '47%' }} />
         <img src={art('hero-sun')} alt="" aria-hidden="true" className="sky-bit sky-bit--sun" style={{ width: 150, top: 18, right: '2%' }} />
 
@@ -95,7 +95,7 @@ export default function AicpHome() {
             <div className="row-wrap hero-actions">
               <Link className="btn btn-rust btn-lg" to={P.course}>Browse the course</Link>
               {signedIn
-                ? <Link className="btn btn-secondary btn-lg" to={P.diagnostic}>Take the diagnostic</Link>
+                ? <Link className="btn btn-secondary btn-lg" to={P.exams}>See the practice exams</Link>
                 : <Link className="btn btn-secondary btn-lg" to={P.createAccount(P.course)}>Create an account</Link>}
             </div>
             <dl className="hero-stats">
@@ -203,7 +203,7 @@ export default function AicpHome() {
               <span className="eyebrow eyebrow-rust">The exam blueprint</span>
               <h2 id="weight-heading" className="h2">How the exam is weighted</h2>
               <p className="lead">
-                The course, diagnostic, and exams all follow the nine domains of the content outline in these proportions.
+                The course and the practice exams all follow the nine domains of the content outline in these proportions.
                 Select a domain to see its lessons.
               </p>
             </div>
@@ -227,18 +227,18 @@ export default function AicpHome() {
         </div>
       </section>
 
-      {/* DIAGNOSTIC PROMO */}
-      <section className="band-warm" aria-labelledby="diag-heading" style={{ marginTop: 20 }}>
+      {/* EVERY EXAM RANKS WHERE TO STUDY */}
+      <section className="band-warm" aria-labelledby="rank-heading" style={{ marginTop: 20 }}>
         <div className="container section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 48, alignItems: 'center' }}>
           <div>
-            <span className="stamp" style={{ color: 'var(--tomato-ink)' }}>100 items &middot; untimed</span>
-            <h2 id="diag-heading" className="h2" style={{ marginTop: 20 }}>Start by finding out where you <span className="scribble">actually</span> stand.</h2>
+            <span className="stamp" style={{ color: 'var(--tomato-ink)' }}>170 questions &middot; every exam</span>
+            <h2 id="rank-heading" className="h2" style={{ marginTop: 20 }}>Every exam shows you where you <span className="scribble">actually</span> stand.</h2>
             <p className="body-text" style={{ fontSize: 17, margin: '16px 0 0', maxWidth: '54ch', color: '#3D3326' }}>
-              The diagnostic isn&rsquo;t a mock exam. It gives you a reliable read on each of the nine domains, so your study
-              time goes where you&rsquo;re losing points. You get a ranked study list that links straight to the lessons.
+              Start with Practice Exam 1 in practice mode as your baseline. With 170 questions, your results give a solid read on
+              each of the nine domains, so your study time goes where you&rsquo;re losing points. Each later exam updates the list.
             </p>
             <div className="row-wrap" style={{ marginTop: 28 }}>
-              <Link className="btn btn-dark btn-lg" to={P.diagnostic}>Take the diagnostic</Link>
+              <Link className="btn btn-dark btn-lg" to={P.exams}>See the practice exams</Link>
             </div>
           </div>
           <div style={{ maxWidth: 540, justifySelf: 'center', width: '100%', transform: 'rotate(1.5deg)' }}>
@@ -246,9 +246,9 @@ export default function AicpHome() {
           </div>
           <div className="grid-cards" style={{ gridColumn: '1 / -1', gap: 26 }}>
             {[
-              ['What you get', 'A percentage and a fraction for all nine domains, banded from Priority to Strong.', 'tape'],
-              ['Study in order', 'Domains ranked by exam weight times points lost, so a soft spot in a heavy domain outranks a bad score in a light one.', 'pin'],
-              ['Confident but wrong', 'Tag your confidence as you go and the report surfaces the mistakes you would never have thought to check.', 'tape tape--mint'],
+              ['Every domain scored', 'A score for each of the nine domains, so you can see strengths and gaps at a glance.', 'tape'],
+              ['Study in order', 'Domains ranked by exam weight times the share you missed, so a soft spot in a heavy domain outranks a worse score in a light one.', 'pin'],
+              ['The lessons behind every miss', 'Your results list the lessons that teach each question you missed, most-missed first.', 'tape tape--mint'],
             ].map(([t, b, fix], i) => (
               <div key={t} className="card card-sm card--lift" style={{ '--r': `${[-1.2, 0.8, -0.6][i]}deg`, paddingTop: 24 }}>
                 <span className={fix} aria-hidden="true" />
@@ -269,7 +269,7 @@ export default function AicpHome() {
             <div>
               <h2 id="cta-heading" className="h2">Your train is on the platform.</h2>
               <p className="lead" style={{ color: '#3A3320' }}>
-                Every lesson, exam, and the diagnostic is open to you. Create an account and your progress is saved as you go.
+                Every lesson and practice exam is open to you. Create an account and your progress is saved as you go.
               </p>
               <div className="row-wrap" style={{ marginTop: 26 }}>
                 {signedIn

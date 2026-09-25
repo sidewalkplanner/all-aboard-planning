@@ -4,6 +4,46 @@ import Art from '../../components/Art';
 import { cardStyle } from '../../lib/style';
 import { GREEN, RUST, themeTokens } from '../../lib/theme';
 
+// "Study in this order": the top three domains by exam weight times the share
+// of answered questions missed (computed in useExamSession), each linking to
+// that domain's lessons.
+function StudyOrder({ s, T }) {
+  const tooFew = s.answeredCount < s.minAnswersForOrder;
+  if (!tooFew && s.studyOrder.length === 0) return null;
+  return (
+    <section aria-labelledby="order-heading" style={{ ...cardStyle(T, { radius: 18, padding: 30 }), marginTop: 24 }}>
+      <div className="hand" style={{ fontSize: 28, color: T.accFg }}>Where to study next</div>
+      <h2 id="order-heading" className="h3" style={{ color: T.ink, marginTop: 2 }}>Study in this order</h2>
+      {tooFew ? (
+        <p style={{ fontSize: 15, color: T.mute, lineHeight: 1.6, margin: '8px 0 0', maxWidth: '64ch' }}>
+          Answer at least {s.minAnswersForOrder} questions and this ranks the domains to study first. You answered {s.answeredCount}.
+        </p>
+      ) : (
+        <>
+          <p style={{ fontSize: 15, color: T.mute, lineHeight: 1.6, margin: '8px 0 18px', maxWidth: '66ch' }}>
+            Ranked by each domain&rsquo;s weight on the exam times the share of its questions you missed. A soft spot in a heavy
+            domain costs more points than a worse score in a light one, so this isn&rsquo;t the same as sorting by percentage.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            {s.studyOrder.map((p) => (
+              <div key={p.id} className="plan-row" style={{ ...cardStyle(T, { radius: 14, padding: '16px 20px' }), background: T.bg }}>
+                <div aria-hidden="true" style={{ width: 44, height: 44, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--butter)', border: `2px solid ${T.lineStrong}`, fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, color: '#27233A' }}>{p.rank}</div>
+                <div>
+                  <div style={{ fontSize: 17, fontWeight: 700, color: T.ink }}>{p.name}</div>
+                  <div style={{ fontSize: 14, color: T.mute, marginTop: 3 }}>
+                    {p.missed} of {p.answered} missed &middot; {p.weight}% of the exam
+                  </div>
+                </div>
+                <Link className="btn btn-sm btn-secondary" to={P.domain(p.id)}>Read the lessons</Link>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </section>
+  );
+}
+
 export default function ResultsView(s) {
   const T = themeTokens(s.dark);
   const passing = s.pct >= 70;
@@ -47,11 +87,12 @@ export default function ResultsView(s) {
             ))}
           </div>
         </div>
+        <StudyOrder s={s} T={T} />
         {!s.signedIn && (
           <div style={{ ...cardStyle(T, { radius: 14, padding: 22 }), marginTop: 22, background: 'var(--butter)', borderColor: 'var(--ink)', color: 'var(--ink)' }}>
             <div className="hand" style={{ fontSize: 28, color: 'var(--ink)' }}>Save this score and keep going</div>
             <p style={{ fontSize: 15, lineHeight: 1.6, margin: '6px 0 16px', color: '#3A3320' }}>
-              Create an account to keep this result, then open every lesson, all three full-length exams, and the diagnostic.
+              Create an account to keep this result, then open every lesson and all three full-length exams.
             </p>
             <Link className="btn btn-dark" to={P.createAccount(P.progress)}>Create an account</Link>
           </div>

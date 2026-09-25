@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
-import Art from '../components/Art';
 import { ASSESSMENTS } from '../data/domains';
 import useAccess from '../hooks/useAccess';
 import usePageTitle from '../hooks/usePageTitle';
@@ -72,7 +71,6 @@ export default function ExamsList() {
   const history = useMemo(() => (access.signedIn ? getHistory() : []), [access.signedIn]);
   const attemptsFor = (id) => history.filter((h) => h.kind === 'exam' && h.assessmentId === id).sort((x, y) => x.completedAt - y.completedAt);
   const exams = ASSESSMENTS;
-  const diagTaken = history.some((h) => h.kind === 'diagnostic');
 
   return (
     <>
@@ -86,26 +84,12 @@ export default function ExamsList() {
       />
 
       <div className="container" style={{ paddingBottom: 80 }}>
-        <section aria-labelledby="start-heading">
-          <h2 id="start-heading" className="eyebrow">1. Find your starting point</h2>
-          <div className="card diag-card" style={{ '--r': '-0.4deg', display: 'grid', gridTemplateColumns: 'auto minmax(0,1fr) auto', gap: 22, alignItems: 'center', background: 'var(--butter) var(--grain-tex)' }}>
-            <div style={{ width: 110 }} aria-hidden="true"><Art name="spot-compass" w={300} h={300} /></div>
-            <div style={{ minWidth: 0 }}>
-              <h3 className="h3" style={{ fontSize: 25 }}>The diagnostic</h3>
-              <p className="body-text" style={{ margin: '6px 0 0', fontSize: 15.5, maxWidth: '60ch', color: '#3A3320' }}>
-                100 untimed items that score all nine domains and rank them by exam weight times points lost. Take it first, and again
-                midway through your prep. It&rsquo;s a placement test, not a pass predictor.
-              </p>
-            </div>
-            <Link className="btn btn-dark" to={access.signedIn ? P.diagnostic : P.signinNext(P.diagnostic)}>{diagTaken ? 'Retake the diagnostic' : 'Take the diagnostic'}</Link>
-          </div>
-        </section>
-
-        <section aria-labelledby="exam-heading" style={{ marginTop: 48 }}>
-          <h2 id="exam-heading" className="eyebrow">2. Rehearse the real thing</h2>
+        <section aria-labelledby="exam-heading">
+          <h2 id="exam-heading" className="eyebrow">1. Take the exams</h2>
           <p className="body-text" style={{ margin: '0 0 18px', maxWidth: '72ch' }}>
-            Full-length, 170-question exams on the real exam&rsquo;s 3.5-hour clock. Take at least one timed and in a single sitting
-            before test day, and review every miss afterward; the results screen lists the lessons to reread.
+            Full-length, 170-question exams on the real exam&rsquo;s 3.5-hour clock. Start with <strong>Practice Exam 1 in practice
+            mode</strong> as your baseline: it&rsquo;s untimed and saves as you go, and your results rank the nine domains to study
+            first. Take the others later in your prep, at least one timed and in a single sitting before test day.
           </p>
           <div className="stack" style={{ gap: 24 }}>
             {exams.map((a, i) => <Ticket key={a.id} a={a} i={i} access={access} attempts={attemptsFor(a.id)} />)}
@@ -113,7 +97,7 @@ export default function ExamsList() {
         </section>
 
         <section aria-labelledby="target-heading" style={{ marginTop: 52 }}>
-          <h2 id="target-heading" className="eyebrow">3. Shore up a weak spot</h2>
+          <h2 id="target-heading" className="eyebrow">2. Shore up a weak spot</h2>
           <div className="grid-cards" style={{ gap: 26 }}>
             <Link to={P.course} className="card card-link" style={{ '--r': '-0.6deg' }}>
               <span className="tape" aria-hidden="true" />

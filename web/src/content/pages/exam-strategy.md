@@ -94,7 +94,7 @@ Check what's allowed on test day, such as an on-screen calculator, in APA's cand
 - **Space it out.** Short, frequent sessions beat long cramming sessions. Ten minutes of flashcards a day adds up.
 - **Mix it up.** Once you've covered a few domains, mixed practice (the full-length exams) trains you to recognize what kind of question you're facing, which is exactly what the exam demands.
 - **Keep an error log.** For every miss, note *why*: didn't know it, misread it, fell for a distractor, or ran out of time. Each needs a different fix. The dashboard's "Lessons to review" list is a head start.
-- **Take the diagnostic twice.** Once at the start to aim your study, and once midway to confirm your weak spots have moved.
+- **Use the exams to aim your study.** Take Practice Exam 1 at the start as your baseline, and another exam midway to confirm your weak spots have moved.
 - **Simulate the real thing.** At least one full-length exam, timed, in one sitting, at the time of day you'll test.
 
 ## The last week

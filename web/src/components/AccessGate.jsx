@@ -34,7 +34,7 @@ export default function AccessGate({ what = 'the rest of this lesson', headingLe
         Create an account to see {what}
       </H>
       <p className="body-text" style={{ margin: '0 0 18px', maxWidth: '60ch' }}>
-        Every lesson, full-length exam, and the diagnostic is open to you. An account keeps your scores and progress
+        Every lesson and full-length practice exam is open to you. An account keeps your scores and progress
         in one place so you can see where to study next.
       </p>
       <div className="row-wrap">

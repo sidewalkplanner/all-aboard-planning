@@ -25,11 +25,10 @@ import Pricing from './pages/Pricing';
 import NotFound from './pages/NotFound';
 import Review from './pages/aicp/Review';
 
-// Route-split: these pull in the large bundled question banks (~660KB
-// combined) via useExamSession/useDiagnosticSession. Lazy-loading them
+// Route-split: the exam runner pulls in the large bundled question banks
+// via useExamSession. Lazy-loading it
 // keeps that weight out of the main bundle, which never needs it.
 const ExamRunner = lazy(() => import('./pages/exam/ExamRunner'));
-const DiagnosticFlow = lazy(() => import('./pages/diagnostic/DiagnosticFlow'));
 // The dashboard and flashcards carry the full flashcard deck.
 const Progress = lazy(() => import('./pages/Progress'));
 const Flashcards = lazy(() => import('./pages/aicp/Flashcards'));
@@ -90,14 +89,15 @@ export default function App() {
                   {/* Domain drills were retired in favour of lessons; old links land on the course. */}
                   <Route path={P.drills} element={<Navigate to={P.course} replace />} />
                   <Route path={P.progress} element={<RequireSignIn title="Dashboard" what="your dashboard"><Progress /></RequireSignIn>} />
-                  <Route path={P.diagnostic} element={<RequireSignIn title="Diagnostic" what="the diagnostic"><DiagnosticFlow /></RequireSignIn>} />
+                  {/* The diagnostic was retired: every practice exam now ranks the domains to study. */}
+                  <Route path={P.diagnostic} element={<Navigate to={P.exams} replace />} />
                   <Route path={P.run} element={<ExamRunner />} />
                   <Route path={P.signin} element={<SignIn />} />
 
                   {/* Legacy URLs */}
                   <Route path="/exams" element={<LegacyRedirect to={P.exams} />} />
                   <Route path="/exam/run" element={<LegacyRedirect to={P.run} />} />
-                  <Route path="/diagnostic" element={<LegacyRedirect to={P.diagnostic} />} />
+                  <Route path="/diagnostic" element={<Navigate to={P.exams} replace />} />
                   <Route path="/study" element={<Navigate to={P.course} replace />} />
                   <Route path="/progress" element={<LegacyRedirect to={P.progress} />} />
                   <Route path="/pricing" element={<LegacyRedirect to={P.pricing} />} />

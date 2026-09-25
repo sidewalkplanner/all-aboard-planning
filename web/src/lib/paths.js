@@ -23,8 +23,8 @@ export const P = {
   faq: `${AICP}/faq`,
   pricing: `${AICP}/pricing`,
   exams: `${AICP}/exams`,
+  // Retired: the diagnostic and domain drills. Their routes only redirect now.
   diagnostic: `${AICP}/diagnostic`,
-  // Retired: domain drills. The route only redirects to the course now.
   drills: `${AICP}/drills`,
   progress: `${AICP}/progress`,
   signin: `${AICP}/signin`,
@@ -38,4 +38,4 @@ export const P = {
 
 // Routes that render dark-mode-capable screens (the header follows their theme).
 export const isDarkCapableRoute = (pathname) =>
-  pathname.startsWith(P.run) || pathname.startsWith(P.diagnostic);
+  pathname.startsWith(P.run);

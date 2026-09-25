@@ -3,7 +3,7 @@ export const art = (name) => `${import.meta.env.BASE_URL}art/${name}.webp`;
 
 // Each domain has a badge (public/art/badge-*.webp) and its own paper colour.
 // Domains are named several ways across the site (curriculum id, display
-// name, question-bank name, diagnostic name), so look them up by keyword.
+// name, question-bank name), so look them up by keyword.
 const DOMAIN_ART = [
   [/research/i, 'research', '#7FB2DD'],
   [/fundamental/i, 'fundamentals', '#F4C95D'],

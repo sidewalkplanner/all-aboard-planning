@@ -36,8 +36,10 @@ export default function Progress() {
   const prog = plan && planProgress(plan, study);
   const week = plan && prog.current !== null ? plan.weeks[prog.current] : null;
 
-  const diag = summary.recent.find((h) => h.kind === 'diagnostic');
-  const priorities = (diag && diag.priorities ? diag.priorities : []).map(domainByBankName).filter(Boolean);
+  // Study priorities come from the most recent attempt that ranked them: every
+  // practice exam does (older histories may hold a retired diagnostic's).
+  const ranked = summary.recent.find((h) => h.priorities && h.priorities.length);
+  const priorities = (ranked ? ranked.priorities : []).map(domainByBankName).filter(Boolean);
 
   const missed = useMemo(() => history.slice(-20).flatMap((h) => h.missedRefs || []), [history]);
   // Lessons to review: missed practice questions, plus checkpoints currently answered wrong.
@@ -71,7 +73,7 @@ export default function Progress() {
         <h1 className="h1">{firstName ? `Welcome back, ${firstName}` : 'Your dashboard'}</h1>
         <p className="lead">
           {doneCount === 0 && summary.n === 0
-            ? 'Start with the diagnostic to see where you stand, pick a study plan, then work through the lessons. Everything you do shows up here.'
+            ? 'Start with Practice Exam 1 in practice mode to see where you stand, pick a study plan, then work through the lessons. Everything you do shows up here.'
             : `${doneCount} of ${LESSONS.length} lessons complete · ${examsTaken} of ${examsTotal} practice exams taken · ${mastered} of ${ALL_CARDS.length} flashcards mastered.`}
         </p>
       </header>
@@ -140,22 +142,22 @@ export default function Progress() {
             )}
           </section>
 
-          <section className="card" aria-labelledby="dash-diag">
+          <section className="card" aria-labelledby="dash-focus">
             <span className="eyebrow eyebrow-rust">Where to focus</span>
-            {diag ? (
+            {priorities.length > 0 ? (
               <>
-                <h2 id="dash-diag" className="h3">Your diagnostic priorities</h2>
+                <h2 id="dash-focus" className="h3">Study these first</h2>
                 <ol style={{ margin: '10px 0 14px', paddingLeft: 20, fontSize: 14.5, display: 'flex', flexDirection: 'column', gap: 4 }}>
                   {priorities.map((d) => <li key={d.id}><Link to={P.domain(d.id)}>{d.name}</Link></li>)}
                 </ol>
-                <p className="small" style={{ margin: '0 0 12px' }}>From your diagnostic on {fmtShortDate(diag.completedAt)} (weighted score {diag.pct}%).</p>
-                <Link className="btn btn-secondary btn-sm" to={P.diagnostic}>Retake mid-prep</Link>
+                <p className="small" style={{ margin: '0 0 12px' }}>From {ranked.title} on {fmtShortDate(ranked.completedAt)}. Your next practice exam updates this list.</p>
+                <Link className="btn btn-secondary btn-sm" to={P.exams}>See the practice exams</Link>
               </>
             ) : (
               <>
-                <h2 id="dash-diag" className="h3">Take the diagnostic</h2>
-                <p className="small" style={{ margin: '6px 0 16px' }}>100 untimed items that rank the nine domains by how many points each is costing you. About two hours.</p>
-                <Link className="btn btn-primary" to={P.diagnostic}>Start the diagnostic</Link>
+                <h2 id="dash-focus" className="h3">Set your baseline</h2>
+                <p className="small" style={{ margin: '6px 0 16px' }}>Take Practice Exam 1 in practice mode: untimed, and it saves as you go. Your results rank the nine domains by how many points each is costing you.</p>
+                <Link className="btn btn-primary" to={P.runExam('e1', 'practice')}>Start Practice Exam 1</Link>
               </>
             )}
           </section>

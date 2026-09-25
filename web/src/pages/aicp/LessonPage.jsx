@@ -41,7 +41,6 @@ function PracticeBlock({ lesson }) {
       </p>
       <div className="row-wrap">
         <Link className="btn btn-primary" to={P.exams}>See the practice exams</Link>
-        <Link className="btn btn-secondary" to={P.diagnostic}>Take the diagnostic</Link>
       </div>
       {!access.signedIn && (
         <p className="small" style={{ margin: '14px 0 0' }}>
