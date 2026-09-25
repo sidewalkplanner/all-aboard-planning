@@ -6,7 +6,7 @@ All Aboard Planning is an independent urban planning practice. We're starting wi
 
 ## Why we built the course
 
-Most planners prepare for the AICP exam while working full time. The material is broad, running from nineteenth-century reform movements to impact-fee case law to running a public meeting, and the available resources are often scattered, out of date, or written as lists of facts to memorize.
+People come to the AICP exam from all kinds of places: fresh out of a planning program, years into practice, or taking it again. The material is broad, running from nineteenth-century reform movements to impact-fee case law to running a public meeting, and the available resources are often scattered, out of date, or written as lists of facts to memorize.
 
 We built the course we wanted when we studied:
 

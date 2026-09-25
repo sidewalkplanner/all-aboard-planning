@@ -35,7 +35,7 @@ export const STUDY_PLANS = [
     id: '12-week',
     title: '12-week plan',
     hoursPerWeek: '5 to 7 hours a week',
-    who: 'For candidates balancing a full workload, or newer planners who want more time with unfamiliar material.',
+    who: 'For anyone who wants a steadier pace: studying alongside work or school, or spending more time with unfamiliar material.',
     weeks: [
       { focus: 'Baseline and planning history', lessons: ['planning-history', 'planning-theory', 'urban-form-and-settlement'], practice: [strategy, baseline] },
       { focus: 'Planning law', lessons: ['land-use-law-foundations', 'takings-and-exactions', 'federal-policy-and-planning'], practice: [revisit('fundamentals', 'Fundamentals'), cards('10 minutes a day on this week\'s topics')] },

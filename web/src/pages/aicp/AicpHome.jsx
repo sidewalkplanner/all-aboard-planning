@@ -18,8 +18,8 @@ const OFFERS = [
 ];
 
 const AUDIENCES = [
-  { title: 'Working planners', body: 'You know the job but haven’t studied for a test in years. You need the theory, law, and history behind daily practice organized and refreshed.', bg: 'var(--butter)' },
-  { title: 'Early-career planners', body: 'You’ve recently become eligible and want a structured path through material that school only partly covered.', bg: 'var(--sky)' },
+  { title: 'Recent graduates', body: 'Your coursework is fresh, but the exam also tests how planning works in practice: ethics, administration, and getting plans implemented. The lessons connect what you studied to the job.', bg: 'var(--sky)' },
+  { title: 'Working professionals', body: 'You know the job but haven’t studied for a test in years. The lessons organize the theory, law, and history behind daily practice, and the study plans fit around a full schedule.', bg: 'var(--butter)' },
   { title: 'Candidates retaking the exam', body: 'You want to find exactly which domains cost you points and spend your time there, not on what you already know.', bg: 'var(--blush)' },
 ];
 
@@ -86,7 +86,7 @@ export default function AicpHome() {
           <div>
             <span className="chip chip-warn" style={{ transform: 'rotate(-2deg)' }}>AICP exam prep: lessons, study plans, and practice</span>
             <h1 className="display hero-title">
-              Learn it, practice it, and walk in <em className="marker">ready.</em>
+              Your one stop for <em className="marker">AICP prep!</em>
             </h1>
             <p className="lead hero-lead">
               A complete course for the AICP Certification Exam, built around APA&rsquo;s nine-domain content outline. Study
@@ -127,8 +127,8 @@ export default function AicpHome() {
       <section className="kraft-bg torn-top" aria-labelledby="who-heading" style={{ marginTop: -10 }}>
         <div className="container" style={{ paddingTop: 44, paddingBottom: 72 }}>
           <span className="stamp" style={{ color: 'var(--tomato-ink)' }}>Who it&rsquo;s for</span>
-          <h2 id="who-heading" className="h2" style={{ marginTop: 18 }}>Built for planners studying around a <span className="scribble">full-time</span> job</h2>
-          <p className="lead" style={{ color: '#3D3326' }}>If you meet APA&rsquo;s eligibility requirements and are preparing for the AICP exam, this course is for you.</p>
+          <h2 id="who-heading" className="h2" style={{ marginTop: 18 }}>Built for <span className="scribble">everyone</span> headed to the AICP exam</h2>
+          <p className="lead" style={{ color: '#3D3326' }}>Recent graduates, working planners, and anyone taking the exam again: if you&rsquo;re preparing for the AICP exam, this course is for you.</p>
           <div className="grid-cards" style={{ marginTop: 34 }}>
             {AUDIENCES.map((a, i) => (
               <div key={a.title} className="card card--lift" style={{ '--r': `${[-1, 0.8, -0.5][i]}deg` }}>
