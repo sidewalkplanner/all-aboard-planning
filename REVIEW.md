@@ -1,5 +1,18 @@
 # REVIEW: AICP course build
 
+## Update 5: the streetcar on screen, and exams replace the diagnostic
+
+### The home page
+The hero was tall enough that the streetcar sat below the fold on common screens. The headline now runs two lines, the "first stop" card is slimmer, and short screens tighten further, so the whole streetcar shows without scrolling at 1280x720 and up (checked at seven sizes, including phones). The streetcar also starts partway into its loop, so it's already rolling in when the page opens. On phones the town comes before the card and is cropped to keep the streetcar, the AICP stop, and the planners in view.
+
+### The diagnostic is retired; every exam ranks where to study
+- **Every exam's results now say "Study in this order":** the top three domains by exam weight times the share of answered questions missed, each linking to that domain's lessons. It appears once 40 or more questions are answered, and ignores unanswered ones, so a partial practice-mode run still gives a fair ranking.
+- **The dashboard's "Study these first"** comes from your latest exam, and before any exam it points you to Practice Exam 1 as your baseline.
+- **Practice Exam 1 in practice mode is the baseline** on the home page, study plans, course overview, exam info, and FAQ. The study plans now go: Exam 1 baseline in week 1, Exam 2 midway, Exam 3 timed at the end. Weeks that had "retake the diagnostic" now say to reread the top domain on your dashboard.
+- **Old diagnostic links** open the practice exams page.
+- **Kept, unused:** the diagnostic's 100 original questions (`web/src/data/diagnostic-items.js`). None appear in the exams, so they could become lesson checkpoints or other practice later.
+- **Lost with the diagnostic:** its confidence tagging ("confident but wrong") and the per-domain Priority-to-Strong bands. Either could be added to the exam results later if they're missed.
+
 ## Update 4: collage design, lessons without exam questions
 
 ### The look

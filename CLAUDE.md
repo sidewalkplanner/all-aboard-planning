@@ -11,7 +11,7 @@ Everything prep-related therefore lives under `/aicp/`; firm-level pages (`/abou
 
 - Live URL: `https://sidewalkplanner.github.io/all-aboard-planning/`
 - The app is **frontend only**: no backend, no payments. The course is **free**, but lessons,
-  exams, the diagnostic, and the review tools require a (placeholder, browser-only) account so
+  exams, and the review tools require a (placeholder, browser-only) account so
   progress is tracked per person. See "Access, accounts, and the future paid tier" below.
 
 ## Repository layout
@@ -45,10 +45,9 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
       flashcards.js         The flashcard deck (built from every lesson's Key terms by a Vite plugin)
     content/pages/*.md      Exam Info, About, Exam strategy, Quick reference bodies (same renderer as lessons)
     content/site.js         Owner settings (CONTACT_EMAIL placeholder)
-    data/                   Question banks (exam1/2/3), diagnostic items, domain weights
+    data/                   Question banks (exam1/2/3), domain weights; diagnostic-items.js is retired (kept, unused)
     pages/                  Route components; pages/aicp/* are the prep section pages
     pages/exam/             Exam runner (the three full-length practice exams)
-    pages/diagnostic/       100-item diagnostic
 uploads/                    Source specs for the question banks and diagnostic (reference only)
 *.dc.html, support.js, root *.js   Original design prototypes (reference only; not deployed)
 .github/workflows/deploy-pages.yml  Builds web/ and deploys to GitHub Pages on push to main
@@ -108,7 +107,7 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
   `npm run art <name>`. Paper textures come from `npm run art:textures`.
 - **Motion:** gentle (float, sway, the hero streetcar). Everything respects
   `prefers-reduced-motion`.
-- The exam runner and diagnostic use inline styles with `themeTokens(dark)` because they
+- The exam runner uses inline styles with `themeTokens(dark)` because they
   support a blueprint dark mode; leave that pattern in place there.
 - **Accessibility:** exactly one `<h1>` per page, headings in order, every image/SVG either has
   alt text or `aria-hidden`, visible focus (global `:focus-visible` ring), AA contrast, links
@@ -216,7 +215,16 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
 Retired, with redirects for old links: domain drills (`?drill=`, to the domain's lessons),
 lesson practice sets (`?set=`, to the lesson), and the warm-up quizzes (`?aid=q1|q2`, to the
 exams list). The quizzes were a free teaser for a paid course and stopped making sense once
-everything was free. Don't reintroduce any of them; exam items live only in the exams.
+everything was free. The 100-item diagnostic (`/aicp/diagnostic`, to the exams list) was
+retired too: with 170 questions, each exam gives a sturdier per-domain read, so every exam's
+results now carry its ranking. Its 100 original questions stay in `data/diagnostic-items.js`,
+unused, for later. Don't reintroduce any of them; exam items live only in the exams.
+
+**Study order.** `useExamSession` ranks the top three domains by exam weight times the share of
+*answered* questions missed (`studyOrder`, shown once at least 40 are answered), shows them as
+"Study in this order" on the results screen, and records them as `priorities` on the attempt.
+The dashboard's "Study these first" card reads the latest attempt that has `priorities`.
+Practice Exam 1 in practice mode is the recommended baseline everywhere (home, plans, dashboard).
 
 Assessments in `PUBLIC_ASSESSMENTS` would open without an account (none today); anything else
 redirects to `/aicp/signin?next=...` and returns there after sign-in.
@@ -230,14 +238,14 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
   Today: signed-out visitors get all marketing pages, the course overview, the
   study plans, and each lesson's learning objectives; everything else is free with an account.
 - **Gating UI:** `components/AccessGate.jsx` (inline "create a free account" box) and
-  `components/RequireSignIn.jsx` (route wrapper used for the diagnostic and progress).
+  `components/RequireSignIn.jsx` (route wrapper used for the dashboard and review tools).
   Never check `user` directly in a page; ask `useAccess()`.
 - **Accounts are a placeholder** (`src/context/AuthContext.jsx`): accounts, SHA-256-hashed
   passwords, and the session live in this browser's localStorage. It isn't real security and
   doesn't sync across devices. To go live, replace the bodies of `signUp`, `signIn`, `signOut`
   and the initial session read with a hosted provider (Supabase, Firebase, Auth0, Clerk...) and
   move history to its database; keep the `{ user, signUp, signIn, signOut }` shape.
-- **Progress is per account:** history, saved exam attempts, and the saved diagnostic use
+- **Progress is per account:** history and saved exam attempts use
   `scopedKey()` from `lib/userStorage.js`. Signed-out visitors use the unscoped keys; on sign-up,
   guest history is adopted into the new account.
 - **Turning on paid plans later:** set `PAID_TIER_ENABLED = true`. Lessons/exams tagged `paid`
@@ -249,7 +257,7 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
 
 ## Study features (how the pieces fit)
 
-- **Site map for learners:** Course (lessons) · Study plan · Practice (`/aicp/exams`: diagnostic,
+- **Site map for learners:** Course (lessons) · Study plan · Practice (`/aicp/exams`:
   full exams) · Review (`/aicp/review`: exam strategy guide, flashcards, quick
   reference) · Exam info · Dashboard (`/aicp/progress`, signed in).
 - **Lesson page** (`pages/aicp/LessonPage.jsx`): body with mid-lesson checkpoints

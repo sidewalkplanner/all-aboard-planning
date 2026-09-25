@@ -21,6 +21,7 @@ const EXAM2_BANK = tagged(RAW_EXAM2, 'e2');
 const EXAM3_BANK = tagged(RAW_EXAM3, 'e3');
 
 const ATTEMPTS_KEY = 'aap-exam-attempts';
+const MIN_ANSWERS_FOR_ORDER = 40;
 
 const loadAttempts = () => {
   try {
@@ -161,7 +162,9 @@ export function useExamSession() {
       lessonSlug: null,
       title: activeTitle, mode, pct, correctCount, total, answeredCount, flagCount, elapsedSeconds,
       missedRefs: QS.filter((qq, idx) => answers[idx] !== qq.correct).map((qq) => qq.ref),
-      domainBreakdown: domainRows.filter((d) => d.n > 0).map((d) => ({ short: d.short, got: d.got, n: d.n }))
+      domainBreakdown: domainRows.filter((d) => d.n > 0).map((d) => ({ short: d.short, got: d.got, n: d.n })),
+      // Top study priorities (question-bank domain names), shown on the dashboard.
+      priorities: studyOrder.map((x) => x.bankName)
     });
     clearAttempt(sessionKey);
     setView('results');
@@ -178,6 +181,24 @@ export function useExamSession() {
     const sessionPct = inDomain.length ? Math.round((got / inDomain.length) * 100) : 0;
     return { ...d, n: inDomain.length, got, sessionPct };
   }), [QS, answers]);
+
+  // "Study in this order": each domain's weight on the real exam times the
+  // share of its answered questions missed here, so a soft spot in a heavy
+  // domain outranks a worse score in a light one. Unanswered questions don't
+  // count, and the list needs enough answers to mean something.
+  const studyOrder = useMemo(() => {
+    if (Object.keys(answers).length < MIN_ANSWERS_FOR_ORDER) return [];
+    return DOMAINS.map((d) => {
+      const cd = domainByBankName(d.name);
+      const answered = QS.map((qq, idx) => ({ qq, idx })).filter((x) => x.qq.domain === d.name && answers[x.idx] !== undefined);
+      const missed = answered.filter((x) => answers[x.idx] !== x.qq.correct).length;
+      return { cd, bankName: d.name, answered: answered.length, missed, cost: cd && answered.length ? (cd.weight * missed) / answered.length : 0 };
+    })
+      .filter((x) => x.cd && x.missed > 0)
+      .sort((a, b) => b.cost - a.cost)
+      .slice(0, 3)
+      .map((x, k) => ({ rank: k + 1, id: x.cd.id, name: x.cd.name, bankName: x.bankName, weight: x.cd.weight, missed: x.missed, answered: x.answered }));
+  }, [QS, answers]);
 
   const correctCount = QS.filter((qq, idx) => answers[idx] === qq.correct).length;
   const pct = total ? Math.round((correctCount / total) * 100) : 0;
@@ -227,7 +248,7 @@ export function useExamSession() {
     seconds, totalSeconds, dark, toggleDark, view,
     answers, flags, checked, answeredCount, flagCount,
     pick, checkAnswer, toggleFlag, prev, next, goGrid, backToExam, submit, goAnswerReview, goTo,
-    domainRows, correctCount, pct, weakestDomain, timeUsed, timeUsedNote, reviewItems,
+    domainRows, studyOrder, minAnswersForOrder: MIN_ANSWERS_FOR_ORDER, correctCount, pct, weakestDomain, timeUsed, timeUsedNote, reviewItems,
     navigate
   };
 }

@@ -20,14 +20,14 @@ const GROUPS = [
         q: 'What\u2019s the best way to use the course?',
         a: (
           <>
-            <p>Take the <Link to={P.diagnostic}>diagnostic</Link>, follow a <Link to={P.studyPlan}>study plan</Link>, and for each lesson: read it, answer each checkpoint as you reach it, and mark it complete. Every few weeks, take a full-length practice exam and reread the lessons it points you to. Spend ten minutes a day on <Link to={P.flashcards}>flashcards</Link>.</p>
-            <p>Midway through, retake the diagnostic. In the final weeks, take full-length timed exams, reread the lessons your <Link to={P.progress}>dashboard</Link> lists for review, and read the <Link to={P.strategy}>exam strategy guide</Link> and <Link to={P.quickRef}>quick reference</Link>.</p>
+            <p>Take <Link to={P.runExam('e1', 'practice')}>Practice Exam 1</Link> in practice mode as your baseline, follow a <Link to={P.studyPlan}>study plan</Link>, and for each lesson: read it, answer each checkpoint as you reach it, and mark it complete. Your results rank the domains to study first. Spend ten minutes a day on <Link to={P.flashcards}>flashcards</Link>.</p>
+            <p>Midway through, take Practice Exam 2 to see what has moved. In the final weeks, take full-length timed exams, reread the lessons your <Link to={P.progress}>dashboard</Link> lists for review, and read the <Link to={P.strategy}>exam strategy guide</Link> and <Link to={P.quickRef}>quick reference</Link>.</p>
           </>
         ),
       },
       {
         q: 'How long should I study?',
-        a: <p>Most candidates do well with a steady plan of two to three months. We offer an <Link to={P.studyPlan + '#8-week'}>8-week plan</Link> (8 to 10 hours a week) and a <Link to={P.studyPlan + '#12-week'}>12-week plan</Link> (5 to 7 hours a week). Take the diagnostic first so you can spend extra time on your weakest domains.</p>,
+        a: <p>Most candidates do well with a steady plan of two to three months. We offer an <Link to={P.studyPlan + '#8-week'}>8-week plan</Link> (8 to 10 hours a week) and a <Link to={P.studyPlan + '#12-week'}>12-week plan</Link> (5 to 7 hours a week). Take Practice Exam 1 first so you can spend extra time on your weakest domains.</p>,
       },
       {
         q: 'Are the practice questions taken from the real exam?',
@@ -48,7 +48,7 @@ const GROUPS = [
     items: [
       {
         q: 'Do I need to pay for anything?',
-        a: <p>No. Everything in the course is open to anyone with an account: every lesson, all three full-length practice exams, the diagnostic, the review tools, and both study plans.</p>,
+        a: <p>No. Everything in the course is open to anyone with an account: every lesson, all three full-length practice exams, the review tools, and both study plans.</p>,
       },
       {
         q: 'Why do I need an account?',

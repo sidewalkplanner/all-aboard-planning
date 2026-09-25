@@ -29,7 +29,7 @@ export default function CourseOverview() {
             {doneCount ? `Continue: lesson ${nextLesson.number}` : 'Start lesson 1'}
           </Link>
           <Link className="btn btn-secondary" to={P.studyPlan}>Follow a study plan</Link>
-          <Link className="btn btn-secondary" to={P.diagnostic}>Find your weak spots first</Link>
+          <Link className="btn btn-secondary" to={P.runExam('e1', 'practice')}>Find your weak spots first</Link>
         </div>
         {signedIn && (
           <div style={{ marginTop: 22, maxWidth: 520 }}>

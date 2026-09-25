@@ -1,4 +1,4 @@
-// The strip across the top of the exam and diagnostic runners: position,
+// The strip across the top of the exam runner: position,
 // a marker-style progress bar, a mode chip, and small tool buttons. The
 // tool buttons take their colors from --tb-* set by the runner page.
 export default function RunnerBar({ T, label, progress, chip, children }) {

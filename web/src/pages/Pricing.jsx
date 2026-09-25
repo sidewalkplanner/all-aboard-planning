@@ -12,7 +12,6 @@ import useAccess from '../hooks/useAccess';
 // PRICE from data/domains.js (shared with the rest of the site); the
 // Teams tier has no public price.
 const FREE_FEATURES = [
-  'The 100-item diagnostic with a ranked study list',
   'Free account: the first lesson in each of the nine domains',
   '8- and 12-week study plans',
 ];
@@ -62,7 +61,7 @@ function PaidPricing() {
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 700, letterSpacing: '-0.03em', margin: '4px 0 4px' }}>$0</div>
             <p className="small" style={{ margin: '0 0 22px' }}>No account needed.</p>
             <FeatureList items={FREE_FEATURES} color="var(--text)" />
-            <div style={{ marginTop: 'auto', paddingTop: 26 }}><Link className="btn btn-secondary btn-block" to={P.diagnostic}>Take the free diagnostic</Link></div>
+            <div style={{ marginTop: 'auto', paddingTop: 26 }}><Link className="btn btn-secondary btn-block" to={P.course}>Browse the course</Link></div>
           </section>
 
           <section className="card card-dark" aria-labelledby="tier-full" style={{ display: 'flex', flexDirection: 'column', padding: 30 }}>
@@ -121,7 +120,6 @@ const FREE_NOW = [
   `All ${LESSONS.length} lessons across the nine exam domains`,
   'Original checkpoint questions in every lesson',
   'Three full-length 170-question practice exams, timed or untimed',
-  'The 100-item diagnostic with a ranked study list',
   '8- and 12-week study plans',
   'Progress tracking across every attempt',
 ];
@@ -134,7 +132,7 @@ function FreeAccess() {
       <PageHeader
         eyebrow="Pricing"
         title="The whole course is free."
-        lead="Every lesson, exam, and the diagnostic, at no cost. All you need is an account, which keeps your scores and progress in one place."
+        lead="Every lesson and practice exam, at no cost. All you need is an account, which keeps your scores and progress in one place."
       />
       <div className="container" style={{ paddingBottom: 72 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 20, alignItems: 'stretch' }}>

@@ -5,7 +5,7 @@ import { PAID_TIER_ENABLED } from './access.js';
 export const AICP_NAV = [
   { label: 'Course', to: P.course, match: [P.course, `${P.aicp}/lessons`] },
   { label: 'Study plan', to: P.studyPlan },
-  { label: 'Practice', to: P.exams, match: [P.exams, P.run, P.diagnostic] },
+  { label: 'Practice', to: P.exams, match: [P.exams, P.run] },
   { label: 'Review', to: P.review, match: [P.review] },
   { label: 'Exam info', to: P.examInfo, match: [P.examInfo, P.faq] },
   // Pricing returns to the header when paid plans launch (lib/access.js).
@@ -31,7 +31,6 @@ export const FOOTER_NAV = [
     heading: 'Practice',
     links: [
       { label: 'Your dashboard', to: P.progress },
-      { label: 'Diagnostic', to: P.diagnostic },
       { label: 'Practice exams', to: P.exams },
     ],
   },

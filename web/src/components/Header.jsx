@@ -19,7 +19,7 @@ export default function Header() {
   const open = openAt === here;
   const toggle = () => setOpenAt(open ? null : here);
 
-  // Blueprint (dark) mode only exists within the exam runner and diagnostic;
+  // Blueprint (dark) mode only exists within the exam runner;
   // the header only goes dark while one of those is rendering dark content.
   const showDark = dark && isDarkCapableRoute(location.pathname);
   const ink = showDark ? '#EEF3FA' : 'var(--ink)';
