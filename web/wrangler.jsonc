@@ -1,10 +1,17 @@
 // Cloudflare Workers config for allaboardplanning.com: an assets-only site.
-// Cloudflare runs `npm run build` in web/, then `npx wrangler deploy` uploads
-// ./dist. Any URL that isn't a file (a lesson someone bookmarked, a refresh
-// on /aicp/course) gets index.html, so React Router can show the right page.
+// `npx wrangler deploy` (and `npx wrangler preview` for pull requests) runs the
+// build below, then uploads ./dist. Any URL that isn't a file (a lesson someone
+// bookmarked, a refresh on /aicp/course) gets index.html, so React Router can
+// show the right page.
 {
   "name": "all-aboard-planning",
   "compatibility_date": "2026-09-01",
+  // Build here rather than relying on the dashboard's build command, so a
+  // deploy can never upload a missing or stale ./dist. Harmless if the
+  // dashboard also runs `npm run build`: it just builds again (about a second).
+  "build": {
+    "command": "npm ci --no-audit --no-fund && npm run build"
+  },
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
