@@ -9,7 +9,7 @@ site. Long term it becomes a planning consulting firm's site, with AICP prep as 
 Everything prep-related therefore lives under `/aicp/`; firm-level pages (`/about`,
 `/contact`, and eventually a consulting homepage at `/`) live at the root.
 
-- Live URL: `https://sidewalkplanner.github.io/all-aboard-planning/`
+- Live URL: `https://allaboardplanning.com/` (Cloudflare Workers, static assets)
 - The app is **frontend only**: no backend, no payments. The course is **free**, but lessons,
   exams, and the review tools require a (placeholder, browser-only) account so
   progress is tracked per person. See "Access, accounts, and the future paid tier" below.
@@ -18,9 +18,9 @@ Everything prep-related therefore lives under `/aicp/`; firm-level pages (`/abou
 
 ```
 web/                        The site (React 19 + Vite 8 + react-router 7). All real work happens here.
-  index.html                Shell, SEO meta, SPA-redirect decoder for GitHub Pages
-  public/404.html           GitHub Pages SPA fallback (encodes deep links; do not remove)
-  vite.config.js            base path '/all-aboard-planning/' + the lesson Markdown plugin
+  index.html                Shell and SEO meta (canonical and share URLs use allaboardplanning.com)
+  wrangler.jsonc            Cloudflare config: serves ./dist, SPA fallback so deep links load the app
+  vite.config.js            base path '/' (site root) + the lesson Markdown plugin
   scripts/markdown.mjs      Shared Markdown → HTML renderer (used by Vite plugin and checker)
   scripts/check-content.mjs `npm run check`: validates lessons, checkpoints, internal links
   art/                      Illustration pipeline (`npm run art`): hand-drawn SVG scenes -> public/art/*.webp
@@ -50,7 +50,6 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     pages/exam/             Exam runner (the three full-length practice exams)
 uploads/                    Source specs for the question banks and diagnostic (reference only)
 *.dc.html, support.js, root *.js   Original design prototypes (reference only; not deployed)
-.github/workflows/deploy-pages.yml  Builds web/ and deploys to GitHub Pages on push to main
 ```
 
 ## Commands (run in `web/`)
@@ -63,12 +62,16 @@ uploads/                    Source specs for the question banks and diagnostic (
 | `npm run lint` | oxlint (warnings about unused catch params are pre-existing and fine) |
 | `npm run check` | Content + link checker. Must pass before pushing |
 
-Deployment is automatic: pushing to `main` runs the Pages workflow. There is no staging.
+Deployment is automatic: Cloudflare Workers Builds watches `main`. Its build settings are
+root directory `web`, build command `npm run build`, deploy command `npx wrangler deploy`.
+There is no staging. The site used to be on GitHub Pages at `/all-aboard-planning/`; that
+was switched off, and the Pages workflow and `404.html` workaround were removed. If the site
+ever moves under a subfolder again, set `base` in `vite.config.js` to that subfolder.
 
 ## Routing rules
 
-- The router uses `basename={import.meta.env.BASE_URL}`, so route paths never include
-  `/all-aboard-planning`. In Markdown, write internal links as root-relative paths
+- The router uses `basename={import.meta.env.BASE_URL}` (the Vite `base`, `/` today), so route
+  paths never include a base prefix. In Markdown, write internal links as root-relative paths
   (`/aicp/lessons/zoning-fundamentals`); the Markdown plugin adds the base path and
   `LessonBody` turns clicks into client-side navigation.
 - Build links from `src/lib/paths.js` (`P.course`, `P.lesson(slug)`, …) instead of string

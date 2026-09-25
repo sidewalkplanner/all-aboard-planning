@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 art/out/
+
+# Cloudflare Wrangler local state
+.wrangler/

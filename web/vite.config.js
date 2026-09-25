@@ -49,7 +49,8 @@ function flashcards() {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [lessonMarkdown(), flashcards(), react()],
-  // GitHub Pages serves this as a project site at /all-aboard-planning/,
-  // so asset URLs need that prefix baked in.
-  base: '/all-aboard-planning/',
+  // Served from the domain root on Cloudflare (allaboardplanning.com). Every
+  // asset URL, route, and lesson link is built from this, so a site hosted in
+  // a subfolder needs that subfolder here (with slashes on both ends).
+  base: '/',
 })
