@@ -1,57 +1,65 @@
-import { useNavigate } from 'react-router-dom';
-import Hoverable from '../components/Hoverable';
-import { ASSESSMENTS, PRICE } from '../data/domains';
-import { chipStyle, cardStyle } from '../lib/style';
-import { LIGHT } from '../lib/theme';
-import { useUnlock } from '../context/UnlockContext';
+import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
+import PageHeader from '../components/PageHeader';
+import Art from '../components/Art';
+import { ASSESSMENTS } from '../data/domains';
+import useAccess from '../hooks/useAccess';
+import usePageTitle from '../hooks/usePageTitle';
+import { PUBLIC_ASSESSMENTS } from '../lib/access';
+import { getHistory } from '../lib/history';
+import { P } from '../lib/paths';
 
-const rowCardStyle = { ...cardStyle(LIGHT, { padding: 24 }), display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 24, alignItems: 'center' };
-const ghostBtn = { background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600 };
-const ghostBtnHover = { border: '1px solid #1A1C2B', background: '#F6F7FB' };
-const primaryBtn = { background: '#1D5FA8', border: 'none', color: '#F6F7FB', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600 };
-const primaryBtnHover = { background: '#164C87' };
+const fmtTime = (mins) => {
+  const h = Math.floor(mins / 60), m = mins % 60;
+  return (h ? `${h}h ` : '') + (m ? `${m}m` : '');
+};
 
-function Row({ a, unlocked, onPractice, onTimed, onUnlock }) {
-  const locked = a.tier === 'paid' && !unlocked && !a.soon;
-  const hrs = Math.floor(a.mins / 60), mns = a.mins % 60;
-  const status = a.soon ? 'In development' : a.tier === 'free' ? 'Free' : locked ? 'Locked' : 'Unlocked';
-  const statusStyle = a.soon ? chipStyle('#FCF0DB', '#8A6420') : a.tier === 'free' ? chipStyle('#E6EEF9', '#14508C') : locked ? chipStyle('#ECEDF6', '#646A85') : chipStyle('#FCF0DB', '#8A6420');
-  const taken = a.soon ? a.taken : locked ? 'Included in Full Access' : a.taken;
-  const timeLabel = (hrs ? hrs + 'h ' : '') + (mns ? mns + 'm' : '');
+const STUB = {
+  e1: ['1', 'var(--butter)'], e2: ['2', 'var(--blush)'], e3: ['3', 'var(--lavender)'],
+};
+
+// Each exam is a train ticket: a coloured stub, then the details.
+function Ticket({ a, i, access, attempts }) {
+  const isPublic = PUBLIC_ASSESSMENTS.includes(a.id);
+  const canOpen = access.canOpenAssessment(a);
+  const best = attempts.length ? Math.max(...attempts.map((x) => x.pct)) : null;
+  const lastTry = attempts.length ? attempts[attempts.length - 1] : null;
+  const [mark, color] = STUB[a.id] ?? ['★', 'var(--butter)'];
 
   return (
-    <div style={rowCardStyle}>
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 25, fontWeight: 700, margin: 0 }}>{a.title}</h2>
-          <span style={statusStyle}>{status}</span>
+    <div className="ticket card card--lift" style={{ '--r': `${[-0.5, 0.4, -0.3, 0.5, -0.4][i % 5]}deg` }}>
+      <div className="ticket__stub" style={{ background: color }} aria-hidden="true">
+        <span className="ticket__admit">Admit one</span>
+        <span className="ticket__mark">{mark}</span>
+        <span className="ticket__admit">No. {String(a.size).padStart(3, '0')}</span>
+      </div>
+      <span className="ticket__notch ticket__notch--top" aria-hidden="true" />
+      <span className="ticket__notch ticket__notch--bottom" aria-hidden="true" />
+      <div className="ticket__body">
+        <div className="row-wrap" style={{ gap: 14 }}>
+          <h3 className="h3" style={{ fontSize: 25 }}>{a.title}</h3>
+          <span className="stamp" style={{ color: 'var(--brand-strong)' }}>Full length</span>
         </div>
-        <p style={{ fontSize: 15, color: '#646A85', margin: '8px 0 0', maxWidth: '52ch' }}>{a.blurb}</p>
-        <div style={{ display: 'flex', gap: 18, marginTop: 14, fontSize: 13.5, color: '#646A85', flexWrap: 'wrap' }}>
-          <span>{a.size} questions</span><span>{timeLabel}</span><span>{taken}</span>
+        <p className="body-text" style={{ margin: '8px 0 0', fontSize: 15.5, maxWidth: '56ch' }}>{a.blurb}</p>
+        <div className="row-wrap" style={{ gap: 8, marginTop: 12 }}>
+          <span className="chip chip--plain">{a.size} questions</span>
+          <span className="chip chip--plain">{fmtTime(a.mins)} timed</span>
+          {isPublic && <span className="chip chip-ok">No account needed</span>}
+          {lastTry && (
+            <span className="chip chip-warn">
+              Best {best}% &middot; last {lastTry.pct}% ({attempts.length} {attempts.length === 1 ? 'attempt' : 'attempts'})
+            </span>
+          )}
         </div>
       </div>
-      <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
-        {locked && (
-          <Hoverable
-            style={{ display: 'flex', alignItems: 'center', gap: 9, background: '#1A1C2B', border: 'none', color: '#F6F7FB', padding: '12px 20px', borderRadius: 10, fontSize: 15, fontWeight: 600 }}
-            hoverStyle={{ background: '#1D5FA8' }}
-            onClick={onUnlock}
-          >
-            <span style={{ display: 'block', width: 11, height: 9, border: '2px solid #F6F7FB', borderRadius: 2, position: 'relative', marginTop: 4 }}>
-              <span style={{ position: 'absolute', left: 1, top: -7, width: 5, height: 7, border: '2px solid #F6F7FB', borderBottom: 'none', borderRadius: '4px 4px 0 0', display: 'block' }} />
-            </span>
-            Unlock
-          </Hoverable>
-        )}
-        {a.soon && (
-          <span style={{ fontSize: 14.5, fontWeight: 600, color: '#8A6420', background: '#FCF0DB', padding: '12px 18px', borderRadius: 10 }}>Coming soon</span>
-        )}
-        {!locked && !a.soon && (
+      <div className="ticket__actions">
+        {canOpen ? (
           <>
-            <Hoverable style={ghostBtn} hoverStyle={ghostBtnHover} onClick={onPractice}>Practice mode</Hoverable>
-            <Hoverable style={primaryBtn} hoverStyle={primaryBtnHover} onClick={onTimed}>Start timed</Hoverable>
+            <Link className="btn btn-secondary" to={P.runExam(a.id, 'practice')}>Practice mode</Link>
+            <Link className="btn btn-primary" to={P.runExam(a.id, 'timed')}>Start timed</Link>
           </>
+        ) : (
+          <Link className="btn btn-dark" to={access.blockedTarget(P.runExam(a.id, 'practice'))}>{access.signedIn ? 'Unlock' : 'Sign in to start'}</Link>
         )}
       </div>
     </div>
@@ -59,45 +67,69 @@ function Row({ a, unlocked, onPractice, onTimed, onUnlock }) {
 }
 
 export default function ExamsList() {
-  const navigate = useNavigate();
-  const { unlocked } = useUnlock();
-  const freeExams = ASSESSMENTS.filter((a) => a.tier === 'free');
-  const paidExams = ASSESSMENTS.filter((a) => a.tier === 'paid');
-
-  const practice = (id) => navigate(`/exam/run?aid=${id}&mode=practice`);
-  const timed = (id) => navigate(`/exam/run?aid=${id}&mode=timed`);
-  const goUnlock = () => navigate('/pricing');
+  usePageTitle('Practice');
+  const access = useAccess();
+  const history = useMemo(() => (access.signedIn ? getHistory() : []), [access.signedIn]);
+  const attemptsFor = (id) => history.filter((h) => h.kind === 'exam' && h.assessmentId === id).sort((x, y) => x.completedAt - y.completedAt);
+  const exams = ASSESSMENTS;
+  const diagTaken = history.some((h) => h.kind === 'diagnostic');
 
   return (
-    <section style={{ maxWidth: 1180, margin: '0 auto', padding: '56px 24px 80px' }}>
-      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 42, fontWeight: 700, letterSpacing: '-0.022em', margin: 0 }}>Practice exams</h1>
-      <p style={{ fontSize: 16.5, color: '#646A85', margin: '10px 0 34px', maxWidth: '62ch' }}>
-        Every quiz and exam is drawn to the nine domains of the APA Exam Content Outline, in the same proportions as the real test. Start with the two free quizzes.
-      </p>
+    <>
+      <PageHeader
+        eyebrow="Practice"
+        title={<>Practice <em className="marker">exams</em></>}
+        lead={`Every question is written to the nine domains of the AICP exam content outline, and every answer comes with an explanation.${access.signedIn ? ' Your scores are saved to your dashboard.' : ' Sign in to start; your scores are saved to your dashboard.'}`}
+        note="pick a ticket, any ticket"
+        art="page-tickets" artW={520} artH={320} artTilt={-2}
+        artAlt="A fan of paper train tickets for Exams 1, 2 and 3"
+      />
 
-      <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#636987', marginBottom: 14 }}>Free</div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        {freeExams.map((a) => (
-          <Row key={a.id} a={a} unlocked={unlocked} onPractice={() => practice(a.id)} onTimed={() => timed(a.id)} onUnlock={goUnlock} />
-        ))}
-      </div>
+      <div className="container" style={{ paddingBottom: 80 }}>
+        <section aria-labelledby="start-heading">
+          <h2 id="start-heading" className="eyebrow">1. Find your starting point</h2>
+          <div className="card diag-card" style={{ '--r': '-0.4deg', display: 'grid', gridTemplateColumns: 'auto minmax(0,1fr) auto', gap: 22, alignItems: 'center', background: 'var(--butter) var(--grain-tex)' }}>
+            <div style={{ width: 110 }} aria-hidden="true"><Art name="spot-compass" w={300} h={300} /></div>
+            <div style={{ minWidth: 0 }}>
+              <h3 className="h3" style={{ fontSize: 25 }}>The diagnostic</h3>
+              <p className="body-text" style={{ margin: '6px 0 0', fontSize: 15.5, maxWidth: '60ch', color: '#3A3320' }}>
+                100 untimed items that score all nine domains and rank them by exam weight times points lost. Take it first, and again
+                midway through your prep. It&rsquo;s a placement test, not a pass predictor.
+              </p>
+            </div>
+            <Link className="btn btn-dark" to={access.signedIn ? P.diagnostic : P.signinNext(P.diagnostic)}>{diagTaken ? 'Retake the diagnostic' : 'Take the diagnostic'}</Link>
+          </div>
+        </section>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '38px 0 14px', flexWrap: 'wrap' }}>
-        <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#636987' }}>Full Access</div>
-        {!unlocked && (
-          <Hoverable
-            style={{ background: 'none', border: 'none', padding: 0, fontSize: 13.5, fontWeight: 600, color: '#14508C', textDecoration: 'underline', textUnderlineOffset: '3px' }}
-            onClick={goUnlock}
-          >
-            Unlock Full Access for {PRICE}
-          </Hoverable>
-        )}
+        <section aria-labelledby="exam-heading" style={{ marginTop: 48 }}>
+          <h2 id="exam-heading" className="eyebrow">2. Rehearse the real thing</h2>
+          <p className="body-text" style={{ margin: '0 0 18px', maxWidth: '72ch' }}>
+            Full-length, 170-question exams on the real exam&rsquo;s 3.5-hour clock. Take at least one timed and in a single sitting
+            before test day, and review every miss afterward; the results screen lists the lessons to reread.
+          </p>
+          <div className="stack" style={{ gap: 24 }}>
+            {exams.map((a, i) => <Ticket key={a.id} a={a} i={i} access={access} attempts={attemptsFor(a.id)} />)}
+          </div>
+        </section>
+
+        <section aria-labelledby="target-heading" style={{ marginTop: 52 }}>
+          <h2 id="target-heading" className="eyebrow">3. Shore up a weak spot</h2>
+          <div className="grid-cards" style={{ gap: 26 }}>
+            <Link to={P.course} className="card card-link" style={{ '--r': '-0.6deg' }}>
+              <span className="tape" aria-hidden="true" />
+              <h3 className="h3">Go back to the lessons</h3>
+              <p className="body-text" style={{ margin: 0, fontSize: 15 }}>Your results list the lessons behind every miss. Reread them and answer their checkpoints before you retake an exam.</p>
+              <span className="link-arrow" style={{ marginTop: 'auto' }}>Browse the lessons</span>
+            </Link>
+            <Link to={P.flashcards} className="card card-link" style={{ '--r': '0.6deg' }}>
+              <span className="pin" aria-hidden="true" />
+              <h3 className="h3">Flashcards</h3>
+              <p className="body-text" style={{ margin: 0, fontSize: 15 }}>Key terms, cases, and laws from every lesson, with your weakest cards dealt first.</p>
+              <span className="link-arrow" style={{ marginTop: 'auto' }}>Study flashcards</span>
+            </Link>
+          </div>
+        </section>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        {paidExams.map((a) => (
-          <Row key={a.id} a={a} unlocked={unlocked} onPractice={() => practice(a.id)} onTimed={() => timed(a.id)} onUnlock={goUnlock} />
-        ))}
-      </div>
-    </section>
+    </>
   );
 }

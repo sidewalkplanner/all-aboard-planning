@@ -6,11 +6,11 @@ import { GREEN, themeTokens } from '../../lib/theme';
 export default function AnswerReviewView(s) {
   const T = themeTokens(s.dark);
   return (
-    <div style={{ background: T.bg, color: T.ink, minHeight: '100vh' }}>
+    <div className={T.paperClass} style={{ color: T.ink, minHeight: '100vh' }}>
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '56px 24px 80px' }}>
-        <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 38, fontWeight: 700, letterSpacing: '-0.02em', margin: 0 }}>Review answers</h1>
+        <h1 className="display" style={{ fontSize: 44 }}>Review answers</h1>
         <p style={{ fontSize: 16, color: T.mute, margin: '10px 0 28px' }}>{s.activeTitle} &middot; showing the questions you missed first.</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
           {s.reviewItems.map((r) => (
             <div key={r.idx} style={cardStyle(T, { padding: 24 })}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>

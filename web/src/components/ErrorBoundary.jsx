@@ -16,7 +16,7 @@ export default class ErrorBoundary extends Component {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <section style={{ maxWidth: 560, margin: 'auto', padding: '40px 24px', textAlign: 'center' }}>
-          <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em', margin: 0 }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em', margin: 0 }}>
             Something went wrong
           </h1>
           <p style={{ fontSize: 16, lineHeight: 1.6, color: '#646A85', margin: '14px 0 0' }}>
