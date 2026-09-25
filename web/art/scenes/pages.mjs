@@ -24,7 +24,7 @@ function ticket(x, y, w, h, rot, color, title, sub, rng, opts = {}) {
 function tickets() {
   const rng = makeRng(701);
   let b = '';
-  b += ticket(40, 120, 300, 120, -12, P.sky, 'QUIZ A', 'warm-up', rng, { num: 'A' });
+  b += ticket(40, 120, 300, 120, -12, P.sky, 'EXAM 3', 'full length', rng, { num: '3' });
   b += ticket(90, 80, 300, 120, 4, P.butter, 'EXAM 1', '170 questions', rng, { num: '1', pattern: 'pinstripe' });
   b += ticket(150, 150, 300, 120, -3, P.blush, 'EXAM 2', 'full length', rng, { num: '2' });
   // punched holes in the top ticket's stub, and a strip of tape holding the fan
@@ -42,7 +42,7 @@ function route() {
   const line = 'M40 150C140 60 220 210 330 130S520 60 620 140S780 200 860 110';
   b += L(inkLine(line, { rng, size: 10, color: P.tomato, taper: false, wobble: 1 }));
   b += L(inkLine(line, { rng, size: 2.2, color: P.paper, taper: false, wobble: 0.5, opacity: 0.8 }));
-  const stations = [[40, 150, 'start'], [245, 142, 'quiz A'], [455, 94, 'diagnostic'], [660, 160, 'exam 1'], [860, 110, 'exam day!']];
+  const stations = [[40, 150, 'start'], [245, 142, 'diagnostic'], [455, 94, 'lessons'], [660, 160, 'exam 1'], [860, 110, 'exam day!']];
   stations.forEach(([x, y, label], i) => {
     b += `<circle cx="${x}" cy="${y}" r="13" fill="${P.paper}" stroke="${P.ink}" stroke-width="4"/>`;
     const dy = [44, -26, -26, 44, -26][i];

@@ -13,7 +13,6 @@ import useAccess from '../hooks/useAccess';
 // Teams tier has no public price.
 const FREE_FEATURES = [
   'The 100-item diagnostic with a ranked study list',
-  'Two 25-question warm-up quizzes',
   'Free account: the first lesson in each of the nine domains',
   '8- and 12-week study plans',
 ];
@@ -122,7 +121,6 @@ const FREE_NOW = [
   `All ${LESSONS.length} lessons across the nine exam domains`,
   'Original checkpoint questions in every lesson',
   'Three full-length 170-question practice exams, timed or untimed',
-  'Both 25-question warm-up quizzes',
   'The 100-item diagnostic with a ranked study list',
   '8- and 12-week study plans',
   'Progress tracking across every attempt',
@@ -153,11 +151,11 @@ function FreeAccess() {
           </section>
           <section className="card" aria-labelledby="tier-guest" style={{ display: 'flex', flexDirection: 'column', padding: 30 }}>
             <h2 id="tier-guest" className="eyebrow">No account</h2>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 700, letterSpacing: '-0.03em', margin: '10px 0 4px' }}>Try it first</div>
-            <p className="small" style={{ margin: '0 0 22px' }}>See how the questions and explanations work before you sign up.</p>
-            <FeatureList items={['Warm-up Quiz A (25 questions)', 'Full explanation on every answer', 'A preview of every lesson\u2019s learning objectives']} color="var(--text)" />
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 700, letterSpacing: '-0.03em', margin: '10px 0 4px' }}>Look around</div>
+            <p className="small" style={{ margin: '0 0 22px' }}>See what the course covers before you sign up.</p>
+            <FeatureList items={['The full course overview', 'Both study plans', 'A preview of every lesson\u2019s learning objectives']} color="var(--text)" />
             <div style={{ marginTop: 'auto', paddingTop: 26 }}>
-              <Link className="btn btn-secondary btn-block" to={P.runExam('q1', 'practice')}>Take Warm-up Quiz A</Link>
+              <Link className="btn btn-secondary btn-block" to={P.course}>Browse the course</Link>
             </div>
           </section>
           <section className="card" aria-labelledby="tier-team" style={{ display: 'flex', flexDirection: 'column', padding: 30 }}>

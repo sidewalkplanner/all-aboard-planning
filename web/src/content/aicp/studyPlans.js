@@ -4,8 +4,6 @@
 import { P } from '../../lib/paths.js';
 
 const diag = { label: 'Take the diagnostic (about 2 hours, untimed)', to: P.diagnostic };
-const quizA = { label: 'Warm-up Quiz A (25 questions)', to: P.runExam('q1', 'practice') };
-const quizB = { label: 'Warm-up Quiz B (25 questions)', to: P.runExam('q2', 'practice') };
 // Revisit a domain's lessons: reread any section whose checkpoint you missed.
 const revisit = (id, label) => ({ label: `Revisit the ${label} lessons: redo any checkpoint you missed`, to: P.domain(id) });
 const exam = (id, n, mode) => ({ label: `Practice Exam ${n}, ${mode === 'timed' ? 'timed (3.5 hours)' : 'practice mode'}`, to: P.runExam(id, mode) });
@@ -22,8 +20,8 @@ export const STUDY_PLANS = [
     hoursPerWeek: '8 to 10 hours a week',
     who: 'For candidates with steady planning experience who want a focused, efficient review.',
     weeks: [
-      { focus: 'Baseline and planning history', lessons: ['planning-history', 'planning-theory', 'urban-form-and-settlement', 'land-use-law-foundations'], practice: [strategy, diag, quizA] },
-      { focus: 'Planning law and ethics', lessons: ['takings-and-exactions', 'federal-policy-and-planning', 'aicp-code-of-ethics', 'conflicts-of-interest-and-rules-of-conduct', 'solving-ethics-questions'], practice: [quizB, revisit('ethics', 'Ethics'), cards('10 minutes a day on this week\'s topics')] },
+      { focus: 'Baseline and planning history', lessons: ['planning-history', 'planning-theory', 'urban-form-and-settlement', 'land-use-law-foundations'], practice: [strategy, diag] },
+      { focus: 'Planning law and ethics', lessons: ['takings-and-exactions', 'federal-policy-and-planning', 'aicp-code-of-ethics', 'conflicts-of-interest-and-rules-of-conduct', 'solving-ethics-questions'], practice: [revisit('ethics', 'Ethics'), cards('10 minutes a day on this week\'s topics')] },
       { focus: 'Making plans', lessons: ['the-planning-process', 'comprehensive-plans', 'goals-objectives-policies', 'plan-analysis-tools'], practice: [revisit('plan-policy', 'Plan & Policy'), cards('10 minutes a day on this week\'s topics')] },
       { focus: 'Zoning and development regulation', lessons: ['zoning-fundamentals', 'zoning-relief-and-nonconformities', 'subdivision-and-development-review', 'growth-management-and-innovative-tools', 'implementation-math'], practice: [revisit('implementation', 'Implementation'), cards('10 minutes a day on this week\'s topics')] },
       { focus: 'Finance, monitoring, and research methods', lessons: ['capital-planning-and-finance', 'monitoring-and-implementation-programs', 'research-design-and-data', 'statistics-for-planners', 'demographic-and-economic-analysis', 'spatial-analysis-and-gis'], practice: [exam('e1', 1, 'timed'), cards('10 minutes a day on this week\'s topics')] },
@@ -39,10 +37,10 @@ export const STUDY_PLANS = [
     who: 'For candidates balancing a full workload, or newer planners who want more time with unfamiliar material.',
     weeks: [
       { focus: 'Baseline and planning history', lessons: ['planning-history', 'planning-theory', 'urban-form-and-settlement'], practice: [strategy, diag] },
-      { focus: 'Planning law', lessons: ['land-use-law-foundations', 'takings-and-exactions', 'federal-policy-and-planning'], practice: [quizA, cards('10 minutes a day on this week\'s topics')] },
+      { focus: 'Planning law', lessons: ['land-use-law-foundations', 'takings-and-exactions', 'federal-policy-and-planning'], practice: [revisit('fundamentals', 'Fundamentals'), cards('10 minutes a day on this week\'s topics')] },
       { focus: 'The AICP Code of Ethics', lessons: ['aicp-code-of-ethics', 'conflicts-of-interest-and-rules-of-conduct', 'solving-ethics-questions'], practice: [revisit('ethics', 'Ethics'), revisit('fundamentals', 'Fundamentals'), cards('10 minutes a day on this week\'s topics')] },
       { focus: 'Making plans', lessons: ['the-planning-process', 'comprehensive-plans', 'goals-objectives-policies', 'plan-analysis-tools'], practice: [revisit('plan-policy', 'Plan & Policy'), cards('10 minutes a day on this week\'s topics')] },
-      { focus: 'Zoning', lessons: ['zoning-fundamentals', 'zoning-relief-and-nonconformities', 'subdivision-and-development-review'], practice: [quizB, cards('10 minutes a day on this week\'s topics')] },
+      { focus: 'Zoning', lessons: ['zoning-fundamentals', 'zoning-relief-and-nonconformities', 'subdivision-and-development-review'], practice: [revisit('implementation', 'Implementation'), cards('10 minutes a day on this week\'s topics')] },
       { focus: 'Growth management, math, and finance', lessons: ['growth-management-and-innovative-tools', 'implementation-math', 'capital-planning-and-finance', 'monitoring-and-implementation-programs'], practice: [revisit('implementation', 'Implementation'), cards('10 minutes a day on this week\'s topics')] },
       { focus: 'Research and assessment methods', lessons: ['research-design-and-data', 'statistics-for-planners', 'demographic-and-economic-analysis', 'spatial-analysis-and-gis'], practice: [revisit('research', 'Research'), exam('e1', 1, 'practice'), cards('10 minutes a day on this week\'s topics')] },
       { focus: 'Communication and interaction', lessons: ['public-engagement-design', 'equitable-and-accessible-engagement', 'consensus-and-negotiation', 'communicating-with-decision-makers'], practice: [revisit('communication', 'Communication'), cards('10 minutes a day on this week\'s topics')] },

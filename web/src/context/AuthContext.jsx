@@ -40,7 +40,7 @@ async function hashPassword(email, password) {
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
-// Carry a guest's history (for example, Warm-up Quiz A taken before signing
+// Carry a guest's history (for example, an exam taken before signing
 // up) into their new account so it shows up in Progress.
 function adoptGuestHistory(userId) {
   const guest = read(scopedKey(HISTORY_BASE, null), []);

@@ -15,18 +15,16 @@ const fmtTime = (mins) => {
 };
 
 const STUB = {
-  q1: ['A', 'var(--sky)'], q2: ['B', 'var(--mint)'],
   e1: ['1', 'var(--butter)'], e2: ['2', 'var(--blush)'], e3: ['3', 'var(--lavender)'],
 };
 
-// Each quiz or exam is a train ticket: a coloured stub, then the details.
+// Each exam is a train ticket: a coloured stub, then the details.
 function Ticket({ a, i, access, attempts }) {
   const isPublic = PUBLIC_ASSESSMENTS.includes(a.id);
   const canOpen = access.canOpenAssessment(a);
   const best = attempts.length ? Math.max(...attempts.map((x) => x.pct)) : null;
   const lastTry = attempts.length ? attempts[attempts.length - 1] : null;
   const [mark, color] = STUB[a.id] ?? ['★', 'var(--butter)'];
-  const kind = a.size < 100 ? 'Warm-up' : 'Full length';
 
   return (
     <div className="ticket card card--lift" style={{ '--r': `${[-0.5, 0.4, -0.3, 0.5, -0.4][i % 5]}deg` }}>
@@ -40,7 +38,7 @@ function Ticket({ a, i, access, attempts }) {
       <div className="ticket__body">
         <div className="row-wrap" style={{ gap: 14 }}>
           <h3 className="h3" style={{ fontSize: 25 }}>{a.title}</h3>
-          <span className="stamp" style={{ color: a.size < 100 ? 'var(--leaf-deep)' : 'var(--brand-strong)' }}>{kind}</span>
+          <span className="stamp" style={{ color: 'var(--brand-strong)' }}>Full length</span>
         </div>
         <p className="body-text" style={{ margin: '8px 0 0', fontSize: 15.5, maxWidth: '56ch' }}>{a.blurb}</p>
         <div className="row-wrap" style={{ gap: 8, marginTop: 12 }}>
@@ -73,19 +71,18 @@ export default function ExamsList() {
   const access = useAccess();
   const history = useMemo(() => (access.signedIn ? getHistory() : []), [access.signedIn]);
   const attemptsFor = (id) => history.filter((h) => h.kind === 'exam' && h.assessmentId === id).sort((x, y) => x.completedAt - y.completedAt);
-  const quizzes = ASSESSMENTS.filter((a) => a.size < 100);
-  const exams = ASSESSMENTS.filter((a) => a.size >= 100);
+  const exams = ASSESSMENTS;
   const diagTaken = history.some((h) => h.kind === 'diagnostic');
 
   return (
     <>
       <PageHeader
         eyebrow="Practice"
-        title={<>Practice <em className="marker">exams</em> and quizzes</>}
-        lead={`Every question is written to the nine domains of the AICP exam content outline, and every answer comes with an explanation.${access.signedIn ? ' Your scores are saved to your dashboard.' : ' Warm-up Quiz A is open to everyone; sign in for everything else.'}`}
+        title={<>Practice <em className="marker">exams</em></>}
+        lead={`Every question is written to the nine domains of the AICP exam content outline, and every answer comes with an explanation.${access.signedIn ? ' Your scores are saved to your dashboard.' : ' Sign in to start; your scores are saved to your dashboard.'}`}
         note="pick a ticket, any ticket"
         art="page-tickets" artW={520} artH={320} artTilt={-2}
-        artAlt="A fan of paper train tickets for Quiz A, Exam 1 and Exam 2"
+        artAlt="A fan of paper train tickets for Exams 1, 2 and 3"
       />
 
       <div className="container" style={{ paddingBottom: 80 }}>
@@ -104,26 +101,19 @@ export default function ExamsList() {
           </div>
         </section>
 
-        <section aria-labelledby="quiz-heading" style={{ marginTop: 44 }}>
-          <h2 id="quiz-heading" className="eyebrow">2. Warm up</h2>
-          <div className="stack" style={{ gap: 24 }}>
-            {quizzes.map((a, i) => <Ticket key={a.id} a={a} i={i} access={access} attempts={attemptsFor(a.id)} />)}
-          </div>
-        </section>
-
         <section aria-labelledby="exam-heading" style={{ marginTop: 48 }}>
-          <h2 id="exam-heading" className="eyebrow">3. Rehearse the real thing</h2>
+          <h2 id="exam-heading" className="eyebrow">2. Rehearse the real thing</h2>
           <p className="body-text" style={{ margin: '0 0 18px', maxWidth: '72ch' }}>
             Full-length, 170-question exams on the real exam&rsquo;s 3.5-hour clock. Take at least one timed and in a single sitting
             before test day, and review every miss afterward; the results screen lists the lessons to reread.
           </p>
           <div className="stack" style={{ gap: 24 }}>
-            {exams.map((a, i) => <Ticket key={a.id} a={a} i={i + 2} access={access} attempts={attemptsFor(a.id)} />)}
+            {exams.map((a, i) => <Ticket key={a.id} a={a} i={i} access={access} attempts={attemptsFor(a.id)} />)}
           </div>
         </section>
 
         <section aria-labelledby="target-heading" style={{ marginTop: 52 }}>
-          <h2 id="target-heading" className="eyebrow">4. Shore up a weak spot</h2>
+          <h2 id="target-heading" className="eyebrow">3. Shore up a weak spot</h2>
           <div className="grid-cards" style={{ gap: 26 }}>
             <Link to={P.course} className="card card-link" style={{ '--r': '-0.6deg' }}>
               <span className="tape" aria-hidden="true" />

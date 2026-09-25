@@ -19,7 +19,7 @@ Before this update, lessons served exam items in three places: most checkpoints 
 
 ### Worth reviewing
 - **The 178 new checkpoint questions are new content.** They restate facts from the lessons and avoid anything carrying a VERIFY flag, but a planner should read them before launch, as with the first 24.
-- **Warm-up Quizzes A and B draw from the Exam 1 bank.** Their 50 items also appear in Practice Exam 1. This was already true and I didn't change it; if it matters, the quizzes need their own questions too.
+- **The warm-up quizzes are gone.** Quizzes A and B were a free teaser for a paid course; with everything free they only repeated 50 Practice Exam 1 questions. Old quiz links open the exams list. The homepage's "try Quiz A" card now points to the diagnostic, and the study plans schedule a domain review in the quiz weeks. Signed-out visitors can still browse the course, study plans, and each lesson's objectives, but nothing interactive opens without an account.
 - **Accounts are still a placeholder** (browser-only, no server). See CLAUDE.md, "Access, accounts, and the future paid tier".
 
 ## Update 3: interactive lessons

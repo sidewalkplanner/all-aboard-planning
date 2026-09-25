@@ -46,8 +46,7 @@ function PracticeBlock({ lesson }) {
       {!access.signedIn && (
         <p className="small" style={{ margin: '14px 0 0' }}>
           Exams need an account, so your scores are saved.{' '}
-          <Link to={P.signinNext(pathname, 'create')} className="link-underline">Create one</Link>, or try{' '}
-          <Link to={P.runExam('q1', 'practice')} className="link-underline">Warm-up Quiz A</Link> first, no account needed.
+          <Link to={P.signinNext(pathname, 'create')} className="link-underline">Create one</Link> to get started.
         </p>
       )}
     </section>

@@ -1,5 +1,5 @@
 // Original checkpoint questions, written for the lessons only. None of them
-// appear in the practice exams or quizzes, so answering them never gives
+// appear in the practice exams, so answering them never gives
 // away an exam item. Referenced from lesson Markdown as `:::checkpoint cp:<id>`.
 // Same shape as bank questions: four options, the index of the correct one,
 // and an explanation. `npm run check` validates them.

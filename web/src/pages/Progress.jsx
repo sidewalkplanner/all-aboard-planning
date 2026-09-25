@@ -60,6 +60,8 @@ export default function Progress() {
   const cpAll = Object.values(study.checkpoints || {}).flatMap((m) => Object.values(m));
   const cpPct = cpAll.length ? Math.round((cpAll.filter((a) => a.correct).length / cpAll.length) * 100) : null;
   const examsTotal = ASSESSMENTS.filter((a) => !a.soon).length;
+  // Only count current exams (older histories may include the retired warm-up quizzes).
+  const examsTaken = [...summary.examIds].filter((id) => ASSESSMENTS.some((a) => a.id === id)).length;
   const firstName = user && user.name ? user.name.split(' ')[0] : '';
 
   return (
@@ -70,7 +72,7 @@ export default function Progress() {
         <p className="lead">
           {doneCount === 0 && summary.n === 0
             ? 'Start with the diagnostic to see where you stand, pick a study plan, then work through the lessons. Everything you do shows up here.'
-            : `${doneCount} of ${LESSONS.length} lessons complete · ${summary.examIds.size} of ${examsTotal} quizzes and exams taken · ${mastered} of ${ALL_CARDS.length} flashcards mastered.`}
+            : `${doneCount} of ${LESSONS.length} lessons complete · ${examsTaken} of ${examsTotal} practice exams taken · ${mastered} of ${ALL_CARDS.length} flashcards mastered.`}
         </p>
       </header>
 
@@ -216,7 +218,7 @@ export default function Progress() {
                   </ol>
                 </>
               ) : (
-                <p className="small" style={{ margin: 0 }}>Answer lesson checkpoints or take a quiz or exam, and the lessons behind anything you miss will show up here.</p>
+                <p className="small" style={{ margin: 0 }}>Answer lesson checkpoints or take a practice exam, and the lessons behind anything you miss will show up here.</p>
               )}
             </section>
 

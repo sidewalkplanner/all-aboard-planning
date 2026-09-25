@@ -32,7 +32,7 @@ export const FOOTER_NAV = [
     links: [
       { label: 'Your dashboard', to: P.progress },
       { label: 'Diagnostic', to: P.diagnostic },
-      { label: 'Practice exams & quizzes', to: P.exams },
+      { label: 'Practice exams', to: P.exams },
     ],
   },
   {

@@ -3,7 +3,7 @@ import { scopedKey } from './userStorage';
 // Real (frontend-only, localStorage) attempt history, kept per account
 // (see lib/userStorage.js) — replaces the
 // hardcoded "canned" numbers the Progress dashboard used to show. Every
-// completed exam/quiz/drill/diagnostic attempt is appended here on submit;
+// completed exam or diagnostic attempt is appended here on submit;
 // Progress.jsx derives all of its stats from this instead of static data.
 const HISTORY_KEY = 'aap-history';
 const MAX_ENTRIES = 200;

@@ -54,13 +54,15 @@ export function useExamSession() {
   const access = useAccess();
   const { dark, toggleDark } = useDarkMode();
 
-  const aid = params.get('aid') || 'q1';
+  const aid = params.get('aid') || 'e1';
   const mode = params.get('mode') || 'practice';
   // Domain drills and lesson practice sets were retired: lessons have their
   // own original checkpoints, and exam items appear only in the exams. An old
   // ?drill= link opens that domain's lessons; an old ?set= link opens the lesson.
   const retiredDrill = params.get('drill');
   const retiredSet = params.get('set');
+  // The warm-up quizzes (q1, q2) were retired too; their old links open the exams list.
+  const retiredQuiz = !params.get('drill') && !params.get('set') && !ASSESSMENTS.some((x) => x.id === aid);
   const sessionKey = `${aid}|${mode}|null`;
 
   const active = useMemo(() => ASSESSMENTS.find((x) => x.id === aid) || ASSESSMENTS[0], [aid]);
@@ -86,6 +88,10 @@ export function useExamSession() {
     if (retiredDrill) {
       const d = domainByBankName(retiredDrill);
       navigate(d ? P.domain(d.id) : P.course, { replace: true });
+      return;
+    }
+    if (retiredQuiz) {
+      navigate(P.exams, { replace: true });
       return;
     }
     if (retiredSet) {

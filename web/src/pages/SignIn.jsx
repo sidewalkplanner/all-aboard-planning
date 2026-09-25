@@ -157,7 +157,7 @@ export default function SignIn() {
           </p>
         </div>
         <p className="small" style={{ textAlign: 'center', margin: '16px 0 0' }}>
-          Just want to try it? <Link className="link-underline" to={P.runExam('q1', 'practice')}>Take Warm-up Quiz A</Link>, no account needed.
+          Just looking? <Link className="link-underline" to={P.course}>Browse the course</Link>, no account needed.
         </p>
       </div>
     </section>

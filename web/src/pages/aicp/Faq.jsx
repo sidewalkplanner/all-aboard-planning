@@ -52,15 +52,11 @@ const GROUPS = [
       },
       {
         q: 'Why do I need an account?',
-        a: <p>So your scores and progress are saved in one place and the <Link to={P.progress}>progress page</Link> can show which domains need work. Without an account you can take <Link to={P.runExam('q1', 'practice')}>Warm-up Quiz A</Link> and preview each lesson&rsquo;s learning objectives.</p>,
+        a: <p>So your scores and progress are saved in one place and the <Link to={P.progress}>progress page</Link> can show which domains need work. Without an account you can browse the course, read the study plans, and preview each lesson&rsquo;s learning objectives.</p>,
       },
       {
         q: 'Where is my account stored?',
         a: <p>For now, accounts and progress are kept only in the browser you signed up in. An account created on your phone won&rsquo;t appear on your laptop, and clearing your browser data removes it. We plan to move accounts to a secure online service so progress follows you across devices.</p>,
-      },
-      {
-        q: 'I took Warm-up Quiz A before signing up. Is my score lost?',
-        a: <p>No. When you create an account in the same browser, results from before you signed up are added to your new account.</p>,
       },
       {
         q: 'Can my team or class use it?',

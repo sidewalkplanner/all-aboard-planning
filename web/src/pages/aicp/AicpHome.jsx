@@ -56,7 +56,7 @@ export default function AicpHome() {
         </section>
       )}
 
-      {/* HERO: headline and the Quiz A card over the paper town */}
+      {/* HERO: headline and the first-stop card over the paper town */}
       <section style={{ position: 'relative', overflow: 'hidden' }}>
         <img src={art('hero-cloud-a')} alt="" aria-hidden="true" className="sky-bit sky-bit--cloud" style={{ width: 190, top: 90, left: '44%' }} />
         <img src={art('hero-cloud-b')} alt="" aria-hidden="true" className="sky-bit sky-bit--cloud-b" style={{ width: 140, top: 520, left: '3%' }} />
@@ -93,20 +93,20 @@ export default function AicpHome() {
 
           <div className="card" style={{ '--r': '1deg', padding: '30px 28px 26px', maxWidth: 480, justifySelf: 'end', width: '100%' }}>
             <span className="tape" aria-hidden="true" />
-            <span className="hand" style={{ display: 'block', fontSize: 26, color: 'var(--brand-strong)' }}>Try it now, no account needed</span>
+            <span className="hand" style={{ display: 'block', fontSize: 26, color: 'var(--brand-strong)' }}>First stop</span>
             <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginTop: 10 }}>
-              <div style={{ width: 96, flex: 'none' }}><Art name="spot-mode" w={320} h={220} eager /></div>
-              <h2 className="h3" style={{ fontSize: 26 }}>Warm-up Quiz A</h2>
+              <div style={{ width: 96, flex: 'none' }}><Art name="spot-score" w={320} h={240} eager /></div>
+              <h2 className="h3" style={{ fontSize: 26 }}>The diagnostic</h2>
             </div>
             <p className="body-text" style={{ margin: '10px 0 18px' }}>
-              25 questions weighted like the real exam, untimed, with an explanation for every answer. See how the course
-              teaches before you sign up.
+              100 untimed questions across all nine domains. Your report ranks the domains by how many points each is
+              costing you, so you know which lessons to start with.
             </p>
-            <Link className="btn btn-primary btn-block" to={P.runExam('q1', 'practice')}>Start the quiz</Link>
+            <Link className="btn btn-primary btn-block" to={signedIn ? P.diagnostic : P.createAccount(P.diagnostic)}>Take the diagnostic</Link>
             <div style={{ borderTop: '2px dashed var(--line-strong)', marginTop: 22, paddingTop: 16 }}>
-              <h3 className="hand" style={{ margin: 0, fontSize: 24, color: 'var(--tomato-deep)' }}>Then, with an account</h3>
+              <h3 className="hand" style={{ margin: 0, fontSize: 24, color: 'var(--tomato-deep)' }}>Also in the course</h3>
               <ul style={{ listStyle: 'none', margin: '10px 0 0', padding: 0, display: 'flex', flexDirection: 'column', gap: 8, fontSize: 15 }}>
-                {[`All ${LESSONS.length} lessons and their checkpoints`, 'Three full-length practice exams', 'The diagnostic and progress tracking'].map((t) => (
+                {[`All ${LESSONS.length} lessons and their checkpoints`, 'Three full-length practice exams', 'Study plans, flashcards, and progress tracking'].map((t) => (
                   <li key={t} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}><span className="pen-check" aria-hidden="true" />{t}</li>
                 ))}
               </ul>
@@ -186,7 +186,7 @@ export default function AicpHome() {
           </ol>
           <div className="row-wrap" style={{ marginTop: 36 }}>
             <Link className="btn btn-dark" to={P.studyPlan}>Pick a study plan</Link>
-            <Link className="btn btn-secondary" to={P.exams}>Take a warm-up quiz</Link>
+            <Link className="btn btn-secondary" to={P.exams}>See the practice exams</Link>
           </div>
         </div>
       </section>
@@ -199,7 +199,7 @@ export default function AicpHome() {
               <span className="eyebrow eyebrow-rust">The exam blueprint</span>
               <h2 id="weight-heading" className="h2">How the exam is weighted</h2>
               <p className="lead">
-                The course, quizzes, and exams all follow the nine domains of the content outline in these proportions.
+                The course, diagnostic, and exams all follow the nine domains of the content outline in these proportions.
                 Select a domain to see its lessons.
               </p>
             </div>
@@ -265,13 +265,13 @@ export default function AicpHome() {
             <div>
               <h2 id="cta-heading" className="h2">Your train is on the platform.</h2>
               <p className="lead" style={{ color: '#3A3320' }}>
-                Every lesson, exam, and the diagnostic is open to you. Create an account to keep your progress, or try Warm-up Quiz A first.
+                Every lesson, exam, and the diagnostic is open to you. Create an account and your progress is saved as you go.
               </p>
               <div className="row-wrap" style={{ marginTop: 26 }}>
                 {signedIn
                   ? <Link className="btn btn-dark btn-lg" to={P.lesson(LESSONS[0].slug)}>Start the first lesson</Link>
                   : <Link className="btn btn-dark btn-lg" to={P.createAccount(P.lesson(LESSONS[0].slug))}>Create an account</Link>}
-                <Link className="btn btn-secondary btn-lg" to={P.runExam('q1', 'practice')}>Try Warm-up Quiz A</Link>
+                <Link className="btn btn-secondary btn-lg" to={P.course}>Browse the course</Link>
               </div>
             </div>
             <div style={{ maxWidth: 240, justifySelf: 'center', width: '100%' }}>

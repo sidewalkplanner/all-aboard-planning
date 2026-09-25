@@ -1,7 +1,7 @@
 import { DOMAINS, ASSESSMENTS } from '../data/domains.js';
 
 // Deterministic seeded PRNG (LCG) so the same seed always produces the same
-// shuffle — question order is stable across a given quiz/exam id and render.
+// shuffle — question order is stable across a given exam id and render.
 export const rng = (seed) => () => ((seed = (seed * 1664525 + 1013904223) % 4294967296) / 4294967296);
 
 export const shuffle = (arr, seed) => {
@@ -15,7 +15,7 @@ export const shuffle = (arr, seed) => {
 };
 
 // Largest-remainder allocation of `size` items across the nine domains'
-// percentage weights, so quizzes/exams sum exactly to `size`.
+// percentage weights, so exams sum exactly to `size`.
 export const alloc = (size) => {
   const out = {};
   let used = 0;
@@ -29,7 +29,6 @@ export const alloc = (size) => {
   return out;
 };
 
-export const QUIZ_T = alloc(25);
 export const EXAM_T = alloc(170);
 
 // Shuffles questions while keeping the ones that share a scenario together, so
@@ -50,13 +49,11 @@ const shuffleKeepingClusters = (items, seed) => {
 
 // Takes `t[domain]` items from each domain, so a set matches the content
 // outline's weights even when the bank runs deeper in some domains than others.
-// `skip` steps past that many full sets, which is how Quiz B draws questions
-// Quiz A does not use.
-const weighted = (bank, t, seed, skip = 0) => {
+const weighted = (bank, t, seed) => {
   const out = [];
   DOMAINS.forEach((d, di) => {
     const pool = shuffle(bank.filter((q) => q.domain === d.name), seed + di * 131);
-    out.push(...pool.slice(skip * t[d.name], (skip + 1) * t[d.name]));
+    out.push(...pool.slice(0, t[d.name]));
   });
   return shuffleKeepingClusters(out, seed + 7);
 };
@@ -66,8 +63,7 @@ const weighted = (bank, t, seed, skip = 0) => {
 // areas-of-practice domains, so it is weighted down to 170.
 export const sample = (bank, id, bank2, bank3) => {
   const a = ASSESSMENTS.find((x) => x.id === id) || ASSESSMENTS[0];
-  if (a.id === 'e1') return bank.slice();
   if (a.id === 'e2') return bank2 && bank2.length ? shuffleKeepingClusters(bank2.slice(), 6301) : bank.slice();
   if (a.id === 'e3') return bank3 && bank3.length ? weighted(bank3, EXAM_T, 5119) : bank.slice();
-  return weighted(bank, QUIZ_T, 9973, a.id === 'q2' ? 1 : 0);
+  return bank.slice();
 };

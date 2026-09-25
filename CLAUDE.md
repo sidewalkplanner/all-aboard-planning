@@ -10,9 +10,9 @@ Everything prep-related therefore lives under `/aicp/`; firm-level pages (`/abou
 `/contact`, and eventually a consulting homepage at `/`) live at the root.
 
 - Live URL: `https://sidewalkplanner.github.io/all-aboard-planning/`
-- The app is **frontend only**: no backend, no payments. The course is **free**, but everything
-  except Warm-up Quiz A requires a (placeholder, browser-only) account so progress is tracked
-  per person. See "Access, accounts, and the future paid tier" below.
+- The app is **frontend only**: no backend, no payments. The course is **free**, but lessons,
+  exams, the diagnostic, and the review tools require a (placeholder, browser-only) account so
+  progress is tracked per person. See "Access, accounts, and the future paid tier" below.
 
 ## Repository layout
 
@@ -47,7 +47,7 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     content/site.js         Owner settings (CONTACT_EMAIL placeholder)
     data/                   Question banks (exam1/2/3), diagnostic items, domain weights
     pages/                  Route components; pages/aicp/* are the prep section pages
-    pages/exam/             Exam runner (warm-up quizzes and full-length exams)
+    pages/exam/             Exam runner (the three full-length practice exams)
     pages/diagnostic/       100-item diagnostic
 uploads/                    Source specs for the question banks and diagnostic (reference only)
 *.dc.html, support.js, root *.js   Original design prototypes (reference only; not deployed)
@@ -210,25 +210,24 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
 
 ## The exam runner
 
-`/aicp/exam/run` takes one of:
-- `?aid=q1|q2|e1|e2|e3&mode=practice|timed`: quizzes and full exams (`ASSESSMENTS` in `data/domains.js`)
+`/aicp/exam/run` takes `?aid=e1|e2|e3&mode=practice|timed`: the three full-length exams
+(`ASSESSMENTS` in `data/domains.js`).
 
-Domain drills (`?drill=`) and lesson practice sets (`?set=`) were retired: old links redirect to
-the domain's lessons or the lesson itself. Don't reintroduce them; exam items live only in the
-quizzes and exams.
+Retired, with redirects for old links: domain drills (`?drill=`, to the domain's lessons),
+lesson practice sets (`?set=`, to the lesson), and the warm-up quizzes (`?aid=q1|q2`, to the
+exams list). The quizzes were a free teaser for a paid course and stopped making sense once
+everything was free. Don't reintroduce any of them; exam items live only in the exams.
 
-Only assessments in `PUBLIC_ASSESSMENTS` (Warm-up Quiz A) open without an account; anything
-else redirects to `/aicp/signin?next=...` and returns there after sign-in.
+Assessments in `PUBLIC_ASSESSMENTS` would open without an account (none today); anything else
+redirects to `/aicp/signin?next=...` and returns there after sign-in.
 
-Question sampling is deterministic (seeded) in `lib/shuffle.js`; changing seeds or bank order
-changes which items appear in Quiz A/B. Note that Quiz A and B draw from the Exam 1 bank, so
-their items also appear in Practice Exam 1.
+Question order is deterministic (seeded) in `lib/shuffle.js`.
 
 ## Access, accounts, and the future paid tier
 
 - **Who can open what** is decided in one hook, `src/hooks/useAccess.js`, from two settings in
-  `src/lib/access.js`: `PAID_TIER_ENABLED` (false today) and `PUBLIC_ASSESSMENTS` (`['q1']`).
-  Today: signed-out visitors get Warm-up Quiz A, all marketing pages, the course overview, the
+  `src/lib/access.js`: `PAID_TIER_ENABLED` (false today) and `PUBLIC_ASSESSMENTS` (`[]`).
+  Today: signed-out visitors get all marketing pages, the course overview, the
   study plans, and each lesson's learning objectives; everything else is free with an account.
 - **Gating UI:** `components/AccessGate.jsx` (inline "create a free account" box) and
   `components/RequireSignIn.jsx` (route wrapper used for the diagnostic and progress).
@@ -251,7 +250,7 @@ their items also appear in Practice Exam 1.
 ## Study features (how the pieces fit)
 
 - **Site map for learners:** Course (lessons) · Study plan · Practice (`/aicp/exams`: diagnostic,
-  quizzes, full exams) · Review (`/aicp/review`: exam strategy guide, flashcards, quick
+  full exams) · Review (`/aicp/review`: exam strategy guide, flashcards, quick
   reference) · Exam info · Dashboard (`/aicp/progress`, signed in).
 - **Lesson page** (`pages/aicp/LessonPage.jsx`): body with mid-lesson checkpoints
   (`LessonBody` portals a `Checkpoint` into each `:::checkpoint` slot; answers go to

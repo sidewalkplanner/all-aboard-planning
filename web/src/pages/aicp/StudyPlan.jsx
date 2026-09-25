@@ -112,7 +112,7 @@ export default function StudyPlan() {
         eyebrow="Study plans"
         title="A schedule you can actually keep"
         art="page-route" artW={960} artH={270} artTilt={-1}
-        artAlt="A winding red route from start through quiz A, the diagnostic and exam 1 to a flag marked exam day"
+        artAlt="A winding red route from start through the diagnostic, the lessons and exam 1 to a flag marked exam day"
         lead="Two week-by-week plans that cover every lesson, every practice exam, and the diagnostic. Pick the one that fits your calendar, then adjust it with your diagnostic results."
       >
         <div className="row-wrap" style={{ marginTop: 22 }}>
