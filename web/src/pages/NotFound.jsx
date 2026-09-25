@@ -1,32 +1,23 @@
 import { useNavigate } from 'react-router-dom';
-import Hoverable from '../components/Hoverable';
+import Art from '../components/Art';
 
 export default function NotFound() {
   const navigate = useNavigate();
   return (
-    <section style={{ maxWidth: 560, margin: '0 auto', padding: '100px 24px 120px', textAlign: 'center' }}>
-      <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 15, color: '#C93B2C', fontWeight: 600 }}>404</div>
-      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 38, fontWeight: 700, letterSpacing: '-0.02em', margin: '10px 0 0' }}>
-        Page not found
+    <section className="wrap" style={{ maxWidth: 700, padding: '64px 24px 110px', textAlign: 'center' }}>
+      <div style={{ maxWidth: 520, margin: '0 auto' }}>
+        <Art name="page-lost" w={540} h={310} eager alt="A streetcar marked 'wrong stop' at the torn end of its track, beside a signpost pointing 'this way?' and 'or here?'" />
+      </div>
+      <div className="hand" style={{ fontSize: 30, marginTop: 20 }}>404</div>
+      <h1 className="display" style={{ fontSize: 'clamp(38px,5vw,54px)', margin: '4px 0 0' }}>
+        Hmm, this is the <em className="marker">wrong stop.</em>
       </h1>
-      <p style={{ fontSize: 16, lineHeight: 1.6, color: '#646A85', margin: '14px 0 0' }}>
-        That page doesn&rsquo;t exist, or the link is out of date. Head back to the homepage to find your way.
+      <p className="lede" style={{ margin: '16px auto 0', maxWidth: '48ch' }}>
+        That page doesn&rsquo;t exist, or the link is out of date. Hop back on and we&rsquo;ll get you where you were headed.
       </p>
-      <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 28, flexWrap: 'wrap' }}>
-        <Hoverable
-          style={{ background: '#1A1C2B', color: '#F6F7FB', border: 'none', padding: '13px 24px', borderRadius: 10, fontSize: 15.5, fontWeight: 600 }}
-          hoverStyle={{ background: '#1D5FA8' }}
-          onClick={() => navigate('/')}
-        >
-          Back to home
-        </Hoverable>
-        <Hoverable
-          style={{ background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: '13px 22px', borderRadius: 10, fontSize: 15.5, fontWeight: 600 }}
-          hoverStyle={{ border: '1px solid #1A1C2B' }}
-          onClick={() => navigate('/exams')}
-        >
-          Browse practice exams
-        </Hoverable>
+      <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 30, flexWrap: 'wrap' }}>
+        <button className="btn btn--tomato" onClick={() => navigate('/')}>Back to the station</button>
+        <button className="btn btn--paper" onClick={() => navigate('/exams')}>Browse practice exams</button>
       </div>
     </section>
   );

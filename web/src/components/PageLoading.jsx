@@ -1,7 +1,11 @@
+import { art } from '../lib/art';
+
+// A tiny tram rocking in place while a lazy route loads.
 export default function PageLoading() {
   return (
-    <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ fontSize: 14.5, fontWeight: 600, color: '#8A8FA6' }}>Loading&hellip;</div>
+    <div role="status" style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+      <img src={art('hero-tram')} alt="" aria-hidden="true" width="150" style={{ animation: 'tramBob 0.4s ease-in-out infinite alternate' }} />
+      <div className="hand" style={{ fontSize: 26, color: 'var(--ink-soft)' }}>Pulling into the station&hellip;</div>
     </div>
   );
 }

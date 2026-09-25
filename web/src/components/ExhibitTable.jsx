@@ -1,7 +1,7 @@
 export default function ExhibitTable({ exhibit, T }) {
   if (!exhibit) return null;
   return (
-    <div style={{ background: T.surf, border: `1px solid ${T.line}`, borderRadius: 12, padding: 6, margin: '20px 0 0', overflowX: 'auto' }}>
+    <div style={{ background: T.surf, border: `2px solid ${T.optLine}`, borderRadius: 'var(--wobble-sm)', padding: 6, margin: '20px 0 0', overflowX: 'auto' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14.5 }}>
         <thead>
           <tr>

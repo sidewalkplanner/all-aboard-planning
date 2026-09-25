@@ -1,15 +1,13 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Hoverable from '../components/Hoverable';
 import { DOMAINS, ASSESSMENTS } from '../data/domains';
 import { getHistory, summarizeHistory } from '../lib/history';
-import { barStyle, cardStyle } from '../lib/style';
-import { GREEN, RUST, TEAL_TXT, LIGHT } from '../lib/theme';
+import { badgeFor, DOMAIN_COLOR } from '../lib/art';
+import { RUST } from '../lib/theme';
 import { fmtHoursMinutesFromSeconds, fmtShortDate } from '../lib/format';
+import Art from '../components/Art';
 
-const statCard = cardStyle(LIGHT, { radius: 14, padding: 22 });
-const statNum = { fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 34, fontWeight: 700 };
-const statLabel = { fontSize: 13.5, color: '#646A85', marginTop: 3 };
+const STAT_COLORS = ['var(--butter)', 'var(--sky)', 'var(--blush)', 'var(--mint)'];
 
 export default function Progress() {
   const navigate = useNavigate();
@@ -32,56 +30,79 @@ export default function Progress() {
       ? `${summary.examIds.size} of ${examsTotal} exams completed. ${weakest.name} is the one to work on next.`
       : `${summary.examIds.size} of ${examsTotal} exams completed.`;
 
+  const stats = [
+    [summary.avgScore === null ? '—' : summary.avgScore + '%', 'Average score'],
+    [`${summary.examIds.size} / ${examsTotal}`, 'Exams completed'],
+    [summary.questionsAttempted, 'Questions attempted'],
+    [summary.timeSeconds ? fmtHoursMinutesFromSeconds(summary.timeSeconds) : '—', 'Time studying']
+  ];
+
   return (
-    <section style={{ maxWidth: 1180, margin: '0 auto', padding: '56px 24px 80px' }}>
-      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 42, fontWeight: 700, letterSpacing: '-0.022em', margin: 0 }}>Your progress</h1>
-      <p style={{ fontSize: 16.5, color: '#646A85', margin: '10px 0 32px' }}>{subtitle}</p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 16 }}>
-        <div style={statCard}><div style={statNum}>{summary.avgScore === null ? '—' : summary.avgScore + '%'}</div><div style={statLabel}>Average score</div></div>
-        <div style={statCard}><div style={statNum}>{summary.examIds.size} / {examsTotal}</div><div style={statLabel}>Exams completed</div></div>
-        <div style={statCard}><div style={statNum}>{summary.questionsAttempted}</div><div style={statLabel}>Questions attempted</div></div>
-        <div style={statCard}><div style={statNum}>{summary.timeSeconds ? fmtHoursMinutesFromSeconds(summary.timeSeconds) : '—'}</div><div style={statLabel}>Time studying</div></div>
+    <section className="wrap" style={{ paddingBottom: 80 }}>
+      <div style={{ padding: '56px 0 10px' }}>
+        <h1 className="display" style={{ fontSize: 'clamp(40px,5.4vw,64px)' }}>Your <em className="marker marker--blush">journey</em> so far</h1>
+        <p className="lede" style={{ marginTop: 14 }}>{subtitle}</p>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 20, marginTop: 20 }}>
-        <div style={cardStyle(LIGHT, { padding: 26 })}>
-          <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 22, fontWeight: 700, margin: '0 0 20px' }}>Accuracy by domain</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
+      <div style={{ maxWidth: 900, margin: '0 auto' }}>
+        <Art name="page-route" w={960} h={270} eager alt="A winding red route from 'start' through quiz A, the diagnostic and exam 1 to a flag marked 'exam day!'" />
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,210px),1fr))', gap: 22, marginTop: 20 }}>
+        {stats.map(([n, label], i) => (
+          <div key={label} className="card" style={{ padding: '20px 22px', display: 'flex', alignItems: 'center', gap: 16, '--r': `${[-0.8, 0.6, -0.4, 0.8][i]}deg` }}>
+            <span aria-hidden="true" style={{ width: 14, height: 46, borderRadius: 8, background: STAT_COLORS[i], border: '2px solid var(--ink)', flex: 'none' }} />
+            <div>
+              <div className="display" style={{ fontSize: 34 }}>{n}</div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--ink-soft)', marginTop: 4 }}>{label}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 28, marginTop: 30, alignItems: 'start' }}>
+        <div className="card" style={{ padding: 28 }}>
+          <span className="tape" aria-hidden="true" />
+          <h2 className="h-card" style={{ fontSize: 24, margin: '0 0 20px' }}>Accuracy by domain</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             {domainRows.map((d) => (
-              <div key={d.name}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, fontSize: 14, marginBottom: 6 }}>
-                  <span style={{ fontWeight: 600 }}>{d.short}</span>
-                  <span style={{ color: '#646A85', fontVariantNumeric: 'tabular-nums' }}>{d.pct === null ? 'No data yet' : d.pct + '%'}</span>
-                </div>
-                <div style={{ height: 8, background: '#ECEDF6', borderRadius: 99, overflow: 'hidden' }}>
-                  <div style={barStyle(d.pct || 0, d.pct !== null && d.pct < 65 ? RUST : GREEN)} />
+              <div key={d.name} style={{ display: 'grid', gridTemplateColumns: '36px 1fr', gap: 12, alignItems: 'center' }}>
+                <img src={badgeFor(d.name)} alt="" aria-hidden="true" width="36" height="36" loading="lazy" />
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, fontSize: 14, marginBottom: 6 }}>
+                    <span style={{ fontWeight: 700 }}>{d.short}</span>
+                    <span style={{ color: 'var(--ink-soft)', fontWeight: 600, fontVariantNumeric: 'tabular-nums' }}>{d.pct === null ? 'No data yet' : d.pct + '%'}</span>
+                  </div>
+                  <div className="meter meter--thin">
+                    <span style={{ width: `${d.pct || 0}%`, background: d.pct !== null && d.pct < 65 ? RUST : DOMAIN_COLOR[d.name], borderRightWidth: d.pct ? 2 : 0 }} />
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div style={cardStyle(LIGHT, { padding: 26 })}>
-          <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 22, fontWeight: 700, margin: '0 0 8px' }}>Recent activity</h2>
+        <div className="card" style={{ padding: 28, '--r': '0.5deg' }}>
+          <span className="pin" aria-hidden="true" />
+          <h2 className="h-card" style={{ fontSize: 24, margin: '0 0 8px' }}>Recent stops</h2>
           {summary.recent.length === 0 && (
-            <p style={{ fontSize: 14.5, color: '#646A85', margin: '8px 0 4px' }}>No attempts yet.</p>
+            <div style={{ textAlign: 'center', padding: '8px 0 6px' }}>
+              <div style={{ maxWidth: 170, margin: '0 auto 10px' }}><Art name="spot-compass" w={300} h={300} /></div>
+              <p className="hand" style={{ fontSize: 26, color: 'var(--ink-faint)', margin: 0 }}>No stops yet. The platform is right this way!</p>
+            </div>
           )}
           {summary.recent.slice(0, 6).map((a) => (
-            <div key={a.id} style={{ display: 'flex', justifyContent: 'space-between', gap: 16, alignItems: 'center', padding: '14px 0', borderBottom: '1px solid #EEF0F7' }}>
+            <div key={a.id} style={{ display: 'flex', justifyContent: 'space-between', gap: 16, alignItems: 'center', padding: '14px 0', borderBottom: '2px dashed var(--line)' }}>
               <div>
-                <div style={{ fontSize: 15, fontWeight: 600 }}>{a.title}</div>
-                <div style={{ fontSize: 13.5, color: '#636987', marginTop: 2 }}>
+                <div style={{ fontSize: 15.5, fontWeight: 700 }}>{a.title}</div>
+                <div style={{ fontSize: 13.5, color: 'var(--ink-soft)', marginTop: 2 }}>
                   {a.kind === 'diagnostic' ? `${a.answeredCount} items` : a.mode === 'timed' ? 'Timed' : 'Practice'} &middot; {fmtShortDate(a.completedAt)}
                 </div>
               </div>
-              <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 22, fontWeight: 700, color: TEAL_TXT }}>{a.pct}%</div>
+              <span className="stamp" style={{ color: a.pct >= 70 ? 'var(--leaf-deep)' : 'var(--civic-ink)', fontSize: 16 }}>{a.pct}%</span>
             </div>
           ))}
-          <Hoverable
-            style={{ marginTop: 20, background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600, width: '100%' }}
-            hoverStyle={{ border: '1px solid #1A1C2B', background: '#F6F7FB' }}
-            onClick={() => navigate('/study')}
-          >
+          <button className="btn btn--tomato btn--block" style={{ marginTop: 22 }} onClick={() => navigate('/study')}>
             Drill your weakest domain
-          </Hoverable>
+          </button>
         </div>
       </div>
     </section>

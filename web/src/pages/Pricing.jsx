@@ -1,63 +1,57 @@
 import { useNavigate } from 'react-router-dom';
-import Hoverable from '../components/Hoverable';
+import PageHead from '../components/PageHead';
 import { PRICE } from '../data/domains';
 import { useUnlock } from '../context/UnlockContext';
-import { cardStyle } from '../lib/style';
-import { LIGHT } from '../lib/theme';
+
+function Checklist({ items }) {
+  return (
+    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+      {items.map((t) => (
+        <li key={t} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', fontSize: 15.5, lineHeight: 1.45 }}>
+          <span className="pen-check" aria-hidden="true" />
+          {t}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function Pricing() {
   const navigate = useNavigate();
   const { unlock } = useUnlock();
 
   return (
-    <section style={{ maxWidth: 1000, margin: '0 auto', padding: '64px 24px 90px' }}>
-      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 'clamp(34px,4.4vw,46px)', fontWeight: 700, letterSpacing: '-0.03em', margin: 0, maxWidth: '18ch' }}>
-        Two quizzes free. The full-length exam when you are ready.
-      </h1>
-      <p style={{ fontSize: 17, color: '#646A85', margin: '14px 0 40px', maxWidth: '58ch' }}>
-        The free quizzes use the same weighting and the same explanations as the full exam. Full Access opens the full-length 170-question exam and untimed drills in every domain.
-      </p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 20, alignItems: 'start' }}>
-        <div style={cardStyle(LIGHT, { radius: 18, padding: 30 })}>
-          <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#636987' }}>Free</div>
-          <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 44, fontWeight: 700, letterSpacing: '-0.03em', margin: '10px 0 4px' }}>$0</div>
-          <p style={{ fontSize: 14.5, color: '#646A85', margin: '0 0 22px' }}>No account needed.</p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 11, fontSize: 15, color: '#3A3F57' }}>
-            <div>Two 25-question warm-up quizzes</div>
-            <div>Full explanation on every answer</div>
-            <div>Question of the day</div>
-            <div>Per-domain score breakdown</div>
-          </div>
-          <Hoverable
-            style={{ width: '100%', marginTop: 26, background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: 13, borderRadius: 10, fontSize: 15.5, fontWeight: 600 }}
-            hoverStyle={{ border: '1px solid #1A1C2B' }}
-            onClick={() => navigate('/exams')}
-          >
-            Take a free quiz
-          </Hoverable>
+    <section className="wrap" style={{ maxWidth: 1080, paddingBottom: 90 }}>
+      <PageHead
+        title={<>Two quizzes free. The full ride when you are <em className="marker">ready.</em></>}
+        art="page-booth" artW={420} artH={350} artTilt={-1}
+        artAlt="A little ticket booth with a striped awning and a friendly conductor at the window"
+      >
+        The free quizzes use the same weighting and the same explanations as the full exams. Full Access opens all three full-length 170-question exams and untimed drills in every domain.
+      </PageHead>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 34, alignItems: 'start', marginTop: 10 }}>
+        <div className="card" style={{ padding: 32, '--r': '-0.8deg' }}>
+          <span className="tape tape--sky tape--left" aria-hidden="true" />
+          <div className="hand" style={{ fontSize: 30, color: 'var(--civic-ink)' }}>Day pass</div>
+          <div className="display" style={{ fontSize: 58, margin: '8px 0 4px' }}>$0</div>
+          <p style={{ fontSize: 15, color: 'var(--ink-soft)', margin: '0 0 24px' }}>No account needed.</p>
+          <Checklist items={['Two 25-question warm-up quizzes', 'Full explanation on every answer', 'Question of the day', 'Per-domain score breakdown', 'The 100-item diagnostic']} />
+          <button className="btn btn--paper btn--block" style={{ marginTop: 30 }} onClick={() => navigate('/exams')}>Take a free quiz</button>
         </div>
-        <div style={{ background: '#122744', border: '1px solid #122744', borderRadius: 18, padding: 30, color: '#FFFFFF' }}>
-          <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#FFAD9B' }}>Full Access</div>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, margin: '10px 0 4px' }}>
-            <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 44, fontWeight: 700, letterSpacing: '-0.03em' }}>{PRICE}</div>
-            <div style={{ fontSize: 14.5, color: '#AEC4E0' }}>one time, no renewal</div>
+
+        <div className="card" style={{ padding: 32, background: 'var(--butter) var(--grain-tex)', '--r': '1deg', boxShadow: '8px 10px 0 rgba(39,35,58,0.2)' }}>
+          <span className="tape tape--blush tape--right" aria-hidden="true" />
+          <span className="stamp" style={{ position: 'absolute', top: 26, right: 26, color: 'var(--tomato-ink)', transform: 'rotate(8deg)', background: 'rgba(255,253,248,0.5)' }}>Best for exam day</span>
+          <div className="hand" style={{ fontSize: 30, color: 'var(--tomato-ink)' }}>All-access pass</div>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, margin: '8px 0 4px', flexWrap: 'wrap' }}>
+            <div className="display" style={{ fontSize: 58 }}>{PRICE}</div>
+            <div style={{ fontSize: 15, fontWeight: 600, color: '#4A3E1C' }}>one time, no renewal</div>
           </div>
-          <p style={{ fontSize: 14.5, color: '#AEC4E0', margin: '0 0 22px' }}>Access until your test date.</p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 11, fontSize: 15, color: '#E8EFF8' }}>
-            <div>Everything in Free</div>
-            <div>Two full-length 170-question timed exams</div>
-            <div>Untimed drills in all nine domains</div>
-            <div>Progress tracking across attempts</div>
-            <div>Missed-question review sets</div>
-          </div>
-          <Hoverable
-            style={{ width: '100%', marginTop: 26, background: '#FF7059', border: 'none', color: '#3B1008', padding: 14, borderRadius: 10, fontSize: 16, fontWeight: 700 }}
-            hoverStyle={{ background: '#FF8570' }}
-            onClick={() => { unlock(); navigate('/exams'); }}
-          >
-            Unlock Full Access
-          </Hoverable>
-          <p style={{ fontSize: 13, color: '#8FA9C8', textAlign: 'center', margin: '14px 0 0' }}>Refund within 7 days if it is not useful.</p>
+          <p style={{ fontSize: 15, color: '#4A3E1C', margin: '0 0 24px' }}>Access until your test date.</p>
+          <Checklist items={['Everything in the day pass', 'Three full-length 170-question timed exams', 'Untimed drills in all nine domains', 'Progress tracking across attempts', 'Missed-question review sets']} />
+          <button className="btn btn--lg btn--ink btn--block" style={{ marginTop: 30 }} onClick={() => { unlock(); navigate('/exams'); }}>Unlock Full Access</button>
+          <p className="hand" style={{ fontSize: 22, textAlign: 'center', margin: '14px 0 0', color: '#4A3E1C' }}>Refund within 7 days if it is not useful.</p>
         </div>
       </div>
     </section>

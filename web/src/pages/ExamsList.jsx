@@ -1,56 +1,52 @@
 import { useNavigate } from 'react-router-dom';
-import Hoverable from '../components/Hoverable';
+import PageHead from '../components/PageHead';
 import { ASSESSMENTS, PRICE } from '../data/domains';
-import { chipStyle, cardStyle } from '../lib/style';
-import { LIGHT } from '../lib/theme';
 import { useUnlock } from '../context/UnlockContext';
 
-const rowCardStyle = { ...cardStyle(LIGHT, { padding: 24 }), display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 24, alignItems: 'center' };
-const ghostBtn = { background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600 };
-const ghostBtnHover = { border: '1px solid #1A1C2B', background: '#F6F7FB' };
-const primaryBtn = { background: '#1D5FA8', border: 'none', color: '#F6F7FB', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600 };
-const primaryBtnHover = { background: '#164C87' };
+const STUB_COLORS = { q1: 'var(--sky)', q2: 'var(--mint)', e1: 'var(--butter)', e2: 'var(--blush)', e3: 'var(--lavender)' };
+const STUB_MARKS = { q1: 'A', q2: 'B', e1: '1', e2: '2', e3: '3' };
 
-function Row({ a, unlocked, onPractice, onTimed, onUnlock }) {
+function Ticket({ a, i, unlocked, onPractice, onTimed, onUnlock }) {
   const locked = a.tier === 'paid' && !unlocked && !a.soon;
   const hrs = Math.floor(a.mins / 60), mns = a.mins % 60;
-  const status = a.soon ? 'In development' : a.tier === 'free' ? 'Free' : locked ? 'Locked' : 'Unlocked';
-  const statusStyle = a.soon ? chipStyle('#FCF0DB', '#8A6420') : a.tier === 'free' ? chipStyle('#E6EEF9', '#14508C') : locked ? chipStyle('#ECEDF6', '#646A85') : chipStyle('#FCF0DB', '#8A6420');
+  const status = a.soon ? 'In development' : a.tier === 'free' ? 'Free ride' : locked ? 'Locked' : 'Unlocked';
+  const stampColor = a.soon ? 'var(--butter-deep)' : a.tier === 'free' ? 'var(--leaf-deep)' : locked ? 'var(--ink-faint)' : 'var(--civic-ink)';
   const taken = a.soon ? a.taken : locked ? 'Included in Full Access' : a.taken;
   const timeLabel = (hrs ? hrs + 'h ' : '') + (mns ? mns + 'm' : '');
 
   return (
-    <div style={rowCardStyle}>
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 25, fontWeight: 700, margin: 0 }}>{a.title}</h2>
-          <span style={statusStyle}>{status}</span>
+    <div className="ticket card card--lift" style={{ '--r': `${[-0.5, 0.4, -0.3, 0.5, -0.4][i % 5]}deg` }}>
+      <div className="ticket__stub" style={{ background: STUB_COLORS[a.id] ?? 'var(--butter)' }}>
+        <span className="ticket__admit">Admit one</span>
+        <span className="ticket__mark">{STUB_MARKS[a.id] ?? '★'}</span>
+        <span className="ticket__admit">No. {String(a.size).padStart(3, '0')}</span>
+      </div>
+      <span className="ticket__notch ticket__notch--top" aria-hidden="true" />
+      <span className="ticket__notch ticket__notch--bottom" aria-hidden="true" />
+      <div className="ticket__body">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+          <h2 className="h-card" style={{ fontSize: 26 }}>{a.title}</h2>
+          <span className="stamp" style={{ color: stampColor }}>{status}</span>
         </div>
-        <p style={{ fontSize: 15, color: '#646A85', margin: '8px 0 0', maxWidth: '52ch' }}>{a.blurb}</p>
-        <div style={{ display: 'flex', gap: 18, marginTop: 14, fontSize: 13.5, color: '#646A85', flexWrap: 'wrap' }}>
-          <span>{a.size} questions</span><span>{timeLabel}</span><span>{taken}</span>
+        <p style={{ fontSize: 15.5, lineHeight: 1.55, color: 'var(--ink-soft)', margin: '8px 0 0', maxWidth: '56ch' }}>{a.blurb}</p>
+        <div style={{ display: 'flex', gap: 10, marginTop: 14, flexWrap: 'wrap' }}>
+          <span className="chip chip--plain">{a.size} questions</span>
+          <span className="chip chip--plain">{timeLabel}</span>
+          <span className="chip chip--plain" style={{ borderStyle: 'dashed' }}>{taken}</span>
         </div>
       </div>
-      <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+      <div className="ticket__actions">
         {locked && (
-          <Hoverable
-            style={{ display: 'flex', alignItems: 'center', gap: 9, background: '#1A1C2B', border: 'none', color: '#F6F7FB', padding: '12px 20px', borderRadius: 10, fontSize: 15, fontWeight: 600 }}
-            hoverStyle={{ background: '#1D5FA8' }}
-            onClick={onUnlock}
-          >
-            <span style={{ display: 'block', width: 11, height: 9, border: '2px solid #F6F7FB', borderRadius: 2, position: 'relative', marginTop: 4 }}>
-              <span style={{ position: 'absolute', left: 1, top: -7, width: 5, height: 7, border: '2px solid #F6F7FB', borderBottom: 'none', borderRadius: '4px 4px 0 0', display: 'block' }} />
-            </span>
+          <button className="btn btn--ink" onClick={onUnlock}>
+            <svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><rect x="1.5" y="8" width="13" height="9" rx="2" fill="currentColor" /><path d="M4.5 8V5.5a3.5 3.5 0 0 1 7 0V8" fill="none" stroke="currentColor" strokeWidth="2.2" /></svg>
             Unlock
-          </Hoverable>
+          </button>
         )}
-        {a.soon && (
-          <span style={{ fontSize: 14.5, fontWeight: 600, color: '#8A6420', background: '#FCF0DB', padding: '12px 18px', borderRadius: 10 }}>Coming soon</span>
-        )}
+        {a.soon && <span className="chip chip--butter" style={{ fontSize: 14, padding: '10px 16px' }}>Coming soon</span>}
         {!locked && !a.soon && (
           <>
-            <Hoverable style={ghostBtn} hoverStyle={ghostBtnHover} onClick={onPractice}>Practice mode</Hoverable>
-            <Hoverable style={primaryBtn} hoverStyle={primaryBtnHover} onClick={onTimed}>Start timed</Hoverable>
+            <button className="btn btn--paper" onClick={onPractice}>Practice mode</button>
+            <button className="btn btn--civic" onClick={onTimed}>Start timed</button>
           </>
         )}
       </div>
@@ -69,33 +65,32 @@ export default function ExamsList() {
   const goUnlock = () => navigate('/pricing');
 
   return (
-    <section style={{ maxWidth: 1180, margin: '0 auto', padding: '56px 24px 80px' }}>
-      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 42, fontWeight: 700, letterSpacing: '-0.022em', margin: 0 }}>Practice exams</h1>
-      <p style={{ fontSize: 16.5, color: '#646A85', margin: '10px 0 34px', maxWidth: '62ch' }}>
+    <section className="wrap" style={{ paddingBottom: 80 }}>
+      <PageHead
+        title={<>Practice <em className="marker">exams</em></>}
+        art="page-tickets" artW={520} artH={320} artTilt={-2}
+        artAlt="A fan of paper train tickets for Quiz A, Exam 1 and Exam 2"
+        note="pick a ticket, any ticket"
+      >
         Every quiz and exam is drawn to the nine domains of the APA Exam Content Outline, in the same proportions as the real test. Start with the two free quizzes.
-      </p>
+      </PageHead>
 
-      <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#636987', marginBottom: 14 }}>Free</div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        {freeExams.map((a) => (
-          <Row key={a.id} a={a} unlocked={unlocked} onPractice={() => practice(a.id)} onTimed={() => timed(a.id)} onUnlock={goUnlock} />
+      <div className="eyebrow" style={{ marginBottom: 18 }}>Free rides</div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+        {freeExams.map((a, i) => (
+          <Ticket key={a.id} a={a} i={i} unlocked={unlocked} onPractice={() => practice(a.id)} onTimed={() => timed(a.id)} onUnlock={goUnlock} />
         ))}
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '38px 0 14px', flexWrap: 'wrap' }}>
-        <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#636987' }}>Full Access</div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, margin: '48px 0 18px', flexWrap: 'wrap' }}>
+        <div className="eyebrow">Full Access</div>
         {!unlocked && (
-          <Hoverable
-            style={{ background: 'none', border: 'none', padding: 0, fontSize: 13.5, fontWeight: 600, color: '#14508C', textDecoration: 'underline', textUnderlineOffset: '3px' }}
-            onClick={goUnlock}
-          >
-            Unlock Full Access for {PRICE}
-          </Hoverable>
+          <button className="link-btn" onClick={goUnlock}>Unlock Full Access for {PRICE}</button>
         )}
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        {paidExams.map((a) => (
-          <Row key={a.id} a={a} unlocked={unlocked} onPractice={() => practice(a.id)} onTimed={() => timed(a.id)} onUnlock={goUnlock} />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+        {paidExams.map((a, i) => (
+          <Ticket key={a.id} a={a} i={i + 2} unlocked={unlocked} onPractice={() => practice(a.id)} onTimed={() => timed(a.id)} onUnlock={goUnlock} />
         ))}
       </div>
     </section>

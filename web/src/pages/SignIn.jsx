@@ -1,50 +1,39 @@
 import { useNavigate } from 'react-router-dom';
-import Hoverable from '../components/Hoverable';
-
-const inputStyle = {
-  border: '1px solid #D2D6E6', background: '#FFFFFF', borderRadius: 10, padding: '13px 14px',
-  fontSize: 15.5, fontFamily: 'inherit', fontWeight: 400, color: '#1A1C2B'
-};
+import Art from '../components/Art';
 
 export default function SignIn() {
   const navigate = useNavigate();
   return (
-    <section style={{ maxWidth: 430, margin: '0 auto', padding: '80px 24px 100px' }}>
-      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 38, fontWeight: 700, letterSpacing: '-0.02em', margin: 0 }}>Sign in</h1>
-      <p style={{ fontSize: 15.5, color: '#646A85', margin: '8px 0 30px' }}>Your progress and past exam results follow your account.</p>
-      <form
-        style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
-        onSubmit={(e) => { e.preventDefault(); navigate('/exams'); }}
-      >
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 14, fontWeight: 600, color: '#3A3F57' }}>
-          Email
-          <input type="email" placeholder="you@city.gov" style={inputStyle} />
-        </label>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 14, fontWeight: 600, color: '#3A3F57' }}>
-          Password
-          <input type="password" placeholder="••••••••" style={inputStyle} />
-        </label>
-        <Hoverable
-          as="button"
-          style={{ background: '#1D5FA8', color: '#F6F7FB', border: 'none', padding: 14, borderRadius: 10, fontSize: 16, fontWeight: 600, marginTop: 6 }}
-          hoverStyle={{ background: '#164C87' }}
+    <section className="wrap" style={{ maxWidth: 940, padding: '64px 24px 100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 48, alignItems: 'center' }}>
+      <div style={{ maxWidth: 300, justifySelf: 'center', width: '100%' }} className="float-soft">
+        <Art name="page-conductor" w={300} h={340} eager alt="A friendly conductor waving and holding a lantern" />
+      </div>
+      <div className="card" style={{ padding: '36px 30px 30px', '--r': '0.8deg' }}>
+        <span className="tape tape--mint" aria-hidden="true" />
+        <h1 className="display" style={{ fontSize: 44 }}>Welcome back.</h1>
+        <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: '10px 0 26px', lineHeight: 1.5 }}>Your progress and past exam results follow your account.</p>
+        <form
+          style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
+          onSubmit={(e) => { e.preventDefault(); navigate('/exams'); }}
         >
-          Continue
-        </Hoverable>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#A3A8BE', fontSize: 13 }}>
-          <span style={{ flex: 1, height: 1, background: '#E4E6F0' }} />or<span style={{ flex: 1, height: 1, background: '#E4E6F0' }} />
-        </div>
-        <Hoverable
-          as="button"
-          style={{ background: '#FFFFFF', color: '#1A1C2B', border: '1px solid #D2D6E6', padding: 13, borderRadius: 10, fontSize: 15.5, fontWeight: 600 }}
-          hoverStyle={{ border: '1px solid #1A1C2B' }}
-        >
-          Continue with Google
-        </Hoverable>
-        <p style={{ fontSize: 14, color: '#646A85', textAlign: 'center', margin: '10px 0 0' }}>
-          New here? <a href="#create-account" style={{ fontWeight: 600 }}>Create an account</a>
-        </p>
-      </form>
+          <label className="field">
+            Email
+            <input type="email" placeholder="you@city.gov" autoComplete="email" />
+          </label>
+          <label className="field">
+            Password
+            <input type="password" placeholder="••••••••" autoComplete="current-password" />
+          </label>
+          <button className="btn btn--civic btn--block" style={{ marginTop: 6 }}>Continue</button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'var(--ink-faint)' }}>
+            <span style={{ flex: 1, borderTop: '2px dashed var(--line-strong)' }} /><span className="hand" style={{ fontSize: 22, color: 'var(--ink-faint)' }}>or</span><span style={{ flex: 1, borderTop: '2px dashed var(--line-strong)' }} />
+          </div>
+          <button type="button" className="btn btn--paper btn--block">Continue with Google</button>
+          <p style={{ fontSize: 14.5, color: 'var(--ink-soft)', textAlign: 'center', margin: '8px 0 0' }}>
+            New here? <a href="#create-account" style={{ fontWeight: 700 }}>Create an account</a>
+          </p>
+        </form>
+      </div>
     </section>
   );
 }

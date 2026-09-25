@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Hoverable from '../components/Hoverable';
+import PageHead from '../components/PageHead';
 import { DOMAINS } from '../data/domains';
 import { BANK as EXAM1_BANK } from '../data/exam1-questions';
 import { getHistory, summarizeHistory } from '../lib/history';
-import { barStyle, cardStyle } from '../lib/style';
-import { GREEN, RUST, LIGHT } from '../lib/theme';
+import { badgeFor, DOMAIN_COLOR } from '../lib/art';
+import { RUST } from '../lib/theme';
 import { useUnlock } from '../context/UnlockContext';
 
 const countInBank = (name) => EXAM1_BANK.filter((q) => q.domain === name).length;
@@ -25,32 +25,44 @@ export default function StudyByDomain() {
   };
 
   return (
-    <section style={{ maxWidth: 1180, margin: '0 auto', padding: '56px 24px 80px' }}>
-      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 42, fontWeight: 700, letterSpacing: '-0.022em', margin: 0 }}>Study by domain</h1>
-      <p style={{ fontSize: 16.5, color: '#646A85', margin: '10px 0 34px', maxWidth: '62ch' }}>{studyNote}</p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 16 }}>
-        {DOMAINS.map((d) => {
+    <section className="wrap" style={{ paddingBottom: 80 }}>
+      <PageHead
+        title={<>Study by <em className="marker marker--sky">domain</em></>}
+        art="page-books" artW={420} artH={310} artTilt={1.5}
+        artAlt="A stack of planning books labelled Zoning, Plan Making, Ethics and GIS & Data, with a plant and a mug of coffee"
+        note="one line at a time"
+      >
+        {studyNote}
+      </PageHead>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,290px),1fr))', gap: 26 }}>
+        {DOMAINS.map((d, i) => {
           const t = domainTotals[d.short];
           const pct = t && t.n ? Math.round((t.got / t.n) * 100) : null;
           return (
-            <Hoverable
+            <button
               key={d.name}
-              style={{ ...cardStyle(LIGHT, { padding: 22 }), textAlign: 'left', display: 'flex', flexDirection: 'column', gap: 14 }}
-              hoverStyle={{ border: '1px solid #14508C', boxShadow: '0 12px 28px -22px rgba(26,28,43,0.45)' }}
+              className="card card--lift domain-card"
+              style={{ '--r': `${[-0.6, 0.5, -0.3, 0.7, -0.5, 0.3][i % 6]}deg`, textAlign: 'left', display: 'flex', flexDirection: 'column', gap: 12, padding: '0 22px 22px', color: 'var(--ink)', font: 'inherit' }}
               onClick={() => startDrill(d.name)}
             >
-              <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 21, fontWeight: 700, lineHeight: 1.25, color: '#1A1C2B' }}>{d.name}</div>
-              <div style={{ fontSize: 14.5, color: '#646A85', lineHeight: 1.55 }}>{d.blurb}</div>
-              <div style={{ fontSize: 13.5, fontWeight: 600, color: '#14508C' }}>{unlocked ? 'Start drill' : 'Unlock to drill'}</div>
+              <span className="domain-card__tab" style={{ background: DOMAIN_COLOR[d.name] }}>{d.pct}% of exam</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 14 }}>
+                <img src={badgeFor(d.name)} alt="" aria-hidden="true" width="72" height="72" loading="lazy" style={{ flex: 'none' }} />
+                <div className="h-card" style={{ fontSize: 21, lineHeight: 1.2 }}>{d.name}</div>
+              </div>
+              <div style={{ fontSize: 15, color: 'var(--ink-soft)', lineHeight: 1.55 }}>{d.blurb}</div>
               <div style={{ marginTop: 'auto', width: '100%' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: '#646A85', marginBottom: 6 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13.5, fontWeight: 600, color: 'var(--ink-soft)', marginBottom: 7 }}>
                   <span>{countInBank(d.name)} questions</span><span>{pct === null ? 'No attempts yet' : pct + '% correct'}</span>
                 </div>
-                <div style={{ height: 7, background: '#ECEDF6', borderRadius: 99, overflow: 'hidden' }}>
-                  <div style={barStyle(pct || 0, pct !== null && pct < 65 ? RUST : GREEN)} />
+                <div className="meter meter--thin">
+                  <span style={{ width: `${pct || 0}%`, background: pct !== null && pct < 65 ? RUST : DOMAIN_COLOR[d.name], borderRightWidth: pct ? 2 : 0 }} />
+                </div>
+                <div className="hand" style={{ fontSize: 23, marginTop: 14, color: unlocked ? 'var(--civic-ink)' : 'var(--ink-faint)' }}>
+                  {unlocked ? 'Start drill →' : 'Unlock to drill →'}
                 </div>
               </div>
-            </Hoverable>
+            </button>
           );
         })}
       </div>
