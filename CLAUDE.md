@@ -51,6 +51,7 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     pages/exam/             Exam runner (the three full-length practice exams)
 wrangler.jsonc              Cloudflare config (repo root): builds web/, serves web/dist, SPA fallback, custom domain
 supabase/migrations/        Database schema (the user_data table and its row-level security)
+supabase/templates/         Branded account emails (build.mjs writes the HTML; paste into Supabase)
 uploads/                    Source specs for the question banks and diagnostic (reference only)
 *.dc.html, support.js, root *.js   Original design prototypes (reference only; not deployed)
 ```
@@ -266,6 +267,11 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
   DNS records on Cloudflare). Don't switch back to Supabase's built-in email: it only reaches the
   project team's addresses, so public sign-ups and password resets would fail. Resend's free plan
   allows 3,000 emails a month (100 a day).
+- **The account emails are branded** (cream paper, inked card, ticket art): source in
+  `supabase/templates/build.mjs`, which writes the HTML files there; art in
+  `web/art/scenes/email.mjs`, rendered as JPEG (`jpg` option in `art/render.mjs`) because not
+  every email app shows WebP. Supabase doesn't read the files: after changing them, paste each
+  into Authentication → Emails → Templates (subjects and steps in `supabase/templates/README.md`).
 - **Progress syncs to Supabase:** history, study state, and in-progress exams are still read and
   written in localStorage under `scopedKey()` from `lib/userStorage.js`; each write calls
   `noteWrite(base)`, and `lib/cloudSync.js` pushes it to the `user_data` table (one row per

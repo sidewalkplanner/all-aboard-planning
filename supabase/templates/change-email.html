@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>Confirm your new email</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Figtree:wght@400;600;700&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; padding:0; background:#F7F0E2; }
+  a { color:#23508A; }
+  @media (max-width: 480px) {
+    .card-pad { padding:26px 20px 24px !important; }
+    .heading { font-size:28px !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#F7F0E2;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#F7F0E2;">Confirm the new email address for your All Aboard Planning account.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F7F0E2;">
+  <tr>
+    <td align="center" style="padding:28px 14px 36px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;">
+        <tr>
+          <td align="center" style="padding:0 0 18px;">
+            <a href="https://allaboardplanning.com" style="text-decoration:none;">
+              <img src="https://allaboardplanning.com/art/logo.png" width="40" height="40" alt="" style="vertical-align:middle;border:0;border-radius:8px;">
+              <span style="vertical-align:middle;font-family:Fraunces, Georgia, 'Times New Roman', serif;font-size:22px;font-weight:700;color:#27233A;padding-left:8px;">All Aboard <span style="font-family:Caveat, 'Bradley Hand', 'Segoe Print', 'Comic Sans MS', cursive;font-size:25px;font-weight:700;color:#C23F35;">Planning</span></span>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#FFFDF8;border:2px solid #27233A;border-radius:18px;box-shadow:5px 5px 0 #27233A;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="center" style="padding:24px 24px 0;">
+                  <img src="https://allaboardplanning.com/art/email-changed.jpg" width="322" alt="A pink train ticket reading NEW ADDRESS, confirm the change" style="display:block;width:100%;max-width:322px;height:auto;border:0;">
+                </td>
+              </tr>
+              <tr>
+                <td class="card-pad" style="padding:18px 36px 32px;">
+                  <p style="margin:0 0 4px;font-family:Caveat, 'Bradley Hand', 'Segoe Print', 'Comic Sans MS', cursive;font-size:26px;font-weight:700;line-height:1.2;color:#23508A;">Changing trains?</p>
+                  <h1 class="heading" style="margin:0 0 18px;font-family:Fraunces, Georgia, 'Times New Roman', serif;font-size:32px;font-weight:700;line-height:1.12;letter-spacing:-0.5px;color:#27233A;">Confirm your new email</h1>
+                  <p style="margin:0 0 16px;font-family:Figtree, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;line-height:1.6;color:#3F3A4F;">{{ if .Data.name }}Hi {{ .Data.name }},{{ else }}Hi there,{{ end }}</p><p style="margin:0 0 16px;font-family:Figtree, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;line-height:1.6;color:#3F3A4F;">You asked to change your account&rsquo;s email from <strong>{{ .Email }}</strong> to <strong>{{ .NewEmail }}</strong>. Confirm below and we&rsquo;ll use the new address from now on.</p>
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:8px 0 24px;">
+                    <tr>
+                      <td align="center" bgcolor="#2F6CB3" style="background:#2F6CB3;border:2px solid #27233A;border-radius:12px;box-shadow:4px 4px 0 #27233A;">
+                        <a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:14px 28px;font-family:Figtree, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:17px;font-weight:700;line-height:1.2;color:#FFFFFF;text-decoration:none;border-radius:12px;">Confirm new email</a>
+                      </td>
+                    </tr>
+                  </table>
+                  <p style="margin:0 0 10px;font-family:Figtree, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:13.5px;line-height:1.55;color:#5A5468;">Didn&rsquo;t ask for this? Ignore this email and your address stays the same.</p>
+                  <div style="border-top:2px dashed #E3D8C3;margin:22px 0 16px;line-height:0;font-size:0;">&nbsp;</div>
+                  <p style="margin:0 0 10px;font-family:Figtree, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:13.5px;line-height:1.55;color:#5A5468;">Button not working? Copy this link into your browser:<br><a href="{{ .ConfirmationURL }}" style="color:#23508A;word-break:break-all;">{{ .ConfirmationURL }}</a></p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="padding:22px 12px 0;">
+            <p style="margin:0 0 6px;font-family:Caveat, 'Bradley Hand', 'Segoe Print', 'Comic Sans MS', cursive;font-size:21px;font-weight:700;color:#5A5468;">See you on the platform.</p>
+            <p style="margin:0;font-family:Figtree, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12.5px;line-height:1.6;color:#5A5468;">
+              All Aboard Planning &middot; free AICP exam prep &middot; <a href="https://allaboardplanning.com" style="color:#5A5468;">allaboardplanning.com</a><br>
+              An independent study resource, not affiliated with or endorsed by APA or AICP.
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
