@@ -76,6 +76,26 @@ for (const a of todo) {
   const buf = Buffer.from(webp, 'base64');
   writeFileSync(join(outDir, `${a.name}.webp`), buf);
   if (a.png) writeFileSync(join(outDir, `${a.name}.png`), png);
+  // `jpg: '#RRGGBB'`: also save a JPEG flattened onto that background color,
+  // for email, where WebP isn't supported everywhere and PNGs are heavy.
+  if (a.jpg) {
+    const jpg = await page.evaluate(async ({ b64, bg }) => {
+      const img = new Image();
+      img.src = 'data:image/png;base64,' + b64;
+      await img.decode();
+      const c = document.createElement('canvas');
+      c.width = img.naturalWidth;
+      c.height = img.naturalHeight;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, c.width, c.height);
+      ctx.drawImage(img, 0, 0);
+      return c.toDataURL('image/jpeg', 0.84).split(',')[1];
+    }, { b64: png.toString('base64'), bg: a.jpg });
+    const jbuf = Buffer.from(jpg, 'base64');
+    writeFileSync(join(outDir, `${a.name}.jpg`), jbuf);
+    console.log(`${(jbuf.length / 1024).toFixed(0).padStart(5)}KB  ${a.name}.jpg`);
+  }
   console.log(`${(buf.length / 1024).toFixed(0).padStart(5)}KB  ${a.name}  ${a.w}x${a.h}@${scale}x`);
 }
 
