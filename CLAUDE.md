@@ -19,7 +19,6 @@ Everything prep-related therefore lives under `/aicp/`; firm-level pages (`/abou
 ```
 web/                        The site (React 19 + Vite 8 + react-router 7). All real work happens here.
   index.html                Shell and SEO meta (canonical and share URLs use allaboardplanning.com)
-  wrangler.jsonc            Cloudflare config: serves ./dist, SPA fallback so deep links load the app
   vite.config.js            base path '/' (site root) + the lesson Markdown plugin
   scripts/markdown.mjs      Shared Markdown → HTML renderer (used by Vite plugin and checker)
   scripts/check-content.mjs `npm run check`: validates lessons, checkpoints, internal links
@@ -48,6 +47,7 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     data/                   Question banks (exam1/2/3), domain weights; diagnostic-items.js is retired (kept, unused)
     pages/                  Route components; pages/aicp/* are the prep section pages
     pages/exam/             Exam runner (the three full-length practice exams)
+wrangler.jsonc              Cloudflare config (repo root): builds web/, serves web/dist, SPA fallback, custom domain
 uploads/                    Source specs for the question banks and diagnostic (reference only)
 *.dc.html, support.js, root *.js   Original design prototypes (reference only; not deployed)
 ```
@@ -62,14 +62,15 @@ uploads/                    Source specs for the question banks and diagnostic (
 | `npm run lint` | oxlint (warnings about unused catch params are pre-existing and fine) |
 | `npm run check` | Content + link checker. Must pass before pushing |
 
-Deployment is automatic: Cloudflare Workers Builds watches `main`, with root directory `web`
-and deploy command `npx wrangler deploy`; pull request (preview) builds run
-`npx wrangler preview`, which needs the `previews` block in `wrangler.jsonc`. The site is built
-by the `build` section of `wrangler.jsonc` (`npm ci && npm run build`), which both commands run
-before uploading, so it doesn't depend on the dashboard's build command. (Cloudflare's docs say
-Workers Builds ignores that section; in practice wrangler runs it, which was verified locally,
-including with `WORKERS_CI=1`.) A dashboard build command of `npm run build` is fine too; it
-just builds twice.
+Deployment is automatic: Cloudflare Workers Builds watches `main` and runs from the **repo
+root** (its Root directory setting is blank), with deploy command `npx wrangler deploy`; pull
+request builds run `npx wrangler preview`. Both read the root `wrangler.jsonc`, whose `build`
+step (`cd web && npm ci && npm run build`) builds the site before uploading `web/dist`, so the
+dashboard's build command can stay empty. Keep the config at the root: a config inside `web/` is
+never read (that caused blank and failed deploys). Keep the `routes` entry for
+`allaboardplanning.com` too: `wrangler deploy` replaces the Worker's routes with the config's,
+so dropping it detaches the domain and Cloudflare deletes its DNS record. The empty `previews`
+block is required by `wrangler preview`.
 There is no staging. The site used to be on GitHub Pages at `/all-aboard-planning/`; that
 was switched off, and the Pages workflow and `404.html` workaround were removed. If the site
 ever moves under a subfolder again, set `base` in `vite.config.js` to that subfolder.

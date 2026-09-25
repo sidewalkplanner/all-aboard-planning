@@ -1,0 +1,34 @@
+// Cloudflare Workers config for allaboardplanning.com: an assets-only site.
+//
+// It lives at the repo root because Cloudflare's Workers Builds runs from the
+// repo root (its "Root directory" setting is blank). Both `npx wrangler deploy`
+// (production, on pushes to main) and `npx wrangler preview` (pull requests)
+// read this file, run the build below, and upload web/dist.
+{
+  "name": "all-aboard-planning",
+  "compatibility_date": "2026-09-01",
+
+  // Install and build the site. Wrangler runs this before every deploy or
+  // preview, so an upload can never be a missing or stale web/dist.
+  "build": {
+    "command": "cd web && npm ci --no-audit --no-fund && npm run build"
+  },
+
+  // Any URL that isn't a file (a bookmarked lesson, a refresh on /aicp/course)
+  // gets index.html, so React Router can show the right page.
+  "assets": {
+    "directory": "./web/dist",
+    "not_found_handling": "single-page-application"
+  },
+
+  // Keep the domain attached. `wrangler deploy` replaces the Worker's routes
+  // with the ones listed here, so a config without this line detaches the
+  // domain (and Cloudflare removes its DNS record).
+  "routes": [
+    { "pattern": "allaboardplanning.com", "custom_domain": true }
+  ],
+
+  // Pull request builds run `npx wrangler preview`, which needs this block.
+  // Empty is fine: previews use the settings above.
+  "previews": {}
+}
