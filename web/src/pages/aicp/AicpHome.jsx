@@ -1,33 +1,40 @@
 import { Link } from 'react-router-dom';
 import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
-import { DOMAINS, LESSONS, lessonBySlug } from '../../content/aicp/curriculum';
+import { LESSONS, lessonBySlug } from '../../content/aicp/curriculum';
 import useAccess from '../../hooks/useAccess';
 import { useStudyState } from '../../lib/studyState';
 import HeroTown from '../../components/HeroTown';
 import Art from '../../components/Art';
-import { art, badgeFor, DOMAIN_COLOR } from '../../lib/art';
-
-const OFFERS = [
-  { title: `${LESSONS.length} lessons in nine domains`, body: 'Plain-language lessons organized by the AICP exam content outline, with checkpoint questions after every key section, key terms, real planning examples, and exam tips.', to: P.course, cta: 'Browse the course', tape: 'tape' },
-  { title: '8- and 12-week study plans', body: 'Week-by-week schedules for every lesson and exam. Follow one and your dashboard shows exactly what’s due this week.', to: P.studyPlan, cta: 'See the plans', tape: 'pin' },
-  { title: 'Three full-length practice exams', body: '170 questions each, on the real 3.5-hour clock, with scenario sets and data exhibits. Results rank the domains to study first and list the lessons behind every miss.', to: P.exams, cta: 'See practice exams', tape: 'tape tape--mint' },
-  { title: 'A dashboard for your prep', body: 'Lessons finished, exam scores, the domains to study first, and the lessons to reread, all in one place.', to: P.progress, cta: 'Open your dashboard', tape: 'pin' },
-  { title: 'Flashcards and quick reference', body: `Hundreds of flashcards built from every lesson's key terms, plus one page of cases, laws, people, formulas, and key numbers.`, to: P.review, cta: 'See the review tools', tape: 'tape tape--blush' },
-  { title: 'An exam strategy guide', body: 'How the exam asks questions, a pacing plan for 3.5 hours, and the reasoning that separates the best answer from a merely true one.', to: P.strategy, cta: 'Read the guide', tape: 'pin' },
-];
+import { art } from '../../lib/art';
 
 const AUDIENCES = [
-  { title: 'Recent graduates', body: 'Your coursework is fresh, but the exam also tests how planning works in practice: ethics, administration, and getting plans implemented. The lessons connect what you studied to the job.', bg: 'var(--sky)' },
-  { title: 'Working professionals', body: 'You know the job but haven’t studied for a test in years. The lessons organize the theory, law, and history behind daily practice, and the study plans fit around a full schedule.', bg: 'var(--butter)' },
-  { title: 'Candidates retaking the exam', body: 'You want to find exactly which domains cost you points and spend your time there, not on what you already know.', bg: 'var(--blush)' },
+  { title: 'Recent graduates', body: 'Your coursework is fresh. The lessons connect it to how planning works in practice, which the exam tests too.', bg: 'var(--sky)' },
+  { title: 'Working professionals', body: 'You know the job but haven’t taken a test in years. Get the theory, law, and history organized, on a plan that fits your schedule.', bg: 'var(--butter)' },
+  { title: 'Candidates retaking the exam', body: 'Find the domains that cost you points and spend your time there, not on what you already know.', bg: 'var(--blush)' },
 ];
 
-const STEPS = [
-  ['01', 'Baseline', 'Take Practice Exam 1 in practice mode. Your results rank the nine domains by how many points each is costing you.', 'spot-compass', 300, 300, 'var(--sky)'],
-  ['02', 'Learn', 'Work through the lessons on a study plan, starting with your priority domains.', 'page-books', 420, 310, 'var(--butter)'],
-  ['03', 'Check', 'Answer each lesson’s checkpoints as you read, and circle back to anything you miss.', 'spot-flag', 320, 240, 'var(--blush)'],
-  ['04', 'Rehearse', 'Take full-length timed exams to build pace and stamina, and review every miss.', 'spot-mode', 320, 220, 'var(--mint)'],
+// How it works, as three stops on the line. Each names the tools you use there,
+// so the page describes every part of the course once.
+const STOPS = [
+  {
+    title: 'Take a baseline exam',
+    body: 'Start with Practice Exam 1 in practice mode: untimed and saved as you go. Your results rank the nine domains by how many points each is costing you.',
+    art: ['spot-compass', 300, 300], bg: 'var(--sky)',
+    links: [[P.exams, 'See the practice exams']],
+  },
+  {
+    title: 'Study what it points to',
+    body: 'Work through the lessons for your weakest domains first, on an 8- or 12-week study plan. Checkpoints test you as you read, and flashcards keep key terms fresh.',
+    art: ['page-books', 420, 310], bg: 'var(--butter)',
+    links: [[P.course, 'Browse the lessons'], [P.studyPlan, 'See the study plans']],
+  },
+  {
+    title: 'Rehearse and track',
+    body: 'Take the other full-length exams on the real 3.5-hour clock. Each one updates your dashboard’s list of what to study next.',
+    art: ['spot-mode', 320, 220], bg: 'var(--mint)',
+    links: [[P.strategy, 'Read the exam strategy guide']],
+  },
 ];
 
 // Practice Exam 1 as the baseline, the first thing to do. Rendered beside the headline on
@@ -57,7 +64,6 @@ export default function AicpHome() {
   const last = study.lastLesson && lessonBySlug(study.lastLesson.slug);
   const resume = last && !study.completed[last.slug] ? last : LESSONS.find((l) => !study.completed[l.slug]);
   const doneCount = LESSONS.filter((l) => study.completed[l.slug]).length;
-  const maxPct = Math.max(...DOMAINS.map((d) => d.weight));
 
   return (
     <>
@@ -145,118 +151,35 @@ export default function AicpHome() {
         </div>
       </section>
 
-      {/* WHAT YOU GET */}
-      <section className="section" aria-labelledby="offer-heading" style={{ paddingTop: 76 }}>
+      {/* HOW IT WORKS: three stops, each naming the tools used there */}
+      <section className="section band-white" aria-labelledby="how-heading" style={{ marginTop: 20 }}>
         <div className="container">
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
             <div>
-              <span className="eyebrow eyebrow-rust">What the course offers</span>
-              <h2 id="offer-heading" className="h2">Lessons and practice, <em className="marker marker--sky">connected</em></h2>
-              <p className="lead">Every lesson checks your understanding as you go, and every score report points back to the lessons.</p>
+              <span className="eyebrow eyebrow-rust">How it works</span>
+              <h2 id="how-heading" className="h2">Three stops to exam day</h2>
             </div>
-            <span className="hand" style={{ fontSize: 26, transform: 'rotate(-4deg)', color: 'var(--brand-strong)' }}>everything in one station</span>
+            <span className="hand" style={{ fontSize: 26, transform: 'rotate(-4deg)', color: 'var(--brand-strong)' }}>repeat until you&rsquo;re ready</span>
           </div>
-          <div className="grid-cards" style={{ marginTop: 36, gap: 28 }}>
-            {OFFERS.map((o, i) => (
-              <Link key={o.title} to={o.to} className="card card-link" style={{ '--r': `${[-0.8, 0.6, -0.4, 0.7, -0.6, 0.4][i]}deg`, padding: '26px 24px 22px' }}>
-                <span className={o.tape} aria-hidden="true" />
-                <h3 className="h3">{o.title}</h3>
-                <p className="body-text" style={{ margin: 0 }}>{o.body}</p>
-                <span className="link-arrow" style={{ marginTop: 'auto', paddingTop: 6 }}>{o.cta}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section className="section band-white" aria-labelledby="how-heading" style={{ marginTop: 20 }}>
-        <div className="container">
-          <span className="eyebrow eyebrow-rust">How it works</span>
-          <h2 id="how-heading" className="h2">Four steps, repeated until test day</h2>
-          <ol style={{ listStyle: 'none', padding: 0, margin: '36px 0 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,230px),1fr))', gap: 26 }}>
-            {STEPS.map(([n, title, body, img, w, h, bg], i) => (
-              <li key={n} className="card" style={{ '--r': `${[-0.8, 0.6, -0.4, 0.7][i]}deg`, padding: '16px 18px 22px' }}>
-                <div aria-hidden="true" style={{ background: bg, borderRadius: 'var(--wobble-sm)', border: '2px solid var(--ink)', padding: 10, height: 150, display: 'grid', placeItems: 'center' }}>
-                  <Art name={img} w={w} h={h} style={{ width: 'auto', height: 126, maxWidth: '100%' }} />
+          <ol style={{ listStyle: 'none', padding: 0, margin: '32px 0 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,280px),1fr))', gap: 28 }}>
+            {STOPS.map((stop, i) => (
+              <li key={stop.title} className="card" style={{ '--r': `${[-0.8, 0.6, -0.5][i]}deg`, padding: '16px 20px 22px', display: 'flex', flexDirection: 'column' }}>
+                <div aria-hidden="true" style={{ background: stop.bg, borderRadius: 'var(--wobble-sm)', border: '2px solid var(--ink)', padding: 10, height: 150, display: 'grid', placeItems: 'center' }}>
+                  <Art name={stop.art[0]} w={stop.art[1]} h={stop.art[2]} style={{ width: 'auto', height: 126, maxWidth: '100%' }} />
                 </div>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 16 }}>
-                  <span className="num" aria-hidden="true">{n}</span>
-                  <h3 className="h3">{title}</h3>
+                <span className="hand" style={{ display: 'block', fontSize: 24, color: 'var(--tomato-deep)', marginTop: 14 }}>Stop {i + 1}</span>
+                <h3 className="h3">{stop.title}</h3>
+                <p className="body-text" style={{ margin: '6px 0 12px' }}>{stop.body}</p>
+                <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  {stop.links.map(([to, label]) => <Link key={to} to={to} className="link-arrow">{label}</Link>)}
                 </div>
-                <p className="body-text" style={{ margin: '6px 0 0' }}>{body}</p>
               </li>
             ))}
           </ol>
-          <div className="row-wrap" style={{ marginTop: 36 }}>
-            <Link className="btn btn-dark" to={P.studyPlan}>Pick a study plan</Link>
-            <Link className="btn btn-secondary" to={P.exams}>See the practice exams</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* WEIGHTING: the nine domains, each with its badge */}
-      <section className="section" aria-labelledby="weight-heading" style={{ paddingTop: 84 }}>
-        <div className="container">
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
-            <div>
-              <span className="eyebrow eyebrow-rust">The exam blueprint</span>
-              <h2 id="weight-heading" className="h2">How the exam is weighted</h2>
-              <p className="lead">
-                The course and the practice exams all follow the nine domains of the content outline in these proportions.
-                Select a domain to see its lessons.
-              </p>
-            </div>
-            <span className="hand" style={{ fontSize: 26, transform: 'rotate(-4deg)', color: 'var(--brand-strong)' }}>nine lines, one exam</span>
-          </div>
-          {/* VERIFY: domain weights come from uploads/aicp-diagnostic-exam-spec.md; confirm against APA's current published content outline. */}
-          <ul className="card" style={{ listStyle: 'none', margin: '32px 0 0', padding: '8px 26px' }}>
-            {DOMAINS.map((d, i) => (
-              <li key={d.id} style={{ borderBottom: i < DOMAINS.length - 1 ? '2px dashed var(--line)' : 'none' }}>
-                <Link to={P.domain(d.id)} className="weight-row">
-                  <img src={badgeFor(d.name)} alt="" aria-hidden="true" width="48" height="48" loading="lazy" />
-                  <span style={{ fontSize: 15.5, fontWeight: 700 }}>{d.code}. {d.name}</span>
-                  <span className="meter" aria-hidden="true">
-                    <span style={{ width: `${(d.weight / maxPct) * 100}%`, background: DOMAIN_COLOR[d.name], animationDelay: `${i * 60}ms` }} />
-                  </span>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 800, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{d.weight}%</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* EVERY EXAM RANKS WHERE TO STUDY */}
-      <section className="band-warm" aria-labelledby="rank-heading" style={{ marginTop: 20 }}>
-        <div className="container section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 48, alignItems: 'center' }}>
-          <div>
-            <span className="stamp" style={{ color: 'var(--tomato-ink)' }}>170 questions &middot; every exam</span>
-            <h2 id="rank-heading" className="h2" style={{ marginTop: 20 }}>Every exam shows you where you <span className="scribble">actually</span> stand.</h2>
-            <p className="body-text" style={{ fontSize: 17, margin: '16px 0 0', maxWidth: '54ch', color: '#3D3326' }}>
-              Start with Practice Exam 1 in practice mode as your baseline. With 170 questions, your results give a solid read on
-              each of the nine domains, so your study time goes where you&rsquo;re losing points. Each later exam updates the list.
-            </p>
-            <div className="row-wrap" style={{ marginTop: 28 }}>
-              <Link className="btn btn-dark btn-lg" to={P.exams}>See the practice exams</Link>
-            </div>
-          </div>
-          <div style={{ maxWidth: 540, justifySelf: 'center', width: '100%', transform: 'rotate(1.5deg)' }}>
-            <Art name="spot-diagnostic" w={560} h={460} alt="A hand-drawn town map with a dotted route from a pin marked 'you are here' to a red X labelled 'study here!'" />
-          </div>
-          <div className="grid-cards" style={{ gridColumn: '1 / -1', gap: 26 }}>
-            {[
-              ['Every domain scored', 'A score for each of the nine domains, so you can see strengths and gaps at a glance.', 'tape'],
-              ['Study in order', 'Domains ranked by exam weight times the share you missed, so a soft spot in a heavy domain outranks a worse score in a light one.', 'pin'],
-              ['The lessons behind every miss', 'Your results list the lessons that teach each question you missed, most-missed first.', 'tape tape--mint'],
-            ].map(([t, b, fix], i) => (
-              <div key={t} className="card card-sm card--lift" style={{ '--r': `${[-1.2, 0.8, -0.6][i]}deg`, paddingTop: 24 }}>
-                <span className={fix} aria-hidden="true" />
-                <h3 className="hand" style={{ margin: 0, fontSize: 26, color: 'var(--tomato-deep)' }}>{t}</h3>
-                <p className="body-text" style={{ margin: '8px 0 0' }}>{b}</p>
-              </div>
-            ))}
-          </div>
+          <p className="body-text" style={{ margin: '30px 0 0' }}>
+            Everything follows the nine domains of APA&rsquo;s exam content outline, weighted like the real exam.{' '}
+            <Link to={P.examInfo} className="link-underline">See how the exam is weighted</Link>.
+          </p>
         </div>
       </section>
 
