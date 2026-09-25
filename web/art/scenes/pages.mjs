@@ -1,6 +1,6 @@
 // Header illustrations for the inner pages, plus the footer skyline.
-import { svgDoc, torn, cut, ink, inkLine, hatch, stipple, rectD, roundRectD, ellipseD, blobD, polyD, makeRng, PALETTE as P } from '../lib/draw.mjs';
-import { tape, star, sparkle, tree, pine, bush, house, block, townhouse, cityHall, tram, wheel, cloud } from '../lib/props.mjs';
+import { svgDoc, torn, cut, ink, inkLine, rectD, roundRectD, ellipseD, blobD, makeRng, PALETTE as P } from '../lib/draw.mjs';
+import { tape, star, sparkle, tram, cloud } from '../lib/props.mjs';
 import { ticketD, hand, serif } from './spots.mjs';
 
 const OFF = 'translate(-1.5,-1.1)';
@@ -24,7 +24,7 @@ function ticket(x, y, w, h, rot, color, title, sub, rng, opts = {}) {
 function tickets() {
   const rng = makeRng(701);
   let b = '';
-  b += ticket(40, 120, 300, 120, -12, P.sky, 'QUIZ A', 'free ride', rng, { num: 'A' });
+  b += ticket(40, 120, 300, 120, -12, P.sky, 'QUIZ A', 'warm-up', rng, { num: 'A' });
   b += ticket(90, 80, 300, 120, 4, P.butter, 'EXAM 1', '170 questions', rng, { num: '1', pattern: 'pinstripe' });
   b += ticket(150, 150, 300, 120, -3, P.blush, 'EXAM 2', 'full length', rng, { num: '2' });
   // punched holes in the top ticket's stub, and a strip of tape holding the fan
@@ -33,44 +33,6 @@ function tickets() {
   b += sparkle(40, 60, 12, { seed: 2 }) + sparkle(470, 250, 9, { seed: 3 });
   b += star(500, 130, 12, { fill: P.butter, seed: 5 });
   return { W: 520, H: 320, b };
-}
-
-// Pricing: a little ticket booth with a striped awning.
-function booth() {
-  const rng = makeRng(711);
-  let b = '';
-  const body = rectD(80, 110, 260, 210);
-  b += cut(body, { rng, fill: P.civic, pattern: 'grid', patternOpacity: 0.12 });
-  const roof = 'M60 70H360L372 110H48Z';
-  b += cut(roof, { rng, fill: P.ink });
-  b += serif(210, 99, 'TICKETS', { size: 26, spacing: 4, color: P.butter });
-  // awning with scallops
-  let aw = 'M56 110H364V140';
-  const n = 8;
-  const sw = 308 / n;
-  for (let i = n; i > 0; i--) aw += `Q${56 + (i - 0.5) * sw} 158 ${56 + (i - 1) * sw} 140`;
-  aw += 'Z';
-  b += cut(aw, { rng, fill: P.tomato });
-  for (let i = 0; i < n; i += 2) b += cut(rectD(56 + i * sw, 110, sw, 30), { rng, fill: P.paper, shadow: false, jitter: 0.4 });
-  const win = roundRectD(120, 164, 180, 96, 40);
-  b += cut(win, { rng, fill: P.sky });
-  // conductor peeking out
-  b += cut(ellipseD(210, 226, 26, 28), { rng, fill: '#E9B58E', shadow: false });
-  b += cut('M180 214Q210 176 240 214Z', { rng, fill: P.civicDeep, shadow: false });
-  b += cut(rectD(176, 208, 68, 9), { rng, fill: P.ink, shadow: false });
-  b += `<circle cx="210" cy="199" r="4.5" fill="${P.butter}"/>`;
-  b += `<circle cx="200" cy="228" r="2.6" fill="${P.ink}"/><circle cx="220" cy="228" r="2.6" fill="${P.ink}"/>`;
-  b += L(inkLine('M200 240Q210 248 220 240', { rng, size: 2 }));
-  b += `<ellipse cx="192" cy="238" rx="5" ry="3" fill="${P.tomato}" opacity="0.5"/><ellipse cx="228" cy="238" rx="5" ry="3" fill="${P.tomato}" opacity="0.5"/>`;
-  const counter = rectD(96, 256, 228, 16);
-  b += cut(counter, { rng, fill: P.kraft });
-  b += L(ink(body, { rng, size: 2.6 }) + ink(roof, { rng, size: 2.4 }) + ink(aw, { rng, size: 2 }) + ink(win, { rng, size: 2.4 }) + ink(counter, { rng, size: 2 }));
-  b += L(ink(rectD(110, 286, 200, 20), { rng, size: 1.6, opacity: 0.6 }));
-  b += ticket(270, 234, 120, 54, 14, P.butter, 'ADMIT', 'one', rng, { num: '★' });
-  b += torn('M20 320Q210 300 400 320V336H20Z', { rng, fill: P.kraft, amp: 1.6, rim: 1.6 });
-  b += bush(8, 332, 90, 44, { seed: 7 }) + bush(340, 334, 80, 40, { seed: 8, fill: P.leaf });
-  b += sparkle(390, 60, 11, { seed: 3 }) + sparkle(30, 150, 9, { seed: 4 });
-  return { W: 420, H: 350, b };
 }
 
 // Progress: the journey so far, a route with station stamps.
@@ -253,7 +215,6 @@ function footer() {
 export default function () {
   const list = [
     ['page-tickets', tickets()],
-    ['page-booth', booth()],
     ['page-route', route()],
     ['page-conductor', conductor()],
     ['page-lost', lost()],

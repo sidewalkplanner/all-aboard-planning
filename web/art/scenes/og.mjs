@@ -31,6 +31,6 @@ export default function () {
   b += `<rect x="378" y="228" width="232" height="26" fill="${P.butter}" opacity="0.85" transform="rotate(-1 494 241)"/>`;
   b += `<text x="64" y="180" font-family="Fraunces" font-weight="800" font-size="62" letter-spacing="-1.5" fill="${P.ink}">Practice until the real</text>`;
   b += `<text x="64" y="250" font-family="Fraunces" font-weight="800" font-size="62" letter-spacing="-1.5" fill="${P.ink}">thing feels <tspan font-style="italic" font-weight="700">familiar.</tspan></text>`;
-  b += `<text x="66" y="304" font-family="Caveat" font-weight="700" font-size="34" fill="${P.tomatoDeep}">free AICP exam practice, every answer explained</text>`;
+  b += `<text x="66" y="304" font-family="Caveat" font-weight="700" font-size="34" fill="${P.tomatoDeep}">AICP exam practice, every answer explained</text>`;
   return [{ name: 'og-image', w: W, h: H, svg: svgDoc(W, H, b), scale: 1, png: true, quality: 0.9 }];
 }

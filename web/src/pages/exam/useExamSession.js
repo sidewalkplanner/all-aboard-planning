@@ -5,7 +5,6 @@ import { BANK as EXAM1_BANK } from '../../data/exam1-questions';
 import { BANK as EXAM2_BANK } from '../../data/exam2-questions';
 import { BANK as EXAM3_BANK } from '../../data/exam3-questions';
 import { sample, shuffle } from '../../lib/shuffle';
-import { useUnlock } from '../../context/UnlockContext';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { fmtHoursMinutes, parseExhibit } from '../../lib/format';
 import { recordAttempt } from '../../lib/history';
@@ -42,7 +41,6 @@ const clearAttempt = (sessionKey) => {
 export function useExamSession() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const { unlocked } = useUnlock();
   const { dark, toggleDark } = useDarkMode();
 
   const aid = params.get('aid') || 'q1';
@@ -65,16 +63,11 @@ export function useExamSession() {
   const [seconds, setSeconds] = useState(active.mins * 60);
   const [startedAt, setStartedAt] = useState(() => Date.now());
 
-  // Guard: paid content requires unlock. Reset (or restore a saved attempt
-  // for) session state whenever the assessment/mode/drill identity actually
+  // Reset (or restore a saved attempt for) session state whenever the assessment/mode/drill identity actually
   // changes (not on every render), so switching between exams — or a
   // reload — never silently drops progress the way it used to.
   const lastKey = useRef(null);
   useEffect(() => {
-    if ((active.tier === 'paid' && !active.soon && !unlocked) || (drill && !unlocked)) {
-      navigate('/pricing', { replace: true });
-      return;
-    }
     if (lastKey.current !== sessionKey) {
       lastKey.current = sessionKey;
       const saved = loadAttempts()[sessionKey];

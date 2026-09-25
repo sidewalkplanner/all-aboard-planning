@@ -47,7 +47,7 @@ export function house(x, y, w, h, opts = {}) {
 // Mid-rise with a grid of windows.
 export function block(x, y, w, h, opts = {}) {
   const rng = makeRng(opts.seed ?? 21);
-  const { wall = P.lavender, win = P.paper, cols = 3, rows = 4, cornice = P.ink, awning } = opts;
+  const { wall = P.lavender, win = P.paper, cols = 3, rows = 4, awning } = opts;
   let fill = cut(rectD(x, y - h, w, h), { rng, fill: wall, pattern: opts.pattern, patternOpacity: opts.patternOpacity ?? 0.35 });
   let lines = ink(rectD(x, y - h, w, h), { rng, size: 2.6 });
   lines += ink(`M${x - 4} ${y - h}H${x + w + 4}`, { rng, size: 3.4 });
@@ -116,8 +116,7 @@ export function cityHall(x, y, w, h, opts = {}) {
   fill += cut(flag, { rng, fill: P.tomato, shadow: false });
   lines += ink(flag, { rng, size: 1.6 });
   for (let i = 0; i < 4; i++) {
-    const r = i % 2 ? 0 : 1;
-    lines += ink(`M${x + w / 2 - domeR * 0.8 + (i + 0.5) * domeR * 0.4} ${drumTop + 3}v${h * 0.12 - 6}`, { rng, size: 1.2 + r * 0 });
+    lines += ink(`M${x + w / 2 - domeR * 0.8 + (i + 0.5) * domeR * 0.4} ${drumTop + 3}v${h * 0.12 - 6}`, { rng, size: 1.2 });
   }
   const body = rectD(x + w * 0.06, baseY - bodyH, w * 0.88, bodyH);
   const ped = polyD([[x, baseY - bodyH], [x + w / 2, baseY - bodyH - pedH], [x + w, baseY - bodyH]]);
@@ -390,7 +389,6 @@ export function bike(x, y, s = 1, opts = {}) {
 // ------------------------------------------------------------ bits
 
 export function tape(x, y, w, h, angle, opts = {}) {
-  const rng = makeRng(opts.seed ?? 141);
   const fill = opts.fill ?? 'rgba(244,201,93,0.78)';
   const pts = [];
   const zig = (x0, y0, x1, y1, n) => {

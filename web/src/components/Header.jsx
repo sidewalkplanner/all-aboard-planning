@@ -8,14 +8,13 @@ const NAV_ITEMS = [
   ['Where should I study?', '/diagnostic'],
   ['Practice exams', '/exams'],
   ['Study by domain', '/study'],
-  ['Progress', '/progress'],
-  ['Pricing', '/pricing']
+  ['Progress', '/progress']
 ];
 
 // Dark mode only exists within the exam runner and diagnostic flows — the
 // header should only go dark while one of those is actually rendering dark
 // content below it, not carry a stale dark header onto pages (like the
-// exams list or pricing) that never turned it on.
+// exams list or progress) that never turned it on.
 const isDarkCapableRoute = (pathname) => pathname.startsWith('/exam/run') || pathname.startsWith('/diagnostic');
 
 export default function Header() {

@@ -1,6 +1,6 @@
 // Nine domain badges (one per AICP content-outline domain) plus the logo.
 // Each badge is a torn paper disc with a small inked collage on top.
-import { svgDoc, torn, cut, ink, inkLine, hatch, rectD, roundRectD, ellipseD, blobD, polyD, makeRng, PALETTE as P } from '../lib/draw.mjs';
+import { svgDoc, torn, cut, ink, inkLine, rectD, roundRectD, ellipseD, blobD, makeRng, PALETTE as P } from '../lib/draw.mjs';
 
 const OFF = 'translate(-1.4,-1)';
 const S = 200;

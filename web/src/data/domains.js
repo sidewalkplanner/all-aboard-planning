@@ -11,14 +11,12 @@ export const DOMAINS = [
   { name: 'Leadership', short: 'Leadership', pct: 6, blurb: 'Leading teams, ethical advocacy, mentoring, and public trust.' }
 ];
 
-export const PRICE = '$59';
-
 export const ASSESSMENTS = [
-  { id: 'q1', tier: 'free', title: 'Warm-up Quiz A', size: 25, mins: 30, blurb: 'A short weighted slice of all nine domains. No account needed.', taken: 'Not started' },
-  { id: 'q2', tier: 'free', title: 'Warm-up Quiz B', size: 25, mins: 30, blurb: 'A second free quiz drawn from questions Quiz A does not use.', taken: 'Not started' },
-  { id: 'e1', tier: 'paid', title: 'Practice Exam 1', size: 170, mins: 210, blurb: 'The full-length exam, weighted to the nine domains of the APA content outline, with scenario clusters and combination items.', taken: 'No attempts yet' },
-  { id: 'e2', tier: 'paid', title: 'Practice Exam 2', size: 170, mins: 210, blurb: 'A second full-length exam, all original items, delivered in randomized order across the nine domains.', taken: 'No attempts yet' },
-  { id: 'e3', tier: 'paid', title: 'Practice Exam 3', size: 170, mins: 210, blurb: 'A third full-length exam, weighted to the nine domains, with eight scenario clusters and two data exhibits. Deepest of the three on planning law.', taken: 'No attempts yet' }
+  { id: 'q1', kind: 'quiz', title: 'Warm-up Quiz A', size: 25, mins: 30, blurb: 'A short weighted slice of all nine domains.', taken: 'Not started' },
+  { id: 'q2', kind: 'quiz', title: 'Warm-up Quiz B', size: 25, mins: 30, blurb: 'A second quiz drawn from questions Quiz A does not use.', taken: 'Not started' },
+  { id: 'e1', kind: 'exam', title: 'Practice Exam 1', size: 170, mins: 210, blurb: 'The full-length exam, weighted to the nine domains of the APA content outline, with scenario clusters and combination items.', taken: 'No attempts yet' },
+  { id: 'e2', kind: 'exam', title: 'Practice Exam 2', size: 170, mins: 210, blurb: 'A second full-length exam, all original items, delivered in randomized order across the nine domains.', taken: 'No attempts yet' },
+  { id: 'e3', kind: 'exam', title: 'Practice Exam 3', size: 170, mins: 210, blurb: 'A third full-length exam, weighted to the nine domains, with eight scenario clusters and two data exhibits. Deepest of the three on planning law.', taken: 'No attempts yet' }
 ];
 
 // Sample question bank used only as an ultimate fallback (should never be

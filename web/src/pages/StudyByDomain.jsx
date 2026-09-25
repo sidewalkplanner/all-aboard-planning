@@ -6,23 +6,14 @@ import { BANK as EXAM1_BANK } from '../data/exam1-questions';
 import { getHistory, summarizeHistory } from '../lib/history';
 import { badgeFor, DOMAIN_COLOR } from '../lib/art';
 import { RUST } from '../lib/theme';
-import { useUnlock } from '../context/UnlockContext';
 
 const countInBank = (name) => EXAM1_BANK.filter((q) => q.domain === name).length;
 
 export default function StudyByDomain() {
   const navigate = useNavigate();
-  const { unlocked } = useUnlock();
   const domainTotals = useMemo(() => summarizeHistory(getHistory()).domainTotals, []);
 
-  const studyNote = unlocked
-    ? 'Untimed drills pulled from the same bank. No clock, no score on the line — every answer is explained as soon as you pick it.'
-    : 'Untimed drills pulled from the same bank, up to 25 questions per domain, every answer explained as you pick it. Domain drills are part of Full Access.';
-
-  const startDrill = (name) => {
-    if (!unlocked) { navigate('/pricing'); return; }
-    navigate(`/exam/run?drill=${encodeURIComponent(name)}`);
-  };
+  const startDrill = (name) => navigate(`/exam/run?drill=${encodeURIComponent(name)}`);
 
   return (
     <section className="wrap" style={{ paddingBottom: 80 }}>
@@ -32,7 +23,7 @@ export default function StudyByDomain() {
         artAlt="A stack of planning books labelled Zoning, Plan Making, Ethics and GIS & Data, with a plant and a mug of coffee"
         note="one line at a time"
       >
-        {studyNote}
+        Untimed drills pulled from the same bank, up to 25 questions per domain. No clock, no score on the line — every answer is explained as soon as you pick it.
       </PageHead>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,290px),1fr))', gap: 26 }}>
         {DOMAINS.map((d, i) => {
@@ -58,9 +49,7 @@ export default function StudyByDomain() {
                 <div className="meter meter--thin">
                   <span style={{ width: `${pct || 0}%`, background: pct !== null && pct < 65 ? RUST : DOMAIN_COLOR[d.name], borderRightWidth: pct ? 2 : 0 }} />
                 </div>
-                <div className="hand" style={{ fontSize: 23, marginTop: 14, color: unlocked ? 'var(--civic-ink)' : 'var(--ink-faint)' }}>
-                  {unlocked ? 'Start drill →' : 'Unlock to drill →'}
-                </div>
+                <div className="hand" style={{ fontSize: 23, marginTop: 14, color: 'var(--civic-ink)' }}>Start drill →</div>
               </div>
             </button>
           );

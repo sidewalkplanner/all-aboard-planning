@@ -19,7 +19,7 @@ export default function IntroView(s) {
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '64px 24px 40px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) auto', gap: 24, alignItems: 'center' }} className="diag-head">
           <div>
-            <span className="stamp" style={{ color: s.dark ? '#F5AFA4' : 'var(--tomato-ink)' }}>Free &middot; Form DIAG-1.0</span>
+            <span className="stamp" style={{ color: s.dark ? '#F5AFA4' : 'var(--tomato-ink)' }}>Form DIAG-1.0</span>
             <h1 className="display" style={{ fontSize: 'clamp(38px,4.8vw,58px)', margin: '20px 0 0' }}>{DIAG_TITLE}</h1>
           </div>
           <div className="float-soft" style={{ width: 'clamp(120px,18vw,200px)' }}>

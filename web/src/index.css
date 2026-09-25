@@ -811,3 +811,31 @@ img { max-width: 100%; }
   .stat-pill__num { min-width: 36px; height: 36px; font-size: 15px; }
   .stat-pill__label { font-size: 12.5px; max-width: 10ch; }
 }
+
+/* Login portal tabs: two paper tabs, the active one filled in butter. */
+.portal-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 5px;
+  border: 2px solid var(--ink);
+  border-radius: 12px 15px 11px 16px / 15px 11px 16px 12px;
+  background: var(--paper);
+}
+.portal-tab {
+  padding: 10px 8px;
+  border: 2px solid transparent;
+  border-radius: 9px 11px 8px 12px / 11px 8px 12px 9px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 15px;
+  font-weight: 700;
+  transition: background-color 0.14s ease, color 0.14s ease;
+}
+.portal-tab:hover { color: var(--ink); background: rgba(244, 201, 93, 0.25); }
+.portal-tab[aria-selected='true'] {
+  background: var(--butter);
+  border-color: var(--ink);
+  color: var(--ink);
+  box-shadow: 2px 3px 0 var(--ink);
+}

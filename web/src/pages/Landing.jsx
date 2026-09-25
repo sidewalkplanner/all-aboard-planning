@@ -29,7 +29,7 @@ function QuestionOfTheDay() {
       <span className="tape" aria-hidden="true" />
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
         <span className="hand" style={{ fontSize: 28, color: 'var(--civic-ink)' }}>Question of the day</span>
-        <span style={{ fontSize: 12.5, color: 'var(--ink-faint)', marginLeft: 'auto', fontWeight: 600 }}>Free &middot; no account needed</span>
+        <span style={{ fontSize: 12.5, color: 'var(--ink-faint)', marginLeft: 'auto', fontWeight: 600 }}>A new one every day</span>
       </div>
       <div style={{ display: 'flex', gap: 8, marginTop: 10, flexWrap: 'wrap' }}>
         <span className="chip chip--leaf">{QOTD.domain}</span>
@@ -83,24 +83,24 @@ export default function Landing() {
 
         <div className="wrap" style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,340px),1fr))', gap: 48, alignItems: 'center', paddingTop: 64, paddingBottom: 8 }}>
           <div>
-            <span className="chip chip--butter" style={{ transform: 'rotate(-2deg)' }}>Two free quizzes &middot; every answer explained</span>
+            <span className="chip chip--butter" style={{ transform: 'rotate(-2deg)' }}>Every answer explained</span>
             <h1 className="display" style={{ fontSize: 'clamp(46px,6.6vw,84px)', margin: '22px 0 0' }}>
               Practice until the real thing feels <em className="marker">familiar.</em>
             </h1>
             <p className="lede" style={{ margin: '24px 0 0', maxWidth: '46ch' }}>
-              Start with two free 25-question quizzes weighted exactly like the AICP exam. Unlock three full-length 170-question exams when you are ready. Every answer comes with a plain-language explanation.
+              Warm up with 25-question quizzes weighted exactly like the AICP exam, then sit three full-length 170-question practice exams. Every answer comes with a plain-language explanation.
             </p>
             <div style={{ display: 'flex', gap: 14, marginTop: 32, flexWrap: 'wrap', alignItems: 'center' }}>
-              <button className="btn btn--lg btn--tomato" onClick={() => navigate('/exams')}>Start a free quiz</button>
+              <button className="btn btn--lg btn--tomato" onClick={() => navigate('/exams')}>Start a quiz</button>
               <button className="btn btn--lg btn--paper" onClick={() => navigate('/study')}>Browse by domain</button>
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6, margin: '10px 0 0 26px', color: 'var(--tomato-deep)' }} aria-hidden="true">
               <span className="pen-arrow" style={{ transform: 'scaleX(-1) rotate(200deg)', width: 46, height: 36 }} />
-              <span className="hand" style={{ fontSize: 24, transform: 'rotate(-3deg)', marginTop: 16 }}>no account needed!</span>
+              <span className="hand" style={{ fontSize: 24, transform: 'rotate(-3deg)', marginTop: 16 }}>takes about thirty minutes</span>
             </div>
 
             <div style={{ display: 'flex', gap: 12, marginTop: 30, flexWrap: 'wrap' }}>
-              {[['2', 'free warm-up quizzes', 'var(--butter)', -2], ['510', 'questions across three exams', 'var(--sky)', 1.5], ['9', 'domains covered', 'var(--blush)', -1]].map(([n, label, bg, r]) => (
+              {[['2', 'warm-up quizzes', 'var(--butter)', -2], ['510', 'questions across three exams', 'var(--sky)', 1.5], ['9', 'domains covered', 'var(--blush)', -1]].map(([n, label, bg, r]) => (
                 <div key={label} className="stat-pill" style={{ transform: `rotate(${r}deg)` }}>
                   <span className="stat-pill__num" style={{ background: bg }}>{n}</span>
                   <span className="stat-pill__label">{label}</span>
@@ -121,7 +121,7 @@ export default function Landing() {
       <section className="kraft-bg torn-top" style={{ position: 'relative', marginTop: -10 }}>
         <div className="wrap" style={{ padding: '40px 24px 76px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 48, alignItems: 'center' }}>
           <div>
-            <span className="stamp" style={{ color: 'var(--tomato-ink)' }}>Free &middot; 100 items &middot; untimed</span>
+            <span className="stamp" style={{ color: 'var(--tomato-ink)' }}>100 items &middot; untimed</span>
             <h2 className="h-section" style={{ margin: '20px 0 0' }}>
               Start by finding out where you <span className="scribble">actually</span> stand.
             </h2>
@@ -201,11 +201,11 @@ export default function Landing() {
           <div>
             <h2 className="h-section">Your train is on the platform.</h2>
             <p className="lede" style={{ margin: '14px 0 0', color: '#3A3320' }}>
-              Twenty-five questions, about thirty minutes, and a clear picture of which domains need you most. The first two rides are on us.
+              Twenty-five questions, about thirty minutes, and a clear picture of which domains need you most.
             </p>
             <div style={{ display: 'flex', gap: 14, marginTop: 26, flexWrap: 'wrap' }}>
-              <button className="btn btn--lg btn--ink" onClick={() => navigate('/exams')}>Board a free quiz</button>
-              <button className="btn btn--lg btn--paper" onClick={() => navigate('/pricing')}>See Full Access</button>
+              <button className="btn btn--lg btn--ink" onClick={() => navigate('/exams')}>Board a quiz</button>
+              <button className="btn btn--lg btn--paper" onClick={() => navigate('/diagnostic')}>Take the diagnostic</button>
             </div>
           </div>
           <div style={{ maxWidth: 250, justifySelf: 'center', width: '100%' }}>
