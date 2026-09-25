@@ -260,9 +260,12 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
   `lib/supabase.js` is meant to be public; row-level security protects the data. Email links
   (confirmation, password reset) return to `/aicp/signin`, which handles `?mode=forgot|reset`.
 - **Auth settings live in the Supabase dashboard, not the repo:** Site URL
-  `https://allaboardplanning.com`, redirect URLs for the site, and whether email confirmation is on.
-  Supabase's built-in email only reaches the project team's addresses (a few an hour), so
-  sign-up needs "Confirm email" off, or a custom SMTP provider for confirmation and reset emails.
+  `https://allaboardplanning.com`, redirect URLs for the site, and **"Confirm email" on** (new
+  accounts must click a link before signing in). Auth emails go out through **Resend** as custom
+  SMTP (`smtp.resend.com`, sender `bobby@allaboardplanning.com`, domain verified in Resend with
+  DNS records on Cloudflare). Don't switch back to Supabase's built-in email: it only reaches the
+  project team's addresses, so public sign-ups and password resets would fail. Resend's free plan
+  allows 3,000 emails a month (100 a day).
 - **Progress syncs to Supabase:** history, study state, and in-progress exams are still read and
   written in localStorage under `scopedKey()` from `lib/userStorage.js`; each write calls
   `noteWrite(base)`, and `lib/cloudSync.js` pushes it to the `user_data` table (one row per
