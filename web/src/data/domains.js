@@ -11,12 +11,14 @@ export const DOMAINS = [
   { name: 'Leadership', short: 'Leadership', pct: 6, blurb: 'Leading teams, ethical advocacy, mentoring, and public trust.' }
 ];
 
+export const PRICE = '$59';
+
 export const ASSESSMENTS = [
-  { id: 'q1', kind: 'quiz', title: 'Warm-up Quiz A', size: 25, mins: 30, blurb: 'A short weighted slice of all nine domains.', taken: 'Not started' },
-  { id: 'q2', kind: 'quiz', title: 'Warm-up Quiz B', size: 25, mins: 30, blurb: 'A second quiz drawn from questions Quiz A does not use.', taken: 'Not started' },
-  { id: 'e1', kind: 'exam', title: 'Practice Exam 1', size: 170, mins: 210, blurb: 'The full-length exam, weighted to the nine domains of the APA content outline, with scenario clusters and combination items.', taken: 'No attempts yet' },
-  { id: 'e2', kind: 'exam', title: 'Practice Exam 2', size: 170, mins: 210, blurb: 'A second full-length exam, all original items, delivered in randomized order across the nine domains.', taken: 'No attempts yet' },
-  { id: 'e3', kind: 'exam', title: 'Practice Exam 3', size: 170, mins: 210, blurb: 'A third full-length exam, weighted to the nine domains, with eight scenario clusters and two data exhibits. Deepest of the three on planning law.', taken: 'No attempts yet' }
+  { id: 'q1', tier: 'free', title: 'Warm-up Quiz A', size: 25, mins: 30, blurb: 'A short weighted slice of all nine domains. No account needed.', taken: 'Not started' },
+  { id: 'q2', tier: 'free', title: 'Warm-up Quiz B', size: 25, mins: 30, blurb: 'A second free quiz drawn from questions Quiz A does not use.', taken: 'Not started' },
+  { id: 'e1', tier: 'paid', title: 'Practice Exam 1', size: 170, mins: 210, blurb: 'The full-length exam, weighted to the nine domains of the APA content outline, with scenario clusters and combination items.', taken: 'No attempts yet' },
+  { id: 'e2', tier: 'paid', title: 'Practice Exam 2', size: 170, mins: 210, blurb: 'A second full-length exam, all original items, delivered in randomized order across the nine domains.', taken: 'No attempts yet' },
+  { id: 'e3', tier: 'paid', title: 'Practice Exam 3', size: 170, mins: 210, blurb: 'A third full-length exam, weighted to the nine domains, with eight scenario clusters and two data exhibits. Deepest of the three on planning law.', taken: 'No attempts yet' }
 ];
 
 // Sample question bank used only as an ultimate fallback (should never be
@@ -85,16 +87,3 @@ export const QUESTIONS = [
 ];
 
 export const LETTERS = ['A', 'B', 'C', 'D'];
-
-export const QOTD = {
-  domain: 'Areas of Practice', difficulty: 'Medium',
-  text: 'A developer applies for a permit that fully complies with the zoning ordinance, but neighbors organize against it and the planning commission asks staff to recommend denial. What does the AICP Code of Ethics require of the planner?',
-  options: [
-    'Recommend denial, because the commission directs staff work',
-    'Provide an accurate, independent professional recommendation even if it is unpopular',
-    'Withhold a recommendation and let the commission decide without staff input',
-    'Recommend approval only if the neighbors withdraw their opposition'
-  ],
-  correct: 1,
-  explanation: 'The Code obligates planners to provide full, clear, and accurate information and to render thorough independent professional advice. Political pressure from a commission or the public does not relieve the planner of that duty, though the planner must still serve the decision-making body in good faith.'
-};

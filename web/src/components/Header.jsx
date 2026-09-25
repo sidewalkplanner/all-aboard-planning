@@ -1,98 +1,135 @@
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
+import Hoverable from './Hoverable';
 import MenuIcon from './MenuIcon';
+import { GREEN, themeTokens } from '../lib/theme';
+import { AICP_NAV, isActive } from '../lib/nav';
+import { P, isDarkCapableRoute } from '../lib/paths';
 import { useDarkMode } from '../context/DarkModeContext';
-
-const NAV_ITEMS = [
-  ['Where should I study?', '/diagnostic'],
-  ['Practice exams', '/exams'],
-  ['Study by domain', '/study'],
-  ['Progress', '/progress']
-];
-
-// Dark mode only exists within the exam runner and diagnostic flows — the
-// header should only go dark while one of those is actually rendering dark
-// content below it, not carry a stale dark header onto pages (like the
-// exams list or progress) that never turned it on.
-const isDarkCapableRoute = (pathname) => pathname.startsWith('/exam/run') || pathname.startsWith('/diagnostic');
+import { useAuth } from '../context/AuthContext';
 
 export default function Header() {
-  const navigate = useNavigate();
   const location = useLocation();
   const { dark } = useDarkMode();
-  const [open, setOpen] = useState(false);
-  const go = (path) => { setOpen(false); navigate(path); };
-  const showDark = dark && isDarkCapableRoute(location.pathname);
-  const current = (path) => (location.pathname.startsWith(path) ? 'page' : undefined);
+  const { user, signOut } = useAuth();
 
-  const ink = showDark ? '#EEF3FA' : 'var(--ink)';
-  const headerBg = showDark ? 'rgba(21,41,74,0.94)' : 'rgba(247,240,226,0.9)';
+  // The mobile menu tracks the location it was opened on, so any navigation
+  // (a link here, the back button, a link in the page) closes it.
+  const [openAt, setOpenAt] = useState(null);
+  const here = location.pathname + location.search;
+  const open = openAt === here;
+  const toggle = () => setOpenAt(open ? null : here);
+
+  // Dark mode only exists within the exam runner and diagnostic flows; the
+  // header only goes dark while one of those is rendering dark content.
+  const showDark = dark && isDarkCapableRoute(location.pathname);
+  const T = themeTokens(showDark);
+  const navLinkStyle = {
+    display: 'inline-block', padding: '8px 11px', borderRadius: 8,
+    fontSize: 14.5, fontWeight: 600, whiteSpace: 'nowrap', color: T.mute
+  };
+  const navLinkHover = { background: T.neutralBg, color: T.ink };
+  const activeStyle = { color: T.ink, background: T.neutralBg };
+  const headerBg = showDark ? 'rgba(16,19,32,0.92)' : 'rgba(246,247,251,0.92)';
+
+  const links = (mobile) => AICP_NAV.map((item) => {
+    const active = isActive(item, location.pathname);
+    const base = mobile ? { ...navLinkStyle, display: 'block', padding: '12px 10px', fontSize: 16 } : navLinkStyle;
+    return (
+      <Hoverable
+        as={Link}
+        key={item.to}
+        to={item.to}
+        aria-current={active ? 'page' : undefined}
+        style={active ? { ...base, ...activeStyle } : base}
+        hoverStyle={navLinkHover}
+      >
+        {item.label}
+      </Hoverable>
+    );
+  });
+
+  const accountBtn = (mobile) => {
+    const box = mobile
+      ? { display: 'block', width: '100%', marginTop: 8, padding: '12px 18px', borderRadius: 9, fontSize: 15.5, fontWeight: 700, textAlign: 'center' }
+      : { marginLeft: 8, padding: '9px 18px', borderRadius: 9, fontSize: 14.5, fontWeight: 700, whiteSpace: 'nowrap' };
+    if (!user) {
+      return (
+        <Hoverable as={Link} to={P.signin} style={{ ...box, background: T.ink, color: T.bg }} hoverStyle={{ background: GREEN, color: '#FFFFFF' }}>
+          Sign in
+        </Hoverable>
+      );
+    }
+    // ACCOUNT PLACEHOLDER: a real account menu (profile, settings) goes here.
+    const onDash = location.pathname === P.progress;
+    return (
+      <span style={{ display: mobile ? 'block' : 'inline-flex', alignItems: 'center', gap: 6, marginLeft: mobile ? 0 : 8 }}>
+        {mobile && <span style={{ display: 'block', fontSize: 14, color: T.mute, padding: '12px 10px 0' }}>Signed in as {user.name}</span>}
+        <Hoverable
+          as={Link}
+          to={P.progress}
+          aria-current={onDash ? 'page' : undefined}
+          title={mobile ? undefined : `Signed in as ${user.name}`}
+          style={{ ...box, background: T.ink, color: T.bg, marginLeft: 0 }}
+          hoverStyle={{ background: GREEN, color: '#FFFFFF' }}
+        >
+          Dashboard
+        </Hoverable>
+        <Hoverable
+          as="button"
+          type="button"
+          onClick={() => { setOpenAt(null); signOut(); }}
+          style={mobile
+            ? { ...box, background: 'none', border: `1px solid ${T.line}`, color: T.ink }
+            : { background: 'none', border: 'none', color: T.mute, fontSize: 14, fontWeight: 600, padding: '9px 8px', whiteSpace: 'nowrap' }}
+          hoverStyle={{ color: T.ink }}
+        >
+          Sign out
+        </Hoverable>
+      </span>
+    );
+  };
 
   return (
-    <header
-      style={{
-        position: 'sticky', top: 0, zIndex: 30, background: headerBg, backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)', borderBottom: `2px solid ${showDark ? 'rgba(143,176,218,0.35)' : 'rgba(39,35,58,0.85)'}`
-      }}
-    >
-      <div style={{ maxWidth: 1180, margin: '0 auto', padding: '10px 24px', display: 'flex', alignItems: 'center', gap: 16 }}>
-        <button
-          onClick={() => go('/')}
-          aria-label="All Aboard Planning, home"
-          className="wiggle-on-hover"
-          style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'none', border: 'none', padding: 0, minWidth: 0, color: ink }}
+    <header style={{ position: 'sticky', top: 0, zIndex: 20, background: headerBg, backdropFilter: 'blur(8px)', borderBottom: `1px solid ${T.line}` }}>
+      <div style={{ maxWidth: 1180, margin: '0 auto', padding: '14px var(--gutter)', display: 'flex', alignItems: 'center', gap: 16 }}>
+        <Link
+          to={P.aicp}
+          aria-label="All Aboard Planning: AICP exam prep home"
+          style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0, color: T.ink }}
         >
-          <Logo size={40} />
+          <Logo />
           <span style={{
-            fontFamily: 'var(--font-display)', fontVariationSettings: "'SOFT' 100, 'WONK' 1", fontSize: 'clamp(18px,4.4vw,22px)',
-            fontWeight: 750, letterSpacing: '-0.02em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: 1
+            fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 'clamp(17px,4.2vw,21px)', fontWeight: 600, letterSpacing: '-0.01em',
+            color: T.ink, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
           }}>
-            All Aboard <span style={{ fontFamily: 'var(--font-hand)', fontWeight: 700, fontSize: '1.2em', color: showDark ? '#F4C95D' : 'var(--tomato-deep)', letterSpacing: 0 }}>Planning</span>
+            All Aboard Planning
           </span>
-        </button>
+        </Link>
 
-        <nav className="header-nav-desktop" aria-label="Main" style={{ gap: 2, marginLeft: 'auto', alignItems: 'center' }}>
-          {NAV_ITEMS.map(([label, path]) => (
-            <button key={path} className="nav-link" aria-current={current(path)} onClick={() => go(path)} style={showDark ? { color: '#C9D6EA' } : undefined}>
-              {label}
-            </button>
-          ))}
-          <button className="btn btn--sm btn--butter" style={{ marginLeft: 10 }} onClick={() => go('/signin')}>
-            Sign in
-          </button>
+        <nav aria-label="AICP exam prep" className="header-nav-desktop" style={{ gap: 2, marginLeft: 'auto', alignItems: 'center' }}>
+          {links(false)}
+          {accountBtn(false)}
         </nav>
 
         <button
           className="header-nav-toggle"
-          onClick={() => setOpen((o) => !o)}
+          onClick={toggle}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
-          style={{
-            marginLeft: 'auto', background: showDark ? 'transparent' : 'var(--card)', border: `2px solid ${ink}`, borderRadius: '10px 12px 9px 13px',
-            width: 42, height: 42, alignItems: 'center', justifyContent: 'center', color: ink, flex: '0 0 auto', boxShadow: showDark ? 'none' : '2px 3px 0 var(--ink)'
-          }}
+          aria-controls="mobile-nav"
+          style={{ marginLeft: 'auto', background: 'none', border: `1px solid ${T.line}`, borderRadius: 8, width: 38, height: 38, alignItems: 'center', justifyContent: 'center', color: T.ink, flex: '0 0 auto' }}
         >
           <MenuIcon open={open} />
         </button>
       </div>
 
       {open && (
-        <nav aria-label="Main" className={`fade-up ${showDark ? 'blueprint-bg' : 'paper-bg'}`} style={{ borderTop: `2px dashed ${showDark ? 'rgba(143,176,218,0.35)' : 'rgba(39,35,58,0.3)'}`, padding: '10px 24px 20px', display: 'flex', flexDirection: 'column', gap: 2 }}>
-          {NAV_ITEMS.map(([label, path]) => (
-            <button
-              key={path}
-              className="nav-link"
-              aria-current={current(path)}
-              style={{ width: 'fit-content', textAlign: 'left', padding: '12px 8px', fontSize: 18, ...(showDark ? { color: '#C9D6EA' } : {}) }}
-              onClick={() => go(path)}
-            >
-              {label}
-            </button>
-          ))}
-          <button className="btn btn--butter" style={{ marginTop: 10 }} onClick={() => go('/signin')}>
-            Sign in
-          </button>
+        <nav id="mobile-nav" aria-label="AICP exam prep" style={{ borderTop: `1px solid ${T.line}`, background: T.bg, padding: '10px var(--gutter) 18px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+          {links(true)}
+          <Hoverable as={Link} to={P.faq} style={{ ...navLinkStyle, display: 'block', padding: '12px 10px', fontSize: 16 }} hoverStyle={navLinkHover}>FAQ</Hoverable>
+          {accountBtn(true)}
         </nav>
       )}
     </header>

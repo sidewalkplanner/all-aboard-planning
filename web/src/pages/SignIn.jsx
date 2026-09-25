@@ -1,105 +1,138 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import Art from '../components/Art';
+import { useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import PageHeader from '../components/PageHeader';
+import usePageTitle from '../hooks/usePageTitle';
+import { useAuth } from '../context/AuthContext';
+import { P } from '../lib/paths';
 
-// The login portal: one card with "Sign in" and "Create account" tabs.
-// The mode lives in the URL (?mode=create) so either tab can be linked to.
-// There is no auth backend yet: submitting drops you at the exams list.
-const MODES = {
-  signin: {
-    title: 'Welcome back.',
-    lede: 'Sign in to pick up where you left off.',
-    submit: 'Sign in',
-    note: 'Pull up a seat, the conductor saved your spot.'
-  },
-  create: {
-    title: 'Get your ticket.',
-    lede: 'Create an account to keep your scores, flagged questions and diagnostic report together.',
-    submit: 'Create account',
-    note: 'All aboard, the first stop is a warm-up quiz.'
-  }
+const inputStyle = {
+  border: '1px solid var(--line-strong)', background: '#FFFFFF', borderRadius: 10, padding: '13px 14px',
+  fontSize: 15.5, fontWeight: 400, color: 'var(--ink)'
 };
+const labelStyle = { display: 'flex', flexDirection: 'column', gap: 7, fontSize: 14, fontWeight: 600, color: 'var(--text)' };
 
+// Only return to in-app paths (never an external URL passed in ?next=).
+const safeNext = (next) => (next && next.startsWith('/') && !next.startsWith('//') ? next : P.course);
+
+// ACCOUNT PLACEHOLDER: this page works against the browser-only placeholder
+// in context/AuthContext.jsx. When a real auth provider is added, keep this
+// form (or swap in the provider's hosted UI) and point it at the provider.
 export default function SignIn() {
-  const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
-  const mode = params.get('mode') === 'create' ? 'create' : 'signin';
-  const m = MODES[mode];
-  const setMode = (next) => setParams(next === 'create' ? { mode: 'create' } : {}, { replace: true });
+  const creating = params.get('mode') === 'create';
+  const next = safeNext(params.get('next'));
+  const navigate = useNavigate();
+  const { user, signIn, signUp, signOut } = useAuth();
+  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+  usePageTitle(creating ? 'Create a free account' : 'Sign in');
+
+  const setMode = (mode) => {
+    const p = new URLSearchParams(params);
+    if (mode === 'create') p.set('mode', 'create'); else p.delete('mode');
+    setParams(p, { replace: true });
+    setError('');
+  };
+  const update = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
+
+  const submit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setBusy(true);
+    try {
+      if (creating) await signUp(form); else await signIn(form);
+      navigate(next, { replace: true });
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  if (user) {
+    return (
+      <>
+        <PageHeader title="You're signed in" lead={`Signed in as ${user.name} (${user.email}).`} narrow />
+        <div className="container-narrow" style={{ maxWidth: 480, paddingBottom: 90 }}>
+          <div className="row-wrap">
+            <Link className="btn btn-primary" to={next}>Continue</Link>
+            <button type="button" className="btn btn-secondary" onClick={signOut}>Sign out</button>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
-    <section className="wrap" style={{ maxWidth: 980, padding: '56px 24px 100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 48, alignItems: 'center' }}>
-      <div style={{ maxWidth: 300, justifySelf: 'center', width: '100%', textAlign: 'center' }}>
-        <div className="float-soft">
-          <Art name="page-conductor" w={300} h={340} eager alt="A friendly conductor waving and holding a lantern" />
+    <>
+      <PageHeader
+        title={creating ? 'Create a free account' : 'Sign in'}
+        lead={creating
+          ? 'Everything in the course is free. An account keeps your scores and progress in one place.'
+          : 'Welcome back. Your progress and past results follow your account.'}
+        narrow
+      />
+      <div className="container-narrow" style={{ maxWidth: 480, paddingBottom: 90 }}>
+        <div role="group" aria-label="Sign in or create an account" style={{ display: 'flex', gap: 6, marginBottom: 22, background: 'var(--neutral-bg)', padding: 4, borderRadius: 10 }}>
+          {[['signin', 'Sign in'], ['create', 'Create account']].map(([mode, label]) => {
+            const active = (mode === 'create') === creating;
+            return (
+              <button
+                key={mode}
+                type="button"
+                aria-pressed={active}
+                onClick={() => setMode(mode)}
+                style={{ flex: 1, border: 'none', borderRadius: 8, padding: '10px 12px', fontSize: 15, fontWeight: 700, background: active ? '#FFFFFF' : 'transparent', color: active ? 'var(--ink)' : 'var(--muted)', boxShadow: active ? '0 1px 3px rgba(26,28,43,0.12)' : 'none' }}
+              >
+                {label}
+              </button>
+            );
+          })}
         </div>
-        <p className="hand" style={{ fontSize: 24, margin: '12px 0 0', color: 'var(--ink-soft)', transform: 'rotate(-2deg)' }}>{m.note}</p>
-      </div>
 
-      <div className="card" style={{ padding: '30px 30px 30px', '--r': '0.8deg' }}>
-        <span className="tape tape--mint" aria-hidden="true" />
-
-        <div className="portal-tabs" role="tablist" aria-label="Account">
-          {[['signin', 'Sign in'], ['create', 'Create account']].map(([key, label]) => (
-            <button
-              key={key}
-              role="tab"
-              id={`tab-${key}`}
-              aria-selected={mode === key}
-              aria-controls="portal-panel"
-              className="portal-tab"
-              onClick={() => setMode(key)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-
-        <div id="portal-panel" role="tabpanel" aria-labelledby={`tab-${mode}`} key={mode} className="fade-up">
-          <h1 className="display" style={{ fontSize: 44, marginTop: 22 }}>{m.title}</h1>
-          <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: '10px 0 24px', lineHeight: 1.5 }}>{m.lede}</p>
-          <form
-            style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
-            onSubmit={(e) => { e.preventDefault(); navigate('/exams'); }}
-          >
-            {mode === 'create' && (
-              <label className="field">
-                Name
-                <input type="text" placeholder="Jane Jacobs" autoComplete="name" required />
-              </label>
-            )}
-            <label className="field">
-              Email
-              <input type="email" placeholder="you@city.gov" autoComplete="email" required />
+        <form style={{ display: 'flex', flexDirection: 'column', gap: 16 }} onSubmit={submit} noValidate>
+          {creating && (
+            <label style={labelStyle}>
+              Name
+              <input type="text" autoComplete="name" required value={form.name} onChange={update('name')} style={inputStyle} />
             </label>
-            <label className="field">
-              <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                Password
-                {mode === 'signin' && <a href="#reset-password" style={{ fontSize: 13.5, fontWeight: 600 }}>Forgot password?</a>}
-              </span>
-              <input
-                type="password"
-                placeholder={mode === 'create' ? 'At least 8 characters' : '••••••••'}
-                autoComplete={mode === 'create' ? 'new-password' : 'current-password'}
-                minLength={mode === 'create' ? 8 : undefined}
-                required
-              />
-            </label>
-            <button className="btn btn--civic btn--block" style={{ marginTop: 6 }}>{m.submit}</button>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'var(--ink-faint)' }}>
-              <span style={{ flex: 1, borderTop: '2px dashed var(--line-strong)' }} /><span className="hand" style={{ fontSize: 22, color: 'var(--ink-faint)' }}>or</span><span style={{ flex: 1, borderTop: '2px dashed var(--line-strong)' }} />
-            </div>
-            <button type="button" className="btn btn--paper btn--block">
-              <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.9 6.1C12.5 13.6 17.8 9.5 24 9.5z" /><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.7c4.3-4 6.9-9.9 6.9-17.1z" /><path fill="#FBBC05" d="M10.6 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.9-6.1z" /><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.7c-2.1 1.4-4.8 2.3-8.5 2.3-6.2 0-11.5-4.1-13.4-9.9l-7.9 6.1C6.6 42.6 14.6 48 24 48z" /></svg>
-              Continue with Google
-            </button>
-            <p style={{ fontSize: 14.5, color: 'var(--ink-soft)', textAlign: 'center', margin: '6px 0 0' }}>
-              {mode === 'signin'
-                ? <>New here? <button type="button" className="link-btn" onClick={() => setMode('create')}>Create an account</button></>
-                : <>Already have an account? <button type="button" className="link-btn" onClick={() => setMode('signin')}>Sign in</button></>}
-            </p>
-          </form>
+          )}
+          <label style={labelStyle}>
+            Email
+            <input type="email" autoComplete="email" required placeholder="you@city.gov" value={form.email} onChange={update('email')} style={inputStyle} />
+          </label>
+          <label style={labelStyle}>
+            Password
+            <input
+              type="password"
+              autoComplete={creating ? 'new-password' : 'current-password'}
+              required
+              minLength={creating ? 8 : undefined}
+              value={form.password}
+              onChange={update('password')}
+              style={inputStyle}
+              aria-describedby={creating ? 'pw-hint' : undefined}
+            />
+            {creating && <span id="pw-hint" style={{ fontSize: 13, fontWeight: 400, color: 'var(--muted)' }}>At least 8 characters.</span>}
+          </label>
+          {error && <p role="alert" className="callout callout-warn" style={{ margin: 0, fontSize: 15 }}>{error}</p>}
+          <button type="submit" className="btn btn-primary btn-block" style={{ marginTop: 6 }} disabled={busy}>
+            {busy ? 'Please wait…' : creating ? 'Create my free account' : 'Sign in'}
+          </button>
+        </form>
+
+        <div className="placeholder-box" style={{ marginTop: 28 }}>
+          <span className="chip chip-warn">Accounts placeholder</span>
+          <p className="body-text" style={{ margin: '10px 0 0', fontSize: 14.5 }}>
+            Accounts are kept only in this browser for now. Nothing you enter is sent anywhere, an account made on one device
+            won&rsquo;t appear on another, and clearing your browser data removes it.
+          </p>
         </div>
+        <p className="small" style={{ textAlign: 'center', margin: '18px 0 0' }}>
+          Just want to try it? <Link className="link-underline" to={P.runExam('q1', 'practice')}>Take Warm-up Quiz A</Link>, no account needed.
+        </p>
       </div>
-    </section>
+    </>
   );
 }

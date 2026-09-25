@@ -1,21 +1,37 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { ASSESSMENTS, DOMAINS } from '../../data/domains';
-import { BANK as EXAM1_BANK } from '../../data/exam1-questions';
-import { BANK as EXAM2_BANK } from '../../data/exam2-questions';
-import { BANK as EXAM3_BANK } from '../../data/exam3-questions';
+import { BANK as RAW_EXAM1 } from '../../data/exam1-questions';
+import { BANK as RAW_EXAM2 } from '../../data/exam2-questions';
+import { BANK as RAW_EXAM3 } from '../../data/exam3-questions';
 import { sample, shuffle } from '../../lib/shuffle';
+import useAccess from '../../hooks/useAccess';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { fmtHoursMinutes, parseExhibit } from '../../lib/format';
 import { recordAttempt } from '../../lib/history';
+import { P } from '../../lib/paths';
+import { lessonBySlug, lessonsToReview, DOMAINS as CURRICULUM_DOMAINS } from '../../content/aicp/curriculum';
+import { accessibleRefs } from '../../content/aicp/freeQuizRefs';
+import { scopedKey } from '../../lib/userStorage';
 
+// Tag every question with its ref ("e1:115") so missed items can be mapped
+// back to the lessons that teach them (curriculum.js LESSONS_FOR_REF).
+const tagged = (bank, b) => bank.map((q) => ({ ...q, ref: `${b}:${q.n}` }));
+const EXAM1_BANK = tagged(RAW_EXAM1, 'e1');
+const EXAM2_BANK = tagged(RAW_EXAM2, 'e2');
+const EXAM3_BANK = tagged(RAW_EXAM3, 'e3');
 const DRILLPOOL = EXAM1_BANK.concat(EXAM2_BANK, EXAM3_BANK);
+const BANKS = { e1: EXAM1_BANK, e2: EXAM2_BANK, e3: EXAM3_BANK };
+const resolveRef = (ref) => {
+  const [b, n] = ref.split(':');
+  return (BANKS[b] || []).find((q) => q.n === Number(n)) || null;
+};
 
 const ATTEMPTS_KEY = 'aap-exam-attempts';
 
 const loadAttempts = () => {
   try {
-    const raw = window.localStorage.getItem(ATTEMPTS_KEY);
+    const raw = window.localStorage.getItem(scopedKey(ATTEMPTS_KEY));
     return raw ? JSON.parse(raw) : {};
   } catch (e) {
     return {};
@@ -26,7 +42,7 @@ const saveAttempt = (sessionKey, patch) => {
   try {
     const all = loadAttempts();
     all[sessionKey] = { ...patch, savedAt: Date.now() };
-    window.localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(all));
+    window.localStorage.setItem(scopedKey(ATTEMPTS_KEY), JSON.stringify(all));
   } catch (e) { /* ignore */ }
 };
 
@@ -34,26 +50,35 @@ const clearAttempt = (sessionKey) => {
   try {
     const all = loadAttempts();
     delete all[sessionKey];
-    window.localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(all));
+    window.localStorage.setItem(scopedKey(ATTEMPTS_KEY), JSON.stringify(all));
   } catch (e) { /* ignore */ }
 };
 
 export function useExamSession() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
+  const location = useLocation();
+  const access = useAccess();
   const { dark, toggleDark } = useDarkMode();
 
   const aid = params.get('aid') || 'q1';
-  const mode = params.get('mode') || 'practice';
+  const mode = params.get('set') ? 'practice' : (params.get('mode') || 'practice');
   const drill = params.get('drill') || null;
-  const sessionKey = `${aid}|${mode}|${drill}`;
+  // ?set=<lesson slug>: that lesson's practice set (untimed, explained).
+  const setLesson = useMemo(() => {
+    const slug = params.get('set');
+    return slug ? lessonBySlug(slug) : null;
+  }, [params]);
+  const setRefs = useMemo(() => (setLesson ? accessibleRefs(setLesson, access) : []), [setLesson, access.signedIn, access.fullAccess]); // eslint-disable-line react-hooks/exhaustive-deps
+  const sessionKey = setLesson ? `set:${setLesson.slug}|${access.fullAccess ? 'full' : 'free'}` : `${aid}|${mode}|${drill}`;
 
   const active = useMemo(() => ASSESSMENTS.find((x) => x.id === aid) || ASSESSMENTS[0], [aid]);
 
   const QS = useMemo(() => {
+    if (setLesson) return setRefs.map(resolveRef).filter(Boolean);
     if (drill) return shuffle(DRILLPOOL.filter((qq) => qq.domain === drill), 7717).slice(0, 25);
     return sample(EXAM1_BANK, active.id, EXAM2_BANK, EXAM3_BANK);
-  }, [drill, active.id]);
+  }, [drill, active.id, setLesson, setRefs]);
 
   const [view, setView] = useState('question');
   const [i, setI] = useState(0);
@@ -63,11 +88,19 @@ export function useExamSession() {
   const [seconds, setSeconds] = useState(active.mins * 60);
   const [startedAt, setStartedAt] = useState(() => Date.now());
 
-  // Reset (or restore a saved attempt for) session state whenever the assessment/mode/drill identity actually
+  // Guard: gated content requires sign-in (see useAccess). Reset (or restore a saved attempt
+  // for) session state whenever the assessment/mode/drill identity actually
   // changes (not on every render), so switching between exams — or a
   // reload — never silently drops progress the way it used to.
   const lastKey = useRef(null);
   useEffect(() => {
+    // Access rules live in hooks/useAccess.js (sign-in today; sign-in plus
+    // membership once paid plans are enabled in lib/access.js).
+    const allowed = setLesson ? setRefs.length > 0 : drill ? access.canDrill : access.canOpenAssessment(active);
+    if (!allowed) {
+      navigate(access.blockedTarget(location.pathname + location.search), { replace: true });
+      return;
+    }
     if (lastKey.current !== sessionKey) {
       lastKey.current = sessionKey;
       const saved = loadAttempts()[sessionKey];
@@ -107,7 +140,7 @@ export function useExamSession() {
   const practice = mode === 'practice';
   const revealed = practice && answeredThis && !!checked[i];
   const canCheck = practice && answeredThis && !checked[i];
-  const activeTitle = drill ? drill + ' drill' : active.title;
+  const activeTitle = setLesson ? `${setLesson.title}: practice set` : drill ? drill + ' drill' : active.title;
   const totalSeconds = active.mins * 60;
 
   const pick = (idx) => {
@@ -123,8 +156,10 @@ export function useExamSession() {
   const submit = () => {
     const elapsedSeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
     recordAttempt({
-      kind: 'exam', assessmentId: drill ? null : active.id, drillName: drill || null,
+      kind: 'exam', assessmentId: drill || setLesson ? null : active.id, drillName: drill || null,
+      lessonSlug: setLesson ? setLesson.slug : null,
       title: activeTitle, mode, pct, correctCount, total, answeredCount, flagCount, elapsedSeconds,
+      missedRefs: QS.filter((qq, idx) => answers[idx] !== qq.correct).map((qq) => qq.ref),
       domainBreakdown: domainRows.filter((d) => d.n > 0).map((d) => ({ short: d.short, got: d.got, n: d.n }))
     });
     clearAttempt(sessionKey);
@@ -177,8 +212,18 @@ export function useExamSession() {
     };
   }).sort((a, b) => (a.mark === 'Missed' ? -1 : 1) - (b.mark === 'Missed' ? -1 : 1)), [QS, answers]);
 
+  // Where "back" goes from results: the lesson for a practice set, else the exams list.
+  const reviewLessons = useMemo(
+    () => lessonsToReview(QS.filter((qq, idx) => answers[idx] !== qq.correct).map((qq) => qq.ref), 6),
+    [QS, answers]
+  );
+  const weakDomain = CURRICULUM_DOMAINS.find((d) => d.short === weakestDomain);
+  const weakestLink = weakDomain ? P.domain(weakDomain.id) : null;
+  const backTo = setLesson ? { to: P.lesson(setLesson.slug), label: 'Back to the lesson' } : { to: P.exams, label: 'Back to exams' };
+  const partialSet = !!setLesson && !access.fullAccess && setRefs.length < (setLesson.practice || []).length;
+
   return {
-    aid, mode, drill, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
+    aid, mode, drill, setLesson, backTo, partialSet, weakestLink, signedIn: access.signedIn, reviewLessons, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
     seconds, totalSeconds, dark, toggleDark, view,
     answers, flags, checked, answeredCount, flagCount,
     pick, checkAnswer, toggleFlag, prev, next, goGrid, backToExam, submit, goAnswerReview, goTo,

@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
 import Hoverable from '../../components/Hoverable';
+import { P } from '../../lib/paths';
+import { domainByBankName } from '../../content/aicp/curriculum';
 import RichText from '../../components/RichText';
 import { barStyle, chipStyle, cardStyle } from '../../lib/style';
-import { themeTokens } from '../../lib/theme';
-import { badgeFor } from '../../lib/art';
+import { GREEN, themeTokens } from '../../lib/theme';
 
 const bandChip = (band) => chipStyle(band.bg, band.fg);
 
@@ -20,13 +22,13 @@ export default function ReportView(s) {
     : 'You answered every item.';
 
   return (
-    <div className={T.paperClass} style={{ color: T.ink, minHeight: '100vh' }}>
-      {/* Blueprint hero band, the same in paper and blueprint mode. */}
-      <section className="blueprint-bg torn-bottom">
+    <div style={{ background: T.bg, color: T.ink, minHeight: '100vh' }}>
+      {/* Fixed brand-navy hero band, same treatment regardless of light/dark mode (matches the landing page hero). */}
+      <section style={{ background: '#10345E' }}>
         <div style={{ maxWidth: 1000, margin: '0 auto', padding: '56px 24px 52px' }}>
-          <div className="hand" style={{ fontSize: 28, color: '#F4C95D' }}>Your diagnostic report &middot; DIAG-1.0</div>
+          <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#9FB8D6' }}>Your diagnostic report &middot; DIAG-1.0</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: 20, margin: '16px 0 0', flexWrap: 'wrap' }}>
-            <div className="display" style={{ fontSize: 'clamp(60px,9vw,104px)', lineHeight: 0.9, color: '#FFFFFF' }}>{dWeightedLabel}</div>
+            <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 'clamp(56px,9vw,96px)', lineHeight: 0.9, letterSpacing: '-0.04em', fontWeight: 700, color: '#FFFFFF' }}>{dWeightedLabel}</div>
             <div style={{ fontSize: 15.5, lineHeight: 1.5, color: '#AEC4E0', maxWidth: '40ch', paddingBottom: 10 }}>Weighted to the real exam blueprint, so the number is comparable across domains.</div>
           </div>
           <p style={{ fontSize: 15, lineHeight: 1.6, color: '#9FB8D6', margin: '22px 0 0', maxWidth: '66ch', borderTop: '1px solid rgba(255,255,255,0.18)', paddingTop: 18 }}>
@@ -41,18 +43,17 @@ export default function ReportView(s) {
       </section>
 
       <section style={{ maxWidth: 1000, margin: '0 auto', padding: '56px 24px 0' }}>
-        <h2 className="h-section" style={{ fontSize: 'clamp(28px,3.2vw,38px)' }}>Domain by domain</h2>
+        <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 'clamp(26px,3vw,34px)', fontWeight: 700, letterSpacing: '-0.03em', margin: 0 }}>Domain by domain</h2>
         <p style={{ fontSize: 16, color: T.mute, margin: '10px 0 28px', maxWidth: '64ch' }}>Each card shows the fraction as well as the percentage &mdash; with 8 to 14 items per domain, the fraction is the more honest reading.</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 16 }}>
           {s.dDomainStats.map((x) => (
             <div key={x.d.code} style={{ ...cardStyle(T, { radius: 14, padding: '20px 22px' }), display: 'flex', flexDirection: 'column', gap: 10 }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                <img src={badgeFor(x.d.drill)} alt="" aria-hidden="true" width="40" height="40" loading="lazy" style={{ flex: 'none', marginTop: -4 }} />
                 <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: '-0.01em', lineHeight: 1.3, flex: 1 }}>{x.d.name}</div>
                 <span style={bandChip(x.band)}>{x.band.label}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 30, fontWeight: 700, letterSpacing: '-0.02em' }}>{x.correct} / {x.n}</span>
+                <span style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 30, fontWeight: 700, letterSpacing: '-0.02em' }}>{x.correct} / {x.n}</span>
                 <span style={{ fontSize: 15, fontWeight: 600, color: T.mute, fontVariantNumeric: 'tabular-nums' }}>{Math.round(x.pctv)}%</span>
               </div>
               <div style={{ height: 8, background: T.neutralBg, borderRadius: 99, overflow: 'hidden' }}>
@@ -70,12 +71,12 @@ export default function ReportView(s) {
 
       {s.dPlan.length > 0 && (
         <section style={{ maxWidth: 1000, margin: '0 auto', padding: '56px 24px 0' }}>
-          <h2 className="h-section" style={{ fontSize: 'clamp(28px,3.2vw,38px)' }}>Study in this order</h2>
+          <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 'clamp(26px,3vw,34px)', fontWeight: 700, letterSpacing: '-0.03em', margin: 0 }}>Study in this order</h2>
           <p style={{ fontSize: 16, color: T.mute, margin: '10px 0 28px', maxWidth: '66ch' }}>Ranked by exam weight times points lost. A soft spot in a heavy domain costs you more than a bad score in a light one, so this order is not the same as sorting by percentage.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             {s.dPlan.map((p) => (
-              <div key={p.name} style={{ ...cardStyle(T, { radius: 14, padding: '20px 22px' }), display: 'grid', gridTemplateColumns: '44px 1fr auto', gap: 18, alignItems: 'center' }}>
-                <div aria-hidden="true" style={{ width: 44, height: 44, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--butter)', border: `2px solid ${T.lineStrong}`, fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, color: '#27233A' }}>{p.rank}</div>
+              <div key={p.name} style={{ ...cardStyle(T, { radius: 14, padding: '20px 22px' }), display: 'grid', gridTemplateColumns: '44px minmax(0,1fr)', gap: '14px 18px', alignItems: 'center' }} className="plan-row">
+                <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 30, fontWeight: 700, color: '#C93B2C', letterSpacing: '-0.03em' }}>{p.rank}</div>
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
                     <span style={{ fontSize: 17, fontWeight: 700, letterSpacing: '-0.01em' }}>{p.name}</span>
@@ -85,7 +86,25 @@ export default function ReportView(s) {
                   {p.hasTopics && <div style={{ fontSize: 14, color: T.mute, marginTop: 8 }}>Missed items touched: {p.topics}</div>}
                   {p.sampled && <div style={{ fontSize: 13, color: T.warnFg, marginTop: 8 }}>This domain has 18 sub-areas and 12 items on the form &mdash; it is sampled, not covered.</div>}
                 </div>
-                <button className="btn btn--sm btn--paper" onClick={() => s.startDrill(p.drill)}>Drill this domain</button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {domainByBankName(p.drill) && (
+                    <Hoverable
+                      as={Link}
+                      to={P.domain(domainByBankName(p.drill).id)}
+                      style={{ display: 'block', background: T.accBg, border: `1px solid ${T.accBg}`, color: T.accFg, padding: '11px 18px', borderRadius: 9, fontSize: 14.5, fontWeight: 600, whiteSpace: 'nowrap', textAlign: 'center' }}
+                      hoverStyle={{ border: `1px solid ${T.accFg}` }}
+                    >
+                      Read the lessons
+                    </Hoverable>
+                  )}
+                  <Hoverable
+                    style={{ background: 'none', border: `1px solid ${T.line}`, color: T.accFg, padding: '11px 18px', borderRadius: 9, fontSize: 14.5, fontWeight: 600, whiteSpace: 'nowrap' }}
+                    hoverStyle={{ border: `1px solid ${T.accFg}`, background: T.accBg }}
+                    onClick={() => s.startDrill(p.drill)}
+                  >
+                    Drill this domain
+                  </Hoverable>
+                </div>
               </div>
             ))}
           </div>
@@ -94,9 +113,9 @@ export default function ReportView(s) {
 
       {s.dMisinformed.length > 0 && (
         <section style={{ maxWidth: 1000, margin: '0 auto', padding: '56px 24px 0' }}>
-          <div style={{ ...cardStyle(T, { padding: '30px 32px' }), background: T.errBg, borderColor: s.dark ? '#F5AFA4' : '#C23F35' }}>
+          <div style={{ background: T.errBg, border: '1px solid #F0C4BA', borderRadius: 18, padding: '30px 32px' }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: T.errFg }}>Check these first</div>
-            <h2 className="h-section" style={{ fontSize: 'clamp(24px,2.8vw,32px)', margin: '12px 0 0' }}>{s.dMisinformed.length} answers you were confident about and got wrong</h2>
+            <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 'clamp(24px,2.8vw,32px)', fontWeight: 700, letterSpacing: '-0.03em', margin: '12px 0 0' }}>{s.dMisinformed.length} answers you were confident about and got wrong</h2>
             <p style={{ fontSize: 15.5, lineHeight: 1.6, color: T.errFg, margin: '12px 0 24px', maxWidth: '62ch' }}>These are the highest-priority items in the whole report. You would make these mistakes on exam day and never think to check them.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {s.dMisinformed.map((m) => (
@@ -119,7 +138,7 @@ export default function ReportView(s) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 16 }}>
           <div style={cardStyle(T, { radius: 14, padding: '22px 24px' })}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: T.accFg }}>Pacing</div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 30, fontWeight: 700, letterSpacing: '-0.02em', margin: '8px 0 6px' }}>{dAvgSec ? dAvgSec + 's per item' : '—'}</div>
+            <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 30, fontWeight: 700, letterSpacing: '-0.02em', margin: '8px 0 6px' }}>{dAvgSec ? dAvgSec + 's per item' : '—'}</div>
             <p style={{ fontSize: 14.5, lineHeight: 1.6, color: T.mute, margin: 0 }}>{pacingNote}</p>
           </div>
           <div style={cardStyle(T, { radius: 14, padding: '22px 24px' })}>
@@ -128,13 +147,13 @@ export default function ReportView(s) {
           </div>
           <div style={cardStyle(T, { radius: 14, padding: '22px 24px' })}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: T.accFg }}>Next step</div>
-            <p style={{ fontSize: 15, lineHeight: 1.6, color: T.mute, margin: '10px 0 14px' }}>Work your top two priority domains as untimed drills, then take a full-length timed exam to test pace.</p>
+            <p style={{ fontSize: 15, lineHeight: 1.6, color: T.mute, margin: '10px 0 14px' }}>Read the lessons for your top two priority domains, work them as untimed drills, then take a full-length timed exam to test pace. The <Link to={P.studyPlan} style={{ color: T.accFg, fontWeight: 600, textDecoration: 'underline' }}>study plans</Link> put it all on a calendar.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {s.dTopTwo.map((t) => (
                 <Hoverable
                   key={t.name}
                   style={{ background: T.accBg, border: 'none', color: T.accFg, padding: '11px 14px', borderRadius: 9, fontSize: 14.5, fontWeight: 600, textAlign: 'left' }}
-                  hoverStyle={{ background: T.neutralBg }}
+                  hoverStyle={{ background: '#D5E4F5' }}
                   onClick={() => s.startDrill(t.drill)}
                 >
                   {t.name}
@@ -146,7 +165,7 @@ export default function ReportView(s) {
       </section>
 
       <section style={{ maxWidth: 1000, margin: '0 auto', padding: '56px 24px 80px' }}>
-        <h2 className="h-section" style={{ fontSize: 'clamp(28px,3.2vw,38px)' }}>Every item, with rationales</h2>
+        <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 'clamp(26px,3vw,34px)', fontWeight: 700, letterSpacing: '-0.03em', margin: 0 }}>Every item, with rationales</h2>
         <p style={{ fontSize: 16, color: T.mute, margin: '10px 0 28px', maxWidth: '66ch' }}>Missed and skipped items first. Each one gives the reasoning for the key and a line on why each of the other three options is wrong.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           {s.dReview.map((r) => (
@@ -212,9 +231,21 @@ export default function ReportView(s) {
             </div>
           ))}
         </div>
-        <div style={{ display: 'flex', gap: 14, marginTop: 34, flexWrap: 'wrap' }}>
-          <button className={`btn ${s.dark ? 'btn--butter' : 'btn--ink'}`} onClick={() => s.navigate('/exams')}>Take a full-length exam</button>
-          <button className="btn btn--paper" onClick={s.startDiag}>Retake the diagnostic</button>
+        <div style={{ display: 'flex', gap: 12, marginTop: 34, flexWrap: 'wrap' }}>
+          <Hoverable
+            style={{ background: s.dark ? GREEN : '#1A1C2B', color: '#F6F7FB', border: 'none', padding: '14px 24px', borderRadius: 11, fontSize: 15.5, fontWeight: 700 }}
+            hoverStyle={{ background: '#1D5FA8' }}
+            onClick={() => s.navigate(P.exams)}
+          >
+            Take a full-length exam
+          </Hoverable>
+          <Hoverable
+            style={{ background: 'none', border: `1px solid ${T.line}`, color: T.mute, padding: '14px 22px', borderRadius: 11, fontSize: 15.5, fontWeight: 600 }}
+            hoverStyle={{ border: `1px solid ${T.ink}`, color: T.ink }}
+            onClick={s.startDiag}
+          >
+            Retake the diagnostic
+          </Hoverable>
         </div>
       </section>
     </div>

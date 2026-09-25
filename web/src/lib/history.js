@@ -1,4 +1,7 @@
-// Real (frontend-only, localStorage) attempt history — replaces the
+import { scopedKey } from './userStorage';
+
+// Real (frontend-only, localStorage) attempt history, kept per account
+// (see lib/userStorage.js) — replaces the
 // hardcoded "canned" numbers the Progress dashboard used to show. Every
 // completed exam/quiz/drill/diagnostic attempt is appended here on submit;
 // Progress.jsx derives all of its stats from this instead of static data.
@@ -7,7 +10,7 @@ const MAX_ENTRIES = 200;
 
 export const getHistory = () => {
   try {
-    const raw = window.localStorage.getItem(HISTORY_KEY);
+    const raw = window.localStorage.getItem(scopedKey(HISTORY_KEY));
     const list = raw ? JSON.parse(raw) : [];
     return Array.isArray(list) ? list : [];
   } catch (e) {
@@ -21,7 +24,7 @@ export const recordAttempt = (entry) => {
     list.push({ id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, completedAt: Date.now(), ...entry });
     // Keep the file bounded — oldest entries drop off first.
     while (list.length > MAX_ENTRIES) list.shift();
-    window.localStorage.setItem(HISTORY_KEY, JSON.stringify(list));
+    window.localStorage.setItem(scopedKey(HISTORY_KEY), JSON.stringify(list));
   } catch (e) { /* ignore */ }
 };
 

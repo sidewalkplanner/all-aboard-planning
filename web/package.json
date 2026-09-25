@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
+    "check": "node scripts/check-content.mjs",
     "art": "node art/render.mjs",
     "art:textures": "python3 art/textures.py"
   },
@@ -23,6 +24,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
+    "marked": "^18.0.14",
     "oxlint": "^1.81.0",
     "perfect-freehand": "^1.2.3",
     "playwright-core": "^1.55.0",
