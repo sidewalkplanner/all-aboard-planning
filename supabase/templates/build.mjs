@@ -122,7 +122,7 @@ const TEMPLATES = {
     body: para(HELLO) + para('Thanks for joining All Aboard Planning. Confirm your email address and your account is ready: every lesson, all three full-length practice exams, and a dashboard that remembers where you left off.'),
     button: 'Confirm my email',
     url: '{{ .ConfirmationURL }}',
-    after: small('This link works once and expires soon. If it has expired, just sign up again with the same email.') + small('Didn&rsquo;t sign up? You can ignore this email and no account will be created.'),
+    after: small('This link works once and expires in an hour. If it has expired, just sign up again with the same email.') + small('Didn&rsquo;t sign up? You can ignore this email and no account will be created.'),
   }),
 
   // Authentication > Emails > Templates > "Reset password"
@@ -136,7 +136,7 @@ const TEMPLATES = {
     body: para(HELLO) + para('Someone (hopefully you) asked to reset the password for <strong>{{ .Email }}</strong>. Click below to choose a new one. Your progress stays right where you left it.'),
     button: 'Choose a new password',
     url: '{{ .ConfirmationURL }}',
-    after: small('This link works once and expires soon. If it has expired, ask for a new one from the sign-in page.') + small('Didn&rsquo;t ask for this? You can ignore this email. Your password won&rsquo;t change.'),
+    after: small('This link works once and expires in an hour. If it has expired, ask for a new one from the sign-in page.') + small('Didn&rsquo;t ask for this? You can ignore this email. Your password won&rsquo;t change.'),
   }),
 
   // Authentication > Emails > Templates > "Change email address"

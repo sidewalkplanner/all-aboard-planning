@@ -31,3 +31,9 @@ there for when it does.
 - `{{ .Email }}`, `{{ .NewEmail }}`: the account's email (and the new one, for changes).
 - `{{ .Data.name }}`: the name entered at sign-up. The greeting falls back to
   "Hi there," when there isn't one.
+
+## Link expiry
+
+The confirm and reset emails say their link "expires in an hour". That matches
+Supabase's email link expiry setting; if it's ever changed in the dashboard
+(Authentication → Sign In / Providers → Email), update the wording in `build.mjs`.
