@@ -1388,7 +1388,7 @@ img, svg { max-width: 100%; }
 /* Narrow screens: headline, then the town, then the diagnostic card. */
 @media (max-width: 899px) {
   .hero-card--wide { display: none; }
-  .hero-card-narrow { display: block; padding-top: 28px; }
+  .hero-card-narrow { display: block; padding-top: 28px; padding-bottom: 56px; }
   .hero-card-narrow .hero-card { justify-self: auto; margin: 0 auto; }
   .hero-grid { gap: 0; }
 }
@@ -1447,10 +1447,6 @@ img, svg { max-width: 100%; }
   animation: wheelTurn 26s infinite;
 }
 .town__crowd { animation: crowdHop 26s infinite; transform-origin: 50% 94%; }
-/* Start 4s into the loop, so the streetcar is already rolling into view on
-   page load instead of arriving from off screen. Lane, wheels, and crowd
-   share the delay to stay in step. */
-.town__lane, .town__wheel, .town__crowd { animation-delay: -4s; }
 
 /* Tram image's left edge sits at 13.5% while stopped just short of the AICP sign. */
 @keyframes tramRun {
