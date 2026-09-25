@@ -62,8 +62,14 @@ uploads/                    Source specs for the question banks and diagnostic (
 | `npm run lint` | oxlint (warnings about unused catch params are pre-existing and fine) |
 | `npm run check` | Content + link checker. Must pass before pushing |
 
-Deployment is automatic: Cloudflare Workers Builds watches `main`. Its build settings are
-root directory `web`, build command `npm run build`, deploy command `npx wrangler deploy`.
+Deployment is automatic: Cloudflare Workers Builds watches `main`, with root directory `web`
+and deploy command `npx wrangler deploy`; pull request (preview) builds run
+`npx wrangler preview`, which needs the `previews` block in `wrangler.jsonc`. The site is built
+by the `build` section of `wrangler.jsonc` (`npm ci && npm run build`), which both commands run
+before uploading, so it doesn't depend on the dashboard's build command. (Cloudflare's docs say
+Workers Builds ignores that section; in practice wrangler runs it, which was verified locally,
+including with `WORKERS_CI=1`.) A dashboard build command of `npm run build` is fine too; it
+just builds twice.
 There is no staging. The site used to be on GitHub Pages at `/all-aboard-planning/`; that
 was switched off, and the Pages workflow and `404.html` workaround were removed. If the site
 ever moves under a subfolder again, set `base` in `vite.config.js` to that subfolder.
