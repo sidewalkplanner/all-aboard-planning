@@ -27,6 +27,9 @@ const readJSON = (key, fallback) => {
 
 const normalizeEmail = (email) => String(email || '').trim().toLowerCase();
 
+// "Jane Smith" -> "Jane": the first word of the name as entered.
+const firstName = (name) => String(name || '').trim().split(/\s+/)[0] || '';
+
 const toUser = (u) => (u ? {
   id: u.id,
   email: u.email,
@@ -120,7 +123,9 @@ export function AuthProvider({ children }) {
     const { data, error } = await supabase.auth.signUp({
       email: e,
       password,
-      options: { data: { name: name.trim() }, emailRedirectTo: siteUrl('/aicp/signin') },
+      // first_name is what the account emails greet people by ("Hi Jane,"),
+      // since Supabase's email templates can't split a full name themselves.
+      options: { data: { name: name.trim(), first_name: firstName(name) }, emailRedirectTo: siteUrl('/aicp/signin') },
     });
     if (error) throw new Error(friendly(error));
     // With email confirmation on, an existing address comes back with no identities.

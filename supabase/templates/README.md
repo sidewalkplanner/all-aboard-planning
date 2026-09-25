@@ -29,8 +29,9 @@ there for when it does.
 
 - `{{ .ConfirmationURL }}`: the confirm or reset link.
 - `{{ .Email }}`, `{{ .NewEmail }}`: the account's email (and the new one, for changes).
-- `{{ .Data.name }}`: the name entered at sign-up. The greeting falls back to
-  "Hi there," when there isn't one.
+- `{{ .Data.first_name }}`: the first word of the name entered at sign-up
+  ("Jane" for "Jane Smith"), saved by the site because Supabase templates can't
+  split names. The greeting falls back to "Hi there," when there isn't one.
 
 ## Link expiry
 
