@@ -30,6 +30,26 @@ const STEPS = [
   ['04', 'Rehearse', 'Take full-length timed exams to build pace and stamina, and review every miss.', 'spot-mode', 320, 220, 'var(--mint)'],
 ];
 
+// The diagnostic, as the first thing to do. Rendered beside the headline on
+// wide screens and below the town on narrow ones (see .hero-card--wide).
+function FirstStop({ signedIn, className = '' }) {
+  return (
+    <div className={`card hero-card ${className}`} style={{ '--r': '1deg' }}>
+      <span className="tape" aria-hidden="true" />
+      <span className="hand" style={{ display: 'block', fontSize: 26, color: 'var(--brand-strong)' }}>First stop</span>
+      <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginTop: 6 }}>
+        <div style={{ width: 88, flex: 'none' }}><Art name="spot-score" w={320} h={240} eager /></div>
+        <h2 className="h3" style={{ fontSize: 26 }}>The diagnostic</h2>
+      </div>
+      <p className="body-text" style={{ margin: '8px 0 16px' }}>
+        100 untimed questions across all nine domains. Your report ranks the domains by how many points each is
+        costing you, so you know which lessons to start with.
+      </p>
+      <Link className="btn btn-primary btn-block" to={signedIn ? P.diagnostic : P.createAccount(P.diagnostic)}>Take the diagnostic</Link>
+    </div>
+  );
+}
+
 export default function AicpHome() {
   usePageTitle('');
   const { signedIn, user } = useAccess();
@@ -58,27 +78,27 @@ export default function AicpHome() {
 
       {/* HERO: headline and the first-stop card over the paper town */}
       <section style={{ position: 'relative', overflow: 'hidden' }}>
-        <img src={art('hero-cloud-a')} alt="" aria-hidden="true" className="sky-bit sky-bit--cloud" style={{ width: 190, top: 90, left: '44%' }} />
-        <img src={art('hero-cloud-b')} alt="" aria-hidden="true" className="sky-bit sky-bit--cloud-b" style={{ width: 140, top: 520, left: '3%' }} />
+        <img src={art('hero-cloud-a')} alt="" aria-hidden="true" className="sky-bit sky-bit--cloud" style={{ width: 190, top: 34, left: '40%' }} />
+        <img src={art('hero-cloud-b')} alt="" aria-hidden="true" className="sky-bit sky-bit--cloud-b" style={{ width: 140, top: 300, left: '47%' }} />
         <img src={art('hero-sun')} alt="" aria-hidden="true" className="sky-bit sky-bit--sun" style={{ width: 150, top: 18, right: '2%' }} />
 
-        <div className="container" style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,340px),1fr))', gap: 48, alignItems: 'center', paddingTop: 60, paddingBottom: 8 }}>
+        <div className="container hero-grid">
           <div>
             <span className="chip chip-warn" style={{ transform: 'rotate(-2deg)' }}>AICP exam prep: lessons, study plans, and practice</span>
-            <h1 className="display" style={{ margin: '22px 0 0' }}>
+            <h1 className="display hero-title">
               Learn it, practice it, and walk in <em className="marker">ready.</em>
             </h1>
-            <p className="lead" style={{ fontSize: 18.5, maxWidth: '48ch' }}>
+            <p className="lead hero-lead">
               A complete course for the AICP Certification Exam, built around APA&rsquo;s nine-domain content outline. Study
               plain-language lessons, follow a week-by-week plan, and practice with exam-style questions that explain every answer.
             </p>
-            <div className="row-wrap" style={{ marginTop: 30 }}>
+            <div className="row-wrap hero-actions">
               <Link className="btn btn-rust btn-lg" to={P.course}>Browse the course</Link>
               {signedIn
                 ? <Link className="btn btn-secondary btn-lg" to={P.diagnostic}>Take the diagnostic</Link>
                 : <Link className="btn btn-secondary btn-lg" to={P.createAccount(P.course)}>Create an account</Link>}
             </div>
-            <dl style={{ display: 'flex', gap: 12, marginTop: 30, flexWrap: 'wrap', marginBottom: 0 }}>
+            <dl className="hero-stats">
               {[[LESSONS.length, 'lessons', 'var(--butter)', -2], ['3', 'full-length exams', 'var(--sky)', 1.5], ['9', 'exam domains', 'var(--blush)', -1]].map(([n, label, bg, r]) => (
                 <div key={label} className="stat-pill" style={{ transform: `rotate(${r}deg)` }}>
                   <dt className="visually-hidden">{label}</dt>
@@ -90,32 +110,16 @@ export default function AicpHome() {
               ))}
             </dl>
           </div>
-
-          <div className="card" style={{ '--r': '1deg', padding: '30px 28px 26px', maxWidth: 480, justifySelf: 'end', width: '100%' }}>
-            <span className="tape" aria-hidden="true" />
-            <span className="hand" style={{ display: 'block', fontSize: 26, color: 'var(--brand-strong)' }}>First stop</span>
-            <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginTop: 10 }}>
-              <div style={{ width: 96, flex: 'none' }}><Art name="spot-score" w={320} h={240} eager /></div>
-              <h2 className="h3" style={{ fontSize: 26 }}>The diagnostic</h2>
-            </div>
-            <p className="body-text" style={{ margin: '10px 0 18px' }}>
-              100 untimed questions across all nine domains. Your report ranks the domains by how many points each is
-              costing you, so you know which lessons to start with.
-            </p>
-            <Link className="btn btn-primary btn-block" to={signedIn ? P.diagnostic : P.createAccount(P.diagnostic)}>Take the diagnostic</Link>
-            <div style={{ borderTop: '2px dashed var(--line-strong)', marginTop: 22, paddingTop: 16 }}>
-              <h3 className="hand" style={{ margin: 0, fontSize: 24, color: 'var(--tomato-deep)' }}>Also in the course</h3>
-              <ul style={{ listStyle: 'none', margin: '10px 0 0', padding: 0, display: 'flex', flexDirection: 'column', gap: 8, fontSize: 15 }}>
-                {[`All ${LESSONS.length} lessons and their checkpoints`, 'Three full-length practice exams', 'Study plans, flashcards, and progress tracking'].map((t) => (
-                  <li key={t} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}><span className="pen-check" aria-hidden="true" />{t}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <FirstStop signedIn={signedIn} className="hero-card--wide" />
         </div>
 
-        <div style={{ marginTop: 'clamp(-90px,-5vw,-20px)' }}>
+        {/* The town sits high enough that the streetcar is on screen without scrolling. */}
+        <div className="hero-town">
           <HeroTown />
+        </div>
+        {/* On narrow screens the card follows the town instead, so the streetcar comes first. */}
+        <div className="container hero-card-narrow">
+          <FirstStop signedIn={signedIn} />
         </div>
       </section>
 
