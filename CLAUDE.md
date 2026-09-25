@@ -260,6 +260,9 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
   `{ id, name, email }` (name lives in the auth user's metadata). The publishable key in
   `lib/supabase.js` is meant to be public; row-level security protects the data. Email links
   (confirmation, password reset) return to `/aicp/signin`, which handles `?mode=forgot|reset`.
+  **Changing an account's email is intentionally not offered** (no UI, and `AuthContext` only
+  calls `updateUser` for passwords); don't add it. Only the confirm-signup and reset-password
+  emails are customized; the change-email and "password changed" emails aren't used.
 - **Auth settings live in the Supabase dashboard, not the repo:** Site URL
   `https://allaboardplanning.com`, redirect URLs for the site, and **"Confirm email" on** (new
   accounts must click a link before signing in). Auth emails go out through **Resend** as custom

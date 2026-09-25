@@ -54,20 +54,9 @@ function reissuedTicket() {
   return { W: 460, H: 220, b };
 }
 
-// A new email address: a ticket with an updated destination.
-function changedTicket() {
-  const rng = makeRng(921);
-  let b = '';
-  b += `<g transform="rotate(-2 230 110)">${ticket(40, 40, 380, 150, rng, { fill: P.blush, num: 'AICP', title: 'NEW ADDRESS', note: 'confirm the change' })}</g>`;
-  b += tape(320, 16, 110, 30, 16, { seed: 9, fill: 'rgba(159,211,199,0.85)' });
-  b += sparkle(24, 190, 10, { seed: 6 });
-  return { W: 460, H: 220, b };
-}
-
 export default function () {
   return [
     ['email-ticket', confirmTicket()],
     ['email-reissued', reissuedTicket()],
-    ['email-changed', changedTicket()],
   ].map(([name, { W, H, b }]) => ({ name, w: W, h: H, svg: svgDoc(W, H, b), scale: 1.4, quality: 0.86, jpg: '#FFFDF8' }));
 }

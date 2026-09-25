@@ -19,16 +19,15 @@ choice). Save each one.
 |---|---|---|
 | Confirm signup | `Confirm your email to board All Aboard Planning` | `confirm-signup.html` |
 | Reset password | `Reset your All Aboard Planning password` | `reset-password.html` |
-| Change email address | `Confirm your new email for All Aboard Planning` | `change-email.html` |
-| Password changed (security notification; turn it on to send it) | `Your All Aboard Planning password was changed` | `password-changed.html` |
 
-The site doesn't offer email changes yet, so the change-email template is only
-there for when it does.
+Only these two are customized. The site has no way to change an account's email,
+and the "password changed" security notice is left off, so those templates
+aren't used.
 
 ## Fields Supabase fills in
 
 - `{{ .ConfirmationURL }}`: the confirm or reset link.
-- `{{ .Email }}`, `{{ .NewEmail }}`: the account's email (and the new one, for changes).
+- `{{ .Email }}`: the account's email.
 - `{{ .Data.first_name }}`: the first word of the name entered at sign-up
   ("Jane" for "Jane Smith"), saved by the site because Supabase templates can't
   split names. The greeting falls back to "Hi there," when there isn't one.

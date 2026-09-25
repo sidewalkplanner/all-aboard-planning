@@ -139,35 +139,6 @@ const TEMPLATES = {
     url: '{{ .ConfirmationURL }}',
     after: small('This link works once and expires in an hour. If it has expired, ask for a new one from the sign-in page.') + small('Didn&rsquo;t ask for this? You can ignore this email. Your password won&rsquo;t change.'),
   }),
-
-  // Authentication > Emails > Templates > "Change email address"
-  'change-email.html': layout({
-    title: 'Confirm your new email',
-    preheader: 'Confirm the new email address for your All Aboard Planning account.',
-    art: 'email-changed',
-    artAlt: 'A pink train ticket reading NEW ADDRESS, confirm the change',
-    kicker: 'Changing trains?',
-    heading: 'Confirm your new email',
-    body: para(HELLO) + para('You asked to change your account&rsquo;s email from <strong>{{ .Email }}</strong> to <strong>{{ .NewEmail }}</strong>. Confirm below and we&rsquo;ll use the new address from now on.'),
-    button: 'Confirm new email',
-    url: '{{ .ConfirmationURL }}',
-    after: small('Didn&rsquo;t ask for this? Ignore this email and your address stays the same.'),
-  }),
-
-  // Authentication > Emails > Templates > "Password changed" (security
-  // notification; turn it on in the dashboard to send it).
-  'password-changed.html': layout({
-    title: 'Your password was changed',
-    preheader: 'The password for your All Aboard Planning account was just changed.',
-    art: 'email-reissued',
-    artAlt: 'A blue train ticket reading NEW TICKET, stamped REISSUED',
-    kicker: 'Quick heads-up',
-    heading: 'Your password was changed',
-    body: para(HELLO) + para('The password for <strong>{{ .Email }}</strong> was just changed. If that was you, you&rsquo;re all set and there&rsquo;s nothing else to do.'),
-    button: 'Wasn&rsquo;t me: reset it now',
-    url: `${SITE}/aicp/signin?mode=forgot`,
-    after: small('If you didn&rsquo;t change it, reset your password right away using the button above.'),
-  }),
 };
 
 for (const [file, html] of Object.entries(TEMPLATES)) {
