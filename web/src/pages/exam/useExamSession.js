@@ -1,19 +1,25 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { ASSESSMENTS, DOMAINS } from '../../data/domains';
-import { BANK as EXAM1_BANK } from '../../data/exam1-questions';
-import { BANK as EXAM2_BANK } from '../../data/exam2-questions';
-import { BANK as EXAM3_BANK } from '../../data/exam3-questions';
+import { BANK as RAW_EXAM1 } from '../../data/exam1-questions';
+import { BANK as RAW_EXAM2 } from '../../data/exam2-questions';
+import { BANK as RAW_EXAM3 } from '../../data/exam3-questions';
 import { sample, shuffle } from '../../lib/shuffle';
 import useAccess from '../../hooks/useAccess';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { fmtHoursMinutes, parseExhibit } from '../../lib/format';
 import { recordAttempt } from '../../lib/history';
 import { P } from '../../lib/paths';
-import { lessonBySlug, DOMAINS as CURRICULUM_DOMAINS } from '../../content/aicp/curriculum';
+import { lessonBySlug, lessonsToReview, DOMAINS as CURRICULUM_DOMAINS } from '../../content/aicp/curriculum';
 import { accessibleRefs } from '../../content/aicp/freeQuizRefs';
 import { scopedKey } from '../../lib/userStorage';
 
+// Tag every question with its ref ("e1:115") so missed items can be mapped
+// back to the lessons that teach them (curriculum.js LESSONS_FOR_REF).
+const tagged = (bank, b) => bank.map((q) => ({ ...q, ref: `${b}:${q.n}` }));
+const EXAM1_BANK = tagged(RAW_EXAM1, 'e1');
+const EXAM2_BANK = tagged(RAW_EXAM2, 'e2');
+const EXAM3_BANK = tagged(RAW_EXAM3, 'e3');
 const DRILLPOOL = EXAM1_BANK.concat(EXAM2_BANK, EXAM3_BANK);
 const BANKS = { e1: EXAM1_BANK, e2: EXAM2_BANK, e3: EXAM3_BANK };
 const resolveRef = (ref) => {
@@ -153,6 +159,7 @@ export function useExamSession() {
       kind: 'exam', assessmentId: drill || setLesson ? null : active.id, drillName: drill || null,
       lessonSlug: setLesson ? setLesson.slug : null,
       title: activeTitle, mode, pct, correctCount, total, answeredCount, flagCount, elapsedSeconds,
+      missedRefs: QS.filter((qq, idx) => answers[idx] !== qq.correct).map((qq) => qq.ref),
       domainBreakdown: domainRows.filter((d) => d.n > 0).map((d) => ({ short: d.short, got: d.got, n: d.n }))
     });
     clearAttempt(sessionKey);
@@ -206,13 +213,17 @@ export function useExamSession() {
   }).sort((a, b) => (a.mark === 'Missed' ? -1 : 1) - (b.mark === 'Missed' ? -1 : 1)), [QS, answers]);
 
   // Where "back" goes from results: the lesson for a practice set, else the exams list.
+  const reviewLessons = useMemo(
+    () => lessonsToReview(QS.filter((qq, idx) => answers[idx] !== qq.correct).map((qq) => qq.ref), 6),
+    [QS, answers]
+  );
   const weakDomain = CURRICULUM_DOMAINS.find((d) => d.short === weakestDomain);
   const weakestLink = weakDomain ? P.domain(weakDomain.id) : null;
   const backTo = setLesson ? { to: P.lesson(setLesson.slug), label: 'Back to the lesson' } : { to: P.exams, label: 'Back to exams' };
   const partialSet = !!setLesson && !access.fullAccess && setRefs.length < (setLesson.practice || []).length;
 
   return {
-    aid, mode, drill, setLesson, backTo, partialSet, weakestLink, signedIn: access.signedIn, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
+    aid, mode, drill, setLesson, backTo, partialSet, weakestLink, signedIn: access.signedIn, reviewLessons, active, activeTitle, QS, total, i, q, picked, answeredThis, practice, revealed, canCheck,
     seconds, totalSeconds, dark, toggleDark, view,
     answers, flags, checked, answeredCount, flagCount,
     pick, checkAnswer, toggleFlag, prev, next, goGrid, backToExam, submit, goAnswerReview, goTo,

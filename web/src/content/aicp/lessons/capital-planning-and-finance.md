@@ -111,6 +111,15 @@ Year 2 total: 2.5 + 1.0 + 0.6 = **$4.1M**. The fire station suits a GO bond beca
 
 **Grant withdrawn.** A complete-streets project depended on a state grant covering 60% of its cost. When the grant is cancelled, staff present the council with options: build the highest-priority segment now, phase the rest, pursue other grants, or pause. The council phases the project instead of taking money from the park program.
 
+## Exam tips
+
+- The **first year** of the CIP is the capital budget.
+- **GO bonds** rest on taxing power (fire stations, parks); **revenue bonds** are repaid by user fees (water, parking).
+- TIF captures the increase in property tax **above a frozen base**.
+- Special assessments require a **special benefit** proportional to the charge. BIDs are funded by **self-imposed** assessments.
+- Impact fees need a **rational nexus**, rough proportionality, and must fund **new capacity**, not existing deficiencies.
+- If a grant falls through, **reassess scope, phasing, and financing** before spending more.
+
 ## Summary
 
 The CIP is a multi-year schedule of capital projects; its first year is the capital budget, and it should implement the comprehensive plan. GO bonds rest on taxing power and suit facilities without revenue streams; revenue bonds are repaid by user fees. TIF captures growth in property tax above a frozen base; special assessments charge properties in proportion to their special benefit; BIDs rely on self-imposed assessments. Impact fees must have a rational nexus, be roughly proportional, and fund new capacity. When funding changes, reassess scope, phasing, and financing.

@@ -1,5 +1,47 @@
 # REVIEW: AICP course build
 
+## Update 2: full-site review
+
+I reviewed the whole site as a candidate would use it: signed in, over several weeks, with test day as the goal. The content was solid, but the product was mostly a library of pages to read. For exam prep that's the weak spot: people retain what they practice recalling, not what they reread, and they need to know what to do next. These changes turn it into a guided study loop.
+
+### What changed and why
+- **A real dashboard** (`/aicp/progress`, now the "Dashboard" button in the header) shows what to do next: the lesson to continue, this week's study-plan items, and your diagnostic priorities. It also shows lessons complete, average score, questions answered, flashcards mastered, lesson and accuracy bars for every domain, **lessons to review** (from your missed questions), and recent activity.
+- **Lesson completion**, with a "Mark lesson complete" button on each lesson. Completion shows on the course overview (a check mark and a done count per domain), in the study plans, on the dashboard, and in a "Welcome back / Continue" strip on the homepage.
+- **"Check yourself" on every lesson:** three standalone questions from the lesson's practice set, answered inline with instant explanations, right after the reading, when recall practice does the most good.
+- **Study plans you can follow.** "Follow this plan" highlights the current week, ticks off lessons automatically, and gives practice items checkboxes. Both plans now include the strategy guide in week 1, daily flashcards, and the quick reference in the final week.
+- **Missed questions loop back to lessons.** Every attempt records which questions you missed. The results screen and the dashboard then list the lessons that teach them, most-missed first.
+- **Exam tips in every lesson** (38 new sections): what the exam tends to ask on the topic and the traps to avoid, drawn only from that lesson's own content.
+- **New Review section** (`/aicp/review`):
+  - **Exam strategy guide:** question formats, a pacing plan with checkpoints, how to read a question, the "planner's answer" instinct, distractors to distrust, ethics and calculation tactics, study habits, and the last week and exam day.
+  - **Flashcards:** 467 cards built automatically from every lesson's Key terms. Sessions deal your weakest cards first (Leitner boxes), with keyboard shortcuts, and progress saved per account.
+  - **Quick reference:** landmark cases (split into zoning/constitutional, takings/exactions, and state cases), federal laws in order, people and ideas, formulas, numbers worth memorizing, and 22 commonly confused pairs.
+- **Two new Areas of Practice lessons** to fill outline gaps: *Rural, small-town, and tribal planning* and *Infrastructure, energy, and water planning*. The course now has 40 lessons.
+- **The Practice page is now a real hub** in study order: find your starting point (diagnostic), warm up (quizzes), rehearse (full exams, with your best and last scores), and target a weak spot (drills, lesson sets, flashcards).
+- **Simpler navigation:** Course · Study plan · Practice · Review · Exam info, plus Dashboard. It no longer truncates the brand name at mid widths, and the footer lists the review tools.
+- **Formatting fixes:**
+  - The lesson table of contents collapses on phones instead of pushing the lesson down.
+  - Wide tables scroll sideways on phones instead of squishing.
+  - Exam tips are styled as a distinct checklist.
+  - The dashboard no longer overflows at 360px.
+- **Checker additions:**
+  - Every lesson must have Exam tips.
+  - Key terms bullets must parse into flashcards.
+  - A warning appears if a lesson lacks three standalone questions for its quick check.
+
+### Assumptions in this update
+1. **Progress is self-reported.** You mark lessons complete yourself, rather than the site guessing from scroll position, and you tick study-plan practice items yourself. This is simpler, honest, and works with the placeholder accounts.
+2. **Quick checks don't count toward scores.** They're for learning, so they're not recorded in your history or the dashboard's accuracy. The full practice sets, quizzes, exams, and drills are recorded.
+3. **The review tools are behind the login**, consistent with the rule that only Warm-up Quiz A is open. The Review hub page itself is public, so visitors can see what's offered.
+4. **The quick reference only restates facts already in the lessons**, and it carries their VERIFY flags. The strategy guide's pacing checkpoints are my own arithmetic from the published format (about 67 seconds a question leaves roughly 20 minutes for review); they're flagged together with the exam format.
+5. **The two new lessons have no outline sub-area codes**, because the repo's outline data doesn't list those Areas of Practice sub-areas. Please match them to APA's outline. Both have VERIFY flags on the details I'm less sure of (right-to-farm coverage, extraterritorial jurisdiction, trust-land jurisdiction, water-supply rules, MS4 terminology, utility regulation).
+
+### Worth doing next
+- Replace the placeholder accounts with a hosted provider so progress syncs across devices. Lesson completion, flashcards, and plans all live in `web/src/lib/studyState.js` and would move with history.
+- Record the 19 videos.
+- Have a credentialed planner review the Exam tips and the quick reference. They're concise, which makes errors easy to spot but also easy to miss.
+
+---
+
 ## Update: free for now, accounts, video slots
 
 These changes followed the first build (described below). They supersede anything later in this file about Full Access, pricing, or the question of the day.
@@ -118,7 +160,7 @@ This is the hand-off for the build described in `PLAN.md`: what was built, the a
 
 ## VERIFY flags
 
-There are 75 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
+There are 95 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
 
 | Location | What to check |
 |---|---|
@@ -156,6 +198,9 @@ There are 75 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/housing-and-community-development.md:59` | HUD's AFFH rule has been issued, rescinded, and reissued several times; confirm its current status before describing specific requirements. |
 | `web/src/content/aicp/lessons/housing-and-community-development.md:63` | Mount Laurel I is usually dated 1975 and Mount Laurel II (builder's remedy) 1983; confirm before adding dates. |
 | `web/src/content/aicp/lessons/implementation-math.md:134` | confirm what calculator tools are available on the current exam. |
+| `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:35` | some states (for example, California and Arizona) require water supply assessments or assured supply for large developments; confirm before naming them. |
+| `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:46` | MS4 = municipal separate storm sewer system permits under the NPDES program; confirm terminology before expanding. |
+| `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:56` | confirm the general statement that investor-owned utilities are regulated by state public utility commissions. |
 | `web/src/content/aicp/lessons/land-use-law-foundations.md:59` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
 | `web/src/content/aicp/lessons/leadership-in-planning.md:22` | adaptive leadership is usually attributed to Ronald Heifetz; confirm before attributing. |
 | `web/src/content/aicp/lessons/mentoring-and-professional-development.md:66` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
@@ -171,6 +216,10 @@ There are 75 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/planning-theory.md:60` | confirm the conflict labels in Campbell's planner's triangle (property, resource, development) and the 1996 date. |
 | `web/src/content/aicp/lessons/project-and-contract-management.md:59` | the federal QBS requirement for A/E services comes from the Brooks Act (1972); confirm it applies to the planning services in question. |
 | `web/src/content/aicp/lessons/research-design-and-data.md:48` | confirm that the 65,000-population threshold for ACS 1-year estimates is current, and that the 3-year product remains discontinued. |
+| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:26` | confirm the claim that most states have right-to-farm laws. |
+| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:40` | extraterritorial jurisdiction exists in some states (for example, Texas and North Carolina historically); confirm before naming states. |
+| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:44` | the USDA Rural Development programs are the usual federal source; confirm current program names if cited. |
+| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:53` | confirm this general statement on the application of state and local zoning to trust land; jurisdiction over fee land within reservations is complex and case-specific. |
 | `web/src/content/aicp/lessons/subdivision-and-development-review.md:53` | vesting rules vary widely by state; if specific states are named, confirm them. |
 | `web/src/content/aicp/lessons/transportation-planning.md:26` | confirm current federal rules on MTP update cycles (commonly every 4 years in nonattainment/maintenance areas and 5 in attainment areas) and the minimum TIP period (4 years). |
 | `web/src/content/aicp/lessons/transportation-planning.md:58` | California's SB 743 (2013) directed the shift from LOS to VMT for CEQA transportation analysis; confirm details if expanded. |
@@ -191,12 +240,25 @@ There are 75 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/pages/exam-info.md:66` | confirm whether the application still requires written responses about experience (historically called "criteria" essays). |
 | `web/src/content/pages/exam-info.md:69` | confirm APA's accommodation request process and deadline. |
 | `web/src/content/pages/exam-info.md:70` | confirm current testing window months. |
-| `web/src/content/pages/exam-info.md:80` | confirm calculator and scratch-paper policies with APA's current candidate guide. |
-| `web/src/content/pages/exam-info.md:84` | confirm the current CM credit total, reporting period, and required topic credits. |
-| `web/src/content/pages/exam-info.md:88` | confirm URL. |
-| `web/src/content/pages/exam-info.md:89` | confirm URL. |
-| `web/src/content/pages/exam-info.md:90` | confirm URL. |
-| `web/src/pages/aicp/AicpHome.jsx:156` | domain weights come from uploads/aicp-diagnostic-exam-spec.md; confirm against APA's current published content outline. |
+| `web/src/content/pages/exam-info.md:83` | confirm calculator and scratch-paper policies with APA's current candidate guide. |
+| `web/src/content/pages/exam-info.md:87` | confirm the current CM credit total, reporting period, and required topic credits. |
+| `web/src/content/pages/exam-info.md:91` | confirm URL. |
+| `web/src/content/pages/exam-info.md:92` | confirm URL. |
+| `web/src/content/pages/exam-info.md:93` | confirm URL. |
+| `web/src/content/pages/exam-strategy.md:112` | confirm APA still includes unscored pretest items. |
+| `web/src/content/pages/exam-strategy.md:38` | confirm APA's current scoring policy on unanswered questions. |
+| `web/src/content/pages/exam-strategy.md:5` | confirm the current question count, time limit, and format with APA. |
+| `web/src/content/pages/exam-strategy.md:89` | confirm calculator policy with APA's current candidate guide. |
+| `web/src/content/pages/quick-reference.md:169` | confirm the current question count and time limit with APA. |
+| `web/src/content/pages/quick-reference.md:170` | confirm the credit remains 20%. |
+| `web/src/content/pages/quick-reference.md:171` | confirm the five-year update cycle. |
+| `web/src/content/pages/quick-reference.md:172` | confirm the current CM requirement. |
+| `web/src/content/pages/quick-reference.md:22` | confirm this holding summary. |
+| `web/src/content/pages/quick-reference.md:56` | Mount Laurel I is usually dated 1975 and Mount Laurel II 1983. |
+| `web/src/content/pages/quick-reference.md:62` | SZEA publication dates are given variously as 1922, 1924, and 1926. |
+| `web/src/content/pages/quick-reference.md:68` | confirm the 1962 Act as the origin of the 3C requirement. |
+| `web/src/content/pages/quick-reference.md:81` | LIHTC is usually dated to the Tax Reform Act of 1986. |
+| `web/src/pages/aicp/AicpHome.jsx:176` | domain weights come from uploads/aicp-diagnostic-exam-spec.md; confirm against APA's current published content outline. |
 
 Other placeholders, which aren't VERIFY flags:
 - `web/src/content/pages/about.md` has `<!-- PLACEHOLDER -->` for the founder bio.

@@ -97,6 +97,14 @@ Many exam questions list several obligations and ask which are **Rules of Conduc
 
 **The resume.** A consultant's proposal lists them as "project manager" for a plan where they were actually a junior analyst, and claims an advanced specialty certification they haven't earned. Both are false claims about qualifications that the Rules prohibit.
 
+## Exam tips
+
+- Financial interest in a matter: **disclose and withdraw**. Disclosure alone isn't enough.
+- Gifts from anyone with a matter pending: **decline**, whatever the value.
+- Confidential information stays confidential unless the **law requires** disclosure, even after the relationship ends.
+- Unfamiliar method? Accept only if the work is done **under someone competent**.
+- Claiming a credential you don't have is a rules violation, not just poor judgment.
+
 ## Summary
 
 Conflicts of interest arise from financial interests, personal relationships, organizational roles, prior clients, and outside work; appearance matters. Disclose in writing and withdraw from matters in which you have a personal or financial interest, and disclose prior relationships on the record. Decline gifts from anyone with matters pending before you, and never use your position for advantage. Protect confidential information, even after a relationship ends, and never profit from it. Take work only within your competence or under competent supervision. Be honest about your qualifications and others' work, identify whom you represent when advocating, and don't file frivolous charges or retaliate.

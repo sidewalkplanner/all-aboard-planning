@@ -104,6 +104,14 @@ Managing an external consultant well requires:
 
 **Peer review catches an error.** Before a housing needs report is released, a senior planner reviews it against the department's QC checklist and finds that one table used household counts where it should have used housing units. The error is fixed before the report reaches the commission.
 
+## Exam tips
+
+- The **critical path** is the longest chain of dependent tasks and sets the minimum duration.
+- A **Gantt chart** shows tasks and durations on a timeline.
+- An **RFQ** evaluates qualifications before price. **QBS** ranks firms on qualifications, then negotiates a fee with the top firm.
+- Scope creep is controlled by a **clear scope plus a change-order process**.
+- The best QA/QC is **structured peer review before release**.
+
 ## Summary
 
 A clear scope of work, with tasks, deliverables, schedule, budget, roles, and assumptions, is the foundation of project management, and a change-order process controls scope creep. Gantt charts show tasks on a timeline; the critical path is the longest chain of dependent tasks and sets the minimum duration. RFQs evaluate qualifications before price, RFPs weigh approach and price, and IFBs award to the lowest responsive, responsible bid. QBS ranks on qualifications, then negotiates a fee. Manage consultants through clear deliverables, milestones, and communication, and use structured peer review before releasing any work product.

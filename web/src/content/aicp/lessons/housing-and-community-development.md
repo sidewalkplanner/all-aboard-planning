@@ -102,6 +102,15 @@ When investment, including public investment such as new transit or parks, raise
 
 **Anti-displacement with new transit.** Before a new rail line opens, a city maps older rental buildings near stations, buys two buildings with a nonprofit partner, adopts an inclusionary requirement in the station areas, and passes relocation assistance rules, so the benefits of transit reach current residents.
 
+## Exam tips
+
+- Cost burden is **more than 30%** of income on housing; severe is **more than 50%**.
+- LIHTC: federal credits **allocated by state agencies**, sold to **investors** for equity.
+- Housing Choice Vouchers are **tenant-based**; CDBG funds activities that **primarily benefit low- and moderate-income** people.
+- *Inclusive Communities* (2015) allowed **disparate-impact** claims under the Fair Housing Act.
+- *Mount Laurel*: a municipality's **fair share** of regional affordable housing need.
+- Housing First means permanent housing **without preconditions**.
+
 ## Summary
 
 Households paying more than 30% of income for housing are cost-burdened, and above 50% severely so. HUD's categories (30%, 50%, and 80% of AMI) anchor programs. Needs assessments examine growth, cost burden, condition, and gaps by income and tenure. LIHTC channels investor equity into affordable rentals through state allocations; vouchers subsidize tenants; CDBG and HOME fund local housing and community development; Housing First provides housing without preconditions. The Fair Housing Act covers zoning and allows disparate-impact claims (*Inclusive Communities*), group-home rules are subject to it (*Edmonds*), and *Mount Laurel* requires New Jersey municipalities to accommodate their fair share. Expand supply with missing middle housing and ADUs, and pair investment with preservation and tenant protection.

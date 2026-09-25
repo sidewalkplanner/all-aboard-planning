@@ -91,7 +91,9 @@ export function useDiagnosticSession() {
       kind: 'diagnostic', assessmentId: null, drillName: null, title: DIAG_TITLE, mode: null,
       pct: Math.round(dWeighted * 10) / 10, correctCount: null, total: dTotal, answeredCount: dAnsweredCount,
       flagCount: dFlagCount, elapsedSeconds: dSeconds,
-      domainBreakdown: dDomainStats.filter((x) => x.n > 0).map((x) => ({ short: x.d.short, got: x.correct, n: x.n }))
+      domainBreakdown: dDomainStats.filter((x) => x.n > 0).map((x) => ({ short: x.d.short, got: x.correct, n: x.n })),
+      // Top study priorities (question-bank domain names), shown on the dashboard.
+      priorities: dPlan.slice(0, 3).map((x) => x.drill)
     });
     try { window.localStorage.removeItem(scopedKey(DIAG_KEY)); } catch (e) { /* ignore */ }
     setView('report');

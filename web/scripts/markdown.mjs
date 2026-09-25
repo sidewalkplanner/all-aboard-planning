@@ -98,3 +98,19 @@ export function renderMarkdown(src, { base = '/' } = {}) {
   const html = marked.parse(src);
   return { html, headings, links, videos };
 }
+
+// Flashcards: every "- **Term**: definition" bullet in a lesson's
+// "## Key terms" section becomes a card. Returns [{ id, term, html }].
+export function extractKeyTerms(src, slug) {
+  const m = src.match(/^## Key terms[ \t]*\n([\s\S]*?)(?=^## |(?![\s\S]))/m);
+  if (!m) return [];
+  const marked = new Marked({ gfm: true });
+  const cards = [];
+  for (const line of m[1].split('\n')) {
+    const t = line.match(/^- \*\*(.+?)\*\*:?\s*(.+)$/);
+    if (!t) continue;
+    const term = t[1].replace(/:$/, '').trim();
+    cards.push({ id: `${slug}:${slugify(term)}`, term, html: marked.parseInline(t[2].replace(/^:\s*/, '').trim()) });
+  }
+  return cards;
+}

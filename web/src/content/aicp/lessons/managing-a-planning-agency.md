@@ -99,6 +99,15 @@ When a department's workload exceeds its capacity, the right response is to **pr
 
 **Working through capacity limits.** Facing twice as many requests as staff can handle, a planning director presents the council with a ranked work program tied to the comprehensive plan and the council's adopted priorities, showing what can be done this year and what must wait. The council removes two lower-priority studies and funds a temporary position.
 
+## Exam tips
+
+- In council-manager government, the planning director usually reports to the **appointed manager**.
+- **Line-item** budgets organize by expense type; **program** budgets by service; **zero-based** budgets justify everything from zero.
+- "Percent of permits reviewed within 30 days" is an **output/efficiency** measure; "share of new housing in growth areas" is an **outcome**.
+- To speed up review, **map the current process** first.
+- With performance problems, **meet privately first**; progressive discipline starts with documented verbal counseling.
+- Public records: release **non-exempt** records on time. Open meetings: meet openly with notice.
+
 ## Summary
 
 Planning directors usually report to the manager in council-manager governments and to the mayor in strong-mayor systems. Functional structures build expertise but risk silos; matrix structures create dual reporting for project work; cross-departmental coordination breaks down silos. Line-item budgets organize by expenditure type, program budgets by service, performance budgets by results, and zero-based budgets justify everything from zero. Measure inputs, outputs, efficiency, and outcomes, and manage for results. Supervise with clear expectations, private conversations first, and progressive discipline. Follow open-meetings and public-records laws: meet openly with notice, and release non-exempt records on time.

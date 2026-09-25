@@ -99,6 +99,14 @@ Diagnosing what the conflict is about helps choose the right response. Practitio
 
 **Delphi for a forecast.** A regional agency needs to estimate how quickly autonomous delivery vehicles might affect curb demand. It convenes a panel of experts through three anonymous online rounds, sharing summarized results between rounds. The panel's range of estimates narrows and becomes the basis for low and high planning scenarios.
 
+## Exam tips
+
+- The facilitator manages the **process**, not the outcome, and stays neutral.
+- Interest-based negotiation: separate people from the problem, **interests not positions**, options for mutual gain, objective criteria.
+- A mediator **helps** the parties agree; an arbitrator **decides**.
+- Delphi is **anonymous expert rounds with feedback**; nominal group technique is **silent idea generation, then ranking**.
+- Consensus building fits **interdependent** stakeholders. Consensus means everyone can live with it, not unanimity.
+
 ## Summary
 
 Facilitators manage a fair process, not the outcome, using clear agendas, ground rules, structured formats, and a visible record. Active listening reflects back what people say and reveals the interests beneath their positions. Consensus building suits interdependent stakeholders and aims for an agreement everyone can live with, not unanimity. The nominal group technique uses silent generation and individual ranking; the Delphi technique uses anonymous expert rounds with feedback. Interest-based negotiation separates people from the problem, focuses on interests, invents options, uses objective criteria, and relies on knowing your BATNA. A mediator helps parties agree; an arbitrator decides.

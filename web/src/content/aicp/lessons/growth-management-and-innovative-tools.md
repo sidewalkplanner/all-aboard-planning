@@ -109,6 +109,15 @@ Growth controls can protect services and character, but tight caps and boundarie
 
 **An inclusionary ordinance calibrated to the market.** Before adopting inclusionary zoning, a city commissions a feasibility study. It sets a 15% requirement at 60% of area median income in its strongest markets and a 10% requirement elsewhere, with a density bonus and reduced parking as offsets, and a fee-in-lieu option for small projects.
 
+## Exam tips
+
+- Form-based codes regulate **building form and the public realm**, with use secondary; the **transect** is a rural-to-urban gradient.
+- TDR needs **sending and receiving areas and real demand for credits**; PDR uses **public funds**.
+- **Inclusionary** zoning requires or incentivizes affordable units; **incentive** zoning trades bonuses for any public benefit.
+- Concurrency: facilities available at **adopted levels of service** when impacts occur.
+- *Ramapo* upheld **phased growth** tied to facilities; *Petaluma* upheld an **annual permit cap**.
+- A UGB limits outward expansion; it works only with enough capacity inside it.
+
 ## Summary
 
 Form-based codes regulate the form of buildings and streets, often along a rural-to-urban transect. PUDs trade flexibility for public benefits, and performance zoning regulates impacts rather than uses. Cluster subdivisions preserve open space at the same overall density. Incentive zoning grants bonuses for public benefits, and inclusionary zoning secures affordable units, working best in strong markets with offsets. TDR moves development rights from sending to receiving areas and needs real demand for credits; PDR buys rights with public funds. Growth management uses UGBs, concurrency and APFOs, agricultural zoning, and phased or capped growth, which courts upheld in *Ramapo* (1972) and *Petaluma* (1975).

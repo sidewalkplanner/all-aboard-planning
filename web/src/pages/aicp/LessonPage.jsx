@@ -3,6 +3,8 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumb';
 import LessonBody from '../../components/LessonBody';
 import AccessGate from '../../components/AccessGate';
+import QuickCheck from '../../components/QuickCheck';
+import { useStudyState, setLessonComplete, noteLessonOpened } from '../../lib/studyState';
 import useAccess from '../../hooks/useAccess';
 import NotFound from '../NotFound';
 import usePageTitle from '../../hooks/usePageTitle';
@@ -121,9 +123,28 @@ export default function LessonPage() {
     return () => { live = false; };
   }, [lesson]);
 
+  const study = useStudyState();
+  const readable = !!lesson && access.canReadLesson(lesson);
+  useEffect(() => { if (readable) noteLessonOpened(lesson.slug); }, [readable, lesson]);
+
   if (!lesson) return <NotFound />;
   const domain = domainById(lesson.domainId);
-  const locked = !access.canReadLesson(lesson);
+  const locked = !readable;
+  const complete = !!study.completed[lesson.slug];
+  const { next } = neighbors(lesson.slug);
+  const toc = body && body.headings.length > 0 && (
+    <ul className="toc">
+      {body.headings.map((h, i) => (
+        <li key={h.id}>
+          {locked && i > 0
+            ? <span style={{ display: 'block', padding: '6px 10px', color: 'var(--muted)' }}>{h.text} <span className="visually-hidden">(sign in to read)</span></span>
+            : <a href={`#${h.id}`}>{h.text}</a>}
+        </li>
+      ))}
+      {!locked && <li><a href="#quick-check-heading">Check yourself</a></li>}
+      <li><a href="#practice-heading">Practice questions</a></li>
+    </ul>
+  );
 
   return (
     <article>
@@ -136,6 +157,7 @@ export default function LessonPage() {
         ]} />
         <div className="row-wrap" style={{ gap: 8 }}>
           <Link to={P.domain(domain.id)} className="chip chip-brand">Domain {domain.code} &middot; {domain.name} &middot; {domain.weight}% of the exam</Link>
+          {complete && <span className="chip chip-ok">&#10003; Completed</span>}
           {access.paidTier && (
             <span className={`chip ${lesson.access === 'free' ? 'chip-ok' : 'chip-neutral'}`}>{lesson.access === 'free' ? 'Free lesson' : 'Full Access'}</span>
           )}
@@ -158,27 +180,39 @@ export default function LessonPage() {
                 <AccessGate what="the rest of this lesson" />
               </>
             ) : (
-              <LessonBody html={body.html} />
+              <>
+                <LessonBody html={body.html} />
+                <QuickCheck lesson={lesson} />
+                <section aria-label="Lesson completion" className="card" style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 14, alignItems: 'center', justifyContent: 'space-between', ...(complete ? { borderColor: 'var(--ok-fg)', background: 'var(--ok-bg)' } : {}) }}>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: 16.5 }}>{complete ? 'Lesson complete' : 'Finished this lesson?'}</div>
+                    <div className="small">{complete ? 'It counts toward your course progress and study plan.' : 'Mark it complete to track your course progress and study plan.'}</div>
+                  </div>
+                  <div className="row-wrap">
+                    <button type="button" className={`btn ${complete ? 'btn-secondary' : 'btn-primary'}`} aria-pressed={complete} onClick={() => setLessonComplete(lesson.slug, !complete)}>
+                      {complete ? 'Mark as not complete' : 'Mark lesson complete'}
+                    </button>
+                    {complete && next && <Link className="btn btn-primary" to={P.lesson(next.slug)}>Next: {next.title}</Link>}
+                  </div>
+                </section>
+              </>
             ))}
             <PracticeBlock lesson={lesson} domain={domain} />
             <Pager slug={lesson.slug} />
           </div>
 
           <aside className="lesson-aside" aria-label="In this lesson">
-            {body && body.headings.length > 0 && (
-              <div className="card card-sm">
-                <span className="eyebrow">In this lesson</span>
-                <ul className="toc">
-                  {body.headings.map((h, i) => (
-                    <li key={h.id}>
-                      {locked && i > 0
-                        ? <span style={{ display: 'block', padding: '6px 10px', color: 'var(--muted)' }}>{h.text} <span className="visually-hidden">(sign in to read)</span></span>
-                        : <a href={`#${h.id}`}>{h.text}</a>}
-                    </li>
-                  ))}
-                  <li><a href="#practice-heading">Practice questions</a></li>
-                </ul>
-              </div>
+            {toc && (
+              <>
+                <div className="card card-sm toc-desktop">
+                  <span className="eyebrow">In this lesson</span>
+                  {toc}
+                </div>
+                <details className="card card-sm toc-mobile">
+                  <summary>In this lesson</summary>
+                  {toc}
+                </details>
+              </>
             )}
           </aside>
         </div>

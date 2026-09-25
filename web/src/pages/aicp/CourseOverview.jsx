@@ -4,10 +4,16 @@ import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
 import { DOMAINS, LESSONS, TOTAL_MINUTES } from '../../content/aicp/curriculum';
 import { PAID_TIER_ENABLED } from '../../lib/access';
+import useAccess from '../../hooks/useAccess';
+import { useStudyState } from '../../lib/studyState';
 
 export default function CourseOverview() {
   usePageTitle('Course overview');
   const hours = Math.round(TOTAL_MINUTES / 60);
+  const { signedIn } = useAccess();
+  const { completed } = useStudyState();
+  const doneCount = signedIn ? LESSONS.filter((l) => completed[l.slug]).length : 0;
+  const nextLesson = LESSONS.find((l) => !completed[l.slug]) || LESSONS[0];
 
   return (
     <>
@@ -17,12 +23,25 @@ export default function CourseOverview() {
         lead={`${LESSONS.length} lessons across the nine domains of the AICP exam content outline, in outline order. Each lesson covers objectives, key concepts, key terms, real planning examples, a summary, and a practice set of exam-style questions.`}
       >
         <div className="row-wrap" style={{ marginTop: 22 }}>
-          <Link className="btn btn-primary" to={P.lesson(LESSONS[0].slug)}>Start lesson 1</Link>
+          <Link className="btn btn-primary" to={P.lesson(nextLesson.slug)}>
+            {doneCount ? `Continue: lesson ${nextLesson.number}` : 'Start lesson 1'}
+          </Link>
           <Link className="btn btn-secondary" to={P.studyPlan}>Follow a study plan</Link>
           <Link className="btn btn-secondary" to={P.diagnostic}>Find your weak spots first</Link>
         </div>
+        {signedIn && (
+          <div style={{ marginTop: 22, maxWidth: 520 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14, fontWeight: 600, marginBottom: 6 }}>
+              <span>Your progress</span><span>{doneCount} of {LESSONS.length} lessons complete</span>
+            </div>
+            <div className="bar-track" role="progressbar" aria-label="Lessons complete" aria-valuemin={0} aria-valuemax={LESSONS.length} aria-valuenow={doneCount}>
+              <div className="bar-fill" style={{ width: `${(doneCount / LESSONS.length) * 100}%`, background: 'var(--ok-fg)' }} />
+            </div>
+          </div>
+        )}
         <p className="small" style={{ margin: '16px 0 0' }}>
-          About {hours} hours of reading in total. Every lesson is free with an account{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.
+          New to the exam? Read the <Link to={P.strategy} className="link-underline">test-taking strategy guide</Link> first.
+          About {hours} of reading in total. Every lesson is free with an account{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.
         </p>
       </PageHeader>
 
@@ -41,23 +60,29 @@ export default function CourseOverview() {
         {DOMAINS.map((d) => {
           const lessons = LESSONS.filter((l) => l.domainId === d.id);
           const mins = lessons.reduce((s, l) => s + l.minutes, 0);
+          const domainDone = lessons.filter((l) => completed[l.slug]).length;
           return (
             <section key={d.id} id={d.id} aria-labelledby={`${d.id}-heading`} style={{ paddingTop: 40 }}>
               <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '8px 16px', justifyContent: 'space-between' }}>
                 <h2 id={`${d.id}-heading`} className="h2" style={{ fontSize: 'clamp(24px,2.8vw,30px)' }}>
                   <span style={{ color: 'var(--rust)' }}>Domain {d.code}.</span> {d.name}
                 </h2>
-                <span className="chip chip-brand">{d.weight}% of the exam</span>
+                <span className="row-wrap" style={{ gap: 8 }}>
+                  {signedIn && domainDone > 0 && <span className="chip chip-ok">{domainDone} of {lessons.length} done</span>}
+                  <span className="chip chip-brand">{d.weight}% of the exam</span>
+                </span>
               </div>
               <p className="body-text" style={{ margin: '8px 0 16px', maxWidth: '72ch' }}>{d.summary}</p>
               <ol className="lesson-list">
                 {lessons.map((l) => (
                   <li key={l.slug}>
                     <Link to={P.lesson(l.slug)}>
-                      <span className="lesson-num" aria-hidden="true">{l.number}</span>
+                      <span className="lesson-num" aria-hidden="true" style={signedIn && completed[l.slug] ? { color: 'var(--ok-fg)' } : undefined}>
+                        {signedIn && completed[l.slug] ? '\u2713' : l.number}
+                      </span>
                       <span style={{ minWidth: 0 }}>
                         <span style={{ display: 'block', fontWeight: 700, fontSize: 16.5, color: 'var(--ink)' }}>
-                          <span className="visually-hidden">Lesson {l.number}: </span>{l.title}
+                          <span className="visually-hidden">Lesson {l.number}{signedIn && completed[l.slug] ? ' (completed)' : ''}: </span>{l.title}
                         </span>
                         <span style={{ display: 'block', fontSize: 14.5, color: 'var(--muted)', marginTop: 2 }}>{l.description}</span>
                       </span>

@@ -29,17 +29,20 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     lib/paths.js            Route constants — always build links from these
     lib/nav.js              Header/footer navigation config
     lib/theme.js            JS copies of the colour tokens (used by inline-styled exam UI)
-    components/             Header, Footer, LessonBody, AccessGate, RequireSignIn, ContentPage, ...
+    components/             Header, Footer, LessonBody, QuickCheck, AccessGate, RequireSignIn, ContentPage, ...
     hooks/                  usePageTitle, useAccess (who can open what), useMembership (future paid tier)
     context/AuthContext.jsx Placeholder accounts (browser-only); swap for a real auth provider
     lib/access.js           PAID_TIER_ENABLED switch + PUBLIC_ASSESSMENTS (open without an account)
     lib/userStorage.js      Per-account localStorage keys (scopedKey)
+    lib/studyState.js       Per-account lesson completion, chosen study plan, plan checkboxes, flashcard boxes
+    lib/history.js          Per-account scored attempts (with missedRefs, for "lessons to review")
     content/aicp/
       curriculum.js         Domains + ordered lesson metadata (the course's source of truth)
       lessons/*.md          One Markdown file per lesson body
       studyPlans.js         8- and 12-week schedules (reference lesson slugs)
       freeQuizRefs.js       Which Exam 1 items the free quizzes serve (checked by npm run check)
-    content/pages/*.md      Exam Info and About page bodies (Markdown, same renderer as lessons)
+      flashcards.js         The flashcard deck (built from every lesson's Key terms by a Vite plugin)
+    content/pages/*.md      Exam Info, About, Exam strategy, Quick reference bodies (same renderer as lessons)
     content/site.js         Owner settings (CONTACT_EMAIL placeholder)
     data/                   Question banks (exam1/2/3), diagnostic items, domain weights
     pages/                  Route components; pages/aicp/* are the prep section pages
@@ -132,7 +135,9 @@ Build on the existing look; don't introduce a new visual language.
      practice: ['e1:74', 'e2:91'],       // question refs: e1/e2/e3 = exam bank, number = item "n"
    }
    ```
-   `practice` refs must exist in `src/data/exam{1,2,3}-questions.js`. (If paid plans are
+   `practice` refs must exist in `src/data/exam{1,2,3}-questions.js`. Include at least three
+   standalone items (no scenario or exhibit): the lesson's on-page "Check yourself" block
+   shows three of them. (If paid plans are
    enabled later, signed-in non-members see only the refs on free lessons that also appear in
    the warm-up quizzes, so paid items aren't given away.)
 3. **Create the body** at `web/src/content/aicp/lessons/my-new-lesson.md`. Don't repeat the
@@ -152,11 +157,15 @@ Build on the existing look; don't introduce a new visual language.
    ## Real-world examples
    Concrete planning situations (generic or well-documented real ones).
 
+   ## Exam tips
+   - 3–6 bullets: what the exam tends to ask on this topic and the traps to avoid.
+
    ## Summary
    A short recap paragraph or bullets.
    ```
-   Optional extra sections (for example `## Exam tips` or `## Worked examples`) may go
-   anywhere after "Key concepts" and before "Summary". A short `>` note above
+   "Exam tips" is required (anywhere after Key concepts, before Summary). Other optional
+   sections (for example `## Worked examples`) may go anywhere after "Key concepts" and
+   before "Summary". A short `>` note above
    "Learning objectives" is allowed (the ethics lessons use one). Tables, blockquotes, and `> **Exam tip:**` callouts are
    supported. Link to other lessons with `/aicp/lessons/<slug>`.
 
@@ -210,3 +219,21 @@ Run `npm run check` after touching the banks or the sampler.
   to the paid tiers (`PaidPricing` in `pages/Pricing.jsx`, placeholder prices), and the
   Free/Full Access labels and header Pricing link reappear. Gated text still ships in the JS
   bundle, so real protection needs server-side delivery.
+
+## Study features (how the pieces fit)
+
+- **Site map for learners:** Course (lessons) · Study plan · Practice (`/aicp/exams`: diagnostic,
+  quizzes, full exams, drills) · Review (`/aicp/review`: exam strategy guide, flashcards, quick
+  reference) · Exam info · Dashboard (`/aicp/progress`, signed in).
+- **Lesson page** (`pages/aicp/LessonPage.jsx`): body, then `QuickCheck` (three standalone
+  questions from the lesson's practice refs, answered inline), a "Mark lesson complete" toggle,
+  the practice block, and Previous/Next. Opening a lesson records it as `lastLesson`.
+- **Flashcards** are generated from every lesson's `## Key terms` bullets, which must be written
+  `- **Term**: definition` (the checker enforces this). Leitner boxes live in `studyState.cards`.
+- **Study plans**: "Follow this plan" stores `studyState.plan`; lessons tick off from lesson
+  completion; practice items are ticked manually (`planItemKey`). `planProgress()` powers both
+  the plan page and the dashboard.
+- **Lessons to review**: every scored attempt records `missedRefs`; `lessonsToReview()` in
+  `curriculum.js` maps them back to lessons for the results screen and the dashboard.
+- **Quick reference** (`content/pages/quick-reference.md`) restates facts from the lessons. When
+  a lesson's fact changes, update the quick reference too (and carry any VERIFY flag).

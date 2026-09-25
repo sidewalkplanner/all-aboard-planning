@@ -105,6 +105,15 @@ Bidding wars between neighboring jurisdictions for the same firm often shift job
 
 **A performance-based incentive.** A city offers a tax abatement to a software firm contingent on creating 200 jobs paying at least the regional median wage within five years, with a clawback if the target isn't met. It publishes annual performance reports.
 
+## Exam tips
+
+- Economic base theory: growth is driven by **basic (export)** industries. The multiplier is total ÷ basic employment.
+- An LQ well below 1.0 suggests the area **imports** that good.
+- Relying only on LQs assumes **similar consumption patterns** to the nation.
+- A **cluster** is a concentration of interconnected firms, suppliers, and institutions.
+- Capture rate is local sales ÷ trade-area spending.
+- Opportunity Zones offer **capital gains** tax incentives.
+
 ## Summary
 
 Economic base theory says basic (export) industries bring money in and drive growth; the multiplier (total ÷ basic employment) estimates total effects, in both directions. LQs above 1.0 suggest exports but assume national consumption patterns. Cluster strategies strengthen networks of related firms and institutions. Retention and expansion is usually the most cost-effective strategy, alongside attraction, entrepreneurship, workforce development, and placemaking. Retail analysis compares spending with sales to find leakage and capture rates. Use incentives with "but for" tests, performance terms, and clawbacks, and understand place-based tools like Opportunity Zones and BIDs.

@@ -99,6 +99,14 @@ Comprehensive planning draws on engineering, landscape architecture, architectur
 
 **Adding a resilience element.** After repeated flooding, a coastal town adds a resilience element that maps projected flood risk, restricts new critical facilities in high-risk areas, and ties the capital program to elevating vulnerable roads.
 
+## Exam tips
+
+- A comprehensive plan is a **long-range policy guide**; zoning is the **regulation** that implements it.
+- In **consistency** states, zoning and development approvals must conform to the plan. An inconsistent parcel is usually fixed by **rezoning to match the plan**.
+- A small area plan translates citywide policy into **block-level** direction.
+- An area plan adopted only by resolution generally carries **less weight** than one adopted into the comprehensive plan.
+- The public facilities element coordinates most directly with the **capital improvements program**.
+
 ## Summary
 
 A comprehensive plan is the adopted, long-range, general policy guide for physical development. It isn't a regulation; zoning implements it. Plans typically include land use, transportation, housing, economic development, environment, parks, facilities, hazards, and implementation elements, and those elements must be internally consistent. The plan's legal weight ranges from advisory to binding; in consistency states, zoning and approvals must conform to it. Use area plans to translate citywide policy into block-level direction, functional plans for single systems, regional plans for cross-boundary issues, and strategic plans for near-term organizational priorities.

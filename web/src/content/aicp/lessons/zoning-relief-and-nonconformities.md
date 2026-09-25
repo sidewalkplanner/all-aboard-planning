@@ -113,6 +113,15 @@ Under *Tahoe-Sierra* (2002), a moratorium isn't a per se taking. See [Takings, e
 
 **Spot zoning risk.** A council is asked to rezone one lot in the middle of a single-family neighborhood to allow a gas station, contrary to the plan's designation. Staff warn that the rezoning would benefit only the owner, conflict with the plan, and be incompatible with its surroundings, and that a court could strike it down as spot zoning.
 
+## Exam tips
+
+- Variances require hardship **unique to the property**, not self-created and not merely financial.
+- Many states **prohibit use variances**; allowing a new use is a rezoning question.
+- Spot zoning singles out a small parcel, **inconsistent with the plan**, mainly for the **owner's benefit**.
+- *Fasano* makes site-specific rezonings **quasi-judicial**: findings, record, burden on the applicant.
+- Nonconforming uses may **continue** but not expand; **amortization** phases them out over a reasonable period; **abandonment** ends the right.
+- A defensible moratorium is **limited in time and scope** and tied to a specific study.
+
 ## Summary
 
 Variances, decided by the zoning board, relieve hardships unique to a property that weren't self-created and aren't merely financial. Area variances are common; use variances are restricted or banned in many states. Most rezonings are legislative, but under *Fasano* site-specific rezonings are quasi-judicial, with findings and due process. Spot zoning singles out a parcel for the owner's benefit against the plan; contract zoning bargains away the police power and is generally invalid, while conditional zoning is widely accepted. Legal nonconformities may continue but can't expand, may be lost through abandonment, and may be phased out by reasonable amortization. Moratoria should be limited, purposeful, and temporary.

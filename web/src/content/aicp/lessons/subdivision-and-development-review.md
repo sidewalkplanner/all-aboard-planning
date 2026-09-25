@@ -92,6 +92,15 @@ An **official map** is an adopted map that **reserves the locations of future st
 
 **Reserving a future road.** A county's transportation plan calls for a new arterial through farmland that's likely to develop soon. The county adopts an official map showing the alignment, so new subdivisions reserve the right-of-way in their layouts rather than building homes where the road will go.
 
+## Exam tips
+
+- The **final plat** legally creates the lots and is recorded; the preliminary plat is the main design review.
+- A **performance bond** guarantees required public improvements will be completed.
+- Common-law vested rights: **substantial expenditures in good faith under a valid permit**.
+- A **development agreement** trades locked-in standards (vested rights) for public benefits.
+- An **official map** reserves locations for future streets and facilities.
+- When a project is inconsistent with the plan, the staff analysis must say so.
+
 ## Summary
 
 Subdivision regulations govern how land is divided and the infrastructure that serves it; zoning governs what's built on the lots. Approval runs from sketch plan to preliminary plat, improvements or a performance guarantee, and a recorded final plat that legally creates the lots. Dedications and fees in lieu are exactions subject to nexus and proportionality. Site plan review checks a single project's layout, and consistency review compares proposals with the plan and code; report inconsistencies honestly. Vested rights generally arise from substantial expenditures under a valid permit. Development agreements trade certainty for public benefits, and the official map reserves land for future public facilities.

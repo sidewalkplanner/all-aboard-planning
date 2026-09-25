@@ -85,6 +85,14 @@ The **gravity model** borrows from physics: interaction between two places incre
 
 **Suitability for conservation.** A county uses a McHarg-style overlay to prioritize land for a conservation easement program. It combines wetlands, prime farmland soils, wildlife corridors, and aquifer recharge areas, with weights chosen by a citizen advisory committee after a public workshop.
 
+## Exam tips
+
+- Continuous surfaces (elevation, temperature) are **raster**; discrete features (parcels, roads) are **vector**.
+- A choropleth should show **rates or densities**, not raw counts.
+- When results change with how boundaries are drawn, that's the **modifiable areal unit problem**; inferring individual traits from area data is the **ecological fallacy**.
+- Overlay suitability analysis traces back to **Ian McHarg**.
+- The **gravity model** distributes trips (and retail trade) by size and distance.
+
 ## Summary
 
 GIS links location to attributes so you can answer spatial questions. Use vector data for discrete features and raster data for continuous surfaces. Buffers, overlays, and network analysis answer most planning questions, and network distance is usually more honest than straight-line distance. Suitability analysis grew out of McHarg's overlay method and depends on transparent weights. On choropleth maps, map rates rather than counts, choose breaks deliberately, and remember that boundaries (MAUP) and aggregation (the ecological fallacy) can mislead. The gravity model says interaction grows with size and shrinks with distance.

@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { setStorageUser, scopedKey } from '../lib/userStorage';
+import { notifyStudyStateChanged } from '../lib/studyState';
 
 // ACCOUNT PLACEHOLDER
 // A stand-in for a real authentication service. Accounts, hashed passwords,
@@ -65,6 +66,7 @@ export function AuthProvider({ children }) {
     write(SESSION_KEY, u);
     setStorageUser(u.id);
     setUser(u);
+    notifyStudyStateChanged();
     return u;
   }, []);
 
@@ -95,6 +97,7 @@ export function AuthProvider({ children }) {
     try { window.localStorage.removeItem(SESSION_KEY); } catch { /* ignore */ }
     setStorageUser(null);
     setUser(null);
+    notifyStudyStateChanged();
   }, []);
 
   const value = useMemo(() => ({ user, signUp, signIn, signOut }), [user, signUp, signIn, signOut]);

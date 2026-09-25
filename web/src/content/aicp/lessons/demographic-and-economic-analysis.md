@@ -121,6 +121,14 @@ Calculates a location quotient from a simple employment table, then splits one i
 
 **Explaining job growth.** A county's software employment grew 40% in a decade. Shift-share analysis shows that most of that came from the industry-mix effect, because software boomed everywhere. The local share was actually slightly negative. That tells county leaders the area is riding a national wave rather than outcompeting peer regions.
 
+## Exam tips
+
+- If a question mentions fertility, mortality, and migration by age, the answer is the **cohort-component** method.
+- Linear adds the same *number* each period; geometric applies the same *rate*. Check which one the question asks for before calculating.
+- LQ questions usually give shares directly: divide the local share by the national share. **Above 1.0** suggests an export (basic) industry.
+- In shift-share, the **industry-mix** effect is the industry's national growth minus total national growth, times local base employment.
+- Index of dissimilarity runs 0–100 (segregation); Gini runs 0–1 (inequality). Don't mix up their ranges.
+
 ## Summary
 
 Use the cohort-component method when age structure matters: it moves cohorts forward with fertility, mortality, and migration. Linear projections add a constant amount; geometric projections apply a constant rate and grow faster. The housing-unit method multiplies units by occupancy and household size. A location quotient above 1.0 signals local specialization and a likely export industry. Shift-share analysis separates national growth, industry mix, and local competitiveness. The index of dissimilarity (0–100) measures segregation, and the Gini coefficient (0–1) measures inequality.

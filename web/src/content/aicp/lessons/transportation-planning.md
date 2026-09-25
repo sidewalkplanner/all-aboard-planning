@@ -113,6 +113,15 @@ Station-area planning should also address **displacement risk**, because new tra
 
 **Measuring impacts differently.** A city switches its development impact metric from intersection LOS to VMT per capita. A 300-unit infill project next to a rail station, which previously required costly intersection widening to avoid "LOS F," now shows low VMT and needs no road widening. A proposed exurban subdivision now faces TDM requirements.
 
+## Exam tips
+
+- The four-step order is **generation → distribution → mode choice → assignment**.
+- MPOs are required for urbanized areas of **50,000+**. Projects must be in the **TIP** to get federal funds.
+- Signalized intersection LOS is measured by **average control delay per vehicle**.
+- "Will widening fix congestion permanently?" is answered by **induced demand**.
+- For a transit project's GHG effect, use **VMT per capita**, not LOS.
+- TOD is typically within **a quarter to a half mile** of a station, with reduced parking.
+
 ## Summary
 
 MPOs, required for urbanized areas of 50,000 or more, produce long-range plans and TIPs; projects must be in the TIP to receive federal funds, and nonattainment regions must show conformity. Arterials favor mobility and local streets favor access. The four-step model runs from trip generation to distribution (gravity model) to mode choice to assignment. LOS measures driver delay; VMT measures driving, favors infill, and is the right metric for emissions. Added capacity induces demand. Complete streets, road diets, and Vision Zero's safe system approach improve safety. TOD concentrates growth within a quarter to half mile of stations, with reduced parking and anti-displacement measures, and TDM reduces driving demand.

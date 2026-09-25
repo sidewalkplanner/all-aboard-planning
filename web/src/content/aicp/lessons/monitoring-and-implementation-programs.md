@@ -91,6 +91,14 @@ Monitoring results should feed back into decisions: adjusting actions that aren'
 
 **One dig, three projects.** Before a scheduled repaving, the public works, water, and transportation departments coordinate: the water utility replaces a century-old main, and the transportation team adds protected bike lanes and curb ramps in the same project, cutting total cost and disruption.
 
+## Exam tips
+
+- The most useful implementation element assigns **actions, responsible parties, and timeframes**.
+- Monitoring is most credible with indicators **tied to adopted objectives and baselined at adoption**.
+- Setting an **LOS standard** commits the jurisdiction to funding the facilities to meet it.
+- Combining projects for efficiency and shared infrastructure is **integration** ("dig once").
+- Output measures count work done; outcome measures show results in the community.
+
 ## Summary
 
 Implementation programs are most useful when every action has a responsible party, a timeframe, a cost and funding source, and a measure. Use the full toolkit (regulations, capital investments, programs, incentives, partnerships) and align funding with plan goals. Partnerships extend public capacity; anticipate obstacles and plan around them. LOS standards set measurable thresholds and commit the jurisdiction to meeting them. Monitor both outputs and outcomes with indicators tied to objectives and baselined at adoption, report publicly, and use the results to adjust, amend, or update the plan.

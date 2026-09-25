@@ -114,6 +114,15 @@ The most reliable single indicator of effective outreach to an underrepresented 
 
 **Fixing lopsided participation.** After the first round of engagement on a housing plan, staff compare participants with census data and find that renters are 55% of households but only 15% of participants. They partner with tenant organizations, hold meetings in apartment community rooms at different times, and offer childcare and food. Renter participation in the second round rises substantially.
 
+## Exam tips
+
+- On Arnstein's ladder, **informing and consultation are tokenism**; citizen control is the top rung.
+- IAP2 runs **inform → consult → involve → collaborate → empower**.
+- To shape a design while decisions are still open, pick the **charrette**. To measure how opinion is distributed, pick a **random-sample survey**.
+- A **public hearing** creates the official record; workshops and open houses don't.
+- When outreach missed a group, the answer is **targeted** outreach to that group, not more of the same.
+- "First step" engagement questions usually want early engagement on problem definition, before a draft exists.
+
 ## Summary
 
 Engagement brings in local knowledge, surfaces values, builds legitimacy, and is often legally required. Arnstein's ladder warns that informing and consultation can be tokenism, and the IAP2 spectrum asks planners to be honest about the level of influence they promise, from inform to empower. Good strategies start early, map stakeholders, match techniques to purpose (charrettes for design, random-sample surveys for measurement, pop-ups for reach), and close the loop. Hearings create the legal record but are the wrong tool for shaping a plan. Judge outreach by whether participants reflect the community and whether their input changed the result.

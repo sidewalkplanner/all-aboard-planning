@@ -103,6 +103,15 @@ The **wildland-urban interface (WUI)** is where development meets or mingles wit
 
 **Wildfire standards.** A foothill county adopts WUI standards requiring ember-resistant vents, noncombustible roofing, and defensible space for new homes, and limits new subdivisions to areas with two evacuation routes.
 
+## Exam tips
+
+- The "100-year flood" is a **1% annual chance**, not once a century.
+- NFIP participation requires **local floodplain regulations** meeting federal minimums.
+- Certain FEMA mitigation funds require a **FEMA-approved hazard mitigation plan** (Disaster Mitigation Act of 2000).
+- Elevating buildings and restoring dunes is **adaptation**; cutting emissions is **mitigation**.
+- A Phase I ESA is **records review, site reconnaissance, and interviews**, with no sampling.
+- The best long-term way to cut repetitive flood losses is to **direct development away from the floodplain**.
+
 ## Summary
 
 NEPA scales from categorical exclusions to EAs (ending in a FONSI) to full EISs for major federal actions with significant effects, and it's procedural. Brownfield redevelopment starts with a Phase I assessment: records, reconnaissance, and interviews. Protect wetlands through avoid–minimize–compensate, and manage stormwater with green infrastructure. The 100-year flood is a 1% annual chance event; NFIP participation requires local floodplain regulations; and a FEMA-approved hazard mitigation plan is needed for certain mitigation funds. Mitigation cuts emissions; adaptation prepares for expected impacts. Managed retreat moves people and assets out of harm's way, and WUI planning reduces wildfire risk.

@@ -107,6 +107,14 @@ When you collect information from people, you owe them informed consent, confide
 
 **Testing a survey before launch.** Before a citywide transportation survey, staff pre-test the questionnaire with a small, diverse group. They discover that the question "How often do you use active transportation?" confuses people, and that the survey has no option for people who can't drive. Both problems are fixed before launch.
 
+## Exam tips
+
+- Small area plus detailed characteristics (income, commuting, rent burden) points to **ACS 5-year estimates**; a complete count for apportionment points to the **decennial census**.
+- Only a **probability sample** supports generalizing to the whole population. An open online survey or a public meeting is **self-selected**, however many people respond.
+- Validity is *measuring the right thing*; reliability is *measuring it consistently*. A reliable measure can still be invalid.
+- When a question asks how to understand people's experiences, the answer is qualitative (interviews, focus groups), not another survey.
+- Using a second method to confirm a finding is **triangulation**.
+
 ## Summary
 
 Planning research starts with a clear question and a design that fits it. Secondary data is fast but built for other purposes; primary data fits your need but has to be designed carefully. Use the decennial census for complete counts and the ACS for detailed characteristics, choosing 5-year estimates for small areas and always minding the margin of error. Only probability samples can be generalized to a population, and every survey must guard against coverage, self-selection, nonresponse, and wording bias. Aim for measures that are both valid and reliable, confirm important findings through triangulation, and treat the people behind the data with care.

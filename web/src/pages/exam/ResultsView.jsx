@@ -83,6 +83,22 @@ export default function ResultsView(s) {
             <div style={{ fontSize: 13.5, color: T.mute, marginTop: 3 }}>Weakest domain</div>
           </div>
         </div>
+        {s.reviewLessons.length > 0 && !s.setLesson && (
+          <div style={{ ...cardStyle(T, { radius: 14, padding: 22 }), marginTop: 20 }}>
+            <div style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: T.errFg }}>Lessons to review</div>
+            <p style={{ fontSize: 15, color: T.mute, lineHeight: 1.6, margin: '8px 0 12px' }}>
+              The lessons that teach the questions you missed, most-missed first. Reread them before your next attempt.
+            </p>
+            <ol style={{ margin: 0, paddingLeft: 22, display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {s.reviewLessons.map(({ lesson, misses }) => (
+                <li key={lesson.slug} style={{ fontSize: 15.5 }}>
+                  <Link to={P.lesson(lesson.slug)} style={{ color: T.accFg, fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 3 }}>{lesson.title}</Link>
+                  <span style={{ color: T.mute, fontSize: 14 }}> &middot; {misses} missed {misses === 1 ? 'question' : 'questions'}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
       </section>
     </div>
   );

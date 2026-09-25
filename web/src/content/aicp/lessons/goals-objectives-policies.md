@@ -90,6 +90,14 @@ When residents want to "preserve rural character," the planner's job is to **tra
 
 **Turning values into standards.** Residents of a rural township say they want to "keep it rural." Workshops reveal the specific concerns: views of farmland from county roads, large lots, and dark skies. The plan adopts objectives and policies for a scenic corridor setback, conservation subdivisions that preserve 50% open space, and outdoor lighting standards.
 
+## Exam tips
+
+- **Goal** = broad; **objective** = measurable and time-bound; **policy** = commitment that guides decisions.
+- When asked which statement is an objective, pick the one with a **number and a date**.
+- Order from general to specific: **vision → goal → objective → policy → action**.
+- An equity lens examines how **benefits and burdens are distributed**.
+- To address a historic harm meaningfully, a plan sets **measurable objectives** for the affected neighborhoods, not just acknowledgment.
+
 ## Summary
 
 Plans flow from vision (the shared picture) to goals (broad end states), objectives (measurable, time-bound targets), policies (commitments that guide decisions), and actions (specific tasks with owners and deadlines). Write SMART objectives with baselines, and write policies with deliberate directive words, one idea each, within the jurisdiction's authority. Apply an equity lens: disaggregate data, ask who benefits and who's burdened, and set measurable objectives for disparities. Set priorities so implementers know what comes first, and translate values like "character" into standards you can measure.

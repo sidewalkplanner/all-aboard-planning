@@ -91,6 +91,14 @@ Settlements sit inside interlocking systems. Paving a watershed changes stormwat
 
 **Using Lynch in a downtown plan.** Workshop participants sketch their mental maps of downtown. Nearly everyone draws the riverfront edge and the courthouse landmark, but almost no one can place the transit center. The plan adds wayfinding and a visible civic plaza to turn the station into a true node.
 
+## Exam tips
+
+- Rings are **Burgess**, wedges along corridors are **Hoyt**, and several centers are **Harris and Ullman**.
+- Christaller's **threshold** is the minimum market to support a good; **range** is the maximum distance people will travel for it.
+- *Shelley v. Kraemer* (1948) made racial covenants unenforceable by courts; *Buchanan v. Warley* (1917) struck down racial zoning.
+- Redlining is tied to the **Home Owners' Loan Corporation** "residential security maps" of the 1930s.
+- Lynch's five elements: **paths, edges, districts, nodes, landmarks**.
+
 ## Summary
 
 Burgess's concentric zones, Hoyt's sectors, and Harris and Ullman's multiple nuclei are simplified models of urban structure; the multiple nuclei model fits today's regions best. Christaller's central place theory explains settlement hierarchies through threshold and range. Suburbanization, driven by transportation technology and federal housing and highway policy, produced edge cities and spatial mismatch. Segregation was built through racial covenants, redlining, urban renewal, and exclusionary zoning. The courts struck racial zoning in 1917 and barred covenant enforcement in 1948, and the Fair Housing Act followed in 1968. Lynch's paths, edges, districts, nodes, and landmarks describe how people read cities, and good analysis treats natural, social, and economic systems as connected.

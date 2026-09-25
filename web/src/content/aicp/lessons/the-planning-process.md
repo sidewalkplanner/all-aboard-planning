@@ -93,6 +93,14 @@ A **departmental strategic plan** concentrates on a limited set of priority acti
 
 **When an update is overdue.** A city's plan assumed 1% annual growth, but growth has run at 3% for eight years. The city has adopted 40 site-specific amendments, and the future land use map no longer hangs together. Staff recommend a full update instead of more amendments.
 
+## Exam tips
+
+- After scoping, the first substantive step is **inventorying existing conditions**, before goals or maps.
+- Sequencing questions usually follow scoping → existing conditions → issues → vision and goals → alternatives → evaluation → plan → adoption → implementation → monitoring.
+- When policies conflict, **surface the tradeoff** for decision-makers; don't resolve it quietly.
+- Assumptions far off from reality call for a **full update**, not another amendment.
+- Natural constraints and hazards shape the land use approach early; they aren't an afterthought.
+
 ## Summary
 
 Planning starts with preparing to plan: defining purpose, authority, scope, stakeholders, resources, and schedule. The typical sequence runs from scoping and existing conditions through issues, vision and goals, alternatives, evaluation, drafting, adoption, implementation, and monitoring, but the steps loop and overlap. An existing conditions report creates a shared baseline, and natural constraints and hazards should shape the analysis early. When goals conflict, surface the tradeoff for decision-makers rather than resolving it quietly. Amend a plan for narrow changes; update it fully when its assumptions no longer hold.

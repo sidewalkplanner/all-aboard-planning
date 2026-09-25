@@ -278,6 +278,18 @@ export const DOMAINS = [
         outline: ['8.12 Parks, recreation, and open space', '8.15 Food planning', '8.16 Health planning', '8.19 Regional and multijurisdictional planning'],
         practice: ['e1:98', 'e1:103', 'e1:104', 'e1:113', 'e2:111', 'e2:113', 'e3:42', 'e3:166', 'e3:167'],
       },
+      {
+        slug: 'rural-small-town-and-tribal-planning', title: 'Rural, small-town, and tribal planning', minutes: 18, access: 'paid',
+        description: 'Planning with limited capacity, protecting farmland and rural character, directing rural growth, and working with tribal nations as sovereign governments.',
+        outline: [],
+        practice: ['e1:48', 'e3:71', 'e3:72', 'e3:73', 'e3:74', 'e3:164', 'e3:165'],
+      },
+      {
+        slug: 'infrastructure-energy-and-water-planning', title: 'Infrastructure, energy, and water planning', minutes: 18, access: 'paid',
+        description: 'How infrastructure steers growth, asset management, water supply, wastewater and stormwater, energy siting, broadband, and fair siting.',
+        outline: [],
+        practice: ['e1:38', 'e1:85', 'e1:93', 'e2:33', 'e2:51', 'e2:86', 'e2:112', 'e3:72', 'e3:168', 'e3:200'],
+      },
     ],
   },
   {
@@ -318,6 +330,22 @@ export const domainByBankName = (name) => DOMAINS.find((d) => d.bankName === nam
 export const neighbors = (slug) => {
   const i = LESSONS.findIndex((l) => l.slug === slug);
   return { prev: i > 0 ? LESSONS[i - 1] : null, next: i >= 0 && i < LESSONS.length - 1 ? LESSONS[i + 1] : null };
+};
+
+// Reverse index: question ref -> slugs of the lessons whose practice sets use it.
+export const LESSONS_FOR_REF = LESSONS.reduce((m, l) => {
+  (l.practice || []).forEach((r) => { (m[r] = m[r] || []).push(l.slug); });
+  return m;
+}, {});
+
+// Rank lessons by how many of the given missed refs they cover (most first).
+export const lessonsToReview = (missedRefs, limit = 5) => {
+  const counts = {};
+  (missedRefs || []).forEach((r) => (LESSONS_FOR_REF[r] || []).forEach((slug) => { counts[slug] = (counts[slug] || 0) + 1; }));
+  return Object.entries(counts)
+    .sort((a, b) => b[1] - a[1] || lessonBySlug(a[0]).number - lessonBySlug(b[0]).number)
+    .slice(0, limit)
+    .map(([slug, misses]) => ({ lesson: lessonBySlug(slug), misses }));
 };
 
 export const TOTAL_MINUTES = LESSONS.reduce((s, l) => s + l.minutes, 0);

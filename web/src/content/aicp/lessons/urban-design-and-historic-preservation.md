@@ -110,6 +110,15 @@ The federal **Historic Rehabilitation Tax Credit** provides a **20% credit** for
 
 **Tax credits for a warehouse.** A developer converts a certified historic warehouse into apartments with ground-floor retail. The rehabilitation follows the Secretary's Standards for Rehabilitation, which qualifies the income-producing project for the 20% federal credit and a state credit, and makes the project financially feasible.
 
+## Exam tips
+
+- National Register listing is **largely honorific** for private owners and doesn't by itself restrict them.
+- Section 106 requires federal agencies to **consider effects and consult**. It doesn't require preservation.
+- The Secretary's Standards cover **preservation, rehabilitation, restoration, and reconstruction**.
+- Local historic districts work through **certificates of appropriateness** against design guidelines.
+- The 20% federal credit is for **income-producing** certified historic buildings.
+- CPTED principles include natural surveillance, access control, territorial reinforcement, and maintenance, not criminal penalties.
+
 ## Summary
 
 Good urban design is human-scaled, enclosed, connected, legible, active at the edges, mixed, and centered on a strong public realm. Whyte's and Gehl's research show that seating, sun, food, and activity make spaces work. Placemaking starts with how people use space, and tactical urbanism tests ideas cheaply. CPTED relies on natural surveillance, access control, territorial reinforcement, and maintenance. National Register listing is largely honorific for private owners but triggers Section 106 review of federal undertakings, which is procedural. Local districts, through certificates of appropriateness, provide the strongest protection. The Secretary's Standards define preservation, rehabilitation, restoration, and reconstruction, and the 20% federal credit rewards certified rehabilitation of income-producing historic buildings.

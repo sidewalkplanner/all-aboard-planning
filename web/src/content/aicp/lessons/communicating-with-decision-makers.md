@@ -97,6 +97,15 @@ Planners work in political settings. When an elected official or supervisor pres
 
 **Correcting misinformation.** A viral social media post claims a housing plan would "ban single-family homes." The plan actually allows duplexes where only single-family homes are allowed today. The planning department posts a plain-language FAQ with before-and-after diagrams, briefs councilmembers, and holds a virtual Q&A.
 
+## Exam tips
+
+- Put the staff report's **recommendation and key findings first**.
+- If an application meets every code standard, the recommendation follows the code even when public comment is opposed, and the report still conveys the concerns accurately.
+- Ex parte contacts in quasi-judicial matters: **avoid**, and if one happens, **disclose on the record**.
+- Defective notice for a quasi-judicial hearing risks **invalidating** the decision.
+- With media and misinformation: accurate, confirmed, on-the-record information, and correct the record through official channels.
+- When a commissioner privately asks how to vote, explain the **standards and the record**, not your preference.
+
 ## Summary
 
 Staff analyze and recommend; appointed and elected bodies decide, and staff implement lawful decisions professionally. Put the recommendation first in staff reports, analyze requests against adopted criteria, summarize public comment by theme, and base recommendations on the plan and code even when they're unpopular. Build evidence-based arguments, communicate findings plainly and visually, and express risk in relatable terms. Quasi-judicial decisions need proper notice, a record, findings, and disclosure of ex parte contacts. With the media, stay accurate and on the record, and correct misinformation through official channels.

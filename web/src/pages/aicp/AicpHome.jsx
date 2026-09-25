@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
 import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
-import { DOMAINS, LESSONS } from '../../content/aicp/curriculum';
+import { DOMAINS, LESSONS, lessonBySlug } from '../../content/aicp/curriculum';
 import useAccess from '../../hooks/useAccess';
+import { useStudyState } from '../../lib/studyState';
 
 const OFFERS = [
-  { title: `${LESSONS.length} lessons in nine domains`, body: 'Plain-language lessons organized by the AICP exam content outline, each with objectives, key terms, real planning examples, and a summary.', to: P.course, cta: 'Browse the course' },
-  { title: '8- and 12-week study plans', body: 'Week-by-week schedules that sequence every lesson, drill, and practice exam so you always know what to do next.', to: P.studyPlan, cta: 'See the plans' },
+  { title: `${LESSONS.length} lessons in nine domains`, body: 'Plain-language lessons organized by the AICP exam content outline, each with key terms, real planning examples, exam tips, and a three-question check at the end.', to: P.course, cta: 'Browse the course' },
+  { title: '8- and 12-week study plans', body: 'Week-by-week schedules for every lesson, drill, and exam. Follow one and your dashboard shows exactly what\u2019s due this week.', to: P.studyPlan, cta: 'See the plans' },
   { title: 'A 100-item diagnostic', body: 'A placement test that scores all nine domains and ranks them by how many points each is likely costing you.', to: P.diagnostic, cta: 'Take the diagnostic' },
-  { title: 'Three full-length practice exams', body: '170 questions each, timed to the real exam, with scenario sets, data exhibits, and an explanation for every answer. Warm-up Quiz A is open to everyone.', to: P.exams, cta: 'See practice exams' },
-  { title: 'Practice sets and domain drills', body: 'Every lesson links to exam-style questions on its topics. Untimed domain drills let you work one area until it sticks.', to: P.drills, cta: 'See domain drills' },
-  { title: 'Progress tracking', body: 'Your scores by domain across every quiz, exam, and drill, so each study session starts where it matters most.', to: P.progress, cta: 'See your progress' },
+  { title: 'Three full-length practice exams', body: '170 questions each, on the real 3.5-hour clock, with scenario sets and data exhibits. Results list the lessons behind every miss.', to: P.exams, cta: 'See practice exams' },
+  { title: 'Flashcards and quick reference', body: `Hundreds of flashcards built from every lesson's key terms, plus one page of cases, laws, people, formulas, and key numbers.`, to: P.review, cta: 'See the review tools' },
+  { title: 'An exam strategy guide', body: 'How the exam asks questions, a pacing plan for 3.5 hours, and the reasoning that separates the best answer from a merely true one.', to: P.strategy, cta: 'Read the guide' },
 ];
 
 const AUDIENCES = [
@@ -28,11 +29,30 @@ const STEPS = [
 
 export default function AicpHome() {
   usePageTitle('');
-  const { signedIn } = useAccess();
+  const { signedIn, user } = useAccess();
+  const study = useStudyState();
+  const last = study.lastLesson && lessonBySlug(study.lastLesson.slug);
+  const resume = last && !study.completed[last.slug] ? last : LESSONS.find((l) => !study.completed[l.slug]);
+  const doneCount = LESSONS.filter((l) => study.completed[l.slug]).length;
   const maxPct = Math.max(...DOMAINS.map((d) => d.weight));
 
   return (
     <>
+      {signedIn && (
+        <section aria-label="Pick up where you left off" style={{ background: 'var(--surface)', borderBottom: '1px solid var(--line)' }}>
+          <div className="container" style={{ paddingTop: 16, paddingBottom: 16, display: 'flex', flexWrap: 'wrap', gap: '10px 20px', alignItems: 'center', justifyContent: 'space-between' }}>
+            <p className="body-text" style={{ margin: 0 }}>
+              <strong>Welcome back{user && user.name ? `, ${user.name.split(' ')[0]}` : ''}.</strong>{' '}
+              {doneCount} of {LESSONS.length} lessons complete.{resume ? ` Up next: lesson ${resume.number}, ${resume.title}.` : ''}
+            </p>
+            <div className="row-wrap" style={{ gap: 8 }}>
+              {resume && <Link className="btn btn-primary btn-sm" to={P.lesson(resume.slug)}>Continue</Link>}
+              <Link className="btn btn-secondary btn-sm" to={P.progress}>Dashboard</Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* HERO */}
       <section className="band-navy">
         <div className="container" style={{ paddingTop: 72, paddingBottom: 80, display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 56, alignItems: 'center' }}>

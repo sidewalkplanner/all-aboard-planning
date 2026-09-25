@@ -87,6 +87,14 @@ Accessibility primarily benefits people with disabilities, and it also helps old
 
 **Distributive equity in siting.** A county is choosing a site for a new bus maintenance facility. The shortlisted site is in a neighborhood that already hosts two industrial uses and a freeway. The staff analysis maps existing burdens, shares the findings with residents, and evaluates a second site and mitigation options. The planning commission weighs the cumulative burden explicitly in its decision.
 
+## Exam tips
+
+- For hard-to-reach communities, the strongest answer usually involves **trusted community partners**, familiar places, varied times, and language access, together.
+- The *least* effective option is typically a single weeknight hearing at city hall with an English-only newspaper notice.
+- Accessible digital materials: alt text, contrast, keyboard access, captions (**WCAG** and **Section 508**).
+- A neighborhood already carrying many burdens raises a **distributive** equity question; who was at the table is **procedural** equity.
+- Cultural humility means recognizing the limits of your own perspective, not mastering a checklist.
+
 ## Summary
 
 Traditional engagement hears from a narrow slice of the community. Lower the barriers of time, language, childcare, transportation, trust, disability, and the digital divide, and partner with (and pay) trusted community organizations. Think about procedural, distributive, and structural equity: who decides, who benefits, who bears the burdens, and what history is being corrected or repeated. Title VI and the ADA set legal floors for language access and accessibility. Communicate in culturally appropriate ways with cultural humility, and make every document, meeting, and website accessible under Section 508 and WCAG principles.

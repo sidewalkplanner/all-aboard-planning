@@ -1,48 +1,47 @@
-import { Link, useNavigate } from 'react-router-dom';
-import Hoverable from '../components/Hoverable';
+import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { ASSESSMENTS } from '../data/domains';
-import { chipStyle, cardStyle } from '../lib/style';
-import { LIGHT } from '../lib/theme';
 import useAccess from '../hooks/useAccess';
-import { PUBLIC_ASSESSMENTS } from '../lib/access';
-import { P } from '../lib/paths';
 import usePageTitle from '../hooks/usePageTitle';
+import { PUBLIC_ASSESSMENTS } from '../lib/access';
+import { getHistory } from '../lib/history';
+import { P } from '../lib/paths';
 
-const rowCardStyle = { ...cardStyle(LIGHT, { padding: 24 }), display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 24, alignItems: 'center' };
-const ghostBtn = { background: 'none', border: '1px solid #D2D6E6', color: '#1A1C2B', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600 };
-const ghostBtnHover = { border: '1px solid #1A1C2B', background: '#F6F7FB' };
-const primaryBtn = { background: '#1D5FA8', border: 'none', color: '#F6F7FB', padding: '12px 18px', borderRadius: 10, fontSize: 15, fontWeight: 600 };
-const primaryBtnHover = { background: '#164C87' };
+const fmtTime = (mins) => {
+  const h = Math.floor(mins / 60), m = mins % 60;
+  return (h ? `${h}h ` : '') + (m ? `${m}m` : '');
+};
 
-function Row({ a, canOpen, lockLabel, blockedTo, onPractice, onTimed, statusLabel }) {
-  const locked = !canOpen && !a.soon;
-  const hrs = Math.floor(a.mins / 60), mns = a.mins % 60;
-  const status = a.soon ? 'In development' : statusLabel;
-  const statusStyle = a.soon ? chipStyle('#FCF0DB', '#8A6420') : locked ? chipStyle('#ECEDF6', '#4F5573') : chipStyle('#E6EEF9', '#14508C');
-  const timeLabel = (hrs ? hrs + 'h ' : '') + (mns ? mns + 'm' : '');
+function AssessmentCard({ a, access, attempts }) {
+  const isPublic = PUBLIC_ASSESSMENTS.includes(a.id);
+  const canOpen = access.canOpenAssessment(a);
+  const best = attempts.length ? Math.max(...attempts.map((x) => x.pct)) : null;
+  const lastTry = attempts.length ? attempts[attempts.length - 1] : null;
+  const status = isPublic ? 'Open to everyone'
+    : access.paidTier && a.tier === 'paid' ? (access.fullAccess ? 'Unlocked' : 'Full Access')
+      : 'Free with an account';
 
   return (
-    <div style={rowCardStyle}>
+    <div className="card" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,260px),1fr))', gap: 20, alignItems: 'center' }}>
       <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <h2 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 25, fontWeight: 700, margin: 0 }}>{a.title}</h2>
-          <span style={statusStyle}>{status}</span>
+        <div className="row-wrap" style={{ gap: 10 }}>
+          <h3 className="h3" style={{ fontSize: 23 }}>{a.title}</h3>
+          <span className={`chip ${canOpen ? 'chip-brand' : 'chip-neutral'}`}>{status}</span>
         </div>
-        <p style={{ fontSize: 15, color: '#5B6180', margin: '8px 0 0', maxWidth: '52ch' }}>{a.blurb}</p>
-        <div style={{ display: 'flex', gap: 18, marginTop: 14, fontSize: 13.5, color: '#5B6180', flexWrap: 'wrap' }}>
-          <span>{a.size} questions</span><span>{timeLabel}</span>
-        </div>
+        <p className="body-text" style={{ margin: '6px 0 0', fontSize: 15, maxWidth: '56ch' }}>{a.blurb}</p>
+        <p className="small" style={{ margin: '10px 0 0' }}>
+          {a.size} questions &middot; {fmtTime(a.mins)} timed
+          {lastTry && <> &middot; <strong style={{ color: 'var(--ink)' }}>best {best}%</strong>, last {lastTry.pct}% ({attempts.length} {attempts.length === 1 ? 'attempt' : 'attempts'})</>}
+        </p>
       </div>
-      <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
-        {locked && <Link className="btn btn-dark" to={blockedTo}>{lockLabel}</Link>}
-        {a.soon && (
-          <span style={{ fontSize: 14.5, fontWeight: 600, color: '#8A6420', background: '#FCF0DB', padding: '12px 18px', borderRadius: 10 }}>Coming soon</span>
-        )}
-        {!locked && !a.soon && (
+      <div className="row-wrap" style={{ justifyContent: 'flex-end' }}>
+        {canOpen ? (
           <>
-            <Hoverable style={ghostBtn} hoverStyle={ghostBtnHover} onClick={onPractice}>Practice mode</Hoverable>
-            <Hoverable style={primaryBtn} hoverStyle={primaryBtnHover} onClick={onTimed}>Start timed</Hoverable>
+            <Link className="btn btn-secondary" to={P.runExam(a.id, 'practice')}>Practice mode</Link>
+            <Link className="btn btn-primary" to={P.runExam(a.id, 'timed')}>Start timed</Link>
           </>
+        ) : (
+          <Link className="btn btn-dark" to={access.blockedTarget(P.runExam(a.id, 'practice'))}>{access.signedIn ? 'Unlock' : 'Sign in to start'}</Link>
         )}
       </div>
     </div>
@@ -50,58 +49,81 @@ function Row({ a, canOpen, lockLabel, blockedTo, onPractice, onTimed, statusLabe
 }
 
 export default function ExamsList() {
-  usePageTitle('Practice exams');
-  const navigate = useNavigate();
+  usePageTitle('Practice');
   const access = useAccess();
-  const isPublic = (a) => PUBLIC_ASSESSMENTS.includes(a.id);
-  const open = ASSESSMENTS.filter(isPublic);
-  const rest = ASSESSMENTS.filter((a) => !isPublic(a));
-
-  const practice = (id) => navigate(P.runExam(id, 'practice'));
-  const timed = (id) => navigate(P.runExam(id, 'timed'));
-  const statusFor = (a) => {
-    if (isPublic(a)) return 'Open to everyone';
-    if (access.paidTier && a.tier === 'paid') return access.fullAccess ? 'Unlocked' : 'Full Access';
-    return 'Free with an account';
-  };
-  const row = (a) => (
-    <Row
-      key={a.id}
-      a={a}
-      canOpen={access.canOpenAssessment(a)}
-      statusLabel={statusFor(a)}
-      lockLabel={access.signedIn ? 'Unlock' : 'Sign in to start'}
-      blockedTo={access.blockedTarget(P.runExam(a.id, 'practice'))}
-      onPractice={() => practice(a.id)}
-      onTimed={() => timed(a.id)}
-    />
-  );
-  const groupLabel = { fontSize: 12.5, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#5B6180' };
+  const history = useMemo(() => (access.signedIn ? getHistory() : []), [access.signedIn]);
+  const attemptsFor = (id) => history.filter((h) => h.kind === 'exam' && h.assessmentId === id).sort((x, y) => x.completedAt - y.completedAt);
+  const quizzes = ASSESSMENTS.filter((a) => a.size < 100);
+  const exams = ASSESSMENTS.filter((a) => a.size >= 100);
+  const diagTaken = history.some((h) => h.kind === 'diagnostic');
 
   return (
-    <section style={{ maxWidth: 1180, margin: '0 auto', padding: '56px var(--gutter) 80px' }}>
-      <h1 style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontSize: 42, fontWeight: 700, letterSpacing: '-0.022em', margin: 0 }}>Practice exams</h1>
-      <p style={{ fontSize: 16.5, color: '#5B6180', margin: '10px 0 34px', maxWidth: '62ch' }}>
-        Every quiz and exam is drawn to the nine domains of the APA Exam Content Outline, in the same proportions as the real test.
-        {access.signedIn ? ' Your scores are saved to your account.' : ' Start with Warm-up Quiz A, no account needed. Everything else is free with an account.'}
-      </p>
-
-      <div className="callout" style={{ marginBottom: 28 }}>
-        <p className="body-text" style={{ margin: 0 }}>
-          Studying a specific topic? Every <Link to={P.course} className="link-underline">course lesson</Link> has its own practice set,
-          and the <Link to={P.studyPlan} className="link-underline">study plans</Link> tell you when to take each exam.
+    <>
+      <header className="container page-head">
+        <span className="eyebrow eyebrow-brand">Practice</span>
+        <h1 className="h1">Practice exams, quizzes, and drills</h1>
+        <p className="lead">
+          Every question is written to the nine domains of the AICP exam content outline, and every answer comes with an explanation.
+          {access.signedIn ? ' Your scores are saved to your dashboard.' : ' Warm-up Quiz A is open to everyone; everything else is free with an account.'}
         </p>
-      </div>
-      <div style={{ ...groupLabel, marginBottom: 14 }}>No account needed</div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>{open.map(row)}</div>
+      </header>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '38px 0 14px', flexWrap: 'wrap' }}>
-        <div style={groupLabel}>Free with an account</div>
-        {!access.signedIn && (
-          <Link className="link-underline" style={{ fontSize: 13.5 }} to={P.createAccount(P.exams)}>Create a free account</Link>
-        )}
+      <div className="container" style={{ paddingBottom: 80 }}>
+        <section aria-labelledby="start-heading">
+          <h2 id="start-heading" className="eyebrow">1. Find your starting point</h2>
+          <div className="card" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,260px),1fr))', gap: 20, alignItems: 'center', background: 'var(--surface-alt)', borderColor: 'var(--line-warm)' }}>
+            <div>
+              <h3 className="h3" style={{ fontSize: 23 }}>The diagnostic</h3>
+              <p className="body-text" style={{ margin: '6px 0 0', fontSize: 15, maxWidth: '60ch' }}>
+                100 untimed items that score all nine domains and rank them by exam weight times points lost. Take it first, and again
+                midway through your prep. It&rsquo;s a placement test, not a pass predictor.
+              </p>
+            </div>
+            <div className="row-wrap" style={{ justifyContent: 'flex-end' }}>
+              <Link className="btn btn-rust" to={access.signedIn ? P.diagnostic : P.signinNext(P.diagnostic)}>{diagTaken ? 'Retake the diagnostic' : 'Take the diagnostic'}</Link>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="quiz-heading" style={{ marginTop: 40 }}>
+          <h2 id="quiz-heading" className="eyebrow">2. Warm up</h2>
+          <div className="stack stack-16">
+            {quizzes.map((a) => <AssessmentCard key={a.id} a={a} access={access} attempts={attemptsFor(a.id)} />)}
+          </div>
+        </section>
+
+        <section aria-labelledby="exam-heading" style={{ marginTop: 40 }}>
+          <h2 id="exam-heading" className="eyebrow">3. Rehearse the real thing</h2>
+          <p className="body-text" style={{ margin: '0 0 14px', maxWidth: '72ch' }}>
+            Full-length, 170-question exams on the real exam&rsquo;s 3.5-hour clock. Take at least one timed and in a single sitting
+            before test day, and review every miss afterward; the results screen lists the lessons to reread.
+          </p>
+          <div className="stack stack-16">
+            {exams.map((a) => <AssessmentCard key={a.id} a={a} access={access} attempts={attemptsFor(a.id)} />)}
+          </div>
+        </section>
+
+        <section aria-labelledby="target-heading" style={{ marginTop: 40 }}>
+          <h2 id="target-heading" className="eyebrow">4. Target a weak spot</h2>
+          <div className="grid-cards">
+            <Link to={P.drills} className="card card-link">
+              <h3 className="h3">Domain drills</h3>
+              <p className="body-text" style={{ margin: 0, fontSize: 15 }}>Up to 25 untimed questions from one domain, explained as you go. Best for the domains your diagnostic ranks highest.</p>
+              <span className="link-arrow" style={{ marginTop: 'auto' }}>Choose a domain</span>
+            </Link>
+            <Link to={P.course} className="card card-link">
+              <h3 className="h3">Lesson practice sets</h3>
+              <p className="body-text" style={{ margin: 0, fontSize: 15 }}>Every lesson ends with a three-question check and a full practice set on exactly the topics it teaches.</p>
+              <span className="link-arrow" style={{ marginTop: 'auto' }}>Browse the lessons</span>
+            </Link>
+            <Link to={P.flashcards} className="card card-link">
+              <h3 className="h3">Flashcards</h3>
+              <p className="body-text" style={{ margin: 0, fontSize: 15 }}>Key terms, cases, and laws from every lesson, with your weakest cards dealt first.</p>
+              <span className="link-arrow" style={{ marginTop: 'auto' }}>Study flashcards</span>
+            </Link>
+          </div>
+        </section>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>{rest.map(row)}</div>
-    </section>
+    </>
   );
 }

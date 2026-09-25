@@ -106,6 +106,14 @@ Sensors, cameras, app data, and connected infrastructure promise better traffic 
 
 **Measuring park access.** A parks master plan finds the city exceeds its acreage standard overall, but 22% of residents, concentrated in three neighborhoods, live more than a 10-minute walk from any park. The plan prioritizes acquiring sites there and signs joint-use agreements with two school districts.
 
+## Exam tips
+
+- An HIA evaluates health effects **before** a decision.
+- Food deserts are identified by **distance to a grocery store, vehicle access, and income**.
+- A neighborhood park typically serves about **a quarter to a half mile**.
+- Smart-city sensor data raises **privacy, surveillance, and equity** concerns.
+- Public health topics in a comprehensive plan include active transportation, food access, air quality, and housing quality.
+
 ## Summary
 
 The built environment shapes health through active living, air quality, safety, housing, food access, and heat; an HIA evaluates a proposal's health effects before the decision, from screening to monitoring. Food deserts combine distance, vehicle access, and income; zoning, incentives, and food policy councils improve access. Parks are classified from pocket parks to regional parks; neighborhood parks serve roughly a quarter to a half mile, and access-based metrics complement acreage standards. Regional problems call for MPOs, COGs, special districts, interlocal agreements, and fair-share and tax-base sharing tools. Smart-city data needs governance for privacy and equity.

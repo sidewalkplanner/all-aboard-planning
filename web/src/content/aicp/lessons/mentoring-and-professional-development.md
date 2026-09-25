@@ -87,6 +87,14 @@ The profession expects planners to keep learning throughout their careers:
 
 **Mediating a team conflict.** Two senior planners clash over whether a housing study should emphasize production or tenant protections. The director meets with each, learns both share the goal of reducing displacement, and runs a facilitated session where they agree to structure the study around both production and preservation.
 
+## Exam tips
+
+- Effective delegation gives **expectations, authority, and accountability**.
+- Good mentoring means **progressively challenging assignments with candid feedback**.
+- Staff conflict: meet with **each** person, then facilitate a conversation about **interests**.
+- Measure leadership development by **promotion, retention, and succession readiness**.
+- Keeping AICP certification requires **Certification Maintenance** credits, including ethics and law.
+
 ## Summary
 
 Delegate with clear expectations, real authority, and accountability. Handle staff conflict by listening to each person, then facilitating a conversation about interests. Coaching builds specific skills, mentoring supports long-term growth through progressively challenging work and candid feedback, and sponsorship opens doors. Prepare for turnover by developing internal candidates, and measure success by promotion, retention, and readiness. Build accountability and inclusion into institutions, not just individuals. Certified planners keep learning through Certification Maintenance and must work within their competence.

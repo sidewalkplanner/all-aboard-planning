@@ -3,12 +3,12 @@ import LessonBody from './LessonBody';
 import usePageTitle from '../hooks/usePageTitle';
 
 // A long-form page whose body is a Markdown module (content/pages/*.md).
-export default function ContentPage({ title, pageTitle, eyebrow, lead, body, before, after }) {
+export default function ContentPage({ title, pageTitle, eyebrow, lead, body, before, after, wide = false }) {
   usePageTitle(pageTitle || title);
   return (
     <>
-      <PageHeader eyebrow={eyebrow} title={title} lead={lead} narrow />
-      <div className="container-narrow" style={{ paddingBottom: 72 }}>
+      <PageHeader eyebrow={eyebrow} title={title} lead={lead} narrow={!wide} />
+      <div className={wide ? 'container prose-wide' : 'container-narrow'} style={{ paddingBottom: 72 }}>
         {before}
         <LessonBody html={body.html} />
         {after}

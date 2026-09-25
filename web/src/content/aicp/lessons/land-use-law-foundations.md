@@ -88,6 +88,15 @@ In some states the comprehensive plan is advisory. In **consistency** states, zo
 
 **Local authority questions.** A county in a Dillon's Rule state wants to adopt an inclusionary housing requirement. Before drafting, staff ask the county attorney whether state enabling legislation authorizes it, because without express or necessarily implied authority the ordinance could be struck down.
 
+## Exam tips
+
+- Zoning's constitutional basis is the **police power** (health, safety, morals, general welfare), not the Commerce Clause or the Takings Clause.
+- *Euclid* is **facial** (zoning is valid); *Nectow* is **as-applied** (invalid for one parcel).
+- *Belle Terre* allowed limits on **unrelated** households; *Moore* struck down limits on **related** families.
+- *Arlington Heights* requires **intent** for an equal protection claim; the Fair Housing Act allows **disparate-impact** claims.
+- Sign rules that depend on what a sign *says* are content-based and get strict scrutiny (*Reed*).
+- Under **Dillon's Rule**, local governments have only the powers the state grants, necessarily implies, or makes essential.
+
 ## Summary
 
 Land use regulation rests on the states' police power, delegated to local governments through enabling acts and read narrowly under Dillon's Rule or broadly under home rule. *Euclid* (1926) upheld comprehensive zoning, and *Nectow* (1928) showed that zoning can still be invalid as applied to one parcel. Due process requires rational regulation and fair procedure, especially in quasi-judicial decisions. Equal protection review is usually deferential, but *Moore*, *Cleburne*, and *Olech* show its limits, and *Arlington Heights* requires proof of intent. The First Amendment demands content-neutral sign rules (*Reed*), allows secondary-effects regulation of adult uses, and, with RLUIPA, protects religious land uses.

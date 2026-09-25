@@ -105,6 +105,14 @@ Every alternative has second-order effects. Good analysis traces them: a parking
 
 **A fiscal impact review.** A developer proposes annexing 400 acres for single-family homes. A per capita analysis suggests property taxes will cover costs, but a case-study review reveals the project would need a new fire station and a sewer lift station. The city negotiates for the developer to fund the lift station and phase the project with the station's opening.
 
+## Exam tips
+
+- Scenario planning fits **deep uncertainty about conditions outside local control**.
+- Fiscal impact analysis estimates **net public costs and revenues**. The **per capita multiplier** method uses average cost per resident.
+- To test whether land can hold projected growth, prepare a **buildable lands inventory**.
+- If growth exceeds capacity inside a fixed boundary, the answer is **infill, redevelopment, and higher intensity**.
+- A GHG inventory covers **community-wide and government-operations** emissions by sector.
+
 ## Summary
 
 Evaluate alternatives transparently against the plan's goals, with explicit weights and sensitivity tests. Use scenario planning when the future is deeply uncertain and largely outside local control, and look for robust strategies that work across scenarios. A buildable lands inventory compares realistic land capacity with projected demand, and a gap inside a fixed boundary points to infill and intensification. Fiscal impact analysis estimates net public costs and revenues; the per capita multiplier method is the most common and the simplest. GHG inventories set climate baselines by sector. Pilot innovations before scaling them, and trace consequences before choosing.

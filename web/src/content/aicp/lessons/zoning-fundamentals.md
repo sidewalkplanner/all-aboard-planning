@@ -103,6 +103,14 @@ Euclidean zoning brought predictability and protected homes from harmful uses. I
 
 **Reading the ordinance.** A resident asks whether they can build a backyard cottage. Staff check whether accessory dwelling units are allowed in the district, then review the dimensional standards: maximum size, height, rear setback, and lot coverage. Staff also check any overlay (the lot is in a floodplain overlay, which adds an elevation requirement).
 
+## Exam tips
+
+- An **overlay** adds requirements on top of the base district without changing it.
+- A **conditional (special) use** is allowed if it meets standards stated in the ordinance, after discretionary review.
+- Changing the district on the map is a **rezoning**; changing the rules is a **text amendment**. Both are usually legislative.
+- A **floating zone** is written into the text but mapped only when an owner applies and qualifies.
+- Zoning is one of several implementation tools, alongside subdivision regulations, the CIP, the official map, and incentives.
+
 ## Summary
 
 Zoning divides land into districts with rules for use and dimensions, and implements the comprehensive plan as parcel-level regulation. An ordinance has a map and a text; map and text amendments are usually legislative. Uses are permitted by right, conditional (discretionary review against stated standards), accessory, or prohibited. Dimensional standards control lot size, setbacks, height, coverage, FAR, and density. Overlay districts add rules on top of base zoning; floating zones are mapped only when applied. Zoning administrators, planning commissions, zoning boards, and governing bodies each have distinct roles.

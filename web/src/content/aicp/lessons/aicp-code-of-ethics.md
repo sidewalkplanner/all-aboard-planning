@@ -122,6 +122,14 @@ Then apply the method in [Working through ethics scenarios](/aicp/lessons/solvin
 
 **A charge from a resident.** A resident who isn't a planner believes a consultant misrepresented data at a public hearing, and files a charge. Because any person can file, the Ethics Officer reviews it, requests a response from the planner, and decides whether to investigate further.
 
+## Exam tips
+
+- Only the **Rules of Conduct** are enforceable; the aspirational principles aren't, on their own.
+- Social justice and equity commitments live in the **aspirational principles**.
+- **Any person** may file a charge of misconduct.
+- Unsure whether something complies? Ask the **Ethics Officer** for advice or a formal advisory opinion.
+- Sanctions are reprimand, suspension, or expulsion. AICP can't impose criminal penalties.
+
 ## Summary
 
 The AICP Code has aspirational principles, which are ideals and not enforceable on their own, and Rules of Conduct, which are enforceable. The principles cover responsibility to the public (first and foremost, including social justice, equity, full and accurate information, and long-range thinking), to clients and employers (independent judgment within the bounds of the public interest), and to the profession and colleagues. Members unsure of their obligations can get informal advice or request a formal advisory opinion from the Ethics Officer. Any person can file a charge of misconduct, and sanctions include reprimand, suspension, and expulsion.

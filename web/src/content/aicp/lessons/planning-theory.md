@@ -96,6 +96,14 @@ The **three E's** of sustainability (**environment, economy, and equity**) don't
 
 **A regional housing shortage.** No single agency controls housing supply, prices, wages, or migration. Every new policy changes developer and household behavior, and success is contested. Recognizing the problem as "wicked" leads the region to set adaptive targets, monitor results annually, and revise its approach rather than seeking one permanent fix.
 
+## Exam tips
+
+- Most theory questions pair a name with an idea. The table in this lesson is the fastest review.
+- "No single public interest; represent the underrepresented" is **Davidoff** (advocacy). "Expand choices for those with the fewest" is **Krumholz** (equity).
+- "Muddling through" and "successive limited comparisons" are **Lindblom**; a broad scan plus selective detail is **Etzioni**; "satisficing" is **Simon**.
+- Face-to-face dialogue and mutual learning is **Friedmann** (transactive).
+- The sustainability "three E's" are environment, economy, and **equity**, not efficiency.
+
 ## Summary
 
 The rational-comprehensive model gives planning its basic sequence but assumes more knowledge and agreement than real decisions allow. Simon's bounded rationality and satisficing, Lindblom's incrementalism, and Etzioni's mixed scanning describe more realistic decision processes. Davidoff's advocacy planning and Krumholz's equity planning made planners' values explicit, and Friedmann's transactive planning and the communicative school recast planning as dialogue. Fainstein's just city judges outcomes by equity, diversity, and democracy, and Rittel and Webber's wicked problems explain why planning rarely has final answers.

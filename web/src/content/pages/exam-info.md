@@ -73,6 +73,9 @@ The process usually runs in this order. APA's site has the current steps, deadli
 
 ## On exam day
 
+For pacing, question formats, and test-taking tactics, see the [exam strategy guide](/aicp/review/exam-strategy). The basics:
+
+
 - Bring the identification the testing vendor requires, and arrive (or log in) early.
 - Read each question's last sentence first so you know what it's asking, then read the scenario.
 - Flag questions you're unsure about, keep moving, and come back to them. Our practice exams let you flag and review in the same way.

@@ -115,6 +115,15 @@ Discounts a future benefit to today's dollars, shows how a higher discount rate 
 
 **Choosing a discount rate.** A flood-protection project costs $20 million now and avoids damages spread over 50 years. At a low discount rate the benefits outweigh the costs; at a high rate they don't. The analysis presents results at more than one rate so decision-makers can see how sensitive the conclusion is.
 
+## Exam tips
+
+- Skewed data such as income or home prices call for the **median**. If the mean is far above the median, the distribution is right-skewed.
+- Memorize **68 / 95 / 99.7**: the share of a normal distribution within one, two, and three standard deviations.
+- An *r* of −0.85 is a *strong* relationship; the sign only gives the direction. R² is the share of variation explained.
+- Two categorical variables call for a **chi-square** test.
+- A higher discount rate *lowers* present value. A benefit-cost ratio below 1.0 means costs exceed benefits.
+- Watch for correlation-causation traps: look for the confounding variable in the answer choices.
+
 ## Summary
 
 Use the median for skewed data like income and home prices, and remember that skew pulls the mean toward the tail. In a normal distribution, about 68% of values fall within one standard deviation of the mean. Correlations run from −1 to +1, R² tells you how much variation a model explains, and neither proves causation. Statistical significance means an effect is unlikely to be chance, not that it matters. Read margins of error before comparing estimates. Discount future costs and benefits to present value: higher rates shrink the value of long-term benefits, and a benefit-cost ratio below 1.0 means costs exceed benefits.

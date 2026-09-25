@@ -77,6 +77,14 @@ The **National Historic Preservation Act** (1966) created the **National Registe
 
 **Learning from renewal.** A city planning a new downtown redevelopment district studies its own 1960s urban renewal records. It finds that thousands of residents, most of them Black, were displaced for a project that was only partly built. The new plan commits to anti-displacement measures and a community benefits process.
 
+## Exam tips
+
+- Pair the act with its signature program: **1949** urban renewal, **1954** Section 701, **1956** Interstates, **1974** CDBG and Section 8.
+- NEPA requires an EIS for **major federal actions significantly affecting the environment**. It's procedural, not a mandate to choose the least harmful option.
+- The 1956 Highway Act did **not** create MPOs. Metropolitan planning requirements came later.
+- Fair Housing Act protected classes: race, color, religion, national origin, sex, disability, and familial status (the last two added in **1988**).
+- Wetland fill permits are Clean Water Act **Section 404**; historic review of federal projects is NHPA **Section 106**.
+
 ## Summary
 
 Federal housing policy moved from mortgage insurance (1934) and public housing (1937) to urban renewal (1949), planning grants and rehabilitation (1954), Model Cities (1966), and the CDBG and Section 8 programs (1974). The 1956 Highway Act built the Interstates and reshaped cities, and later laws created and strengthened metropolitan transportation planning. NEPA, the Clean Air and Clean Water Acts, the Coastal Zone Management Act, the Endangered Species Act, and Superfund set the environmental framework. Title VI, the Fair Housing Act, and the ADA shape who planning must serve and how.

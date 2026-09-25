@@ -17,6 +17,15 @@ const GROUPS = [
         a: <p>There are {LESSONS.length} lessons grouped under the nine domains of the AICP exam content outline. Each lesson has learning objectives, plain-language explanations, key terms, real-world examples, a summary, and a practice set of exam-style questions. See the <Link to={P.course}>course overview</Link>.</p>,
       },
       {
+        q: 'What\u2019s the best way to use the course?',
+        a: (
+          <>
+            <p>Take the <Link to={P.diagnostic}>diagnostic</Link>, follow a <Link to={P.studyPlan}>study plan</Link>, and for each lesson: read it, answer its three-question check without looking back, mark it complete, and do its practice set. Spend ten minutes a day on <Link to={P.flashcards}>flashcards</Link>.</p>
+            <p>Midway through, retake the diagnostic. In the final weeks, take full-length timed exams, reread the lessons your <Link to={P.progress}>dashboard</Link> lists for review, and read the <Link to={P.strategy}>exam strategy guide</Link> and <Link to={P.quickRef}>quick reference</Link>.</p>
+          </>
+        ),
+      },
+      {
         q: 'How long should I study?',
         a: <p>Most candidates do well with a steady plan of two to three months. We offer an <Link to={P.studyPlan + '#8-week'}>8-week plan</Link> (8 to 10 hours a week) and a <Link to={P.studyPlan + '#12-week'}>12-week plan</Link> (5 to 7 hours a week). Take the diagnostic first so you can spend extra time on your weakest domains.</p>,
       },

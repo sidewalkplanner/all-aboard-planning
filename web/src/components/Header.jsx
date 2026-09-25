@@ -62,17 +62,28 @@ export default function Header() {
       );
     }
     // ACCOUNT PLACEHOLDER: a real account menu (profile, settings) goes here.
+    const onDash = location.pathname === P.progress;
     return (
-      <span style={{ display: mobile ? 'block' : 'inline-flex', alignItems: 'center', gap: 8, marginLeft: mobile ? 0 : 8 }}>
-        <span style={{ display: mobile ? 'block' : 'inline', fontSize: 14, color: T.mute, padding: mobile ? '12px 10px 0' : 0, maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-          <span className="visually-hidden">Signed in as </span>{user.name}
-        </span>
+      <span style={{ display: mobile ? 'block' : 'inline-flex', alignItems: 'center', gap: 6, marginLeft: mobile ? 0 : 8 }}>
+        {mobile && <span style={{ display: 'block', fontSize: 14, color: T.mute, padding: '12px 10px 0' }}>Signed in as {user.name}</span>}
+        <Hoverable
+          as={Link}
+          to={P.progress}
+          aria-current={onDash ? 'page' : undefined}
+          title={mobile ? undefined : `Signed in as ${user.name}`}
+          style={{ ...box, background: T.ink, color: T.bg, marginLeft: 0 }}
+          hoverStyle={{ background: GREEN, color: '#FFFFFF' }}
+        >
+          Dashboard
+        </Hoverable>
         <Hoverable
           as="button"
           type="button"
           onClick={() => { setOpenAt(null); signOut(); }}
-          style={{ ...box, background: 'none', border: `1px solid ${T.line}`, color: T.ink, marginLeft: mobile ? 0 : 4 }}
-          hoverStyle={{ border: `1px solid ${T.ink}` }}
+          style={mobile
+            ? { ...box, background: 'none', border: `1px solid ${T.line}`, color: T.ink }
+            : { background: 'none', border: 'none', color: T.mute, fontSize: 14, fontWeight: 600, padding: '9px 8px', whiteSpace: 'nowrap' }}
+          hoverStyle={{ color: T.ink }}
         >
           Sign out
         </Hoverable>
@@ -117,7 +128,6 @@ export default function Header() {
       {open && (
         <nav id="mobile-nav" aria-label="AICP exam prep" style={{ borderTop: `1px solid ${T.line}`, background: T.bg, padding: '10px var(--gutter) 18px', display: 'flex', flexDirection: 'column', gap: 2 }}>
           {links(true)}
-          <Hoverable as={Link} to={P.drills} style={{ ...navLinkStyle, display: 'block', padding: '12px 10px', fontSize: 16 }} hoverStyle={navLinkHover}>Domain drills</Hoverable>
           <Hoverable as={Link} to={P.faq} style={{ ...navLinkStyle, display: 'block', padding: '12px 10px', fontSize: 16 }} hoverStyle={navLinkHover}>FAQ</Hoverable>
           {accountBtn(true)}
         </nav>

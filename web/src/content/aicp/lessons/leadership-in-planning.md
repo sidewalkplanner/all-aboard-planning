@@ -95,6 +95,14 @@ Planning's benefits are often invisible: the flood that didn't damage homes, the
 
 **Leading after a loss.** The council rejects the planning director's recommendation to reduce parking minimums and adopts a smaller reduction. The director implements it promptly, sets up monitoring of parking use, and returns two years later with data showing the lots are half empty. The council then adopts the fuller reform.
 
+## Exam tips
+
+- **Transformational** leaders motivate through vision and development; **transactional** leaders through exchange; **servant** leaders by serving their people.
+- Leading from the middle means influence **without formal authority**: relationships, a shared problem, coalitions.
+- With feuding jurisdictions, the first move is **ground rules, clear roles, and a shared problem statement**.
+- When the governing body lawfully rejects your recommendation, **implement it professionally**.
+- The public interest is a **contested standard** balancing competing values, not a fixed answer.
+
 ## Summary
 
 Leadership sets direction and helps people handle change; management keeps operations running. Transformational leaders inspire through vision and development, transactional leaders through exchange, and servant leaders through serving their team and community. Planners often lead from the middle, building relationships, framing shared problems, and forming coalitions. The public interest is a contested balance of values, discerned through broad listening, attention to long-range consequences and equity, and evidence. Advocate transparently and honestly, implement lawful decisions professionally even when you disagreed, engage stakeholders early on difficult change, and make planning's value concrete.

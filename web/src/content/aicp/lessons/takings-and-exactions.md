@@ -119,6 +119,14 @@ Walks a single dedication request through the essential nexus question and then 
 
 **Designing a moratorium.** While it rewrites its floodplain rules, a town adopts an 18-month moratorium on new permits in the floodplain. Under *Tahoe-Sierra*, it isn't a per se taking, but the town still limits its duration and scope, ties it to a specific study, and allows hardship exemptions to keep it defensible under *Penn Central*.
 
+## Exam tips
+
+- Match the facts to the test: physical occupation or government-granted access → **per se**; total wipeout → ***Lucas***; everything else → ***Penn Central*** balancing.
+- Exactions: **nexus** first (*Nollan*), then **rough proportionality** (*Dolan*). *Koontz* adds denials and money demands; *Sheetz* adds legislatively set fees.
+- A temporary moratorium isn't automatically a taking (*Tahoe-Sierra*), but a regulation that *is* a taking must be compensated even for a temporary period (*First English*).
+- *Kelo* (2005) is about **public use** in eminent domain, not regulatory takings.
+- Watch the date order in "which case came first" questions: the takings table in this lesson is chronological.
+
 ## Summary
 
 The Takings Clause permits eminent domain for public use with just compensation, and courts read "public use" broadly, from *Berman* through *Kelo*. Regulations can be takings too: *Loretto*, *Lucas*, and *Cedar Point* set per se rules, and most other claims go through *Penn Central*'s three-factor balancing of the parcel as a whole. *First English*, *Tahoe-Sierra*, *Palazzolo*, *Lingle*, *Murr*, and *Knick* refine the doctrine and its procedure. Exactions must have an essential nexus (*Nollan*) and rough proportionality (*Dolan*), tests that also cover permit denials and money demands (*Koontz*) and legislatively set fees (*Sheetz*).

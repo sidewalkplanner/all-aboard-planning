@@ -97,6 +97,15 @@ Talks through a multi-part conflict-of-interest scenario from start to finish, s
 
 **The predetermined study.** A consultant is asked to prepare a parking study "showing the project needs no parking at all." The consultant explains they'll analyze demand objectively and present the lowest defensible requirement, with strategies like shared parking and TDM to reduce it further. The client agrees, and the study's credibility helps the project win approval.
 
+## Exam tips
+
+- Directed to omit or change an accurate finding? **Keep it accurate**, explain your obligation, and propose a legitimate alternative.
+- Private-sector planners have a **special obligation to the public interest** that can constrain client work.
+- A client wants support for a predetermined conclusion: explain that the Code requires **objective analysis**.
+- A colleague's misleading figures: **raise it through proper channels first**.
+- Rejected recommendation, lawful decision: **implement it professionally**.
+- Avoid the extremes: neither "ignore it" nor "go to the press" is usually the best answer.
+
 ## Summary
 
 Answer ethics questions with a five-step method: identify the actor, name the issue, find the governing provision (rule or principle), choose the honest, proportionate, proper-channel response, and check it against the public interest. Never alter accurate analysis under pressure, but respect that policy decisions belong to officials. Private-sector planners carry a special obligation to the public interest, so they shouldn't manufacture support for predetermined conclusions, and they must identify their clients when advocating. Raise colleagues' errors through proper channels first. Decline gifts, disclose and withdraw for conflicts, point commissioners to the record, and implement lawful decisions professionally.

@@ -15,7 +15,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderMarkdown } from './markdown.mjs';
+import { renderMarkdown, extractKeyTerms } from './markdown.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const src = join(root, 'src');
@@ -43,6 +43,7 @@ const KNOWN_ROUTES = new Set([
   '/', '/about', '/contact',
   '/aicp', '/aicp/course', '/aicp/study-plan', '/aicp/exam-info', '/aicp/faq', '/aicp/pricing',
   '/aicp/exams', '/aicp/diagnostic', '/aicp/drills', '/aicp/progress', '/aicp/signin', '/aicp/exam/run',
+  '/aicp/review', '/aicp/review/flashcards', '/aicp/review/quick-reference', '/aicp/review/exam-strategy',
 ]);
 const REQUIRED_SECTIONS = ['learning-objectives', 'key-concepts', 'key-terms', 'real-world-examples', 'summary'];
 
@@ -53,6 +54,7 @@ const slugs = new Set(LESSONS.map((l) => l.slug));
 if (slugs.size !== LESSONS.length) err('Duplicate lesson slugs in curriculum.js');
 
 const rendered = new Map(); // slug -> { headings, links, html }
+let totalCards = 0;
 for (const l of LESSONS) {
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(l.slug)) err(`Lesson slug "${l.slug}" is not kebab-case`);
   for (const f of ['title', 'description', 'minutes', 'access']) if (!l[f]) err(`Lesson ${l.slug}: missing ${f}`);
@@ -72,6 +74,14 @@ for (const l of LESSONS) {
   }
   if (ids[0] !== 'learning-objectives') err(`Lesson ${l.slug}: the first section must be Learning objectives`);
   if (ids[ids.length - 1] !== 'summary') err(`Lesson ${l.slug}: the last section must be Summary`);
+  if (!ids.includes('exam-tips') || ids.indexOf('exam-tips') < ids.indexOf('key-concepts')) err(`Lesson ${l.slug}: needs an "## Exam tips" section after Key concepts`);
+  // Flashcards come from Key terms bullets; every bullet must parse.
+  const termSection = (md.match(/^## Key terms[ \t]*\n([\s\S]*?)(?=^## )/m) || [, ''])[1];
+  const bullets = termSection.split('\n').filter((x) => x.startsWith('- ')).length;
+  const cards = extractKeyTerms(md, l.slug);
+  if (cards.length !== bullets) err(`Lesson ${l.slug}: ${bullets - cards.length} Key terms bullet(s) aren't in "- **Term**: definition" form`);
+  if (cards.length < 6) warn(`Lesson ${l.slug}: only ${cards.length} key terms (flashcards)`);
+  totalCards += cards.length;
   for (const v of r.videos) {
     if (!v.title || !v.length) err(`Lesson ${l.slug}: a :::video block needs "Title | length"`);
     if (v.url && !/^https:\/\//.test(v.url)) err(`Lesson ${l.slug}: video URL must be https (${v.url})`);
@@ -103,6 +113,13 @@ for (const l of LESSONS) {
     if (!BANKS[b] || !BANKS[b].some((q) => q.n === Number(n))) err(`Lesson ${l.slug}: practice ref ${ref} doesn't exist`);
   }
   if (!(l.practice || []).length) warn(`Lesson ${l.slug}: no practice questions`);
+  // The on-page "Check yourself" block uses standalone items (no scenario or exhibit).
+  const standalone = (l.practice || []).filter((ref) => {
+    const [b, n] = ref.split(':');
+    const q = (BANKS[b] || []).find((x) => x.n === Number(n));
+    return q && !q.scenario && !q.exhibit;
+  }).length;
+  if (standalone < 3) warn(`Lesson ${l.slug}: only ${standalone} standalone practice questions, so its quick check shows fewer than 3`);
   if (l.access === 'free' && !(l.practice || []).some((r) => FREE_QUIZ_REFS.has(r))) warn(`Free lesson ${l.slug}: no free-quiz questions, so its set is locked for free users`);
 }
 
@@ -186,7 +203,7 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
 const totalRefs = LESSONS.reduce((s, l) => s + (l.practice || []).length, 0);
 const videos = [...rendered.values()].flatMap((r) => r.videos);
 const placeholders = videos.filter((v) => !v.url).length;
-console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} practice refs, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders).`);
+console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} practice refs, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders), ${totalCards} flashcards.`);
 warnings.forEach((w) => console.log(`  warning: ${w}`));
 if (errors.length) {
   errors.forEach((e) => console.error(`  ERROR: ${e}`));

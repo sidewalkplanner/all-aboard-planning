@@ -804,3 +804,49 @@ img, svg {
   margin-right: 4px;
 }
 .prose .video-length { color: var(--muted); }
+
+/* Lesson table of contents: a card on desktop, a collapsible list on phones. */
+.toc-mobile { display: none; }
+.toc-mobile summary {
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.toc-mobile[open] summary { margin-bottom: 8px; }
+@media (max-width: 1000px) {
+  .toc-desktop { display: none; }
+  .toc-mobile { display: block; }
+}
+
+/* Wide long-form pages (quick reference): tables use the full container. */
+.prose-wide .prose { max-width: none; }
+
+/* Exam tips: a highlighted checklist of what the exam tests and the traps. */
+.prose #exam-tips + ul {
+  list-style: none;
+  padding: 16px 20px;
+  background: var(--warn-bg);
+  border-left: 4px solid #D79A2B;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.prose #exam-tips + ul > li {
+  position: relative;
+  padding-left: 22px;
+}
+.prose #exam-tips + ul > li::before {
+  content: '\2192';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--warn-fg);
+}
+
+/* On phones, tables with three or more columns scroll sideways instead of
+   squeezing every column into a sliver. */
+@media (max-width: 640px) {
+  .prose .table-wrap table:has(th:nth-child(3)) { min-width: 600px; }
+  .prose th, .prose td { padding: 8px 10px; }
+}

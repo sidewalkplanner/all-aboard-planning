@@ -21,8 +21,8 @@ import Contact from './pages/site/Contact';
 import SignIn from './pages/SignIn';
 import ExamsList from './pages/ExamsList';
 import Pricing from './pages/Pricing';
-import Progress from './pages/Progress';
 import NotFound from './pages/NotFound';
+import Review from './pages/aicp/Review';
 
 // Route-split: these three pull in the large bundled question banks
 // (~660KB combined) via useExamSession/useDiagnosticSession/the domain
@@ -31,6 +31,11 @@ import NotFound from './pages/NotFound';
 const StudyByDomain = lazy(() => import('./pages/StudyByDomain'));
 const ExamRunner = lazy(() => import('./pages/exam/ExamRunner'));
 const DiagnosticFlow = lazy(() => import('./pages/diagnostic/DiagnosticFlow'));
+// The dashboard and flashcards carry the full flashcard deck.
+const Progress = lazy(() => import('./pages/Progress'));
+const Flashcards = lazy(() => import('./pages/aicp/Flashcards'));
+const ExamStrategy = lazy(() => import('./pages/aicp/ExamStrategy'));
+const QuickReference = lazy(() => import('./pages/aicp/QuickReference'));
 
 function Layout() {
   return (
@@ -74,12 +79,16 @@ export default function App() {
                   <Route path={P.course} element={<CourseOverview />} />
                   <Route path={`${P.aicp}/lessons/:slug`} element={<LessonPage />} />
                   <Route path={P.studyPlan} element={<StudyPlan />} />
+                  <Route path={P.review} element={<Review />} />
+                  <Route path={P.flashcards} element={<RequireSignIn title="Flashcards" what="the flashcards"><Flashcards /></RequireSignIn>} />
+                  <Route path={P.quickRef} element={<RequireSignIn title="Quick reference" what="the quick reference"><QuickReference /></RequireSignIn>} />
+                  <Route path={P.strategy} element={<RequireSignIn title="Exam strategy guide" what="the exam strategy guide"><ExamStrategy /></RequireSignIn>} />
                   <Route path={P.examInfo} element={<ExamInfo />} />
                   <Route path={P.faq} element={<Faq />} />
                   <Route path={P.pricing} element={<Pricing />} />
                   <Route path={P.exams} element={<ExamsList />} />
                   <Route path={P.drills} element={<RequireSignIn title="Domain drills" what="the domain drills"><StudyByDomain /></RequireSignIn>} />
-                  <Route path={P.progress} element={<RequireSignIn title="Your progress" what="your progress"><Progress /></RequireSignIn>} />
+                  <Route path={P.progress} element={<RequireSignIn title="Dashboard" what="your dashboard"><Progress /></RequireSignIn>} />
                   <Route path={P.diagnostic} element={<RequireSignIn title="Diagnostic" what="the diagnostic"><DiagnosticFlow /></RequireSignIn>} />
                   <Route path={P.run} element={<ExamRunner />} />
                   <Route path={P.signin} element={<SignIn />} />
