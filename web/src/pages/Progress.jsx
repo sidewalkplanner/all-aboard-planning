@@ -4,6 +4,7 @@ import usePageTitle from '../hooks/usePageTitle';
 import useAccess from '../hooks/useAccess';
 import { ASSESSMENTS } from '../data/domains';
 import { getHistory, summarizeHistory } from '../lib/history';
+import { useSyncVersion } from '../lib/cloudSync';
 import { barStyle } from '../lib/style';
 import { GREEN, RUST } from '../lib/theme';
 import { fmtHoursMinutesFromSeconds, fmtShortDate } from '../lib/format';
@@ -22,7 +23,8 @@ export default function Progress() {
   usePageTitle('Dashboard');
   const { user } = useAccess();
   const study = useStudyState();
-  const history = useMemo(() => getHistory(), []);
+  const synced = useSyncVersion();
+  const history = useMemo(() => getHistory(), [synced]); // eslint-disable-line react-hooks/exhaustive-deps
   const summary = useMemo(() => summarizeHistory(history), [history]);
 
   // What to do next: the last lesson opened if it isn't done, else the next undone lesson.

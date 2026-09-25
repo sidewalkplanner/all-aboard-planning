@@ -56,7 +56,7 @@ const GROUPS = [
       },
       {
         q: 'Where is my account stored?',
-        a: <p>For now, accounts and progress are kept only in the browser you signed up in. An account created on your phone won&rsquo;t appear on your laptop, and clearing your browser data removes it. We plan to move accounts to a secure online service so progress follows you across devices.</p>,
+        a: <p>Your account and progress are stored securely online, so you can sign in on your phone, laptop, or work computer and pick up where you left off. We keep only your name, email, and study progress. Your password is handled by our sign-in provider, and we never see it.</p>,
       },
       {
         q: 'Can my team or class use it?',
