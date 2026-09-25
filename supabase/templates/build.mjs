@@ -25,8 +25,9 @@ const FONT = {
   hand: "Caveat, 'Bradley Hand', 'Segoe Print', 'Comic Sans MS', cursive",
 };
 
-// "Hi Jane," when the name is known, "Hi there," otherwise.
-const HELLO = '{{ if .Data.name }}Hi {{ .Data.name }},{{ else }}Hi there,{{ end }}';
+// "Hi Jane," using the first name saved at sign-up (AuthContext stores
+// first_name alongside the full name), "Hi there," if there isn't one.
+const HELLO = '{{ if .Data.first_name }}Hi {{ .Data.first_name }},{{ else }}Hi there,{{ end }}';
 
 const para = (html) => `<p style="margin:0 0 16px;font-family:${FONT.sans};font-size:16px;line-height:1.6;color:${C.text};">${html}</p>`;
 const small = (html) => `<p style="margin:0 0 10px;font-family:${FONT.sans};font-size:13.5px;line-height:1.55;color:${C.muted};">${html}</p>`;
