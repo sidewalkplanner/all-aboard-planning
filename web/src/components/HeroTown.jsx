@@ -42,6 +42,7 @@ export default function HeroTown() {
             ))}
           </div>
         </div>
+        {layer('hero-stop')}
         {layer('hero-crowd', 'town__crowd')}
         {layer('hero-front')}
       </div>

@@ -170,7 +170,10 @@ export default function () {
     { name: 'hero-poles', w: W, h: H, svg: svgDoc(W, H, tr.poles), scale: 1.6, quality: 0.85 },
     { name: 'hero-town', w: W, h: H, svg: svgDoc(W, H, mid()), scale: 1.6, quality: 0.84 },
     { name: 'hero-track', w: W, h: H, svg: svgDoc(W, H, tr.bank), scale: 1.5, quality: 0.8 },
-    { name: 'hero-crowd', w: W, h: H, svg: svgDoc(W, H, stop() + crowd()), scale: 1.6, quality: 0.86 },
+    // The AICP stop sign sits on its own still layer, in front of the tram
+    // but separate from the crowd, which hops when the tram arrives.
+    { name: 'hero-stop', w: W, h: H, svg: svgDoc(W, H, stop()), scale: 1.6, quality: 0.86 },
+    { name: 'hero-crowd', w: W, h: H, svg: svgDoc(W, H, crowd()), scale: 1.6, quality: 0.86 },
     { name: 'hero-front', w: W, h: H, svg: svgDoc(W, H, foreground()), scale: 1.5, quality: 0.84 },
     { name: 'hero-tram', w: tramW, h: tramH, svg: tramSvg, quality: 0.86 },
     { name: 'hero-wheel', w: r * 2 + 12, h: r * 2 + 12, svg: wheelSvg, scale: 3 },
