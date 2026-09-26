@@ -671,6 +671,22 @@
         "w": 366,
         "h": 842
       }
+    },
+    "fig-ami-bands": {
+      "w": 720,
+      "h": 408
+    },
+    "fig-lihtc-flow": {
+      "w": 720,
+      "h": 430
+    },
+    "fig-voucher-split": {
+      "w": 720,
+      "h": 386
+    },
+    "fig-missing-middle": {
+      "w": 720,
+      "h": 420
     }
   },
   "hero": {

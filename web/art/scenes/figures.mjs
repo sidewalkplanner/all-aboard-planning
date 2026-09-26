@@ -4667,6 +4667,110 @@ function losVmt() {
   };
 }
 
+// ============================================================ Lesson 8.2
+
+// HUD income categories as shares of area median income.
+function amiBands() {
+  const rng = makeRng(8201);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const X = (pct) => 60 + pct * 5;
+  const segs = [[0, 30, P.tomato, ['extremely', 'low']], [30, 50, P.blush, ['very', 'low']], [50, 80, P.butter, ['low']], [80, 120, T.sage, ['moderate', '80 to 120%']]];
+  segs.forEach(([a, z, fill, lines], i) => {
+    const d = rectD(X(a), 150, X(z) - X(a), 70);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(i === 3 ? dashed(X(a), 150, X(z), 150, rng, { size: 2 }) + dashed(X(a), 220, X(z), 220, rng, { size: 2 }) + dashed(X(z), 150, X(z), 220, rng, { size: 2 }) : ink(d, { rng, size: 2 }));
+    lines.forEach((t, k) => { b += label((X(a) + X(z)) / 2, 132 - (lines.length - 1 - k) * 32, t, { weight: 700 }); });
+  });
+  b += L(dashed(X(100), 150, X(100), 236, rng, { size: 2.4, color: P.civicDeep }));
+  b += label(X(100), 264, 'AMI', { weight: 800, color: P.civicDeep });
+  b += label(X(100), 300, '$100k', { color: MUTED, weight: 500 });
+  [[30, '$30k'], [50, '$50k'], [80, '$80k']].forEach(([p, m]) => {
+    b += label(X(p), 264, `${p}%`);
+    b += label(X(p), 300, m, { color: MUTED, weight: 500 });
+  });
+  b += note(W / 2, 360, 'if the area median is $100,000 (illustrative)', { color: P.civicDeep });
+  b += note(W / 2, 400, 'moderate: set by each program', { color: MUTED });
+  return { W, H: H + 8, b };
+}
+
+// How the Low-Income Housing Tax Credit turns into equity.
+function lihtcFlow() {
+  const rng = makeRng(8202);
+  const W = 720;
+  const H = 430;
+  let b = '';
+  const box = (x, y, t, sub, fill) => {
+    const d = roundRectD(x, y, 300, 110, 12);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 })) + title(x + 150, y + 46, t, { size: 28 }) + label(x + 150, y + 86, sub, { color: MUTED, weight: 500 });
+  };
+  b += box(20, 30, 'Federal', 'allocates credits', T.sky);
+  b += box(400, 30, 'State agency', 'awards them', T.lav);
+  b += box(400, 230, 'Developer', 'builds, sells credits', T.butter);
+  b += box(20, 230, 'Investor', 'buys the credits', T.sage);
+  b += L(arrow(326, 85, 394, 85, rng, { size: 2.6, head: 11 }));
+  b += L(arrow(550, 146, 550, 224, rng, { size: 2.6, head: 11 }));
+  b += label(534, 194, 'by competition', { anchor: 'end', size: 28, color: MUTED, weight: 500 });
+  b += L(arrow(394, 266, 326, 266, rng, { size: 2.6, head: 11 }));
+  b += L(arrow(326, 310, 394, 310, rng, { size: 2.6, head: 11, color: P.leafDeep }));
+  b += label(360, 356, 'equity', { weight: 800, color: P.leafDeep });
+  b += note(W / 2, 414, 'equity replaces debt, so rents can stay low', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Who pays the rent with a Housing Choice Voucher (illustrative).
+function voucherSplit() {
+  const rng = makeRng(8203);
+  const W = 720;
+  const H = 380;
+  let b = '';
+  const X = (m) => 40 + m * 0.4;
+  b += label(40, 50, 'income $2,000 a month, 30% = $600', { anchor: 'start', weight: 700 });
+  const t = rectD(X(0), 110, X(600) - X(0), 80);
+  const v = rectD(X(600), 110, X(1400) - X(600), 80);
+  b += cut(t, { rng, fill: P.butter, filter: FLAT }) + cut(v, { rng, fill: P.sky, filter: FLAT }) + L(ink(rectD(X(0), 110, X(1400) - X(0), 80), { rng, size: 2.2 }) + inkLine(`M${X(600)} 110L${X(600)} 190`, { rng, size: 2 }));
+  b += label((X(0) + X(600)) / 2, 160, 'tenant $600', { weight: 800 });
+  b += label((X(600) + X(1400)) / 2, 160, 'voucher $800', { weight: 800 });
+  b += L(dashed(X(1500), 90, X(1500), 214, rng, { size: 2.4, color: P.tomatoDeep }));
+  b += label(X(1500), 244, 'payment', { anchor: 'middle', color: P.tomatoDeep, weight: 700 }) + label(X(1500), 276, 'standard', { anchor: 'middle', color: P.tomatoDeep, weight: 700 }) + label(X(1500), 308, '$1,500', { anchor: 'middle', color: P.tomatoDeep, weight: 500 });
+  b += label(X(700), 244, 'rent $1,400, paid to a private landlord', { weight: 500 });
+  b += note(X(620), 350, 'illustrative: the voucher covers the gap', { color: P.civicDeep });
+  return { W, H: H + 6, b };
+}
+
+// Missing middle: house-scale buildings with several homes.
+function missingMiddle() {
+  const rng = makeRng(8204);
+  const W = 720;
+  const H = 420;
+  let b = '';
+  const ground = 300;
+  const bldg = (cx, w, h, fill, doors, floors, roof = true) => {
+    const x = cx - w / 2;
+    const d = rectD(x, ground - h, w, h);
+    let o = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    if (roof) { const r = polyD([[x - 8, ground - h], [cx, ground - h - 38], [x + w + 8, ground - h]]); o += cut(r, { rng, fill: P.kraftDeep, filter: FLAT }) + L(ink(r, { rng, size: 2 })); }
+    for (let f = 0; f < floors; f++) for (let k = 0; k < doors; k++) {
+      const wx = x + (w / doors) * (k + 0.5);
+      const wy = ground - h + 14 + f * 34;
+      if (f < floors - 1 || floors === 1) o += `<rect x="${wx - 8}" y="${wy}" width="16" height="16" fill="#FFFDF8" stroke="${P.ink}" stroke-width="1.4"/>`;
+    }
+    for (let k = 0; k < doors; k++) { const wx = x + (w / doors) * (k + 0.5); o += `<rect x="${wx - 7}" y="${ground - 28}" width="14" height="28" fill="${P.civicDeep}" stroke="${P.ink}" stroke-width="1.4"/>`; }
+    return o;
+  };
+  b += bldg(72, 80, 60, T.sky, 1, 1);
+  b += bldg(216, 100, 70, T.butter, 2, 1);
+  b += bldg(360, 100, 104, T.butter, 2, 3);
+  b += bldg(504, 124, 104, T.butter, 3, 3);
+  b += bldg(648, 100, 230, T.lav, 3, 7, false);
+  b += L(inkLine(`M20 ${ground}L700 ${ground}`, { rng, size: 2.2 }));
+  [['house', 72], ['duplex', 216], ['fourplex', 360], ['townhouses', 504], ['mid-rise', 648]].forEach(([t, x]) => { b += label(x, ground + 40, t, { weight: 600 }); });
+  b += L(inkLine('M156 150L156 136L566 136L566 150', { rng, size: 2.4, color: P.tomatoDeep }));
+  b += label(361, 118, 'missing middle', { weight: 800, color: P.tomatoDeep });
+  b += note(W / 2, 404, 'house-scale, but zoned out of most neighborhoods', { color: P.civicDeep });
+  return { W, H, b };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -4785,6 +4889,7 @@ const FIGURES = [
   ['fig-lead-styles', leadStyles], ['fig-lead-middle', leadMiddle], ['fig-public-interest', publicInterest], ['fig-after-loss', afterLoss],
   ['fig-delegation', delegationStool], ['fig-coach-mentor-sponsor', coachMentorSponsor], ['fig-conflict-steps', conflictSteps],
   ['fig-four-step', fourStep], ['fig-functional-class', functionalClass], ['fig-induced-demand', inducedDemand], ['fig-road-diet', roadDiet], ['fig-los-vmt', losVmt],
+  ['fig-ami-bands', amiBands], ['fig-lihtc-flow', lihtcFlow], ['fig-voucher-split', voucherSplit], ['fig-missing-middle', missingMiddle],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
