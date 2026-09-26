@@ -246,9 +246,10 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
 ## Lesson figures: workflow and status
 
 **Status (update this as you go).** Module 1 (Research and Assessment Methods) is fully
-illustrated: 26 figures across its four lessons. Next is module 2 (Fundamental Planning
-Knowledge), in course order, starting with `planning-history` (a timeline suits it) and
-`planning-theory` (comparison diagrams). Aim for two to five figures per lesson, one per
+illustrated: 26 figures across its four lessons. Module 2 (Fundamental Planning
+Knowledge) is fully illustrated too: 33 figures across its six lessons (history 5, theory 4,
+urban form 5, land use law 4, takings 3, federal policy 3). Next is module 3 (Communication and
+Interaction), in course order, starting with `public-engagement-design`. Aim for two to five figures per lesson, one per
 section where a picture teaches faster than the text: a process, a comparison, a
 distribution, a map, or a worked calculation. Skip sections a picture wouldn't improve.
 

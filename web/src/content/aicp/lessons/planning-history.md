@@ -10,6 +10,10 @@
 
 The exam doesn't expect you to memorize every date. It expects you to know **what came first, what each movement was reacting against, and who is associated with what.** Think of planning history as a chain of problems and responses.
 
+:::figure fig-history-timeline | A timeline from 1850 to today with each era drawn as a bar. Sanitary and tenement reform runs from about 1850 to 1910; City Beautiful from 1893 to the 1910s; zoning and model laws from 1900 through the 1920s; Garden City ideas from 1898 through the 1930s; the New Deal through the 1930s; urban renewal and Interstates from 1949 through the 1960s; the backlash from 1961 through the 1970s; New Urbanism from 1980 to today; and Smart Growth from 1990 to today. A star marks 1978, when APA and AICP were formed. A note says each era answers the problems of the one before.
+Read it for order and overlap, not exact dates: several movements ran side by side, and each grew out of what the last one got wrong.
+:::
+
 ### 1. Crowding, disease, and reform (mid-1800s to early 1900s)
 
 Rapid industrialization packed immigrants and workers into dense, unsanitary tenements. Epidemics made public health the first great driver of city planning.
@@ -40,17 +44,33 @@ Critics said City Beautiful focused on appearances and civic monuments while neg
 - The Supreme Court upheld zoning in ***Village of Euclid v. Ambler Realty Co.*** **(1926)**. See [Foundations of land use law](/aicp/lessons/land-use-law-foundations).
 - In 1925, **Cincinnati** became the first major U.S. city to officially adopt a comprehensive plan.
 
+:::figure fig-wedding-cake | Two street scenes with the sun shining from the upper left. Straight up, like the Equitable Building: a sheer tower rises from the lot line and its shadow covers the whole street. Set back, under the 1916 setback rules: the tower steps back as it rises, so its shadow covers only the edge of the street and light reaches the street.
+Stepping the upper floors back is where the "wedding cake" shape came from: the rule traded some height near the street for sunlight on it.
+:::
+
 :::checkpoint cp:hist-model-acts
 
 ### 4. The Garden City and the regional planners (1898 to 1930s)
 
-**Ebenezer Howard**'s *To-Morrow: A Peaceful Path to Real Reform* (1898), reissued in 1902 as ***Garden Cities of To-Morrow***, proposed self-contained towns of limited size, about 32,000 people, surrounded by a permanent **greenbelt** of farmland, with land held in common so rising land values would benefit the community. When a town reached its limit, growth would go to a new garden city, forming a linked cluster Howard called the "social city." Letchworth and Welwyn Garden City in England were built on these ideas.
+**Ebenezer Howard**'s *To-Morrow: A Peaceful Path to Real Reform* (1898), reissued in 1902 as ***Garden Cities of To-Morrow***, proposed self-contained towns of limited size, about 32,000 people, surrounded by a permanent **greenbelt** of farmland, with land held in common so rising land values would benefit the community. When a town reached its limit, growth would go to a new garden city, forming a cluster of towns linked by rail around a larger central city, which Howard called the "social city." Letchworth and Welwyn Garden City in England were built on these ideas.
+
+:::figure fig-garden-city | Two diagrams. One garden city: a town of about 32,000 people in the middle, ringed by a greenbelt of permanent farms. The social city: a larger central city with six garden cities around it, each in its own greenbelt, all linked by rail lines. A note says: a town is full? Start a new one down the line.
+The greenbelt is what caps each town's size; growth jumps the belt to a new town instead of sprawling outward.
+:::
 
 In the U.S., the ideas spread through:
 
 - **Clarence Perry's neighborhood unit** (published in the 1929 *Regional Plan of New York and Its Environs*): a residential area sized to support an **elementary school** at its center, with arterial streets at the edges rather than running through it, local shops at the corners, and small parks throughout.
 - **Radburn, New Jersey (1929)**, designed by **Clarence Stein and Henry Wright**: "a town for the motor age," with **superblocks**, **cul-de-sacs**, homes facing interior parks, and pedestrian paths separated from car traffic by underpasses.
 - The **Regional Planning Association of America** (founded in 1923), including **Lewis Mumford**, Stein, Wright, and Benton MacKaye (who proposed the Appalachian Trail). It argued for planning at the scale of whole regions and ecosystems.
+
+:::figure fig-neighborhood-unit | Perry's neighborhood unit as a square plan. Arterial roads run along all four edges, not through it. An elementary school sits on a green at the center, curving local streets lead in from the edges, small parks are spread throughout, and shops sit at the four corners where the arterials meet.
+The school sets the size: the unit is as big as the area one elementary school serves, so children can walk to it without crossing a major road.
+:::
+
+:::figure fig-radburn | A Radburn superblock plan. Roads ring the block, and short cul-de-sacs for cars reach in from the sides. Rows of homes line each cul-de-sac, with their doors facing the other way, onto footpaths that lead to a large park in the middle. A path runs through the park and passes under the edge road through an underpass.
+Cars and people each get their own network: drivers reach homes from the cul-de-sacs, and walkers can cross the whole superblock on paths without meeting traffic.
+:::
 
 :::checkpoint cp:hist-neighborhood-unit
 

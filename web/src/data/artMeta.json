@@ -143,6 +143,134 @@
         "w": 340,
         "h": 790
       }
+    },
+    "fig-history-timeline": {
+      "w": 720,
+      "h": 640
+    },
+    "fig-wedding-cake": {
+      "w": 720,
+      "h": 458,
+      "narrow": {
+        "w": 366,
+        "h": 902
+      }
+    },
+    "fig-garden-city": {
+      "w": 720,
+      "h": 448,
+      "narrow": {
+        "w": 366,
+        "h": 882
+      }
+    },
+    "fig-neighborhood-unit": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-radburn": {
+      "w": 720,
+      "h": 470
+    },
+    "fig-rational-model": {
+      "w": 720,
+      "h": 470
+    },
+    "fig-decision-styles": {
+      "w": 720,
+      "h": 628,
+      "narrow": {
+        "w": 366,
+        "h": 1276
+      }
+    },
+    "fig-planner-roles": {
+      "w": 720,
+      "h": 620,
+      "narrow": {
+        "w": 366,
+        "h": 1228
+      }
+    },
+    "fig-planners-triangle": {
+      "w": 720,
+      "h": 548
+    },
+    "fig-urban-models": {
+      "w": 720,
+      "h": 466,
+      "narrow": {
+        "w": 252,
+        "h": 1368
+      }
+    },
+    "fig-central-place": {
+      "w": 720,
+      "h": 470
+    },
+    "fig-suburban-waves": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-segregation-timeline": {
+      "w": 720,
+      "h": 520
+    },
+    "fig-lynch": {
+      "w": 720,
+      "h": 520
+    },
+    "fig-power-flow": {
+      "w": 720,
+      "h": 470
+    },
+    "fig-facial-as-applied": {
+      "w": 720,
+      "h": 440,
+      "narrow": {
+        "w": 366,
+        "h": 866
+      }
+    },
+    "fig-household-cases": {
+      "w": 720,
+      "h": 418,
+      "narrow": {
+        "w": 366,
+        "h": 822
+      }
+    },
+    "fig-sign-content": {
+      "w": 720,
+      "h": 378,
+      "narrow": {
+        "w": 366,
+        "h": 742
+      }
+    },
+    "fig-takings-route": {
+      "w": 720,
+      "h": 560
+    },
+    "fig-parcel-whole": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-exaction-gates": {
+      "w": 720,
+      "h": 520
+    },
+    "fig-housing-laws": {
+      "w": 720,
+      "h": 540
+    },
+    "fig-fair-housing-classes": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-one-project": {
+      "w": 720,
+      "h": 520
     }
   },
   "hero": {

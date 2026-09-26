@@ -18,9 +18,13 @@ The **rational-comprehensive** (or **synoptic**) model is the classic textbook p
 2. Identify all the alternatives.
 3. Evaluate the consequences of each alternative.
 4. Choose the best alternative.
-5. Implement it, then monitor and evaluate.
+5. Implement it, then monitor and evaluate, feeding what you learn into the next round.
 
 It remains the backbone of how plans are organized, and of many exam questions about sequence. Its critics say it asks too much: nobody has complete information, unlimited time, or agreement on goals, and treating planning as purely technical hides the value choices inside it.
+
+:::figure fig-rational-model | The rational-comprehensive model as a transit line with five numbered stops: 1 problem and goals, 2 all the alternatives, 3 evaluate each one, 4 choose the best, 5 implement and monitor. An arrow loops from stop 5 back to stop 1: what you learn starts the next round. A note in red says critics object that nobody has full information, unlimited time, or agreed goals.
+The order is what exam questions test. The critique is why the theories below exist: each relaxes one of those three assumptions.
+:::
 
 ### Bounded rationality and satisficing
 
@@ -37,6 +41,10 @@ It remains the backbone of how plans are organized, and of many exam questions a
 ### Mixed scanning
 
 **Amitai Etzioni** proposed **mixed scanning** (1967) as a middle path: take a broad, shallow look at the whole field to set fundamental direction, then examine selected areas in detail. A planner who does a big-picture scan for major decisions but handles routine ones incrementally is using mixed scanning.
+
+:::figure fig-decision-styles | Four panels, each showing the same field of 18 options. Rational-comprehensive: every option is looked at closely and the best is chosen. Satisficing, Simon: options are checked in order until the ninth, the first good-enough one, is chosen; the rest are never considered. Incrementalism, Lindblom: starting from a square marking the status quo, only the four neighboring options are looked at, and the next one over is chosen. Mixed scanning, Etzioni: every option gets a quick glance, one highlighted group of six is looked at closely, and the choice comes from that group.
+The difference is how much of the field each approach examines, and whether it starts from the whole field or from where things stand now.
+:::
 
 :::checkpoint cp:theory-mixed-scan
 
@@ -55,6 +63,10 @@ It remains the backbone of how plans are organized, and of many exam questions a
 - **John Friedmann**'s **transactive planning** centers on face-to-face dialogue and **mutual learning** between planners, who bring technical knowledge, and the people affected, who bring experiential knowledge.
 - **Communicative (collaborative) planning** treats planning as a process of structured dialogue and consensus building among stakeholders. **John Forester** examined how planners' everyday communication, including what they emphasize, omit, or frame, shapes power and outcomes. **Judith Innes** and **Patsy Healey** developed collaborative and consensus-building approaches.
 
+:::figure fig-planner-roles | Four panels on the planner's role. Technician, the rational model: a planner hands one plan to the public, one plan for one public interest. Advocate, Davidoff: a city plan versus "our plan," with the planner standing with the residents behind their plan; the planner speaks for a group left out. Equity planner, Krumholz: a planner at city hall steers resources toward modest homes, working inside city hall for those with the least. Mutual learner, Friedmann: a planner and a resident face each other, trading technical knowledge one way and experiential knowledge the other; face to face, each learns.
+Advocacy and equity planning share a goal but differ in where the planner stands: outside, representing a group, or inside government, steering its resources.
+:::
+
 :::checkpoint cp:theory-forester
 
 ### The just city
@@ -68,6 +80,10 @@ Horst Rittel and Melvin Webber (1973) described planning problems as **wicked**:
 ### Sustainability's tensions
 
 The **three E's** of sustainability (**environment, economy, and equity**) don't always align. Scott Campbell's "planner's triangle" (1996) describes the conflicts between each pair: over property (economy versus equity), resources (economy versus environment), and development (equity versus environment). Planners work in the middle, balancing them. <!-- VERIFY: confirm the conflict labels in Campbell's planner's triangle (property, resource, development) and the 1996 date. -->
+
+:::figure fig-planners-triangle | A triangle with environment at the top, economy at the bottom left, and equity at the bottom right. The side between economy and environment is labeled resource conflict, the side between environment and equity development conflict, and the side between economy and equity property conflict. A planner stands in the middle, on sustainable development.
+Each side is a tug-of-war between two of the three E's; sustainable development is the point that gives up as little of each as possible.
+:::
 
 ### Theory at a glance
 

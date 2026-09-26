@@ -23,6 +23,10 @@ Land use regulation is mostly a state and local power, but federal money and fed
 
 <!-- VERIFY: confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. -->
 
+:::figure fig-housing-laws | A timeline from 1930 to 1980 with a bar for each federal housing program. FHA mortgage insurance starts in 1934, public housing in 1937, and Section 701 planning grants in 1954, and all three run past 1980. Urban renewal runs from 1949 to 1974, and Model Cities from 1966 to 1974. Arrows show both folded into one block grant: CDBG and Section 8, starting in 1974.
+The 1974 act didn't add another program on top; it rolled the older categorical ones into a single flexible grant.
+:::
+
 :::checkpoint cp:fed-cdbg
 
 ### Transportation
@@ -56,6 +60,10 @@ The **National Historic Preservation Act** (1966) created the **National Registe
 - The **Fair Housing Act** (Title VIII of the Civil Rights Act of **1968**) prohibits discrimination in the sale, rental, and financing of housing based on race, color, religion, and national origin; **sex** was added in 1974; and **disability** and **familial status** were added by the **Fair Housing Amendments Act of 1988**. It also requires federal agencies and grantees to **affirmatively further fair housing**.
 - The **Americans with Disabilities Act** (1990) prohibits disability discrimination and sets accessibility requirements for public facilities, public rights-of-way, and programs, including public meetings and digital communication.
 
+:::figure fig-fair-housing-classes | Three stacks of protected classes under the Fair Housing Act. 1968, the act: race, color, religion, and national origin. 1974, amended: sex is added. 1988 amendments: disability and familial status are added, for seven classes in all.
+The two most-tested additions are the last ones: disability and familial status both came in 1988.
+:::
+
 :::checkpoint cp:fed-title-vi
 
 ### Hazards
@@ -84,6 +92,10 @@ The **National Historic Preservation Act** (1966) created the **National Registe
 ## Real-world examples
 
 **A transit project's paperwork.** A city seeking federal funds for a bus rapid transit line must get the project into the MPO's plan and Transportation Improvement Program, complete NEPA review, show air quality conformity if the region is in nonattainment, run Section 106 consultation because the route passes a historic district, and meet Title VI and ADA requirements. That one project touches most of the laws in this lesson.
+
+:::figure fig-one-project | A bus labeled BRT above a checklist of six federal requirements: MPO plan and TIP, NEPA review, air quality conformity, Section 106, Title VI, and ADA. A note says: one project, most of the laws in this lesson.
+Each requirement comes from a different law, often with a different agency, so a federally funded project plans for all of them from the start.
+:::
 
 **Using CDBG.** A mid-sized city is a CDBG entitlement community. Its consolidated plan directs funds to housing rehabilitation for low-income homeowners, sidewalk repairs in eligible neighborhoods, and a small-business loan fund. Every activity must meet one of the program's national objectives, most often benefiting low- and moderate-income people.
 
