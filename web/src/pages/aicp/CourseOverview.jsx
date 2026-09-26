@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader';
 import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
-import { DOMAINS, LESSONS, TOTAL_MINUTES } from '../../content/aicp/curriculum';
+import { DOMAINS, LESSONS } from '../../content/aicp/curriculum';
 import { PAID_TIER_ENABLED } from '../../lib/access';
 import useAccess from '../../hooks/useAccess';
 import { useStudyState } from '../../lib/studyState';
 
 export default function CourseOverview() {
   usePageTitle('Course overview');
-  const hours = Math.round(TOTAL_MINUTES / 60);
   const { signedIn } = useAccess();
   const { completed } = useStudyState();
   const doneCount = signedIn ? LESSONS.filter((l) => completed[l.slug]).length : 0;
@@ -43,7 +42,7 @@ export default function CourseOverview() {
         )}
         <p className="small" style={{ margin: '16px 0 0' }}>
           New to the exam? Read the <Link to={P.strategy} className="link-underline">test-taking strategy guide</Link> first.
-          About {hours} hours of reading in total.{!signedIn && <> Every lesson opens once you sign in{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.</>}
+          {!signedIn && <> Every lesson opens once you sign in{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.</>}
         </p>
       </PageHeader>
 
