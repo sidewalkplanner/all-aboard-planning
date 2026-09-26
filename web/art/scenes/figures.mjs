@@ -2999,7 +2999,7 @@ function consistencySpectrum() {
     [330, ['One factor'], 'courts weigh it', P.sky],
     [586, ['Consistency'], 'zoning must match', P.butter],
   ];
-  stops.forEach(([x, lines, what, fill], i) => {
+  stops.forEach(([x, lines, what, fill]) => {
     const d = ellipseD(x, y, 22, 22);
     b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.6 }));
     lines.forEach((t, k) => { b += title(x, y + 70 + k * 32, t, { size: 28 }); });
@@ -3758,7 +3758,6 @@ function farShapes() {
 
 // Gross versus net density, from the lesson's 40-acre example.
 function grossNet() {
-  const rng = makeRng(5502);
   const W = 720;
   const H = 440;
   let b = '';
