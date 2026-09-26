@@ -98,7 +98,7 @@ export default function AicpHome() {
               plain-language lessons and practice with exam-style questions that explain every answer.
             </p>
             <div className="row-wrap hero-actions">
-              <Link className="btn btn-rust btn-lg" to={P.course}>Browse the course</Link>
+              <Link className="btn btn-rust btn-lg" to={P.course}>Browse the lessons</Link>
               {signedIn
                 ? <Link className="btn btn-secondary btn-lg" to={P.exams}>See the practice exams</Link>
                 : <Link className="btn btn-secondary btn-lg" to={P.createAccount(P.course)}>Create an account</Link>}
@@ -199,7 +199,7 @@ export default function AicpHome() {
                 {signedIn
                   ? <Link className="btn btn-dark btn-lg" to={P.lesson(LESSONS[0].slug)}>Start the first lesson</Link>
                   : <Link className="btn btn-dark btn-lg" to={P.createAccount(P.lesson(LESSONS[0].slug))}>Create an account</Link>}
-                <Link className="btn btn-secondary btn-lg" to={P.course}>Browse the course</Link>
+                <Link className="btn btn-secondary btn-lg" to={P.course}>Browse the lessons</Link>
               </div>
             </div>
             <div style={{ maxWidth: 240, justifySelf: 'center', width: '100%' }}>

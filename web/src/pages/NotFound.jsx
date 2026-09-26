@@ -19,7 +19,7 @@ export default function NotFound() {
       </p>
       <div className="row-wrap" style={{ justifyContent: 'center', marginTop: 30 }}>
         <Link className="btn btn-rust" to={P.aicp}>Back to the station</Link>
-        <Link className="btn btn-secondary" to={P.course}>Browse the course</Link>
+        <Link className="btn btn-secondary" to={P.course}>Browse the lessons</Link>
       </div>
     </section>
   );

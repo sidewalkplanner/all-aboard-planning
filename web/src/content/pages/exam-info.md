@@ -20,7 +20,7 @@ The questions are built from APA's exam content outline, which groups the materi
 
 <!-- VERIFY: domain names and weights are taken from uploads/aicp-diagnostic-exam-spec.md in this repo; confirm them against APA's current published content outline. -->
 
-The [course overview](/aicp/course) follows these nine domains in the same order.
+The [lessons](/aicp/course) follow these nine domains in the same order.
 
 ## Format
 

@@ -8,7 +8,7 @@ import useAccess from '../../hooks/useAccess';
 import { useStudyState } from '../../lib/studyState';
 
 export default function CourseOverview() {
-  usePageTitle('Course overview');
+  usePageTitle('Lessons');
   const { signedIn } = useAccess();
   const { completed } = useStudyState();
   const doneCount = signedIn ? LESSONS.filter((l) => completed[l.slug]).length : 0;
@@ -17,8 +17,8 @@ export default function CourseOverview() {
   return (
     <>
       <PageHeader
-        eyebrow="AICP exam prep course"
-        title="Course overview"
+        eyebrow="AICP exam prep"
+        title="Lessons"
         art="page-books" artW={420} artH={310} artTilt={1.5}
         artAlt="A stack of planning books labelled Zoning, Plan Making, Ethics and GIS & Data, with a plant and a mug of coffee"
         lead={`${LESSONS.length} lessons across the nine domains of the AICP exam content outline, in outline order. Each lesson has checkpoint questions after its key sections, plus key terms, real planning examples, exam tips, and a summary. Exam-style questions live in the full-length practice exams.`}
@@ -28,7 +28,7 @@ export default function CourseOverview() {
             {doneCount ? `Continue: lesson ${nextLesson.number}` : 'Start lesson 1'}
           </Link>
           {STUDY_PLANS_ENABLED && <Link className="btn btn-secondary" to={P.studyPlan}>Follow a study plan</Link>}
-          <Link className="btn btn-secondary" to={P.runExam('e1', 'practice')}>Find your weak spots first</Link>
+          <Link className="btn btn-secondary" to={P.runExam('e1', 'practice')}>Take Practice Exam 1 first</Link>
         </div>
         {signedIn && (
           <div style={{ marginTop: 22, maxWidth: 520 }}>
@@ -41,7 +41,8 @@ export default function CourseOverview() {
           </div>
         )}
         <p className="small" style={{ margin: '16px 0 0' }}>
-          New to the exam? Read the <Link to={P.strategy} className="link-underline">test-taking strategy guide</Link> first.
+          New to the exam? Read the <Link to={P.strategy} className="link-underline">exam strategy guide</Link> first. The{' '}
+          <Link to={P.quickRef} className="link-underline">quick reference</Link> sums up the key cases, laws, and formulas on one page.
           {!signedIn && <> Every lesson opens once you sign in{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.</>}
         </p>
       </PageHeader>

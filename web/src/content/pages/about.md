@@ -21,5 +21,5 @@ All Aboard Planning is not affiliated with, endorsed by, or sponsored by the Ame
 
 ## Where to start
 
-- New here? Read [how the course works](/aicp), then take [Practice Exam 1](/aicp/exam/run?aid=e1&mode=practice) in practice mode as your baseline.
-- Ready to study? Browse the [course overview](/aicp/course).
+- New here? Read the [overview](/aicp), then take [Practice Exam 1](/aicp/exam/run?aid=e1&mode=practice) in practice mode as your baseline.
+- Ready to study? Browse the [lessons](/aicp/course).

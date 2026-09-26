@@ -25,7 +25,12 @@ export default function Header() {
   const ink = showDark ? '#EEF3FA' : 'var(--ink)';
   const linkClass = `nav-link${showDark ? ' nav-link--dark' : ''}`;
 
-  const links = (mobile) => AICP_NAV.map((item) => {
+  // The phone menu also lists the FAQ, right under Exam info.
+  const items = (mobile) => (mobile
+    ? AICP_NAV.flatMap((item) => (item.to === P.examInfo ? [{ ...item, match: [P.examInfo] }, { label: 'FAQ', to: P.faq }] : [item]))
+    : AICP_NAV);
+
+  const links = (mobile) => items(mobile).map((item) => {
     const active = isActive(item, location.pathname);
     return (
       <Link
@@ -81,7 +86,7 @@ export default function Header() {
         borderBottom: `2px solid ${showDark ? 'rgba(143,176,218,0.35)' : 'rgba(39,35,58,0.85)'}`
       }}
     >
-      <div style={{ maxWidth: 1180, margin: '0 auto', padding: '10px var(--gutter)', display: 'flex', alignItems: 'center', gap: 16 }}>
+      <div style={{ maxWidth: 1240, margin: '0 auto', padding: '10px var(--gutter)', display: 'flex', alignItems: 'center', gap: 16 }}>
         <Link
           to={P.aicp}
           aria-label="All Aboard Planning: AICP exam prep home"
@@ -126,7 +131,6 @@ export default function Header() {
           style={{ borderTop: `2px dashed ${showDark ? 'rgba(143,176,218,0.35)' : 'rgba(39,35,58,0.3)'}`, padding: '10px var(--gutter) 20px', display: 'flex', flexDirection: 'column', gap: 2 }}
         >
           {links(true)}
-          <Link to={P.faq} className={linkClass} style={{ display: 'block', width: 'fit-content', padding: '12px 8px', fontSize: 18 }}>FAQ</Link>
           {account(true)}
         </nav>
       )}

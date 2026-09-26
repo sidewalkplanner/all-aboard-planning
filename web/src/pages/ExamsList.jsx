@@ -63,7 +63,7 @@ function Ticket({ a, i, access, attempts }) {
 }
 
 export default function ExamsList() {
-  usePageTitle('Practice');
+  usePageTitle('Practice exams');
   const access = useAccess();
   const synced = useSyncVersion();
   const history = useMemo(() => (access.signedIn ? getHistory() : []), [access.signedIn, synced]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -73,7 +73,7 @@ export default function ExamsList() {
   return (
     <>
       <PageHeader
-        eyebrow="Practice"
+        eyebrow="Three full-length exams"
         title={<>Practice <em className="marker">exams</em></>}
         lead={`Every question is written to the nine domains of the AICP exam content outline, and every answer comes with an explanation.${access.signedIn ? ' Your scores are saved to your dashboard.' : ' Sign in to start; your scores are saved to your dashboard.'}`}
         note="pick a ticket, any ticket"

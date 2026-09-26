@@ -93,10 +93,17 @@ export default function Flashcards() {
   return (
     <>
       <PageHeader
-        eyebrow="Review"
+        eyebrow="Key terms"
         title="Flashcards"
+        art="page-cards" artW={550} artH={330} artTilt={-1}
+        artAlt="A kraft index-card box with coloured tabs and two flashcards: Euclid v. Ambler and FAR"
         lead={`${ALL_CARDS.length} cards built from the key terms in every lesson. Each session deals your weakest cards first, and a card counts as mastered after you get it right ${MASTERED_BOX} times in a row.`}
-      />
+      >
+        <p className="small" style={{ margin: '12px 0 0' }}>
+          Want the big picture instead? The <Link to={P.quickRef} className="link-underline">quick reference</Link> puts
+          the key cases, laws, and formulas on one page.
+        </p>
+      </PageHeader>
       <div className="container-narrow" style={{ paddingBottom: 80 }}>
         {!queue || finished ? (
           <div className="card">

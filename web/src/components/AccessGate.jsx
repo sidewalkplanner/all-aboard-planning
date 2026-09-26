@@ -42,7 +42,7 @@ export default function AccessGate({ what = 'the rest of this lesson', headingLe
         <Link className="btn btn-secondary" to={P.signinNext(next)}>Sign in</Link>
       </div>
       <p className="small" style={{ margin: '16px 0 0' }}>
-        Just looking? The <Link to={P.course} className="link-underline">course overview</Link> is open to everyone.
+        Just looking? The <Link to={P.course} className="link-underline">list of lessons</Link> is open to everyone.
       </p>
     </section>
   );
