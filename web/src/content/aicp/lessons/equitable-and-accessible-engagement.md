@@ -24,6 +24,10 @@ Common barriers and how to lower them:
 | Digital divide | Pair online tools with in-person and phone options |
 | Fear (for example, of immigration enforcement) | Don't require identification; explain how information is used; work through trusted messengers |
 
+:::figure fig-who-missing | Two sides. Who it misses: five people, each tagged with a barrier: works nights, no childcare, no car, needs an interpreter, and needs captions. Who it hears: three similar people outside city hall at a 7 pm weeknight hearing. A note says: take the meeting to them.
+Each barrier has a fix in the table above; the ones that work best move the meeting to people rather than asking people to come to it.
+:::
+
 When partnering with community organizations, **pay them** for their time and expertise. They're doing real work, and relying on unpaid labor from under-resourced groups repeats the inequity you're trying to address.
 
 :::checkpoint cp:equity-pay-cbos
@@ -35,6 +39,10 @@ When partnering with community organizations, **pay them** for their time and ex
 - **Structural (or intergenerational) equity**: whether decisions correct, or entrench, historical harms such as redlining and urban renewal, and what they pass on to future generations.
 
 Good engagement advances procedural equity. It should also give residents a say in the distributive questions. When residents raise concerns such as displacement from a new amenity, the planner's job is to analyze those concerns and potential responses as part of the project, not set them aside as "out of scope."
+
+:::figure fig-three-equities | Three panels. Procedural equity, who takes part: people of many colors seated around one table, a fair, open process. Distributive equity, benefits and burdens: one neighborhood gains a park while another already bears three smokestacks, who gets what. Structural equity, past harms and future effects: an area outlined in the 1930s and the same outline today, still felt; does a decision correct the harm or entrench it?
+A single decision can pass one test and fail another: a fair process can still send the next burden to the same neighborhood.
+:::
 
 :::checkpoint cp:equity-structural
 
@@ -71,6 +79,10 @@ Practical checklist for planning materials:
 - Accessible meeting venues, sign language interpreters or real-time captioning on request, and materials available in advance.
 
 Accessibility primarily benefits people with disabilities, and it also helps older residents, people on phones, people with slow connections, and people reading in a second language.
+
+:::figure fig-wcag | Four cards spelling POUR. Perceivable: alt text and captions. Operable: works with a keyboard. Understandable: plain language. Robust: works with screen readers.
+POUR is the easy way to remember WCAG's four principles, and each maps to a practical fix on the checklist above.
+:::
 
 :::checkpoint cp:equity-wcag
 

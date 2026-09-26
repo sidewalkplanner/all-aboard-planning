@@ -2357,6 +2357,473 @@ function oneProject() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 3.1
+
+// Arnstein's ladder: eight rungs in three groups.
+function arnsteinLadder() {
+  const rng = makeRng(3101);
+  const W = 720;
+  const H = 600;
+  let b = '';
+  const rungs = ['Manipulation', 'Therapy', 'Informing', 'Consultation', 'Placation', 'Partnership', 'Delegated power', 'Citizen control'];
+  const groups = [[0, 1, 'Nonparticipation', P.tomato, T.blush], [2, 4, 'Tokenism', P.butterDeep, T.butter], [5, 7, 'Citizen power', P.leaf, T.sage]];
+  const Y = (i) => 548 - i * 64;
+  const r0 = 236;
+  const r1 = 326;
+  // Group bands behind the ladder.
+  for (const [a, c, , , tint] of groups) {
+    const d = roundRectD(216, Y(c) - 28, 490, Y(a) - Y(c) + 56, 14);
+    b += cut(d, { rng, fill: tint, shadow: false, jitter: 0.5, filter: FLAT });
+  }
+  b += L(inkLine([[r0, 572], [r0 - 2, 40]], { rng, size: 3.6, overshoot: 0 }) + inkLine([[r1, 572], [r1 + 2, 40]], { rng, size: 3.6, overshoot: 0 }));
+  rungs.forEach((name, i) => {
+    const g = groups.find(([a, c]) => i >= a && i <= c);
+    const d = roundRectD(r0 - 4, Y(i) - 8, r1 - r0 + 8, 16, 6);
+    b += cut(d, { rng, fill: g[3], jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: 1.8 }));
+    b += label(r1 + 24, Y(i) + 10, `${i + 1}  ${name}`, { anchor: 'start' });
+  });
+  for (const [a, c, name] of groups) {
+    const words = name === 'Nonparticipation' ? ['Non-', 'participation'] : name.split(' ');
+    const mid = (Y(a) + Y(c)) / 2;
+    words.forEach((w, k) => { b += title(202, mid + 10 + (k - (words.length - 1) / 2) * 32, w, { size: 28, anchor: 'end' }); });
+  }
+  b += note(700, Y(3) - 6, 'a voice,', { anchor: 'end', color: P.tomatoDeep });
+  b += note(700, Y(3) + 28, 'no power', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// The IAP2 spectrum: five levels, each giving the public more influence.
+function iap2Spectrum() {
+  const rng = makeRng(3102);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const levels = [
+    ['Inform', 'understand the issue', P.sky],
+    ['Consult', 'give feedback', T.sky],
+    ['Involve', 'shape the options', P.sage],
+    ['Collaborate', 'choose together', P.leaf],
+    ['Empower', 'the public decides', P.leafDeep],
+  ];
+  levels.forEach(([name, what, fill], i) => {
+    const y = 40 + i * 84;
+    const len = (i + 1) * 100;
+    const d = roundRectD(200, y, len, 52, 10);
+    b += cut(d, { rng, fill, jitter: 0.5, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += title(20, y + 36, name, { anchor: 'start', size: 28 });
+    const inside = i >= 2;
+    b += label(inside ? 200 + len / 2 : 200 + len + 16, y + 36, what, { anchor: inside ? 'middle' : 'start', color: i >= 3 ? '#FFFFFF' : P.ink, weight: inside ? 700 : 500 });
+  });
+  const ay = 470;
+  b += L(arrow(200, ay, 700, ay, rng, { size: 3, head: 14 }));
+  b += label(450, ay + 40, 'more public influence', { color: MUTED, weight: 500 });
+  return { W, H, b };
+}
+
+// Why engage early: the room to change a plan shrinks as it moves along.
+function engageEarly() {
+  const rng = makeRng(3103);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  // Illustrative share of the plan still open to change at each stage.
+  const stages = [['Problem', 100], ['Options', 75], ['Draft', 35], ['Hearing', 10]];
+  const x0 = 110;
+  const x1 = 640;
+  const yB = 360;
+  const yT = 80;
+  const X = (i) => x0 + (i / (stages.length - 1)) * (x1 - x0);
+  const Y = (v) => yB - (v / 100) * (yB - yT);
+  const area = [[X(0), yB], ...stages.map(([, v], i) => [X(i), Y(v)]), [X(3), yB]];
+  b += `<path d="${polyD(area)}" fill="${T.sage}"/>`;
+  b += L(inkLine(stages.map(([, v], i) => [X(i), Y(v)]), { rng, size: 3.2, color: P.leafDeep, overshoot: 0 }));
+  b += L(inkLine([[x0 - 10, yT - 16], [x0 - 10, yB], [x1 + 30, yB]], { rng, size: 2.4, overshoot: 0 }));
+  stages.forEach(([name, v], i) => {
+    b += `<circle cx="${X(i)}" cy="${Y(v)}" r="8" fill="${P.leaf}" stroke="${P.ink}" stroke-width="2"/>`;
+    b += label(X(i), yB + 40, name);
+  });
+  b += label(x0 - 26, yT - 30, 'room to change the plan', { anchor: 'start', color: MUTED, weight: 500 });
+  b += label(x0 - 26, yB + 84, 'stage of the plan (illustrative)', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(X(0) + 24, Y(100) + 150, 'engage here', { anchor: 'start', color: P.leafDeep });
+  b += note(X(3) + 10, Y(10) - 120, 'too late to', { anchor: 'end', color: P.tomatoDeep });
+  b += note(X(3) + 10, Y(10) - 86, 'shape it', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// A public hearing beside a public meeting.
+function hearingVsMeeting() {
+  const rng = makeRng(3104);
+  const PW = 338;
+  const PH = 380;
+  const head = (h, sub) => title(20, 40, h, { size: 25, anchor: 'start' }) + label(20, 70, sub, { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  let hear = panel(0, 0, PW, PH, T.cream, rng) + head('Public hearing', 'formal, noticed, on the record');
+  for (let k = 0; k < 3; k++) hear += person(110 + k * 56, 176, 1, { coat: [P.civic, P.lavender, P.civic][k], seed: 80 + k });
+  const dais = rectD(70, 156, 208, 44);
+  hear += cut(dais, { rng, fill: P.kraft, filter: FLAT }) + L(ink(dais, { rng, size: 2.2 }));
+  const pod = polyD([[146, 300], [150, 256], [196, 256], [200, 300]]);
+  hear += person(173, 292, 1, { coat: P.tomato, seed: 84, flip: true });
+  hear += cut(pod, { rng, fill: P.kraftDeep }) + L(ink(pod, { rng, size: 2 }));
+  const rec = rectD(262, 236, 50, 62);
+  hear += cut(rec, { rng, fill: P.paper, filter: FLAT }) + L(ink(rec, { rng, size: 2 }));
+  for (let k = 0; k < 4; k++) hear += L(inkLine([[270, 250 + k * 12], [304, 250 + k * 12]], { rng, size: 1.2, overshoot: 0, opacity: 0.7 }));
+  hear += note(20, 344, 'testimony becomes the record', { size: 24, anchor: 'start', color: P.civicDeep });
+  let meet = panel(0, 0, PW, PH, T.cream, rng) + head('Public meeting', 'informal: share and gather ideas');
+  const board = (x, fill) => {
+    let s = L(inkLine([[x + 10, 260], [x + 24, 150]], { rng, size: 2.4, overshoot: 0 }) + inkLine([[x + 70, 260], [x + 56, 150]], { rng, size: 2.4, overshoot: 0 }));
+    const d = rectD(x, 110, 80, 90);
+    s += cut(d, { rng, fill: P.paper, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    for (const [nx, ny] of [[x + 10, 122], [x + 44, 140], [x + 18, 164]]) s += `<rect x="${nx}" y="${ny}" width="22" height="20" fill="${fill}" transform="rotate(${(nx % 7) - 3} ${nx + 11} ${ny + 10})"/>`;
+    return s;
+  };
+  meet += board(30, P.butter) + board(200, P.blush);
+  meet += person(140, 290, 1, { coat: P.leaf, seed: 90, prop: 'wave' }) + person(180, 294, 0.9, { coat: P.sky, seed: 91, flip: true }) + person(300, 292, 1, { coat: P.lavender, seed: 92, flip: true });
+  meet += note(20, 344, 'no legal record', { size: 24, anchor: 'start', color: P.civicDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, hear) + at(368, 14, meet),
+    narrow: { W: 366, H: 802, b: at(14, 14, hear) + at(14, 408, meet) },
+  };
+}
+
+// The renter gap from the lesson's example: 55% of households, 15% of
+// participants.
+function participationGap() {
+  const rng = makeRng(3105);
+  const W = 720;
+  const H = 380;
+  let b = '';
+  const x0 = 40;
+  const w = 640;
+  const bar = (y, heading, renters) => {
+    let s = title(x0, y - 16, heading, { anchor: 'start', size: 28 });
+    const rw = (renters / 100) * w;
+    const r = rectD(x0, y, rw, 60);
+    const o = rectD(x0 + rw, y, w - rw, 60);
+    s += cut(r, { rng, fill: P.tomato, filter: FLAT, jitter: 0.4 }) + cut(o, { rng, fill: T.sky, filter: FLAT, jitter: 0.4 });
+    s += L(ink(r, { rng, size: 2 }) + ink(o, { rng, size: 2 }));
+    s += label(x0 + rw / 2, y + 40, `${renters}%`, { color: '#FFFFFF', weight: 800 });
+    s += label(x0 + rw + (w - rw) / 2, y + 40, `${100 - renters}%`, { weight: 700 });
+    return s;
+  };
+  b += bar(70, 'Households', 55);
+  b += bar(210, 'First-round participants', 15);
+  b += `<rect x="${x0}" y="300" width="24" height="24" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.6"/>` + label(x0 + 34, 320, 'renters', { anchor: 'start', weight: 500 });
+  b += `<rect x="${x0 + 170}" y="300" width="24" height="24" fill="${T.sky}" stroke="${P.ink}" stroke-width="1.6"/>` + label(x0 + 204, 320, 'owners', { anchor: 'start', weight: 500 });
+  b += note(680, 364, 'the fix: go find the renters', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 3.2
+
+// Who a weeknight hearing at city hall hears from, and who it misses.
+function whoMissing() {
+  const rng = makeRng(3201);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const missing = [
+    ['works nights', P.tomato], ['no childcare', P.leaf], ['no car', P.lavender],
+    ['needs an interpreter', P.civic], ['needs captions', P.kraftDeep],
+  ];
+  b += title(20, 44, 'Who it misses', { anchor: 'start', size: 28 });
+  missing.forEach(([why, coat], i) => {
+    const y = 110 + i * 74;
+    b += person(44, y + 30, 0.8, { coat, seed: 100 + i });
+    const w = why.length * 15.4 + 32;
+    const d = roundRectD(76, y - 22, w, 44, 10);
+    b += cut(d, { rng, fill: P.paper, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + label(92, y + 10, why, { anchor: 'start', weight: 500 });
+  });
+  // City hall at night, with the people who do come.
+  b += title(700, 44, 'Who it hears', { anchor: 'end', size: 28 });
+  b += cityHall(470, 330, 220, 190, { seed: 40 });
+  for (let k = 0; k < 3; k++) b += person(512 + k * 56, 410, 1, { coat: P.sky, seed: 110 + k });
+  b += label(706, 460, '7 pm weeknight hearing', { anchor: 'end', color: MUTED, weight: 500 });
+  b += note(360, 506, 'take the meeting to them', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// Procedural, distributive, and structural equity.
+function threeEquities() {
+  const rng = makeRng(3202);
+  const PW = 228;
+  const PH = 370;
+  const head = (t, sub) => title(PW / 2, 40, t, { size: 23 }) + label(PW / 2, 68, sub, { size: 19, color: MUTED, weight: 500 });
+  let proc = panel(0, 0, PW, PH, T.cream, rng) + head('Procedural', 'who takes part');
+  const tbl = ellipseD(114, 200, 54, 34);
+  for (let k = 0; k < 6; k++) {
+    const a = (k / 6) * Math.PI * 2 + 0.3;
+    const x = 114 + Math.cos(a) * 82;
+    const y = 200 + Math.sin(a) * 58;
+    proc += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="14" fill="${[P.tomato, P.leaf, P.civic, P.butter, P.lavender, P.kraft][k]}" stroke="${P.ink}" stroke-width="1.8"/>`;
+  }
+  proc += cut(tbl, { rng, fill: P.kraft, filter: FLAT }) + L(ink(tbl, { rng, size: 2 }));
+  proc += note(PW / 2, 318, 'a fair, open process', { size: 24 });
+  let dist = panel(0, 0, PW, PH, T.cream, rng) + head('Distributive', 'benefits and burdens');
+  // One side gets the park; the other already hosts three burdens.
+  dist += `<rect x="18" y="150" width="90" height="110" rx="8" fill="${T.sage}"/>` + `<rect x="120" y="150" width="90" height="110" rx="8" fill="${T.blush}"/>`;
+  dist += `<circle cx="48" cy="200" r="18" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.6"/><circle cx="80" cy="222" r="15" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.6"/>`;
+  for (let k = 0; k < 3; k++) {
+    const x = 132 + k * 24;
+    dist += `<rect x="${x}" y="${190 - k * 10}" width="14" height="${70 + k * 10}" fill="${P.kraftDeep}" stroke="${P.ink}" stroke-width="1.6"/>`;
+    dist += `<circle cx="${x + 9}" cy="${176 - k * 10}" r="7" fill="#B9B3C4"/><circle cx="${x + 17}" cy="${164 - k * 10}" r="9" fill="#CFCAD8"/>`;
+  }
+  dist += label(63, 288, 'gains', { size: 19, weight: 700, color: P.leafDeep }) + label(165, 288, 'bears', { size: 19, weight: 700, color: P.tomatoDeep });
+  dist += note(PW / 2, 318, 'who gets what', { size: 24 });
+  let struc = panel(0, 0, PW, PH, T.cream, rng) + head('Structural', 'past harms, future effects');
+  struc += L(arrow(24, 200, 206, 200, rng, { size: 2.6, head: 12 }));
+  const red = roundRectD(26, 130, 64, 50, 6);
+  struc += cut(red, { rng, fill: P.paper, filter: FLAT }) + hatch(red, { rng, angle: 45, gap: 9, color: P.tomatoDeep, opacity: 0.5, size: 1.2 }) + L(ink(red, { rng, size: 3, color: P.tomatoDeep }));
+  const now = roundRectD(136, 130, 64, 50, 6);
+  struc += cut(now, { rng, fill: T.blush, filter: FLAT }) + L(ink(now, { rng, size: 3, color: P.tomatoDeep }));
+  struc += label(58, 234, '1930s', { size: 19, weight: 700 }) + label(168, 234, 'today', { size: 19, weight: 700 });
+  struc += label(PW / 2, 266, 'same lines, still felt', { size: 19, color: MUTED, weight: 500 });
+  struc += note(PW / 2, 318, 'correct, or entrench?', { size: 24 });
+  const panels = [proc, dist, struc];
+  return {
+    W: 720, H: 398, b: panels.map((q, i) => at(8 + i * 238, 14, q)).join(''),
+    narrow: { W: 252, H: 1152, b: panels.map((q, i) => at(12, 12 + i * 384, q)).join('') },
+  };
+}
+
+// WCAG's four principles.
+function wcagPour() {
+  const rng = makeRng(3203);
+  const CW = 166;
+  const CH = 250;
+  const cards = [
+    ['P', 'Perceivable', ['alt text,', 'captions'], P.sky],
+    ['O', 'Operable', ['works with', 'a keyboard'], P.sage],
+    ['U', 'Understandable', ['plain', 'language'], T.butter],
+    ['R', 'Robust', ['works with', 'screen readers'], T.lav],
+  ];
+  const card = ([letter, name, ex, fill]) => {
+    const d = roundRectD(0, 0, CW, CH, 14);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    s += title(CW / 2, 86, letter, { size: 64 });
+    s += label(CW / 2, 134, name, { size: name.length > 12 ? 19 : 22, weight: 800 });
+    ex.forEach((t, k) => { s += label(CW / 2, 180 + k * 28, t, { size: 19, weight: 500 }); });
+    return s;
+  };
+  const cs = cards.map(card);
+  return {
+    W: 720, H: 282, b: cs.map((c, i) => at(12 + i * 176, 16, c)).join(''),
+    narrow: { W: 372, H: 556, b: cs.map((c, i) => at(14 + (i % 2) * 180, 14 + Math.floor(i / 2) * 266, c)).join('') },
+  };
+}
+
+// ============================================================ Lesson 3.3
+
+// Positions above the water, interests below: the lesson's apartment example.
+function positionsInterests() {
+  const rng = makeRng(3301);
+  const W = 720;
+  const H = 500;
+  let b = '';
+  const wl = 170;
+  b += `<rect x="0" y="${wl}" width="${W}" height="${H - wl}" fill="${T.sky}"/>`;
+  b += L(ink(`M0 ${wl}q30 -8 60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0`, { rng, size: 2, color: P.civicDeep }));
+  const tip = polyD([[300, wl], [338, 104], [372, 92], [410, 130], [436, wl]]);
+  const body = polyD([[300, wl], [436, wl], [520, 250], [560, 360], [500, 460], [330, 476], [210, 420], [196, 300], [240, 220]]);
+  b += cut(body, { rng, fill: '#F1F7FC', filter: FLAT, shadow: false }) + L(ink(body, { rng, size: 2, color: P.civicDeep, opacity: 0.7 }));
+  b += cut(tip, { rng, fill: '#FFFFFF', filter: FLAT }) + L(ink(tip, { rng, size: 2.4 }));
+  b += title(24, 56, 'Position', { anchor: 'start', size: 30 });
+  b += label(24, 90, 'what they say', { anchor: 'start', color: MUTED, weight: 500 });
+  const bub = roundRectD(466, 36, 234, 86, 14);
+  b += cut(bub, { rng, fill: P.paper, filter: FLAT }) + L(ink(bub, { rng, size: 2 }));
+  b += label(583, 72, '“No apartments', {}) + label(583, 104, 'on this site!”', {});
+  b += L(inkLine([[470, 110], [420, 132]], { rng, size: 2, overshoot: 0 }));
+  b += title(24, 226, 'Interests', { anchor: 'start', size: 30 });
+  b += label(24, 260, 'why they say it', { anchor: 'start', color: MUTED, weight: 500 });
+  b += label(368, 310, 'traffic on', { weight: 700 }) + label(368, 342, 'my street', { weight: 700 });
+  b += label(368, 396, 'losing', { weight: 700 }) + label(368, 428, 'afternoon sun', { weight: 700 });
+  b += note(704, 420, 'negotiate', { anchor: 'end', color: P.civicDeep });
+  b += note(704, 456, 'down here', { anchor: 'end', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Facilitation, mediation, arbitration: who decides?
+function adrWhoDecides() {
+  const rng = makeRng(3302);
+  const PW = 228;
+  const PH = 360;
+  const head = (t) => title(PW / 2, 40, t, { size: 24 });
+  const crown = (x, y) => star(x, y, 13, { fill: P.butter, seed: Math.round(x) });
+  const neutral = (x, y) => person(x, y, 1, { coat: P.ink, hair: P.kraftDeep, seed: 140 });
+  let fac = panel(0, 0, PW, PH, T.cream, rng) + head('Facilitation');
+  const chart = rectD(84, 84, 60, 70);
+  fac += cut(chart, { rng, fill: P.paper, filter: FLAT }) + L(ink(chart, { rng, size: 1.8 }));
+  fac += neutral(114, 230);
+  fac += [40, 188].map((x, i) => person(x, 236, 0.9, { coat: [P.leaf, P.sky][i], seed: 141 + i, flip: i === 1 })).join('');
+  fac += label(PW / 2, 280, 'runs the process', { size: 19, weight: 500, color: MUTED });
+  fac += crown(40, 146) + crown(188, 146);
+  fac += note(PW / 2, 324, 'the group decides', { size: 24, color: P.leafDeep });
+  let med = panel(0, 0, PW, PH, T.cream, rng) + head('Mediation');
+  med += person(46, 236, 1, { coat: P.tomato, seed: 150 }) + person(182, 236, 1, { coat: P.leaf, seed: 151, flip: true }) + neutral(114, 236);
+  med += crown(46, 134) + crown(182, 134);
+  med += label(PW / 2, 280, 'helps them agree', { size: 19, weight: 500, color: MUTED });
+  med += note(PW / 2, 324, 'the parties decide', { size: 24, color: P.leafDeep });
+  let arb = panel(0, 0, PW, PH, T.cream, rng) + head('Arbitration');
+  const bench = rectD(74, 150, 80, 36);
+  arb += neutral(114, 170) + cut(bench, { rng, fill: P.kraft, filter: FLAT }) + L(ink(bench, { rng, size: 2 }));
+  arb += crown(114, 84);
+  arb += person(46, 250, 0.9, { coat: P.tomato, seed: 152 }) + person(182, 250, 0.9, { coat: P.leaf, seed: 153, flip: true });
+  arb += label(PW / 2, 280, 'hears both sides', { size: 19, weight: 500, color: MUTED });
+  arb += note(PW / 2, 324, 'the arbitrator decides', { size: 24, color: P.tomatoDeep });
+  const panels = [fac, med, arb];
+  const key = (x, y) => star(x, y - 8, 13, { fill: P.butter, seed: 7 }) + label(x + 22, y, 'makes the decision', { size: 20, anchor: 'start', weight: 500 });
+  return {
+    W: 720, H: 430, b: panels.map((q, i) => at(8 + i * 238, 14, q)).join('') + key(24, 410),
+    narrow: { W: 252, H: 1162, b: panels.map((q, i) => at(12, 12 + i * 372, q)).join('') + key(20, 1146) },
+  };
+}
+
+// Gradients of agreement: consensus when nobody blocks.
+function agreementGradients() {
+  const rng = makeRng(3303);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const zones = [['endorse', T.sage, P.leafDeep], ['live with it', T.butter, P.kraftDeep], ['block', T.blush, P.tomatoDeep]];
+  const x0 = 180;
+  const zw = 176;
+  zones.forEach(([name, fill, color], i) => {
+    const d = roundRectD(x0 + i * zw, 60, zw - 8, 300, 12);
+    b += cut(d, { rng, fill, shadow: false, filter: FLAT }) + L(ink(d, { rng, size: 1.6, opacity: 0.8 }));
+    b += label(x0 + i * zw + (zw - 8) / 2, 44, name, { color });
+  });
+  // Illustrative groups of twelve.
+  const rows = [['Group A', [5, 7, 0]], ['Group B', [6, 5, 1]]];
+  rows.forEach(([name, counts], r) => {
+    const y = 140 + r * 150;
+    b += title(20, y + 10, name, { anchor: 'start', size: 28 });
+    counts.forEach((n, i) => {
+      for (let k = 0; k < n; k++) {
+        const cx = x0 + i * zw + 26 + (k % 4) * 38;
+        const cy = y - 18 + Math.floor(k / 4) * 38;
+        b += `<circle cx="${cx}" cy="${cy}" r="13" fill="${[P.leaf, P.butter, P.tomato][i]}" stroke="${P.ink}" stroke-width="1.8"/>`;
+      }
+    });
+    b += label(20, y + 44, r === 0 ? 'consensus' : 'not yet', { anchor: 'start', weight: 800, color: r === 0 ? P.leafDeep : P.tomatoDeep });
+  });
+  b += note(360, 414, 'consensus isn’t unanimity: it’s no blocks (illustrative)', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// The nominal group technique as a four-stop line.
+function nominalGroup() {
+  const rng = makeRng(3304);
+  const W = 720;
+  const H = 300;
+  let b = '';
+  const y = 120;
+  const band = roundRectD(40, y - 11, 640, 22, 11);
+  b += cut(band, { rng, fill: P.civic }) + L(ink(band, { rng, size: 2.2 }));
+  const stops = [[100, ['Write', 'silently']], [273, ['Share', 'round-robin']], [447, ['Discuss', 'to clarify']], [620, ['Rank', 'individually']]];
+  stops.forEach(([x, lines], i) => {
+    const d = ellipseD(x, y, 26, 26);
+    b += cut(d, { rng, fill: i === 0 ? P.butter : P.paper, filter: FLAT }) + L(ink(d, { rng, size: 3 })) + title(x, y + 10, String(i + 1));
+    b += label(x, y + 66, lines[0], { weight: 800 }) + label(x, y + 98, lines[1], { weight: 500 });
+  });
+  b += note(360, 284, 'no one can dominate: ideas start on paper', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 3.4
+
+// Staff recommend; appointed bodies advise or decide; elected officials decide.
+function whoDoesWhat() {
+  const rng = makeRng(3401);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const box = (x, y, w, h, fill, lines, verb, vColor) => {
+    const d = roundRectD(x, y, w, h, 14);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    lines.forEach((t, k) => { s += title(x + w / 2, y + 40 + k * 32, t, { size: 28 }); });
+    s += label(x + w / 2, y + h - 22, verb, { color: vColor, weight: 800 });
+    return s;
+  };
+  b += box(14, 160, 196, 150, T.sky, ['Staff'], 'recommend', P.civicDeep);
+  b += box(262, 40, 208, 150, T.butter, ['Planning', 'commission'], 'recommends', P.kraftDeep);
+  b += box(262, 290, 208, 150, T.lav, ['Zoning', 'board'], 'decides', P.tomatoDeep);
+  b += box(520, 40, 186, 150, T.blush, ['Council', 'or board'], 'decides', P.tomatoDeep);
+  b += L(arrow(212, 210, 256, 130, rng, { size: 2.6, head: 11 }));
+  b += L(arrow(212, 262, 256, 340, rng, { size: 2.6, head: 11 }));
+  b += L(arrow(474, 115, 514, 115, rng, { size: 2.6, head: 11 }));
+  b += label(613, 224, 'plans, rezonings,', { weight: 500, color: MUTED });
+  b += label(613, 256, 'budgets', { weight: 500, color: MUTED });
+  b += label(488, 350, 'variances,', { anchor: 'start', weight: 500, color: MUTED });
+  b += label(488, 382, 'appeals', { anchor: 'start', weight: 500, color: MUTED });
+  b += note(16, 390, 'staff analyze;', { anchor: 'start', color: P.civicDeep });
+  b += note(16, 426, 'officials decide', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// The parts of a staff report, drawn to their usual share of the page.
+function staffReport() {
+  const rng = makeRng(3402);
+  const W = 720;
+  const H = 592;
+  let b = '';
+  const parts = [
+    ['Recommendation first', 48, P.tomato], ['Background', 48, T.kraft], ['Analysis vs. criteria', 150, T.sky],
+    ['Findings', 64, T.sage], ['Public comment', 56, T.lav], ['Alternatives', 44, T.butter], ['Attachments', 44, '#EFE7D6'],
+  ];
+  const page = roundRectD(40, 20, 300, 520, 8);
+  b += cut(page, { rng, fill: P.paper, filter: FLAT }) + L(ink(page, { rng, size: 2.4 }));
+  let y = 44;
+  parts.forEach(([name, h, fill], i) => {
+    const d = rectD(62, y, 256, h - 8);
+    b += cut(d, { rng, fill, shadow: false, jitter: 0.4, filter: FLAT });
+    for (let ly = y + 12; ly < y + h - 14; ly += 12) b += L(inkLine([[74, ly], [306 - ((ly * 7) % 40), ly]], { rng, size: 1, overshoot: 0, opacity: 0.45 }));
+    const cy = y + (h - 8) / 2;
+    b += L(inkLine([[322, cy], [366, cy]], { rng, size: 1.6, overshoot: 0, opacity: 0.8 }));
+    b += label(376, cy + 10, `${i + 1} ${name}`, { anchor: 'start', weight: i === 0 || i === 2 ? 800 : 500 });
+    y += h;
+  });
+  b += note(190, 150 + 10, 'the heart', { color: P.civicDeep });
+  b += note(376, 540, 'a busy reader may stop', { anchor: 'start', color: P.tomatoDeep });
+  b += note(376, 576, 'after item 1', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// A 1% chance each year, compounded over a 30-year mortgage.
+function floodOdds() {
+  const rng = makeRng(3403);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const x0 = 100;
+  const x1 = 660;
+  const yB = 340;
+  const yT = 60;
+  const X = (n) => x0 + (n / 30) * (x1 - x0);
+  const Y = (p) => yB - (p / 0.3) * (yB - yT);
+  const cum = (n) => 1 - 0.99 ** n;
+  for (const p of [0.1, 0.2, 0.3]) {
+    b += L(inkLine([[x0, Y(p)], [x1, Y(p)]], { rng, size: 1, opacity: 0.35, overshoot: 0 }));
+    b += label(x0 - 14, Y(p) + 10, `${Math.round(p * 100)}%`, { anchor: 'end' });
+  }
+  const pts = [];
+  for (let n = 0; n <= 30; n++) pts.push([X(n), Y(cum(n))]);
+  const area = [[X(0), yB], ...pts, [X(30), yB]];
+  b += `<path d="${polyD(area)}" fill="${T.sky}"/>`;
+  b += L(inkLine(pts, { rng, size: 3.2, color: P.civicDeep, overshoot: 0 }));
+  b += L(inkLine([[x0, yT - 10], [x0, yB], [x1 + 14, yB]], { rng, size: 2.4, overshoot: 0 }));
+  for (const n of [0, 10, 20, 30]) {
+    b += L(inkLine([[X(n), yB], [X(n), yB + 8]], { rng, size: 2, overshoot: 0 }));
+    b += label(X(n), yB + 40, String(n));
+  }
+  b += label((x0 + x1) / 2, yB + 84, 'years in the home', { color: MUTED, weight: 500 });
+  b += label(x0 - 50, 34, 'chance of at least one 100-year flood', { anchor: 'start', color: MUTED, weight: 500 });
+  const dot = (n) => `<circle cx="${X(n)}" cy="${Y(cum(n))}" r="8" fill="${P.civic}" stroke="${P.ink}" stroke-width="2"/>`;
+  b += dot(1) + dot(30);
+  b += label(X(1) + 4, Y(cum(1)) - 84, `1 year: ${Math.round(cum(1) * 100)}%`, { anchor: 'start' });
+  b += L(inkLine([[X(1) + 10, Y(cum(1)) - 74], [X(1) + 2, Y(cum(1)) - 14]], { rng, size: 1.6, overshoot: 0 }));
+  b += label(X(30) - 12, Y(cum(30)) - 22, `30 years: ${Math.round(cum(30) * 100)}%`, { anchor: 'end', weight: 800 });
+  b += note(X(15), Y(cum(15)) - 70, '1% a year adds up', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -2408,6 +2875,21 @@ export const FIGURES = [
   ['fig-housing-laws', housingLaws],
   ['fig-fair-housing-classes', fairHousingClasses],
   ['fig-one-project', oneProject],
+  ['fig-arnstein', arnsteinLadder],
+  ['fig-iap2', iap2Spectrum],
+  ['fig-engage-early', engageEarly],
+  ['fig-hearing-meeting', hearingVsMeeting],
+  ['fig-participation-gap', participationGap],
+  ['fig-who-missing', whoMissing],
+  ['fig-three-equities', threeEquities],
+  ['fig-wcag', wcagPour],
+  ['fig-positions-interests', positionsInterests],
+  ['fig-adr', adrWhoDecides],
+  ['fig-agreement', agreementGradients],
+  ['fig-nominal-group', nominalGroup],
+  ['fig-who-does-what', whoDoesWhat],
+  ['fig-staff-report', staffReport],
+  ['fig-flood-odds', floodOdds],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

@@ -134,7 +134,7 @@ These changes followed the first build (described below). They supersede anythin
 | `web/src/content/aicp/lessons/implementation-math.md:57` | Gross versus net density | about 3 min |
 | `web/src/content/aicp/lessons/land-use-law-foundations.md:41` | Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min |
 | `web/src/content/aicp/lessons/planning-history.md:112` | American planning history on one timeline | about 4 min |
-| `web/src/content/aicp/lessons/public-engagement-design.md:47` | Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min |
+| `web/src/content/aicp/lessons/public-engagement-design.md:57` | Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min |
 | `web/src/content/aicp/lessons/solving-ethics-questions.md:73` | Working an ethics scenario with the five-step method | about 5 min |
 | `web/src/content/aicp/lessons/statistics-for-planners.md:87` | Present value and benefit-cost ratios | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:50` | Penn Central's three factors, applied | about 3 min |
@@ -228,15 +228,15 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/comprehensive-plans.md:52` | confirm the names of the principles and processes in APA's Comprehensive Plan Standards for Sustaining Places, and whether APA has updated them. |
 | `web/src/content/aicp/lessons/comprehensive-plans.md:64` | confirm which states to cite as consistency states (Oregon, Florida, and California are commonly cited) and how each applies the requirement. |
 | `web/src/content/aicp/lessons/conflicts-of-interest-and-rules-of-conduct.md:1` | check each paraphrased rule theme below against the current Rules of Conduct text. |
-| `web/src/content/aicp/lessons/consensus-and-negotiation.md:87` | this five-part typology is usually attributed to Christopher Moore's "circle of conflict"; confirm the attribution if named. |
+| `web/src/content/aicp/lessons/consensus-and-negotiation.md:103` | this five-part typology is usually attributed to Christopher Moore's "circle of conflict"; confirm the attribution if named. |
 | `web/src/content/aicp/lessons/economic-development.md:60` | this is the Main Street America "Four Point Approach"; confirm current terminology if named. |
 | `web/src/content/aicp/lessons/economic-development.md:93` | Opportunity Zone rules were modified by 2025 federal tax legislation; confirm current program terms before describing details. |
 | `web/src/content/aicp/lessons/economic-development.md:95` | confirm the current status of the New Markets Tax Credit and EDA programs if expanded. |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:19` | federal NEPA implementing procedures changed substantially in 2025 (CEQ regulations rescinded, agency procedures revised); confirm the current process terms before publishing detailed steps. |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:60` | confirm the five-year update cycle and which FEMA grant programs currently require an approved plan. |
-| `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:43` | confirm the current status of federal LEP guidance (Executive Order 13166 and agency guidance), which may have changed in 2025. |
-| `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:44` | federal environmental justice executive orders have been revoked or amended since 2025; confirm the current status of EO 12898 before relying on it. |
-| `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:61` | confirm the 2024 DOJ Title II web accessibility rule's standard (WCAG 2.1 AA) and its current compliance dates. |
+| `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:51` | confirm the current status of federal LEP guidance (Executive Order 13166 and agency guidance), which may have changed in 2025. |
+| `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:52` | federal environmental justice executive orders have been revoked or amended since 2025; confirm the current status of EO 12898 before relying on it. |
+| `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:69` | confirm the 2024 DOJ Title II web accessibility rule's standard (WCAG 2.1 AA) and its current compliance dates. |
 | `web/src/content/aicp/lessons/federal-policy-and-planning.md:24` | confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. |
 | `web/src/content/aicp/lessons/federal-policy-and-planning.md:35` | confirm the 1962 Act as the origin of the 3C planning requirement. |
 | `web/src/content/aicp/lessons/goals-objectives-policies.md:67` | "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. |

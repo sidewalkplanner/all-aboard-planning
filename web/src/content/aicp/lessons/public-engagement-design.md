@@ -32,6 +32,10 @@ Sherry Arnstein's "A Ladder of Citizen Participation" (1969) ranks participation
 
 The key exam point is that **informing and consultation are forms of tokenism**. Telling residents about a decision already made, or collecting comments that carry no weight, gives the *appearance* of participation without shifting power. **Citizen control** is the top rung.
 
+:::figure fig-arnstein | A ladder with eight rungs, bottom to top: 1 manipulation and 2 therapy, grouped as nonparticipation; 3 informing, 4 consultation, and 5 placation, grouped as tokenism; and 6 partnership, 7 delegated power, and 8 citizen control, grouped as citizen power. A note beside tokenism says: a voice, no power.
+The middle band is where most of the trick questions sit: informing and consultation feel participatory but leave the decision where it was.
+:::
+
 :::checkpoint cp:engage-arnstein-power
 
 ### The IAP2 spectrum
@@ -45,6 +49,10 @@ The International Association for Public Participation's **Spectrum of Public Pa
 5. **Empower**: the public makes the final decision, and the agency carries it out.
 
 No level is always "right." A water main repair may need only *inform*; a neighborhood plan may call for *collaborate*. The ethical failure is **promising one level and delivering a lower one**.
+
+:::figure fig-iap2 | Five bars, each longer than the last, along an arrow of more public influence. Inform: the public comes to understand the issue. Consult: the public gives feedback. Involve: the public shapes the options. Collaborate: the agency and public choose together. Empower: the public decides.
+Pick the level before the technique, and then keep the promise that level makes.
+:::
 
 :::video Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min
 Places common engagement techniques on both frameworks and shows how to spot tokenism in a process that looks participatory.
@@ -63,6 +71,10 @@ A good strategy, often written as a **communications and engagement plan**, answ
 5. **What messages, through which channels and messengers?** Define audiences, key messages, methods, and timing.
 6. **How will we report back?** "Closing the loop," showing people how their input was used, is what builds trust.
 7. **How will we evaluate it?**
+
+:::figure fig-engage-early | An illustrative line chart of the room left to change a plan at four stages: nearly all of it at problem definition, less at options, much less at the draft, and almost none at the hearing. A note at the start says engage here; a note at the hearing says too late to shape it.
+Early engagement is when input can still change the plan, so that's where the real engagement effort belongs.
+:::
 
 :::checkpoint cp:engage-close-loop
 
@@ -90,6 +102,10 @@ A good strategy, often written as a **communications and engagement plan**, answ
 
 Hearings are a poor tool for shaping a plan: they come late, favor confident speakers, and invite position-taking. Use them for what they're for, and do the real engagement earlier.
 
+:::figure fig-hearing-meeting | Two scenes. Public hearing, formal, noticed, and on the record: officials sit at a dais, a speaker testifies at a podium, and a transcript records it; testimony becomes the record. Public meeting, informal, to share and gather ideas: people walk between display boards covered in sticky notes; there's no legal record.
+Hold the meetings early to shape the plan, and the hearing late to decide it on the record.
+:::
+
 ### Evaluating outreach
 
 Ask both *process* and *outcome* questions:
@@ -99,6 +115,10 @@ Ask both *process* and *outcome* questions:
 - **Did participants understand the choices and feel heard?** Short exit surveys help.
 
 The most reliable single indicator of effective outreach to an underrepresented community is **participation that reflects that community**.
+
+:::figure fig-participation-gap | Two bars from the housing plan example later in this lesson. Households: 55% renters and 45% owners. First-round participants: 15% renters and 85% owners. A note says the fix is to go find the renters.
+The gap between the two bars is the measure: when a group's share of participants falls far below its share of the community, reach out to that group directly.
+:::
 
 :::checkpoint cp:engage-renters
 

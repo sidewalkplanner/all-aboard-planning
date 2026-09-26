@@ -271,6 +271,82 @@
     "fig-one-project": {
       "w": 720,
       "h": 520
+    },
+    "fig-arnstein": {
+      "w": 720,
+      "h": 600
+    },
+    "fig-iap2": {
+      "w": 720,
+      "h": 520
+    },
+    "fig-engage-early": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-hearing-meeting": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
+    },
+    "fig-participation-gap": {
+      "w": 720,
+      "h": 380
+    },
+    "fig-who-missing": {
+      "w": 720,
+      "h": 520
+    },
+    "fig-three-equities": {
+      "w": 720,
+      "h": 398,
+      "narrow": {
+        "w": 252,
+        "h": 1152
+      }
+    },
+    "fig-wcag": {
+      "w": 720,
+      "h": 282,
+      "narrow": {
+        "w": 372,
+        "h": 556
+      }
+    },
+    "fig-positions-interests": {
+      "w": 720,
+      "h": 500
+    },
+    "fig-adr": {
+      "w": 720,
+      "h": 430,
+      "narrow": {
+        "w": 252,
+        "h": 1162
+      }
+    },
+    "fig-agreement": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-nominal-group": {
+      "w": 720,
+      "h": 300
+    },
+    "fig-who-does-what": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-staff-report": {
+      "w": 720,
+      "h": 592
+    },
+    "fig-flood-odds": {
+      "w": 720,
+      "h": 440
     }
   },
   "hero": {
