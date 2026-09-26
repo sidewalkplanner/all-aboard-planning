@@ -3,8 +3,9 @@
 - Describe the facilitator's role and the practices that keep a contentious meeting fair and productive.
 - Use active (reflective) listening to confirm understanding and surface underlying needs.
 - Explain when consensus building is appropriate and what consensus does and doesn't mean.
-- Compare the Delphi technique, the nominal group technique, and brainstorming.
-- Apply interest-based negotiation principles, including BATNA, and distinguish facilitation, mediation, and arbitration.
+- Compare the Delphi technique, the nominal group technique, and brainstorming, and recognize group dynamics such as groupthink and the stages of team development.
+- Apply interest-based negotiation principles, including BATNA and the zone of possible agreement, and distinguish facilitation, mediation, and arbitration.
+- Identify the five conflict-handling styles and respond constructively to neighborhood opposition.
 
 ## Key concepts
 
@@ -63,6 +64,14 @@ The silent first step is the point: every idea is on the table before the most c
 
 :::checkpoint cp:consensus-ngt
 
+### Group dynamics
+
+Groups that meet over months, such as advisory committees and task forces, change as they go. Bruce Tuckman's model (1965) describes the stages: **forming** (polite, uncertain, looking to the leader), **storming** (conflict over goals and roles), **norming** (agreed ways of working), and **performing** (productive work). A fifth stage, **adjourning**, was added later for groups that disband. Storming is normal, not a sign the committee has failed; ground rules and a clear charge help a group through it.
+
+The opposite danger is too little conflict. **Groupthink**, a term popularized by psychologist Irving Janis (1972), is the tendency of a cohesive group to seek agreement so strongly that members stop raising doubts or weighing alternatives. Remedies include having the leader hold back their own view at first, assigning someone to argue the other side, inviting outside experts, and collecting views anonymously (the logic behind the Delphi and nominal group techniques).
+
+:::checkpoint cp:consensus-groupthink
+
 ### Negotiation: positions and interests
 
 In **positional bargaining**, each side stakes out a position and concedes grudgingly. It tends to produce weak agreements and damaged relationships.
@@ -79,6 +88,8 @@ A position allows only a yes or a no; the interests underneath can often be met 
 :::
 
 A party's **BATNA** (best alternative to a negotiated agreement) is what it will do if talks fail. Knowing your BATNA, and theirs, tells you when to accept a deal and when to walk away.
+
+Each side's BATNA sets its **reservation point**, the least favorable deal it would still accept. Where the two sides' reservation points overlap is the **zone of possible agreement (ZOPA)**. If a developer would accept no fewer than 180 units and the neighborhood association would support up to 200, any number from 180 to 200 is in the ZOPA. If the neighbors' limit were 150, there would be no ZOPA until someone's alternatives or interests changed, for example through a design that eases the traffic concern.
 
 :::checkpoint cp:consensus-interest
 
@@ -102,6 +113,30 @@ Follow the star: the more authority moves to the neutral, the less control the p
 
 Diagnosing what the conflict is about helps choose the right response. Practitioners often distinguish conflicts over **data** (disagreement about facts, addressed through joint fact-finding), **interests** (competing needs), **values** (different beliefs about what matters), **relationships** (mistrust, history), and **structure** (unequal power, legal constraints). <!-- VERIFY: this five-part typology is usually attributed to Christopher Moore's "circle of conflict"; confirm the attribution if named. -->
 
+People also differ in how they handle conflict. The **Thomas-Kilmann** model (1974) places five styles on two scales, how assertively you pursue your own concerns and how cooperatively you address the other side's:
+
+| Style | Assertive? | Cooperative? | Fits when |
+|---|---|---|---|
+| **Competing** | High | Low | A quick, firm decision is needed, or a legal or ethical line can't be crossed |
+| **Accommodating** | Low | High | The issue matters far more to the other side, or goodwill matters more than winning |
+| **Avoiding** | Low | Low | The issue is trivial, or tempers need time to cool |
+| **Compromising** | Medium | Medium | Both sides can split the difference and time is short |
+| **Collaborating** | High | High | The issue is important and both sides' interests can be met with a creative solution |
+
+Collaborating is the interest-based approach in negotiation terms, and it takes the most time. No style is always right; the skill is choosing on purpose.
+
+:::checkpoint cp:consensus-styles
+
+### Responding to opposition
+
+Opposition to new housing, shelters, transit lines, or industrial uses is often called **NIMBY** ("not in my backyard"). A related term is **LULU**, a locally unwanted land use. The label is less useful than the work of sorting the concerns:
+
+- **Legitimate impacts** such as traffic at one intersection, construction noise, drainage, or shadows can often be addressed with design changes or conditions. Take them seriously and respond specifically.
+- **Fears about who will live there** are a different matter. Decisions can't rest on the race, disability, familial status, or other protected characteristics of future residents, and opposition based on them can expose a community to fair housing liability. See [Foundations of land use law](/aicp/lessons/land-use-law-foundations).
+- **Volume isn't a criterion.** For a quasi-judicial decision, the question is whether the proposal meets the standards, not how many people oppose it.
+
+Engage early, before a proposal hardens into a fight; share facts about similar projects already operating; and make sure the voices of people who would benefit, such as future residents or riders, reach the decision too.
+
 ## Key terms
 
 - **Facilitator**: A neutral who manages a group's process without deciding the outcome.
@@ -115,6 +150,11 @@ Diagnosing what the conflict is about helps choose the right response. Practitio
 - **BATNA**: Best alternative to a negotiated agreement.
 - **Mediation**: Assisted negotiation in which a neutral helps parties reach their own agreement.
 - **Arbitration**: A process in which a neutral hears the dispute and makes a decision.
+- **Groupthink**: A cohesive group's drive for agreement overriding critical thinking.
+- **Tuckman's stages**: Forming, storming, norming, performing, and adjourning.
+- **Zone of possible agreement (ZOPA)**: The range where both parties' acceptable outcomes overlap.
+- **Thomas-Kilmann conflict modes**: Competing, accommodating, avoiding, compromising, and collaborating.
+- **NIMBY**: "Not in my backyard," opposition to a use near one's home even if it's accepted elsewhere.
 - **Joint fact-finding**: A process in which parties jointly gather and review the information a decision will rest on.
 
 ## Real-world examples
@@ -127,12 +167,12 @@ Diagnosing what the conflict is about helps choose the right response. Practitio
 
 ## Exam tips
 
-- The facilitator manages the **process**, not the outcome, and stays neutral.
+- The facilitator manages the **process**, not the outcome, and stays neutral. A cohesive group that stops raising doubts shows **groupthink**; storming is a normal stage.
 - Interest-based negotiation: separate people from the problem, **interests not positions**, options for mutual gain, objective criteria.
-- A mediator **helps** the parties agree; an arbitrator **decides**.
+- A mediator **helps** the parties agree; an arbitrator **decides**. Collaborating is high on both assertiveness and cooperativeness; avoiding is low on both.
 - Delphi is **anonymous expert rounds with feedback**; nominal group technique is **silent idea generation, then ranking**.
 - Consensus building fits **interdependent** stakeholders. Consensus means everyone can live with it, not unanimity.
 
 ## Summary
 
-Facilitators manage a fair process, not the outcome, using clear agendas, ground rules, structured formats, and a visible record. Active listening reflects back what people say and reveals the interests beneath their positions. Consensus building suits interdependent stakeholders and aims for an agreement everyone can live with, not unanimity. The nominal group technique uses silent generation and individual ranking; the Delphi technique uses anonymous expert rounds with feedback. Interest-based negotiation separates people from the problem, focuses on interests, invents options, uses objective criteria, and relies on knowing your BATNA. A mediator helps parties agree; an arbitrator decides.
+Facilitators manage a fair process, not the outcome, using clear agendas, ground rules, structured formats, and a visible record. Active listening reflects back what people say and reveals the interests beneath their positions. Consensus building suits interdependent stakeholders and aims for an agreement everyone can live with, not unanimity. The nominal group technique uses silent generation and individual ranking; the Delphi technique uses anonymous expert rounds with feedback. Interest-based negotiation separates people from the problem, focuses on interests, invents options, uses objective criteria, and relies on knowing your BATNA, which sets the edges of the zone of possible agreement. Groups move through forming, storming, norming, and performing, and cohesive ones must guard against groupthink. Choose among the five conflict styles on purpose, and answer opposition by sorting real impacts from fears that can't lawfully drive a decision. A mediator helps parties agree; an arbitrator decides.

@@ -187,4 +187,70 @@ export default {
     correct: 0,
     explanation: 'Planners can acknowledge that the choice belongs to elected officials while keeping the analysis accurate, documenting it, and presenting options honestly.',
   },
+  'cp:engage-deliberative': {
+    text: 'A city wants to know what residents would conclude about a complex water-rate restructuring after learning the facts and discussing the trade-offs. Which method fits best?',
+    options: [
+      'An open online comment form',
+      'A formal public hearing before the council',
+      'Deliberative polling of a random sample',
+      'A visual preference survey',
+    ],
+    correct: 2,
+    explanation: 'Deliberative polling briefs a random sample, lets them discuss and question experts, and polls again, showing what an informed public thinks. An open form and a hearing hear from self-selected speakers.',
+  },
+  'cp:equity-analysis': {
+    text: 'A transit redesign shortens the average commute citywide. What should an equity analysis do next?',
+    options: [
+      'Break the results down by neighborhood and group to see who gains and who loses',
+      'Report the citywide average as the finding',
+      'Wait until after adoption to check for effects',
+      'Count the comments received for and against',
+    ],
+    correct: 0,
+    explanation: 'Disaggregated data reveal gaps the average hides, such as a neighborhood that lost a route. The analysis belongs before the decision, while it can still change the proposal.',
+  },
+  'cp:consensus-groupthink': {
+    text: 'A close-knit advisory committee agrees quickly on every item, and members later admit they had doubts they didn’t raise. Which step would best counter this?',
+    options: [
+      'Have the chair state a preferred option at the start of each discussion',
+      'Shorten meetings so the group reaches decisions faster',
+      'Limit discussion to members who have served longest',
+      'Assign a member to argue the other side and collect views anonymously first',
+    ],
+    correct: 3,
+    explanation: 'This is groupthink. A devil’s advocate and anonymous input bring doubts into the open; a leader who states a preference first tends to make it worse.',
+  },
+  'cp:consensus-styles': {
+    text: 'In the Thomas-Kilmann model, which conflict-handling style is high in both assertiveness and cooperativeness?',
+    options: [
+      'Compromising',
+      'Collaborating',
+      'Accommodating',
+      'Competing',
+    ],
+    correct: 1,
+    explanation: 'Collaborating pursues both sides’ concerns fully. Compromising sits in the middle on both scales, accommodating is cooperative but unassertive, and competing is assertive but uncooperative.',
+  },
+  'cp:decide-visuals': {
+    text: 'Which practice keeps a rendering of a proposed building honest?',
+    options: [
+      'Showing it from a high aerial angle so it looks smaller',
+      'Leaving out nearby buildings to simplify the image',
+      'Showing it at true scale from a realistic eye-level viewpoint',
+      'Adding mature trees that the landscape plan doesn’t include',
+    ],
+    correct: 2,
+    explanation: 'An honest rendering shows the building at true scale as a person on the street would see it. The other choices make the proposal look different from what would be built.',
+  },
+  'cp:decide-motion': {
+    text: 'Four members of a seven-member planning commission are present, and the commission’s rules use the default quorum. What can the commission do?',
+    options: [
+      'Conduct business, because four is a majority of seven',
+      'Only hear public comment, because a quorum requires every member',
+      'Only approve the consent agenda, because other items need five members',
+      'Nothing, because a quorum requires two-thirds of the members',
+    ],
+    correct: 0,
+    explanation: 'A quorum is usually a majority of the membership unless the body’s rules say otherwise. Four of seven is a majority, so the commission can act.',
+  },
 };

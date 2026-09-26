@@ -138,6 +138,7 @@ More: [Federal laws and programs that shaped planning](/aicp/lessons/federal-pol
 | Amitai Etzioni | Mixed scanning |
 | Paul Davidoff | Advocacy planning |
 | Sherry Arnstein | The ladder of citizen participation |
+| James Fishkin | Deliberative polling |
 | Norman Krumholz | Equity planning in Cleveland |
 | John Friedmann | Transactive planning; later radical planning |
 | Leonie Sandercock | Insurgent, multicultural planning (*Towards Cosmopolis*) |
@@ -145,6 +146,10 @@ More: [Federal laws and programs that shaped planning](/aicp/lessons/federal-pol
 | Susan Fainstein | The just city: equity, diversity, democracy |
 | Horst Rittel and Melvin Webber | Wicked problems |
 | Roger Fisher and William Ury | *Getting to Yes*, interest-based negotiation, BATNA |
+| Bruce Tuckman | Forming, storming, norming, performing (adjourning added later) |
+| Irving Janis | Groupthink |
+| Kenneth Thomas and Ralph Kilmann | Five conflict styles: competing, accommodating, avoiding, compromising, collaborating |
+| Henry Martyn Robert | *Robert's Rules of Order* (1876) |
 
 More: [Planning history](/aicp/lessons/planning-history), [Planning theory](/aicp/lessons/planning-theory).
 
@@ -233,6 +238,9 @@ Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Popu
 | Percent vs. percentage points | 10% to 12% is a 20 percent rise vs. a 2-point rise |
 | Large-scale vs. small-scale map | Small area in detail (1:1,200) vs. large area, little detail (1:1,000,000) |
 | Mediation vs. arbitration | A neutral helps the parties agree vs. a neutral decides |
+| BATNA vs. ZOPA | Your best option if talks fail vs. the range where both sides' acceptable deals overlap |
+| Random-sample survey vs. deliberative polling | What people think now vs. what they think after learning and discussing |
+| Quorum vs. majority vote | Members needed present to act vs. votes needed to pass a motion |
 | Public hearing vs. public meeting | Formal, noticed, creates the record vs. informal, for ideas and information |
 | LOS vs. VMT | Driver delay vs. the amount of driving |
 | Climate mitigation vs. adaptation | Cutting emissions vs. preparing for expected impacts |

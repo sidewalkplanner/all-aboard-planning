@@ -2,8 +2,9 @@
 
 - Distinguish the roles of professional staff, appointed boards, and elected officials in planning decisions.
 - Write a staff report that leads with the recommendation and analyzes the request against adopted criteria.
-- Build an evidence-based argument and communicate technical findings and risk to non-experts.
+- Build an evidence-based argument and communicate technical findings and risk to non-experts, in writing, in presentations, and with honest visuals.
 - Explain hearing requirements for quasi-judicial decisions, including notice, the record, and ex parte contacts.
+- Describe how a public body conducts business: agendas, quorums, motions, and consent agendas.
 - Handle media inquiries, misinformation, and political pressure professionally.
 
 ## Key concepts
@@ -67,6 +68,26 @@ Each point on the curve is 1 − 0.99 raised to the number of years, the same ar
 
 :::checkpoint cp:decide-flood-odds
 
+### Presentations and visuals
+
+A presentation to a commission or council usually gets a few minutes. Build it around the decision:
+
+- **Open with the ask**: what the body is being asked to decide tonight, and staff's recommendation.
+- **Limit the message** to the three or so points that matter most, with detail held back for questions.
+- **Show, don't list**: a map, a before-and-after photo, or a street section beats a slide of bullets. Keep one idea per slide, large type, and labels a viewer can read from the back of the room.
+- **Rehearse to the time limit** and anticipate the hard questions.
+
+Visuals persuade, which is why they must be **honest**:
+
+- **Renderings and photo simulations** should show a building at true scale from a realistic eye-level viewpoint, not from a flattering angle, in perpetual sunshine, with the parking lot cropped out.
+- **Charts** shouldn't exaggerate: bar charts start at zero, and scales stay consistent between charts being compared.
+- **Maps** can mislead through the choice of classes, colors, and boundaries. See [Spatial analysis and GIS](/aicp/lessons/spatial-analysis-and-gis).
+- **3D models and visualization** help people understand height, massing, and views, especially in design review and form-based coding.
+
+An honest visual that's easy to read also makes the planner more credible when the hard questions come.
+
+:::checkpoint cp:decide-visuals
+
 ### Hearings, notice, and the record
 
 For **quasi-judicial** decisions (applying rules to a specific property, like a variance or conditional use permit), due process rules are stricter:
@@ -79,6 +100,20 @@ For **quasi-judicial** decisions (applying rules to a specific property, like a 
 A **public hearing** differs from a workshop because it **creates the record** that supports a formal decision.
 
 If a commissioner privately asks staff "how should I vote?" on a quasi-judicial matter, staff should explain the applicable standards and point to the record, not advocate outside the hearing.
+
+### How a public body conducts business
+
+Commissions and councils act through formal procedure, most often based on **Robert's Rules of Order**, first published by Henry Martyn Robert in 1876, as adapted by local rules. Planners who staff these bodies should know the basics:
+
+- **Agenda**: the published list of business. Open-meetings laws generally require notice of it in advance, and a body shouldn't act on items that weren't noticed. See [Managing a planning agency](/aicp/lessons/managing-a-planning-agency) for open-meetings and public-records laws.
+- **Quorum**: the minimum number of members who must be present to do business, usually a majority of the membership unless the body's rules set another number. Without a quorum, the body can't act.
+- **Motions**: a member makes a motion, another member seconds it, the body discusses it, and then votes. Amendments to a motion are voted on before the main motion. A motion to end debate and vote immediately ("call the question") needs a two-thirds vote under Robert's Rules.
+- **Consent agenda**: routine, noncontroversial items (minutes, minor approvals) grouped and approved in a single vote. Any member can ask to pull an item for separate discussion.
+- **Minutes**: the official record of actions taken. For quasi-judicial matters, the record also includes testimony and exhibits.
+
+Staff advise on procedure when asked, but the chair runs the meeting, and a city attorney or parliamentarian settles disputed rules.
+
+:::checkpoint cp:decide-motion
 
 ### Fairness to applicants
 
@@ -110,6 +145,10 @@ Planners work in political settings. When an elected official or supervisor pres
 - **Board of zoning adjustment (appeals)**: The body that typically decides variances and administrative appeals.
 - **Evidence-based argument**: A recommendation grounded in data, analysis, and documented input.
 - **Plain language**: Writing the audience can understand the first time.
+- **Quorum**: The minimum number of members who must be present for a body to act.
+- **Consent agenda**: Routine items approved together in a single vote.
+- **Robert's Rules of Order**: The most widely used guide to parliamentary procedure.
+- **Photo simulation**: A photo of an existing place altered to show a proposed change at true scale.
 
 ## Real-world examples
 
@@ -121,13 +160,13 @@ Planners work in political settings. When an elected official or supervisor pres
 
 ## Exam tips
 
-- Put the staff report's **recommendation and key findings first**.
+- Put the staff report's **recommendation and key findings first**, and open a presentation with the decision being asked for.
 - If an application meets every code standard, the recommendation follows the code even when public comment is opposed, and the report still conveys the concerns accurately.
 - Ex parte contacts in quasi-judicial matters: **avoid**, and if one happens, **disclose on the record**.
-- Defective notice for a quasi-judicial hearing risks **invalidating** the decision.
+- Defective notice for a quasi-judicial hearing risks **invalidating** the decision. Without a **quorum**, a body can't act, and any member can pull an item from the **consent agenda**.
 - With media and misinformation: accurate, confirmed, on-the-record information, and correct the record through official channels.
 - When a commissioner privately asks how to vote, explain the **standards and the record**, not your preference.
 
 ## Summary
 
-Staff analyze and recommend; appointed and elected bodies decide, and staff implement lawful decisions professionally. Put the recommendation first in staff reports, analyze requests against adopted criteria, summarize public comment by theme, and base recommendations on the plan and code even when they're unpopular. Build evidence-based arguments, communicate findings plainly and visually, and express risk in relatable terms. Quasi-judicial decisions need proper notice, a record, findings, and disclosure of ex parte contacts. With the media, stay accurate and on the record, and correct misinformation through official channels.
+Staff analyze and recommend; appointed and elected bodies decide, and staff implement lawful decisions professionally. Put the recommendation first in staff reports, analyze requests against adopted criteria, summarize public comment by theme, and base recommendations on the plan and code even when they're unpopular. Build evidence-based arguments, communicate findings plainly and visually, express risk in relatable terms, and keep renderings, charts, and maps honest. Public bodies act through agendas, quorums, motions, and consent agendas, usually under Robert's Rules. Quasi-judicial decisions need proper notice, a record, findings, and disclosure of ex parte contacts. With the media, stay accurate and on the record, and correct misinformation through official channels.

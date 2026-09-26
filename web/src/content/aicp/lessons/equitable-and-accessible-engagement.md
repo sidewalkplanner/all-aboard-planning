@@ -2,6 +2,7 @@
 
 - Identify the barriers that keep people out of planning processes and the practical steps that remove them.
 - Distinguish procedural, distributive, and structural equity and apply them to a planning decision.
+- Use an equity analysis, with disaggregated data, to test who a proposal helps and who it burdens.
 - Explain the federal civil rights foundations for language access and nondiscrimination in engagement.
 - Practice culturally appropriate communication, including the idea of cultural humility.
 - Apply accessibility standards (ADA, Section 508, WCAG) to meetings, documents, and digital engagement.
@@ -45,6 +46,22 @@ A single decision can pass one test and fail another: a fair process can still s
 :::
 
 :::checkpoint cp:equity-structural
+
+### Equity tools in practice
+
+Many cities, counties, and regional agencies now run proposals through an **equity analysis** (often called a racial equity toolkit or equity impact assessment) before a decision. The questions are similar everywhere:
+
+1. **What's the proposal meant to achieve**, and for whom?
+2. **What do the data show?** Break results down by race and ethnicity, income, tenure, disability, language, and neighborhood. **Disaggregated data** reveal gaps that a citywide average hides: a transit improvement that shortens the average commute may lengthen it for the neighborhood that lost a route.
+3. **Who benefits and who is burdened**, including unintended effects such as displacement?
+4. **Who was engaged**, and what did the most affected residents say?
+5. **How will harms be avoided or reduced**, and how will results be tracked over time?
+
+The value is in asking early, while the answers can still change the proposal. An equity analysis written after the decision to justify it is paperwork, not analysis.
+
+Two related habits help. **Co-design** gives affected residents a hand in shaping options, not just reacting to them, a practice sometimes summed up as "nothing about us without us." And equity **indicators** (for example, rent burden, access to parks, or asthma rates by neighborhood) let an agency see whether gaps are closing.
+
+:::checkpoint cp:equity-analysis
 
 ### Civil rights foundations
 
@@ -92,6 +109,8 @@ POUR is the easy way to remember WCAG's four principles, and each maps to a prac
 - **Procedural equity**: Fair, inclusive, transparent decision-making processes.
 - **Distributive equity**: Fair distribution of benefits and burdens.
 - **Structural equity**: Addressing historical and systemic causes of inequity.
+- **Equity analysis**: A structured review of who a proposal benefits and burdens, done before the decision.
+- **Disaggregated data**: Data broken down by group or place instead of reported as one overall average.
 - **Limited English proficiency (LEP)**: Limited ability to read, write, speak, or understand English.
 - **Environmental justice**: Fair treatment and meaningful involvement of all people in environmental decisions, and avoiding disproportionate burdens.
 - **Cultural humility**: An ongoing practice of self-reflection and learning that recognizes the limits of one's own perspective.
@@ -112,9 +131,9 @@ POUR is the easy way to remember WCAG's four principles, and each maps to a prac
 - For hard-to-reach communities, the strongest answer usually involves **trusted community partners**, familiar places, varied times, and language access, together.
 - The *least* effective option is typically a single weeknight hearing at city hall with an English-only newspaper notice.
 - Accessible digital materials: alt text, contrast, keyboard access, captions (**WCAG** and **Section 508**).
-- A neighborhood already carrying many burdens raises a **distributive** equity question; who was at the table is **procedural** equity.
+- A neighborhood already carrying many burdens raises a **distributive** equity question; who was at the table is **procedural** equity. **Disaggregated data** show the gaps an average hides.
 - Cultural humility means recognizing the limits of your own perspective, not mastering a checklist.
 
 ## Summary
 
-Traditional engagement hears from a narrow slice of the community. Lower the barriers of time, language, childcare, transportation, trust, disability, and the digital divide, and partner with (and pay) trusted community organizations. Think about procedural, distributive, and structural equity: who decides, who benefits, who bears the burdens, and what history is being corrected or repeated. Title VI and the ADA set legal floors for language access and accessibility. Communicate in culturally appropriate ways with cultural humility, and make every document, meeting, and website accessible under Section 508 and WCAG principles.
+Traditional engagement hears from a narrow slice of the community. Lower the barriers of time, language, childcare, transportation, trust, disability, and the digital divide, and partner with (and pay) trusted community organizations. Think about procedural, distributive, and structural equity: who decides, who benefits, who bears the burdens, and what history is being corrected or repeated. An equity analysis with disaggregated data asks those questions early, while the answers can still change the proposal. Title VI and the ADA set legal floors for language access and accessibility. Communicate in culturally appropriate ways with cultural humility, and make every document, meeting, and website accessible under Section 508 and WCAG principles.
