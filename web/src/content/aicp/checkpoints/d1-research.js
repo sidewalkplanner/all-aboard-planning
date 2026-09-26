@@ -27,7 +27,7 @@ export default {
   },
   'cp:rd-leading': {
     text: 'A resident survey asks: "Don’t you agree that the new bike lanes have made Main Street more dangerous?" The main problem with this question is:',
-    options: ['Coverage bias', 'Nonresponse bias', 'Self-selection bias', 'Question-wording bias: it is a leading question'],
+    options: ['Coverage bias', 'Nonresponse bias', 'Self-selection bias', 'Question-wording bias'],
     correct: 3,
     explanation: 'The wording pushes respondents toward an answer, which is question-wording bias. Coverage, nonresponse, and self-selection bias are about who gets surveyed or who answers, not how the question is phrased.',
   },
@@ -54,7 +54,7 @@ export default {
     text: 'A regression of weekday transit boardings on service frequency across a city’s routes has an R-squared of 0.40. Which reading is correct?',
     options: [
       'Frequency causes 40% of all boardings',
-      'The model accounts for about 40% of the variation in boardings; the rest comes from things it doesn’t capture',
+      'The model accounts for about 40% of the variation in boardings',
       'The correlation between frequency and boardings is −0.40',
       '40% of riders use the most frequent routes',
     ],
@@ -71,7 +71,7 @@ export default {
     text: 'An ACS estimate for one census tract reports 240 households below the poverty line, with a margin of error of ±210. What is the best way to use it?',
     options: [
       'Report 240 as a precise count',
-      'Treat it as unreliable on its own: combine tracts or use a longer period, and report the margin of error',
+      'Combine tracts or use a longer period, and report the margin of error',
       'Replace it with poverty data from the decennial census',
       'Drop the margin of error from the table, since it confuses readers',
     ],
@@ -108,7 +108,7 @@ export default {
     options: [
       '0.4: the county likely imports tourism services',
       '1.0: the county matches the nation',
-      '2.5: tourism is more concentrated locally than nationally, so it is likely an export industry',
+      '2.5: tourism is likely an export industry',
       '7.5: tourism is the county’s largest employer',
     ],
     correct: 2,
@@ -123,7 +123,7 @@ export default {
   'cp:demo-dissimilarity': {
     text: 'A region’s index of dissimilarity between two groups is 60. Which interpretation is correct?',
     options: [
-      'About 60% of one group would have to move to a different tract for the two groups to be evenly distributed',
+      'About 60% of one group would have to move for the two groups to be evenly distributed',
       '60% of the region’s income goes to one group',
       'The two groups are almost perfectly integrated',
       'Income inequality in the region is moderate',

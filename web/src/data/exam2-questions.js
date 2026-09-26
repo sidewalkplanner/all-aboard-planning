@@ -2076,7 +2076,7 @@ export const BANK = [
   "options": [
    "Accept, provided the value falls below the jurisdiction's gift threshold",
    "Accept and recuse from the application",
-   "Decline, because acceptance may be perceived as an advantage",
+   "Decline the offer",
    "Accept and disclose the gift after the hearing concludes"
   ],
   "correct": 2,

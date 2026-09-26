@@ -2808,7 +2808,7 @@ export const BANK = [
    "Accept if the value is under the local gift threshold",
    "Accept and disclose the gift after the hearing",
    "Accept and recuse from that application",
-   "Decline, since it could appear to trade on office"
+   "Decline the offer"
   ],
   "correct": 3,
   "explanation": "Members must not seek or offer a benefit intended to influence the exercise of public duties. Even a gift within a local threshold can create the appearance of trading on public office.",

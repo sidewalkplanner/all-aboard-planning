@@ -70,7 +70,7 @@ export default {
     text: 'Which statement best describes cultural humility?',
     options: [
       'A credential earned by completing a cultural competence training',
-      'An ongoing practice of recognizing the limits of your own perspective, learning from residents as experts in their own lives, and addressing the power imbalance',
+      'An ongoing practice of recognizing the limits of your own perspective and learning from residents',
       'Translating every document word for word',
       'Avoiding disagreement in public meetings',
     ],
@@ -135,7 +135,7 @@ export default {
   'cp:decide-meets-code': {
     text: 'An application meets every standard in the zoning code, but public comment is overwhelmingly opposed. What should the staff recommendation do?',
     options: [
-      'Recommend approval, since it meets the adopted standards, and convey the public’s concerns accurately',
+      'Recommend approval, and convey the public’s concerns accurately',
       'Recommend denial, to reflect public opinion',
       'Make no recommendation, to stay neutral',
       'Postpone the report until opposition fades',
@@ -160,7 +160,7 @@ export default {
       'It will happen once, sometime in the next century',
       'It can’t happen twice in the same 100 years',
       'It has a 30% chance of happening each year',
-      'It has a 1% chance each year, which adds up to roughly a 26% chance over 30 years',
+      'It has a 1% chance each year, or roughly 26% over 30 years',
     ],
     correct: 3,
     explanation: 'A 100-year flood has a 1% annual chance. Over 30 years the chance of at least one is 1 − 0.99³⁰ ≈ 26%, which is far more meaningful to a homeowner than "once a century."',
@@ -170,7 +170,7 @@ export default {
     options: [
       'Share her opinion off the record',
       'Predict how the council will vote',
-      'Give accurate, on-the-record facts about the process and schedule, or refer the reporter to the designated spokesperson, without offering opinions on the pending decision',
+      'Give on-the-record facts about the process, or refer the reporter to the spokesperson',
       'Refuse ever to speak with the media',
     ],
     correct: 2,

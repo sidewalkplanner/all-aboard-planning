@@ -205,6 +205,9 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
    lesson's domain. Never use an exam item (`e1:`/`e2:`/`e3:`): lessons must not give away exam
    questions, and the checker fails if one appears. Write each from the section's own text,
    testing the idea from a different angle than the exam items do; vary which option is correct.
+   Write the correct option as a plain answer and put the reasoning in `explanation`: an option
+   that explains why it's right ("…, because …", "…, so …") gives itself away. Wrong options may
+   carry their own (wrong) reasoning, as on the real exam.
    Several refs on one line make a multi-question checkpoint.
    Readers must answer every checkpoint before they can mark the lesson complete; answers are
    saved per account. Don't reuse a ref twice in one lesson (the checker enforces this).
@@ -284,10 +287,9 @@ or "go live"): open a pull request and merge it. After a merge, restart the bran
 `origin/main` before the next change. Send a few of the new figures as images with each
 update so he can review without opening the site.
 
-**Open items outside the code.** The two account email templates (confirm signup, reset
-password) changed after they were last pasted into Supabase and need pasting again (see
-`supabase/templates/README.md`). The fact-check checklist Bobby works from lists the VERIFY
-flags; `REVIEW.md` has the same flags with current line numbers.
+**Open items outside the code.** The fact-check checklist Bobby works from lists the VERIFY
+flags; `REVIEW.md` has the same flags with current line numbers. (The account email templates
+were re-pasted into Supabase after their last change; paste them again whenever they change.)
 
 ## The exam runner
 
