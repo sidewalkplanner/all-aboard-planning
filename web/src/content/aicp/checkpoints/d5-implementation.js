@@ -177,7 +177,7 @@ export default {
     text: 'How does purchase of development rights (PDR) differ from transfer of development rights (TDR)?',
     options: [
       'PDR requires designated receiving areas; TDR does not',
-      'PDR uses public or nonprofit funds to buy rights directly, usually as a conservation easement, rather than relying on a private market for credits',
+      'PDR uses public or nonprofit funds to buy development rights directly',
       'PDR only applies to historic buildings',
       'PDR lets developers build above base density in the sending area',
     ],

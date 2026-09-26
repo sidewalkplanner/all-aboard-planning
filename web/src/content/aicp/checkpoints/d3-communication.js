@@ -70,7 +70,7 @@ export default {
     text: 'Which statement best describes cultural humility?',
     options: [
       'A credential earned by completing a cultural competence training',
-      'An ongoing practice of recognizing the limits of your own perspective, learning from residents as experts in their own lives, and addressing the power imbalance',
+      'An ongoing practice of recognizing the limits of your own perspective and learning from residents',
       'Translating every document word for word',
       'Avoiding disagreement in public meetings',
     ],
@@ -170,7 +170,7 @@ export default {
     options: [
       'Share her opinion off the record',
       'Predict how the council will vote',
-      'Give accurate, on-the-record facts about the process and schedule, or refer the reporter to the designated spokesperson, without offering opinions on the pending decision',
+      'Give on-the-record facts about the process, or refer the reporter to the spokesperson',
       'Refuse ever to speak with the media',
     ],
     correct: 2,

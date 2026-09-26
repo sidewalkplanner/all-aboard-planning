@@ -27,7 +27,7 @@ export default {
   },
   'cp:rd-leading': {
     text: 'A resident survey asks: "Don’t you agree that the new bike lanes have made Main Street more dangerous?" The main problem with this question is:',
-    options: ['Coverage bias', 'Nonresponse bias', 'Self-selection bias', 'Question-wording bias: it is a leading question'],
+    options: ['Coverage bias', 'Nonresponse bias', 'Self-selection bias', 'Question-wording bias'],
     correct: 3,
     explanation: 'The wording pushes respondents toward an answer, which is question-wording bias. Coverage, nonresponse, and self-selection bias are about who gets surveyed or who answers, not how the question is phrased.',
   },
@@ -54,7 +54,7 @@ export default {
     text: 'A regression of weekday transit boardings on service frequency across a city’s routes has an R-squared of 0.40. Which reading is correct?',
     options: [
       'Frequency causes 40% of all boardings',
-      'The model accounts for about 40% of the variation in boardings; the rest comes from things it doesn’t capture',
+      'The model accounts for about 40% of the variation in boardings',
       'The correlation between frequency and boardings is −0.40',
       '40% of riders use the most frequent routes',
     ],

@@ -91,7 +91,7 @@ export default {
   'cp:theory-forester': {
     text: 'John Forester’s contribution to communicative planning focused on:',
     options: [
-      'How planners’ everyday communication, including what they emphasize, omit, or frame, shapes power and outcomes',
+      'How planners’ everyday communication shapes power and outcomes',
       'Choosing the first option that is good enough',
       'Self-contained towns surrounded by greenbelts',
       'Scoring and weighting map layers to rank sites',
@@ -124,7 +124,7 @@ export default {
       'Racial zoning ordinances are unconstitutional',
       'The Federal Housing Administration must stop redlining',
       'Exclusionary zoning violates the Fair Housing Act',
-      'Courts could not enforce racially restrictive covenants, because judicial enforcement is state action',
+      'Courts could not enforce racially restrictive covenants',
     ],
     correct: 3,
     explanation: 'Shelley made racially restrictive covenants judicially unenforceable under the Fourteenth Amendment. Racial zoning had been struck down earlier, in *Buchanan v. Warley* (1917).',
@@ -138,7 +138,7 @@ export default {
   'cp:form-systems': {
     text: 'Paving most of a watershed for a new subdivision increases flooding downstream. What planning lesson does this illustrate?',
     options: [
-      'Natural, social, and economic systems are interrelated, so analysis should trace effects across them',
+      'Natural, social, and economic systems are interrelated',
       'Each planning topic is best studied on its own',
       'Stormwater is purely an engineering question',
       'Flooding is best addressed after development is complete',
@@ -262,7 +262,7 @@ export default {
   'cp:fed-nepa-procedural': {
     text: 'Which statement about NEPA is accurate?',
     options: [
-      'It is procedural: agencies must study and disclose environmental impacts, not necessarily choose the least harmful option',
+      'It is procedural: agencies must study and disclose environmental impacts',
       'It requires agencies to choose the least environmentally harmful alternative',
       'It applies only to state and local government actions',
       'It regulates discharges of pollutants into waters of the United States',
@@ -275,7 +275,7 @@ export default {
     options: [
       'It requires an Environmental Impact Statement for every regional plan',
       'It created the Community Development Block Grant',
-      'It prohibits discrimination based on race, color, or national origin in federally funded programs, which underpins language access and equitable engagement',
+      'It prohibits discrimination based on race, color, or national origin in federally funded programs',
       'It sets accessibility standards for sidewalks',
     ],
     correct: 2,
