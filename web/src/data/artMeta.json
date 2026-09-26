@@ -111,6 +111,38 @@
     "fig-gravity": {
       "w": 720,
       "h": 380
+    },
+    "fig-dependency": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-dissimilarity": {
+      "w": 720,
+      "h": 410,
+      "narrow": {
+        "w": 354,
+        "h": 760
+      }
+    },
+    "fig-lorenz": {
+      "w": 720,
+      "h": 450
+    },
+    "fig-class-breaks": {
+      "w": 720,
+      "h": 460,
+      "narrow": {
+        "w": 360,
+        "h": 900
+      }
+    },
+    "fig-maup": {
+      "w": 720,
+      "h": 424,
+      "narrow": {
+        "w": 340,
+        "h": 790
+      }
     }
   },
   "hero": {

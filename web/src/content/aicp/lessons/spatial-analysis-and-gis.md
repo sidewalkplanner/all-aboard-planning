@@ -61,7 +61,15 @@ A **choropleth map** shades areas (tracts, counties) by value. It's the most com
 Illustrative numbers. The darkest tract on the count map is simply the biggest, with 12,000 residents. Its poverty rate, 15%, is only middling.
 :::
 
+:::figure fig-class-breaks | The same 12 tract poverty rates mapped two ways. Equal intervals (4–13%, 14–23%, 24–34%) put 9 tracts in the lightest class, 1 in the middle, and only the 30% and 34% tracts in the darkest. Quantiles, with 4 tracts per class (4–6%, 7–10%, 12–34%), darken four tracts, including the ones at 12% and 14%. A note says: same data, two different stories.
+Illustrative numbers. Equal intervals single out the extremes; quantiles fill every class equally, even when values bunch together. Neither is wrong, but the legend should say which you used.
+:::
+
 The **modifiable areal unit problem (MAUP)** is the fact that results change depending on how you draw the boundaries (scale or zoning of units). The same income data can show a sharp pattern at the tract level and none at the county level, or a different pattern if the tracts were drawn differently.
+
+:::figure fig-maup | The same 24 households, 12 of them high-income, grouped two ways. Two big zones, the left and right halves, are each 50% high-income: no pattern at all. Four small zones, the quarters, are 100%, 0%, 0%, and 100%: a sharp pattern.
+Nothing about the households changed, only the boundaries. That's the modifiable areal unit problem.
+:::
 
 The **ecological fallacy** is inferring something about individuals from area-level data. A tract with high average income may still have many low-income households.
 
