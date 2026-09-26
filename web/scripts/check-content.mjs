@@ -12,7 +12,8 @@
 //  - every <!-- VERIFY: ... --> flag in content has a reason;
 //  - every :::video slot has a title and length (and an https URL if any);
 //  - every :::figure names a rendered figure (public/art/<name>.webp, sized in
-//    src/data/artMeta.json) and has alt text.
+//    src/data/artMeta.json) and has alt text;
+//  - no figure's baked-in text is smaller than 13px on screen.
 //
 // Needs no dependencies beyond the site's own (marked, via markdown.mjs).
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
@@ -104,6 +105,7 @@ for (const l of LESSONS) {
   if (/^:::video/m.test(md) && !r.videos.length) err(`Lesson ${l.slug}: malformed :::video block`);
   for (const f of r.figures) {
     if (!f.size || !existsSync(join(root, 'public', 'art', `${f.name}.webp`))) err(`Lesson ${l.slug}: figure ${f.name} isn't rendered (run npm run art -- ${f.name})`);
+    if (f.size?.narrow && !existsSync(join(root, 'public', 'art', `${f.name}-narrow.webp`))) err(`Lesson ${l.slug}: figure ${f.name}'s phone layout isn't rendered (run npm run art -- ${f.name})`);
     if (f.alt.length < 40) err(`Lesson ${l.slug}: figure ${f.name} needs alt text that says what the figure shows`);
   }
   if ((md.match(/^:::figure/gm) || []).length !== r.figures.length) err(`Lesson ${l.slug}: malformed :::figure block (":::figure name | alt text", caption, ":::")`);
@@ -207,6 +209,26 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
   for (const m of text.matchAll(/VERIFY:(.*)/g)) {
     verifyCount++;
     if (m[1].replace(/-->|\*\/|\}/g, '').trim().length < 10) err(`${file.slice(root.length + 1)}: VERIFY flag without a reason`);
+  }
+}
+
+// ------------------------------------------------------------------ figure legibility
+// Baked-in text must be at least 13px where it's shown. The wide layout is
+// about 340px wide on a phone, or at least 500px when a figure also has a
+// stacked phone layout (which is itself shown about 340px wide).
+{
+  const { buildFigures } = await import(join(root, 'art', 'scenes', 'figures.mjs'));
+  const MIN_PX = 13;
+  // Caveat's letters are about 80% as tall as Figtree's or Fraunces's at the
+  // same font size, so handwriting counts as 0.8 of its size.
+  const smallest = (svg) => Math.min(...[...svg.matchAll(/<text[^>]*font-family="([^"]+)"[^>]*font-size="([\d.]+)"/g)]
+    .map((m) => Number(m[2]) * (/Caveat/.test(m[1]) ? 0.8 : 1)));
+  for (const f of buildFigures()) {
+    const views = f.narrow ? [['wide', f.w, 500, f.svg], ['phone', f.narrow.w, 340, f.narrow.svg]] : [['wide', f.w, 340, f.svg]];
+    for (const [which, w, shown, svg] of views) {
+      const px = (smallest(svg) * shown) / w;
+      if (px < MIN_PX) err(`Figure ${f.name} (${which} layout): smallest text is ${px.toFixed(1)}px on screen; make it at least ${Math.ceil((MIN_PX * w) / shown)} in the drawing (${Math.ceil((MIN_PX * w) / shown / 0.8)} for handwriting), or add a narrow layout`);
+    }
   }
 }
 

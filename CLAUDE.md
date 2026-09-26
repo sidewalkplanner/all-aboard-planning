@@ -229,9 +229,15 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
    `npm run art -- fig-skew`; that writes `public/art/fig-skew.webp` and records its size in
    `src/data/artMeta.json`. Charts must be drawn to scale from the numbers in their labels, and
    any invented data is marked "illustrative". The lettering is baked into the image, so the alt
-   text carries it; keep labels at 24px or larger in the 720-wide canvas so they survive a phone
-   screen (the figure also links to its full-size image for zooming). `npm run check` fails if a
-   figure isn't rendered or its alt text is too thin.
+   text carries it. Legibility rules (the header of `figures.mjs` has the detail):
+   - **Size.** Text must be at least 13px on screen, and `npm run check` enforces it. In the
+     720-wide canvas that means 28+ for labels and 35+ for handwriting (Caveat's letters run
+     smaller). Side-by-side figures instead return a `narrow` layout with the panels stacked;
+     phones get `<name>-narrow.webp`, and the wide layout then needs only 19+ (24+ handwritten).
+   - **Voices.** `title` (Fraunces) for headings, `label` (Figtree) for data: numbers, ticks,
+     legends, names. `note` (Caveat) only for the one or two remarks that make the point.
+   - **Flat color under text.** Shapes that carry labels skip the paper grain (`filter: FLAT`).
+   If text won't fit at the minimum, cut words or add a narrow layout; never shrink the type.
 
 4. **Flag uncertain facts** with `<!-- VERIFY: … -->` and add them to `REVIEW.md`.
 5. **Add it to the study plans** in `studyPlans.js` if it should be scheduled.

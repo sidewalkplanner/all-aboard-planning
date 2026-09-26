@@ -30,6 +30,10 @@ Population at the next step = current population + births − deaths + net migra
 
 Because it tracks age structure, the method answers questions trend lines can't: how many school-age children or residents over 75 there will be. That makes it the right choice for school, senior-service, and housing-type planning. (The **cohort-survival** method is the same idea; the term is sometimes used for projections that age cohorts forward with survival rates and then add migration and births.)
 
+:::figure fig-pyramid | A population pyramid with men on the left and women on the right, in 10-year age bands from 0–9 at the bottom to 80+ at the top. The 20–29 cohort is highlighted, with an arrow showing it moves up to the 30–39 band 10 years later. Notes point out that births add a new youngest cohort, deaths thin out the older cohorts, and migration adds or removes people.
+Illustrative numbers. The method moves every band up one step at a time, then applies survival rates, births, and net migration. That's how it can tell you how many 75-year-olds (or kindergartners) to plan for.
+:::
+
 :::checkpoint cp:demo-cohort
 
 ### Simpler trend methods
@@ -46,6 +50,10 @@ When you need only a total, or have limited data, simpler extrapolation can work
 
 Geometric projections grow faster over time, and over long horizons they can become unrealistic. **Ratio (share) methods** project a small area as a share of a larger area's projection, such as a county's share of a state projection. They're useful when a reliable projection already exists for the larger area.
 
+:::figure fig-projections | A line chart of the example town: 20,000 people ten years ago and 24,000 today. Projected forward, the linear line reaches 28,000 in 10 years and 36,000 in 30 years; the geometric line reaches 28,800 in 10 years and 41,472 in 30 years.
+After one decade the two methods differ by only 800 people. After three, the gap is more than 5,000, which is why geometric projections need a hard look over long horizons.
+:::
+
 ### The housing-unit method
 
 The **housing-unit method** estimates population from housing:
@@ -54,6 +62,10 @@ The **housing-unit method** estimates population from housing:
 
 **Worked example.** A town issued permits for 500 new homes. Occupancy is 96% and the average household size is 2.4.
 500 × 0.96 × 2.4 = **1,152** new residents.
+
+:::figure fig-housing-unit | Four cards in an equation: 500 new homes, times 96% occupied, times 2.4 people per home, equals 1,152 new residents. A note says to then add anyone living in group quarters, such as dorms and nursing homes.
+Every factor matters: a two-point drop in occupancy or a smaller average household changes the answer.
+:::
 
 :::checkpoint cp:demo-housing-unit
 
@@ -77,6 +89,10 @@ A **location quotient (LQ)** compares an industry's share of local employment wi
 - **LQ = 1.0**: the local share matches the nation.
 - **LQ < 1.0**: the industry is less concentrated than nationally, suggesting the area imports those goods or services.
 
+:::figure fig-location-quotient | Two grids of 100 squares. In this county, 6 of every 100 jobs are in manufacturing; in the nation, 3 per 100. Six percent divided by three percent gives a location quotient of 2.0. A number line from 0 to 3 marks below 1.0 as imports and above 1.0 as likely exports; this county sits at 2.0.
+An LQ of 2.0 means the industry's share of local jobs is twice its national share.
+:::
+
 Location quotients assume that local consumption patterns and productivity match the nation's, which isn't always true. Treat them as a screening tool, not proof. The [economic development lesson](/aicp/lessons/economic-development) shows how LQs feed economic base analysis.
 
 :::checkpoint cp:demo-lq
@@ -94,6 +110,10 @@ Location quotients assume that local consumption patterns and productivity match
 - National growth share: 1,000 × 5% = 50 jobs
 - Industry-mix share: 1,000 × (12% − 5%) = **70 jobs**
 - If the local industry actually grew by 150 jobs, the local share is 150 − 50 − 70 = 30 jobs, a sign of local competitive advantage.
+
+:::figure fig-shift-share | A bar of 150 new jobs in one local industry, split into three parts: 50 jobs of national growth (1,000 × 5%), 70 jobs of industry mix (1,000 × (12% − 5%)), and a 30-job local share, which is the rest. A note says a positive local share means a competitive edge.
+Only the last piece is about the place itself. The first two would have happened to any area with the same industry.
+:::
 
 :::video Location quotients and shift-share, worked through | about 4 min
 Calculates a location quotient from a simple employment table, then splits one industry's growth into national, industry-mix, and local shares.

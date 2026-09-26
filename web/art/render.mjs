@@ -43,6 +43,7 @@ const font = (pkg, file) => readFileSync(join(here, '..', 'node_modules', pkg, '
 const fontCss = `
 @font-face{font-family:Fraunces;font-weight:100 900;font-style:normal;src:url(data:font/woff2;base64,${font('@fontsource-variable/fraunces', 'fraunces-latin-full-normal.woff2')}) format('woff2')}
 @font-face{font-family:Fraunces;font-weight:100 900;font-style:italic;src:url(data:font/woff2;base64,${font('@fontsource-variable/fraunces', 'fraunces-latin-full-italic.woff2')}) format('woff2')}
+@font-face{font-family:Figtree;font-weight:300 900;font-style:normal;src:url(data:font/woff2;base64,${font('@fontsource-variable/figtree', 'figtree-latin-wght-normal.woff2')}) format('woff2')}
 @font-face{font-family:Caveat;font-weight:400;src:url(data:font/woff2;base64,${font('@fontsource/caveat', 'caveat-latin-400-normal.woff2')}) format('woff2')}
 @font-face{font-family:Caveat;font-weight:700;src:url(data:font/woff2;base64,${font('@fontsource/caveat', 'caveat-latin-700-normal.woff2')}) format('woff2')}
 `;
@@ -60,7 +61,7 @@ for (const a of todo) {
   }
   await page.setViewportSize({ width: Math.ceil(a.w * scale), height: Math.ceil(a.h * scale) });
   await page.setContent(`<!doctype html><html><head><style>${fontCss}html,body{margin:0;background:transparent}svg{display:block;width:${a.w * scale}px;height:${a.h * scale}px}</style></head><body>${a.svg}</body></html>`);
-  await page.evaluate(async () => { await Promise.all(['800 20px Fraunces', 'italic 700 20px Fraunces', '400 20px Caveat', '700 20px Caveat'].map((f) => document.fonts.load(f))); await document.fonts.ready; });
+  await page.evaluate(async () => { await Promise.all(['800 20px Fraunces', 'italic 700 20px Fraunces', '400 20px Caveat', '700 20px Caveat', '600 20px Figtree', '700 20px Figtree'].map((f) => document.fonts.load(f))); await document.fonts.ready; });
   const png = await page.locator('svg').screenshot({ omitBackground: true, type: 'png' });
   const quality = a.quality ?? 0.9;
   const webp = await page.evaluate(async ({ b64, q }) => {
