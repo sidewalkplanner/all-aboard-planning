@@ -93,8 +93,10 @@ export default function Flashcards() {
   return (
     <>
       <PageHeader
-        eyebrow="Review"
+        eyebrow="Key terms"
         title="Flashcards"
+        art="page-cards" artW={550} artH={330} artTilt={-1}
+        artAlt="A kraft index-card box with coloured tabs and two flashcards: Euclid v. Ambler and FAR"
         lead={`${ALL_CARDS.length} cards built from the key terms in every lesson. Each session deals your weakest cards first, and a card counts as mastered after you get it right ${MASTERED_BOX} times in a row.`}
       />
       <div className="container-narrow" style={{ paddingBottom: 80 }}>

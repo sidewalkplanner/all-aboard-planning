@@ -131,7 +131,7 @@ export default function Progress() {
                 <>
                   <h2 id="dash-plan" className="h3">You finished the {plan.title}</h2>
                   <p className="small" style={{ margin: '6px 0 16px' }}>Keep taking timed exams and reviewing flashcards until test day.</p>
-                  <Link className="btn btn-secondary" to={P.review}>Final review tools</Link>
+                  <Link className="btn btn-secondary" to={P.review}>Study guides</Link>
                 </>
               )
             ) : (

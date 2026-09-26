@@ -64,7 +64,7 @@ function Pager({ slug }) {
       ) : (
         <Link className="card card-link card-sm" to={P.course}>
           <span className="small">&larr; Back to</span>
-          <span style={{ fontWeight: 700, color: 'var(--ink)' }}>Course overview</span>
+          <span style={{ fontWeight: 700, color: 'var(--ink)' }}>All lessons</span>
         </Link>
       )}
       {next ? (
@@ -128,8 +128,8 @@ export default function LessonPage() {
     <article>
       <div className="container" style={{ paddingTop: 40 }}>
         <Breadcrumb items={[
-          { label: 'AICP prep', to: P.aicp },
-          { label: 'Course', to: P.course },
+          { label: 'Overview', to: P.aicp },
+          { label: 'Lessons', to: P.course },
           { label: `Domain ${domain.code}: ${domain.short}`, to: P.domain(domain.id) },
           { label: lesson.title },
         ]} />

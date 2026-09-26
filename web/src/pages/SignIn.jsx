@@ -224,7 +224,7 @@ export default function SignIn() {
         </div>
 
         <p className="small" style={{ textAlign: 'center', margin: '20px 0 0' }}>
-          Just looking? <Link className="link-underline" to={P.course}>Browse the course</Link>, no account needed.
+          Just looking? <Link className="link-underline" to={P.course}>Browse the lessons</Link>, no account needed.
         </p>
       </div>
     </section>

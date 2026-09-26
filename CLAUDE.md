@@ -364,9 +364,12 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
 
 ## Study features (how the pieces fit)
 
-- **Site map for learners:** Course (lessons) · Practice (`/aicp/exams`:
-  full exams) · Review (`/aicp/review`: exam strategy guide, flashcards, quick
-  reference) · Exam info · Dashboard (`/aicp/progress`, signed in).
+- **Site map for learners** (header nav, `lib/nav.js`; pages use the same names): Overview
+  (`/aicp`) · Lessons (`/aicp/course`) · Practice exams (`/aicp/exams`) · Flashcards
+  (`/aicp/review/flashcards`) · Study guides (`/aicp/review`: the exam strategy guide and quick
+  reference) · Exam info (`/aicp/exam-info`, plus the FAQ) · Dashboard (`/aicp/progress`, signed in).
+  Keep these names consistent in headings, buttons, and links (say "lessons", not "course overview";
+  "study guides", not "review tools").
 - **Lesson page** (`pages/aicp/LessonPage.jsx`): body with mid-lesson checkpoints
   (`LessonBody` portals a `Checkpoint` into each `:::checkpoint` slot; answers go to
   `studyState.checkpoints`), a "Mark lesson complete" toggle that unlocks once every

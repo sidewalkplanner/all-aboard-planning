@@ -48,11 +48,11 @@ const GROUPS = [
     items: [
       {
         q: 'Do I need to pay for anything?',
-        a: <p>No. Everything in the course is open to anyone with an account: every lesson, all three full-length practice exams, and the review tools.</p>,
+        a: <p>No. Everything in the course is open to anyone with an account: every lesson, all three full-length practice exams, the flashcards, and the study guides.</p>,
       },
       {
         q: 'Why do I need an account?',
-        a: <p>So your scores and progress are saved in one place and the <Link to={P.progress}>progress page</Link> can show which domains need work. Without an account you can browse the course and preview each lesson&rsquo;s learning objectives.</p>,
+        a: <p>So your scores and progress are saved in one place and your <Link to={P.progress}>dashboard</Link> can show which domains need work. Without an account you can browse the list of lessons and preview each lesson&rsquo;s learning objectives.</p>,
       },
       {
         q: 'Where is my account stored?',

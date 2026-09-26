@@ -19,7 +19,7 @@ export default function ExamInfo() {
           <p className="body-text" style={{ margin: '8px 0 16px' }}>Take Practice Exam 1 in practice mode to see where you stand, then work through the lessons it points you to.</p>
           <div className="row-wrap">
             <Link className="btn btn-primary" to={P.runExam('e1', 'practice')}>Start Practice Exam 1</Link>
-            <Link className="btn btn-secondary" to={P.course}>Browse the course</Link>
+            <Link className="btn btn-secondary" to={P.course}>Browse the lessons</Link>
             <Link className="btn btn-secondary" to={P.faq}>Read the FAQ</Link>
           </div>
         </div>
