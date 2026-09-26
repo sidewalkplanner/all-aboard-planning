@@ -19,6 +19,10 @@ A **variance** is permission to depart from the ordinance's literal terms becaus
 - An **area (dimensional) variance** relaxes a dimensional standard such as a setback, height, lot coverage, or parking requirement. Many states apply a lower standard for these, sometimes called "practical difficulty."
 - A **use variance** allows a use the district doesn't permit. It requires the stricter "**unnecessary hardship**" standard, and **many states and ordinances prohibit use variances entirely**, because allowing new uses is a legislative decision better handled by rezoning.
 
+:::figure fig-area-use | Two panels. Area variance, which relaxes a setback, height, or coverage standard: an odd-shaped lot where the house crosses the setback line; often a lower bar, "practical difficulty." Use variance, which allows a use the district bans: a shop on a homes-only street; "unnecessary hardship," and banned in many states.
+The two ask different questions: how big or where, versus what. Changing what is allowed is really a rezoning question.
+:::
+
 **Typical findings required** (terms vary by state):
 
 1. The hardship arises from **conditions unique to the property**, such as an irregular shape, steep topography, or an unusually shallow lot, not from conditions common to the neighborhood.
@@ -26,6 +30,10 @@ A **variance** is permission to depart from the ordinance's literal terms becaus
 3. Strict application would deny **reasonable use** of the property. **Financial hardship alone**, such as the ability to earn more money, isn't enough.
 4. The variance **won't alter the essential character** of the area or harm neighbors or the public.
 5. It's the **minimum variance** necessary to relieve the hardship.
+
+:::figure fig-variance-gates | The typical variance findings as five stops on a line ending at a variance: 1 the hardship is unique to the lot, 2 it isn't self-created, 3 strict rules deny reasonable use, 4 the variance keeps the area's character, and 5 it's the minimum needed. Notes say fail any one and there's no variance, and profit alone isn't hardship.
+Every stop has to be passed; most failed requests stop at the first or third.
+:::
 
 :::video Area versus use variances: the hardship test in practice | about 3 min
 Applies the typical variance findings to two contrasting requests (an oddly shaped lot and a request for more profit) to show what counts as a hardship and what doesn't.
@@ -59,6 +67,10 @@ Several other states have adopted the *Fasano* approach in some form. <!-- VERIF
 
 A small-parcel rezoning isn't automatically illegal. It's defensible when it implements the plan and serves a public purpose. The vice is singling out one parcel for special treatment.
 
+:::figure fig-spot-zoning | Two maps of a residential area. Spot zoning, one lot singled out: a single parcel rezoned to industry, against the plan and for the owner. Defensible: a single parcel rezoned to shops inside an area where the plan calls for shops, consistent with the plan and serving the public.
+Both rezonings touch one small parcel; what separates them is the plan and who benefits.
+:::
+
 :::checkpoint cp:relief-spot-defensible
 
 ### Contract zoning and conditional zoning
@@ -82,6 +94,10 @@ Ordinances typically aim for nonconformities to fade away over time:
 - if **abandoned or discontinued** for a set period (often 6 to 12 months), the right to continue is lost.
 
 **Amortization** requires a nonconforming use to **cease after a set period** that's meant to let the owner recoup their investment, with no compensation. Many state courts accept amortization if the period is reasonable given the investment and the harm the use causes; some states reject it. It's most often applied to billboards and to incompatible uses like junkyards or adult businesses.
+
+:::figure fig-nonconforming | A fenced salvage yard with old cars, among homes, in an area now zoned for homes. Beside it, what a legal nonconforming use may do: keep operating, yes. Expand or intensify, no. Rebuild after a big loss, often over 50% of value, no. Restart after abandonment, often 6 to 12 months, no. A note says the goal is to let nonconformities fade out over time.
+Each "no" closes a door, so the use can continue but can't grow or come back once it stops.
+:::
 
 :::checkpoint cp:relief-rebuild
 

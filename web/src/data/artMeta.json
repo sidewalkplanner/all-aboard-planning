@@ -443,6 +443,30 @@
     "fig-use-paths": {
       "w": 720,
       "h": 470
+    },
+    "fig-variance-gates": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-area-use": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-spot-zoning": {
+      "w": 720,
+      "h": 458,
+      "narrow": {
+        "w": 366,
+        "h": 872
+      }
+    },
+    "fig-nonconforming": {
+      "w": 720,
+      "h": 440
     }
   },
   "hero": {

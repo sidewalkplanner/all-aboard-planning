@@ -3385,6 +3385,123 @@ function usePaths() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 5.2
+
+// The typical variance findings as five gates on one line.
+function varianceGates() {
+  const rng = makeRng(5201);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const y = 200;
+  const band = roundRectD(40, y - 11, 540, 22, 11);
+  b += cut(band, { rng, fill: P.civic }) + L(ink(band, { rng, size: 2.2 }));
+  const end = roundRectD(566, y - 30, 144, 60, 14);
+  b += cut(end, { rng, fill: P.leaf, filter: FLAT }) + L(ink(end, { rng, size: 2.6 })) + label(638, y + 10, 'variance', { color: '#FFFFFF', weight: 800, size: 28 });
+  const gates = [[80, ['Unique', 'to the lot']], [195, ['Not', 'self-created']], [310, ['Denies', 'reasonable use']], [420, ['Keeps the', 'character']], [516, ['The', 'minimum']]];
+  gates.forEach(([x, lines], i) => {
+    const d = ellipseD(x, y, 24, 24);
+    b += cut(d, { rng, fill: P.butter, filter: FLAT }) + L(ink(d, { rng, size: 3 })) + title(x, y + 10, String(i + 1));
+    const above = i % 2 === 1;
+    lines.forEach((t, k) => { b += label(x, above ? y - 82 + k * 32 : y + 66 + k * 32, t, { weight: k ? 500 : 800 }); });
+  });
+  b += note(20, 400, 'fail any one: no variance', { anchor: 'start', color: P.tomatoDeep });
+  b += note(700, 400, 'profit alone isn’t hardship', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// Area variance versus use variance.
+function areaVsUse() {
+  const rng = makeRng(5202);
+  const PW = 338;
+  const PH = 400;
+  const head = (t, sub) => title(20, 40, t, { size: 25, anchor: 'start' }) + label(20, 70, sub, { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  let a = panel(0, 0, PW, PH, T.cream, rng) + head('Area variance', 'relaxes a setback, height, coverage');
+  const lot = polyD([[40, 110], [300, 110], [300, 190], [40, 250]]);
+  a += cut(lot, { rng, fill: T.sage, filter: FLAT }) + L(ink(lot, { rng, size: 2.2 }));
+  a += L(dashed(40, 220, 300, 160, rng, { color: P.civicDeep, size: 2 }));
+  const hs = rectD(150, 126, 90, 62);
+  a += cut(hs, { rng, fill: P.butter, filter: FLAT }) + L(ink(hs, { rng, size: 2.2 }));
+  a += label(170, 280, 'odd-shaped lot', { size: 20, weight: 700 }) + label(170, 306, 'house crosses the setback line', { size: 19, color: MUTED, weight: 500 });
+  a += note(20, 354, 'often a lower bar:', { size: 24, anchor: 'start', color: P.leafDeep }) + note(20, 382, '“practical difficulty”', { size: 24, anchor: 'start', color: P.leafDeep });
+  let u = panel(0, 0, PW, PH, T.cream, rng) + head('Use variance', 'allows a use the district bans');
+  for (let k = 0; k < 4; k++) u += house(40 + k * 70, 230, 52, 64, { seed: 60 + k, wall: T.butter, roof: P.kraftDeep, chimney: false });
+  u += block(180, 230, 56, 80, { seed: 7, wall: P.tomato, cols: 2, rows: 3 });
+  u += label(170, 280, 'a shop on a homes-only street', { size: 19, weight: 700 });
+  u += note(20, 354, '“unnecessary hardship”;', { size: 24, anchor: 'start', color: P.tomatoDeep }) + note(20, 382, 'banned in many states', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, a) + at(368, 14, u),
+    narrow: { W: 366, H: 842, b: at(14, 14, a) + at(14, 428, u) },
+  };
+}
+
+// Spot zoning versus a small rezoning that carries out the plan.
+function spotZoning() {
+  const rng = makeRng(5203);
+  const PW = 338;
+  const PH = 400;
+  const colors = { R: P.butter, C: P.tomato, I: P.lavender };
+  const map = (grid, ring) => {
+    let s = '';
+    grid.forEach((row, r) => [...row].forEach((z, c) => {
+      const d = rectD(46 + c * 50, 96 + r * 50, 48, 48);
+      s += cut(d, { rng, fill: colors[z], shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: 1.3, opacity: 0.8 }));
+    }));
+    if (ring) s += L(ink(ellipseD(ring[0], ring[1], 64, 64), { rng, size: 2.4, color: P.civicDeep }));
+    return s;
+  };
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Spot zoning', { size: 25, anchor: 'start' }) + label(20, 70, 'one lot singled out', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += map(['RRRRR', 'RRIRR', 'RRRRR', 'RRRRR'], null);
+  a += L(ink(rectD(143, 143, 54, 54), { rng, size: 3.4, color: P.tomatoDeep }));
+  a += note(20, 346, 'against the plan,', { size: 24, anchor: 'start', color: P.tomatoDeep }) + note(20, 376, 'for the owner', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let c = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Defensible', { size: 25, anchor: 'start' }) + label(20, 70, 'small, but carries out the plan', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  c += map(['RRRRR', 'RRRRR', 'RRCRR', 'RRRRR'], [170, 220]);
+  c += label(170, 318, 'plan: shops here', { size: 19, color: P.civicDeep, weight: 700 });
+  c += note(20, 346, 'consistent with the plan,', { size: 24, anchor: 'start', color: P.leafDeep }) + note(20, 376, 'serves the public', { size: 24, anchor: 'start', color: P.leafDeep });
+  const key = (x, y) => [['R', 'homes'], ['C', 'shops'], ['I', 'industry']].map(([z, t], i) => `<rect x="${x + i * 120}" y="${y - 16}" width="18" height="18" fill="${colors[z]}" stroke="${P.ink}" stroke-width="1.4"/>` + label(x + 26 + i * 120, y, t, { size: 20, anchor: 'start', weight: 500 })).join('');
+  return {
+    W: 720, H: 458, b: at(14, 14, a) + at(368, 14, c) + key(40, 444),
+    narrow: { W: 366, H: 872, b: at(14, 14, a) + at(14, 428, c) + key(20, 858) },
+  };
+}
+
+// What a legal nonconforming use may and may not do.
+function nonconformingRules() {
+  const rng = makeRng(5204);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  // A fenced salvage yard with stacked old cars, among homes.
+  const yard = rectD(40, 150, 220, 110);
+  b += cut(yard, { rng, fill: T.kraft, filter: FLAT }) + L(ink(yard, { rng, size: 2.2 }));
+  for (let x = 48; x < 256; x += 14) b += L(inkLine([[x, 150], [x, 142]], { rng, size: 1.6, overshoot: 0 }));
+  const car = (x, y, fill) => {
+    const d = roundRectD(x, y, 70, 30, 10);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + `<circle cx="${x + 16}" cy="${y + 30}" r="7" fill="${P.ink}"/><circle cx="${x + 54}" cy="${y + 30}" r="7" fill="${P.ink}"/>`;
+  };
+  b += car(58, 214, P.sky) + car(136, 214, P.tomato) + car(96, 176, P.butter) + car(176, 176, P.sage);
+  b += house(60, 124, 50, 56, { seed: 23, wall: T.butter, roof: P.kraftDeep, chimney: false }) + house(190, 124, 50, 56, { seed: 24, wall: T.butter, roof: P.kraftDeep, chimney: false });
+  b += label(150, 312, 'salvage yard,', { weight: 700 }) + label(150, 344, 'now zoned homes', { weight: 500, color: MUTED });
+  const rules = [
+    [true, 'keep operating'],
+    [false, 'expand or intensify'],
+    [false, 'rebuild after a big loss'],
+    [false, 'restart after abandonment'],
+  ];
+  rules.forEach(([ok, text], i) => {
+    const y = 60 + i * 84;
+    const d = ellipseD(316, y - 9, 20, 20);
+    b += cut(d, { rng, fill: ok ? P.leaf : P.tomato, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += ok ? L(inkLine([[306, y - 9], [314, y - 1], [327, y - 18]], { rng, size: 3, color: '#FFFFFF', overshoot: 0 }))
+      : L(inkLine([[308, y - 17], [324, y - 1]], { rng, size: 3, color: '#FFFFFF', overshoot: 0 }) + inkLine([[324, y - 17], [308, y - 1]], { rng, size: 3, color: '#FFFFFF', overshoot: 0 }));
+    b += label(348, y, text, { anchor: 'start', weight: ok ? 800 : 500 });
+  });
+  b += label(348, 60 + 2 * 84 + 32, '(often over 50% of value)', { anchor: 'start', color: MUTED, weight: 500 });
+  b += label(348, 60 + 3 * 84 + 32, '(often 6 to 12 months)', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(20, 404, 'the goal: let nonconformities fade out over time', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -3469,6 +3586,10 @@ export const FIGURES = [
   ['fig-lot-standards', lotStandards],
   ['fig-overlay-floating', overlayFloating],
   ['fig-use-paths', usePaths],
+  ['fig-variance-gates', varianceGates],
+  ['fig-area-use', areaVsUse],
+  ['fig-spot-zoning', spotZoning],
+  ['fig-nonconforming', nonconformingRules],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
