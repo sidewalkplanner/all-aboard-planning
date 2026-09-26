@@ -1359,6 +1359,7 @@ img, svg { max-width: 100%; }
 }
 @media (max-width: 760px) {
   .ticket { grid-template-columns: 76px minmax(0, 1fr); }
+  .ticket__stub { grid-row: 1 / span 2; }
   .ticket__notch { left: 75px; }
   .ticket__mark { font-size: 34px; }
   .ticket__admit { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 9.5px; }
