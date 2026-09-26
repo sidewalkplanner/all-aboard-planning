@@ -1,4 +1,4 @@
-> This lesson paraphrases the themes of the AICP Code's Rules of Conduct in our own words and doesn't reproduce rule numbers or exact text. Always check the current Code for the precise wording. <!-- VERIFY: check each paraphrased rule theme below against the current Rules of Conduct text. -->
+> This lesson paraphrases the themes of the AICP Code's Rules of Conduct in our own words and doesn't reproduce rule numbers or exact text. Always check the [current Code on APA's website](https://www.planning.org/ethics/) for the precise wording. <!-- VERIFY: check each paraphrased rule theme below against the current Rules of Conduct text. -->
 
 ## Learning objectives
 
@@ -35,6 +35,10 @@ For **prior professional relationships**, such as a consultant who worked for an
 
 **Outside work:** A public-sector planner offered paid consulting by a firm with **applications pending in the planner's own jurisdiction** should **decline**, or at minimum disclose and obtain a conflict determination before doing anything, which in practice usually means declining.
 
+:::figure fig-coi-responses | Two panels. A financial interest, such as stock in the applicant, property next door, or a spouse's new job: disclose and withdraw; disclosure alone isn't enough. A past relationship, such as a former client or employer: disclose it on the record, and withdraw too if it's close or recent; let others judge it openly.
+A financial stake takes the planner off the matter; a past relationship usually just has to be put where others can see it.
+:::
+
 :::checkpoint cp:coi-disclose-not-enough
 
 ### Gifts, favors, and advantage
@@ -46,6 +50,10 @@ Related rules prohibit:
 - using the **power of your office** to seek special advantage for yourself or others that isn't in the public interest; and
 - suggesting you can influence decisions by **improper means** to win clients or work.
 
+:::figure fig-gift-test | Three wrapped gifts of different sizes from a developer with an application pending: a nice dinner, concert tickets, and a thank-you gift. A stamp reads decline all three. Note: the test is appearance, not price.
+Size doesn't enter into it: the question is whether the gift could reasonably appear to influence you.
+:::
+
 :::checkpoint cp:coi-improper-means
 
 ### Confidential information
@@ -53,6 +61,10 @@ Related rules prohibit:
 A planner may **not disclose information acquired in confidence** during professional work unless **required by law** (or in the narrow circumstances the Code allows, such as preventing a clear violation of law). Nor may a planner **use confidential information for personal gain**.
 
 The classic scenario: a planner learns confidentially that a new highway interchange will be built near a rural parcel, and buys the parcel before the news is public. That's a violation of the rules on confidential information and personal advantage. The duty to protect confidential information also **continues after a relationship ends**: a planner retained to testify against a former client must still protect what was learned in confidence from that client.
+
+:::figure fig-confidence | A timeline. Working for a client comes first; the job ends; later the planner is retained against that client. A bar marked confidential runs under the whole timeline, across the end of the job. Note: the duty continues after the relationship ends.
+Ending the engagement doesn't release what was learned in confidence, even when the planner later works on the other side.
+:::
 
 :::checkpoint cp:coi-confidential-after
 

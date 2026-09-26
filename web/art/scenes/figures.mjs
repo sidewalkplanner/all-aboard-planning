@@ -5333,6 +5333,190 @@ function serviceArea() {
   return { W, H: H + 6, b };
 }
 
+// ============================================================ Lesson 9.1
+
+// The Code's three parts, and which one is enforceable.
+function codeParts() {
+  const rng = makeRng(9101);
+  const W = 720;
+  const H = 440;
+  let b = label(600, 34, 'enforceable?', { weight: 700, color: MUTED });
+  const rows = [['Aspirational principles', 'ideals to strive for', T.sky, 'NO', MUTED], ['Rules of Conduct', 'required and prohibited acts', T.butter, 'YES', P.tomatoDeep], ['Procedures', 'advice, charges, sanctions', T.sage, 'how it runs', P.leafDeep]];
+  rows.forEach(([t, sub, fill, st, color], i) => {
+    const y = 56 + i * 124;
+    const d = roundRectD(20, y, 680, 108, 12);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += title(44, y + 46, t, { size: 28, anchor: 'start' }) + label(44, y + 86, sub, { anchor: 'start', color: MUTED, weight: 500 });
+    b += i < 2 ? stamp(600, y + 56, st, color, rng, { size: 28, rot: -6 }) : label(600, y + 66, st, { color, weight: 700 });
+  });
+  b += note(W / 2, 446, 'only a rule can be violated', { color: P.tomatoDeep });
+  return { W, H: H + 14, b };
+}
+
+// The Code's three relationships, with the public first.
+function threeRelationships() {
+  const rng = makeRng(9102);
+  const W = 720;
+  const H = 420;
+  let b = '';
+  const rows = [['The public', 'first and most important', 660, P.butter], ['Clients and employers', 'defer, within limits', 560, T.sky], ['Profession and colleagues', 'integrity, mentoring', 460, T.sage]];
+  rows.forEach(([t, sub, w, fill], i) => {
+    const y = 20 + i * 116;
+    const x = (W - w) / 2;
+    const d = roundRectD(x, y, w, 100, 12);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: i ? 2 : 3 }));
+    b += `<circle cx="${x + 40}" cy="${y + 50}" r="20" fill="#FFFDF8" stroke="${P.ink}" stroke-width="2"/>` + label(x + 40, y + 60, String(i + 1), { weight: 800 });
+    b += title(x + 76, y + 44, t, { size: 28, anchor: 'start' }) + label(x + 76, y + 82, sub, { anchor: 'start', color: MUTED, weight: 500 });
+  });
+  b += note(W / 2, 406, 'when duties clash, the public comes first', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// How a charge of misconduct moves.
+function chargeFlow() {
+  const rng = makeRng(9103);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  const rows = [['Anyone', 'files a charge, planner or not'], ['Ethics Officer', 'dismisses, or investigates'], ['The member', 'gets to respond'], ['Committee', 'decides; appeal possible'], ['Sanction', 'reprimand, suspension,', 'or expulsion']];
+  b += L(inkLine('M40 40L40 348', { rng, size: 2.4, color: MUTED }));
+  rows.forEach(([h, t, t2], i) => {
+    const y = 40 + i * 77;
+    b += `<circle cx="40" cy="${y}" r="20" fill="${i === 4 ? P.blush : T.sky}" stroke="${P.ink}" stroke-width="2.2"/>` + label(40, y + 10, String(i + 1), { weight: 800 });
+    b += label(78, y + 10, h, { anchor: 'start', weight: 800 });
+    b += label(290, y + 10, t, { anchor: 'start', weight: 500 });
+    if (t2) b += label(290, y + 42, t2, { anchor: 'start', weight: 500 });
+  });
+  b += note(W / 2, 462, 'filing a charge you know is frivolous is itself a violation', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 9.2
+
+// Conflicts: what to do about a financial interest versus a past relationship.
+function coiResponses() {
+  const rng = makeRng(9201);
+  const PW = 338;
+  const PH = 400;
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'A financial interest', { size: 25, anchor: 'start' });
+  ['stock in the applicant,', 'property next door,', "a spouse's new job"].forEach((t, i) => { a += label(20, 76 + i * 28, t, { size: 19, anchor: 'start', color: MUTED, weight: 500 }); });
+  a += stamp(116, 186, 'DISCLOSE', P.civicDeep, rng, { size: 22, rot: -6 }) + label(169, 244, '+', { size: 28, weight: 800 }) + stamp(206, 292, 'WITHDRAW', P.tomatoDeep, rng, { size: 22, rot: 5 });
+  a += note(20, 370, 'disclosure alone isn’t enough', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let r = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'A past relationship', { size: 25, anchor: 'start' });
+  ['a former client,', 'a former employer'].forEach((t, i) => { r += label(20, 76 + i * 28, t, { size: 19, anchor: 'start', color: MUTED, weight: 500 }); });
+  r += stamp(116, 186, 'DISCLOSE', P.civicDeep, rng, { size: 22, rot: -6 }) + label(20, 252, 'on the record,', { size: 19, anchor: 'start', weight: 600 });
+  r += label(20, 290, 'and withdraw too if it’s', { size: 19, anchor: 'start', weight: 600 }) + label(20, 316, 'close or recent', { size: 19, anchor: 'start', weight: 600 });
+  r += note(20, 370, 'let others judge it openly', { size: 24, anchor: 'start', color: P.civicDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, a) + at(368, 14, r),
+    narrow: { W: 366, H: 842, b: at(14, 14, a) + at(14, 428, r) },
+  };
+}
+
+// The gift test: appearance, not price.
+function giftTest() {
+  const rng = makeRng(9202);
+  const W = 720;
+  const H = 400;
+  let b = label(W / 2, 40, 'from a developer with an application pending', { weight: 700 });
+  const gifts = [[140, 'a nice dinner', P.tomato, 60], [360, 'concert tickets', P.civic, 80], [580, 'a thank-you gift', P.leaf, 50]];
+  gifts.forEach(([x, t, fill, sz]) => {
+    const d = rectD(x - sz / 2, 190 - sz, sz, sz);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += `<rect x="${x - 5}" y="${190 - sz}" width="10" height="${sz}" fill="${P.butter}"/><rect x="${x - sz / 2}" y="${190 - sz / 2 - 5}" width="${sz}" height="10" fill="${P.butter}"/>`;
+    b += label(x, 234, t, { weight: 600 });
+  });
+  b += stamp(W / 2, 300, 'DECLINE ALL THREE', P.tomatoDeep, rng, { size: 30, rot: -4 });
+  b += note(W / 2, 388, 'the test is appearance, not price', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Confidences outlast the job.
+function confidenceTimeline() {
+  const rng = makeRng(9203);
+  const W = 720;
+  const H = 380;
+  let b = '';
+  const X = (t) => 40 + t * 64;
+  b += L(arrow(X(0), 196, X(10), 196, rng, { size: 2.6, head: 12 }));
+  b += label(X(0.3), 124, 'working for a client', { anchor: 'start', weight: 700 });
+  const work = rectD(X(0.3), 142, X(4.3) - X(0.3), 36);
+  b += cut(work, { rng, fill: P.butter, filter: FLAT }) + L(ink(work, { rng, size: 2 }));
+  b += label(X(9.8), 124, 'later: against them', { anchor: 'end', weight: 700 });
+  const later = rectD(X(6.6), 142, X(9.8) - X(6.6), 36);
+  b += cut(later, { rng, fill: P.blush, filter: FLAT }) + L(ink(later, { rng, size: 2 }));
+  b += L(dashed(X(5.4), 70, X(5.4), 240, rng, { size: 2, color: MUTED }));
+  b += label(X(5.4), 56, 'the job ends', { color: MUTED, weight: 600 });
+  b += `<rect x="${X(0.3)}" y="212" width="${X(9.8) - X(0.3)}" height="18" rx="6" fill="${P.civic}" opacity="0.85"/>`;
+  b += label(X(0.3), 270, 'confidential the whole way through', { anchor: 'start', weight: 700, color: P.civicDeep });
+  b += note(W / 2, 360, 'the duty continues after the relationship ends', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 9.3
+
+// The five-step method for ethics questions.
+function fiveSteps() {
+  const rng = makeRng(9301);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const rows = [['Actor', 'who, in what role?'], ['Issue', 'which obligation?'], ['Provision', 'a rule or a principle?'], ['Response', 'proportionate, proper channels'], ['Check', 'is the public interest served?']];
+  b += L(inkLine('M40 40L40 348', { rng, size: 2.4, color: MUTED }));
+  rows.forEach(([h, t], i) => {
+    const y = 40 + i * 77;
+    b += `<circle cx="40" cy="${y}" r="20" fill="${i === 3 ? P.butter : T.sky}" stroke="${P.ink}" stroke-width="2.2"/>` + label(40, y + 10, String(i + 1), { weight: 800 });
+    b += label(78, y + 10, h, { anchor: 'start', weight: 800 });
+    b += label(250, y + 10, t, { anchor: 'start', weight: 500 });
+  });
+  b += note(W / 2, 430, 'honest, proportionate, through proper channels', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Wrong answers are too passive or too aggressive.
+function passiveAggressive() {
+  const rng = makeRng(9302);
+  const cols = [['Too passive', ['ignore it', 'wait and see', 'leave it to others'], T.sky, P.civicDeep], ['Just right', ['raise it properly', 'disclose, withdraw', 'correct the record'], P.butter, P.leafDeep], ['Too aggressive', ['go to the press', 'quit on the spot', 'file a charge first'], T.blush, P.tomatoDeep]];
+  const card = (k, w) => {
+    const [t, items, fill, color] = cols[k];
+    const d = roundRectD(0, 0, w, 250, 14);
+    let o = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: k === 1 ? 3.2 : 2 }));
+    o += title(w / 2, 46, t, { size: 25, color });
+    items.forEach((it, i) => { o += label(w / 2, 108 + i * 42, it, { size: 21, weight: 600 }); });
+    return o;
+  };
+  const wide = at(14, 30, card(0, 222)) + at(249, 14, card(1, 222)) + at(484, 30, card(2, 222)) + note(360, 330, 'the best answer is usually in the middle', { size: 24, color: P.civicDeep });
+  const nar = at(14, 14, card(0, 338)) + at(14, 280, card(1, 338)) + at(14, 546, card(2, 338));
+  return { W: 720, H: 346, b: wide, narrow: { W: 366, H: 810, b: nar } };
+}
+
+// Policy belongs to officials; the facts don't bend.
+function policyVsFacts() {
+  const rng = makeRng(9303);
+  const PW = 338;
+  const PH = 380;
+  const report = (x, y, broken) => {
+    const d = rectD(x, y, 130, 160);
+    let o = cut(d, { rng, fill: '#FFFDF8', filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    [40, 70, 100].forEach((h, i) => { o += `<rect x="${x + 22 + i * 34}" y="${y + 130 - h}" width="22" height="${h}" fill="${i === 2 ? P.tomato : P.sky}" stroke="${P.ink}" stroke-width="1.2"/>`; });
+    o += `<line x1="${x + 14}" y1="${y + 142}" x2="${x + 116}" y2="${y + 142}" stroke="${P.ink}" stroke-width="1.4"/>`;
+    if (broken) o += `<rect x="${x + 88}" y="${y + 20}" width="30" height="116" fill="#FFFDF8"/><rect x="${x + 90}" y="${y + 30}" width="22" height="100" fill="none" stroke="${P.tomatoDeep}" stroke-width="1.6" stroke-dasharray="5 4"/>`;
+    return o;
+  };
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Acceptable', { size: 25, anchor: 'start', color: P.leafDeep });
+  a += label(20, 70, 'the council decides differently', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += label(20, 300, 'the unwelcome finding stays', { size: 19, anchor: 'start', weight: 600 }) + report(30, 100, false) + stamp(250, 180, 'VOTE: NO', P.civicDeep, rng, { size: 19, rot: -8 });
+  a += note(20, 350, 'the report stays accurate', { size: 24, anchor: 'start', color: P.leafDeep });
+  let r = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Not acceptable', { size: 25, anchor: 'start', color: P.tomatoDeep });
+  r += label(20, 70, '"change the numbers"', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  r += label(20, 300, 'the unwelcome finding is gone', { size: 19, anchor: 'start', weight: 600 }) + report(30, 100, true) + stamp(250, 180, 'ALTERED', P.tomatoDeep, rng, { size: 19, rot: -8 });
+  r += note(20, 350, 'no one may falsify the facts', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, a) + at(368, 14, r),
+    narrow: { W: 366, H: 802, b: at(14, 14, a) + at(14, 408, r) },
+  };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -5458,6 +5642,9 @@ const FIGURES = [
   ['fig-hia-steps', hiaSteps], ['fig-food-desert', foodDesert], ['fig-park-access', parkAccess], ['fig-regional-spectrum', regionalSpectrum],
   ['fig-ag-zoning', agZoning], ['fig-scatter-village', scatterVillage], ['fig-trust-fee', trustFee],
   ['fig-lifecycle', lifecycleIceberg], ['fig-combined-sewer', combinedSewer], ['fig-service-area', serviceArea],
+  ['fig-code-parts', codeParts], ['fig-three-relationships', threeRelationships], ['fig-charge-flow', chargeFlow],
+  ['fig-coi-responses', coiResponses], ['fig-gift-test', giftTest], ['fig-confidence', confidenceTimeline],
+  ['fig-five-steps', fiveSteps], ['fig-passive-aggressive', passiveAggressive], ['fig-policy-facts', policyVsFacts],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

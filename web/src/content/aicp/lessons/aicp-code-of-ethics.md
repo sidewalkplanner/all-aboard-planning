@@ -1,4 +1,4 @@
-> **Read the Code itself.** This lesson summarizes the AICP Code of Ethics and Professional Conduct in our own words. The Code is short, it's tested directly, and its exact wording matters. Read the current version on APA's website alongside this lesson. <!-- VERIFY: confirm the current Code version (a revised Code took effect in 2021, with later amendments possible) and link to it. -->
+> **Read the Code itself.** This lesson summarizes the AICP Code of Ethics and Professional Conduct in our own words. The Code is short, it's tested directly, and its exact wording matters. **[Read the current Code on APA's website](https://www.planning.org/ethics/)** alongside this lesson, and read it through once more before exam day. <!-- VERIFY: confirm the current Code version (a revised Code took effect in 2021, with later amendments possible) and that the link leads to it. -->
 
 ## Learning objectives
 
@@ -26,6 +26,10 @@ The single most tested idea about the Code is its two-part structure:
 The Code also contains **procedures** for advisory opinions, charges, investigations, and sanctions.
 
 So the commitment to seek social justice by expanding choice and opportunity for everyone is an **aspirational principle**, not a rule, while the prohibition on accepting gifts that could reasonably appear to influence your judgment is a **Rule of Conduct**.
+
+:::figure fig-code-parts | Three parts of the Code, with whether each is enforceable. Aspirational principles, ideals to strive for: no. Rules of Conduct, required and prohibited acts: yes. Procedures, covering advice, charges, and sanctions: how the Code runs. Note: only a rule can be violated.
+When a question asks whether conduct violates the Code, look for a Rule of Conduct; falling short of a principle isn't a violation.
+:::
 
 :::video Principles versus Rules of Conduct | about 2 min
 Sorts a handful of obligations into aspirational principles and enforceable rules, the single most tested idea about the Code's structure.
@@ -62,6 +66,10 @@ The principles are grouped by the three relationships a planner has. In summary:
 
 <!-- VERIFY: the wording and grouping of these principles are paraphrased from our understanding of the Code; check each against the current text. -->
 
+:::figure fig-three-relationships | The three relationships in the aspirational principles, in order. 1 The public: first and most important. 2 Clients and employers: defer, within limits. 3 Profession and colleagues: integrity and mentoring. Note: when duties clash, the public comes first.
+The order matters: planners follow a client's or employer's decisions unless they're illegal or plainly inconsistent with the public interest.
+:::
+
 :::checkpoint cp:code-first-relationship
 
 ### The Rules of Conduct (overview)
@@ -95,6 +103,10 @@ Asking for advice *before* acting is the appropriate professional step when a si
 - Filing a charge **known to be frivolous** is itself a violation.
 
 <!-- VERIFY: confirm the current complaint procedure steps, the name of the deciding body, and the list of available sanctions (for example, whether a "letter of admonition" still exists). -->
+
+:::figure fig-charge-flow | How a charge of misconduct moves, in five steps. 1 Anyone files a charge, planner or not. 2 The Ethics Officer dismisses it or investigates. 3 The member gets to respond. 4 The Ethics Committee decides, and an appeal is possible. 5 Sanctions: reprimand, suspension, or expulsion. Note: filing a charge you know is frivolous is itself a violation.
+AICP's sanctions reach only membership; fines and jail come from the legal system, not the Code.
+:::
 
 :::checkpoint cp:code-who-files
 
@@ -137,6 +149,7 @@ Then apply the method in [Working through ethics scenarios](/aicp/lessons/solvin
 - **Any person** may file a charge of misconduct.
 - Unsure whether something complies? Ask the **Ethics Officer** for advice or a formal advisory opinion.
 - Sanctions are reprimand, suspension, or expulsion. AICP can't impose criminal penalties.
+- Read the [full Code](https://www.planning.org/ethics/) at least once before the exam. Questions often turn on its exact wording.
 
 ## Summary
 
