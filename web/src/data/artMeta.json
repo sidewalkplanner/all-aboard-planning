@@ -811,6 +811,54 @@
     "fig-service-area": {
       "w": 720,
       "h": 406
+    },
+    "fig-code-parts": {
+      "w": 720,
+      "h": 454
+    },
+    "fig-three-relationships": {
+      "w": 720,
+      "h": 420
+    },
+    "fig-charge-flow": {
+      "w": 720,
+      "h": 470
+    },
+    "fig-coi-responses": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-gift-test": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-confidence": {
+      "w": 720,
+      "h": 380
+    },
+    "fig-five-steps": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-passive-aggressive": {
+      "w": 720,
+      "h": 346,
+      "narrow": {
+        "w": 366,
+        "h": 810
+      }
+    },
+    "fig-policy-facts": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
     }
   },
   "hero": {

@@ -259,8 +259,10 @@ finance 4, monitoring 4). Module 6 (Administration and Management) has 7 across 
 management 3, managing an agency 4). Module 7 (Leadership) has 7 across its two lessons (leadership 4,
 mentoring and development 3). Module 8 (Areas of Practice) has 31 across its eight lessons (transportation 5,
 housing 4, environment 4, economic development 4, urban design and preservation 4, health, food, parks,
-and regional 4, rural and tribal 3, infrastructure 3). Next is module 9 (Ethics), in course order, starting with
-`aicp-code-of-ethics`. Aim for two to five figures per lesson, one per
+and regional 4, rural and tribal 3, infrastructure 3). Module 9 (Ethics) has 9 across its three lessons (the Code 3,
+conflicts and rules 3, solving scenarios 3), so every module is now illustrated. Several ethics figures
+repeat facts that carry VERIFY flags (the Ethics Committee, the list of sanctions); if a flagged fact
+changes, redraw the figure too. New figures from here on go where a lesson is added or revised. Aim for two to five figures per lesson, one per
 section where a picture teaches faster than the text: a process, a comparison, a
 distribution, a map, or a worked calculation. Skip sections a picture wouldn't improve.
 

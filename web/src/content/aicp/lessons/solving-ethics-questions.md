@@ -20,6 +20,10 @@ Ethics questions make up about a tenth of the exam and reward a consistent metho
 
 Some questions give answer choices such as "definitely violates," "possibly violates," "does not violate," or "insufficient information." Use "insufficient information" only when a fact that would change the answer is genuinely missing, not as a way to avoid a judgment call.
 
+:::figure fig-five-steps | The five-step method. 1 Actor: who, in what role? 2 Issue: which obligation? 3 Provision: a rule or a principle? 4 Response: proportionate, through proper channels. 5 Check: is the public interest served? Note: honest, proportionate, through proper channels.
+Most of the work is in steps 2 and 3: once you've named the obligation and where it lives in the Code, the right response is usually clear.
+:::
+
 :::checkpoint cp:ethics-principle
 
 ### Political pressure and accurate analysis
@@ -32,6 +36,10 @@ Planners must provide decision-makers and the public with **accurate and complet
 - If pressure continues, escalate through appropriate internal channels and seek advice from the Ethics Officer.
 
 The planner can respect that **policy choices belong to elected officials** while refusing to falsify the facts those choices rest on. There's a difference between "the council may decide differently from my recommendation" (acceptable) and "change the numbers so they support the council's preference" (not acceptable).
+
+:::figure fig-policy-facts | Two panels, each with the same report and bar chart. Acceptable: the council decides differently, stamped vote no, and the unwelcome finding stays; the report stays accurate. Not acceptable: "change the numbers," stamped altered, and the unwelcome finding is gone; no one may falsify the facts.
+Officials can reject the recommendation; no one can make the planner change the findings it rests on.
+:::
 
 :::checkpoint cp:solve-policy-vs-facts
 
@@ -48,6 +56,10 @@ Consultants owe clients loyalty and **independent professional judgment**, but t
 ### Colleagues' misconduct
 
 When a planner finds that a colleague's work contains misleading figures, for example a traffic study that understated impacts, the appropriate first step is to **raise the discrepancy through appropriate channels**: with the colleague, the project manager, or the client. Say what's wrong and ask for correction. Going public first, or ignoring it, are both wrong answers. If the problem is serious and isn't corrected, further steps, including a charge of misconduct, may be warranted.
+
+:::figure fig-passive-aggressive | Three columns of answer types. Too passive: ignore it, wait and see, leave it to others. Just right: raise it properly; disclose and withdraw; correct the record. Too aggressive: go to the press, quit on the spot, file a charge first. Note: the best answer is usually in the middle.
+On the exam, the answers at either end are usually the wrong ones; the best answer takes the problem up through proper channels first.
+:::
 
 :::checkpoint cp:solve-escalate
 
