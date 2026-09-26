@@ -347,6 +347,30 @@
     "fig-flood-odds": {
       "w": 720,
       "h": 440
+    },
+    "fig-planning-sequence": {
+      "w": 720,
+      "h": 520
+    },
+    "fig-hazards-first": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
+    },
+    "fig-tradeoff": {
+      "w": 720,
+      "h": 400,
+      "narrow": {
+        "w": 356,
+        "h": 1076
+      }
+    },
+    "fig-growth-drift": {
+      "w": 720,
+      "h": 440
     }
   },
   "hero": {

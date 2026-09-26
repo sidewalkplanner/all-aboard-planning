@@ -38,6 +38,10 @@ Most planning processes follow a version of the rational model (see [Planning th
 
 In practice the steps **overlap and loop back**: engagement runs throughout, new data can reopen goals, and evaluation can send the team back to refine alternatives. When an exam question asks for the *first substantive step* after scoping, the usual answer is **inventorying existing conditions**, which comes before drafting goals or maps.
 
+:::figure fig-planning-sequence | The planning process as a route with ten stops: 1 scope, 2 existing conditions, 3 issues, 4 vision and goals, 5 alternatives, then around a bend to 6 evaluate, 7 draft plan, 8 adopt, 9 implement, and 10 monitor, with an arrow looping from monitor back to the start. Notes say engagement runs the whole way, and the first real step after scoping is step 2.
+The route runs one way, but the loop is real: what monitoring finds sends the next round back to the start.
+:::
+
 :::checkpoint cp:process-first-step
 
 ### The existing conditions report
@@ -55,6 +59,10 @@ An **existing conditions report** (or community profile) establishes a **shared 
 
 Natural constraints and hazard risk belong early in the analysis, because they limit where growth can safely go. A plan's approach to a floodplain should be shaped first by an analysis of the hazard, not by a preferred land use pattern that's later squeezed around it.
 
+:::figure fig-hazards-first | The same site with a floodplain along one edge, planned two ways, with the same number of homes. Hazards first, mapping the risk and then the land use: all the homes sit above a park and trail buffer, and growth stays out of harm's way. Hazards last, with land use drawn first and squeezed around the hazard afterward: three homes end up in the floodplain.
+Order changes the outcome: analyze the hazard before drawing the land use, not after.
+:::
+
 :::checkpoint cp:process-hazards-early
 
 ### Planning as multivariate analysis
@@ -62,6 +70,10 @@ Natural constraints and hazard risk belong early in the analysis, because they l
 A comprehensive plan juggles many variables at once: housing, jobs, transportation, the environment, infrastructure cost, equity, and community character. Changing one affects the others. Adding housing capacity near transit affects school enrollment, traffic, tree canopy, and the tax base.
 
 When goals conflict, for example a housing policy calling for more density in an area where a natural-resource policy limits it, the planner's job isn't to quietly pick a winner. It's to **analyze and surface the tradeoff for decision-makers**: what each option achieves, what it costs, and who's affected. Then elected officials make the value choice, and the plan records it.
+
+:::figure fig-tradeoff | Three illustrative options for the greenfield site in the example below, which contains wildlife habitat. Full build-out: homes spread across the site and the habitat is lost. Clustered: the same number of homes grouped closer together, and the habitat is kept. No change: no new homes, and the habitat is kept.
+Staff lay the options side by side with what each gains and loses; the commission and council make the value choice.
+:::
 
 :::checkpoint cp:process-multivariate
 
@@ -73,6 +85,10 @@ Plans age. Two kinds of change keep them current:
 - A **full update** revisits the plan's assumptions, vision, and policies. It's warranted when **conditions have diverged substantially from the plan's assumptions** (growth far faster or slower than projected, a major employer leaving, a disaster, new state mandates) or when the plan's horizon is running out.
 
 Many communities schedule a full review every five to ten years; some states require periodic updates. Frequent piecemeal amendments that pull the plan in different directions are a sign that a full update is overdue.
+
+:::figure fig-growth-drift | A line chart of population growth since a plan was adopted, using the example later in this lesson. The plan assumed 1% a year, or +8% after eight years; actual growth ran 3% a year, or +27%. The gap between the lines is shaded, with a note: time for a full update.
+Small annual differences compound: after eight years, the plan's assumption is off by more than three times.
+:::
 
 :::checkpoint cp:process-amendment
 

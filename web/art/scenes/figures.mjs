@@ -2824,6 +2824,137 @@ function floodOdds() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 4.1
+
+// The planning sequence as a two-row route, with the loop back.
+function planningSequence() {
+  const rng = makeRng(4101);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const yA = 140;
+  const yB = 350;
+  const xs = [90, 225, 360, 495, 630];
+  // The route: along the top, round the bend, back along the bottom.
+  const route = `M${xs[0] - 40} ${yA}H${xs[4]}C${xs[4] + 70} ${yA} ${xs[4] + 70} ${yB} ${xs[4]} ${yB}H${xs[0] - 40}`;
+  b += `<path d="${route}" fill="none" stroke="${P.civic}" stroke-width="20" stroke-linecap="round"/>`;
+  b += L(ink(route, { rng, size: 1.6, opacity: 0.6 }));
+  const names = [['Scope'], ['Existing', 'conditions'], ['Issues'], ['Vision', 'and goals'], ['Alternatives'],
+    ['Evaluate'], ['Draft', 'plan'], ['Adopt'], ['Implement'], ['Monitor']];
+  names.forEach((lines, i) => {
+    const top = i < 5;
+    const x = top ? xs[i] : xs[9 - i];
+    const y = top ? yA : yB;
+    const d = ellipseD(x, y, 25, 25);
+    b += cut(d, { rng, fill: i === 0 ? P.butter : i === 1 ? P.tomato : P.paper, filter: FLAT }) + L(ink(d, { rng, size: 2.6 }));
+    b += title(x, y + 10, String(i + 1), { size: 28, color: i === 1 ? '#FFFFFF' : P.ink });
+    lines.forEach((t, k) => { b += label(x, i === 4 ? y - 40 : y + 62 + k * 32, t); });
+  });
+  // Monitoring loops back to the start of the analysis.
+  b += L(inkLine(`M${xs[0] - 50} ${yB - 20}C${14} ${yB - 60} ${14} ${yA + 60} ${xs[0] - 40} ${yA + 30}`, { rng, size: 2.4, color: P.tomatoDeep, overshoot: 0 }));
+  b += L(arrow(xs[0] - 58, yA + 40, xs[0] - 36, yA + 26, rng, { color: P.tomatoDeep, size: 2.4, head: 10 }));
+  b += note(360, 60, 'engagement runs the whole way', { color: P.civicDeep });
+  b += note(360, 500, 'first real step after scoping: step 2', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// Hazards first, or hazards last: the same site planned two ways.
+function hazardsFirst() {
+  const rng = makeRng(4102);
+  const PW = 338;
+  const PH = 380;
+  const map = (first) => {
+    let s = '';
+    const flood = `M28 250C90 230 150 270 220 240S300 220 316 236V318H28Z`;
+    s += `<path d="${flood}" fill="${T.sky}"/>` + L(ink(`M28 250C90 230 150 270 220 240S300 220 316 236`, { rng, size: 2, color: P.civicDeep }));
+    s += label(280, 300, 'floodplain', { size: 19, anchor: 'end', color: P.civicDeep, weight: 700 });
+    const homes = first
+      ? [[40, 110], [80, 110], [120, 110], [160, 110], [200, 110], [40, 160], [80, 160], [120, 160], [160, 160], [240, 160], [280, 110], [240, 110]]
+      : [[40, 110], [80, 110], [120, 110], [160, 110], [200, 110], [240, 110], [40, 180], [120, 180], [200, 180], [60, 250], [140, 262], [230, 246]];
+    for (const [x, y] of homes) {
+      const wet = y > 230;
+      s += `<rect x="${x}" y="${y}" width="28" height="24" fill="${wet ? P.tomato : P.butter}" stroke="${P.ink}" stroke-width="1.6"/>`;
+    }
+    if (first) s += `<rect x="40" y="206" width="236" height="14" rx="4" fill="${P.leaf}"/>` + label(158, 200, 'buffer: park, trails', { size: 19, color: P.leafDeep, weight: 700 });
+    return s;
+  };
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Hazards first', { size: 25, anchor: 'start' }) + label(20, 70, 'map the risk, then the land use', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  a += map(true) + note(20, 356, 'growth stays out of harm’s way', { size: 24, anchor: 'start', color: P.leafDeep });
+  let c = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Hazards last', { size: 25, anchor: 'start' }) + label(20, 70, 'land use first, squeezed after', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  c += map(false) + note(20, 356, 'homes end up in the floodplain', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, a) + at(368, 14, c),
+    narrow: { W: 366, H: 802, b: at(14, 14, a) + at(14, 408, c) },
+  };
+}
+
+// Surfacing a tradeoff: three options for the greenfield with habitat.
+function tradeoffOptions() {
+  const rng = makeRng(4103);
+  const PW = 228;
+  const PH = 330;
+  const opt = (name, homes, verdict, vColor) => {
+    let s = panel(0, 0, PW, PH, T.cream, rng) + title(PW / 2, 40, name, { size: 23 });
+    const site = rectD(24, 64, 180, 170);
+    s += cut(site, { rng, fill: T.butter, shadow: false, filter: FLAT }) + L(ink(site, { rng, size: 1.8 }));
+    const hab = blobD(150, 150, 46, 60, makeRng(12), 6, 0.1);
+    const lost = homes === 'full';
+    s += cut(hab, { rng, fill: lost ? '#E7E1D2' : P.sage, shadow: false, filter: FLAT }) + L(ink(hab, { rng, size: 1.6, opacity: lost ? 0.5 : 1 }));
+    const pts = homes === 'full' ? [[36, 76], [64, 76], [92, 76], [120, 76], [148, 76], [176, 76], [36, 118], [64, 118], [92, 118], [130, 128], [166, 128], [36, 160], [64, 160], [92, 160], [130, 176], [166, 176], [36, 202], [64, 202], [92, 202]]
+      : homes === 'cluster' ? [[36, 76], [58, 76], [80, 76], [36, 98], [58, 98], [80, 98], [36, 120], [58, 120], [80, 120], [36, 142], [58, 142], [80, 142], [36, 164], [58, 164], [80, 164], [36, 186], [58, 186], [80, 186], [36, 208]]
+      : [];
+    const sz = homes === 'cluster' ? 16 : 20;
+    for (const [x, y] of pts) s += `<rect x="${x}" y="${y}" width="${sz}" height="${sz - 2}" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.3"/>`;
+    s += label(PW / 2, 268, verdict[0], { size: 19, color: vColor, weight: 700 });
+    s += label(PW / 2, 294, verdict[1], { size: 19, color: vColor, weight: 700 });
+    return s;
+  };
+  const panels = [
+    opt('Full build-out', 'full', ['homes spread out,', 'habitat lost'], P.tomatoDeep),
+    opt('Clustered', 'cluster', ['same homes, closer,', 'habitat kept'], P.leafDeep),
+    opt('No change', 'none', ['no new homes,', 'habitat kept'], P.civicDeep),
+  ];
+  const key = (x, y) => `<rect x="${x}" y="${y - 16}" width="18" height="18" fill="${P.sage}" stroke="${P.ink}" stroke-width="1.4"/>` + label(x + 26, y, 'wildlife habitat', { size: 20, anchor: 'start', weight: 500 })
+    + `<rect x="${x + 210}" y="${y - 16}" width="18" height="16" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.3"/>` + label(x + 236, y, 'new homes', { size: 20, anchor: 'start', weight: 500 });
+  return {
+    W: 720, H: 400, b: panels.map((q, i) => at(8 + i * 238, 14, q)).join('') + key(24, 380),
+    narrow: { W: 356, H: 1076, b: panels.map((q, i) => at(64, 12 + i * 342, q)).join('') + key(16, 1060) },
+  };
+}
+
+// When an update is overdue: assumed 1% growth against 3% actual.
+function growthDrift() {
+  const rng = makeRng(4104);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const x0 = 100;
+  const x1 = 560;
+  const yB = 340;
+  const yT = 70;
+  const X = (n) => x0 + (n / 8) * (x1 - x0);
+  const Y = (g) => yB - (g / 0.3) * (yB - yT);
+  for (const g of [0.1, 0.2, 0.3]) {
+    b += L(inkLine([[x0, Y(g)], [x1, Y(g)]], { rng, size: 1, opacity: 0.35, overshoot: 0 }));
+    b += label(x0 - 14, Y(g) + 10, `+${Math.round(g * 100)}%`, { anchor: 'end' });
+  }
+  const line = (r) => { const pts = []; for (let n = 0; n <= 8; n++) pts.push([X(n), Y((1 + r) ** n - 1)]); return pts; };
+  const gap = [...line(0.03), ...line(0.01).reverse()];
+  b += `<path d="${polyD(gap)}" fill="${T.blush}"/>`;
+  b += L(inkLine(line(0.01), { rng, size: 3, color: P.civicDeep, overshoot: 0 }) + inkLine(line(0.03), { rng, size: 3, color: P.tomatoDeep, overshoot: 0 }));
+  b += L(inkLine([[x0, yT - 10], [x0, yB], [x1 + 10, yB]], { rng, size: 2.4, overshoot: 0 }));
+  for (const n of [0, 2, 4, 6, 8]) b += label(X(n), yB + 38, String(n));
+  b += label((x0 + x1) / 2, yB + 80, 'years since the plan', { color: MUTED, weight: 500 });
+  b += label(x0 - 60, 36, 'population growth since adoption', { anchor: 'start', color: MUTED, weight: 500 });
+  const end = (r) => (1 + r) ** 8 - 1;
+  b += label(x1 + 16, Y(end(0.03)) + 8, `actual 3%`, { anchor: 'start', color: P.tomatoDeep, weight: 700 });
+  b += label(x1 + 16, Y(end(0.03)) + 40, `+${Math.round(end(0.03) * 100)}%`, { anchor: 'start', color: P.tomatoDeep });
+  b += label(x1 + 16, Y(end(0.01)) - 10, `planned 1%`, { anchor: 'start', color: P.civicDeep, weight: 700 });
+  b += label(x1 + 16, Y(end(0.01)) + 22, `+${Math.round(end(0.01) * 100)}%`, { anchor: 'start', color: P.civicDeep });
+  b += note(x0 + 20, Y(0.24), 'time for a full update', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -2890,6 +3021,10 @@ export const FIGURES = [
   ['fig-who-does-what', whoDoesWhat],
   ['fig-staff-report', staffReport],
   ['fig-flood-odds', floodOdds],
+  ['fig-planning-sequence', planningSequence],
+  ['fig-hazards-first', hazardsFirst],
+  ['fig-tradeoff', tradeoffOptions],
+  ['fig-growth-drift', growthDrift],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
