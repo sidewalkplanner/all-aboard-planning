@@ -193,7 +193,7 @@ export default function Progress() {
                 return (
                   <div key={d.id}>
                     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '2px 12px', fontSize: 14, marginBottom: 6 }}>
-                      <Link to={P.domain(d.id)} style={{ fontWeight: 700, color: 'var(--ink)' }}>{d.code}. {d.short} <span className="small">({d.weight}%)</span></Link>
+                      <Link to={P.domain(d.id)} style={{ fontWeight: 700, color: 'var(--ink)' }}>{d.code}. {d.short}</Link>
                       <span style={{ color: 'var(--muted)', fontVariantNumeric: 'tabular-nums' }}>
                         {done}/{lessons} lessons &middot; {pct === null ? 'no scores yet' : `${pct}% correct`}
                       </span>

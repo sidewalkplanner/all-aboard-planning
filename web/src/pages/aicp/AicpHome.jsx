@@ -192,7 +192,9 @@ export default function AicpHome() {
             <div>
               <h2 id="cta-heading" className="h2">Your train is on the platform.</h2>
               <p className="lead" style={{ color: '#3A3320' }}>
-                Every lesson and practice exam is open to you. Create an account and your progress is saved as you go.
+                {signedIn
+                  ? 'Every lesson and practice exam is open to you, and your progress is saved as you go.'
+                  : 'Every lesson and practice exam is open to you. Create an account and your progress is saved as you go.'}
               </p>
               <div className="row-wrap" style={{ marginTop: 26 }}>
                 {signedIn
