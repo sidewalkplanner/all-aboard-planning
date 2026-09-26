@@ -4385,6 +4385,116 @@ function afterLoss() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 7.2
+
+// Delegation as a three-legged stool: take away authority and it tips.
+function delegationStool() {
+  const rng = makeRng(7201);
+  const PW = 338;
+  const PH = 400;
+  const legs = [['expectations', 90, P.butter], ['accountability', 169, P.sage], ['authority', 248, P.sky]];
+  const stool = (n) => {
+    let s = '';
+    legs.slice(0, n).forEach(([, x, fill]) => { const d = rectD(x - 9, 132, 18, 118); s += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })); });
+    const seat = roundRectD(60, 106, 218, 28, 10);
+    return s + cut(seat, { rng, fill: P.kraft, filter: FLAT }) + L(ink(seat, { rng, size: 2.2 }));
+  };
+  const legend = (miss) => legs.map(([t, , fill], i) => {
+    const y = 286 + i * 28;
+    const gone = miss && i === 2;
+    return `<rect x="20" y="${y - 15}" width="18" height="18" rx="3" fill="${gone ? 'none' : fill}" stroke="${gone ? P.tomatoDeep : P.ink}" stroke-width="1.6"${gone ? ' stroke-dasharray="4 3"' : ''}/>`
+      + label(48, y, gone ? `${t}: missing` : t, { size: 19, anchor: 'start', weight: gone ? 700 : 500, color: gone ? P.tomatoDeep : P.ink });
+  }).join('');
+  const ground = (s) => L(inkLine('M30 252L308 252', { rng, size: 2, color: MUTED })) + s;
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Real delegation', { size: 25, anchor: 'start' });
+  a += ground(stool(3)) + legend(false);
+  a += note(20, 384, 'the task stands', { size: 24, anchor: 'start', color: P.leafDeep });
+  let bb = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Responsibility only', { size: 25, anchor: 'start' });
+  bb += ground(`<rect x="239" y="132" width="18" height="118" fill="none" stroke="${P.tomatoDeep}" stroke-width="1.8" stroke-dasharray="6 5"/>`);
+  bb += `<g transform="rotate(16 169 250)">${stool(2)}</g>` + legend(true);
+  bb += note(20, 384, 'set up to fail', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, a) + at(368, 14, bb),
+    narrow: { W: 366, H: 842, b: at(14, 14, a) + at(14, 428, bb) },
+  };
+}
+
+// Coaching, mentoring, and sponsorship compared.
+function coachMentorSponsor() {
+  const rng = makeRng(7202);
+  const icon = (k, x, y) => {
+    if (k === 0) return [44, 30, 16].map((r, i) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${[T.blush, '#FFFDF8', P.tomato][i]}" stroke="${P.ink}" stroke-width="2"/>`).join('');
+    if (k === 1) {
+      let s = '';
+      [0, 1, 2].forEach((i) => { const d = rectD(x - 45 + i * 30, y + 30 - (i + 1) * 22, 30, (i + 1) * 22); s += cut(d, { rng, fill: [T.sage, P.sage, P.leaf][i], filter: FLAT }) + L(ink(d, { rng, size: 1.8 })); });
+      return s + star(x + 30, y - 52, 11, { fill: P.butter, seed: 77 });
+    }
+    const frame = rectD(x - 16, y - 44, 60, 88);
+    const door = polyD([[x - 16, y - 44], [x - 52, y - 54], [x - 52, y + 56], [x - 16, y + 44]]);
+    let s = cut(frame, { rng, fill: P.butter, filter: FLAT }) + L(ink(frame, { rng, size: 2.2 }));
+    s += cut(door, { rng, fill: P.kraft, filter: FLAT }) + L(ink(door, { rng, size: 2 }));
+    return s + `<circle cx="${x - 44}" cy="${y + 2}" r="4" fill="${P.ink}"/>`;
+  };
+  const cards = [
+    ['Coaching', ['a specific skill:', 'running a meeting'], 'a defined period', T.blush],
+    ['Mentoring', ['career growth:', 'judgment, values'], 'a long relationship', T.sage],
+    ['Sponsorship', ['your influence:', 'recommends you'], 'opens doors', T.butter],
+  ];
+  const tall = (k) => {
+    const [t, lines, n] = cards[k];
+    let s = panel(0, 0, 222, 330, T.cream, rng) + title(111, 44, t, { size: 25 });
+    s += icon(k, 111, 128);
+    lines.forEach((l, i) => { s += label(111, 222 + i * 26, l, { size: 19, weight: i ? 500 : 700, color: i ? MUTED : P.ink }); });
+    return s + note(111, 300, n, { size: 24, color: P.civicDeep });
+  };
+  const wide = (k) => {
+    const [t, lines, n] = cards[k];
+    let s = panel(0, 0, 338, 200, T.cream, rng) + icon(k, k === 2 ? 84 : 70, 104);
+    s += title(140, 48, t, { size: 25, anchor: 'start' });
+    lines.forEach((l, i) => { s += label(140, 90 + i * 26, l, { size: 19, anchor: 'start', weight: i ? 500 : 700, color: i ? MUTED : P.ink }); });
+    return s + note(140, 172, n, { size: 24, anchor: 'start', color: P.civicDeep });
+  };
+  return {
+    W: 720, H: 358, b: at(14, 14, tall(0)) + at(249, 14, tall(1)) + at(484, 14, tall(2)),
+    narrow: { W: 366, H: 656, b: at(14, 14, wide(0)) + at(14, 228, wide(1)) + at(14, 442, wide(2)) },
+  };
+}
+
+// Resolving a staff conflict, in four steps.
+function conflictSteps() {
+  const rng = makeRng(7203);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const xs = [96, 272, 448, 624];
+  b += L(inkLine(`M${xs[0]} 240L${xs[3]} 240`, { rng, size: 2.4, color: MUTED }));
+  // 1: the leader meets each person separately.
+  b += person(46, 190, 0.9, { coat: P.leaf, seed: 81 }) + person(74, 190, 0.9, { coat: P.tomato, seed: 82, flip: true });
+  b += person(118, 190, 0.9, { coat: P.leaf, seed: 81 }) + person(146, 190, 0.9, { coat: P.civic, seed: 83, flip: true });
+  b += L(dashed(96, 116, 96, 196, rng, { size: 1.8, color: MUTED }));
+  // 2: all three at one table.
+  const table = roundRectD(222, 160, 100, 24, 8);
+  b += person(272, 186, 0.9, { coat: P.leaf, seed: 86 }) + person(232, 196, 0.9, { coat: P.tomato, seed: 84 }) + person(312, 196, 0.9, { coat: P.civic, seed: 85 });
+  b += cut(table, { rng, fill: P.kraft, filter: FLAT }) + L(ink(table, { rng, size: 2 }));
+  // 3: a written agreement.
+  const paper = rectD(418, 110, 60, 76);
+  b += cut(paper, { rng, fill: '#FFFDF8', filter: FLAT }) + L(ink(paper, { rng, size: 2 }));
+  [132, 152, 172].forEach((y) => { b += L(inkLine(`M428 ${y}l7 7l12 -14`, { rng, size: 2.2, color: P.leafDeep })); b += L(inkLine(`M452 ${y + 2}L468 ${y + 2}`, { rng, size: 1.6, color: MUTED })); });
+  // 4: a follow-up date.
+  const cal = roundRectD(592, 112, 64, 70, 6);
+  b += cut(cal, { rng, fill: '#FFFDF8', filter: FLAT }) + L(ink(cal, { rng, size: 2 }));
+  b += `<rect x="592" y="112" width="64" height="18" rx="4" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.6"/>` + label(624, 170, '30', { weight: 800 });
+  const steps = [['Meet each', 'separately'], ['Facilitate', 'on interests'], ['Agree on', 'next steps'], ['Follow', 'up']];
+  steps.forEach(([a, z], i) => {
+    const x = xs[i];
+    b += `<circle cx="${x}" cy="240" r="19" fill="${P.butter}" stroke="${P.ink}" stroke-width="2.2"/>` + label(x, 250, String(i + 1), { weight: 800 });
+    b += label(x, 300, a, { weight: 700 }) + label(x, 334, z, { weight: 500 });
+  });
+  b += note(360, 50, 'the work and the interests, not personalities or blame', { color: P.civicDeep });
+  b += note(360, 390, 'ignored, conflict spreads; imposed, it rarely lasts', { color: P.tomatoDeep });
+  return { W, H: H + 6, b };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -4501,6 +4611,7 @@ const FIGURES = [
   ['fig-budget-formats', budgetFormats],
   ['fig-discipline', progressiveDiscipline],
   ['fig-lead-styles', leadStyles], ['fig-lead-middle', leadMiddle], ['fig-public-interest', publicInterest], ['fig-after-loss', afterLoss],
+  ['fig-delegation', delegationStool], ['fig-coach-mentor-sponsor', coachMentorSponsor], ['fig-conflict-steps', conflictSteps],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
