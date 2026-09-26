@@ -9,8 +9,6 @@
 
 ## Key concepts
 
-> This lesson teaches the concepts the exam tests. It isn't legal advice; land use law varies by state, and planners should work with their jurisdiction's attorney.
-
 ### Where the power comes from
 
 - **The police power** is the inherent power of state governments to regulate private conduct to protect **public health, safety, morals, and general welfare**. The U.S. Constitution doesn't grant it; the states have always had it, and the Tenth Amendment reserves it to them. Zoning is an exercise of the police power.

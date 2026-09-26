@@ -8,8 +8,6 @@
 
 ## Key concepts
 
-> This lesson explains the doctrine at the level the exam tests. It isn't legal advice.
-
 ### The Takings Clause
 
 The Fifth Amendment ends: "nor shall private property be taken for public use, without just compensation." Through the Fourteenth Amendment it applies to state and local governments. The clause does two things: it permits government to take property (**eminent domain**), and it requires **just compensation**, usually fair market value, when it does.

@@ -36,11 +36,7 @@ function Ticket({ a, i, access, attempts }) {
       <span className="ticket__notch ticket__notch--top" aria-hidden="true" />
       <span className="ticket__notch ticket__notch--bottom" aria-hidden="true" />
       <div className="ticket__body">
-        <div className="row-wrap" style={{ gap: 14 }}>
-          <h3 className="h3" style={{ fontSize: 25 }}>{a.title}</h3>
-          <span className="stamp" style={{ color: 'var(--brand-strong)' }}>Full length</span>
-        </div>
-        <p className="body-text" style={{ margin: '8px 0 0', fontSize: 15.5, maxWidth: '56ch' }}>{a.blurb}</p>
+        <h3 className="h3" style={{ fontSize: 25 }}>{a.title}</h3>
         <div className="row-wrap" style={{ gap: 8, marginTop: 12 }}>
           <span className="chip chip--plain">{a.size} questions</span>
           <span className="chip chip--plain">{fmtTime(a.mins)} timed</span>
