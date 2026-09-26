@@ -21,6 +21,10 @@ pencil notes in Caveat.
   a list of `{ name, w, h, svg, scale?, quality? }`. A list can carry a
   `meta` object, which is written to `src/data/artMeta.json` (the hero
   uses it to line the animated tram up with the rails).
+- `scenes/figures.mjs`: the lesson figures (teaching diagrams placed with
+  `:::figure` in lesson Markdown). Charts are computed from their data, so
+  bars, curves, and markers sit exactly where the labels say. Its `meta`
+  records each figure's size for the lesson renderer.
 - `render.mjs`: rasterises the scenes with Chromium into `public/art/`.
   Assets marked `keepSvg` are written as SVG instead (the torn edges and
   scribbles used as CSS masks, in `src/assets/textures/`).

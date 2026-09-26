@@ -16,6 +16,10 @@
 
 Income, home prices, and lot sizes are usually **right-skewed**: most values cluster low, with a long tail of very high values. In a right-skewed distribution the **mean is higher than the median**. That's why planners report *median* household income. A handful of very high earners would inflate the mean and misrepresent a typical household.
 
+:::figure fig-skew | A histogram of household incomes in $25,000 bands, from $0 to $200,000 and up. Most households fall between $25,000 and $75,000, with a long tail of higher incomes to the right. A dashed line marks the median at about $68,000; another marks the mean at about $82,000, pulled up by the long tail of high incomes.
+Illustrative numbers. The few very high incomes barely move the median, but they drag the mean about $14,000 higher.
+:::
+
 :::checkpoint cp:stat-mode
 
 ### Describing a dataset: spread
@@ -32,6 +36,10 @@ Many measurements follow a symmetric, bell-shaped **normal distribution**, in wh
 - about **95%** within two; and
 - about **99.7%** within three.
 
+:::figure fig-normal | A bell curve centered on the mean, where mean, median, and mode are equal, with tick marks at one, two, and three standard deviations on each side. Brackets show that about 68% of values fall within one standard deviation of the mean, 95% within two, and 99.7% within three.
+Three brackets to memorize: 68, 95, and 99.7.
+:::
+
 ### Relationships between variables
 
 A **correlation coefficient** (*r*) runs from −1 to +1 and describes the strength and direction of a *linear* relationship.
@@ -40,9 +48,17 @@ A **correlation coefficient** (*r*) runs from −1 to +1 and describes the stren
 - *r* near −1: one rises as the other falls (strong negative). An *r* of −0.85 is a strong negative relationship.
 - *r* near 0: no linear relationship (there could still be a curved one).
 
+:::figure fig-correlation | Three scatterplots. Left: points rising from lower left to upper right, r = +0.90, strong positive. Middle: points falling from upper left to lower right, r = −0.85, strong negative. Right: points with no pattern, r = 0.00, no linear pattern.
+The sign gives the direction; the size gives the strength. An *r* of −0.85 is just as strong as +0.85.
+:::
+
 **Regression** estimates how much a dependent variable changes with one or more independent variables. **R-squared** (R²) is the share of the variation in the dependent variable that the model explains. An R² of 0.65 means the model accounts for about 65% of the variation; the other 35% is due to things the model doesn't capture.
 
 **Correlation is not causation.** Ice cream sales and drownings both rise in summer. Neither causes the other; a **confounding variable** (hot weather) drives both. Before concluding that a policy caused an outcome, ask what else changed at the same time.
+
+:::figure fig-confounder | A smiling sun labeled "Hot weather, the confounding variable," with arrows to an ice cream cone labeled "Ice cream sales" and a life ring on the water labeled "Drownings." A dashed line between the two says "they rise together, but neither causes the other."
+When two things move together, look for a third thing driving both before you credit or blame either one.
+:::
 
 :::checkpoint cp:stat-r2
 
@@ -67,6 +83,10 @@ Common tests and when to use them:
 
 Sample estimates come with uncertainty. ACS estimates are published with a **margin of error at the 90% confidence level**. If an ACS table reports 1,200 renter households ± 350, the true value likely falls between 850 and 1,550.
 
+:::figure fig-moe | Two confidence intervals on a scale from 0% to 35%. Tract A is 18% plus or minus 6, spanning 12% to 24%. Tract B is 22% plus or minus 7, spanning 15% to 29%. The shaded overlap from 15% to 24% is labeled "overlap: can't call them different."
+The poverty-rate example from Real-world examples, below. With this much overlap, the 4-point gap could easily be sampling noise.
+:::
+
 Practical rules:
 
 - If two estimates' confidence intervals overlap substantially, don't claim they're different without a formal test.
@@ -87,6 +107,10 @@ A dollar today is worth more than a dollar in ten years, because today's dollar 
 - $10,000 ÷ 1.1025 ≈ **$9,070**
 
 A **higher discount rate** lowers the present value of future benefits and costs. Because many public investments (transit, flood protection, parks) pay off over decades, the choice of discount rate can decide whether a project looks worthwhile.
+
+:::figure fig-discounting | A bar chart titled "What $10,000 is worth today." Paid in 2 years: $9,426 at a 3% discount rate, $9,070 at 5%, and $8,734 at 7%. Paid in 30 years: $4,120 at 3%, $2,314 at 5%, and $1,314 at 7%.
+Over two years the rate barely matters. Over thirty, moving from 3% to 7% cuts the present value by more than two-thirds, which is why long-lived projects are so sensitive to the discount rate.
+:::
 
 **Net present value (NPV)** is the present value of benefits minus the present value of costs. A positive NPV means benefits exceed costs.
 

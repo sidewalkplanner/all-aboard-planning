@@ -23,6 +23,7 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
   scripts/markdown.mjs      Shared Markdown → HTML renderer (used by Vite plugin and checker)
   scripts/check-content.mjs `npm run check`: validates lessons, checkpoints, internal links
   art/                      Illustration pipeline (`npm run art`): hand-drawn SVG scenes -> public/art/*.webp
+                            (scenes/figures.mjs holds the lesson figures)
   src/
     App.jsx                 All routes (firm-level, /aicp/*, and legacy redirects)
     index.css               Design tokens (CSS custom properties) + shared classes
@@ -217,6 +218,21 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
    It renders a "Video coming soon" placeholder. When the video exists, add its embed URL as a
    third field (`Title | about 4 min | https://www.youtube-nocookie.com/embed/ID`) and it renders
    the player instead. `npm run check` validates the blocks and counts remaining placeholders.
+   **Figures.** Where a picture teaches faster than a paragraph (a distribution, a comparison,
+   a process, a map), add a diagram after the section it explains:
+   ```markdown
+   :::figure fig-skew | Alt text that says everything the figure shows, including its labels.
+   A one- or two-sentence caption that adds the takeaway rather than repeating the text.
+   :::
+   ```
+   Draw it in `web/art/scenes/figures.mjs` (same collage kit as the other art) and render it with
+   `npm run art -- fig-skew`; that writes `public/art/fig-skew.webp` and records its size in
+   `src/data/artMeta.json`. Charts must be drawn to scale from the numbers in their labels, and
+   any invented data is marked "illustrative". The lettering is baked into the image, so the alt
+   text carries it; keep labels at 24px or larger in the 720-wide canvas so they survive a phone
+   screen (the figure also links to its full-size image for zooming). `npm run check` fails if a
+   figure isn't rendered or its alt text is too thin.
+
 4. **Flag uncertain facts** with `<!-- VERIFY: … -->` and add them to `REVIEW.md`.
 5. **Add it to the study plans** in `studyPlans.js` if it should be scheduled.
 6. Run `npm run check && npm run build` in `web/`.

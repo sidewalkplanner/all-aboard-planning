@@ -1,4 +1,50 @@
 {
+  "figures": {
+    "fig-research-route": {
+      "w": 720,
+      "h": 250
+    },
+    "fig-primary-secondary": {
+      "w": 720,
+      "h": 390
+    },
+    "fig-census-acs": {
+      "w": 720,
+      "h": 420
+    },
+    "fig-sampling": {
+      "w": 720,
+      "h": 560
+    },
+    "fig-validity": {
+      "w": 720,
+      "h": 340
+    },
+    "fig-skew": {
+      "w": 720,
+      "h": 410
+    },
+    "fig-normal": {
+      "w": 720,
+      "h": 436
+    },
+    "fig-correlation": {
+      "w": 720,
+      "h": 330
+    },
+    "fig-confounder": {
+      "w": 720,
+      "h": 380
+    },
+    "fig-moe": {
+      "w": 720,
+      "h": 300
+    },
+    "fig-discounting": {
+      "w": 720,
+      "h": 420
+    }
+  },
   "hero": {
     "W": 1600,
     "H": 470,

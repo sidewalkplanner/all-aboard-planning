@@ -10,10 +10,12 @@
 //  - every internal link in lessons, content pages, study plans, and
 //    navigation points to a real route, lesson, and (if given) anchor;
 //  - every <!-- VERIFY: ... --> flag in content has a reason;
-//  - every :::video slot has a title and length (and an https URL if any).
+//  - every :::video slot has a title and length (and an https URL if any);
+//  - every :::figure names a rendered figure (public/art/<name>.webp, sized in
+//    src/data/artMeta.json) and has alt text.
 //
 // Needs no dependencies beyond the site's own (marked, via markdown.mjs).
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderMarkdown, extractKeyTerms } from './markdown.mjs';
@@ -100,6 +102,11 @@ for (const l of LESSONS) {
     if (v.url && !/^https:\/\//.test(v.url)) err(`Lesson ${l.slug}: video URL must be https (${v.url})`);
   }
   if (/^:::video/m.test(md) && !r.videos.length) err(`Lesson ${l.slug}: malformed :::video block`);
+  for (const f of r.figures) {
+    if (!f.size || !existsSync(join(root, 'public', 'art', `${f.name}.webp`))) err(`Lesson ${l.slug}: figure ${f.name} isn't rendered (run npm run art -- ${f.name})`);
+    if (f.alt.length < 40) err(`Lesson ${l.slug}: figure ${f.name} needs alt text that says what the figure shows`);
+  }
+  if ((md.match(/^:::figure/gm) || []).length !== r.figures.length) err(`Lesson ${l.slug}: malformed :::figure block (":::figure name | alt text", caption, ":::")`);
   const words = md.replace(/<!--[\s\S]*?-->/g, '').split(/\s+/).length;
   if (words < 700) warn(`Lesson ${l.slug}: only ${words} words`);
 }
@@ -207,7 +214,8 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
 const totalRefs = LESSONS.reduce((s, l) => s + (l.practice || []).length, 0);
 const videos = [...rendered.values()].flatMap((r) => r.videos);
 const placeholders = videos.filter((v) => !v.url).length;
-console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} exam items mapped to lessons, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders), ${totalCards} flashcards, ${totalCheckpoints} checkpoints.`);
+const figureCount = [...rendered.values()].reduce((n, r) => n + r.figures.length, 0);
+console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} exam items mapped to lessons, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders), ${figureCount} figures, ${totalCards} flashcards, ${totalCheckpoints} checkpoints.`);
 warnings.forEach((w) => console.log(`  warning: ${w}`));
 if (errors.length) {
   errors.forEach((e) => console.error(`  ERROR: ${e}`));

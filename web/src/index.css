@@ -882,6 +882,32 @@ img, svg { max-width: 100%; }
   background-repeat: repeat-x, repeat-x, repeat, repeat;
 }
 .prose .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* Lesson figures (:::figure): a hand-drawn diagram pinned onto card stock. */
+.prose .lesson-figure {
+  margin: 30px 0;
+  padding: 16px 16px 0;
+  border: 2px solid var(--ink);
+  border-radius: var(--wobble-sm);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+.prose .lesson-figure .figure-image { display: block; border-radius: 6px; }
+.prose .lesson-figure img { display: block; width: 100%; height: auto; }
+.prose .lesson-figure .figure-zoom-hint { display: none; }
+.prose .lesson-figure figcaption {
+  margin: 14px -16px 0;
+  padding: 12px 18px 14px;
+  border-top: 2px dashed var(--line-strong);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+}
+@media (max-width: 480px) {
+  .prose .lesson-figure { padding: 10px 8px 0; margin-inline: -4px; }
+  .prose .lesson-figure figcaption { margin-inline: -8px; }
+  .prose .lesson-figure .figure-zoom-hint { display: block; margin-top: 4px; font-size: 13.5px; color: var(--muted); }
+}
 .prose .video-slot figcaption {
   padding: 14px 18px;
   font-size: 15px;
