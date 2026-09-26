@@ -245,7 +245,8 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
    If text won't fit at the minimum, cut words or add a narrow layout; never shrink the type.
 
 4. **Flag uncertain facts** with `<!-- VERIFY: … -->` and add them to `REVIEW.md`.
-5. **Add it to the study plans** in `studyPlans.js` if it should be scheduled.
+5. **Add it to the study plans** in `studyPlans.js` if it should be scheduled (the plans are hidden
+   today, but `npm run check` still expects every lesson to appear in them).
 6. Run `npm run check && npm run build` in `web/`.
 
 ## Lesson figures: workflow and status
@@ -321,7 +322,7 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
 - **Who can open what** is decided in one hook, `src/hooks/useAccess.js`, from two settings in
   `src/lib/access.js`: `PAID_TIER_ENABLED` (false today) and `PUBLIC_ASSESSMENTS` (`[]`).
   Today: signed-out visitors get all marketing pages, the course overview, the
-  study plans, and each lesson's learning objectives; everything else is free with an account.
+  and each lesson's learning objectives; everything else is free with an account.
 - **Gating UI:** `components/AccessGate.jsx` (inline "create a free account" box) and
   `components/RequireSignIn.jsx` (route wrapper used for the dashboard and review tools).
   Never check `user` directly in a page; ask `useAccess()`.
@@ -363,7 +364,7 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
 
 ## Study features (how the pieces fit)
 
-- **Site map for learners:** Course (lessons) · Study plan · Practice (`/aicp/exams`:
+- **Site map for learners:** Course (lessons) · Practice (`/aicp/exams`:
   full exams) · Review (`/aicp/review`: exam strategy guide, flashcards, quick
   reference) · Exam info · Dashboard (`/aicp/progress`, signed in).
 - **Lesson page** (`pages/aicp/LessonPage.jsx`): body with mid-lesson checkpoints
@@ -373,7 +374,10 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
   `lastLesson`. Questions load through `lib/questionBank.js`.
 - **Flashcards** are generated from every lesson's `## Key terms` bullets, which must be written
   `- **Term**: definition` (the checker enforces this). Leitner boxes live in `studyState.cards`.
-- **Study plans**: "Follow this plan" stores `studyState.plan`; lessons tick off from lesson
+- **Study plans (hidden for now):** `STUDY_PLANS_ENABLED = false` in `lib/access.js` redirects
+  `/aicp/study-plan` to the course and hides the nav links, the dashboard plan card, and the course
+  overview button. The code and `studyPlans.js` are kept for a future redesign; to bring them back,
+  set the switch to true and restore plan links in the Markdown pages and FAQ. When on: "Follow this plan" stores `studyState.plan`; lessons tick off from lesson
   completion; practice items are ticked manually (`planItemKey`). `planProgress()` powers both
   the plan page and the dashboard.
 - **Lessons to review**: every scored attempt records `missedRefs`; `lessonsToReview()` in

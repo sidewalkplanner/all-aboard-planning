@@ -25,9 +25,9 @@ const STOPS = [
   },
   {
     title: 'Study what it points to',
-    body: 'Work through the lessons for your weakest domains first, on an 8- or 12-week study plan. Checkpoints test you as you read, and flashcards keep key terms fresh.',
+    body: 'Work through the lessons for your weakest domains first. Checkpoints test you as you read, and flashcards keep key terms fresh.',
     art: ['page-books', 420, 310], bg: 'var(--butter)',
-    links: [[P.course, 'Browse the lessons'], [P.studyPlan, 'See the study plans']],
+    links: [[P.course, 'Browse the lessons']],
   },
   {
     title: 'Rehearse and track',

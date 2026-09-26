@@ -10,7 +10,7 @@ import { AuthProvider } from './context/AuthContext';
 import RequireSignIn from './components/RequireSignIn';
 import { DarkModeProvider } from './context/DarkModeContext';
 import { P } from './lib/paths';
-import { PAID_TIER_ENABLED } from './lib/access';
+import { PAID_TIER_ENABLED, STUDY_PLANS_ENABLED } from './lib/access';
 import AicpHome from './pages/aicp/AicpHome';
 import CourseOverview from './pages/aicp/CourseOverview';
 import LessonPage from './pages/aicp/LessonPage';
@@ -76,7 +76,7 @@ export default function App() {
                   <Route path={P.aicp} element={<AicpHome />} />
                   <Route path={P.course} element={<CourseOverview />} />
                   <Route path={`${P.aicp}/lessons/:slug`} element={<LessonPage />} />
-                  <Route path={P.studyPlan} element={<StudyPlan />} />
+                  <Route path={P.studyPlan} element={STUDY_PLANS_ENABLED ? <StudyPlan /> : <Navigate to={P.course} replace />} />
                   <Route path={P.review} element={<Review />} />
                   <Route path={P.flashcards} element={<RequireSignIn title="Flashcards" what="the flashcards"><Flashcards /></RequireSignIn>} />
                   <Route path={P.quickRef} element={<RequireSignIn title="Quick reference" what="the quick reference"><QuickReference /></RequireSignIn>} />

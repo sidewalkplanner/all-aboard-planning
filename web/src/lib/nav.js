@@ -1,10 +1,10 @@
 import { P } from './paths.js';
-import { PAID_TIER_ENABLED } from './access.js';
+import { PAID_TIER_ENABLED, STUDY_PLANS_ENABLED } from './access.js';
 
 // Primary navigation for the AICP prep section (header).
 export const AICP_NAV = [
   { label: 'Course', to: P.course, match: [P.course, `${P.aicp}/lessons`] },
-  { label: 'Study plan', to: P.studyPlan },
+  ...(STUDY_PLANS_ENABLED ? [{ label: 'Study plan', to: P.studyPlan }] : []),
   { label: 'Practice', to: P.exams, match: [P.exams, P.run] },
   { label: 'Review', to: P.review, match: [P.review] },
   { label: 'Exam info', to: P.examInfo, match: [P.examInfo, P.faq] },
@@ -20,7 +20,7 @@ export const FOOTER_NAV = [
     links: [
       { label: 'Prep home', to: P.aicp },
       { label: 'Course overview', to: P.course },
-      { label: 'Study plans', to: P.studyPlan },
+      ...(STUDY_PLANS_ENABLED ? [{ label: 'Study plans', to: P.studyPlan }] : []),
       { label: 'Exam info', to: P.examInfo },
       { label: 'FAQ', to: P.faq },
       // Pricing appears once paid plans launch (lib/access.js).

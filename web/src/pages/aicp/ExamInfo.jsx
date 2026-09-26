@@ -16,10 +16,10 @@ export default function ExamInfo() {
       after={(
         <div className="card" style={{ marginTop: 40 }}>
           <h2 className="h3">Ready to start studying?</h2>
-          <p className="body-text" style={{ margin: '8px 0 16px' }}>Take Practice Exam 1 in practice mode to see where you stand, then follow a study plan.</p>
+          <p className="body-text" style={{ margin: '8px 0 16px' }}>Take Practice Exam 1 in practice mode to see where you stand, then work through the lessons it points you to.</p>
           <div className="row-wrap">
             <Link className="btn btn-primary" to={P.runExam('e1', 'practice')}>Start Practice Exam 1</Link>
-            <Link className="btn btn-secondary" to={P.studyPlan}>See the study plans</Link>
+            <Link className="btn btn-secondary" to={P.course}>Browse the course</Link>
             <Link className="btn btn-secondary" to={P.faq}>Read the FAQ</Link>
           </div>
         </div>

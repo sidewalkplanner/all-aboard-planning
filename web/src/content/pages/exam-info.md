@@ -69,7 +69,7 @@ The process usually runs in this order. APA's site has the current steps, deadli
 5. **Request testing accommodations** at the time APA specifies, if you need them. APA provides accommodations for candidates with disabilities. <!-- VERIFY: confirm APA's accommodation request process and deadline. -->
 6. **Take the exam** during your testing window. The exam is offered in set testing windows during the year, historically in May and November. <!-- VERIFY: confirm current testing window months. -->
 
-> **Plan backward from the testing window.** Application deadlines come well before the exam. Most of our [study plans](/aicp/study-plan) run 8 or 12 weeks, so start studying once your application is in rather than waiting for approval.
+> **Plan backward from the testing window.** Application deadlines come well before the exam. Most candidates study for two to three months, so start studying once your application is in rather than waiting for approval.
 
 ## On exam day
 

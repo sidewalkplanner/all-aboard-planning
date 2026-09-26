@@ -28,7 +28,7 @@ export default function Footer() {
               </span>
             </Link>
             <p style={{ margin: '12px 0 0', maxWidth: '38ch', lineHeight: 1.6, fontSize: 14.5, color: '#3A3122' }}>
-              Lessons, study plans, and practice exams for planners preparing for the AICP Certification Exam.
+              Lessons and practice exams for planners preparing for the AICP Certification Exam.
             </p>
           </div>
           {FOOTER_NAV.map((group) => (

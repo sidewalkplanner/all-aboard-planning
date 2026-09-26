@@ -13,6 +13,7 @@ import { DOMAINS, LESSONS, domainByBankName, lessonBySlug, lessonsToReview } fro
 import { STUDY_PLANS, planById, planProgress, planItemKey } from '../content/aicp/studyPlans';
 import { ALL_CARDS } from '../content/aicp/flashcards';
 import { useStudyState, MASTERED_BOX, setPlanCheck } from '../lib/studyState';
+import { STUDY_PLANS_ENABLED } from '../lib/access';
 
 const statNum = { fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 700, lineHeight: 1.1 };
 
@@ -75,7 +76,7 @@ export default function Progress() {
         <h1 className="h1">{firstName ? `Welcome back, ${firstName}` : 'Your dashboard'}</h1>
         <p className="lead">
           {doneCount === 0 && summary.n === 0
-            ? 'Start with Practice Exam 1 in practice mode to see where you stand, pick a study plan, then work through the lessons. Everything you do shows up here.'
+            ? 'Start with Practice Exam 1 in practice mode to see where you stand, then work through the lessons. Everything you do shows up here.'
             : `${doneCount} of ${LESSONS.length} lessons complete · ${examsTaken} of ${examsTotal} practice exams taken · ${mastered} of ${ALL_CARDS.length} flashcards mastered.`}
         </p>
       </header>
@@ -100,7 +101,7 @@ export default function Progress() {
             )}
           </section>
 
-          <section className="card" aria-labelledby="dash-plan">
+          {STUDY_PLANS_ENABLED && <section className="card" aria-labelledby="dash-plan">
             <span className="eyebrow eyebrow-rust">Study plan</span>
             {plan ? (
               week ? (
@@ -142,7 +143,7 @@ export default function Progress() {
                 <Link className="btn btn-primary" to={P.studyPlan}>Choose a plan</Link>
               </>
             )}
-          </section>
+          </section>}
 
           <section className="card" aria-labelledby="dash-focus">
             <span className="eyebrow eyebrow-rust">Where to focus</span>

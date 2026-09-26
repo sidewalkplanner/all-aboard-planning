@@ -3,7 +3,7 @@ import PageHeader from '../../components/PageHeader';
 import usePageTitle from '../../hooks/usePageTitle';
 import { P } from '../../lib/paths';
 import { DOMAINS, LESSONS } from '../../content/aicp/curriculum';
-import { PAID_TIER_ENABLED } from '../../lib/access';
+import { PAID_TIER_ENABLED, STUDY_PLANS_ENABLED } from '../../lib/access';
 import useAccess from '../../hooks/useAccess';
 import { useStudyState } from '../../lib/studyState';
 
@@ -27,7 +27,7 @@ export default function CourseOverview() {
           <Link className="btn btn-primary" to={P.lesson(nextLesson.slug)}>
             {doneCount ? `Continue: lesson ${nextLesson.number}` : 'Start lesson 1'}
           </Link>
-          <Link className="btn btn-secondary" to={P.studyPlan}>Follow a study plan</Link>
+          {STUDY_PLANS_ENABLED && <Link className="btn btn-secondary" to={P.studyPlan}>Follow a study plan</Link>}
           <Link className="btn btn-secondary" to={P.runExam('e1', 'practice')}>Find your weak spots first</Link>
         </div>
         {signedIn && (

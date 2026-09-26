@@ -169,8 +169,8 @@ export default function LessonPage() {
                       </div>
                     )}
                     <div className="small">
-                      {complete ? 'It counts toward your course progress and study plan.'
-                        : cpAllDone ? 'Mark it complete to track your course progress and study plan.'
+                      {complete ? 'It counts toward your course progress.'
+                        : cpAllDone ? 'Mark it complete to track your course progress.'
                           : 'Answer every checkpoint in the lesson to finish it.'}
                     </div>
                   </div>
