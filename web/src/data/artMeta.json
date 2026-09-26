@@ -779,6 +779,22 @@
     "fig-regional-spectrum": {
       "w": 720,
       "h": 446
+    },
+    "fig-ag-zoning": {
+      "w": 720,
+      "h": 360
+    },
+    "fig-scatter-village": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-trust-fee": {
+      "w": 720,
+      "h": 476
     }
   },
   "hero": {

@@ -28,6 +28,10 @@ Good rural planning is practical and proportionate: simple, clear codes that vol
 - **Transfer and purchase of development rights** (TDR and PDR) compensate landowners for keeping land undeveloped. PDR uses public funds; TDR relies on developers buying rights for use in designated receiving areas. See [Growth management and innovative land use tools](/aicp/lessons/growth-management-and-innovative-tools).
 - **Rural character** is best protected by naming what it means (views of open fields from the road, dark skies, narrow roads) and turning each quality into a measurable standard. See [Vision, goals, objectives, and policies](/aicp/lessons/goals-objectives-policies).
 
+:::figure fig-ag-zoning | A square mile divided into sixteen 40-acre farm parcels, each with one home. 1 square mile = 640 acres; at one home per 40 acres, 640 divided by 40 is 16 homes. Note: parcels big enough to keep farming.
+Large minimum lot sizes work by arithmetic: they cap how many homes a square mile of farmland can ever hold.
+:::
+
 :::checkpoint cp:rural-cluster cp:rural-right-to-farm
 
 ### Directing rural growth
@@ -40,6 +44,10 @@ Scattered, large-lot, septic-based subdivisions spread across the countryside ar
 - often **erode the rural character** residents value.
 
 With limited capacity, the most efficient approach is usually to **direct growth to places that already have, or can affordably get, adequate services**: existing towns, villages, and crossroads, with public water and sewer where possible. That's paired with strong protection for the working landscape between them. Some states give cities limited planning authority just outside their limits, known as extraterritorial jurisdiction, to coordinate growth at the fringe. <!-- VERIFY: extraterritorial jurisdiction exists in some states (for example, Texas and North Carolina historically); confirm before naming states. -->
+
+:::figure fig-scatter-village | Two maps of the same countryside with 12 homes. Scattered: the homes sit on big lots across the land, each with its own driveway road; long roads, septic systems, farms split into pieces. Village: the same 12 homes grouped in one corner around a short street; shared water and sewer, farmland left whole.
+Same number of homes, very different costs: every scattered home adds road to plow and farmland to lose.
+:::
 
 :::checkpoint cp:rural-growth
 
@@ -56,6 +64,10 @@ For planners, the practical consequences are:
 - **Tribes plan and regulate their own lands.** Many tribes have planning departments, comprehensive plans, zoning codes, housing and transportation programs, and environmental agencies.
 - **Land status is complex.** Within a reservation, some land may be held in trust by the federal government for a tribe or individual tribal members, and some may be privately owned "fee" land. Which government's rules apply can depend on the status of the parcel and who owns it. Generally, state and local zoning doesn't apply to tribal trust land. <!-- VERIFY: confirm this general statement on the application of state and local zoning to trust land; jurisdiction over fee land within reservations is complex and case-specific. -->
 - **Consultation is required in many federal processes.** Under Section 106 of the National Historic Preservation Act, federal agencies must consult with tribes about properties of religious and cultural significance to them, including places off reservation lands. Tribal Historic Preservation Offices (THPOs) play a role similar to a SHPO's. See [Urban design and historic preservation](/aicp/lessons/urban-design-and-historic-preservation).
+
+:::figure fig-trust-fee | A reservation drawn as a grid of illustrative parcels, most of them trust land and some fee land, mixed together. Trust land: tribal and federal rules. Fee land: depends on the owner and the case. Note: which rules apply can change parcel by parcel.
+Before assuming whose rules govern a site within a reservation, find out the land status of that parcel.
+:::
 
 :::checkpoint cp:rural-trust-land
 

@@ -5187,6 +5187,77 @@ function regionalSpectrum() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 8.7
+
+// Agricultural zoning on a square mile: one home per 40 acres.
+function agZoning() {
+  const rng = makeRng(8701);
+  const W = 720;
+  const H = 360;
+  let b = '';
+  const S = 300;
+  const cell = S / 4;
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
+    const x = 20 + c * cell;
+    const y = 30 + r * cell;
+    b += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" fill="${(r + c) % 2 ? T.sage : T.butter}" stroke="${P.leafDeep}" stroke-width="1.2"/>`;
+    for (let k = 1; k < 4; k++) b += `<line x1="${x + 6}" y1="${y + k * cell / 4}" x2="${x + cell - 6}" y2="${y + k * cell / 4}" stroke="${P.leafDeep}" stroke-width="1" opacity="0.35"/>`;
+    b += `<rect x="${x + 8}" y="${y + 8}" width="14" height="12" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.2"/>`;
+  }
+  b += L(ink(rectD(20, 30, S, S), { rng, size: 2.4 }));
+  b += label(360, 90, '1 square mile = 640 acres', { anchor: 'start', weight: 700 });
+  b += label(360, 140, 'one home per 40 acres', { anchor: 'start', weight: 700 });
+  b += label(360, 200, '640 ÷ 40 = 16 homes', { anchor: 'start', weight: 800, color: P.civicDeep });
+  b += note(360, 280, 'parcels big enough', { anchor: 'start', color: P.leafDeep }) + note(360, 318, 'to keep farming', { anchor: 'start', color: P.leafDeep });
+  return { W, H, b };
+}
+
+// Scattered rural homes versus the same homes in a village.
+function scatterVillage() {
+  const rng = makeRng(8702);
+  const PW = 338;
+  const PH = 400;
+  const land = () => { const d = rectD(20, 90, 298, 210); return cut(d, { rng, fill: T.sage, filter: FLAT }) + L(ink(d, { rng, size: 1.8, color: P.leafDeep })); };
+  const home = (x, y) => `<rect x="${x - 7}" y="${y - 7}" width="14" height="14" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.3"/>`;
+  const road = (d) => L(inkLine(d, { rng, size: 3, color: '#9C9384', overshoot: 0 }));
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Scattered', { size: 25, anchor: 'start' }) + label(20, 70, '12 homes on big lots', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += land() + road('M20 196L318 196');
+  const spots = [[50, 120], [110, 150], [160, 116], [230, 140], [290, 120], [70, 236], [120, 270], [180, 230], [250, 262], [300, 232], [200, 160], [40, 280]];
+  spots.forEach(([x, y]) => { a += road(`M${x} ${y}L${x} 196`) + home(x, y); });
+  a += label(169, 334, 'long roads, septic systems,', { size: 19, weight: 600 }) + label(169, 360, 'farms split into pieces', { size: 19, weight: 600 });
+  let v = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Village', { size: 25, anchor: 'start' }) + label(20, 70, 'the same 12 homes', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  v += land();
+  [[20, 90, 150, 105, T.butter], [170, 90, 148, 105, T.sage], [20, 195, 150, 105, T.sage]].forEach(([x, y, w, h, fill]) => { v += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${P.leafDeep}" stroke-width="1"/>`; });
+  v += road('M20 196L318 196') + road('M231 196L231 300');
+  for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) v += home(186 + c * 30 + (c > 1 ? 16 : 0), 222 + r * 26);
+  v += label(169, 334, 'shared water and sewer,', { size: 19, weight: 600 }) + label(169, 360, 'farmland left whole', { size: 19, weight: 600 });
+  return {
+    W: 720, H: 428, b: at(14, 14, a) + at(368, 14, v),
+    narrow: { W: 366, H: 842, b: at(14, 14, a) + at(14, 428, v) },
+  };
+}
+
+// Trust and fee land within a reservation (illustrative pattern).
+function trustFee() {
+  const rng = makeRng(8703);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const pattern = ['TTFTTF', 'TFFTTT', 'TTTFTF', 'FTTTFF', 'TTFTTT'];
+  const cw = 70;
+  const ch = 48;
+  pattern.forEach((row, r) => [...row].forEach((k, c) => {
+    b += `<rect x="${150 + c * cw}" y="${40 + r * ch}" width="${cw}" height="${ch}" fill="${k === 'T' ? P.sage : P.butter}" stroke="#FFFDF8" stroke-width="2"/>`;
+  }));
+  b += L(ink(rectD(150, 40, cw * 6, ch * 5), { rng, size: 3, color: P.ink }));
+  b += label(360, 318, 'reservation boundary (illustrative parcels)', { color: MUTED, weight: 500 });
+  const key = (y, fill, name, t) => `<rect x="60" y="${y - 24}" width="30" height="30" fill="${fill}" stroke="${P.ink}" stroke-width="1.6"/>` + label(104, y, name, { anchor: 'start', weight: 800 }) + label(250, y, t, { anchor: 'start', weight: 500 });
+  b += key(370, P.sage, 'Trust land', 'tribal and federal rules');
+  b += key(416, P.butter, 'Fee land', 'depends on owner and case');
+  b += note(W / 2, 466, 'which rules apply can change parcel by parcel', { color: P.civicDeep });
+  return { W, H: H + 36, b };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -5310,6 +5381,7 @@ const FIGURES = [
   ['fig-base-flows', baseFlows], ['fig-multiplier', multiplierJobs], ['fig-leakage', leakage], ['fig-cluster-web', clusterWeb],
   ['fig-enclosure', enclosure], ['fig-cpted', cpted], ['fig-register-vs-local', registerVsLocal], ['fig-treatments', treatments],
   ['fig-hia-steps', hiaSteps], ['fig-food-desert', foodDesert], ['fig-park-access', parkAccess], ['fig-regional-spectrum', regionalSpectrum],
+  ['fig-ag-zoning', agZoning], ['fig-scatter-village', scatterVillage], ['fig-trust-fee', trustFee],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
