@@ -3249,6 +3249,142 @@ function ghgScopes() {
   };
 }
 
+// ============================================================ Lesson 5.1
+
+// Cumulative (pyramid) zoning versus exclusive zoning, as two use grids.
+function cumulativeZoning() {
+  const rng = makeRng(5101);
+  const PW = 338;
+  const PH = 360;
+  const dists = ['R', 'C', 'I'];
+  const uses = [['homes', P.butter], ['shops', P.tomato], ['factories', P.lavender]];
+  const grid = (allowed, key = true) => {
+    let s = '';
+    dists.forEach((d, c) => { s += label(136 + c * 66, 108, d, { size: 22, weight: 800 }); });
+    uses.forEach(([u, fill], r) => {
+      const y = 126 + r * 62;
+      s += label(20, y + 38, u, { size: 20, anchor: 'start', weight: 500 });
+      dists.forEach((d, c) => {
+        const on = allowed(r, c);
+        const x = 106 + c * 66;
+        const cell = rectD(x, y, 60, 56);
+        s += cut(cell, { rng, fill: on ? fill : '#EFE7D6', shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(cell, { rng, size: 1.4, opacity: 0.8 }));
+        if (on) s += L(inkLine([[x + 18, y + 30], [x + 27, y + 40], [x + 44, y + 16]], { rng, size: 3, color: P.ink, overshoot: 0 }));
+      });
+    });
+    if (key) s += label(20, 344, 'R homes · C commercial · I industrial', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+    return s;
+  };
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Cumulative', { size: 25, anchor: 'start' }) + label(20, 70, 'higher uses allowed lower down', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += grid((r, c) => r <= c);
+  let b2 = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Exclusive', { size: 25, anchor: 'start' }) + label(20, 70, 'each district lists its own uses', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  b2 += grid((r, c) => r === c, false);
+  b2 += note(20, 344, 'keeps homes out of industry', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 388, b: at(14, 14, a) + at(368, 14, b2),
+    narrow: { W: 366, H: 762, b: at(14, 14, a) + at(14, 388, b2) },
+  };
+}
+
+// A lot in plan view: setbacks leave the buildable area.
+function lotStandards() {
+  const rng = makeRng(5102);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const lx = 150;
+  const ly = 40;
+  const lw = 300;
+  const lh = 380;
+  const [front, side, rear] = [70, 40, 80];
+  const lot = rectD(lx, ly, lw, lh);
+  b += cut(lot, { rng, fill: T.sage, filter: FLAT }) + L(ink(lot, { rng, size: 2.6 }));
+  const env = rectD(lx + side, ly + rear, lw - 2 * side, lh - front - rear);
+  b += `<path d="${env}" fill="${T.butter}"/>`;
+  const o = { color: P.civicDeep, size: 2, dash: 9, gap: 6 };
+  b += L(dashed(lx + side, ly + rear, lx + lw - side, ly + rear, rng, o) + dashed(lx + lw - side, ly + rear, lx + lw - side, ly + lh - front, rng, o) + dashed(lx + lw - side, ly + lh - front, lx + side, ly + lh - front, rng, o) + dashed(lx + side, ly + lh - front, lx + side, ly + rear, rng, o));
+  const house2 = rectD(lx + side + 30, ly + rear + 40, 150, 120);
+  b += cut(house2, { rng, fill: P.tomato, filter: FLAT }) + L(ink(house2, { rng, size: 2.4 }));
+  b += label(lx + side + 105, ly + rear + 108, 'building', { color: '#FFFFFF', weight: 800 });
+  // Street along the front.
+  b += `<rect x="40" y="${ly + lh + 16}" width="640" height="44" fill="#9C95A8"/>`;
+  b += label(360, ly + lh + 48, 'street', { color: '#FFFFFF', weight: 700 });
+  // Dimension ticks for each setback.
+  const dim = (x1, y1, x2, y2) => L(inkLine([[x1, y1], [x2, y2]], { rng, size: 1.8, overshoot: 0 }) + inkLine([[x1 - (y2 - y1 ? 6 : 0), y1 - (x2 - x1 ? 6 : 0)], [x1 + (y2 - y1 ? 6 : 0), y1 + (x2 - x1 ? 6 : 0)]], { rng, size: 1.8, overshoot: 0 }) + inkLine([[x2 - (y2 - y1 ? 6 : 0), y2 - (x2 - x1 ? 6 : 0)], [x2 + (y2 - y1 ? 6 : 0), y2 + (x2 - x1 ? 6 : 0)]], { rng, size: 1.8, overshoot: 0 }));
+  b += dim(lx + lw / 2, ly + lh - front, lx + lw / 2, ly + lh);
+  b += dim(lx + lw / 2, ly, lx + lw / 2, ly + rear);
+  b += dim(lx + lw - side, ly + 200, lx + lw, ly + 200);
+  const cx = 480;
+  const call = (y, text, tx, ty, color = P.ink) => label(cx, y, text, { anchor: 'start', color }) + L(arrow(cx - 8, y - 8, tx, ty, rng, { size: 2, head: 9, color, bend: 6 }));
+  b += call(80, 'rear setback', lx + lw / 2 + 8, ly + rear / 2);
+  b += call(210, 'side setback', lx + lw - side / 2, ly + 190);
+  b += call(300, 'buildable area', lx + lw - side - 24, ly + 290, P.kraftDeep);
+  b += call(390, 'front setback', lx + lw / 2 + 8, ly + lh - front / 2);
+  b += note(20, 130, 'lot', { anchor: 'start', color: P.leafDeep });
+  b += note(20, 166, 'coverage:', { anchor: 'start', color: P.leafDeep });
+  b += note(20, 202, 'building', { anchor: 'start', color: P.leafDeep });
+  b += note(20, 238, '÷ lot', { anchor: 'start', color: P.leafDeep });
+  return { W, H, b };
+}
+
+// Overlay zones add rules on top; floating zones land when applied.
+function overlayFloating() {
+  const rng = makeRng(5103);
+  const PW = 338;
+  const PH = 400;
+  const sheet = (x0, y0, w, h, sk) => ([u, v]) => [x0 + u * w + (1 - v) * sk, y0 + v * h];
+  let ov = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Overlay district', { size: 25, anchor: 'start' }) + label(20, 70, 'extra rules on top of the base', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const top = sheet(20, 104, 180, 80, 44);
+  const bot = sheet(20, 214, 180, 80, 44);
+  const quad = (T0, u0, u1) => polyD([[u0, 0], [u1, 0], [u1, 1], [u0, 1]].map(T0));
+  // Base districts: three colored strips.
+  [[0, 0.4, P.butter], [0.4, 0.7, P.tomato], [0.7, 1, P.lavender]].forEach(([u0, u1, f]) => { ov += `<path d="${quad(bot, u0, u1)}" fill="${f}"/>`; });
+  ov += L(ink(quad(bot, 0, 1), { rng, size: 1.8 }));
+  ov += `<path d="${quad(top, 0, 1)}" fill="#FBF8F1" opacity="0.9"/>` + `<path d="${quad(top, 0.25, 0.6)}" fill="${P.sky}"/>` + L(ink(quad(top, 0, 1), { rng, size: 1.8 }));
+  ov += label(256, 150, 'overlay', { size: 19, anchor: 'start', color: P.civicDeep, weight: 700 }) + label(256, 262, 'base', { size: 19, anchor: 'start', weight: 700 });
+  ov += note(20, 340, 'meet both sets of rules', { size: 24, anchor: 'start', color: P.civicDeep });
+  ov += label(20, 376, 'e.g. historic, floodplain, airport', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  let fl = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Floating zone', { size: 25, anchor: 'start' }) + label(20, 70, 'in the text, not on the map', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const card = roundRectD(110, 96, 120, 56, 10);
+  fl += `<g transform="rotate(-6 170 124)">${cut(card, { rng, fill: P.butter, filter: FLAT }) + L(ink(card, { rng, size: 2 })) + label(170, 132, 'MXD', { size: 22, weight: 800 })}</g>`;
+  for (let r = 0; r < 2; r++) for (let c = 0; c < 4; c++) {
+    const on = r === 1 && c === 2;
+    const d = rectD(50 + c * 62, 214 + r * 56, 58, 52);
+    fl += cut(d, { rng, fill: on ? P.butter : T.sage, shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: on ? 2.6 : 1.4 }));
+  }
+  fl += L(arrow(176, 162, 210, 262, rng, { size: 2.4, head: 11, color: P.tomatoDeep, bend: -14 }));
+  fl += note(20, 340, 'lands by rezoning,', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  fl += note(20, 370, 'once an owner qualifies', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, ov) + at(368, 14, fl),
+    narrow: { W: 366, H: 842, b: at(14, 14, ov) + at(14, 428, fl) },
+  };
+}
+
+// Which path a use takes, from the lesson's coffee shop example.
+function usePaths() {
+  const rng = makeRng(5104);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  const rows = [
+    ['Permitted', 'coffee shop', 'staff check standards', 'permit issued', T.sage, P.leafDeep],
+    ['Conditional', 'drive-through', 'hearing, criteria, findings', 'approved with conditions', T.butter, P.kraftDeep],
+    ['Prohibited', 'not on the list', 'no permit possible', 'rezone or amend the text', T.blush, P.tomatoDeep],
+  ];
+  rows.forEach(([kind, ex, how, result, fill, color], i) => {
+    const y = 20 + i * 150;
+    const d = roundRectD(14, y, 692, 132, 14);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += title(34, y + 46, kind, { anchor: 'start', size: 28, color });
+    b += label(34, y + 82, ex, { anchor: 'start', color: MUTED, weight: 500 });
+    b += label(270, y + 46, how, { anchor: 'start', weight: 500 });
+    b += L(arrow(270, y + 72, 300, y + 98, rng, { size: 2, head: 9, bend: 8 }));
+    b += label(314, y + 110, result, { anchor: 'start', weight: 800, color });
+  });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -3329,6 +3465,10 @@ export const FIGURES = [
   ['fig-scenarios', scenarioGrid],
   ['fig-buildable-gap', buildableGap],
   ['fig-ghg-scopes', ghgScopes],
+  ['fig-cumulative', cumulativeZoning],
+  ['fig-lot-standards', lotStandards],
+  ['fig-overlay-floating', overlayFloating],
+  ['fig-use-paths', usePaths],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

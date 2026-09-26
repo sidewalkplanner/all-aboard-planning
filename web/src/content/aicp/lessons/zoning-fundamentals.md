@@ -39,6 +39,10 @@ Conventional zoning is called **Euclidean zoning**, after the *Euclid* case. It 
 
 Early ordinances were often **cumulative (pyramidal)**: "higher" uses such as single-family homes were allowed in "lower" districts such as commercial or industrial, but not the reverse. Most modern ordinances are **exclusive (non-cumulative)**, with each district listing its own permitted uses, to protect industrial land from residential encroachment.
 
+:::figure fig-cumulative | Two grids of uses (homes, shops, factories) against districts (R, C, and I, for residential, commercial, and industrial). Cumulative, where higher uses are allowed lower down: homes are allowed in all three districts, shops in C and I, and factories only in I. Exclusive, where each district lists its own uses: homes only in R, shops only in C, and factories only in I. A note says exclusive zoning keeps homes out of industry.
+The cumulative grid is the "pyramid": each district down the list lets in everything above it.
+:::
+
 :::checkpoint cp:zoning-cumulative
 
 ### Kinds of uses
@@ -51,6 +55,10 @@ Early ordinances were often **cumulative (pyramidal)**: "higher" uses such as si
 | **Prohibited use** | Not allowed in the district. Getting it requires a rezoning or text amendment (not a variance, in most states). |
 
 Conditional use approvals are **quasi-judicial**: the decision applies stated criteria to a specific application, so it needs notice, a hearing, and findings.
+
+:::figure fig-use-paths | Three paths a use can take, from the coffee shop example later in this lesson. Permitted, like a coffee shop: staff check the standards, and a permit is issued. Conditional, like a drive-through: a hearing, criteria, and findings lead to approval with conditions. Prohibited, a use not on the list: no permit is possible, so the only route is to rezone or amend the text.
+The path, not the use itself, decides who approves it and whether a hearing is required.
+:::
 
 :::checkpoint cp:zoning-accessory
 
@@ -68,12 +76,20 @@ Each district also controls the size and placement of buildings:
 
 See [Implementation math](/aicp/lessons/implementation-math) for worked examples of these calculations.
 
+:::figure fig-lot-standards | A lot seen from above, with the street along the front. Front, side, and rear setbacks keep a band of the lot open on every side, leaving a smaller buildable area inside a dashed line, and the building sits within it. A note says lot coverage is the building's footprint divided by the lot's area.
+Setbacks shape where a building can go; coverage, height, and FAR limit how much of it there can be.
+:::
+
 :::checkpoint cp:zoning-far
 
 ### Overlay and floating zones
 
 - An **overlay district** applies **additional requirements (or incentives) on top of the underlying base district** without changing the base zoning. Common examples are historic districts, floodplains, airport height zones, wellhead protection areas, and transit corridors. A parcel in an overlay must meet both the base district's rules and the overlay's.
 - A **floating zone** is described in the ordinance text but **not mapped** until an owner applies and meets its criteria. Then it "lands" on the property through a rezoning. It's often used for uses like large mixed-use centers whose location can't be predicted in advance.
+
+:::figure fig-overlay-floating | Two panels. Overlay district, extra rules on top of the base: a sheet with a shaded overlay band sits above a sheet of base districts, and a parcel under both must meet both sets of rules, as in historic, floodplain, or airport overlays. Floating zone, in the text but not on the map: a card for a mixed-use district (MXD) lands on one parcel of a grid, by rezoning, once an owner qualifies.
+An overlay is already on the map and stacks rules; a floating zone waits in the text until someone asks for it.
+:::
 
 :::checkpoint cp:zoning-floating
 

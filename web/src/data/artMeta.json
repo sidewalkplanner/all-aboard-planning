@@ -419,6 +419,30 @@
         "w": 252,
         "h": 1034
       }
+    },
+    "fig-cumulative": {
+      "w": 720,
+      "h": 388,
+      "narrow": {
+        "w": 366,
+        "h": 762
+      }
+    },
+    "fig-lot-standards": {
+      "w": 720,
+      "h": 520
+    },
+    "fig-overlay-floating": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-use-paths": {
+      "w": 720,
+      "h": 470
     }
   },
   "hero": {
