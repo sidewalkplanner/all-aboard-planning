@@ -109,4 +109,70 @@ export default {
     correct: 3,
     explanation: 'A majority of a body discussing public business outside a noticed meeting, including through a chain of emails, can violate sunshine laws. Those emails are usually public records too.',
   },
+  'cp:pm-risk': {
+    text: 'A project manager, worried that a consultant’s costs could run over, uses a fixed-price contract. Which risk response is this?',
+    options: [
+      'Avoid',
+      'Accept',
+      'Transfer',
+      'Mitigate',
+    ],
+    correct: 2,
+    explanation: 'A fixed-price contract shifts cost risk to the consultant, which transfers it. Avoiding would remove the risk entirely, mitigating would reduce it, and accepting would live with it.',
+  },
+  'cp:pm-earned-value': {
+    text: 'At month four, $40,000 of work was scheduled, $40,000 worth has been completed, and $46,000 has been spent. What does earned value show?',
+    options: [
+      'On schedule and $6,000 over budget',
+      'Behind schedule and on budget',
+      '$6,000 ahead of schedule and on budget',
+      'On schedule and $6,000 under budget',
+    ],
+    correct: 0,
+    explanation: 'SV = EV − PV = 40,000 − 40,000 = 0, so it’s on schedule. CV = EV − AC = 40,000 − 46,000 = −6,000, so it’s over budget.',
+  },
+  'cp:pm-mou': {
+    text: 'Two cities want a binding arrangement to share the cost of running a joint permit center. Which instrument fits?',
+    options: [
+      'A memorandum of understanding',
+      'A resolution of support from each council',
+      'A press release announcing the partnership',
+      'An intergovernmental (interlocal) agreement',
+    ],
+    correct: 3,
+    explanation: 'An interlocal agreement is a binding contract between governments authorized by state law. An MOU records intentions and roles but is often not legally binding.',
+  },
+  'cp:agency-fees': {
+    text: 'A city council proposes raising the rezoning application fee to three times the staff cost of processing an application, to help balance the general fund. What’s the main concern?',
+    options: [
+      'Fees can only be changed during a comprehensive plan update',
+      'A regulatory fee generally can’t exceed the reasonable cost of the service',
+      'Application fees must be the same for every type of application',
+      'Only the planning commission can set application fees',
+    ],
+    correct: 1,
+    explanation: 'A charge well above the cost of the service starts to look like a tax, which needs different legal authority. Fees are usually set by a fee study of staff time and overhead.',
+  },
+  'cp:agency-structured-interview': {
+    text: 'Which hiring practice is fairest and easiest to defend?',
+    options: [
+      'Asking every candidate the same job-related questions and scoring them against set criteria',
+      'Letting each interviewer ask whatever questions they find useful',
+      'Asking candidates about their family plans to gauge availability',
+      'Relying mainly on personal referrals from current staff',
+    ],
+    correct: 0,
+    explanation: 'Structured interviews treat candidates consistently and predict performance better. Questions about family plans invite discrimination claims.',
+  },
+  'cp:agency-internal-controls': {
+    text: 'A grants coordinator requests payments to vendors, approves them, and records them in the ledger. Which internal control is missing?',
+    options: [
+      'A single audit',
+      'A performance budget',
+      'Separation of duties',
+      'Progressive discipline',
+    ],
+    correct: 2,
+    explanation: 'When one person requests, approves, and records a payment, errors or misuse can go unnoticed. Separating those duties is the basic internal control.',
+  },
 };

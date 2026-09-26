@@ -205,14 +205,14 @@ export const DOMAINS = [
     summary: 'Running projects, budgets, contracts, and people inside a public agency or consulting practice.',
     lessons: [
       {
-        slug: 'project-and-contract-management', title: 'Project, procurement, and contract management', minutes: 20, access: 'free',
-        description: 'Scopes of work, schedules and the critical path, RFQs and RFPs, qualifications-based selection, managing consultants, and quality control.',
+        slug: 'project-and-contract-management', title: 'Project, procurement, and contract management', minutes: 27, access: 'free',
+        description: 'Scopes of work, schedules and the critical path, risk, earned value, RFQs and RFPs, qualifications-based selection, managing consultants and partners, and quality control.',
         outline: ['6.1 Project or program management', '6.3 Management of external relationships'],
         practice: ['e1:152', 'e1:155', 'e1:158', 'e1:160', 'e2:150', 'e2:151', 'e3:145', 'e3:146', 'e3:147', 'e3:148', 'e3:153', 'e3:154'],
       },
       {
-        slug: 'managing-a-planning-agency', title: 'Managing a planning agency', minutes: 22, access: 'paid',
-        description: 'Forms of government, organizational structures, budget formats, performance measures, supervising staff, and public records and open meetings.',
+        slug: 'managing-a-planning-agency', title: 'Managing a planning agency', minutes: 27, access: 'paid',
+        description: 'Forms of government, organizational structures, budget formats and fees, performance measures, hiring and supervising staff, public records and open meetings, and internal controls.',
         outline: ['6.2 Internal organizational management', '6.4 Mentoring and motivating staff', '6.5 Results-oriented management and accountability'],
         practice: ['e1:151', 'e1:153', 'e1:154', 'e1:156', 'e1:159', 'e2:152', 'e2:153', 'e2:156', 'e2:157', 'e2:158', 'e2:159', 'e2:160', 'e3:149', 'e3:150', 'e3:151', 'e3:155', 'e3:156'],
       },

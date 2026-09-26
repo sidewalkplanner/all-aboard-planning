@@ -186,6 +186,7 @@ More: [Planning history](/aicp/lessons/planning-history), [Planning theory](/aic
 | Constant (today's) dollars | Past value × (CPI today ÷ CPI then) |
 | Z-score | (Value − mean) ÷ standard deviation |
 | Chance of at least one event over *n* years | 1 − (1 − annual chance)^n |
+| Earned value variances | Schedule variance = EV − PV; cost variance = EV − AC |
 
 Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Population and economic analysis](/aicp/lessons/demographic-and-economic-analysis), [Statistics](/aicp/lessons/statistics-for-planners).
 
@@ -236,6 +237,8 @@ Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Popu
 | Tax abatement vs. PILOT | Reduces or freezes the tax vs. replaces it with a negotiated payment |
 | Land bank vs. community land trust | Returns vacant property to use vs. holds land permanently for affordability |
 | RFQ vs. RFP | Qualifications first vs. approach and (usually) price |
+| MOU vs. intergovernmental agreement | Records intentions, often not binding vs. a binding contract between governments |
+| Schedule variance vs. cost variance | EV − PV (behind if negative) vs. EV − AC (over budget if negative) |
 | Output vs. outcome measure | Work produced vs. results in the community |
 | Logic model order | Inputs → activities → outputs → outcomes → impact |
 | Validity vs. reliability | Measures the right thing vs. measures it consistently |
