@@ -2,6 +2,7 @@
 
 - Describe the cohort-component method and explain when simpler projection methods are good enough.
 - Calculate a linear and a geometric projection, a housing-unit population estimate, and a dependency ratio.
+- Convert a population projection into households and the housing units needed to serve them.
 - Calculate and interpret a location quotient.
 - Explain the three components of shift-share analysis and compute the industry-mix effect.
 - Interpret the index of dissimilarity and the Gini coefficient.
@@ -27,6 +28,8 @@ The **cohort-component method** is the standard approach for population projecti
 3. **Migration**: net movement in and out, usually the hardest component to predict locally.
 
 Population at the next step = current population + births − deaths + net migration.
+
+Births minus deaths is **natural increase**; in-migrants minus out-migrants is **net migration**. A place can grow through either one. Many older regions now grow mainly through migration, because deaths are catching up with births.
 
 Because it tracks age structure, the method answers questions trend lines can't: how many school-age children or residents over 75 there will be. That makes it the right choice for school, senior-service, and housing-type planning. (The **cohort-survival** method is the same idea; the term is sometimes used for projections that age cohorts forward with survival rates and then add migration and births.)
 
@@ -68,6 +71,22 @@ Every factor matters: a two-point drop in occupancy or a smaller average househo
 :::
 
 :::checkpoint cp:demo-housing-unit
+
+### From people to households to housing
+
+A housing plan needs units, not people. Two steps turn a population projection into housing need:
+
+1. **Households** = population living in households ÷ average household size. (Subtract people in group quarters, such as dormitories, nursing homes, and prisons, first.) More detailed work uses **headship rates**, the share of people in each age group who head a household, because older and younger adults form households at different rates.
+2. **Housing units needed** = households ÷ (1 − the vacancy allowance). Some units are always vacant as people move, so a market needs more units than households.
+
+**Worked example** (illustrative): a city expects 10,000 more residents in households by 2040, with an average household size of 2.5, and plans for a 5% vacancy allowance.
+
+- 10,000 ÷ 2.5 = **4,000 households**
+- 4,000 ÷ 0.95 ≈ **4,211 housing units**
+
+Shrinking household size matters as much as growth: if the same population's average household size falls from 2.6 to 2.4, it needs about 8% more homes with no one new moving in.
+
+:::checkpoint cp:demo-households
 
 ### Dependency ratio
 
@@ -154,6 +173,10 @@ Illustrative income shares by fifth of households, poorest first: 3%, 8%, 14%, 2
 - **Shift-share analysis**: A breakdown of local employment change into national, industry-mix, and local components.
 - **Index of dissimilarity**: A 0–100 measure of how unevenly two groups are distributed across subareas.
 - **Gini coefficient**: A 0–1 measure of inequality in a distribution.
+- **Natural increase**: Births minus deaths.
+- **Net migration**: People moving in minus people moving out.
+- **Headship rate**: The share of people in an age group who head a household, used to project households.
+- **Vacancy allowance**: A margin of vacant units added to projected households so a housing market can function.
 - **Lorenz curve**: A graph of the cumulative share of income held by households ranked from poorest to richest; the farther it sags below the diagonal, the greater the inequality.
 
 ## Real-world examples
@@ -171,7 +194,8 @@ Illustrative income shares by fifth of households, poorest first: 3%, 8%, 14%, 2
 - LQ questions usually give shares directly: divide the local share by the national share. **Above 1.0** suggests an export (basic) industry.
 - In shift-share, the **industry-mix** effect is the industry's national growth minus total national growth, times local base employment.
 - Index of dissimilarity runs 0–100 (segregation); Gini runs 0–1 (inequality). Don't mix up their ranges.
+- For housing need, divide people by household size to get households, then add a vacancy allowance to get units.
 
 ## Summary
 
-Use the cohort-component method when age structure matters: it moves cohorts forward with fertility, mortality, and migration. Linear projections add a constant amount; geometric projections apply a constant rate and grow faster. The housing-unit method multiplies units by occupancy and household size. A location quotient above 1.0 signals local specialization and a likely export industry. Shift-share analysis separates national growth, industry mix, and local competitiveness. The index of dissimilarity (0–100) measures segregation, and the Gini coefficient (0–1) measures inequality.
+Use the cohort-component method when age structure matters: it moves cohorts forward with fertility, mortality, and migration. Linear projections add a constant amount; geometric projections apply a constant rate and grow faster. The housing-unit method multiplies units by occupancy and household size; running it in reverse (population ÷ household size, plus a vacancy allowance) turns a projection into housing need. A location quotient above 1.0 signals local specialization and a likely export industry. Shift-share analysis separates national growth, industry mix, and local competitiveness. The index of dissimilarity (0–100) measures segregation, and the Gini coefficient (0–1) measures inequality.

@@ -173,4 +173,74 @@ export default {
     correct: 1,
     explanation: 'Change over time calls for a line chart. Pie charts show parts of a whole, scatter plots show the relationship between two variables, and choropleth maps show values across geography.',
   },
+
+  // Added with the module 1 depth review.
+  'cp:rd-comparison-group': {
+    text: 'After a city adds curb extensions on one corridor, pedestrian crashes there fall 25%. On similar corridors without changes, they fell 20% over the same years. What is the best reading?',
+    options: [
+      'The curb extensions cut crashes by 25%',
+      'The curb extensions had no effect at all',
+      'The extensions’ own effect was likely much smaller than 25%',
+      'The comparison corridors are irrelevant to the question',
+    ],
+    correct: 2,
+    explanation: 'Comparing with similar places that didn’t get the change separates the program’s effect from everything else that changed. Crashes fell almost as much elsewhere, so most of the 25% drop isn’t due to the curb extensions.',
+  },
+  'cp:rd-asset-mapping': {
+    text: 'A planner begins a neighborhood plan by listing the area’s churches, small businesses, youth programs, skilled residents, and informal gathering places. This is:',
+    options: ['A needs assessment', 'Asset mapping', 'A windshield survey', 'A fiscal impact analysis'],
+    correct: 1,
+    explanation: 'Asset mapping inventories what a community already has to build on. A needs assessment starts from gaps, a windshield survey records physical conditions, and fiscal impact analysis weighs public costs and revenues.',
+  },
+  'cp:rd-lehd': {
+    text: 'A county wants to know how many people who work at its business park live in neighboring counties. Which source is built for that question?',
+    options: [
+      'The decennial census population count',
+      'County Business Patterns',
+      'HUD CHAS data',
+      'LEHD data, through the OnTheMap tool',
+    ],
+    correct: 3,
+    explanation: 'LEHD links where people work to where they live, so OnTheMap can show commute flows into the business park. County Business Patterns counts establishments and jobs, CHAS covers housing problems, and the decennial census counts residents where they live.',
+  },
+  'cp:rd-sample-size': {
+    text: 'A random survey of 400 residents has a margin of error of about ±5 points. Roughly how many responses would it take to cut the margin to about ±2.5 points?',
+    options: ['About 1,600', 'About 800', 'About 600', 'It depends mainly on the city’s total population'],
+    correct: 0,
+    explanation: 'The margin of error shrinks with the square root of the sample size, so halving it takes about four times the responses: 4 × 400 = 1,600. For a large population, the population’s size barely affects precision.',
+  },
+  'cp:stat-levels': {
+    text: 'A survey asks residents to rate a park as poor, fair, good, or excellent. What level of measurement is this, and which summary fits it best?',
+    options: [
+      'Nominal; the mean',
+      'Ratio; the mean',
+      'Ordinal; the median or the share in each category',
+      'Interval; the standard deviation',
+    ],
+    correct: 2,
+    explanation: 'The categories have an order but no guaranteed equal spacing, so the data are ordinal. The median, or the share choosing each rating, describes them honestly; a mean assumes equal gaps.',
+  },
+  'cp:stat-points': {
+    text: 'The share of households without a car falls from 20% to 15%. Which description is accurate?',
+    options: [
+      'A drop of 5 percentage points, or 25 percent',
+      'A drop of 5 percent',
+      'A drop of 25 percentage points',
+      'A drop of 15 percent',
+    ],
+    correct: 0,
+    explanation: 'The rate fell 5 percentage points (20 minus 15). As a percent change that’s 5 ÷ 20 = 25 percent. Mixing the two is a common error.',
+  },
+  'cp:demo-households': {
+    text: 'A town projects 6,000 more residents living in households. Average household size is 2.4, and the plan uses a 5% vacancy allowance. About how many housing units does it need?',
+    options: ['About 2,400', 'About 2,500', 'About 2,630', 'About 14,400'],
+    correct: 2,
+    explanation: 'Households: 6,000 ÷ 2.4 = 2,500. Units: 2,500 ÷ 0.95 ≈ 2,630. 14,400 multiplies by household size instead of dividing, and 2,500 leaves out the vacancy allowance.',
+  },
+  'cp:gis-scale': {
+    text: 'Which map is the largest-scale, showing the smallest area in the most detail?',
+    options: ['1:1,000,000', '1:250,000', '1:24,000', '1:1,200'],
+    correct: 3,
+    explanation: 'Scale is a ratio, so 1:1,200 is the largest fraction: one inch equals 100 feet, enough detail for a site plan. The bigger the second number, the smaller the scale and the larger the area shown.',
+  },
 };

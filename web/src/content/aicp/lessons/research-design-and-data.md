@@ -4,6 +4,10 @@
 - Explain what the decennial census and the American Community Survey (ACS) each do well, and when to use each.
 - Describe common sampling methods and the biases that undermine survey results.
 - Explain the difference between validity and reliability, and use triangulation to strengthen findings.
+- Choose a research design (descriptive, evaluative, cross-sectional, longitudinal, quasi-experimental) that fits the question.
+- Use community-based methods, such as asset mapping and key informant interviews, to understand a place.
+- Match planning questions to data sources beyond the census, and to the right census geography.
+- Design a survey that avoids common wording problems, and explain how sample size affects the margin of error.
 - Recognize the ethical duties that come with collecting data about people.
 
 ## Key concepts
@@ -23,6 +27,30 @@ A research design spells out:
 :::figure fig-research-route | A transit line with five numbered stops in order: 1 Question, 2 Unit of analysis, 3 Data sources, 4 Method, 5 Limits. A note at the first stop says "start here, not with the data."
 Ride the line in order. Pick a dataset before stop 1 and you'll end up answering a question nobody asked.
 :::
+
+### Types of research design
+
+Different questions call for different designs:
+
+- **Descriptive** research documents conditions: how many, where, what kind. An existing conditions report is descriptive.
+- **Explanatory** research asks why: what explains the pattern. It tests a **hypothesis**, a stated expectation such as "blocks with more street trees have fewer heat-related 911 calls." The factor you think does the explaining is the **independent variable** (tree canopy); the outcome is the **dependent variable** (911 calls).
+- **Evaluative** research asks whether a program or policy worked.
+
+Designs also differ in time:
+
+- **Cross-sectional** studies look at many cases at one moment, like a survey of every neighborhood this year.
+- **Longitudinal** studies follow the same cases over time. A **time series** tracks one measure over many periods, such as monthly transit ridership; a **panel** follows the same people or places across several waves.
+
+**Case studies** examine one or a few places in depth. Planners use them for **best-practices research**: learning how other cities handled a problem. A **literature review** summarizes what published research already says, so you don't start from scratch.
+
+#### Did the program cause the change?
+
+In a true **experiment**, cases are randomly assigned to receive a program or not, which rules out other explanations. Planners rarely can do that, so they use **quasi-experimental** designs:
+
+- **Before-and-after** comparison of the same place. It's weak on its own, because other things change over time too.
+- **Comparison (control) group**: compare the change where the program happened with the change in similar places where it didn't. If crashes fell 30% on the redesigned corridor but 5% on similar corridors, the difference is better evidence of the program's effect.
+
+:::checkpoint cp:rd-comparison-group
 
 ### Primary and secondary data
 
@@ -46,6 +74,21 @@ The tradeoff in one line: primary data fits but costs; secondary data is cheap b
 
 :::checkpoint cp:rd-triangulation
 
+### Getting to know a community
+
+Numbers describe a place; people explain it. Planners combine data with methods that draw on residents' knowledge:
+
+- A **community profile** or **existing conditions report** assembles demographic, economic, land use, and infrastructure data into a portrait of the place. It's usually the first product of a planning process.
+- A **needs assessment** identifies gaps between current conditions and what the community needs, such as missing services or unmet housing need.
+- **Asset mapping** does the reverse: it inventories what a community already has to build on, including skills, organizations, businesses, institutions, and gathering places. It comes from **asset-based community development**, an approach John Kretzmann and John McKnight described in *Building Communities from the Inside Out* (1993). Starting from assets, not only deficits, treats residents as contributors rather than just clients.
+- A **windshield survey** records conditions (building upkeep, vacancy, sidewalks, activity) by driving or walking an area systematically.
+- **Key informant interviews** are conversations with people who know the community well: clergy, business owners, principals, organizers.
+- **Participatory action research** makes residents co-researchers who help define the questions, gather the data, and act on the results. **Photovoice**, where residents photograph conditions and discuss the images, is one example.
+
+These methods surface local knowledge that datasets miss, and they build relationships the rest of the planning process can rely on.
+
+:::checkpoint cp:rd-asset-mapping
+
 ### The census and the American Community Survey
 
 The **decennial census** is a complete count of the population every ten years. Its core purpose is apportioning seats in the U.S. House of Representatives, and it collects a short list of basic items (age, sex, race, Hispanic origin, household relationship, and tenure). Because it's a full count, it's the benchmark for population totals.
@@ -65,6 +108,25 @@ A full count gives exact totals but asks only a few basic questions. A sample ca
 
 :::checkpoint cp:rd-acs-moe
 
+### Other data sources and census geography
+
+Planners draw on many sources beyond the census and the ACS:
+
+| Source | What it's good for |
+|---|---|
+| **LEHD** (Longitudinal Employer-Household Dynamics) and its **OnTheMap** tool | Where people work and where workers live; commute flows between areas |
+| **Bureau of Labor Statistics**, including the **Quarterly Census of Employment and Wages (QCEW)** | Employment and wages by industry, reported by employers |
+| **County Business Patterns** | Number of business establishments, employment, and payroll by industry and county |
+| **HUD CHAS** data | Housing problems and cost burden by household income, from special tabulations of ACS data |
+| **Public Use Microdata Sample (PUMS)** | Individual ACS records (anonymized) for custom tabulations |
+| **Local administrative data** | Building permits, assessor records, code enforcement cases, crash reports, 311 calls |
+
+Economic data are organized by the **North American Industry Classification System (NAICS)**, which assigns every business an industry code. Comparing industries across sources or places requires matching NAICS codes and levels of detail.
+
+**Census geography** nests from small to large: **blocks** make up **block groups**, block groups make up **census tracts** (neighborhood-sized areas, typically a few thousand people), and tracts nest within counties and states. Places (cities, towns, and census-designated places) don't always follow those lines. **Metropolitan statistical areas** are built from counties around an urban core of at least 50,000 people; **micropolitan** areas have a core of 10,000 to 50,000. The smaller the geography, the fewer ACS responses behind each estimate, and the larger its margin of error.
+
+:::checkpoint cp:rd-lehd
+
 ### Sampling
 
 You can rarely survey everyone, so you survey a sample and generalize. How you choose the sample decides whether you can generalize at all.
@@ -81,6 +143,18 @@ All four are probability samples: everyone has a known chance of being picked. T
 :::
 
 :::checkpoint cp:rd-stratified
+
+### Designing a survey
+
+- **Closed-ended** questions (multiple choice, rating scales) are easy to tabulate; **open-ended** questions capture reasons and ideas in respondents' own words. A **Likert scale** asks how strongly people agree or disagree on a balanced scale, usually five or seven points.
+- Avoid **double-barreled** questions that ask two things at once ("Should the city add bike lanes and lower speed limits?"), since one answer can't cover both.
+- Keep wording neutral and simple, offer answer options that don't overlap, and **pre-test** the survey with a small, varied group before launch.
+- Pick a **mode** (mail, phone, online, in person, or intercept) that reaches the people you need. Mixing modes widens coverage.
+- Report the **response rate**, the share of people contacted who responded. A low response rate raises the risk of nonresponse bias.
+
+**Sample size and the margin of error.** A larger random sample gives a smaller margin of error, but with diminishing returns: the margin shrinks with the square root of the sample size, so halving it takes about four times as many responses. For a large population, about 400 random responses gives a margin of error of roughly ±5 percentage points at 95% confidence. Beyond a certain point the size of the population barely matters: a random sample of 400 is about as precise for a city of 1 million as for one of 100,000. Precision comes from how the sample is drawn and how big it is, not from what share of the population responds.
+
+:::checkpoint cp:rd-sample-size
 
 ### Bias and error
 
@@ -128,6 +202,15 @@ When you collect information from people, you owe them informed consent, confide
 - **Reliability**: The consistency of a measure across repeated use.
 - **Triangulation**: Confirming a finding with multiple methods or sources.
 - **Metadata**: Documentation describing a dataset's origin, definitions, and limits.
+- **Independent variable**: The factor expected to explain or cause a change in an outcome.
+- **Dependent variable**: The outcome a study tries to explain.
+- **Longitudinal study**: Research that follows the same cases over time.
+- **Quasi-experimental design**: An evaluation design that compares cases with and without a program when random assignment isn't possible.
+- **Asset mapping**: Inventorying a community's existing strengths, organizations, and resources.
+- **Key informant interview**: An interview with someone who has deep knowledge of a community or issue.
+- **Census tract**: A small, relatively permanent statistical area within a county, typically home to a few thousand people.
+- **Double-barreled question**: A survey question that asks about two things at once.
+- **Response rate**: The share of people contacted for a survey who respond.
 
 ## Real-world examples
 
@@ -144,9 +227,12 @@ When you collect information from people, you owe them informed consent, confide
 - Validity is *measuring the right thing*; reliability is *measuring it consistently*. A reliable measure can still be invalid.
 - When a question asks how to understand people's experiences, the answer is qualitative (interviews, focus groups), not another survey.
 - Using a second method to confirm a finding is **triangulation**.
+- To show a program worked, compare the change where it happened with the change in similar places that didn't get it. Before-and-after alone can't separate the program from everything else that changed.
+- Asset mapping starts from a community's strengths; a needs assessment starts from its gaps.
+- Halving a margin of error takes about four times the sample. For a large population, the population's size barely affects precision.
 
 ## Summary
 
-Planning research starts with a clear question and a design that fits it. Primary data fits your need but has to be designed carefully; secondary data is fast but built for other purposes. Use the decennial census for complete counts and the ACS for detailed characteristics, choosing 5-year estimates for small areas and always minding the margin of error. Only probability samples can be generalized to a population, and every survey must guard against coverage, self-selection, nonresponse, and wording bias. Aim for measures that are both valid and reliable, confirm important findings through triangulation, and treat the people behind the data with care.
+Planning research starts with a clear question and a design that fits it. Primary data fits your need but has to be designed carefully; secondary data is fast but built for other purposes. Use the decennial census for complete counts and the ACS for detailed characteristics, choosing 5-year estimates for small areas and always minding the margin of error. Only probability samples can be generalized to a population, and every survey must guard against coverage, self-selection, nonresponse, and wording bias. Pick a design that fits the question, use community-based methods to understand what the numbers can't show, and reach beyond the census for jobs, commuting, and business data. Aim for measures that are both valid and reliable, confirm important findings through triangulation, and treat the people behind the data with care.
 
 Next, [Statistics and quantitative evaluation](/aicp/lessons/statistics-for-planners) covers how to summarize and interpret the numbers once you have them.

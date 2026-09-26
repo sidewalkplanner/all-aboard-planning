@@ -1,12 +1,29 @@
 ## Learning objectives
 
+- Identify a variable's level of measurement and the statistics it supports.
 - Choose the right measure of central tendency and spread for a dataset, and explain what skew does to the mean.
 - Interpret a normal distribution, a correlation coefficient, and R-squared.
-- Explain statistical significance and match common tests to the questions they answer.
+- Explain statistical significance, the null hypothesis, and Type I and Type II errors, and match common tests to the questions they answer.
+- Calculate percent change, percentage-point change, compound annual growth, and inflation-adjusted dollars.
 - Read an estimate's margin of error and confidence interval correctly.
-- Calculate present value and interpret a benefit-cost ratio.
+- Calculate present value, interpret a benefit-cost ratio, and know when cost-effectiveness analysis fits better.
 
 ## Key concepts
+
+### Levels of measurement
+
+What you can do with a variable depends on what kind of numbers it holds:
+
+| Level | What it means | Planning example | Center you can report |
+|---|---|---|---|
+| **Nominal** | Categories with no order | Land use type, commute mode | Mode |
+| **Ordinal** | Ordered categories, uneven gaps | Survey ratings, level of service grades A to F | Median or mode |
+| **Interval** | Equal gaps, but no true zero | Temperature in degrees Fahrenheit | Mean, median, or mode |
+| **Ratio** | Equal gaps and a true zero | Income, population, distance, travel time | Mean, median, or mode |
+
+Averaging ordinal ratings ("the mean satisfaction score is 3.4") is common but shaky, because the steps between "satisfied" and "very satisfied" aren't necessarily equal. Reporting the share in each category, or the median, is safer. Only ratio data support statements like "twice as much."
+
+:::checkpoint cp:stat-levels
 
 ### Describing a dataset: center
 
@@ -40,6 +57,8 @@ Many measurements follow a symmetric, bell-shaped **normal distribution**, in wh
 Three brackets to memorize: 68, 95, and 99.7.
 :::
 
+A **z-score** (standard score) says how many standard deviations a value sits from the mean: z = (value − mean) ÷ standard deviation. If the average commute is 25 minutes with a standard deviation of 10, a 40-minute commute has z = (40 − 25) ÷ 10 = **1.5**. Z-scores put measures with different units on a common scale, which is how some indexes combine factors like income, rent burden, and job access.
+
 ### Relationships between variables
 
 A **correlation coefficient** (*r*) runs from −1 to +1 and describes the strength and direction of a *linear* relationship.
@@ -64,7 +83,14 @@ When two things move together, look for a third thing driving both before you cr
 
 ### Statistical significance
 
+**Descriptive statistics** summarize the data you have; **inferential statistics** use a sample to draw conclusions about a larger population. Inference starts with a **null hypothesis**: the assumption that there's no effect or no difference (bike lanes made no difference to crashes). A test asks whether the data are unusual enough to reject it.
+
 A result is **statistically significant** when it would be unlikely to occur by chance alone if there were really no effect. By convention, researchers often use a threshold of *p* < 0.05: less than a 5% probability of seeing a result this strong by chance. Significance doesn't mean the effect is large or important. With a big enough sample, trivial differences become "significant."
+
+Two kinds of mistakes are possible:
+
+- A **Type I error** is a false positive: concluding there's an effect when there isn't. The significance threshold (often 0.05) is the chance of making this error that you're willing to accept.
+- A **Type II error** is a false negative: missing an effect that's really there. Small samples make Type II errors more likely.
 
 Common tests and when to use them:
 
@@ -78,6 +104,26 @@ Common tests and when to use them:
 **P-hacking** is running many analyses and reporting only the ones that come out significant. The best safeguard is to **pre-specify the analysis plan** before looking at the data.
 
 :::checkpoint cp:stat-chisq
+
+### Rates, growth, and constant dollars
+
+**Percent change versus percentage points.** If a tract's poverty rate rises from 10% to 12%, it rose **2 percentage points** but **20 percent** (2 ÷ 10). Mixing the two is a common error in reports and on exams.
+
+**Rates make places comparable.** Counts mostly reflect size. Divide by population to get a **rate** (crashes per 1,000 residents, jobs per household) before comparing places of different sizes.
+
+**Compound annual growth rate.** To turn growth over several years into a steady yearly rate:
+
+> Annual rate = (ending value ÷ starting value)<sup>1 / years</sup> − 1
+
+A town that grew from 20,000 to 24,000 in 10 years grew 20% in total, but (1.2)<sup>0.1</sup> − 1 ≈ **1.8% a year**, not 2% (dividing 20% by 10 ignores compounding).
+
+**Constant dollars.** Money values from different years must be adjusted for inflation before they're compared. **Nominal** (current) dollars are the amounts as recorded; **real** (constant) dollars remove inflation, usually with the Consumer Price Index (CPI):
+
+> Value in today’s dollars = past value × (CPI today ÷ CPI in the past year)
+
+**Worked example** (illustrative index values): median rent was $800 when the CPI stood at 200, and the CPI is 300 today. In today's dollars that's $800 × 300 ÷ 200 = **$1,200**. If today's median rent is $1,100, rent actually fell in real terms, even though it rose in nominal terms.
+
+:::checkpoint cp:stat-points
 
 ### Margins of error and confidence intervals
 
@@ -116,6 +162,8 @@ Over two years the rate barely matters. Over thirty, moving from 3% to 7% cuts t
 
 The **benefit-cost ratio** is the present value of benefits divided by the present value of costs. A ratio above 1.0 means benefits exceed costs. A ratio of **0.8** means the project returns only 80 cents of benefit for each dollar of cost.
 
+When benefits are hard to put in dollars, such as lives saved, trees planted, or households housed, **cost-effectiveness analysis** compares options by cost per unit of outcome instead: cost per serious crash avoided, or cost per affordable unit. It tells you which option delivers a given result most cheaply, but not whether the result is worth its cost.
+
 :::video Present value and benefit-cost ratios | about 3 min
 Discounts a future benefit to today's dollars, shows how a higher discount rate changes the answer, and reads a benefit-cost ratio above and below 1.0.
 :::
@@ -138,6 +186,14 @@ Discounts a future benefit to today's dollars, shows how a higher discount rate 
 - **Confidence interval**: The range (estimate ± margin of error) likely to contain the true value.
 - **Present value**: A future amount converted to today's dollars using a discount rate.
 - **Benefit-cost ratio**: Present value of benefits divided by present value of costs.
+- **Levels of measurement**: Nominal, ordinal, interval, and ratio: the kinds of values a variable holds, which determine the statistics it supports.
+- **Z-score**: The number of standard deviations a value lies above or below the mean.
+- **Null hypothesis**: The assumption of no effect or no difference that a statistical test tries to reject.
+- **Type I error**: A false positive: finding an effect that isn't there.
+- **Type II error**: A false negative: missing an effect that is there.
+- **Percentage point**: The arithmetic difference between two percentages.
+- **Constant (real) dollars**: Money values adjusted for inflation to a common base year.
+- **Cost-effectiveness analysis**: Comparing options by their cost per unit of a non-monetary outcome.
 
 ## Real-world examples
 
@@ -157,7 +213,10 @@ Discounts a future benefit to today's dollars, shows how a higher discount rate 
 - Two categorical variables call for a **chi-square** test.
 - A higher discount rate *lowers* present value. A benefit-cost ratio below 1.0 means costs exceed benefits.
 - Watch for correlation-causation traps: look for the confounding variable in the answer choices.
+- Categories without order (land use type) are **nominal** and support only the mode; ordered ratings are **ordinal**.
+- A rise from 10% to 12% is **2 percentage points** but a **20 percent** increase.
+- Compare dollars across years only after converting to **constant dollars**.
 
 ## Summary
 
-Use the median for skewed data like income and home prices, and remember that skew pulls the mean toward the tail. In a normal distribution, about 68% of values fall within one standard deviation of the mean. Correlations run from −1 to +1, R² tells you how much variation a model explains, and neither proves causation. Statistical significance means an effect is unlikely to be chance, not that it matters. Read margins of error before comparing estimates. Discount future costs and benefits to present value: higher rates shrink the value of long-term benefits, and a benefit-cost ratio below 1.0 means costs exceed benefits.
+Use the median for skewed data like income and home prices, and remember that skew pulls the mean toward the tail. In a normal distribution, about 68% of values fall within one standard deviation of the mean. Correlations run from −1 to +1, R² tells you how much variation a model explains, and neither proves causation. Statistical significance means an effect is unlikely to be chance, not that it matters; a false positive is a Type I error and a missed effect is a Type II error. Match statistics to the level of measurement, keep percent change and percentage points straight, and adjust dollars for inflation before comparing years. Read margins of error before comparing estimates. Discount future costs and benefits to present value: higher rates shrink the value of long-term benefits, and a benefit-cost ratio below 1.0 means costs exceed benefits.
