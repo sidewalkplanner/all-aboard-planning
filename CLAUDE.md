@@ -46,7 +46,7 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
       checkpoints.js        Original lesson checkpoint questions (+ checkpoints/d1..d9 per domain)
       flashcards.js         The flashcard deck (built from every lesson's Key terms by a Vite plugin)
     content/pages/*.md      Exam Info, About, Exam strategy, Quick reference bodies (same renderer as lessons)
-    content/site.js         Owner settings (CONTACT_EMAIL placeholder)
+    content/site.js         Owner settings (CONTACT_EMAIL, used on About and Contact)
     data/                   Question banks (exam1/2/3), domain weights; diagnostic-items.js is retired (kept, unused)
     pages/                  Route components; pages/aicp/* are the prep section pages
     pages/exam/             Exam runner (the three full-length practice exams)

@@ -337,8 +337,6 @@ There are 100 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well
 | `web/src/content/pages/quick-reference.md:226` | confirm the current CM requirement. |
 
 Other placeholders, which aren't VERIFY flags:
-- `web/src/content/pages/about.md` has `<!-- PLACEHOLDER -->` for the founder bio.
-- `web/src/content/site.js` has `CONTACT_EMAIL = null`.
 - `web/src/pages/Pricing.jsx` has `PLACEHOLDER PRICE` comments.
 - `web/src/hooks/useMembership.js` has a `MEMBERSHIP PLACEHOLDER` comment (future paid tier).
 - Lesson Markdown has 19 `:::video` slots (listed at the top of this file).
@@ -349,7 +347,7 @@ Other placeholders, which aren't VERIFY flags:
 2. **Have a subject-matter expert review the lessons.** I wrote them carefully, but a planner with AICP credentials should review the law lessons in particular (lessons 8, 9, and 20), since case holdings are summarized briefly.
 3. **Accounts:** replace the browser-only placeholder in `web/src/context/AuthContext.jsx` with a hosted auth provider, and move progress history to its database so it syncs across devices. Later, for paid plans, set `PAID_TIER_ENABLED` in `web/src/lib/access.js` and replace the check in `web/src/hooks/useMembership.js` with a real membership check.
 3a. **Videos:** record the 19 videos listed at the top, then add each embed URL as the third field of its `:::video` line.
-4. **Set the contact email and the founder bio** (and real prices in `PRICE`, `web/src/data/domains.js`, when paid plans launch).
+4. **Set real prices** in `PRICE`, `web/src/data/domains.js`, when paid plans launch. (The contact email and founder bio are done.)
 5. **Improve practice coverage:** some lessons have small practice sets (Implementation math has 7 questions; Research design has only 2 free ones). Consider writing new questions targeted to specific lessons, and tagging exam questions with lesson slugs directly.
 6. **SEO:** the app sets per-page titles, but meta descriptions and canonical URLs are still global (`web/index.html`). Pre-rendering or per-route meta would help lessons get indexed.
 7. **Consulting homepage:** when it's ready, add it at `/` in `web/src/App.jsx` (replacing the redirect), add a firm group to `FOOTER_NAV`, and consider a firm-level header nav alongside `AICP_NAV`.
