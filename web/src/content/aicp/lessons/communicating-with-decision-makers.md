@@ -16,6 +16,10 @@
 
 The short version: **staff analyze and recommend; elected officials decide.** Staff owe decision-makers honest, complete analysis, and once a lawful decision is made, staff carry it out professionally even if they recommended otherwise.
 
+:::figure fig-who-does-what | Staff recommend, with arrows to two bodies. The planning commission recommends, and passes its recommendation to the council or county board, which decides plans, rezonings, and budgets. The zoning board decides variances and appeals. A note says staff analyze; officials decide.
+Which body hears a matter depends on the kind of decision, but staff's role is the same in every path: analysis and a recommendation.
+:::
+
 ### The staff report
 
 A staff report is the main written channel between planners and decision-makers. The best ones are built for a busy reader:
@@ -29,6 +33,10 @@ A staff report is the main written channel between planners and decision-makers.
 7. **Attachments**: maps, plans, and correspondence.
 
 A staff recommendation must follow the adopted plan and code. If an application meets every standard in the code, the recommendation should say so even if public comment is overwhelmingly opposed. The report should still convey the public's concerns accurately to the decision-makers.
+
+:::figure fig-staff-report | A staff report page divided into seven bands, sized roughly to their usual share of the report (illustrative): 1 recommendation first, 2 background, 3 analysis against the criteria, the largest band, marked as the heart, 4 findings, 5 public comment, 6 alternatives, and 7 attachments. A note says a busy reader may stop after item 1.
+Write item 1 for the reader who reads nothing else, and item 3 for the reader who checks your work.
+:::
 
 :::checkpoint cp:decide-meets-code
 
@@ -52,6 +60,10 @@ For lay audiences (and busy officials):
 - Use **plain language** and define necessary terms once.
 - Use **simple, relevant visuals**. A clear diagram showing what would change on a street works better than an engineering cross-section full of dimensions.
 - Translate risk into relatable terms. A "100-year flood" has a **1% chance** of happening in any given year, which works out to roughly a **26% chance** over a 30-year mortgage (1 − 0.99³⁰ ≈ 0.26). That's far more meaningful to a homeowner than "once a century."
+
+:::figure fig-flood-odds | A curve of the chance of at least one 100-year flood, rising from 1% in the first year to 26% after 30 years in the home. A note says 1% a year adds up.
+Each point on the curve is 1 − 0.99 raised to the number of years, the same arithmetic as in the text.
+:::
 
 :::checkpoint cp:decide-flood-odds
 

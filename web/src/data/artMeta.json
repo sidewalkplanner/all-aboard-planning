@@ -335,6 +335,18 @@
     "fig-nominal-group": {
       "w": 720,
       "h": 300
+    },
+    "fig-who-does-what": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-staff-report": {
+      "w": 720,
+      "h": 592
+    },
+    "fig-flood-odds": {
+      "w": 720,
+      "h": 440
     }
   },
   "hero": {

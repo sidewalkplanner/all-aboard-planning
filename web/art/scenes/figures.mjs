@@ -2727,6 +2727,103 @@ function nominalGroup() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 3.4
+
+// Staff recommend; appointed bodies advise or decide; elected officials decide.
+function whoDoesWhat() {
+  const rng = makeRng(3401);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const box = (x, y, w, h, fill, lines, verb, vColor) => {
+    const d = roundRectD(x, y, w, h, 14);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    lines.forEach((t, k) => { s += title(x + w / 2, y + 40 + k * 32, t, { size: 28 }); });
+    s += label(x + w / 2, y + h - 22, verb, { color: vColor, weight: 800 });
+    return s;
+  };
+  b += box(14, 160, 196, 150, T.sky, ['Staff'], 'recommend', P.civicDeep);
+  b += box(262, 40, 208, 150, T.butter, ['Planning', 'commission'], 'recommends', P.kraftDeep);
+  b += box(262, 290, 208, 150, T.lav, ['Zoning', 'board'], 'decides', P.tomatoDeep);
+  b += box(520, 40, 186, 150, T.blush, ['Council', 'or board'], 'decides', P.tomatoDeep);
+  b += L(arrow(212, 210, 256, 130, rng, { size: 2.6, head: 11 }));
+  b += L(arrow(212, 262, 256, 340, rng, { size: 2.6, head: 11 }));
+  b += L(arrow(474, 115, 514, 115, rng, { size: 2.6, head: 11 }));
+  b += label(613, 224, 'plans, rezonings,', { weight: 500, color: MUTED });
+  b += label(613, 256, 'budgets', { weight: 500, color: MUTED });
+  b += label(488, 350, 'variances,', { anchor: 'start', weight: 500, color: MUTED });
+  b += label(488, 382, 'appeals', { anchor: 'start', weight: 500, color: MUTED });
+  b += note(16, 390, 'staff analyze;', { anchor: 'start', color: P.civicDeep });
+  b += note(16, 426, 'officials decide', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// The parts of a staff report, drawn to their usual share of the page.
+function staffReport() {
+  const rng = makeRng(3402);
+  const W = 720;
+  const H = 592;
+  let b = '';
+  const parts = [
+    ['Recommendation first', 48, P.tomato], ['Background', 48, T.kraft], ['Analysis vs. criteria', 150, T.sky],
+    ['Findings', 64, T.sage], ['Public comment', 56, T.lav], ['Alternatives', 44, T.butter], ['Attachments', 44, '#EFE7D6'],
+  ];
+  const page = roundRectD(40, 20, 300, 520, 8);
+  b += cut(page, { rng, fill: P.paper, filter: FLAT }) + L(ink(page, { rng, size: 2.4 }));
+  let y = 44;
+  parts.forEach(([name, h, fill], i) => {
+    const d = rectD(62, y, 256, h - 8);
+    b += cut(d, { rng, fill, shadow: false, jitter: 0.4, filter: FLAT });
+    for (let ly = y + 12; ly < y + h - 14; ly += 12) b += L(inkLine([[74, ly], [306 - ((ly * 7) % 40), ly]], { rng, size: 1, overshoot: 0, opacity: 0.45 }));
+    const cy = y + (h - 8) / 2;
+    b += L(inkLine([[322, cy], [366, cy]], { rng, size: 1.6, overshoot: 0, opacity: 0.8 }));
+    b += label(376, cy + 10, `${i + 1} ${name}`, { anchor: 'start', weight: i === 0 || i === 2 ? 800 : 500 });
+    y += h;
+  });
+  b += note(190, 150 + 10, 'the heart', { color: P.civicDeep });
+  b += note(376, 540, 'a busy reader may stop', { anchor: 'start', color: P.tomatoDeep });
+  b += note(376, 576, 'after item 1', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// A 1% chance each year, compounded over a 30-year mortgage.
+function floodOdds() {
+  const rng = makeRng(3403);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const x0 = 100;
+  const x1 = 660;
+  const yB = 340;
+  const yT = 60;
+  const X = (n) => x0 + (n / 30) * (x1 - x0);
+  const Y = (p) => yB - (p / 0.3) * (yB - yT);
+  const cum = (n) => 1 - 0.99 ** n;
+  for (const p of [0.1, 0.2, 0.3]) {
+    b += L(inkLine([[x0, Y(p)], [x1, Y(p)]], { rng, size: 1, opacity: 0.35, overshoot: 0 }));
+    b += label(x0 - 14, Y(p) + 10, `${Math.round(p * 100)}%`, { anchor: 'end' });
+  }
+  const pts = [];
+  for (let n = 0; n <= 30; n++) pts.push([X(n), Y(cum(n))]);
+  const area = [[X(0), yB], ...pts, [X(30), yB]];
+  b += `<path d="${polyD(area)}" fill="${T.sky}"/>`;
+  b += L(inkLine(pts, { rng, size: 3.2, color: P.civicDeep, overshoot: 0 }));
+  b += L(inkLine([[x0, yT - 10], [x0, yB], [x1 + 14, yB]], { rng, size: 2.4, overshoot: 0 }));
+  for (const n of [0, 10, 20, 30]) {
+    b += L(inkLine([[X(n), yB], [X(n), yB + 8]], { rng, size: 2, overshoot: 0 }));
+    b += label(X(n), yB + 40, String(n));
+  }
+  b += label((x0 + x1) / 2, yB + 84, 'years in the home', { color: MUTED, weight: 500 });
+  b += label(x0 - 50, 34, 'chance of at least one 100-year flood', { anchor: 'start', color: MUTED, weight: 500 });
+  const dot = (n) => `<circle cx="${X(n)}" cy="${Y(cum(n))}" r="8" fill="${P.civic}" stroke="${P.ink}" stroke-width="2"/>`;
+  b += dot(1) + dot(30);
+  b += label(X(1) + 4, Y(cum(1)) - 84, `1 year: ${Math.round(cum(1) * 100)}%`, { anchor: 'start' });
+  b += L(inkLine([[X(1) + 10, Y(cum(1)) - 74], [X(1) + 2, Y(cum(1)) - 14]], { rng, size: 1.6, overshoot: 0 }));
+  b += label(X(30) - 12, Y(cum(30)) - 22, `30 years: ${Math.round(cum(30) * 100)}%`, { anchor: 'end', weight: 800 });
+  b += note(X(15), Y(cum(15)) - 70, '1% a year adds up', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -2790,6 +2887,9 @@ export const FIGURES = [
   ['fig-adr', adrWhoDecides],
   ['fig-agreement', agreementGradients],
   ['fig-nominal-group', nominalGroup],
+  ['fig-who-does-what', whoDoesWhat],
+  ['fig-staff-report', staffReport],
+  ['fig-flood-odds', floodOdds],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
