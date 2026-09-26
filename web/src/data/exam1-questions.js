@@ -12,7 +12,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "NYC's 1916 resolution responded to tall buildings (notably the Equitable Building) blocking light and air and to encroachment on the Fifth Avenue retail/garment district.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Cholera outbreaks drove sanitary and tenement reform in the 1800s, not New York’s 1916 zoning.",
+   "Housing shortages after World War I weren’t what the 1916 resolution addressed; it dealt with building bulk and incompatible uses.",
+   "Subway planning wasn’t the trigger; the resolution regulated building height, setbacks, and use districts."
+  ]
  },
  {
   "n": 2,
@@ -27,7 +33,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Howard's Garden City was a self-contained, size-limited town ringed by a permanent greenbelt, marrying town and country.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "High-density vertical cities describe Le Corbusier’s towers in the park, not Howard’s low-density garden towns.",
+   "Howard’s towns were self-contained and walkable, not automobile suburbs; mass car ownership came decades later.",
+   "",
+   "Company towns like Pullman were built by one employer; Howard proposed a cooperative town with varied industry and a greenbelt."
+  ]
  },
  {
   "n": 3,
@@ -42,7 +54,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "City Beautiful is tied to Burnham and the 1893 World's Columbian Exposition (and the 1909 Plan of Chicago).",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The 1901 Tenement House Act, championed by Lawrence Veiller, belongs to housing reform, not the City Beautiful movement.",
+   "",
+   "The 1939 New York World’s Fair came long after City Beautiful’s peak and is linked to modernist, automobile-age visions.",
+   "McHarg’s *Design with Nature* (1969) launched environmental suitability analysis, decades after City Beautiful."
+  ]
  },
  {
   "n": 4,
@@ -57,7 +75,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "City Beautiful (1890s–1900s) → Garden City (1900s–1920s in the US) → New Urbanism (1980s+) → Smart Growth (1990s+). Garden City and City Beautiful overlap, but City Beautiful's US prominence came first via the 1893 fair.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "New Urbanism (1980s and 1990s) came before Smart Growth became a named movement in the late 1990s, and City Beautiful rose before Garden City took hold in the U.S.",
+   "City Beautiful and Garden City are in the right order, but New Urbanism came before Smart Growth, not after.",
+   "New Urbanism before Smart Growth is right, but City Beautiful’s U.S. prominence came before the Garden City movement, not after.",
+   ""
+  ]
  },
  {
   "n": 5,
@@ -72,7 +96,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Perry's neighborhood unit centered on an elementary school within about a half-mile, with arterials at the edges.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Regional shopping malls belong to postwar suburbia; Perry’s 1929 unit was organized around the everyday walk to school.",
+   "Perry built the unit around walking distance to school, not transit access; rail stations anchor transit-oriented development instead.",
+   "",
+   "Perry placed shops at the unit’s edges and a school at its center; city hall serves a whole city, not one neighborhood."
+  ]
  },
  {
   "n": 6,
@@ -87,7 +117,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Radburn introduced the superblock, cul-de-sacs, and pedestrian/vehicle separation (\"town for the motor age\").",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "The gridiron long predates Radburn, which deliberately broke the grid into superblocks.",
+   "Radburn was a residential town plan; mixed-use zoning with ground-floor retail is a much later tool.",
+   "Form-based codes emerged in the 1980s and 1990s with New Urbanism, long after Radburn (1929)."
+  ]
  },
  {
   "n": 7,
@@ -102,7 +138,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "McHarg's *Design with Nature* pioneered overlay suitability analysis, a conceptual precursor to GIS.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Kevin Lynch studied how people perceive cities (*The Image of the City*), not overlay suitability analysis.",
+   "Patrick Geddes pioneered regional survey (\"survey before plan\"), but the overlay suitability method is McHarg’s.",
+   "Lewis Mumford was a historian and critic of cities, not the developer of overlay mapping.",
+   ""
+  ]
  },
  {
   "n": 8,
@@ -117,7 +159,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Jacobs opposed superblocks and towers-in-the-park; she favored short blocks, mixed uses, and aged building stock.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Jacobs did argue for short blocks, so this isn’t the exception.",
+   "",
+   "Jacobs did argue for a mix of primary uses to keep streets busy at different hours, so this isn’t the exception.",
+   "Jacobs did argue for a mix of old and new buildings, which keeps rents varied, so this isn’t the exception."
+  ]
  },
  {
   "n": 9,
@@ -132,7 +180,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "The SZEA was a model act enabling states to delegate zoning power to localities.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "The Federal Housing Administration was created by the National Housing Act of 1934, not a zoning enabling act.",
+   "Environmental review of major federal projects came with NEPA in 1969, decades later.",
+   "The Interstate system came from the Federal-Aid Highway Act of 1956."
+  ]
  },
  {
   "n": 10,
@@ -147,7 +201,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Bettman authored the amicus brief supporting zoning in *Euclid*. (Bassett = \"father of zoning\"; Davidoff = advocacy planning; Burnham = Plan of Chicago.)",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Edward Bassett is called the father of zoning; advocacy planning came from Paul Davidoff.",
+   "Olmsted Sr. designed parks and the suburb of Riverside; the neighborhood unit is Clarence Perry’s.",
+   "",
+   "The 1909 Plan of Chicago is Daniel Burnham’s (with Edward Bennett); Davidoff is known for advocacy planning."
+  ]
  },
  {
   "n": 11,
@@ -162,7 +222,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Simon coined \"satisficing\" within bounded rationality.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Lindblom is known for incrementalism, \"muddling through,\" not for satisficing.",
+   "",
+   "Etzioni proposed mixed scanning, a blend of rational and incremental decision-making.",
+   "Friedmann is known for transactive planning, built on dialogue and mutual learning."
+  ]
  },
  {
   "n": 12,
@@ -177,7 +243,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Lindblom wrote \"The Science of Muddling Through\" (incrementalism).",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Davidoff wrote \"Advocacy and Pluralism in Planning\" (1965), not the incrementalism essay.",
+   "Burnham was a City Beautiful architect and planner, not a decision theorist.",
+   "Friedmann is associated with transactive planning, not \"muddling through.\"",
+   ""
+  ]
  },
  {
   "n": 13,
@@ -192,7 +264,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Etzioni's mixed scanning combines rational (big decisions) and incremental (routine) approaches.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Advocacy planning means representing underrepresented groups, not a way of splitting big and routine decisions.",
+   "Transactive planning centers on dialogue and mutual learning, not a two-level scan.",
+   "",
+   "Radical planning seeks structural social change; it isn’t a hybrid of rational and incremental methods."
+  ]
  },
  {
   "n": 14,
@@ -207,7 +285,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Davidoff argued there is no single public interest and that planners should advocate for the underrepresented.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Davidoff argued the opposite: that there is no single public interest, so competing plans should represent different groups.",
+   "Davidoff wanted more plans representing more groups, not planning decisions settled by the market.",
+   "Davidoff didn’t propose replacing comprehensive plans with capital budgets."
+  ]
  },
  {
   "n": 15,
@@ -222,7 +306,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Police power supports regulation for health, safety, morals, and general welfare.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Protecting property values or tax revenue alone isn’t the constitutional basis; the police power rests on public health, safety, morals, and welfare.",
+   "Interstate commerce is a federal power under the Commerce Clause, not the local police power.",
+   "Courts have increasingly accepted aesthetics, and zoning routinely considers economic effects, so this limit is wrong.",
+   ""
+  ]
  },
  {
   "n": 16,
@@ -237,7 +327,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "The bundle of rights includes possession, exclusion, use/enjoyment, and disposition.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out use and enjoyment and the right to transfer, which are also core property rights.",
+   "Leaves out the right to transfer or dispose of property.",
+   "Leaves out the right to possess.",
+   ""
+  ]
  },
  {
   "n": 17,
@@ -252,7 +348,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Christaller developed Central Place Theory.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Ernest Burgess proposed the concentric zone model of cities, not Central Place Theory.",
+   "Homer Hoyt proposed the sector model of urban land use.",
+   "Von Thünen modeled rings of agricultural land use around a market town, an earlier and different theory."
+  ]
  },
  {
   "n": 18,
@@ -267,7 +369,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Burgess proposed the Concentric Zone model.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Homer Hoyt proposed the sector model, with wedges along transport routes, not concentric rings.",
+   "Harris and Ullman proposed the multiple nuclei model, with several centers.",
+   "",
+   "Christaller developed Central Place Theory about the spacing of settlements, not internal city structure."
+  ]
  },
  {
   "n": 19,
@@ -282,7 +390,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "The synoptic model runs goals → alternatives → evaluation → selection/implementation → monitoring.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Implementation comes near the end of the rational model; goals come first.",
+   "",
+   "Negotiating and litigating describe conflict resolution, not the rational model’s analytical sequence.",
+   "The rational model depends on comparing and evaluating alternatives; skipping evaluation defeats its purpose."
+  ]
  },
  {
   "n": 20,
@@ -297,7 +411,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "The 1909 Plan of Chicago did not introduce inclusionary zoning (a much later tool); the other statements are true.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "This statement is true: the Plan of Chicago is widely regarded as the first comprehensive plan for a major U.S. city, so it isn’t the exception.",
+   "This statement is true: Burnham and Bennett were its authors, so it isn’t the exception.",
+   "This statement is true: the plan is a signature City Beautiful work, so it isn’t the exception.",
+   ""
+  ]
  },
  {
   "n": 21,
@@ -312,7 +432,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "APA formed in 1978 from the merger of the AIP and ASPO; AICP is its professional institute.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "AICP is APA’s professional institute, created with APA in 1978, and the Urban Land Institute is a separate developer-oriented group.",
+   "The National Municipal League and the Regional Plan Association are separate civic organizations that didn’t form APA.",
+   "",
+   "The Congress for the New Urbanism was founded in 1993, well after APA formed in 1978."
+  ]
  },
  {
   "n": 22,
@@ -327,7 +453,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Friedmann's transactive planning emphasizes dialogue and mutual learning.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Herbert Simon is known for bounded rationality and satisficing.",
+   "Ebenezer Howard proposed the Garden City, not a theory of planning dialogue.",
+   "Robert Moses was a powerful New York builder known for top-down projects, the opposite of transactive planning."
+  ]
  },
  {
   "n": 23,
@@ -342,7 +474,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Smart Growth/New Urbanism promote compact, walkable, mixed-use development as a response to sprawl.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The City Efficient movement of the 1910s stressed engineering and administration, not walkable mixed use.",
+   "City Beautiful focused on monumental civic design, not a response to postwar sprawl.",
+   "Urban renewal cleared and rebuilt older districts; it isn’t a reaction to suburban sprawl.",
+   ""
+  ]
  },
  {
   "n": 24,
@@ -357,7 +495,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "*Shelley v. Kraemer* (1948) held racially restrictive covenants judicially unenforceable.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "*Euclid* (1926) upheld comprehensive zoning; it didn’t involve racial covenants.",
+   "",
+   "*Berman v. Parker* (1954) upheld urban renewal takings, including for aesthetic purposes.",
+   "*Buchanan v. Warley* (1917) struck down racial zoning ordinances, not private covenants."
+  ]
  },
  {
   "n": 25,
@@ -372,7 +516,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "HOLC's risk-grading of neighborhoods is the origin of \"redlining.\"",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Blockbusting was real estate agents stoking fears of racial change to buy homes cheaply; it wasn’t a federal grading system.",
+   "Steering is agents guiding buyers toward or away from neighborhoods by race; it isn’t federal mortgage grading.",
+   "Filtering describes housing passing to lower-income households as it ages, not a lending practice."
+  ]
  },
  {
   "n": 26,
@@ -387,7 +537,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Sustainability's three E's are environment, economy, and equity.",
   "domain": "Fundamental Planning Knowledge",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Efficiency, expansion, and enforcement aren’t sustainability’s three E’s.",
+   "Energy, ecology, and engineering aren’t the three E’s; equity and the economy are missing.",
+   "",
+   "Education, employment, and enterprise aren’t the three E’s; the environment and equity are missing."
+  ]
  },
  {
   "n": 27,
@@ -402,7 +558,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "The process begins with scoping and inventory/analysis, then visioning and goals, before alternatives and mapping.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Zoning amendments implement a plan, so they come after the plan is adopted, not before it’s drafted.",
+   "",
+   "The capital improvements program carries out a plan’s priorities; it follows the plan rather than starting it.",
+   "Choosing a preferred alternative comes after existing conditions are analyzed and alternatives are developed."
+  ]
  },
  {
   "n": 28,
@@ -417,7 +579,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Inclusive engagement removes barriers (language, time, location) and meets people where they are.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Legal notices and weekday evening hearings at city hall reach few people and none in Spanish, so they miss much of Rivermont.",
+   "Registered voters leave out noncitizens and many renters and young people, so the sample misses part of the community.",
+   "An appointed committee can advise, but it can’t stand in for the broader public.",
+   ""
+  ]
  },
  {
   "n": 29,
@@ -432,7 +600,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Goal = broad end-state; objective = measurable target; policy = guide for decisions/actions.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The three terms mean different things, and plans use them at different levels.",
+   "The order is reversed: goals are the broadest, objectives are measurable steps, and policies guide decisions.",
+   "",
+   "None of the three is adopted by referendum as a rule; the difference is in how broad or measurable each is."
+  ]
  },
  {
   "n": 30,
@@ -447,7 +621,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Floodplain policy should rest on natural-constraint and hazard analysis (suitability), not revenue or politics.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Downstream owners’ preferences matter in engagement, but hazard analysis should set the basic policy.",
+   "Maximizing tax revenue from flood-prone land ignores risk to lives and property.",
+   "Annexation goals don’t determine where it’s safe to build."
+  ]
  },
  {
   "n": 31,
@@ -462,7 +642,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "The plan is a long-range policy guide; zoning implements it.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "That describes a zoning ordinance, which is enforced parcel by parcel; the plan sets policy.",
+   "The zoning board of adjustment hears variances and appeals; the governing body adopts the comprehensive plan.",
+   "Most states don’t require state certification of local plans, and review isn’t what separates a plan from zoning.",
+   ""
+  ]
  },
  {
   "n": 32,
@@ -477,7 +663,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Consistency requires land use decisions to conform to the adopted plan.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Consistency is about local decisions matching the local plan, not a uniform state format.",
+   "",
+   "Consistency doesn’t set an annual update schedule; update cycles vary by state.",
+   "Neighboring jurisdictions adopt their own plans; consistency concerns a jurisdiction’s zoning and its own plan."
+  ]
  },
  {
   "n": 33,
@@ -492,7 +684,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Land use, transportation, and housing are core elements; a sentencing schedule is not.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out housing, a core element of most comprehensive plans.",
+   "",
+   "Includes a criminal sentencing schedule, which sentencing law and courts set, not a land use plan, and leaves out transportation.",
+   "Includes a criminal sentencing schedule, which isn’t a plan element."
+  ]
  },
  {
   "n": 34,
@@ -507,7 +705,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "A vision statement expresses shared community aspirations guiding the plan.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Binding development standards belong in the zoning and subdivision codes, not the vision statement.",
+   "The operating budget is a separate annual fiscal document.",
+   "",
+   "Permitted uses by district are listed in the zoning ordinance."
+  ]
  },
  {
   "n": 35,
@@ -522,7 +726,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Scenario planning tests alternatives against multiple plausible futures under uncertainty.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "With only one certain future there’s nothing to compare, which is the point of scenarios.",
+   "",
+   "Choosing the lowest-cost option is a cost comparison, not a reason to explore several futures.",
+   "A ministerial permit is checked against fixed standards; there are no futures to test."
+  ]
  },
  {
   "n": 36,
@@ -537,7 +747,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "A CIP is a multi-year schedule of capital projects, costs, and funding sources.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The daily operating budget funds salaries and services, not multi-year capital projects.",
+   "Permitted land uses are set in the zoning ordinance.",
+   "An exaction is a condition placed on a development approval, not a public spending schedule.",
+   ""
+  ]
  },
  {
   "n": 37,
@@ -552,7 +768,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "TIF captures the tax increment within a district to fund district improvements.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A special assessment charges benefited properties directly; it doesn’t capture growth in tax revenue.",
+   "A general obligation bond is repaid from general taxes backed by the full faith and credit of the government.",
+   "",
+   "An impact fee is a one-time charge on new development for the facilities it needs."
+  ]
  },
  {
   "n": 38,
@@ -567,7 +789,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Concurrency requires facilities at adopted service levels when development impacts occur.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Concurrency has nothing to do with adopting several plans at once.",
+   "Review deadlines are procedural timelines, not a concurrency requirement.",
+   "Concurrency is about facility capacity, not joint review by several jurisdictions."
+  ]
  },
  {
   "n": 39,
@@ -582,7 +810,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "An equity lens examines distribution of benefits and burdens, prioritizing underserved groups.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Treating every neighborhood identically ignores differences in need, which an equity lens is meant to reveal.",
+   "Maximizing total output says nothing about who benefits or bears the costs.",
+   "Favoring the largest landowners runs against an equity lens, which asks about underserved groups.",
+   ""
+  ]
  },
  {
   "n": 40,
@@ -597,7 +831,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "TDR lets sending-area owners sell rights for use at higher density in a receiving area.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "TDR compensates sending-area owners by letting them sell their rights; it isn’t an uncompensated ban.",
+   "",
+   "Public purchase of easements describes purchase of development rights (PDR), not TDR.",
+   "TDR moves development rights through a market; it isn’t an administrative variance."
+  ]
  },
  {
   "n": 41,
@@ -612,7 +852,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "A measurable target with a metric and timeframe is an objective; the others are goals.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "A vibrant, livable community is a broad goal with no metric or deadline.",
+   "Promoting sustainability is a broad goal with nothing to measure.",
+   "A sense of place is a broad goal; there’s no target or date to check."
+  ]
  },
  {
   "n": 42,
@@ -627,7 +873,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Interest-based negotiation uncovers underlying needs to find mutual gains.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Holding firm on a stated demand is positional bargaining, the opposite of interest-based negotiation.",
+   "Deferring to the most powerful party isn’t negotiation on interests; it ignores everyone else’s needs.",
+   "",
+   "Interest-based negotiation depends on exploring the underlying problem, not avoiding it."
+  ]
  },
  {
   "n": 43,
@@ -642,7 +894,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Fiscal impact analysis weighs public costs against public revenues of development.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Environmental effects are covered by environmental review, not fiscal impact analysis.",
+   "",
+   "Fiscal impact analysis looks at public costs and revenues, not the developer’s profit.",
+   "Intersection level of service is part of a traffic study."
+  ]
  },
  {
   "n": 44,
@@ -657,7 +915,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Form-based codes regulate physical form and the public realm, with use secondary.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Form-based codes usually relax use separation; strict separation is a hallmark of Euclidean zoning.",
+   "Form-based codes rely on clear, objective standards and often reduce discretionary design review.",
+   "Form-based codes regulate buildings and streets, not just how land is divided.",
+   ""
+  ]
  },
  {
   "n": 45,
@@ -672,7 +936,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "A PUD trades design flexibility and mixed use for negotiated public benefits.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A PUD exists to depart from uniform lot standards.",
+   "A PUD lets the project vary from base district standards through an approved plan.",
+   "",
+   "Impact fees are set by a separate fee ordinance, not by the PUD tool itself."
+  ]
  },
  {
   "n": 46,
@@ -687,7 +957,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Land use authority flows from state police power, usually delegated to localities; tribes are sovereign.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Land use regulation is mainly a state and local function; federal influence comes through funding and specific statutes.",
+   "Federally recognized tribes are sovereign and generally regulate land use on their trust lands.",
+   "Congress doesn’t adopt local comprehensive plans; local governing bodies do."
+  ]
  },
  {
   "n": 47,
@@ -702,7 +978,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "A moratorium is a temporary pause, commonly to study or update regulations.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A moratorium is temporary by definition.",
+   "A moratorium is a regulation, not a condemnation, and it usually doesn’t require compensation.",
+   "A variance is relief for one property, not a pause on approvals.",
+   ""
+  ]
  },
  {
   "n": 48,
@@ -717,7 +999,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "PDR compensates landowners with public funds for their development rights.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Agricultural zoning restricts development but doesn’t pay landowners for the value they give up.",
+   "",
+   "An urban growth boundary directs where growth goes; it doesn’t compensate owners outside it.",
+   "A conditional use permit approves a specific use; it doesn’t buy development rights."
+  ]
  },
  {
   "n": 49,
@@ -732,7 +1020,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Sending/receiving areas are TDR terms.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Tax increment financing uses a district and a frozen base, not sending and receiving areas.",
+   "Impact fees are charged per development; they don’t involve sending and receiving areas.",
+   "Historic districts are designated areas, but sending and receiving areas are a TDR concept."
+  ]
  },
  {
   "n": 50,
@@ -747,7 +1041,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "The planner surfaces the tradeoff and helps decision-makers reconcile via priorities.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Adopting conflicting policies side by side leaves decision-makers and applicants with no guidance.",
+   "Neither policy wins automatically; setting priorities is a decision for the governing body.",
+   "",
+   "Deleting both policies abandons the plan’s guidance on two important issues."
+  ]
  },
  {
   "n": 51,
@@ -762,7 +1062,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "A UGB directs growth inward and separates urbanizable from rural land.",
   "domain": "Plan & Policy Development",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A growth boundary shapes where development goes; it doesn’t cap population.",
+   "",
+   "Downtown height limits are set by zoning, not by a growth boundary.",
+   "School attendance zones are set by the school district."
+  ]
  },
  {
   "n": 52,
@@ -777,7 +1083,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Partner with trusted organizations, meet in familiar settings, and provide interpretation.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A single hearing at city hall is the kind of format that has excluded these residents before.",
+   "Written comments online miss residents without internet access or English proficiency.",
+   "Low turnout is a reason to change the approach, not to skip the residents most affected.",
+   ""
+  ]
  },
  {
   "n": 53,
@@ -792,7 +1104,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "\"Informing\" without seeking input sits in tokenism/nonparticipation near the ladder's bottom.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Citizen control is the top rung, where residents run the program; informing is far below it.",
+   "Delegated power gives residents decision-making authority, which informing doesn’t.",
+   "",
+   "Partnership shares planning and decision-making power, well above merely informing."
+  ]
  },
  {
   "n": 54,
@@ -807,7 +1125,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Acknowledge the displacement concern and analyze anti-displacement measures within the project.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Displacement is a known risk of greenway projects, so it belongs in the project’s analysis.",
+   "Promising that displacement is unlikely, without analysis, dismisses a legitimate concern.",
+   "Handing the concern to another department without addressing it in this project leaves it unresolved."
+  ]
  },
  {
   "n": 55,
@@ -822,7 +1146,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Use plain language and visuals; be transparent about assumptions and uncertainty.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Full methods and data tables lose a lay audience; keep them available, but lead with plain findings.",
+   "Presenting only the most favorable finding is selective and misleading.",
+   "Reading a technical report aloud doesn’t translate it for the audience.",
+   ""
+  ]
  },
  {
   "n": 56,
@@ -837,7 +1167,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Lead with the recommendation and key findings; decision-makers read the summary first.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Burying the recommendation in an appendix makes busy decision-makers hunt for it.",
+   "",
+   "The written report is the official record, so the recommendation belongs in it, not only in the oral presentation.",
+   "Without a summary, readers have to piece the recommendation together themselves."
+  ]
  },
  {
   "n": 57,
@@ -852,7 +1188,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Accessibility means alt text, adequate contrast, and keyboard-navigable content.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Images of text without alt text can’t be read by screen readers.",
+   "Requiring proprietary software creates a barrier for many users.",
+   "Scanned PDFs are usually images of text that screen readers can’t read."
+  ]
  },
  {
   "n": 58,
@@ -867,7 +1209,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "A charrette is an intensive collaborative design workshop.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A referendum is a public vote; a charrette is a working design session.",
+   "A quasi-judicial hearing decides a specific application under legal standards; a charrette generates designs.",
+   "",
+   "A charrette is a design workshop, not a survey sampling method."
+  ]
  },
  {
   "n": 59,
@@ -882,7 +1230,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "The facilitator manages a fair process and ensures all viewpoints are heard.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Advocating from the podium compromises the facilitator’s neutrality.",
+   "",
+   "Limiting comment to supporters excludes other views and undermines the process.",
+   "Adjourning at the first sign of conflict denies people the chance to be heard; managing conflict is part of the job."
+  ]
  },
  {
   "n": 60,
@@ -897,7 +1251,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Correct the record through official channels and brief the council; avoid a public feud.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A public argument in a comment thread escalates conflict without informing people accurately.",
+   "Staff have a duty to provide accurate information, including correcting errors respectfully.",
+   "A formal complaint is disproportionate; the need is to correct the information.",
+   ""
+  ]
  },
  {
   "n": 61,
@@ -912,7 +1272,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Staff analyze and recommend; elected officials set policy and decide.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The roles are reversed: elected officials set policy, and staff analyze and carry it out.",
+   "The roles are distinct: staff bring professional analysis, and elected officials make the decisions.",
+   "",
+   "The roles are reversed: staff prepare technical studies, and elected officials vote."
+  ]
  },
  {
   "n": 62,
@@ -927,7 +1293,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Reflective listening paraphrases to confirm understanding.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Repeating the agenda is meeting management, not listening to what a speaker said.",
+   "Deferring questions postpones engagement rather than confirming understanding.",
+   "Recording keeps a record but doesn’t show the speaker they were understood."
+  ]
  },
  {
   "n": 63,
@@ -942,7 +1314,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Shared goals, separating people from the problem, and options for mutual gain build consensus; threats do not.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out generating options for mutual gain, a core consensus technique.",
+   "",
+   "Includes threats, which harden positions and undermine consensus, and leaves out shared goals.",
+   "Includes threats, which undermine consensus."
+  ]
  },
  {
   "n": 64,
@@ -957,7 +1335,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Provide the same factual, on-the-record information any applicant would receive.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Private coaching gives one applicant an unfair advantage and compromises staff neutrality.",
+   "",
+   "Refusing to speak with applicants fails the duty to provide accurate information about the process.",
+   "Staff recommendations must rest on the merits and the adopted standards."
+  ]
  },
  {
   "n": 65,
@@ -972,7 +1356,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Provide accurate on-the-record facts and avoid overstating certainty.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Speculating about outcomes risks misinforming the public and overstepping staff’s role.",
+   "Refusing comment misses a chance to share accurate facts; staff can explain the process and schedule.",
+   "Sharing confidential deliberations breaches confidentiality and damages trust."
+  ]
  },
  {
   "n": 66,
@@ -987,7 +1377,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Cultural humility means openness and deference to lived experience.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Assuming you already understand a community is the opposite of humility.",
+   "One uniform method ignores the differences that humility asks you to learn about.",
+   "",
+   "Avoiding unfamiliar groups excludes them; humility means engaging and learning."
+  ]
  },
  {
   "n": 67,
@@ -1002,7 +1398,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Open-response surveys are self-selected, non-probability samples.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "In a probability sample, every member has a known chance of selection, which an open survey lacks.",
+   "",
+   "A stratified random sample draws randomly within defined groups; an open survey has no controlled sampling.",
+   "A census tries to count everyone; an open survey collects only volunteers."
+  ]
  },
  {
   "n": 68,
@@ -1017,7 +1419,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Offer varied times, online options, and pop-up engagement to reach shift workers.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "More meetings at the same time and place repeat the barrier.",
+   "Fewer opportunities reduce access further.",
+   "Requiring attendance to comment shuts out exactly these residents.",
+   ""
+  ]
  },
  {
   "n": 69,
@@ -1032,7 +1440,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Present the honest analysis; decision-makers weigh it against other factors.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Altering analysis to fit politics violates the duty to provide accurate information.",
+   "Withholding a recommendation until after a vote denies decision-makers the information they need.",
+   "",
+   "Resigning isn’t required; the planner’s job is to present the analysis and let officials decide."
+  ]
  },
  {
   "n": 70,
@@ -1047,7 +1461,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Placemaking creates public spaces rooted in community identity and use.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Maximizing parking supply is a car-access goal, not placemaking.",
+   "Placemaking tailors spaces to each community, not to one standard template.",
+   "Restricting access works against placemaking, which invites people to use public space."
+  ]
  },
  {
   "n": 71,
@@ -1062,7 +1482,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Transparency means timely notice, accessible materials, and a clear decision record.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Closed deliberations limit transparency; open meetings laws allow only narrow exceptions.",
+   "Releasing information only after decisions are final shuts the public out when input could matter.",
+   "Summary minutes without supporting documents leave an incomplete record.",
+   ""
+  ]
  },
  {
   "n": 72,
@@ -1077,7 +1503,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Adjust methods and target the missing groups before finalizing.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Low participation usually reflects barriers to taking part, not lack of interest.",
+   "",
+   "Proceeding with a skewed sample produces a plan that doesn’t reflect the whole community.",
+   "Restarting from scratch is disproportionate; targeted outreach fills the gap."
+  ]
  },
  {
   "n": 73,
@@ -1092,7 +1524,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "A communications plan defines audiences, messages, methods, and timing for intentional engagement.",
   "domain": "Communication & Interaction",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Promoting the director isn’t the purpose of a public communications plan.",
+   "A communications plan supports the planning process; it doesn’t replace the plan.",
+   "Legal notice is a minimum; a communications plan goes well beyond it."
+  ]
  },
  {
   "n": 74,
@@ -1107,7 +1545,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "An overlay adds requirements atop the base zoning without changing it.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A floating zone is described in the text but not mapped until it’s applied to a site through a rezoning.",
+   "A spot zone singles out one parcel for different treatment; it doesn’t layer rules over a base district.",
+   "",
+   "A nonconforming use predates current rules; it’s a status, not a zoning technique."
+  ]
  },
  {
   "n": 75,
@@ -1122,7 +1566,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "A conditional use is allowed if it meets specified standards.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A prohibited use can’t be approved through a conditional use permit.",
+   "",
+   "Uses permitted by right need only ministerial review; conditional uses get discretionary review against standards.",
+   "A dimensional variance relaxes standards like setbacks; it isn’t a use approval."
+  ]
  },
  {
   "n": 76,
@@ -1137,7 +1587,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "A variance requires unique, non-self-created hardship and no harm to the public interest.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Financial gain alone isn’t a hardship that justifies a variance.",
+   "Neighbor support doesn’t satisfy the legal standard for a variance.",
+   "Plan support may be relevant to a rezoning, but a variance turns on hardship unique to the property.",
+   ""
+  ]
  },
  {
   "n": 77,
@@ -1152,7 +1608,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Spot zoning singles out a parcel inconsistent with the plan and surroundings for the owner's benefit.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Uniform citywide standards are the opposite of spot zoning.",
+   "Spot zoning is vulnerable because of its substance, favoring one owner, not for lacking a hearing.",
+   "",
+   "An environmental impact statement isn’t what makes spot zoning legally vulnerable."
+  ]
  },
  {
   "n": 78,
@@ -1167,7 +1629,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Amortization phases out a nonconforming use over a reasonable period.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Grandfathering lets a nonconforming use continue; it doesn’t phase it out.",
+   "Abandonment ends nonconforming status when a use is discontinued, not through a planned phase-out.",
+   "Vesting protects a developer’s right to proceed under prior rules; it isn’t a phase-out."
+  ]
  },
  {
   "n": 79,
@@ -1182,7 +1650,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Vesting generally requires substantial good-faith reliance on a valid permit.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Buying property in reliance on current zoning generally doesn’t vest rights under the majority rule.",
+   "A pre-application meeting is far too early to create vested rights.",
+   "Some states vest rights at a complete application by statute, but the majority common law rule requires substantial reliance on a valid permit.",
+   ""
+  ]
  },
  {
   "n": 80,
@@ -1197,7 +1671,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "The recorded final plat legally creates the lots.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The preliminary plat is a tentative approval of the layout; it isn’t recorded to create lots.",
+   "",
+   "A site plan governs development on an existing lot; it doesn’t create lots.",
+   "A concept plan is an early sketch for discussion, not a legal document."
+  ]
  },
  {
   "n": 81,
@@ -1212,7 +1692,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Impact fees must be proportional to demand created and spent on serving facilities.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "A flat fee regardless of use ignores the different demand each development creates.",
+   "Impact fees must be earmarked for the facilities that serve the development, not the general fund.",
+   "Impact fees are usually adopted by ordinance; a referendum isn’t the legal test."
+  ]
  },
  {
   "n": 82,
@@ -1227,7 +1713,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Zoning/subdivision, CIP, official map, and development agreements are all implementation tools.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out the official map and development agreements, which also implement plans.",
+   "Leaves out development agreements.",
+   "Leaves out zoning and subdivision regulations, the most common implementation tools.",
+   ""
+  ]
  },
  {
   "n": 83,
@@ -1242,7 +1734,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "A development agreement locks in standards and obligations for a period in exchange for benefits.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Development agreements don’t eliminate required permits; the project still goes through them.",
+   "",
+   "The land stays in private ownership; the agreement sets standards and obligations.",
+   "A development agreement must be consistent with the plan; it doesn’t replace it."
+  ]
  },
  {
   "n": 84,
@@ -1257,7 +1755,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Monitoring tracks progress against objectives and triggers updates.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Monitoring is ongoing, not a one-time requirement.",
+   "The purpose is to learn and adjust, not to assign blame.",
+   "Monitoring complements public engagement; it doesn’t replace it.",
+   ""
+  ]
  },
  {
   "n": 85,
@@ -1272,7 +1776,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "LOS sets a measurable performance threshold for facilities.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Architectural guidelines are design standards, not level-of-service measures.",
+   "Tax rates are set through the budget process, not by LOS standards.",
+   "",
+   "Historic significance is judged against preservation criteria, not LOS."
+  ]
  },
  {
   "n": 86,
@@ -1287,7 +1797,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Report the inconsistency clearly; leave the policy call to decision-makers.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Recommending approval to avoid conflict hides the inconsistency from decision-makers.",
+   "Staff don’t decide applications; they analyze and recommend.",
+   "Amending the plan without notice violates required procedures and public participation."
+  ]
  },
  {
   "n": 87,
@@ -1302,7 +1818,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Inclusionary zoning requires/incentivizes a share of affordable units.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Excluding multifamily housing is exclusionary zoning, the opposite of inclusionary zoning.",
+   "Larger minimum lots raise housing costs; that’s associated with exclusionary zoning.",
+   "Commercial-only development has nothing to do with inclusionary housing.",
+   ""
+  ]
  },
  {
   "n": 88,
@@ -1317,7 +1839,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "A density bonus grants extra capacity for a public benefit.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Density bonuses reward, not penalize, public benefits such as affordable units.",
+   "",
+   "A density bonus increases capacity; it doesn’t trade away height for parking.",
+   "A density bonus allows more development, not a prohibition."
+  ]
  },
  {
   "n": 89,
@@ -1332,7 +1860,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "An official map reserves future street/facility locations.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Ownership for tax purposes is shown on assessor’s maps, not an official map.",
+   "Historic districts are designated through a preservation ordinance and shown on their own maps.",
+   "An official map doesn’t replace zoning; it reserves land for future public facilities."
+  ]
  },
  {
   "n": 90,
@@ -1347,7 +1881,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Aligning funding means prioritizing, grant-seeking, and coordinating the CIP with the plan; funding contradictory projects does not.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out coordinating the CIP with the plan.",
+   "",
+   "Includes funding projects that contradict the plan, which works against aligning funding with it, and leaves out prioritizing plan projects.",
+   "Includes funding projects that contradict the plan."
+  ]
  },
  {
   "n": 91,
@@ -1362,7 +1902,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Performance zoning regulates measurable impacts rather than use lists.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Performance zoning regulates impacts, not a blanket ban on industrial uses near housing.",
+   "",
+   "Performance zoning isn’t limited to residential districts.",
+   "Design review is a separate discretionary process, not what defines performance zoning."
+  ]
  },
  {
   "n": 92,
@@ -1377,7 +1923,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Cluster subdivision concentrates development to preserve open space.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Clustering reduces lot sizes to free up land for open space.",
+   "Common open space is the point of a cluster subdivision.",
+   "Cluster subdivisions often use small lots for single-family homes.",
+   ""
+  ]
  },
  {
   "n": 93,
@@ -1392,7 +1944,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Coordinating projects for shared infrastructure reflects integration.",
   "domain": "Plan Implementation",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Fragmentation means pursuing projects separately, the opposite of combining them.",
+   "Spot zoning singles out a parcel for different zoning; it has nothing to do with coordinating projects.",
+   "",
+   "Amortization phases out nonconforming uses; it isn’t about coordinating projects."
+  ]
  },
  {
   "n": 94,
@@ -1407,7 +1965,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Federally funded projects must be in the Metropolitan Transportation Plan and the TIP.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "The county comprehensive plan guides land use but isn’t the federal programming document.",
+   "The state hazard mitigation plan qualifies communities for mitigation grants, not transportation funds.",
+   "A regional housing needs assessment addresses housing, not federal transportation programming."
+  ]
  },
  {
   "n": 95,
@@ -1422,7 +1986,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Nonattainment areas must show transportation conformity with the air quality SIP.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A categorical exclusion is a NEPA review level for minor projects, not the air quality test for plans.",
+   "Fair Housing Act compliance matters, but it isn’t the requirement triggered by nonattainment.",
+   "Historic preservation review under Section 106 is separate and isn’t triggered by nonattainment.",
+   ""
+  ]
  },
  {
   "n": 96,
@@ -1437,7 +2007,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Induced demand explains why added capacity tends to refill with new trips.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "LOS standards measure congestion but don’t explain why new capacity fills back up.",
+   "",
+   "The gravity model distributes trips between zones; it doesn’t explain why widening fails over time.",
+   "Tax increment is a financing concept, unrelated to whether congestion returns."
+  ]
  },
  {
   "n": 97,
@@ -1452,7 +2028,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "The fourth step is trip assignment.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "\"Trip taxation\" isn’t a step in travel demand modeling.",
+   "Amortization is a zoning and finance term, not a modeling step.",
+   "\"Trip zoning\" isn’t a step; the model does divide the region into traffic analysis zones, but the fourth step assigns trips to routes."
+  ]
  },
  {
   "n": 98,
@@ -1467,7 +2049,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "MPOs are required for urbanized areas of 50,000+.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "5,000 is far below the federal threshold; MPOs start at urbanized areas of 50,000.",
+   "200,000 is the threshold for a transportation management area, which carries extra requirements, not for having an MPO at all.",
+   "",
+   "1,000,000 is far above the threshold; many MPOs serve regions under 200,000."
+  ]
  },
  {
   "n": 99,
@@ -1482,7 +2070,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Cost burden is spending more than 30% of income on housing.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "20% is below the standard threshold for cost burden.",
+   "",
+   "40% is above the standard 30% line.",
+   "50% is the usual threshold for severe cost burden."
+  ]
  },
  {
   "n": 100,
@@ -1497,7 +2091,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "LIHTC provides state-allocated federal tax credits to finance affordable rental housing.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "LIHTC works through tax credits sold to investors, not direct federal grants to cities.",
+   "Tenant-based vouchers are the separate Housing Choice Voucher program.",
+   "Mortgage insurance for homebuyers comes from programs such as FHA insurance, not LIHTC.",
+   ""
+  ]
  },
  {
   "n": 101,
@@ -1512,7 +2112,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "A brownfield is complicated by real or perceived contamination.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Undeveloped land at the fringe is a greenfield, the opposite of a brownfield.",
+   "Protected open space is conservation land; brownfields are usually former industrial or commercial sites.",
+   "",
+   "A historic district is a preservation designation, unrelated to contamination."
+  ]
  },
  {
   "n": 102,
@@ -1527,7 +2133,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Elevating structures and restoring dunes is adaptation; the others reduce emissions (mitigation).",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Solar panels cut emissions, which is mitigation.",
+   "Transit that reduces driving cuts emissions, which is mitigation.",
+   "Electric vehicle charging cuts tailpipe emissions, which is mitigation."
+  ]
  },
  {
   "n": 103,
@@ -1542,7 +2154,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "An HIA evaluates potential health effects of a plan/project/policy before adoption.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "An HIA looks at population health effects of decisions, not individual diagnoses.",
+   "HIAs have nothing to do with setting insurance premiums.",
+   "An HIA can complement environmental review, but it doesn’t replace an EIS.",
+   ""
+  ]
  },
  {
   "n": 104,
@@ -1557,7 +2175,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Livable Built Environment, Interwoven Equity, Healthy Community, and Resilient Economy are all APA plan standards.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out Healthy Community and Resilient Economy, which are also plan standards.",
+   "Leaves out Resilient Economy.",
+   "Leaves out Interwoven Equity.",
+   ""
+  ]
  },
  {
   "n": 105,
@@ -1572,7 +2196,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "TOD is planned within about a quarter- to half-mile walk of a station.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "100 feet is far too small; TOD is scaled to a comfortable walk to the station.",
+   "Two to three miles is beyond walking distance, so it’s outside a typical TOD area.",
+   "Five to ten miles is a regional commute shed, not a station area."
+  ]
  },
  {
   "n": 106,
@@ -1587,7 +2217,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Complete streets safely serve all users and abilities.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Prioritizing cars is conventional street design, the opposite of complete streets.",
+   "Complete streets often keep parking and loading; prohibiting them isn’t the aim.",
+   "",
+   "Maximizing peak-hour vehicle throughput is the traditional traffic goal complete streets move away from."
+  ]
  },
  {
   "n": 107,
@@ -1602,7 +2238,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "The 20% credit applies to income-producing certified historic structures rehabbed to the Secretary's Standards.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Owner-occupied homes don’t qualify for the federal credit, though some state credits cover them.",
+   "",
+   "New construction doesn’t qualify; the credit is for rehabilitating historic buildings.",
+   "Demolition is the opposite of what the credit rewards."
+  ]
  },
  {
   "n": 108,
@@ -1617,7 +2259,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "The 100-year floodplain carries a 1% annual chance of flooding.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "0.1% a year is the 1,000-year flood.",
+   "10% a year is the 10-year flood.",
+   "100% would mean flooding every year; \"100-year\" names the recurrence interval, not the probability.",
+   ""
+  ]
  },
  {
   "n": 109,
@@ -1632,7 +2280,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "CPTED principles are natural surveillance, access control, and territorial reinforcement, not sentencing.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Natural surveillance is a CPTED principle, so it isn’t the exception.",
+   "Natural access control is a CPTED principle, so it isn’t the exception.",
+   "",
+   "Territorial reinforcement is a CPTED principle, so it isn’t the exception."
+  ]
  },
  {
   "n": 110,
@@ -1647,7 +2301,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Cluster-based development targets interconnected firms in a field.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Smokestack chasing is recruiting individual large plants, often with incentives, not building clusters.",
+   "Tax abatement bidding is competing for firms with tax breaks, not strengthening related industries.",
+   "Import substitution replaces imports with local production; it isn’t about interconnected firms."
+  ]
  },
  {
   "n": 111,
@@ -1662,7 +2322,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Managed retreat acquires/removes repeatedly flooded structures and relocates residents.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Seawalls hold the line, which is protection, the opposite of retreat.",
+   "Elevating infrastructure is accommodation; people and assets stay in place.",
+   "Managed retreat relocates people and structures; denying insurance isn’t the strategy itself.",
+   ""
+  ]
  },
  {
   "n": 112,
@@ -1677,7 +2343,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Seaside is an early built example of New Urbanism.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "New Deal greenbelt towns, such as Greenbelt, Maryland, date from the 1930s; Seaside was built in the 1980s.",
+   "",
+   "Garden cities follow Ebenezer Howard’s model from around 1900; Seaside is a New Urbanist town.",
+   "An edge city is a suburban office and retail concentration, not a planned traditional town."
+  ]
  },
  {
   "n": 113,
@@ -1692,7 +2364,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "A food desert is an area with limited access to affordable, nutritious food.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "\"Desert\" here is a metaphor for food access, not an arid climate.",
+   "A restaurant district is a zoning category, not a measure of access to groceries.",
+   "Community gardens and markets are tools for addressing food deserts."
+  ]
  },
  {
   "n": 114,
@@ -1707,7 +2385,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "LIHTC, vouchers, inclusionary zoning, and community land trusts are all affordable-housing tools.",
   "domain": "Areas of Practice",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out inclusionary zoning and community land trusts.",
+   "Leaves out community land trusts.",
+   "Leaves out the Low-Income Housing Tax Credit.",
+   ""
+  ]
  },
  {
   "n": 115,
@@ -1722,7 +2406,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "The cohort-component method uses age-specific fertility, mortality, and migration.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The linear method extends a straight-line trend in total population; it doesn’t use age-specific rates.",
+   "",
+   "The housing-unit method estimates population from housing, occupancy, and household size.",
+   "The ratio (step-down) method takes a share of a larger area’s projection."
+  ]
  },
  {
   "n": 116,
@@ -1737,7 +2427,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "LQ = (6,000/100,000) ÷ 0.03 = 0.06 ÷ 0.03 = 2.0.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "0.5 would mean the industry is half as concentrated locally, but 6% local against 3% national is twice as concentrated.",
+   "1.0 would mean equal shares, but the local share (6%) is double the national share (3%).",
+   "3.0 mistakes the national share (3%) for the quotient; the LQ is 6% divided by 3%.",
+   ""
+  ]
  },
  {
   "n": 117,
@@ -1752,7 +2448,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "LQ > 1 indicates greater local concentration, suggesting an export/basic sector.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The location quotient shows concentration at one point in time, not whether an industry is declining.",
+   "An LQ above 1 suggests the industry exports, serving more than local demand.",
+   "",
+   "An LQ compares shares of employment, not absolute size."
+  ]
  },
  {
   "n": 118,
@@ -1767,7 +2469,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Shift-share = national growth + industry mix + local (competitive) share.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out the local (competitive) share, a core component.",
+   "",
+   "Includes a \"location-quotient share,\" which isn’t a shift-share component, and leaves out the national growth share.",
+   "Includes a \"location-quotient share,\" which isn’t a shift-share component."
+  ]
  },
  {
   "n": 119,
@@ -1782,7 +2490,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "The median resists distortion by extreme values.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The mean is pulled toward extreme values, so it’s the most distorted.",
+   "The range depends entirely on the extremes, and it measures spread, not center.",
+   "The sum isn’t a measure of central tendency.",
+   ""
+  ]
  },
  {
   "n": 120,
@@ -1797,7 +2511,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "About 68% of values lie within one standard deviation.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "About 34% fall between the mean and one standard deviation on one side; the question covers both sides.",
+   "",
+   "About 95% fall within two standard deviations.",
+   "About 99.7% fall within three standard deviations."
+  ]
  },
  {
   "n": 121,
@@ -1812,7 +2532,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "ACS 5-year estimates cover small geographies such as tracts.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "The decennial long form ended after 2000 and was replaced by the ACS.",
+   "ACS 1-year estimates are published only for areas of 65,000 or more, so not for tracts.",
+   "The Current Population Survey is a national labor force survey, too small for tract estimates."
+  ]
  },
  {
   "n": 122,
@@ -1827,7 +2553,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "R² is the share of variance explained by the model.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "R-squared describes how much variation the model explains, not how many homes were priced correctly.",
+   "R-squared is the correlation squared in simple regression; an R-squared of 0.65 means a correlation of about 0.81.",
+   "",
+   "R-squared isn’t a probability that the model is true."
+  ]
  },
  {
   "n": 123,
@@ -1842,7 +2574,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Chi-square tests association between two categorical variables.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A paired t-test compares two related sets of numeric measurements, not categories.",
+   "",
+   "Linear regression models a numeric outcome; two categorical variables call for chi-square.",
+   "Time-series forecasting projects trends over time; it doesn’t test association."
+  ]
  },
  {
   "n": 124,
@@ -1857,7 +2595,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "A higher discount rate lowers present value, disadvantaging long-horizon projects.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "A higher discount rate lowers present values; it doesn’t raise them.",
+   "The discount rate directly determines present values.",
+   "Discounting shrinks future amounts; it doesn’t turn costs into benefits.",
+   ""
+  ]
  },
  {
   "n": 125,
@@ -1872,7 +2616,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Delphi builds expert consensus through iterative, anonymous rounds.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Random household sampling is survey methodology; Delphi uses a panel of experts.",
+   "Assigning land uses is a mapping task, not what Delphi does.",
+   "",
+   "A location quotient is a simple ratio, not a consensus process."
+  ]
  },
  {
   "n": 126,
@@ -1887,7 +2637,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Stratified random sampling ensures proportional representation of subgroups.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Convenience sampling takes whoever is easiest to reach, with no subgroup structure.",
+   "Snowball sampling grows through referrals, which is useful for hard-to-reach groups but not proportional.",
+   "Self-selected samples are volunteers, with no control over representation."
+  ]
  },
  {
   "n": 127,
@@ -1902,7 +2658,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Continuous surfaces like elevation are stored as raster grids.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Vector points represent discrete locations, not continuous surfaces.",
+   "Vector polygons represent bounded areas, such as parcels, not continuous values.",
+   "Network datasets model connections such as streets, not surfaces.",
+   ""
+  ]
  },
  {
   "n": 128,
@@ -1917,7 +2679,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Choropleth maps show rates/values by area.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Exact event locations call for a dot or point map.",
+   "",
+   "A route between two points is a line or network map.",
+   "Terrain calls for a 3D, hillshade, or contour map."
+  ]
  },
  {
   "n": 129,
@@ -1932,7 +2700,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Validity = measuring what is intended; reliability = consistency.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "The definitions are swapped: validity is accuracy, and reliability is consistency.",
+   "Cost and speed aren’t what validity and reliability measure.",
+   "Both concepts apply to qualitative and quantitative research."
+  ]
  },
  {
   "n": 130,
@@ -1947,7 +2721,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "500 × 0.96 × 2.4 = 1,152.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "960 uses a household size of 2 instead of 2.4 (500 × 0.96 × 2).",
+   "1,200 skips the occupancy rate (500 × 2.4).",
+   "",
+   "1,250 divides by the occupancy rate instead of multiplying (1,200 ÷ 0.96)."
+  ]
  },
  {
   "n": 131,
@@ -1962,7 +2742,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Implicit bias is unconscious assumptions shaping data gathering/interpretation.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Intentional falsification is misconduct, not implicit bias, which is unconscious.",
+   "",
+   "A rounding error is a computational mistake, not a bias rooted in assumptions.",
+   "A sampling frame error is a coverage problem in who can be selected, not unconscious assumptions."
+  ]
  },
  {
   "n": 132,
@@ -1977,7 +2763,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "The per-capita multiplier uses average service cost per resident.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Interviewing department heads about marginal costs is the case-study (marginal cost) method, not the per-capita multiplier.",
+   "Comparing costs with peer jurisdictions is the comparable-city method.",
+   "Location quotients measure industry concentration, not public service costs.",
+   ""
+  ]
  },
  {
   "n": 133,
@@ -1992,7 +2784,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "The gravity model estimates trip distribution based on size and distance.",
   "domain": "Research & Assessment Methods",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Structural loads are an engineering calculation, not the planning gravity model.",
+   "Soil suitability comes from soil surveys and geotechnical analysis.",
+   "",
+   "Tax rates are set through the budget process, not a gravity model."
+  ]
  },
  {
   "n": 134,
@@ -2007,7 +2805,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Decline a gift that could compromise, or appear to compromise, independence while a matter is pending.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Finishing the study doesn’t end the problem while her client’s rezoning is still pending.",
+   "Telling a supervisor doesn’t cure accepting a gift that could appear to influence her.",
+   "Accepting and then donating the tickets still means accepting a gift from a party with a pending matter."
+  ]
  },
  {
   "n": 135,
@@ -2022,7 +2826,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Disclose the conflict and decline to serve; partial participation does not cure it.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "An advisory role still influences decisions, so the conflict still matters.",
+   "Abstaining from some votes doesn’t cure the conflict; her client is a direct competitor.",
+   "Sharing what she knows compounds the conflict and may reveal a client’s confidential information.",
+   ""
+  ]
  },
  {
   "n": 136,
@@ -2037,7 +2847,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Raise the discrepancy through proper channels and ensure the record is corrected.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Staying silent lets misleading figures reach decision-makers.",
+   "",
+   "Quietly changing a colleague’s work bypasses review and accountability; raise it so it’s corrected properly.",
+   "Waiting to see whether the client notices lets the misrepresentation stand."
+  ]
  },
  {
   "n": 137,
@@ -2052,7 +2868,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Aspirational principles are not enforceable and cannot alone support a misconduct charge.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Only the Rules of Conduct are enforceable; principles alone can’t support a charge.",
+   "The Code applies to AICP members; students aren’t certified members bound by it.",
+   "The AICP Code governs certified planners, not elected officials."
+  ]
  },
  {
   "n": 138,
@@ -2067,7 +2889,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "The Rules of Conduct are the enforceable, sanctionable provisions.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The aspirational principles aren’t enforceable by themselves.",
+   "Advisory opinions give guidance; they aren’t the sanctionable provisions.",
+   "",
+   "A general statement of values isn’t the enforceable part of the Code."
+  ]
  },
  {
   "n": 139,
@@ -2082,7 +2910,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Any person may file a charge of misconduct.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Charges aren’t limited to AICP members; anyone can file.",
+   "",
+   "Charges aren’t limited to employers or clients.",
+   "Charges aren’t limited to elected officials."
+  ]
  },
  {
   "n": 140,
@@ -2097,7 +2931,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Using confidential information for personal gain violates the Rules of Conduct.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Information being confidential when used is what matters; that it becomes public later doesn’t excuse using it for gain.",
+   "Disclosing afterward doesn’t undo the personal gain from confidential information.",
+   "Using confidential information for personal gain is a serious violation, not a minor issue.",
+   ""
+  ]
  },
  {
   "n": 141,
@@ -2112,7 +2952,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Do not misrepresent the analysis; present findings honestly while decision-makers decide.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Following the directive would misrepresent the analysis.",
+   "Resigning isn’t required; the obligation is not to misrepresent the findings.",
+   "",
+   "Leaking the report bypasses proper channels; raise the concern internally first."
+  ]
  },
  {
   "n": 142,
@@ -2127,7 +2973,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Public interest, integrity, and equity are aspirational principles; maximizing client profit is not.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out the equity principle.",
+   "",
+   "Includes maximizing client profit, which isn’t a Code principle, and leaves out serving the public interest.",
+   "Includes maximizing client profit, which isn’t a Code principle."
+  ]
  },
  {
   "n": 143,
@@ -2142,7 +2994,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Disclose the interest in writing and on the record and refrain from participating.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Waiting for an objection ignores the conflict the planner already knows about.",
+   "Disclosure alone isn’t enough with a financial interest; the planner must also step back.",
+   "Selling quietly without disclosure isn’t transparent, and the conflict existed while the planner participated.",
+   ""
+  ]
  },
  {
   "n": 144,
@@ -2157,7 +3015,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Request an advisory opinion from the Ethics Officer/Committee.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Informal advice from a colleague isn’t the formal step, and it doesn’t come from the Ethics Officer.",
+   "",
+   "Proceeding and waiting for a complaint risks a violation that advice could have prevented.",
+   "A city attorney can advise on law, but can’t issue opinions under the AICP Code."
+  ]
  },
  {
   "n": 145,
@@ -2172,7 +3036,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Independent judgment means not knowingly misrepresenting facts or opinion under pressure.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Independent judgment means not simply agreeing with whoever employs you.",
+   "Withholding unfavorable information from decision-makers violates the duty of accuracy.",
+   "Advocating for whoever pays is the opposite of independent judgment."
+  ]
  },
  {
   "n": 146,
@@ -2187,7 +3057,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "No improper gifts, no discrimination, and cooperation with investigations are enforceable; endorsing every employer decision is not.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out cooperating with an ethics investigation.",
+   "",
+   "Includes publicly endorsing every employer decision, which isn’t an obligation, and leaves out the gift rule.",
+   "Includes publicly endorsing every employer decision, which isn’t an obligation."
+  ]
  },
  {
   "n": 147,
@@ -2202,7 +3078,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "AICP can admonish, suspend, or revoke membership; it cannot impose criminal imprisonment.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Admonitions are among AICP’s disciplinary options, so this isn’t the exception.",
+   "",
+   "Public admonition is within AICP’s disciplinary powers, so this isn’t the exception.",
+   "Suspension or revocation of membership is within AICP’s powers, so this isn’t the exception."
+  ]
  },
  {
   "n": 148,
@@ -2217,7 +3099,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Decline to produce analysis intended to mislead.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Producing a predetermined conclusion is analysis designed to mislead.",
+   "A quiet disclaimer doesn’t fix analysis built to mislead.",
+   "Delegating the work doesn’t change what it is; it just passes the problem along.",
+   ""
+  ]
  },
  {
   "n": 149,
@@ -2232,7 +3120,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "The equity/social-justice language is in the aspirational principles.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The Rules of Conduct are the specific, enforceable prohibitions; social justice language isn’t among them.",
+   "Advisory opinions interpret the Code; they aren’t where its principles are stated.",
+   "",
+   "The disciplinary procedures govern charges and sanctions, not principles."
+  ]
  },
  {
   "n": 150,
@@ -2247,7 +3141,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "A special obligation to the public interest may at times constrain what a planner does for a client.",
   "domain": "Code of Ethics & Professional Conduct",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "The Code places the public interest first, not the client’s interest.",
+   "Ignoring the public interest in a conflict is what the Code guards against.",
+   "Planners can work for private clients; the Code asks them to honor the public interest while doing so."
+  ]
  },
  {
   "n": 151,
@@ -2262,7 +3162,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "In council-manager government, the director reports to the appointed manager.",
   "domain": "Administration & Management",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Reporting to a mayor as chief executive describes the strong-mayor form.",
+   "Voters elect officials; department heads don’t report to them directly.",
+   "State planning agencies don’t supervise local department heads.",
+   ""
+  ]
  },
  {
   "n": 152,
@@ -2277,7 +3183,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "RFQ/RFP selects on qualifications and approach; ITBs are price-based.",
   "domain": "Administration & Management",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "An invitation to bid selects the lowest responsive, responsible bidder, so it’s price-based.",
+   "",
+   "A sole-source purchase skips competition altogether.",
+   "A reverse auction drives price down, the opposite of selecting on qualifications."
+  ]
  },
  {
   "n": 153,
@@ -2292,7 +3204,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Zero-based budgeting justifies each program from zero each cycle.",
   "domain": "Administration & Management",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Carrying budgets over unchanged is incremental budgeting.",
+   "Zero-based budgeting doesn’t zero out accounts at year end; it rebuilds requests from zero.",
+   "Funding capital before operations is a spending priority, not zero-based budgeting."
+  ]
  },
  {
   "n": 154,
@@ -2307,7 +3225,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "A processing-time metric is an output/efficiency measure.",
   "domain": "Administration & Management",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "An input measure counts resources used, such as staff hours or dollars.",
+   "A community-condition measure tracks outcomes in the community, not how fast permits are processed.",
+   "",
+   "It’s a standard performance measure, not a random metric."
+  ]
  },
  {
   "n": 155,
@@ -2322,7 +3246,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "CPM identifies the dependent-task sequence that sets minimum project duration.",
   "domain": "Administration & Management",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Choosing vendors is a procurement question, not what CPM does.",
+   "",
+   "Staff preferences aren’t part of CPM.",
+   "Tax increment is a financing tool, unrelated to project scheduling."
+  ]
  },
  {
   "n": 156,
@@ -2337,7 +3267,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Meet privately to clarify expectations and agree on a plan before escalating.",
   "domain": "Administration & Management",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Firing without first clarifying expectations skips the supportive first step.",
+   "Reassigning work without discussion leaves the cause unaddressed.",
+   "Ignoring the problem usually lets it grow.",
+   ""
+  ]
  },
  {
   "n": 157,
@@ -2352,7 +3288,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "GO bonds are backed by taxing power and usually need voter approval; revenue bonds rely on facility revenues.",
   "domain": "Administration & Management",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Repayment from the facility’s revenues describes a revenue bond.",
+   "Enterprise funds, such as water and sewer, usually use revenue bonds.",
+   "",
+   "Municipal GO bonds are issued by state or local governments, not the federal government."
+  ]
  },
  {
   "n": 158,
@@ -2367,7 +3309,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Scope, schedule/milestones, roles, and budget are sound; full prepayment is not.",
   "domain": "Administration & Management",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out defined roles and a budget.",
+   "",
+   "Includes full prepayment before any work, which removes the leverage to get deliverables, and leaves out a clear scope.",
+   "Includes full prepayment, which isn’t sound contract management."
+  ]
  },
  {
   "n": 159,
@@ -2382,7 +3330,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Fulfill public records requests per law and transparency.",
   "domain": "Administration & Management",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Records laws generally require disclosure, with narrow exemptions, not blanket denial.",
+   "Records requests are handled by the agency, not referred to applicants.",
+   "Public records laws apply to any requester, not only officials.",
+   ""
+  ]
  },
  {
   "n": 160,
@@ -2397,7 +3351,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Quality control reviews work products for accuracy before release.",
   "domain": "Administration & Management",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "The tax levy is a budget decision, not quality control.",
+   "",
+   "Hiring a consultant is procurement, not quality control.",
+   "Attracting residents is economic development or marketing."
+  ]
  },
  {
   "n": 161,
@@ -2412,7 +3372,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Transformational leadership inspires with vision and develops capacity.",
   "domain": "Leadership",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Transactional leadership relies on rewards and rules, the approach this question contrasts with.",
+   "Laissez-faire leadership is hands-off, with little direction or development.",
+   "Autocratic leadership centralizes decisions and doesn’t focus on developing staff."
+  ]
  },
  {
   "n": 162,
@@ -2427,7 +3393,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Early involvement builds durable ownership and support.",
   "domain": "Leadership",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Presenting a finished plan for sign-off invites resistance rather than ownership.",
+   "Ordered compliance may get agreement on paper but rarely durable support.",
+   "",
+   "Excluding objectors hides problems until later and erodes trust."
+  ]
  },
  {
   "n": 163,
@@ -2442,7 +3414,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Ethical advocacy is transparent and grounded in the public interest.",
   "domain": "Leadership",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Advocating for whoever pays conflicts with the public interest.",
+   "",
+   "Concealing reasons undermines transparency.",
+   "Avoiding any position abdicates leadership."
+  ]
  },
  {
   "n": 164,
@@ -2457,7 +3435,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Delegation pairs clear expectations with authority and accountability.",
   "domain": "Leadership",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Responsibility without authority sets staff up to fail.",
+   "Without deadlines, expectations are unclear.",
+   "Authority without responsibility leaves no accountability for results.",
+   ""
+  ]
  },
  {
   "n": 165,
@@ -2472,7 +3456,13 @@ export const BANK = [
   "correct": 2,
   "explanation": "Mentoring develops the profession's future capacity.",
   "domain": "Leadership",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Mentoring may ease some load, but its purpose is developing people.",
+   "Mentoring isn’t a substitute for adequate staffing.",
+   "",
+   "Mentoring complements formal performance review; it doesn’t replace it."
+  ]
  },
  {
   "n": 166,
@@ -2487,7 +3477,13 @@ export const BANK = [
   "correct": 0,
   "explanation": "Facilitate a discussion that surfaces underlying interests toward agreement.",
   "domain": "Leadership",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "",
+   "Siding with seniority ignores the merits and the underlying interests.",
+   "Reassigning someone without discussion leaves the conflict unresolved.",
+   "Escalating disputes rarely resolve themselves and often spread."
+  ]
  },
  {
   "n": 167,
@@ -2502,7 +3498,13 @@ export const BANK = [
   "correct": 3,
   "explanation": "Servant leadership serves and develops people and community.",
   "domain": "Leadership",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Prioritizing the leader’s status is the opposite of servant leadership.",
+   "Servant leaders engage closely with their staff.",
+   "Centralizing decisions is an autocratic trait.",
+   ""
+  ]
  },
  {
   "n": 168,
@@ -2517,7 +3519,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Communicate concrete benefits in accessible terms tied to community priorities.",
   "domain": "Leadership",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Jargon alienates a skeptical audience.",
+   "",
+   "Formal hearings alone miss most of the public.",
+   "Using complexity to discourage questions undermines trust."
+  ]
  },
  {
   "n": 169,
@@ -2532,7 +3540,13 @@ export const BANK = [
   "correct": 1,
   "explanation": "Upholding ethics, transparency, and responsibility show accountability; deflecting blame does not.",
   "domain": "Leadership",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Leaves out taking responsibility for outcomes.",
+   "",
+   "Includes deflecting blame to subordinates, the opposite of accountability, and leaves out upholding the Code.",
+   "Includes deflecting blame to subordinates."
+  ]
  },
  {
   "n": 170,
@@ -2547,6 +3561,12 @@ export const BANK = [
   "correct": 2,
   "explanation": "Discern and advocate for the public interest, explaining the reasoning transparently.",
   "domain": "Leadership",
-  "difficulty": "Medium"
+  "difficulty": "Medium",
+  "optionNotes": [
+   "Following the vocal group sacrifices the broader public interest.",
+   "Volume isn’t a measure of the public interest.",
+   "",
+   "Taking no position abdicates the leader’s responsibility."
+  ]
  }
 ];
