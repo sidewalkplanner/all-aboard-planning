@@ -727,6 +727,38 @@
     "fig-cluster-web": {
       "w": 720,
       "h": 466
+    },
+    "fig-enclosure": {
+      "w": 720,
+      "h": 388,
+      "narrow": {
+        "w": 366,
+        "h": 762
+      }
+    },
+    "fig-cpted": {
+      "w": 720,
+      "h": 384,
+      "narrow": {
+        "w": 366,
+        "h": 750
+      }
+    },
+    "fig-register-vs-local": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-treatments": {
+      "w": 720,
+      "h": 350,
+      "narrow": {
+        "w": 370,
+        "h": 630
+      }
     }
   },
   "hero": {

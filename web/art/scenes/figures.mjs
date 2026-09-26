@@ -4988,6 +4988,113 @@ function clusterWeb() {
   return { W, H: H + 6, b };
 }
 
+// ============================================================ Lesson 8.5
+
+// Enclosure: buildings in proportion to the street make an outdoor room.
+function enclosure() {
+  const rng = makeRng(8501);
+  const PW = 338;
+  const PH = 360;
+  const bldg = (x, w, h, fill, floors) => {
+    const d = rectD(x, 270 - h, w, h);
+    let o = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    for (let f = 0; f < floors; f++) o += `<rect x="${x + w / 2 - 9}" y="${270 - h + 12 + f * 32}" width="18" height="18" fill="#FFFDF8" stroke="${P.ink}" stroke-width="1.3"/>`;
+    return o;
+  };
+  const street = (s) => L(inkLine('M16 270L322 270', { rng, size: 2.2 })) + s;
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Little enclosure', { size: 25, anchor: 'start' });
+  a += street(bldg(20, 44, 40, T.kraft, 1) + bldg(274, 44, 40, T.kraft, 1));
+  a += person(169, 270, 0.8, { coat: P.civic, seed: 91 });
+  a += L(dashed(70, 250, 268, 250, rng, { size: 1.6, color: MUTED }));
+  a += label(169, 304, 'wide street, low buildings', { size: 19, color: MUTED, weight: 500 });
+  a += note(20, 342, 'exposed, hard to read', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let r = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'An outdoor room', { size: 25, anchor: 'start' });
+  r += street(bldg(40, 70, 170, T.butter, 5) + bldg(228, 70, 170, T.butter, 5));
+  r += L(inkLine('M132 270L132 214', { rng, size: 3, color: P.kraftDeep }) + inkLine('M206 270L206 214', { rng, size: 3, color: P.kraftDeep }));
+  r += `<circle cx="132" cy="204" r="18" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.6"/><circle cx="206" cy="204" r="18" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.6"/>`;
+  r += person(169, 270, 0.8, { coat: P.civic, seed: 91 });
+  r += label(169, 304, 'height in proportion to width', { size: 19, color: MUTED, weight: 500 });
+  r += note(20, 342, 'walls, a ceiling of trees', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 388, b: at(14, 14, a) + at(368, 14, r),
+    narrow: { W: 366, H: 762, b: at(14, 14, a) + at(14, 388, r) },
+  };
+}
+
+// The four CPTED principles.
+function cpted() {
+  const rng = makeRng(8502);
+  const icons = [
+    (x, y) => { const d = rectD(x - 40, y - 34, 80, 68); let o = cut(d, { rng, fill: T.butter, filter: FLAT }) + L(ink(d, { rng, size: 2 })); [[x - 26, y - 22], [x + 6, y - 22]].forEach(([wx, wy]) => { o += `<rect x="${wx}" y="${wy}" width="20" height="20" fill="${P.butter}" stroke="${P.ink}" stroke-width="1.4"/>`; }); o += L(inkLine(`M${x + 60} ${y + 34}L${x + 60} ${y - 30}L${x + 76} ${y - 30}`, { rng, size: 2.4 })) + `<circle cx="${x + 76}" cy="${y - 22}" r="7" fill="${P.butter}" stroke="${P.ink}" stroke-width="1.4"/>`; return o; },
+    (x, y) => L(inkLine(`M${x - 60} ${y + 30}Q${x} ${y + 10} ${x + 60} ${y - 30}`, { rng, size: 10, color: '#C9C1B4', overshoot: 0 })) + `<rect x="${x - 14}" y="${y - 34}" width="8" height="44" fill="${P.kraftDeep}"/><rect x="${x + 16}" y="${y - 44}" width="8" height="44" fill="${P.kraftDeep}"/>`,
+    (x, y) => { let o = house(x - 10, y + 20, 60, 60, { seed: 44, chimney: false }); for (let i = -70; i <= 70; i += 16) o += `<circle cx="${x + i}" cy="${y + 34}" r="8" fill="${P.leaf}" stroke="${P.leafDeep}" stroke-width="1.2"/>`; return o; },
+    (x, y) => { const pot = polyD([[x - 30, y], [x + 30, y], [x + 22, y + 34], [x - 22, y + 34]]); let o = cut(pot, { rng, fill: P.kraft, filter: FLAT }) + L(ink(pot, { rng, size: 2 })); [-18, 0, 18].forEach((dx, i) => { o += L(inkLine(`M${x + dx} ${y}L${x + dx} ${y - 24}`, { rng, size: 2, color: P.leafDeep })) + `<circle cx="${x + dx}" cy="${y - 30}" r="8" fill="${[P.tomato, P.butter, P.lavender][i]}" stroke="${P.ink}" stroke-width="1.2"/>`; }); return o; },
+  ];
+  const cards = [['Natural surveillance', 'see and be seen'], ['Access control', 'guide the way in'], ['Territory', 'public or private?'], ['Maintenance', 'someone cares']];
+  const card = (i) => {
+    let o = panel(0, 0, 338, 170, T.cream, rng) + icons[i](82, 92);
+    o += title(170, 70, cards[i][0].split(' ')[0], { size: 22, anchor: 'start' });
+    if (cards[i][0].includes(' ')) o += title(170, 98, cards[i][0].split(' ')[1], { size: 22, anchor: 'start' });
+    return o + label(170, 136, cards[i][1], { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  };
+  const wide = [0, 1, 2, 3].map((i) => at(14 + (i % 2) * 354, 14 + Math.floor(i / 2) * 184, card(i))).join('');
+  const nar = [0, 1, 2, 3].map((i) => at(14, 14 + i * 184, card(i))).join('');
+  return { W: 720, H: 384, b: wide, narrow: { W: 366, H: 750, b: nar } };
+}
+
+// National Register listing versus a local historic district.
+function registerVsLocal() {
+  const rng = makeRng(8503);
+  const PW = 338;
+  const PH = 400;
+  const row = (y, q, a, color) => label(20, y, q, { size: 19, anchor: 'start', color: MUTED, weight: 500 }) + label(20, y + 28, a, { size: 21, anchor: 'start', weight: 800, color });
+  let n = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'National Register', { size: 25, anchor: 'start' });
+  n += label(20, 70, 'a federal list', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  n += row(120, 'owner remodels, own money', 'no review', P.leafDeep);
+  n += row(196, 'federal project affects it', 'Section 106 review', P.civicDeep);
+  n += row(272, 'owner wants to demolish', 'not blocked', P.tomatoDeep);
+  n += note(20, 368, 'largely honorific', { size: 24, anchor: 'start', color: MUTED });
+  let l = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Local district', { size: 25, anchor: 'start' });
+  l += label(20, 70, 'a city ordinance', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  l += row(120, 'owner changes the exterior', 'certificate of appropriateness', P.civicDeep);
+  l += row(196, 'who reviews it', 'preservation commission', P.civicDeep);
+  l += row(272, 'owner wants to demolish', 'often regulated or delayed', P.leafDeep);
+  l += note(20, 368, 'the strongest protection', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, n) + at(368, 14, l),
+    narrow: { W: 366, H: 842, b: at(14, 14, n) + at(14, 428, l) },
+  };
+}
+
+// The Secretary of the Interior's four treatments, on one building.
+function treatments() {
+  const rng = makeRng(8504);
+  const CW = 166;
+  const CH = 270;
+  const facade = (x, y, dash) => {
+    const d = rectD(x, y, 90, 100);
+    let o = dash ? `<rect x="${x}" y="${y}" width="90" height="100" fill="${T.butter}" stroke="${P.ink}" stroke-width="2" stroke-dasharray="7 5"/>` : cut(d, { rng, fill: P.butter, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    o += `<rect x="${x - 6}" y="${y - 10}" width="102" height="12" fill="${P.kraftDeep}" stroke="${P.ink}" stroke-width="1.4"/>`;
+    [x + 16, x + 58].forEach((wx) => { o += `<path d="M${wx} ${y + 44}L${wx} ${y + 24}Q${wx + 8} ${y + 12} ${wx + 16} ${y + 24}L${wx + 16} ${y + 44}Z" fill="#FFFDF8" stroke="${P.ink}" stroke-width="1.4"/>`; });
+    return o + `<rect x="${x + 36}" y="${y + 66}" width="18" height="34" fill="${P.civicDeep}" stroke="${P.ink}" stroke-width="1.4"/>`;
+  };
+  const extras = [
+    () => tape(120, 116, 44, 14, -20, { seed: 51 }),
+    () => `<rect x="30" y="144" width="106" height="16" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.4"/>` + label(83, 158, 'CAFE', { size: 19, weight: 800, color: '#FFFDF8' }),
+    () => `<rect x="128" y="126" width="30" height="64" fill="none" stroke="${P.tomatoDeep}" stroke-width="2" stroke-dasharray="5 4"/>` + L(inkLine('M130 130L156 186', { rng, size: 2.2, color: P.tomatoDeep }) + inkLine('M156 130L130 186', { rng, size: 2.2, color: P.tomatoDeep })),
+    () => '',
+  ];
+  const cards = [['Preservation', 'repair what', "is there"], ['Rehabilitation', 'a compatible', 'new use'], ['Restoration', 'back to one', 'period'], ['Reconstruction', "re-create what's", 'gone']];
+  const card = (i) => {
+    let o = panel(0, 0, CW, CH, T.cream, rng) + label(CW / 2, 40, cards[i][0], { size: 21, weight: 800 });
+    o += facade(i === 2 ? 28 : 38, 90, i === 3) + extras[i]();
+    return o + label(CW / 2, 250 - 26, cards[i][1], { size: 19, color: MUTED, weight: 500 }) + label(CW / 2, 250, cards[i][2], { size: 19, color: MUTED, weight: 500 });
+  };
+  const wideB = [0, 1, 2, 3].map((i) => at(14 + i * 176, 14, card(i))).join('') + note(360, 332, 'rehabilitation is the most common treatment', { size: 24, color: P.civicDeep });
+  const narB = [0, 1, 2, 3].map((i) => at(14 + (i % 2) * 176, 14 + Math.floor(i / 2) * 284, card(i))).join('') + note(184, 612, 'rehabilitation is the most common', { size: 24, color: P.civicDeep });
+  return { W: 720, H: 350, b: wideB, narrow: { W: 370, H: 630, b: narB } };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -5109,6 +5216,7 @@ const FIGURES = [
   ['fig-ami-bands', amiBands], ['fig-lihtc-flow', lihtcFlow], ['fig-voucher-split', voucherSplit], ['fig-missing-middle', missingMiddle],
   ['fig-nepa-levels', nepaLevels], ['fig-mitigation-sequence', mitigationSequence], ['fig-floodplain', floodplainSection], ['fig-climate-ma', climateMA],
   ['fig-base-flows', baseFlows], ['fig-multiplier', multiplierJobs], ['fig-leakage', leakage], ['fig-cluster-web', clusterWeb],
+  ['fig-enclosure', enclosure], ['fig-cpted', cpted], ['fig-register-vs-local', registerVsLocal], ['fig-treatments', treatments],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
