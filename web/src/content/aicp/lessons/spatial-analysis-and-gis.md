@@ -1,6 +1,8 @@
 ## Learning objectives
 
 - Distinguish vector and raster data and choose the right one for a given feature.
+- Explain map scale and map projections, and why layers must share a coordinate system.
+- Describe where spatial data comes from, including aerial imagery, LiDAR, and open data, and the privacy questions it raises.
 - Describe buffer, overlay, and network analysis and the planning questions each answers.
 - Explain land suitability analysis and its roots in McHarg's overlay method.
 - Design a choropleth map that doesn't mislead, and explain the modifiable areal unit problem.
@@ -25,17 +27,41 @@ Parcels have edges, so they're vector. Elevation changes smoothly from place to 
 
 :::checkpoint cp:gis-vector
 
+### Scale, projections, and coordinate systems
+
+**Map scale** is the ratio between distance on the map and distance on the ground, such as 1:24,000 (one inch on the map equals 24,000 inches, or 2,000 feet, on the ground). The terms run opposite to intuition:
+
+- A **large-scale** map (1:1,200 or 1:24,000) shows a **small area in great detail**, like a site plan or a neighborhood.
+- A **small-scale** map (1:1,000,000) shows a **large area with little detail**, like a state or region.
+
+The larger the second number, the smaller the scale.
+
+A **map projection** flattens the curved Earth onto a flat surface, and every projection distorts something: area, shape, distance, or direction. Choose one suited to the purpose (an equal-area projection for comparing the size of regions, for example). Local governments usually work in a **coordinate system** built for their area, such as a U.S. **State Plane** zone, which keeps distortion small enough for parcel-level measurement. Layers must share the same coordinate system, or they won't line up and measurements will be wrong.
+
+:::checkpoint cp:gis-scale
+
 ### Core analysis operations
 
 - **Buffer**: create a zone of a set distance around a feature, such as a 100-foot stream setback or a quarter-mile area around each station.
 - **Overlay**: combine layers to find where conditions coincide. An *intersect* keeps only areas present in all layers, for example parcels that are both vacant *and* outside the floodplain.
 - **Network analysis**: measure along the street or transit network rather than as the crow flies. A half-mile *walkshed* along actual streets is often much smaller than a half-mile circle, especially where cul-de-sacs and missing sidewalks break up the grid.
 - **Geocoding**: turn addresses into mapped points, such as permit locations or crash reports.
+- **Joins**: an *attribute join* links a table to map features through a shared field, such as ACS data joined to tracts by tract ID. A *spatial join* links features by location, such as counting crashes that fall within each tract.
 - **Spatial statistics**: test whether values cluster, for example whether crash hot spots are more concentrated than chance would produce (spatial autocorrelation).
 
 :::figure fig-walkshed | A street map with a transit stop in the middle and a half-mile circle drawn around it. On the left is a connected street grid; on the right, a looping collector road with cul-de-sacs. Streets within a half-mile walk are highlighted: many on the grid side, but only a short stretch of the collector on the cul-de-sac side, which is "close by air, far on foot."
 Both sides get the same circle, but the connected grid gives far more people a real half-mile walk. This is why station-area plans measure along the network.
 :::
+
+### Where spatial data comes from
+
+- **Aerial and satellite imagery** show land cover, tree canopy, impervious surface, and change over time. Gathering information from a distance like this is **remote sensing**.
+- **LiDAR** uses laser pulses from aircraft to measure elevation precisely. It supports floodplain mapping, slope analysis, building heights, and tree canopy studies.
+- **GPS** and field data collection apps capture locations on the ground, such as sidewalk gaps or code violations.
+- **Open data portals** publish government datasets for anyone to use. **Crowdsourced** data, such as resident-reported potholes or community-mapped places, adds local knowledge but reflects who chooses to participate.
+- **Mobile device and app data** reveal travel patterns at fine detail, but they raise **privacy** concerns and may underrepresent people without smartphones.
+
+Before publishing maps of sensitive data (health cases, crimes, homeless encampments, sacred sites), consider whether individual people or places could be identified. Aggregating to larger areas or displacing points slightly protects privacy.
 
 ### Suitability analysis and McHarg
 
@@ -55,6 +81,7 @@ A **choropleth map** shades areas (tracts, counties) by value. It's the most com
 
 - **Map rates, not raw counts.** A count map of "households in poverty" mostly shows where many people live. Normalize by population or area (a poverty *rate*, or density per square mile).
 - **Choose classification breaks deliberately.** Equal intervals, quantiles, and natural breaks can make the same data look very different. State the method in the legend.
+- **Pick the right map type.** Choropleths suit rates by area. **Proportional (graduated) symbols** suit counts, sized to the value. **Dot density** maps show how things are spread across an area, with each dot standing for a set number. **Heat maps** show where point events concentrate.
 - **Watch the color scheme.** Use a sequential scheme (light to dark) for low-to-high values, and a diverging scheme only when there's a meaningful midpoint.
 
 :::figure fig-counts-rates | The same six tracts mapped two ways. Count in poverty (breaks at 600 and 1,200 people): the tract with 1,800 people in poverty is darkest, then 800 and 750, then 500, 400, and 350. This map mostly shows where people live. Poverty rate (breaks at 12% and 20%): the 32% and 25% tracts are darkest, the 15% tract is middle, and three tracts at 10% are lightest. This map shows where poverty concentrates.
@@ -114,6 +141,12 @@ Illustrative numbers. The bigger center is farther away but still pulls harder. 
 - **Modifiable areal unit problem (MAUP)**: Results that change with the size or shape of the units being analyzed.
 - **Ecological fallacy**: Inferring individual characteristics from group-level data.
 - **Gravity model**: A model in which interaction rises with size and falls with distance.
+- **Map scale**: The ratio of map distance to ground distance; a large-scale map shows a small area in detail.
+- **Map projection**: A method of flattening the Earth onto a map, which always distorts area, shape, distance, or direction.
+- **State Plane Coordinate System**: A set of U.S. coordinate zones designed to keep distortion low for local mapping.
+- **Spatial join**: Linking features based on their location rather than a shared attribute.
+- **Remote sensing**: Gathering information about the Earth's surface from aircraft or satellites.
+- **LiDAR**: Laser-based measurement of elevation and surface features from aircraft.
 
 ## Real-world examples
 
@@ -130,7 +163,10 @@ Illustrative numbers. The bigger center is farther away but still pulls harder. 
 - When results change with how boundaries are drawn, that's the **modifiable areal unit problem**; inferring individual traits from area data is the **ecological fallacy**.
 - Overlay suitability analysis traces back to **Ian McHarg**.
 - The **gravity model** distributes trips (and retail trade) by size and distance.
+- A **large-scale** map covers a *small* area in detail (1:1,200); a small-scale map covers a large area (1:1,000,000).
+- Layers that don't line up usually use different **coordinate systems**.
+- Proportional symbols for counts, choropleths for rates.
 
 ## Summary
 
-GIS links location to attributes so you can answer spatial questions. Use vector data for discrete features and raster data for continuous surfaces. Buffers, overlays, and network analysis answer most planning questions, and network distance is usually more honest than straight-line distance. Suitability analysis grew out of McHarg's overlay method and depends on transparent weights. On choropleth maps, map rates rather than counts, choose breaks deliberately, and remember that boundaries (MAUP) and aggregation (the ecological fallacy) can mislead. The gravity model says interaction grows with size and shrinks with distance.
+GIS links location to attributes so you can answer spatial questions. Use vector data for discrete features and raster data for continuous surfaces. Buffers, overlays, and network analysis answer most planning questions, and network distance is usually more honest than straight-line distance. Suitability analysis grew out of McHarg's overlay method and depends on transparent weights. On choropleth maps, map rates rather than counts, choose breaks deliberately, and remember that boundaries (MAUP) and aggregation (the ecological fallacy) can mislead. The gravity model says interaction grows with size and shrinks with distance. Remember that a large-scale map shows a small area, that every projection distorts something, and that fine-grained location data calls for care with privacy.

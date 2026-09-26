@@ -124,7 +124,7 @@ These changes followed the first build (described below). They supersede anythin
 |---|---|---|
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:34` | Principles versus Rules of Conduct | about 2 min |
 | `web/src/content/aicp/lessons/capital-planning-and-finance.md:69` | How tax increment financing works | about 3 min |
-| `web/src/content/aicp/lessons/demographic-and-economic-analysis.md:122` | Location quotients and shift-share, worked through | about 4 min |
+| `web/src/content/aicp/lessons/demographic-and-economic-analysis.md:141` | Location quotients and shift-share, worked through | about 4 min |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:25` | The NEPA process: categorical exclusion, EA, or EIS? | about 3 min |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:64` | What a "100-year flood" really means | about 2 min |
 | `web/src/content/aicp/lessons/goals-objectives-policies.md:29` | From vision to action: the plan hierarchy | about 2 min |
@@ -136,7 +136,7 @@ These changes followed the first build (described below). They supersede anythin
 | `web/src/content/aicp/lessons/planning-history.md:112` | American planning history on one timeline | about 4 min |
 | `web/src/content/aicp/lessons/public-engagement-design.md:57` | Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min |
 | `web/src/content/aicp/lessons/solving-ethics-questions.md:95` | Working an ethics scenario with the five-step method | about 5 min |
-| `web/src/content/aicp/lessons/statistics-for-planners.md:119` | Present value and benefit-cost ratios | about 3 min |
+| `web/src/content/aicp/lessons/statistics-for-planners.md:167` | Present value and benefit-cost ratios | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:50` | Penn Central's three factors, applied | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:96` | Nollan and Dolan: the two-part test for exactions | about 4 min |
 | `web/src/content/aicp/lessons/transportation-planning.md:61` | The four-step travel demand model | about 4 min |
@@ -271,7 +271,7 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/planning-theory.md:59` | Krumholz served as Cleveland planning director roughly 1969–1979, and the Cleveland Policy Planning Report is usually dated 1975; confirm if dates are added. |
 | `web/src/content/aicp/lessons/planning-theory.md:82` | confirm the conflict labels in Campbell's planner's triangle (property, resource, development) and the 1996 date. The figure `fig-planners-triangle` just below repeats the three labels, so a change here means redrawing it. |
 | `web/src/content/aicp/lessons/project-and-contract-management.md:71` | the federal QBS requirement for A/E services comes from the Brooks Act (1972); confirm it applies to the planning services in question. |
-| `web/src/content/aicp/lessons/research-design-and-data.md:62` | confirm that the 65,000-population threshold for ACS 1-year estimates is current, and that the 3-year product remains discontinued. |
+| `web/src/content/aicp/lessons/research-design-and-data.md:105` | confirm that the 65,000-population threshold for ACS 1-year estimates is current, and that the 3-year product remains discontinued. |
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:26` | confirm the claim that most states have right-to-farm laws. |
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:46` | extraterritorial jurisdiction exists in some states (for example, Texas and North Carolina historically); confirm before naming states. |
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:56` | the USDA Rural Development programs are the usual federal source; confirm current program names if cited. |
@@ -310,10 +310,11 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/pages/quick-reference.md:62` | SZEA publication dates are given variously as 1922, 1924, and 1926. |
 | `web/src/content/pages/quick-reference.md:68` | confirm the 1962 Act as the origin of the 3C requirement. |
 | `web/src/content/pages/quick-reference.md:81` | LIHTC is usually dated to the Tax Reform Act of 1986. |
-| `web/src/content/pages/quick-reference.md:169` | confirm the current question count and time limit with APA. |
-| `web/src/content/pages/quick-reference.md:170` | confirm the credit remains 20%. |
-| `web/src/content/pages/quick-reference.md:171` | confirm the five-year update cycle. |
-| `web/src/content/pages/quick-reference.md:172` | confirm the current CM requirement. |
+| `web/src/content/pages/quick-reference.md:176` | confirm the 65,000 threshold is current. |
+| `web/src/content/pages/quick-reference.md:177` | confirm the current question count and time limit with APA. |
+| `web/src/content/pages/quick-reference.md:178` | confirm the credit remains 20%. |
+| `web/src/content/pages/quick-reference.md:179` | confirm the five-year update cycle. |
+| `web/src/content/pages/quick-reference.md:180` | confirm the current CM requirement. |
 
 Other placeholders, which aren't VERIFY flags:
 - `web/src/content/pages/about.md` has `<!-- PLACEHOLDER -->` for the founder bio.

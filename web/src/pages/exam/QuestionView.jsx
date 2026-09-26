@@ -1,5 +1,6 @@
 import OptionButton from '../../components/OptionButton';
 import RichText from '../../components/RichText';
+import OptionNotes from '../../components/OptionNotes';
 import ExhibitTable from '../../components/ExhibitTable';
 import RunnerBar from '../../components/RunnerBar';
 import { LETTERS } from '../../data/domains';
@@ -90,6 +91,7 @@ export default function QuestionView(s) {
               {s.picked === s.q.correct ? 'Correct!' : 'Not quite'}
             </div>
             <RichText as="p" text={s.q.explanation} style={{ fontSize: 15.5, lineHeight: 1.6, color: T.mute, margin: '4px 0 0' }} />
+            <OptionNotes q={s.q} picked={s.picked} style={{ fontSize: 15, lineHeight: 1.55, color: T.mute, marginTop: 14, paddingTop: 12, borderTop: `1px solid ${T.line}` }} headingStyle={{ color: T.ink }} />
           </div>
         )}
 

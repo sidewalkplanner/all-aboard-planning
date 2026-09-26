@@ -232,7 +232,8 @@ export function useExamSession() {
       correctText: qq.options[qq.correct],
       showYours: yours !== undefined && !right,
       yourText: yours !== undefined ? qq.options[yours] : '',
-      explanation: qq.explanation
+      explanation: qq.explanation,
+      q: qq, yours
     };
   }).sort((a, b) => (a.mark === 'Missed' ? -1 : 1) - (b.mark === 'Missed' ? -1 : 1)), [QS, answers]);
 

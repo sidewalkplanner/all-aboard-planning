@@ -145,9 +145,14 @@ More: [Planning history](/aicp/lessons/planning-history), [Planning theory](/aic
 | Linear projection | Add the same amount each period |
 | Geometric projection | Apply the same rate each period |
 | Housing-unit method | Units × occupancy rate × household size |
+| Households from population | Population in households ÷ average household size |
+| Housing units needed | Households ÷ (1 − vacancy allowance) |
 | Present value | Future value ÷ (1 + r)^t |
 | Benefit-cost ratio | PV of benefits ÷ PV of costs |
 | Percent change | (New − old) ÷ old |
+| Compound annual growth rate | (End ÷ start)^(1 / years) − 1 |
+| Constant (today's) dollars | Past value × (CPI today ÷ CPI then) |
+| Z-score | (Value − mean) ÷ standard deviation |
 | Chance of at least one event over *n* years | 1 − (1 − annual chance)^n |
 
 Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Population and economic analysis](/aicp/lessons/demographic-and-economic-analysis), [Statistics](/aicp/lessons/statistics-for-planners).
@@ -166,6 +171,9 @@ Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Popu
 | ¼ to ½ mile | Typical walking radius for TOD and neighborhood parks |
 | 68 / 95 / 99.7 | Percent of a normal distribution within 1 / 2 / 3 standard deviations |
 | 90% | Confidence level of ACS margins of error |
+| About 400 | Random responses for roughly ±5 points at 95% confidence (large population) |
+| 4× | Sample size needed to halve a margin of error |
+| 65,000 | Minimum population for ACS 1-year estimates <!-- VERIFY: confirm the 65,000 threshold is current. --> |
 | 170 questions, 3.5 hours, ~74 seconds each | The exam <!-- VERIFY: confirm the current question count and time limit with APA. --> |
 | 20% | Federal historic rehabilitation tax credit for income-producing buildings <!-- VERIFY: confirm the credit remains 20%. --> |
 | 5 years | Typical hazard mitigation plan update cycle <!-- VERIFY: confirm the five-year update cycle. --> |
@@ -190,6 +198,12 @@ Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Popu
 | RFQ vs. RFP | Qualifications first vs. approach and (usually) price |
 | Output vs. outcome measure | Work produced vs. results in the community |
 | Validity vs. reliability | Measures the right thing vs. measures it consistently |
+| Needs assessment vs. asset mapping | Starts from a community's gaps vs. from its strengths |
+| Cross-sectional vs. longitudinal | Many cases at one time vs. the same cases over time |
+| Nominal vs. ordinal | Categories with no order vs. ordered categories |
+| Type I vs. Type II error | False positive vs. false negative |
+| Percent vs. percentage points | 10% to 12% is a 20 percent rise vs. a 2-point rise |
+| Large-scale vs. small-scale map | Small area in detail (1:1,200) vs. large area, little detail (1:1,000,000) |
 | Mediation vs. arbitration | A neutral helps the parties agree vs. a neutral decides |
 | Public hearing vs. public meeting | Formal, noticed, creates the record vs. informal, for ideas and information |
 | LOS vs. VMT | Driver delay vs. the amount of driving |
