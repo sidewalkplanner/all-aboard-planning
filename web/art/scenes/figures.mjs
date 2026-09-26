@@ -6,13 +6,13 @@
 // Legibility rules (npm run check enforces the first two):
 // - Text must be at least 13px where the figure is shown. A figure is drawn
 //   720 wide and shrinks to about 340px on a phone, so labels are 28 or
-//   larger, and handwriting 35 or larger (its letters run about 80% as
-//   tall). Side-by-side figures can instead return a `narrow` layout
+//   larger, and notes 35 or larger (sizes are in Caveat terms; `note`
+//   converts them). Side-by-side figures can instead return a `narrow` layout
 //   (panels stacked, about 360-400 wide) that phones get in its place; then
 //   the wide layout only needs 19 or larger (24 handwritten).
 // - Every text uses one of three voices: `title` (Fraunces) for headings,
 //   `label` (Figtree) for data (numbers, ticks, legends, names), and `note`
-//   (Caveat) for the one or two handwritten remarks that make the point.
+//   (Patrick Hand) for the one or two handwritten remarks that make the point.
 // - Text sits on flat colour: shapes under labels skip the paper grain.
 //
 // Lettering is baked in, so each figure's alt text in the lesson must say
@@ -35,7 +35,11 @@ const T = { sky: '#DCE9F5', butter: '#F8E4AE', kraft: '#EFE1C8', blush: '#F9D9D2
 
 // The three voices.
 const title = (x, y, text, o = {}) => serif(x, y, text, { size: 28, ...o });
-const note = (x, y, text, o = {}) => hand(x, y, text, { size: 35, color: P.civicDeep, ...o });
+// Notes are in Patrick Hand, a print-style hand that stays readable at phone
+// size. Sizes are still given in Caveat terms (35 by default) and set at 0.96
+// of that, which keeps a note the same width it had in Caveat.
+const note = (x, y, text, { size = 35, ...o } = {}) =>
+  hand(x, y, text, { color: P.civicDeep, ...o, size: Math.round(size * 0.96), weight: 400 }).replace('font-family="Caveat, cursive"', 'font-family="Patrick Hand, cursive"');
 const label = (x, y, text, { size = 28, color = P.ink, anchor = 'middle', weight = 600 } = {}) =>
   `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="Figtree, sans-serif" font-weight="${weight}" font-size="${size}" fill="${color}">${text}</text>`;
 
@@ -4193,7 +4197,7 @@ function govForms() {
   sm += L(arrow(90, 216, 150, 326, rng, { size: 2.2, head: 9, bend: 10 }));
   sm += box(49, 332, 240, 'Planning director', P.butter, true);
   sm += label(250, 268, 'legislates', { size: 19, color: MUTED, weight: 500 });
-  sm += note(20, 420, 'the mayor appoints department heads', { size: 24, anchor: 'start', color: P.civicDeep });
+  sm += note(20, 420, 'mayor appoints department heads', { size: 24, anchor: 'start', color: P.civicDeep });
   return {
     W: 720, H: 468, b: at(14, 14, cm) + at(368, 14, sm),
     narrow: { W: 366, H: 922, b: at(14, 14, cm) + at(14, 468, sm) },

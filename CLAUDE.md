@@ -231,11 +231,12 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
    any invented data is marked "illustrative". The lettering is baked into the image, so the alt
    text carries it. Legibility rules (the header of `figures.mjs` has the detail):
    - **Size.** Text must be at least 13px on screen, and `npm run check` enforces it. In the
-     720-wide canvas that means 28+ for labels and 35+ for handwriting (Caveat's letters run
-     smaller). Side-by-side figures instead return a `narrow` layout with the panels stacked;
+     720-wide canvas that means 28+ for labels and 35+ for notes (`note` sizes are given in
+     Caveat terms and drawn in Patrick Hand at 0.96 of that). Side-by-side figures instead return a `narrow` layout with the panels stacked;
      phones get `<name>-narrow.webp`, and the wide layout then needs only 19+ (24+ handwritten).
    - **Voices.** `title` (Fraunces) for headings, `label` (Figtree) for data: numbers, ticks,
-     legends, names. `note` (Caveat) only for the one or two remarks that make the point.
+     legends, names. `note` (Patrick Hand, a print-style hand that stays readable on phones; Caveat was
+     too hard to read at figure size) only for the one or two remarks that make the point.
    - **Flat color under text.** Shapes that carry labels skip the paper grain (`filter: FLAT`).
    If text won't fit at the minimum, cut words or add a narrow layout; never shrink the type.
 
