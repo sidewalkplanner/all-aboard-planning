@@ -37,7 +37,6 @@ export default function QuestionView(s) {
 
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '40px 24px 90px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-          <span style={chipStyle(T.accBg, T.accFg)}>{s.q.domain}</span>
           <button
             className="tool-btn"
             style={{ marginLeft: 'auto', ...(flagged ? { background: RUST, borderColor: RUST, color: '#FFF6F3' } : {}) }}
