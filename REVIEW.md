@@ -215,7 +215,7 @@ This is the hand-off for the build described in `PLAN.md`: what was built, the a
 
 ## VERIFY flags
 
-There are 97 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
+There are 98 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
 
 | Location | What to check |
 |---|---|
@@ -259,8 +259,9 @@ There are 97 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:74` | confirm the general statement that investor-owned utilities are regulated by state public utility commissions. |
 | `web/src/content/aicp/lessons/land-use-law-foundations.md:86` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
 | `web/src/content/aicp/lessons/leadership-in-planning.md:22` | adaptive leadership is usually attributed to Ronald Heifetz; confirm before attributing. |
-| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:86` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
-| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:87` | confirm which advanced specialty certifications AICP currently offers. |
+| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:99` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
+| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:100` | confirm which advanced specialty certifications AICP currently offers. |
+| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:102` | confirm that New Jersey is the only state that licenses professional planners (the PP license). |
 | `web/src/content/aicp/lessons/planning-history.md:50` | the "make no little plans" quotation's attribution to Burnham is disputed; keep the "popularly attributed" hedge or remove. |
 | `web/src/content/aicp/lessons/planning-history.md:61` | Hartford 1907 as the first official municipal planning commission is commonly cited; confirm before publishing. |
 | `web/src/content/aicp/lessons/planning-history.md:63` | SZEA publication history is given variously as 1922, 1924, and 1926; confirm the dates you want to teach. |
@@ -311,11 +312,11 @@ There are 97 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/pages/quick-reference.md:68` | SZEA publication dates are given variously as 1922, 1924, and 1926. |
 | `web/src/content/pages/quick-reference.md:74` | confirm the 1962 Act as the origin of the 3C requirement. |
 | `web/src/content/pages/quick-reference.md:89` | LIHTC is usually dated to the Tax Reform Act of 1986. |
-| `web/src/content/pages/quick-reference.md:209` | confirm the 65,000 threshold is current. |
-| `web/src/content/pages/quick-reference.md:210` | confirm the current question count and time limit with APA. |
-| `web/src/content/pages/quick-reference.md:211` | confirm the credit remains 20%. |
-| `web/src/content/pages/quick-reference.md:212` | confirm the five-year update cycle. |
-| `web/src/content/pages/quick-reference.md:213` | confirm the current CM requirement. |
+| `web/src/content/pages/quick-reference.md:215` | confirm the 65,000 threshold is current. |
+| `web/src/content/pages/quick-reference.md:216` | confirm the current question count and time limit with APA. |
+| `web/src/content/pages/quick-reference.md:217` | confirm the credit remains 20%. |
+| `web/src/content/pages/quick-reference.md:218` | confirm the five-year update cycle. |
+| `web/src/content/pages/quick-reference.md:219` | confirm the current CM requirement. |
 
 Other placeholders, which aren't VERIFY flags:
 - `web/src/content/pages/about.md` has `<!-- PLACEHOLDER -->` for the founder bio.

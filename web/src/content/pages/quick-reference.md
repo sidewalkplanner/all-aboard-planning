@@ -152,6 +152,12 @@ More: [Federal laws and programs that shaped planning](/aicp/lessons/federal-pol
 | Irving Janis | Groupthink |
 | Kenneth Thomas and Ralph Kilmann | Five conflict styles: competing, accommodating, avoiding, compromising, collaborating |
 | Henry Martyn Robert | *Robert's Rules of Order* (1876) |
+| John French and Bertram Raven | Five bases of power: legitimate, reward, coercive, expert, referent |
+| John Kotter | Eight steps for leading change, starting with urgency |
+| Daniel Goleman | Emotional intelligence |
+| Abraham Maslow | Hierarchy of needs |
+| Frederick Herzberg | Hygiene factors vs. motivators |
+| Douglas McGregor | Theory X and Theory Y |
 
 More: [Planning history](/aicp/lessons/planning-history), [Planning theory](/aicp/lessons/planning-theory).
 
@@ -249,6 +255,8 @@ Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Popu
 | Percent vs. percentage points | 10% to 12% is a 20 percent rise vs. a 2-point rise |
 | Large-scale vs. small-scale map | Small area in detail (1:1,200) vs. large area, little detail (1:1,000,000) |
 | Mediation vs. arbitration | A neutral helps the parties agree vs. a neutral decides |
+| Hygiene factor vs. motivator | Prevents dissatisfaction (pay, policies) vs. creates satisfaction (achievement, responsibility) |
+| Transformational vs. transactional leadership | Motivates through vision and development vs. through exchange of rewards |
 | BATNA vs. ZOPA | Your best option if talks fail vs. the range where both sides' acceptable deals overlap |
 | Random-sample survey vs. deliberative polling | What people think now vs. what they think after learning and discussing |
 | Quorum vs. majority vote | Members needed present to act vs. votes needed to pass a motion |

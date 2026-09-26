@@ -224,14 +224,14 @@ export const DOMAINS = [
     summary: 'Leading with and without formal authority: serving the public interest, advocating ethically, and developing the next generation of planners.',
     lessons: [
       {
-        slug: 'leadership-in-planning', title: 'Leadership in planning', minutes: 20, access: 'free',
-        description: 'Leadership styles, influence without authority, the public interest, ethical advocacy, and promoting the value of planning.',
+        slug: 'leadership-in-planning', title: 'Leadership in planning', minutes: 25, access: 'free',
+        description: 'Leadership styles, influence without authority and sources of power, the public interest, ethical advocacy, leading change, and promoting the value of planning.',
         outline: ['7.2 Ethical aspects of advocacy', "7.6 A planner's comprehensive approach to complex problems", '7.9 Discerning and promoting the public interest', '7.11 Promoting the value of planning'],
         practice: ['e1:161', 'e1:162', 'e1:163', 'e1:167', 'e1:168', 'e1:170', 'e2:161', 'e2:162', 'e2:163', 'e2:165', 'e2:167', 'e2:168', 'e2:169', 'e3:44', 'e3:68', 'e3:69', 'e3:188', 'e3:189', 'e3:191'],
       },
       {
-        slug: 'mentoring-and-professional-development', title: 'Mentoring, teams, and professional development', minutes: 18, access: 'paid',
-        description: 'Delegation, resolving staff conflict, coaching and mentoring, succession planning, institutional accountability, and certification maintenance.',
+        slug: 'mentoring-and-professional-development', title: 'Mentoring, teams, and professional development', minutes: 21, access: 'paid',
+        description: 'Delegation, resolving staff conflict, motivation theories, coaching and mentoring, succession planning, institutional accountability, and certification maintenance.',
         outline: ['7.5 Institutional structures and accountability', '7.8 Coaching and mentoring', '7.10 Professional development expectations and standards'],
         practice: ['e1:164', 'e1:165', 'e1:166', 'e1:169', 'e2:143', 'e2:164', 'e2:166', 'e2:170', 'e3:152', 'e3:157', 'e3:180', 'e3:190'],
       },

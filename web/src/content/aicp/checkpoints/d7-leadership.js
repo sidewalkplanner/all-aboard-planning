@@ -114,4 +114,37 @@ export default {
     correct: 2,
     explanation: 'The Rules of Conduct require members to provide only services they are competent to perform, or to work under the supervision of someone who is. Continued learning is how planners widen that competence over time.',
   },
+  'cp:lead-power': {
+    text: 'Department heads follow a long-range planner’s advice on a corridor project, despite the planner having no authority over them, because the planner knows the data and the code better than anyone. Which source of power is at work?',
+    options: [
+      'Legitimate power',
+      'Coercive power',
+      'Reward power',
+      'Expert power',
+    ],
+    correct: 3,
+    explanation: 'Influence that comes from respected knowledge and skill is expert power. Legitimate power comes from a formal position, reward and coercive power from giving benefits or penalties.',
+  },
+  'cp:lead-kotter': {
+    text: 'A planning director wants to replace a decades-old permitting process that most staff think works fine. In Kotter’s model, what should come first?',
+    options: [
+      'Announce the new system and set a launch date',
+      'Show why the current process can’t continue, creating a sense of urgency',
+      'Celebrate the first permits issued under the new system',
+      'Write the new procedures into the employee handbook',
+    ],
+    correct: 1,
+    explanation: 'Kotter’s first step is creating urgency. Short-term wins and anchoring the change in the culture come much later.',
+  },
+  'cp:mentor-herzberg': {
+    text: 'A manager fixes an unfair overtime policy that staff had complained about. According to Herzberg, what is the likely effect?',
+    options: [
+      'Staff become highly motivated, because a motivator was improved',
+      'Nothing changes, because policies don’t affect how staff feel',
+      'Dissatisfaction drops, but motivation doesn’t necessarily rise',
+      'Staff move up to self-actualization on Maslow’s hierarchy',
+    ],
+    correct: 2,
+    explanation: 'Policies are a hygiene factor: fixing them removes dissatisfaction but doesn’t create motivation. Motivators include achievement, recognition, and responsibility.',
+  },
 };
