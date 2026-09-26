@@ -25,6 +25,10 @@ The **scope of work** is the project's foundation. A good one states:
 
 **Scope creep**, the gradual addition of work beyond the original scope, is best controlled by a **clear scope with a change-order process**. When new work is requested, the change is documented and its cost and schedule effects are agreed before the work proceeds.
 
+:::figure fig-change-order | A change order in four steps, from the scope creep example later in this lesson. Request: add a parking study. Document: write it up. Estimate: cost and schedule. Approve: change order signed. The result: the study gets its own budget, and the plan adds six weeks, openly. A note says scope creep is change without this paperwork.
+The work still gets added; what the change order adds is an agreed price and date before anyone starts.
+:::
+
 :::checkpoint cp:pm-scope-assumptions
 
 ### Schedules: Gantt charts and the critical path
@@ -47,6 +51,10 @@ Path A → C → D = 3 + 2 + 3 = **8 months** (the critical path). Path B → C 
 
 Another technique, **PERT** (Program Evaluation and Review Technique), estimates task durations from optimistic, most likely, and pessimistic values, to account for uncertainty.
 
+:::figure fig-critical-path | The worked example as a Gantt chart over 8 months. A, existing conditions, runs months 0 to 3; C, alternatives, months 3 to 5; and D, draft plan, months 5 to 8. These three are the critical path, highlighted. B, engagement, runs months 0 to 2 with 1 month of float before C can start. E, website, runs month 0 to 1 with 7 months of float. A note says the critical path A, C, D takes 8 months.
+The red bars have no float: any slip in A, C, or D pushes the finish date; B and E can slip within their dashed lines.
+:::
+
 :::checkpoint cp:pm-float
 
 ### Procurement
@@ -62,6 +70,10 @@ Public agencies buy consulting services through formal procurement. The main sol
 - A **two-step RFQ–RFP** process **shortlists firms on qualifications**, then asks only the shortlisted firms for detailed proposals.
 - **Qualifications-based selection (QBS)** means the agency **ranks firms on qualifications, then negotiates a fee** with the top-ranked firm (moving to the next firm if negotiations fail). Federal law requires QBS for architecture and engineering services on federally funded projects, and many states follow similar rules. <!-- VERIFY: the federal QBS requirement for A/E services comes from the Brooks Act (1972); confirm it applies to the planning services in question. -->
 - Selection must be fair and documented: published criteria, a conflict-free evaluation panel, scoring records, and no private contact with competing firms during the process.
+
+:::figure fig-selection-funnel | The two-step selection from the example below, as a funnel. 11 RFQ responses, scored on qualifications; 3 shortlisted, with full proposals and interviews; 1 top firm, with which the county negotiates the fee. A note says qualifications first, price last.
+Price enters only at the bottom, in a negotiation with the top-ranked firm, which is the point of qualifications-based selection.
+:::
 
 :::checkpoint cp:pm-ifb
 

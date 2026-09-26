@@ -567,6 +567,18 @@
     "fig-los": {
       "w": 720,
       "h": 420
+    },
+    "fig-critical-path": {
+      "w": 720,
+      "h": 500
+    },
+    "fig-selection-funnel": {
+      "w": 720,
+      "h": 420
+    },
+    "fig-change-order": {
+      "w": 720,
+      "h": 400
     }
   },
   "hero": {

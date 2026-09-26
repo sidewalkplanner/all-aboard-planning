@@ -4080,6 +4080,94 @@ function losCommitment() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 6.1
+
+// The lesson's plan update as a Gantt chart, with the critical path and
+// float computed from the task table.
+function criticalPath() {
+  const rng = makeRng(6101);
+  const W = 720;
+  const H = 500;
+  let b = '';
+  const tasks = { A: [3, [], 'conditions'], B: [2, [], 'engagement'], C: [2, ['A', 'B'], 'alternatives'], D: [3, ['C'], 'draft plan'], E: [1, [], 'website'] };
+  const ids = Object.keys(tasks);
+  const es = {};
+  for (const id of ids) es[id] = Math.max(0, ...tasks[id][1].map((d) => es[d] + tasks[d][0]));
+  const finish = Math.max(...ids.map((id) => es[id] + tasks[id][0]));
+  // Latest finish: a task's successors' earliest start, or the project finish.
+  const lf = {};
+  for (const id of [...ids].reverse()) {
+    const succ = ids.filter((k) => tasks[k][1].includes(id));
+    lf[id] = succ.length ? Math.min(...succ.map((k) => es[k])) : finish;
+  }
+  const x0 = 220;
+  const X = (m) => x0 + (m / 9) * 470;
+  const rowY = (i) => 60 + i * 64;
+  for (let m = 0; m <= 8; m += 2) {
+    b += L(inkLine([[X(m), 44], [X(m), rowY(4) + 44]], { rng, size: 1, opacity: 0.3, overshoot: 0 }));
+    b += label(X(m), rowY(4) + 80, String(m), { color: MUTED, weight: 500 });
+  }
+  b += label(X(4.5), rowY(4) + 118, 'months', { color: MUTED, weight: 500 });
+  ids.forEach((id, i) => {
+    const [dur, , name] = tasks[id];
+    const y = rowY(i);
+    const crit = lf[id] - (es[id] + dur) === 0;
+    const flt = lf[id] - (es[id] + dur);
+    if (flt > 0) b += L(dashed(X(es[id] + dur), y + 18, X(lf[id]), y + 18, rng, { color: P.civicDeep, size: 2, dash: 7, gap: 6 }));
+    const d = roundRectD(X(es[id]), y, X(es[id] + dur) - X(es[id]), 36, 8);
+    b += cut(d, { rng, fill: crit ? P.tomato : P.sky, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += label(20, y + 28, `${id}  ${name}`, { anchor: 'start', weight: crit ? 800 : 500, color: crit ? P.tomatoDeep : P.ink });
+    if (flt > 0 && flt < 3) b += label(X(lf[id]) + 8, y + 28, `float ${flt}`, { anchor: 'start', color: P.civicDeep, weight: 700 });
+    if (flt >= 3) { const mx = (X(es[id] + dur) + X(lf[id])) / 2; b += backing(mx - 60, y + 2, 120, 34) + label(mx, y + 28, `float ${flt}`, { color: P.civicDeep, weight: 700 }); }
+  });
+  b += note(700, 488, `critical path A, C, D: ${finish} months`, { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// A two-step selection: qualifications first, then proposals, then a fee.
+function selectionFunnel() {
+  const rng = makeRng(6102);
+  const W = 720;
+  const H = 420;
+  let b = '';
+  const stages = [[11, 'RFQ responses', ['scored on', 'qualifications'], T.sky], [3, 'shortlisted', ['full proposals,', 'interviews'], P.sky], [1, 'top firm', ['negotiate', 'the fee'], P.butter]];
+  stages.forEach(([n, name, sub, fill], i) => {
+    const y = 40 + i * 120;
+    const w = 420 - i * 140;
+    const cx = 234;
+    const x = cx - w / 2;
+    const d = polyD([[x, y], [x + w, y], [x + w - 70, y + 96], [x + 70, y + 96]]);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    const gap = 30;
+    for (let k = 0; k < n; k++) b += `<circle cx="${cx + (k - (n - 1) / 2) * gap}" cy="${y + 28}" r="10" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.6"/>`;
+    b += label(cx, y + 72, `${n} ${name}`, { weight: 800 });
+    sub.forEach((t, k) => { b += label(470, y + 40 + k * 32, t, { anchor: 'start', color: MUTED, weight: 500 }); });
+  });
+  b += note(20, 404, 'qualifications first, price last', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Controlling scope creep with a change order, from the lesson's example.
+function changeOrder() {
+  const rng = makeRng(6103);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const steps = [['Request', 'add a', 'parking', 'study'], ['Document', 'write it up'], ['Estimate', 'cost and', 'schedule'], ['Approve', 'change', 'order', 'signed']];
+  steps.forEach(([head, ...lines], i) => {
+    const x = 14 + i * 176;
+    const d = roundRectD(x, 60, 160, 170, 14);
+    b += cut(d, { rng, fill: [T.blush, T.sky, T.butter, T.sage][i], filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += title(x + 80, 104, head, { size: 28 });
+    lines.forEach((t, k) => { b += label(x + 80, 148 + k * 32, t, { weight: 500 }); });
+    if (i < 3) b += L(arrow(x + 162, 145, x + 174, 145, rng, { size: 2.4, head: 8 }));
+  });
+  b += label(20, 290, 'result: the study gets its own budget,', { anchor: 'start', weight: 700 });
+  b += label(20, 324, 'and the plan adds six weeks, openly', { anchor: 'start', weight: 700 });
+  b += note(20, 380, 'scope creep is change without this paperwork', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -4188,6 +4276,9 @@ export const FIGURES = [
   ['fig-dig-once', digOnce],
   ['fig-output-outcome', outputOutcome],
   ['fig-los', losCommitment],
+  ['fig-critical-path', criticalPath],
+  ['fig-selection-funnel', selectionFunnel],
+  ['fig-change-order', changeOrder],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
