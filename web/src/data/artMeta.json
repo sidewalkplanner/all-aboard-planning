@@ -467,6 +467,26 @@
     "fig-nonconforming": {
       "w": 720,
       "h": 440
+    },
+    "fig-plat-process": {
+      "w": 720,
+      "h": 390
+    },
+    "fig-official-map": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
+    },
+    "fig-vested-rights": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-dev-agreement": {
+      "w": 720,
+      "h": 444
     }
   },
   "hero": {

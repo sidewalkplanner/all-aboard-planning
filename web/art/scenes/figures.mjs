@@ -3502,6 +3502,112 @@ function nonconformingRules() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 5.3
+
+// The subdivision approval route, from sketch to accepted streets.
+function platProcess() {
+  const rng = makeRng(5301);
+  const W = 720;
+  const H = 390;
+  let b = '';
+  const y = 200;
+  const band = roundRectD(40, y - 11, 640, 22, 11);
+  b += cut(band, { rng, fill: P.civic }) + L(ink(band, { rng, size: 2.2 }));
+  const stops = [[80, ['Sketch', 'plan']], [220, ['Preliminary', 'plat']], [360, ['Build or', 'bond']], [500, ['Final plat,', 'recorded']], [640, ['Accept', 'streets']]];
+  stops.forEach(([x, lines], i) => {
+    const key = i === 3;
+    const d = ellipseD(x, y, key ? 28 : 24, key ? 28 : 24);
+    b += cut(d, { rng, fill: key ? P.tomato : P.paper, filter: FLAT }) + L(ink(d, { rng, size: 3 })) + title(x, y + 10, String(i + 1), { color: key ? '#FFFFFF' : P.ink });
+    const above = i % 2 === 1;
+    lines.forEach((t, k) => { b += label(x, above ? y - 82 + k * 32 : y + 66 + k * 32, t, { weight: k ? 500 : 800 }); });
+  });
+  b += note(220, 60, 'the main design review', { color: P.civicDeep });
+  b += note(560, 360, 'now the lots legally exist', { color: P.tomatoDeep });
+  b += L(arrow(530, 336, 506, 290, rng, { color: P.tomatoDeep, size: 2.2, head: 10, bend: 8 }));
+  return { W, H, b };
+}
+
+// The official map: reserve the road's path before the homes arrive.
+function officialMap() {
+  const rng = makeRng(5302);
+  const PW = 338;
+  const PH = 380;
+  const lots = (skip) => {
+    let s = '';
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 5; c++) {
+      const x = 40 + c * 54;
+      const yy = 110 + r * 64;
+      if (skip && c === 2) continue;
+      const d = rectD(x, yy, 48, 56);
+      s += cut(d, { rng, fill: P.butter, shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: 1.4, opacity: 0.8 }));
+      s += `<rect x="${x + 14}" y="${yy + 16}" width="20" height="18" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.2"/>`;
+    }
+    return s;
+  };
+  const road = (s0) => L(dashed(169, 96, 169, 310, rng, { color: P.tomatoDeep, size: 3, dash: 12, gap: 8 })) + s0;
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'No official map', { size: 25, anchor: 'start' }) + label(20, 70, 'homes built in the road’s path', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += lots(false) + road('');
+  a += note(20, 350, 'road now means buying homes', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let c = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Official map', { size: 25, anchor: 'start' }) + label(20, 70, 'right-of-way reserved in advance', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  c += `<rect x="146" y="100" width="46" height="208" fill="#D9D2C2"/>` + lots(true) + road('');
+  c += note(20, 350, 'subdivisions leave room for it', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, a) + at(368, 14, c),
+    narrow: { W: 366, H: 802, b: at(14, 14, a) + at(14, 408, c) },
+  };
+}
+
+// When rights vest: the common-law rule and earlier statutory points.
+function vestedRights() {
+  const rng = makeRng(5303);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const y = 180;
+  b += L(arrow(30, y, 700, y, rng, { size: 3, head: 14 }));
+  const pts = [
+    [90, 'Complete', 'application', P.sky, 'up'],
+    [260, 'Preliminary', 'plat approved', P.sky, 'down'],
+    [430, 'Permit', 'issued', P.butter, 'up'],
+    [600, 'Substantial', 'spending', P.leaf, 'down'],
+  ];
+  pts.forEach(([x, l1, l2, fill, dir]) => {
+    b += `<circle cx="${x}" cy="${y}" r="14" fill="${fill}" stroke="${P.ink}" stroke-width="2"/>`;
+    const ty = dir === 'up' ? y - 72 : y + 62;
+    b += label(x, ty, l1, { weight: 800 }) + label(x, ty + 32, l2, { weight: 500 });
+  });
+  const brace = (x0, x1, yy, text, color) => L(inkLine([[x0, yy - 10], [x0, yy], [x1, yy], [x1, yy - 10]], { rng, size: 2.2, color, overshoot: 0 })) + label((x0 + x1) / 2, yy + 32, text, { color, weight: 700 });
+  b += brace(70, 290, 320, 'some states vest early', P.civicDeep);
+  b += brace(410, 640, 320, 'most states: common law', P.leafDeep);
+  b += note(700, 386, 'in good faith, under a valid permit', { anchor: 'end', color: P.leafDeep });
+  return { W, H, b };
+}
+
+// A development agreement as a trade, from the lesson's example.
+function devAgreement() {
+  const rng = makeRng(5304);
+  const W = 720;
+  const H = 444;
+  let b = '';
+  // A balance beam on a post.
+  b += L(inkLine([[360, 130], [360, 380]], { rng, size: 4, overshoot: 0 }));
+  b += `<path d="M320 392L360 370L400 392Z" fill="${P.kraft}" stroke="${P.ink}" stroke-width="2"/>`;
+  b += L(inkLine([[80, 130], [640, 130]], { rng, size: 4, overshoot: 0 }));
+  const pan = (cx, fill, head, lines) => {
+    let s = L(inkLine([[cx - 60, 130], [cx - 100, 200]], { rng, size: 1.8, overshoot: 0 }) + inkLine([[cx + 60, 130], [cx + 100, 200]], { rng, size: 1.8, overshoot: 0 }));
+    const d = roundRectD(cx - 150, 196, 300, 170, 14);
+    s += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    s += title(cx, 238, head, { size: 28 });
+    lines.forEach((t, k) => { s += label(cx, 278 + k * 30, t, { weight: 500 }); });
+    return s;
+  };
+  b += pan(180, T.sky, 'City gives', ['standards locked', 'for 15 years']);
+  b += pan(540, T.sage, 'Developer gives', ['fire station site,', 'trails, and 10%', 'affordable homes']);
+  b += note(360, 60, 'certainty for the developer, benefits for the public', { color: P.civicDeep, size: 35 });
+  b += label(360, 426, 'adopted in public, within state authority', { color: MUTED, weight: 500 });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -3590,6 +3696,10 @@ export const FIGURES = [
   ['fig-area-use', areaVsUse],
   ['fig-spot-zoning', spotZoning],
   ['fig-nonconforming', nonconformingRules],
+  ['fig-plat-process', platProcess],
+  ['fig-official-map', officialMap],
+  ['fig-vested-rights', vestedRights],
+  ['fig-dev-agreement', devAgreement],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
