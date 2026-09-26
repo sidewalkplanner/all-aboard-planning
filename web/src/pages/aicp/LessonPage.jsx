@@ -134,7 +134,7 @@ export default function LessonPage() {
           { label: lesson.title },
         ]} />
         <div className="row-wrap" style={{ gap: 8 }}>
-          <Link to={P.domain(domain.id)} className="chip chip-brand">Domain {domain.code} &middot; {domain.name} &middot; {domain.weight}% of the exam</Link>
+          <Link to={P.domain(domain.id)} className="chip chip-brand">Domain {domain.code} &middot; {domain.name}</Link>
           {complete && <span className="chip chip-ok">&#10003; Completed</span>}
           {access.paidTier && (
             <span className={`chip ${lesson.access === 'free' ? 'chip-ok' : 'chip-neutral'}`}>{lesson.access === 'free' ? 'Free lesson' : 'Full Access'}</span>

@@ -43,7 +43,7 @@ export default function CourseOverview() {
         )}
         <p className="small" style={{ margin: '16px 0 0' }}>
           New to the exam? Read the <Link to={P.strategy} className="link-underline">test-taking strategy guide</Link> first.
-          About {hours} of reading in total. Every lesson opens once you sign in{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.
+          About {hours} hours of reading in total.{!signedIn && <> Every lesson opens once you sign in{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.</>}
         </p>
       </PageHeader>
 
@@ -52,7 +52,7 @@ export default function CourseOverview() {
           <span className="eyebrow">Jump to a domain</span>
           <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {DOMAINS.map((d) => (
-              <li key={d.id}><a className="chip chip-brand" href={`#${d.id}`}>{d.code}. {d.short} &middot; {d.weight}%</a></li>
+              <li key={d.id}><a className="chip chip-brand" href={`#${d.id}`}>{d.code}. {d.short}</a></li>
             ))}
           </ul>
         </nav>
@@ -71,7 +71,6 @@ export default function CourseOverview() {
                 </h2>
                 <span className="row-wrap" style={{ gap: 8 }}>
                   {signedIn && domainDone > 0 && <span className="chip chip-ok">{domainDone} of {lessons.length} done</span>}
-                  <span className="chip chip-brand">{d.weight}% of the exam</span>
                 </span>
               </div>
               <p className="body-text" style={{ margin: '8px 0 16px', maxWidth: '72ch' }}>{d.summary}</p>

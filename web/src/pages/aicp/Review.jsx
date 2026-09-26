@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader';
 import usePageTitle from '../../hooks/usePageTitle';
+import useAccess from '../../hooks/useAccess';
 import { P } from '../../lib/paths';
 
 const TOOLS = [
@@ -12,6 +13,7 @@ const TOOLS = [
 
 export default function Review() {
   usePageTitle('Review tools');
+  const { signedIn } = useAccess();
   return (
     <>
       <PageHeader
@@ -31,7 +33,7 @@ export default function Review() {
             </Link>
           ))}
         </div>
-        <p className="small" style={{ margin: '20px 0 0' }}>All review tools open once you sign in.</p>
+        {!signedIn && <p className="small" style={{ margin: '20px 0 0' }}>All review tools open once you sign in.</p>}
       </div>
     </>
   );
