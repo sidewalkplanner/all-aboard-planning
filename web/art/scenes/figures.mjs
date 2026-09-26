@@ -4133,15 +4133,16 @@ function selectionFunnel() {
   const stages = [[11, 'RFQ responses', ['scored on', 'qualifications'], T.sky], [3, 'shortlisted', ['full proposals,', 'interviews'], P.sky], [1, 'top firm', ['negotiate', 'the fee'], P.butter]];
   stages.forEach(([n, name, sub, fill], i) => {
     const y = 40 + i * 120;
-    const w = 420 - i * 140;
-    const cx = 234;
+    const w = 460 - i * 120;
+    const cx = 250;
     const x = cx - w / 2;
-    const d = polyD([[x, y], [x + w, y], [x + w - 70, y + 96], [x + 70, y + 96]]);
+    const inset = w * 0.16;
+    const d = polyD([[x, y], [x + w, y], [x + w - inset, y + 96], [x + inset, y + 96]]);
     b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
     const gap = 30;
     for (let k = 0; k < n; k++) b += `<circle cx="${cx + (k - (n - 1) / 2) * gap}" cy="${y + 28}" r="10" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.6"/>`;
     b += label(cx, y + 72, `${n} ${name}`, { weight: 800 });
-    sub.forEach((t, k) => { b += label(470, y + 40 + k * 32, t, { anchor: 'start', color: MUTED, weight: 500 }); });
+    sub.forEach((t, k) => { b += label(496, y + 40 + k * 32, t, { anchor: 'start', color: MUTED, weight: 500 }); });
   });
   b += note(20, 404, 'qualifications first, price last', { anchor: 'start', color: P.civicDeep });
   return { W, H, b };
@@ -4165,6 +4166,116 @@ function changeOrder() {
   b += label(20, 290, 'result: the study gets its own budget,', { anchor: 'start', weight: 700 });
   b += label(20, 324, 'and the plan adds six weeks, openly', { anchor: 'start', weight: 700 });
   b += note(20, 380, 'scope creep is change without this paperwork', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 6.2
+
+// Who the planning director reports to, under two forms of government.
+function govForms() {
+  const rng = makeRng(6201);
+  const PW = 338;
+  const PH = 440;
+  const box = (x, y, w, t, fill, bold) => {
+    const d = roundRectD(x, y, w, 50, 10);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: bold ? 3 : 2 })) + label(x + w / 2, y + 33, t, { size: 21, weight: bold ? 800 : 600 });
+  };
+  const down = (x, y1, y2) => L(arrow(x, y1, x, y2, rng, { size: 2.2, head: 9 }));
+  let cm = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Council-manager', { size: 25, anchor: 'start' });
+  cm += box(69, 80, 200, 'Voters', T.kraft) + down(169, 132, 160);
+  cm += box(69, 164, 200, 'Council', T.sky) + down(169, 216, 244);
+  cm += box(69, 248, 200, 'City manager', T.sky) + down(169, 300, 328);
+  cm += box(49, 332, 240, 'Planning director', P.butter, true);
+  cm += note(20, 420, 'council sets policy, manager runs it', { size: 24, anchor: 'start', color: P.civicDeep });
+  let sm = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Strong mayor', { size: 25, anchor: 'start' });
+  sm += box(69, 80, 200, 'Voters', T.kraft);
+  sm += L(arrow(130, 132, 90, 160, rng, { size: 2.2, head: 9 }) + arrow(208, 132, 248, 160, rng, { size: 2.2, head: 9 }));
+  sm += box(20, 164, 140, 'Mayor', T.blush) + box(178, 164, 140, 'Council', T.sky);
+  sm += L(arrow(90, 216, 150, 326, rng, { size: 2.2, head: 9, bend: 10 }));
+  sm += box(49, 332, 240, 'Planning director', P.butter, true);
+  sm += label(250, 268, 'legislates', { size: 19, color: MUTED, weight: 500 });
+  sm += note(20, 420, 'the mayor appoints department heads', { size: 24, anchor: 'start', color: P.civicDeep });
+  return {
+    W: 720, H: 468, b: at(14, 14, cm) + at(368, 14, sm),
+    narrow: { W: 366, H: 922, b: at(14, 14, cm) + at(14, 468, sm) },
+  };
+}
+
+// Functional versus matrix organization.
+function orgStructures() {
+  const rng = makeRng(6202);
+  const PW = 338;
+  const PH = 400;
+  const cols = [['Current', 66], ['Long-range', 186], ['Code', 290]];
+  const heads = () => cols.map(([t, x]) => { const hw = t.length * 11 + 22; const d = roundRectD(x - hw / 2, 90, hw, 44, 8); return cut(d, { rng, fill: T.sky, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + label(x, 118, t, { size: 19, weight: 700 }); }).join('');
+  const dot = (x, y, fill) => `<circle cx="${x}" cy="${y}" r="12" fill="${fill}" stroke="${P.ink}" stroke-width="1.6"/>`;
+  let fn = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Functional', { size: 25, anchor: 'start' }) + label(20, 70, 'grouped by specialty', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  fn += heads();
+  for (const [, x] of cols) {
+    fn += L(inkLine([[x, 134], [x, 290]], { rng, size: 1.8, overshoot: 0 }));
+    for (const y of [180, 230, 280]) fn += dot(x, y, P.butter);
+  }
+  fn += note(20, 350, 'deep expertise,', { size: 24, anchor: 'start', color: P.leafDeep }) + note(20, 378, 'risk of silos', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let mx = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Matrix', { size: 25, anchor: 'start' }) + label(20, 70, 'two bosses: specialty and project', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  mx += heads();
+  for (const [name, y, fill] of [['Project X', 200, T.butter], ['Project Y', 270, T.sage]]) {
+    const band = roundRectD(20, y - 22, 300, 44, 10);
+    mx += cut(band, { rng, fill, filter: FLAT, shadow: false }) + L(ink(band, { rng, size: 1.4 }));
+    mx += backing(22, y - 46, 96, 26) + label(26, y - 27, name, { size: 19, anchor: 'start', weight: 700 });
+  }
+  for (const [, x] of cols) mx += L(inkLine([[x, 134], [x, 294]], { rng, size: 1.8, overshoot: 0 }));
+  for (const [, x] of cols) for (const y of [200, 270]) mx += dot(x, y, P.butter);
+  mx += note(20, 350, 'flexible teams,', { size: 24, anchor: 'start', color: P.leafDeep }) + note(20, 378, 'competing priorities', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, fn) + at(368, 14, mx),
+    narrow: { W: 366, H: 842, b: at(14, 14, fn) + at(14, 428, mx) },
+  };
+}
+
+// The same illustrative budget, organized two ways.
+function budgetFormats() {
+  const rng = makeRng(6203);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const x0 = 40;
+  const w = 640;
+  const bar = (y, head, parts) => {
+    let s = title(x0, y - 16, head, { anchor: 'start', size: 28 });
+    let x = x0;
+    for (const [name, pct, fill, dark] of parts) {
+      const pw = (pct / 100) * w;
+      const d = rectD(x, y, pw, 64);
+      s += cut(d, { rng, fill, filter: FLAT, shadow: false, jitter: 0.4 }) + L(ink(d, { rng, size: 1.8 }));
+      s += label(x + pw / 2, y + 42, `${pct}%`, { weight: 800, color: dark ? '#FFFFFF' : P.ink });
+      s += label(x + pw / 2, y + 100, name, { weight: 500 });
+      x += pw;
+    }
+    return s;
+  };
+  b += bar(70, 'Line-item: what it buys', [['salaries', 60, P.civic, true], ['contracts', 25, P.sky], ['supplies', 15, T.sky]]);
+  b += bar(250, 'Program: what it does', [['current planning', 45, P.leaf, true], ['long-range', 35, P.sage], ['housing', 20, T.sage]]);
+  b += note(700, 424, 'same budget, sliced two ways (illustrative)', { anchor: 'end', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Progressive discipline, step by step.
+function progressiveDiscipline() {
+  const rng = makeRng(6204);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const steps = [['Meet privately', 'find the cause'], ['Verbal counseling', 'documented'], ['Written warning', 'in the file'], ['Further steps', 'per HR rules']];
+  steps.forEach(([head, sub], i) => {
+    const y = 140 + i * 72;
+    const len = 280 + i * 60;
+    const d = roundRectD(20, y, len, 56, 10);
+    b += cut(d, { rng, fill: [T.sage, T.butter, T.blush, P.blush][i], filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += label(40, y + 38, `${i + 1}  ${head}`, { anchor: 'start', weight: 800 });
+    b += label(len + 36, y + 38, sub, { anchor: 'start', color: MUTED, weight: 500 });
+  });
+  b += note(20, 60, 'start private, and put each', { anchor: 'start', color: P.civicDeep });
+  b += note(20, 96, 'step in writing', { anchor: 'start', color: P.civicDeep });
   return { W, H, b };
 }
 
@@ -4279,6 +4390,10 @@ export const FIGURES = [
   ['fig-critical-path', criticalPath],
   ['fig-selection-funnel', selectionFunnel],
   ['fig-change-order', changeOrder],
+  ['fig-gov-forms', govForms],
+  ['fig-org-structures', orgStructures],
+  ['fig-budget-formats', budgetFormats],
+  ['fig-discipline', progressiveDiscipline],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

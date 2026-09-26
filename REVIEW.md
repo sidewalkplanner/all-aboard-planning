@@ -269,7 +269,7 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/planning-history.md:109` | confirm Maryland Smart Growth program year (1997). |
 | `web/src/content/aicp/lessons/planning-theory.md:59` | Krumholz served as Cleveland planning director roughly 1969–1979, and the Cleveland Policy Planning Report is usually dated 1975; confirm if dates are added. |
 | `web/src/content/aicp/lessons/planning-theory.md:82` | confirm the conflict labels in Campbell's planner's triangle (property, resource, development) and the 1996 date. The figure `fig-planners-triangle` just below repeats the three labels, so a change here means redrawing it. |
-| `web/src/content/aicp/lessons/project-and-contract-management.md:63` | the federal QBS requirement for A/E services comes from the Brooks Act (1972); confirm it applies to the planning services in question. |
+| `web/src/content/aicp/lessons/project-and-contract-management.md:71` | the federal QBS requirement for A/E services comes from the Brooks Act (1972); confirm it applies to the planning services in question. |
 | `web/src/content/aicp/lessons/research-design-and-data.md:50` | confirm that the 65,000-population threshold for ACS 1-year estimates is current, and that the 3-year product remains discontinued. |
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:26` | confirm the claim that most states have right-to-farm laws. |
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:42` | extraterritorial jurisdiction exists in some states (for example, Texas and North Carolina historically); confirm before naming states. |

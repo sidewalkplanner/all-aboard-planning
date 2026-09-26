@@ -16,6 +16,10 @@
 
 Planning departments are often combined with building, code enforcement, economic development, or housing into a **community development** department.
 
+:::figure fig-gov-forms | Two organization charts. Council-manager: voters elect the council, the council appoints the city manager, and the planning director reports to the manager; the council sets policy and the manager runs it. Strong mayor: voters elect both a mayor and a council, the council legislates, and the planning director reports to the mayor, who appoints department heads.
+Follow the arrows to the planning director: in one form the chain runs through an appointed manager, in the other straight to an elected mayor.
+:::
+
 :::checkpoint cp:agency-strong-mayor
 
 ### Organizational structures
@@ -25,6 +29,10 @@ Planning departments are often combined with building, code enforcement, economi
 | **Functional** | Staff are grouped by function: current planning, long-range planning, code enforcement | Deep expertise; clear lines of authority; risk of silos |
 | **Matrix** | Staff **report to both a functional manager and a project manager** | Flexible teams for complex projects; risk of confusion over priorities |
 | **Team or project-based** | Cross-functional teams organized around projects or geographies | Responsive and collaborative; can dilute specialized skills |
+
+:::figure fig-org-structures | Two panels with the same three units: current planning, long-range planning, and code enforcement. Functional, grouped by specialty: each unit's staff sit in a column under their own head, giving deep expertise but a risk of silos. Matrix, two bosses: the same staff also sit in project bands, Project X and Project Y, reporting to both a unit head and a project manager, giving flexible teams but competing priorities.
+Each dot in the matrix has two lines running into it; that's both its strength and its source of friction.
+:::
 
 **Silos**, meaning units that don't communicate or coordinate, are a common problem, both inside a department and across a government. They're best addressed through **cross-departmental coordination**: shared project teams, development review committees, joint work programs, and leadership that rewards collaboration.
 
@@ -40,6 +48,10 @@ Planning departments are often combined with building, code enforcement, economi
 | **Zero-based** | Every program **justified anew from a base of zero** each cycle | Re-examining whether spending is still needed; labor-intensive |
 
 Many governments blend formats, for example a program budget with line-item detail and performance measures attached.
+
+:::figure fig-budget-formats | The same illustrative budget shown two ways. Line-item, what it buys: salaries 60%, contracts 25%, supplies 15%. Program, what it does: current planning 45%, long-range planning 35%, housing 20%. A note says same budget, sliced two ways.
+A line-item budget answers "what did we spend it on?"; a program budget answers "what did it pay for?"
+:::
 
 ### Performance measures
 
@@ -69,6 +81,10 @@ When a department's workload exceeds its capacity, the right response is to **pr
 - When performance slips, **meet privately first** to understand the cause and clarify expectations. There may be a training gap, a workload problem, or a personal issue.
 - If problems continue, follow **progressive discipline**, which usually begins with **documented verbal counseling**, then moves to a written warning, then more serious steps. Document each step and follow the organization's personnel rules.
 - Motivation comes from meaningful work, growth opportunities, recognition, reasonable autonomy, and fair treatment, not just pay.
+
+:::figure fig-discipline | Progressive discipline as four lengthening bars: 1 meet privately, to find the cause; 2 verbal counseling, documented; 3 written warning, in the file; 4 further steps, per personnel rules. A note says start private, and put each step in writing.
+The first step is a conversation, not a penalty; the documentation is what makes the later steps fair.
+:::
 
 :::checkpoint cp:agency-first-meeting
 
