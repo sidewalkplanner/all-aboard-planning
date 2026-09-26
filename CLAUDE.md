@@ -30,7 +30,8 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     lib/paths.js            Route constants — always build links from these
     lib/nav.js              Header/footer navigation config
     lib/theme.js            JS copies of the colour tokens (used by inline-styled exam UI)
-    components/             Header, Footer, PageHeader, Art, LessonBody, Checkpoint, AccessGate, RequireSignIn, ...
+    components/             Header, Footer, PageHeader, Art, LessonBody, Checkpoint, RecallCards, AccessGate, RequireSignIn, ...
+    components/interactives/  Practice pieces for :::try (TryIt, SortIt, the live-sketch kit)
     hooks/                  usePageTitle, useAccess (who can open what), useMembership (future paid tier)
     context/AuthContext.jsx Accounts via Supabase Auth: sign up/in/out, password reset
     lib/supabase.js         Supabase client (project URL + publishable key)
@@ -45,6 +46,7 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
       studyPlans.js         8- and 12-week schedules (reference lesson slugs)
       checkpoints.js        Original lesson checkpoint questions (+ checkpoints/d1..d9 per domain)
       flashcards.js         The flashcard deck (built from every lesson's Key terms by a Vite plugin)
+      interactives/         Practice pieces placed with :::try (calculators.js, sorts.js; see "Practice pieces")
     content/pages/*.md      Exam Info, About, Exam strategy, Quick reference bodies (same renderer as lessons)
     content/site.js         Owner settings (CONTACT_EMAIL, used on About and Contact)
     data/                   Question banks (exam1/2/3), domain weights; diagnostic-items.js is retired (kept, unused)
@@ -248,6 +250,29 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
 5. **Add it to the study plans** in `studyPlans.js` if it should be scheduled (the plans are hidden
    today, but `npm run check` still expects every lesson to appear in them).
 6. Run `npm run check && npm run build` in `web/`.
+
+## Practice pieces (interactive, ungraded)
+
+Lessons can place practice pieces with one line, `:::try <id>`, after the section they practice
+and before its checkpoint. The plan, placements, and build order are in `INTERACTIVITY-PLAN.md`
+(update its status as batches land). Checkpoints stay the graded part; practice isn't scored or
+saved, except "Before you go" (below). Definitions live in `web/src/content/aicp/interactives/`;
+the id's prefix names the kind (`kindOf` in `index.js`), and each kind's component in
+`web/src/components/interactives/` loads only on lessons that use it.
+
+- **Try it** (no prefix, `calculators.js`): inputs and sliders redraw a live sketch, with results,
+  the worked steps, and a **Your turn** tab of freshly generated problems. Defaults are the
+  lesson's worked example, and `expect` states its answer (the checker confirms it). Sketches use
+  the figures' ink kit through `components/interactives/sketchKit.js` (400 wide; text at least 19,
+  or 24 handwritten, so it's 13px on a phone; the checker enforces it); each needs `describe()`
+  for screen readers. Mark invented numbers `illustrative: true`.
+- **Sort it** (`sort-`, `sorts.js`): cards dealt one at a time into 2 to 5 piles, each card with a
+  reason. Write original situations, not the lesson's own examples or any checkpoint or exam item.
+- **Before you go** (`components/RecallCards.jsx`) is automatic: five of the lesson's key-term
+  flashcards at the end of every lesson, rated into the same Leitner boxes as the Flashcards page.
+- At most three pieces per lesson, each used once, between Key concepts and Summary
+  (`npm run check`). Content rules are the same as checkpoints: original, accurate, consistent with
+  the lesson, VERIFY flags carried. Look at every new piece at 360px and desktop before pushing.
 
 ## Lesson figures: workflow and status
 

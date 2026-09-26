@@ -78,6 +78,8 @@ Elevating to the base flood elevation meets the NFIP minimum; freeboard adds a m
 Explains the 1% annual chance and why it adds up to roughly a one-in-four chance over a 30-year mortgage.
 :::
 
+:::try flood-odds
+
 :::checkpoint cp:env-30-year
 
 ### Hazard mitigation planning

@@ -1,28 +1,24 @@
-// Every interactive exercise a lesson can place with a line like
+// Practice pieces a lesson can place with a line like
 //
 //   :::try far
 //
-// Four kinds, each defined in its own file here:
-// - calc (calculators.js): inputs, optional sliders, results, and worked steps.
-// - sort (sorts.js): classify situations into categories, with feedback on each.
-// - order (orders.js): put shuffled steps in the right order.
-// - reveal (reveals.js): a prompt, then click to reveal the answer and why.
-// They're practice, not scored or saved; checkpoints remain the graded questions.
-// `npm run check` confirms every :::try id exists and each is used at most once.
-import { CALCULATORS } from './calculators.js';
-import { SORTS } from './sorts.js';
-import { ORDERS } from './orders.js';
-import { REVEALS } from './reveals.js';
+// The id's prefix names the kind, so a lesson can load just the code for the
+// kinds it uses:
+// - sort-…  Sort it (sorts.js): deal situations into labeled piles, with a
+//           reason for every card.
+// - anything else: Try it (calculators.js): sliders and inputs that redraw a
+//           sketch, show the worked steps, and set fresh problems.
+// They're practice, not graded or saved; checkpoints remain the graded
+// questions. `npm run check` validates every definition and placement.
+export const KINDS = [
+  { kind: 'sort', prefix: 'sort-' },
+  { kind: 'calc', prefix: '' },
+];
 
-const tag = (defs, type) => Object.fromEntries(Object.entries(defs).map(([id, d]) => [id, { ...d, type }]));
+export const kindOf = (id) => KINDS.find((k) => id.startsWith(k.prefix)).kind;
 
-export const INTERACTIVES = {
-  ...tag(CALCULATORS, 'calc'),
-  ...tag(SORTS, 'sort'),
-  ...tag(ORDERS, 'order'),
-  ...tag(REVEALS, 'reveal'),
+// Loads a kind's definitions on demand (the sketches pull in the drawing kit).
+export const loadDefs = {
+  sort: () => import('./sorts.js').then((m) => m.SORTS),
+  calc: () => import('./calculators.js').then((m) => m.CALCULATORS),
 };
-
-export const INTERACTIVE_ID_CLASHES = [CALCULATORS, SORTS, ORDERS, REVEALS]
-  .flatMap((d) => Object.keys(d))
-  .filter((id, i, all) => all.indexOf(id) !== i);

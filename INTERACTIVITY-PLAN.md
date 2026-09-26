@@ -1,7 +1,9 @@
 # Interactive lessons: the plan
 
-Status: **proposal, awaiting Bobby's approval.** Nothing below is built yet except the WIP
-calculator framework (commit 230a602), which this plan reuses.
+Status: **approved; batch 1 built** (the `:::try` block and checker rules, Before you go, Try it
+with live sketches for the 11 calculators plus bid-rent, and Sort it with 4 sorts). Next: batch 2.
+Changes from the proposal: `affordability` moved to the housing lesson (Measuring affordability)
+so Implementation math keeps three pieces; `rate-times-size` became `parking`.
 
 ## The idea in one paragraph
 

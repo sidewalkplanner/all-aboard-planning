@@ -23,6 +23,8 @@ What you can do with a variable depends on what kind of numbers it holds:
 
 Averaging ordinal ratings ("the mean satisfaction score is 3.4") is common but shaky, because the steps between "satisfied" and "very satisfied" aren't necessarily equal. Reporting the share in each category, or the median, is safer. Only ratio data support statements like "twice as much."
 
+:::try sort-levels
+
 :::checkpoint cp:stat-levels
 
 ### Describing a dataset: center
@@ -123,6 +125,8 @@ A town that grew from 20,000 to 24,000 in 10 years grew 20% in total, but (1.2)<
 
 **Worked example** (illustrative index values): median rent was $800 when the CPI stood at 200, and the CPI is 300 today. In today's dollars that's $800 × 300 ÷ 200 = **$1,200**. If today's median rent is $1,100, rent actually fell in real terms, even though it rose in nominal terms.
 
+:::try pct-change
+
 :::checkpoint cp:stat-points
 
 ### Margins of error and confidence intervals
@@ -157,6 +161,8 @@ A **higher discount rate** lowers the present value of future benefits and costs
 :::figure fig-discounting | A bar chart titled "What $10,000 is worth today." Paid in 2 years: $9,426 at a 3% discount rate, $9,070 at 5%, and $8,734 at 7%. Paid in 30 years: $4,120 at 3%, $2,314 at 5%, and $1,314 at 7%.
 Over two years the rate barely matters. Over thirty, moving from 3% to 7% cuts the present value by more than two-thirds, which is why long-lived projects are so sensitive to the discount rate.
 :::
+
+:::try present-value
 
 **Net present value (NPV)** is the present value of benefits minus the present value of costs. A positive NPV means benefits exceed costs.
 

@@ -128,6 +128,8 @@ A budget that's 50% spent says nothing on its own: is the work 50% done? **Earne
 
 **Schedule variance = EV − PV**; a negative number means behind schedule. **Cost variance = EV − AC**; a negative number means over budget. Example: by month six, $60,000 of work was planned, $50,000 worth has been done, and $55,000 has been spent. SV = 50,000 − 60,000 = −$10,000 (behind), and CV = 50,000 − 55,000 = −$5,000 (over budget).
 
+:::try earned-value
+
 :::checkpoint cp:pm-earned-value
 
 ### External relationships
