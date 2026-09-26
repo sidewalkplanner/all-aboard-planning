@@ -4771,6 +4771,128 @@ function missingMiddle() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 8.3
+
+// NEPA: the level of review scales with significance.
+function nepaLevels() {
+  const rng = makeRng(8301);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  const box = (x, y, w, h, t, sub, fill) => {
+    const d = roundRectD(x, y, w, h, 12);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 })) + title(x + w / 2, y + (sub ? 42 : h / 2 + 10), t, { size: 28 }) + (sub ? label(x + w / 2, y + 80, sub, { color: MUTED, weight: 500 }) : '');
+  };
+  b += label(20, 36, 'review scales with significance', { anchor: 'start', weight: 700, color: P.civicDeep });
+  b += box(20, 60, 250, 100, 'CE', 'minor, routine', T.sage);
+  b += box(20, 190, 250, 100, 'EA', 'unsure of impact', T.butter);
+  b += box(20, 340, 250, 100, 'EIS', 'significant', T.blush);
+  b += L(arrow(280, 110, 330, 110, rng, { size: 2.4, head: 10 })) + label(342, 120, 'no detailed review', { anchor: 'start', weight: 500 });
+  b += L(arrow(280, 225, 330, 225, rng, { size: 2.4, head: 10 })) + box(340, 196, 150, 58, 'FONSI', null, '#FFFDF8');
+  b += L(arrow(145, 294, 145, 336, rng, { size: 2.4, head: 9 }));
+  b += label(162, 326, 'or, if significant', { anchor: 'start', color: MUTED, weight: 500 });
+  b += L(arrow(280, 390, 330, 390, rng, { size: 2.4, head: 10 }));
+  b += label(342, 376, 'scoping, draft EIS,', { anchor: 'start', weight: 500 }) + label(342, 410, 'comment, final EIS', { anchor: 'start', weight: 500 });
+  b += box(560, 440, 140, 48, 'ROD', null, '#FFFDF8');
+  b += L(arrow(530, 420, 556, 450, rng, { size: 2.2, head: 9 }));
+  b += label(20, 500, 'NEPA is procedural: study and disclose', { anchor: 'start', weight: 700, color: P.tomatoDeep });
+  return { W, H: 516, b };
+}
+
+// The wetland mitigation sequence: avoid, minimize, then compensate.
+function mitigationSequence() {
+  const rng = makeRng(8302);
+  const wet = (x, y, w) => { const d = blobD(x, y, w, w * 0.55, rng); return cut(d, { rng, fill: T.sage, filter: FLAT }) + L(ink(d, { rng, size: 1.8, color: P.leafDeep })) + L([`M${x - 12} ${y + 6}l4 -16`, `M${x} ${y + 6}l0 -18`, `M${x + 12} ${y + 6}l-4 -16`].map((r) => inkLine(r, { rng, size: 1.6, color: P.leafDeep })).join('')); };
+  const road = (dPath) => L(inkLine(dPath, { rng, size: 14, color: '#B9B2A6', overshoot: 0 }));
+  const icons = [
+    (cx, cy) => wet(cx, cy, 56) + road(`M${cx - 80} ${cy + 50}Q${cx} ${cy + 70} ${cx + 80} ${cy + 50}`),
+    (cx, cy) => wet(cx, cy, 56) + road(`M${cx - 80} ${cy + 30}L${cx + 80} ${cy + 30}`),
+    (cx, cy) => wet(cx - 40, cy, 36) + road(`M${cx - 76} ${cy - 30}L${cx - 4} ${cy + 36}`) + L(arrow(cx - 6, cy - 6, cx + 26, cy - 6, rng, { size: 2, head: 8 })) + wet(cx + 54, cy, 40),
+  ];
+  const steps = [['1 Avoid', 'route around it'], ['2 Minimize', 'shrink the impact'], ['3 Compensate', 'restore elsewhere']];
+  const tall = (k) => {
+    let o = panel(0, 0, 222, 280, T.cream, rng) + title(111, 44, steps[k][0], { size: 25 });
+    o += icons[k](111, 128);
+    return o + label(111, 238, steps[k][1], { size: 19, weight: 600 });
+  };
+  const wide = (k) => {
+    let o = panel(0, 0, 338, 170, T.cream, rng) + icons[k](96, 76);
+    o += title(196, 70, steps[k][0], { size: 25, anchor: 'start' });
+    return o + label(196, 108, steps[k][1], { size: 19, anchor: 'start', weight: 600 });
+  };
+  return {
+    W: 720, H: 350, b: at(14, 14, tall(0)) + at(249, 14, tall(1)) + at(484, 14, tall(2)) + note(360, 338, 'in this order: compensation is the last resort', { size: 24, color: P.civicDeep }),
+    narrow: { W: 366, H: 604, b: at(14, 14, wide(0)) + at(14, 198, wide(1)) + at(14, 382, wide(2)) + note(183, 590, 'compensation is the last resort', { size: 24, color: P.civicDeep }) },
+  };
+}
+
+// A floodplain in cross-section, with an elevated house.
+function floodplainSection() {
+  const rng = makeRng(8303);
+  const W = 720;
+  const H = 450;
+  let b = '';
+  const terr = [[0, 300], [60, 300], [80, 330], [160, 330], [180, 300], [260, 275], [400, 225], [520, 185], [640, 150], [720, 135]];
+  const yAt = (x) => { for (let i = 1; i < terr.length; i++) { const [x1, y1] = terr[i - 1]; const [x2, y2] = terr[i]; if (x <= x2) return y1 + (y2 - y1) * (x - x1) / (x2 - x1); } return 135; };
+  const reach = (y) => { for (let i = 1; i < terr.length; i++) { const [x1, y1] = terr[i - 1]; const [x2, y2] = terr[i]; if (y2 <= y && y1 >= y) return x1 + (x2 - x1) * (y1 - y) / (y1 - y2); } return 0; };
+  const pool = (y, fill) => { const xr = reach(y); const pts = [[0, y], [xr, y]]; for (let i = terr.length - 1; i >= 0; i--) if (terr[i][0] < xr) pts.push(terr[i]); return `<path d="${polyD(pts)}" fill="${fill}"/>`; };
+  b += pool(180, '#E6F0F8') + pool(210, P.sky);
+  b += `<path d="${polyD([[60, 305], [180, 305], [160, 330], [80, 330]])}" fill="${P.civic}" opacity="0.55"/>`;
+  const ground = polyD([...terr, [720, 340], [0, 340]]);
+  b += cut(ground, { rng, fill: T.kraft, filter: FLAT }) + L(inkLine(terr, { rng, size: 2.2, overshoot: 0 }));
+  b += L(inkLine([[0, 210], [reach(210), 210]], { rng, size: 2.4, color: P.civicDeep, overshoot: 0 }));
+  b += L(dashed(0, 180, reach(180), 180, rng, { size: 1.8, color: P.civicDeep }));
+  b += label(20, 244, 'base flood elevation', { anchor: 'start', weight: 700, color: P.civicDeep });
+  // The house: floor 16 above the base flood elevation.
+  const hx = 330;
+  const g = yAt(hx + 25);
+  b += L(inkLine(`M${hx + 6} ${g}L${hx + 6} 194`, { rng, size: 3 }) + inkLine(`M${hx + 44} ${g - 4}L${hx + 44} 194`, { rng, size: 3 }));
+  const body = rectD(hx - 4, 144, 58, 50);
+  const roof = polyD([[hx - 12, 144], [hx + 25, 110], [hx + 62, 144]]);
+  b += cut(body, { rng, fill: P.butter, filter: FLAT }) + L(ink(body, { rng, size: 2 })) + cut(roof, { rng, fill: P.kraftDeep, filter: FLAT }) + L(ink(roof, { rng, size: 2 }));
+  b += L([`M${hx + 64} 194L${hx + 76} 194`, `M${hx + 70} 194L${hx + 70} 210`, `M${hx + 64} 210L${hx + 76} 210`].map((r) => inkLine(r, { rng, size: 2, color: P.tomatoDeep })).join(''));
+  b += label(hx + 84, 104, 'floor above it:', { anchor: 'start', color: P.tomatoDeep, weight: 700 });
+  b += label(hx + 84, 136, 'freeboard', { anchor: 'start', color: P.tomatoDeep, weight: 700 });
+  b += L(arrow(hx + 84, 146, hx + 74, 190, rng, { size: 1.8, head: 7, color: P.tomatoDeep }));
+  const key = (y, fill, t, dash) => `<rect x="20" y="${y - 22}" width="34" height="26" fill="${fill}" stroke="${P.civicDeep}" stroke-width="1.6"${dash ? ' stroke-dasharray="5 4"' : ''}/>` + label(68, y, t, { anchor: 'start', weight: 600 });
+  b += key(390, P.sky, '1% a year: special flood hazard area');
+  b += key(432, '#E6F0F8', '0.2% a year: the "500-year" flood', true);
+  return { W, H, b };
+}
+
+// Climate mitigation versus adaptation.
+function climateMA() {
+  const rng = makeRng(8304);
+  const PW = 338;
+  const PH = 380;
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Mitigation', { size: 25, anchor: 'start' });
+  a += label(20, 70, 'cuts emissions', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const bus = roundRectD(30, 150, 150, 60, 10);
+  a += cut(bus, { rng, fill: P.civic, filter: FLAT }) + L(ink(bus, { rng, size: 2 }));
+  [48, 84, 120].forEach((x) => { a += `<rect x="${x}" y="162" width="26" height="20" fill="#FFFDF8" stroke="${P.ink}" stroke-width="1.4"/>`; });
+  a += `<circle cx="62" cy="214" r="10" fill="${P.ink}"/><circle cx="148" cy="214" r="10" fill="${P.ink}"/>`;
+  const panelD = polyD([[210, 200], [300, 200], [318, 150], [228, 150]]);
+  a += cut(panelD, { rng, fill: P.civicDeep, filter: FLAT }) + L(ink(panelD, { rng, size: 2 })) + L(inkLine('M262 200L262 226', { rng, size: 2.6 }));
+  a += sun(270, 118, 14);
+  a += label(169, 272, 'transit, efficiency, solar', { size: 19, weight: 600 });
+  a += note(20, 346, 'less carbon', { size: 24, anchor: 'start', color: P.leafDeep });
+  let d = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Adaptation', { size: 25, anchor: 'start' });
+  d += label(20, 70, 'prepares for expected impacts', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  d += `<path d="M20 222 Q60 208 100 222 T180 222 T260 222 L318 222 L318 240 L20 240Z" fill="${T.sky}"/>`;
+  const dune = polyD([[196, 222], [236, 176], [290, 170], [318, 222]]);
+  d += cut(dune, { rng, fill: P.butter, filter: FLAT }) + L(ink(dune, { rng, size: 2 }));
+  d += L(inkLine('M76 222L76 176', { rng, size: 3 }) + inkLine('M110 222L110 176', { rng, size: 3 }));
+  const body = rectD(66, 132, 56, 44);
+  const roof = polyD([[58, 132], [94, 100], [130, 132]]);
+  d += cut(body, { rng, fill: P.butter, filter: FLAT }) + L(ink(body, { rng, size: 2 })) + cut(roof, { rng, fill: P.kraftDeep, filter: FLAT }) + L(ink(roof, { rng, size: 2 }));
+  d += label(169, 272, 'elevate, restore dunes, shade', { size: 19, weight: 600 });
+  d += note(20, 346, 'less harm', { size: 24, anchor: 'start', color: P.civicDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, a) + at(368, 14, d),
+    narrow: { W: 366, H: 802, b: at(14, 14, a) + at(14, 408, d) },
+  };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -4890,6 +5012,7 @@ const FIGURES = [
   ['fig-delegation', delegationStool], ['fig-coach-mentor-sponsor', coachMentorSponsor], ['fig-conflict-steps', conflictSteps],
   ['fig-four-step', fourStep], ['fig-functional-class', functionalClass], ['fig-induced-demand', inducedDemand], ['fig-road-diet', roadDiet], ['fig-los-vmt', losVmt],
   ['fig-ami-bands', amiBands], ['fig-lihtc-flow', lihtcFlow], ['fig-voucher-split', voucherSplit], ['fig-missing-middle', missingMiddle],
+  ['fig-nepa-levels', nepaLevels], ['fig-mitigation-sequence', mitigationSequence], ['fig-floodplain', floodplainSection], ['fig-climate-ma', climateMA],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

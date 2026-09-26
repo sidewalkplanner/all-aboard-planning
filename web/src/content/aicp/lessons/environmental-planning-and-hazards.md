@@ -18,6 +18,10 @@ The **National Environmental Policy Act** requires federal agencies to consider 
 
 NEPA is **procedural**: it requires study and disclosure, not the least harmful choice. Many states have their own environmental review laws, some of which reach local decisions. <!-- VERIFY: federal NEPA implementing procedures changed substantially in 2025 (CEQ regulations rescinded, agency procedures revised); confirm the current process terms before publishing detailed steps. -->
 
+:::figure fig-nepa-levels | Three levels of NEPA review, which scale with significance. A categorical exclusion (CE), for minor, routine actions, needs no detailed review. An environmental assessment (EA), used when the impact is uncertain, ends in a FONSI or, if the effects could be significant, leads to an EIS. An environmental impact statement (EIS) runs through scoping, a draft EIS, comment, and a final EIS, and ends in a record of decision (ROD). Note: NEPA is procedural: study and disclose.
+The level of review follows how significant the effects might be, and even the heaviest review requires disclosure, not the least harmful choice.
+:::
+
 :::video The NEPA process: categorical exclusion, EA, or EIS? | about 3 min
 A decision-tree walkthrough of which level of review a project needs and what each ends in (a FONSI or a record of decision).
 :::
@@ -38,6 +42,10 @@ A **brownfield** is a property whose expansion, redevelopment, or reuse is **com
 - Conventional stormwater systems pipe runoff away quickly. **Green stormwater infrastructure** manages it where it falls, with **bioswales, rain gardens, permeable pavement**, green roofs, and street trees, reducing flooding and pollution and cooling neighborhoods.
 - **Scattered septic-based subdivisions** in rural areas threaten **groundwater** quality and raise the long-term cost of extending infrastructure.
 
+:::figure fig-mitigation-sequence | Three cards in order. 1 Avoid: route the road around the wetland. 2 Minimize: the road only grazes its edge. 3 Compensate: the road crosses the wetland, and a new wetland is restored elsewhere. Note: in this order; compensation is the last resort.
+Regulators ask the questions in sequence, so a mitigation bank can't buy a project out of the first two steps.
+:::
+
 :::checkpoint cp:env-mitigation-sequence
 
 ### Floodplains and the NFIP
@@ -48,6 +56,10 @@ A **brownfield** is a property whose expansion, redevelopment, or reuse is **com
 - Communities that exceed the minimums (for example, with "freeboard" above base flood elevation) can earn insurance discounts for residents through FEMA's Community Rating System.
 
 The most effective long-term policy for reducing repetitive flood losses is **directing new development away from the floodplain** in the first place.
+
+:::figure fig-floodplain | A cross-section of a river valley. The water of the 1% annual chance flood reaches a line marked base flood elevation; everything below it is the special flood hazard area. A dashed line above it marks the 0.2% annual chance, or "500-year," flood. A house on stilts has its floor above the base flood elevation, and the gap is labeled freeboard.
+Elevating to the base flood elevation meets the NFIP minimum; freeboard adds a margin that can also earn residents insurance discounts.
+:::
 
 :::video What a "100-year flood" really means | about 2 min
 Explains the 1% annual chance and why it adds up to roughly a one-in-four chance over a 30-year mortgage.
@@ -73,6 +85,10 @@ Integrating the hazard mitigation plan with the comprehensive plan, the capital 
 Elevating structures and restoring dunes is **adaptation, not mitigation**. A plan's adaptation element addresses expected impacts; a mitigation element addresses emissions. See [Scenario planning, fiscal impact, and consequence analysis](/aicp/lessons/plan-analysis-tools) for GHG inventories.
 
 **Resilience** is the ability of a community to prepare for, absorb, recover from, and adapt to shocks and stresses.
+
+:::figure fig-climate-ma | Two panels. Mitigation cuts emissions: a bus and a solar panel, for transit, efficiency, and solar; less carbon. Adaptation prepares for expected impacts: a house raised on stilts and a restored dune, for elevating, restoring dunes, and shade; less harm.
+Ask what the action changes: emissions (mitigation) or exposure to impacts already on the way (adaptation).
+:::
 
 :::checkpoint cp:env-mitigation-example
 

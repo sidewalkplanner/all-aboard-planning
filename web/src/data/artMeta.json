@@ -687,6 +687,30 @@
     "fig-missing-middle": {
       "w": 720,
       "h": 420
+    },
+    "fig-nepa-levels": {
+      "w": 720,
+      "h": 516
+    },
+    "fig-mitigation-sequence": {
+      "w": 720,
+      "h": 350,
+      "narrow": {
+        "w": 366,
+        "h": 604
+      }
+    },
+    "fig-floodplain": {
+      "w": 720,
+      "h": 450
+    },
+    "fig-climate-ma": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
     }
   },
   "hero": {
