@@ -21,6 +21,10 @@ A comprehensive plan is **not a regulation**. The **zoning ordinance** is the re
 
 A key tool inside the plan is the **future land use map**, which shows the intended pattern of land uses over the plan horizon. It's often confused with the **zoning map**, which shows the regulations in force now. The two will differ where the plan anticipates change.
 
+:::figure fig-flu-zoning | The same sixteen blocks mapped twice, colored for homes, shops, industry, and park. The zoning map, the rules in force today, shows four industrial blocks in one corner. The future land use map, where the plan wants to go, shows three of those blocks as homes and one as shops; the four blocks that differ are circled.
+The circled blocks are where the plan expects change; until they're rezoned, today's industrial rules still apply there.
+:::
+
 :::checkpoint cp:comp-flu-map
 
 ### Common elements
@@ -65,6 +69,10 @@ Oregon, Florida, and California are frequently cited as strong consistency state
 
 In consistency states, **the plan comes first**: if a parcel's zoning conflicts with the plan's designation, the usual fix is to rezone the parcel to match the plan, not to grant a variance or quietly ignore the conflict. And a planner reviewing a project that's inconsistent with the adopted plan must **report the inconsistency** in the staff analysis.
 
+:::figure fig-consistency | An arrow from less legal weight to more. At the low end, zoning is the plan, with no separate plan needed. In the middle, the plan is one factor courts weigh. At the high end, consistency: zoning must match (conform to) the plan. A note says that there, you rezone to match the plan.
+Where your state sits on this arrow decides whether an inconsistent rezoning is merely unwise or actually invalid.
+:::
+
 :::checkpoint cp:comp-rezone-to-plan
 
 ### Other kinds of plans
@@ -77,6 +85,10 @@ In consistency states, **the plan comes first**: if a parcel's zoning conflicts 
 | **Strategic plan** | An organization's priorities | For a limited set of near-term actions, usually three to five years |
 
 An area plan that's **adopted as an amendment to the comprehensive plan** carries the plan's legal weight. One adopted merely **by resolution** as a guidance document generally **carries less weight** in a consistency review.
+
+:::figure fig-plan-family | A diagram of related plans. A regional plan, across jurisdictions, sits above the comprehensive plan, which covers the whole city and all topics over 20 years. Below it are area plans, for a place block by block, and functional plans, for one system citywide. All are carried out by zoning, the capital improvements program, and other programs. A note says to adopt area plans into the plan to give them weight.
+Each plan type zooms in or out from the comprehensive plan; the question to ask is how it was adopted, because that decides its weight.
+:::
 
 :::checkpoint cp:comp-resolution
 

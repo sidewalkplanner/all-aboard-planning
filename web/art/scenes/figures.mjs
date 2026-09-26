@@ -2824,6 +2824,431 @@ function floodOdds() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 4.1
+
+// The planning sequence as a two-row route, with the loop back.
+function planningSequence() {
+  const rng = makeRng(4101);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const yA = 140;
+  const yB = 350;
+  const xs = [90, 225, 360, 495, 630];
+  // The route: along the top, round the bend, back along the bottom.
+  const route = `M${xs[0] - 40} ${yA}H${xs[4]}C${xs[4] + 70} ${yA} ${xs[4] + 70} ${yB} ${xs[4]} ${yB}H${xs[0] - 40}`;
+  b += `<path d="${route}" fill="none" stroke="${P.civic}" stroke-width="20" stroke-linecap="round"/>`;
+  b += L(ink(route, { rng, size: 1.6, opacity: 0.6 }));
+  const names = [['Scope'], ['Existing', 'conditions'], ['Issues'], ['Vision', 'and goals'], ['Alternatives'],
+    ['Evaluate'], ['Draft', 'plan'], ['Adopt'], ['Implement'], ['Monitor']];
+  names.forEach((lines, i) => {
+    const top = i < 5;
+    const x = top ? xs[i] : xs[9 - i];
+    const y = top ? yA : yB;
+    const d = ellipseD(x, y, 25, 25);
+    b += cut(d, { rng, fill: i === 0 ? P.butter : i === 1 ? P.tomato : P.paper, filter: FLAT }) + L(ink(d, { rng, size: 2.6 }));
+    b += title(x, y + 10, String(i + 1), { size: 28, color: i === 1 ? '#FFFFFF' : P.ink });
+    lines.forEach((t, k) => { b += label(x, i === 4 ? y - 40 : y + 62 + k * 32, t); });
+  });
+  // Monitoring loops back to the start of the analysis.
+  b += L(inkLine(`M${xs[0] - 50} ${yB - 20}C${14} ${yB - 60} ${14} ${yA + 60} ${xs[0] - 40} ${yA + 30}`, { rng, size: 2.4, color: P.tomatoDeep, overshoot: 0 }));
+  b += L(arrow(xs[0] - 58, yA + 40, xs[0] - 36, yA + 26, rng, { color: P.tomatoDeep, size: 2.4, head: 10 }));
+  b += note(360, 60, 'engagement runs the whole way', { color: P.civicDeep });
+  b += note(360, 500, 'first real step after scoping: step 2', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// Hazards first, or hazards last: the same site planned two ways.
+function hazardsFirst() {
+  const rng = makeRng(4102);
+  const PW = 338;
+  const PH = 380;
+  const map = (first) => {
+    let s = '';
+    const flood = `M28 250C90 230 150 270 220 240S300 220 316 236V318H28Z`;
+    s += `<path d="${flood}" fill="${T.sky}"/>` + L(ink(`M28 250C90 230 150 270 220 240S300 220 316 236`, { rng, size: 2, color: P.civicDeep }));
+    s += label(280, 300, 'floodplain', { size: 19, anchor: 'end', color: P.civicDeep, weight: 700 });
+    const homes = first
+      ? [[40, 110], [80, 110], [120, 110], [160, 110], [200, 110], [40, 160], [80, 160], [120, 160], [160, 160], [240, 160], [280, 110], [240, 110]]
+      : [[40, 110], [80, 110], [120, 110], [160, 110], [200, 110], [240, 110], [40, 180], [120, 180], [200, 180], [60, 250], [140, 262], [230, 246]];
+    for (const [x, y] of homes) {
+      const wet = y > 230;
+      s += `<rect x="${x}" y="${y}" width="28" height="24" fill="${wet ? P.tomato : P.butter}" stroke="${P.ink}" stroke-width="1.6"/>`;
+    }
+    if (first) s += `<rect x="40" y="206" width="236" height="14" rx="4" fill="${P.leaf}"/>` + label(158, 200, 'buffer: park, trails', { size: 19, color: P.leafDeep, weight: 700 });
+    return s;
+  };
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Hazards first', { size: 25, anchor: 'start' }) + label(20, 70, 'map the risk, then the land use', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  a += map(true) + note(20, 356, 'growth stays out of harm’s way', { size: 24, anchor: 'start', color: P.leafDeep });
+  let c = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Hazards last', { size: 25, anchor: 'start' }) + label(20, 70, 'land use first, squeezed after', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  c += map(false) + note(20, 356, 'homes end up in the floodplain', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, a) + at(368, 14, c),
+    narrow: { W: 366, H: 802, b: at(14, 14, a) + at(14, 408, c) },
+  };
+}
+
+// Surfacing a tradeoff: three options for the greenfield with habitat.
+function tradeoffOptions() {
+  const rng = makeRng(4103);
+  const PW = 228;
+  const PH = 330;
+  const opt = (name, homes, verdict, vColor) => {
+    let s = panel(0, 0, PW, PH, T.cream, rng) + title(PW / 2, 40, name, { size: 23 });
+    const site = rectD(24, 64, 180, 170);
+    s += cut(site, { rng, fill: T.butter, shadow: false, filter: FLAT }) + L(ink(site, { rng, size: 1.8 }));
+    const hab = blobD(150, 150, 46, 60, makeRng(12), 6, 0.1);
+    const lost = homes === 'full';
+    s += cut(hab, { rng, fill: lost ? '#E7E1D2' : P.sage, shadow: false, filter: FLAT }) + L(ink(hab, { rng, size: 1.6, opacity: lost ? 0.5 : 1 }));
+    const pts = homes === 'full' ? [[36, 76], [64, 76], [92, 76], [120, 76], [148, 76], [176, 76], [36, 118], [64, 118], [92, 118], [130, 128], [166, 128], [36, 160], [64, 160], [92, 160], [130, 176], [166, 176], [36, 202], [64, 202], [92, 202]]
+      : homes === 'cluster' ? [[36, 76], [58, 76], [80, 76], [36, 98], [58, 98], [80, 98], [36, 120], [58, 120], [80, 120], [36, 142], [58, 142], [80, 142], [36, 164], [58, 164], [80, 164], [36, 186], [58, 186], [80, 186], [36, 208]]
+      : [];
+    const sz = homes === 'cluster' ? 16 : 20;
+    for (const [x, y] of pts) s += `<rect x="${x}" y="${y}" width="${sz}" height="${sz - 2}" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.3"/>`;
+    s += label(PW / 2, 268, verdict[0], { size: 19, color: vColor, weight: 700 });
+    s += label(PW / 2, 294, verdict[1], { size: 19, color: vColor, weight: 700 });
+    return s;
+  };
+  const panels = [
+    opt('Full build-out', 'full', ['homes spread out,', 'habitat lost'], P.tomatoDeep),
+    opt('Clustered', 'cluster', ['same homes, closer,', 'habitat kept'], P.leafDeep),
+    opt('No change', 'none', ['no new homes,', 'habitat kept'], P.civicDeep),
+  ];
+  const key = (x, y) => `<rect x="${x}" y="${y - 16}" width="18" height="18" fill="${P.sage}" stroke="${P.ink}" stroke-width="1.4"/>` + label(x + 26, y, 'wildlife habitat', { size: 20, anchor: 'start', weight: 500 })
+    + `<rect x="${x + 210}" y="${y - 16}" width="18" height="16" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.3"/>` + label(x + 236, y, 'new homes', { size: 20, anchor: 'start', weight: 500 });
+  return {
+    W: 720, H: 400, b: panels.map((q, i) => at(8 + i * 238, 14, q)).join('') + key(24, 380),
+    narrow: { W: 356, H: 1076, b: panels.map((q, i) => at(64, 12 + i * 342, q)).join('') + key(16, 1060) },
+  };
+}
+
+// When an update is overdue: assumed 1% growth against 3% actual.
+function growthDrift() {
+  const rng = makeRng(4104);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const x0 = 100;
+  const x1 = 560;
+  const yB = 340;
+  const yT = 70;
+  const X = (n) => x0 + (n / 8) * (x1 - x0);
+  const Y = (g) => yB - (g / 0.3) * (yB - yT);
+  for (const g of [0.1, 0.2, 0.3]) {
+    b += L(inkLine([[x0, Y(g)], [x1, Y(g)]], { rng, size: 1, opacity: 0.35, overshoot: 0 }));
+    b += label(x0 - 14, Y(g) + 10, `+${Math.round(g * 100)}%`, { anchor: 'end' });
+  }
+  const line = (r) => { const pts = []; for (let n = 0; n <= 8; n++) pts.push([X(n), Y((1 + r) ** n - 1)]); return pts; };
+  const gap = [...line(0.03), ...line(0.01).reverse()];
+  b += `<path d="${polyD(gap)}" fill="${T.blush}"/>`;
+  b += L(inkLine(line(0.01), { rng, size: 3, color: P.civicDeep, overshoot: 0 }) + inkLine(line(0.03), { rng, size: 3, color: P.tomatoDeep, overshoot: 0 }));
+  b += L(inkLine([[x0, yT - 10], [x0, yB], [x1 + 10, yB]], { rng, size: 2.4, overshoot: 0 }));
+  for (const n of [0, 2, 4, 6, 8]) b += label(X(n), yB + 38, String(n));
+  b += label((x0 + x1) / 2, yB + 80, 'years since the plan', { color: MUTED, weight: 500 });
+  b += label(x0 - 60, 36, 'population growth since adoption', { anchor: 'start', color: MUTED, weight: 500 });
+  const end = (r) => (1 + r) ** 8 - 1;
+  b += label(x1 + 16, Y(end(0.03)) + 8, `actual 3%`, { anchor: 'start', color: P.tomatoDeep, weight: 700 });
+  b += label(x1 + 16, Y(end(0.03)) + 40, `+${Math.round(end(0.03) * 100)}%`, { anchor: 'start', color: P.tomatoDeep });
+  b += label(x1 + 16, Y(end(0.01)) - 10, `planned 1%`, { anchor: 'start', color: P.civicDeep, weight: 700 });
+  b += label(x1 + 16, Y(end(0.01)) + 22, `+${Math.round(end(0.01) * 100)}%`, { anchor: 'start', color: P.civicDeep });
+  b += note(x0 + 20, Y(0.24), 'time for a full update', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 4.2
+
+// The future land use map beside the zoning map of the same blocks.
+function fluVsZoning() {
+  const rng = makeRng(4201);
+  const PW = 338;
+  const PH = 420;
+  const colors = { R: P.butter, C: P.tomato, I: P.lavender, P: P.leaf };
+  const now = ['RRRC', 'RRCC', 'IIRR', 'IIPR'];
+  const future = ['RRRC', 'RRCC', 'RRRR', 'CRPR'];
+  const map = (grid, other, ring) => {
+    let s = '';
+    grid.forEach((row, r) => [...row].forEach((z, c) => {
+      const d = rectD(46 + c * 62, 96 + r * 62, 60, 60);
+      s += cut(d, { rng, fill: colors[z], shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: 1.4, opacity: 0.8 }));
+      if (ring && other[r][c] !== z) s += L(ink(rectD(46 + c * 62 - 3, 96 + r * 62 - 3, 66, 66), { rng, size: 3.4, color: P.tomatoDeep }));
+    }));
+    return s;
+  };
+  const key = (y) => [['R', 'homes'], ['C', 'shops'], ['I', 'industry'], ['P', 'park']].map(([z, t], i) => { const kx = 46 + (i % 2) * 130; const ky = y + Math.floor(i / 2) * 28; return `<rect x="${kx}" y="${ky - 16}" width="18" height="18" fill="${colors[z]}" stroke="${P.ink}" stroke-width="1.4"/>` + label(kx + 26, ky, t, { size: 19, anchor: 'start', weight: 500 }); }).join('');
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Zoning map', { size: 25, anchor: 'start' }) + label(20, 70, 'the rules in force today', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  a += map(now, future, false) + key(372);
+  let c = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Future land use map', { size: 25, anchor: 'start' }) + label(20, 70, 'where the plan wants to go', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  c += map(future, now, true) + note(20, 382, 'circled: where they differ', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 448, b: at(14, 14, a) + at(368, 14, c),
+    narrow: { W: 366, H: 882, b: at(14, 14, a) + at(14, 448, c) },
+  };
+}
+
+// How much legal weight the plan carries, state by state.
+function consistencySpectrum() {
+  const rng = makeRng(4202);
+  const W = 720;
+  const H = 360;
+  let b = '';
+  const y = 150;
+  const bar = polyD([[40, y - 8], [640, y - 20], [640, y - 36], [690, y], [640, y + 36], [640, y + 20], [40, y + 8]]);
+  b += cut(bar, { rng, fill: P.civic, filter: FLAT }) + L(ink(bar, { rng, size: 2 }));
+  const stops = [
+    [140, ['Zoning is', 'the plan'], 'no separate plan', T.sky],
+    [330, ['One factor'], 'courts weigh it', P.sky],
+    [586, ['Consistency'], 'zoning must match', P.butter],
+  ];
+  stops.forEach(([x, lines, what, fill], i) => {
+    const d = ellipseD(x, y, 22, 22);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.6 }));
+    lines.forEach((t, k) => { b += title(x, y + 70 + k * 32, t, { size: 28 }); });
+    b += label(x, y + 70 + lines.length * 32 + 4, what, { color: MUTED, weight: 500 });
+  });
+  b += label(40, 70, 'less legal weight', { anchor: 'start', color: MUTED, weight: 500 });
+  b += label(690, 70, 'more legal weight', { anchor: 'end', color: MUTED, weight: 500 });
+  b += note(700, 340, 'there, rezone to match the plan', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// The family of plans around the comprehensive plan.
+function planFamily() {
+  const rng = makeRng(4203);
+  const W = 720;
+  const H = 540;
+  let b = '';
+  const box = (x, y, w, h, fill, head, sub) => {
+    const d = roundRectD(x, y, w, h, 14);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 })) + title(x + w / 2, y + 40, head, { size: 28 }) + label(x + w / 2, y + 74, sub, { color: MUTED, weight: 500 });
+  };
+  b += box(160, 16, 400, 96, T.lav, 'Regional plan', 'across jurisdictions');
+  b += box(110, 164, 500, 110, P.butter, 'Comprehensive plan', 'whole city, all topics, 20 years');
+  b += box(14, 330, 340, 96, T.sky, 'Area plans', 'a place, block by block');
+  b += box(366, 330, 340, 96, T.sage, 'Functional plans', 'one system, citywide');
+  b += L(arrow(360, 114, 360, 158, rng, { size: 2.4, head: 10 }));
+  b += L(arrow(250, 278, 190, 324, rng, { size: 2.4, head: 10 }));
+  b += L(arrow(470, 278, 530, 324, rng, { size: 2.4, head: 10 }));
+  b += label(360, 474, 'carried out by zoning, the CIP, and programs', { weight: 700 });
+  b += note(360, 518, 'adopt area plans into the plan to give them weight', { color: P.tomatoDeep, size: 35 });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 4.3
+
+// The plan hierarchy as a funnel, with the lesson's housing example.
+function planHierarchy() {
+  const rng = makeRng(4301);
+  const W = 720;
+  const H = 500;
+  let b = '';
+  const rows = [
+    ['Vision', 'room for every age and income', P.sky],
+    ['Goal', 'housing for all income levels', T.sky],
+    ['Objective', '2,000 affordable homes by 2035', P.butter],
+    ['Policy', 'shall allow duplexes citywide', P.sage],
+    ['Action', 'draft the code by June 2026', P.blush],
+  ];
+  const top = 20;
+  const rh = 88;
+  const cx = 140;
+  const half = (i) => 124 - i * 13;
+  rows.forEach(([name, ex, fill], i) => {
+    const y = top + i * rh;
+    const d = polyD([[cx - half(i), y], [cx + half(i), y], [cx + half(i + 1), y + rh - 6], [cx - half(i + 1), y + rh - 6]]);
+    b += cut(d, { rng, fill, filter: FLAT, jitter: 0.5 }) + L(ink(d, { rng, size: 2 }));
+    b += title(cx, y + rh / 2 + 8, name, { size: 28 });
+    b += label(290, y + rh / 2 + 8, ex, { anchor: 'start', weight: 500 });
+    b += L(inkLine([[cx + half(i) + 8, y + rh / 2], [280, y + rh / 2]], { rng, size: 1.4, overshoot: 0, opacity: 0.6 }));
+  });
+  b += note(360, 486, 'broad at the top, assigned at the bottom', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// A SMART objective, drawn from its own numbers: 60% today, 80% by 2035.
+function smartObjective() {
+  const rng = makeRng(4302);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const x0 = 60;
+  const w = 560;
+  const X = (p) => x0 + (p / 100) * w;
+  const y = 170;
+  const track = rectD(x0, y, w, 50);
+  b += cut(track, { rng, fill: '#EFE7D6', filter: FLAT }) + L(ink(track, { rng, size: 2 }));
+  const now = rectD(x0, y, X(60) - x0, 50);
+  b += cut(now, { rng, fill: P.leaf, filter: FLAT, shadow: false }) + L(ink(now, { rng, size: 2 }));
+  const gap = rectD(X(60), y, X(80) - X(60), 50);
+  b += `<path d="${gap}" fill="${P.sage}" opacity="0.7"/>` + hatch(gap, { rng, angle: 45, gap: 9, color: P.leafDeep, opacity: 0.5, size: 1.2 });
+  for (const p of [0, 20, 40, 60, 80, 100]) b += label(X(p), y + 90, `${p}%`, { color: MUTED, weight: 500 });
+  const flag = (x, text, sub, color, anchor) => {
+    const tx = anchor === 'end' ? x - 10 : x + 10;
+    let s = L(inkLine([[x, y - 2], [x, y - 90]], { rng, size: 2.4, color, overshoot: 0 }));
+    s += label(tx, y - 62, text, { color, weight: 800, anchor });
+    s += label(tx, y - 30, sub, { color, weight: 500, anchor });
+    return s;
+  };
+  b += flag(X(60), 'baseline', '60% today', P.leafDeep, 'end');
+  b += flag(X(80), 'target', '80% by 2035', P.tomatoDeep, 'start');
+  b += label(x0, 330, 'metric: residents within a 10-minute walk of a park', { anchor: 'start', weight: 500 });
+  b += note(x0, 380, 'a number, a starting point, a target, and a date', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Directive words, from permissive to binding.
+function directiveWords() {
+  const rng = makeRng(4303);
+  const W = 720;
+  const H = 360;
+  let b = '';
+  const words = [['may', 'encourage', 'permits', T.sky], ['should', '', 'expects, with judgment', P.sky], ['shall', 'will', 'commits', P.civic]];
+  words.forEach(([w1, w2, what, fill], i) => {
+    const x = 20 + i * 234;
+    const h = 90 + i * 60;
+    const d = roundRectD(x, 280 - h, 212, h, 12);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    const tc = i === 2 ? '#FFFFFF' : P.ink;
+    b += title(x + 106, 280 - h + 46, `“${w1}”`, { size: 32, color: tc });
+    if (w2) b += title(x + 106, 280 - h + 84, `“${w2}”`, { size: 28, color: tc });
+    b += label(x + 106, 318, what, { weight: 700 });
+  });
+  b += L(inkLine([[16, 282], [704, 282]], { rng, size: 2.4, overshoot: 0 }));
+  b += note(20, 50, 'an all-“encourage” plan', { anchor: 'start', color: P.tomatoDeep });
+  b += note(20, 86, 'commits to nothing', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 4.4
+
+// A goals-achievement matrix whose winner flips when one weight doubles.
+function goalsMatrix() {
+  const rng = makeRng(4401);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  // Illustrative scores, 1 (poor) to 5 (best), for three criteria.
+  const alts = [['A', [2, 5, 4]], ['B', [3, 4, 5]], ['C', [5, 4, 2]]];
+  const eq = alts.map(([, sc]) => sc.reduce((a, c) => a + c, 0));
+  const dbl = alts.map(([, sc]) => sc[0] * 2 + sc[1] + sc[2]);
+  const best = (arr) => arr.indexOf(Math.max(...arr));
+  const cols = [180, 300, 415, 545, 660];
+  const top = 130;
+  const rh = 76;
+  const heads = [['Housing'], ['Farmland'], ['Cost'], ['Equal', 'weights'], ['Housing', 'x 2']];
+  b += label(60, 58, 'Option', { weight: 800 });
+  heads.forEach((h, i) => h.forEach((t, k) => { b += label(cols[i], 58 + k * 32, t, { weight: 800, color: i >= 3 ? P.civicDeep : P.ink }); }));
+  const hl = (x, y, fill) => { const d = roundRectD(x - 50, y, 100, rh - 12, 10); return cut(d, { rng, fill, filter: FLAT, shadow: false }) + L(ink(d, { rng, size: 2.4 })); };
+  b += hl(cols[3], top + best(eq) * rh, P.butter) + hl(cols[4], top + best(dbl) * rh, P.butter);
+  alts.forEach(([name, sc], r) => {
+    const y = top + r * rh + 44;
+    b += title(60, y, name, { size: 32 });
+    sc.forEach((v, c) => { b += label(cols[c], y, String(v)); });
+    b += label(cols[3], y, String(eq[r]), { weight: 800 }) + label(cols[4], y, String(dbl[r]), { weight: 800 });
+  });
+  b += L(inkLine([[20, top - 8], [700, top - 8]], { rng, size: 2, overshoot: 0 }) + inkLine([[478, 40], [478, top + 3 * rh]], { rng, size: 1.6, overshoot: 0, opacity: 0.6 }));
+  b += label(40, top + 3 * rh + 40, 'scores 1 to 5, illustrative', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(700, top + 3 * rh + 86, 'one weight changed, and the winner flips', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// Scenario planning: four futures from two uncertainties, one robust strategy.
+function scenarioGrid() {
+  const rng = makeRng(4402);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const x0 = 170;
+  const y0 = 40;
+  const cw = 250;
+  const ch = 180;
+  const cells = [
+    [0, 0, 'Fast growth,', 'high impact', T.blush], [1, 0, 'Slow growth,', 'high impact', T.butter],
+    [0, 1, 'Fast growth,', 'low impact', T.sky], [1, 1, 'Slow growth,', 'low impact', T.sage],
+  ];
+  for (const [c, r, l1, l2, fill] of cells) {
+    const x = x0 + c * (cw + 10);
+    const y = y0 + r * (ch + 10);
+    const d = roundRectD(x, y, cw, ch, 14);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += label(x + cw / 2, y + (r ? ch - 54 : 44), l1, { weight: 700 }) + label(x + cw / 2, y + (r ? ch - 22 : 76), l2, { weight: 500 });
+  }
+  const cx = x0 + cw + 5;
+  const cy = y0 + ch + 5;
+  const hub = roundRectD(cx - 110, cy - 46, 220, 92, 46);
+  b += cut(hub, { rng, fill: P.paper, filter: FLAT }) + L(ink(hub, { rng, size: 2.6, color: P.leafDeep }));
+  b += star(cx - 72, cy, 18, { fill: P.butter, seed: 4 });
+  b += label(cx + 14, cy - 6, 'robust', { weight: 800, color: P.leafDeep }) + label(cx + 14, cy + 26, 'strategy', { weight: 800, color: P.leafDeep });
+  b += title(150, y0 + ch / 2 - 14, 'Climate', { size: 28, anchor: 'end' });
+  b += title(150, y0 + ch / 2 + 18, 'impact', { size: 28, anchor: 'end' });
+  b += label(150, y0 + ch / 2 + 54, 'high', { anchor: 'end', color: MUTED, weight: 500 });
+  b += label(150, y0 + ch * 1.5 + 30, 'low', { anchor: 'end', color: MUTED, weight: 500 });
+  b += title(x0 + cw / 2, y0 + 2 * ch + 60, 'fast growth', { size: 28 }) + title(x0 + cw * 1.5 + 10, y0 + 2 * ch + 60, 'slow growth', { size: 28 });
+  b += note(360, 506, 'not predictions: tests for a strategy', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// The buildable lands gap from the lesson: demand 12,000, capacity 7,500.
+function buildableGap() {
+  const rng = makeRng(4403);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const demand = 12000;
+  const cap = 7500;
+  const x0 = 224;
+  const w = 470;
+  const X = (v) => x0 + (v / demand) * w;
+  const bar = (y, v, fill, name, sub) => {
+    const d = rectD(x0, y, X(v) - x0, 64);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    s += title(x0 - 16, y + 32, name, { size: 28, anchor: 'end' }) + label(x0 - 16, y + 62, sub, { anchor: 'end', color: MUTED, weight: 500 });
+    s += label(X(v) - 16, y + 44, fmt(v), { anchor: 'end', weight: 800 });
+    return s;
+  };
+  b += bar(50, demand, P.sky, 'Demand', '20 years');
+  b += bar(170, cap, P.leaf, 'Capacity', 'current zoning');
+  const gap = rectD(X(cap), 170, X(demand) - X(cap), 64);
+  b += `<path d="${gap}" fill="${T.blush}"/>` + L(dashed(X(cap), 170, X(demand), 170, rng, { color: P.tomatoDeep }) + dashed(X(demand), 170, X(demand), 234, rng, { color: P.tomatoDeep }) + dashed(X(cap), 234, X(demand), 234, rng, { color: P.tomatoDeep }));
+  b += label((X(cap) + X(demand)) / 2, 214, `gap ${fmt(demand - cap)}`, { color: P.tomatoDeep, weight: 800 });
+  b += label(x0, 300, 'floodplains, steep slopes removed', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(x0, 356, 'close it with infill: upzone corridors,', { anchor: 'start', color: P.leafDeep });
+  b += note(x0, 390, 'allow middle housing', { anchor: 'start', color: P.leafDeep });
+  return { W, H, b };
+}
+
+// The three scopes of a greenhouse gas inventory.
+function ghgScopes() {
+  const rng = makeRng(4404);
+  const PW = 228;
+  const PH = 330;
+  const head = (n, sub) => title(PW / 2, 42, `Scope ${n}`, { size: 26 }) + label(PW / 2, 72, sub, { size: 19, color: MUTED, weight: 500 });
+  const puff = (x, y) => `<circle cx="${x}" cy="${y}" r="10" fill="#C9C3D3"/><circle cx="${x + 14}" cy="${y - 12}" r="13" fill="#D9D4E1"/>`;
+  let s1 = panel(0, 0, PW, PH, T.cream, rng) + head(1, 'direct');
+  const truck = roundRectD(50, 170, 110, 56, 8);
+  s1 += cut(truck, { rng, fill: P.civic, filter: FLAT }) + L(ink(truck, { rng, size: 2 }));
+  s1 += `<circle cx="78" cy="232" r="12" fill="${P.ink}"/><circle cx="136" cy="232" r="12" fill="${P.ink}"/>` + puff(176, 206) + puff(196, 186);
+  s1 += label(PW / 2, 150, 'city fleet', { size: 19, weight: 700 });
+  s1 += note(PW / 2, 296, 'burned by you', { size: 24 });
+  let s2 = panel(0, 0, PW, PH, T.cream, rng) + head(2, 'purchased electricity');
+  const plant = rectD(24, 150, 56, 80);
+  s2 += cut(plant, { rng, fill: P.kraft, filter: FLAT }) + L(ink(plant, { rng, size: 2 })) + puff(46, 138);
+  const bldg = rectD(150, 160, 56, 70);
+  s2 += cut(bldg, { rng, fill: P.sky, filter: FLAT }) + L(ink(bldg, { rng, size: 2 }));
+  s2 += L(inkLine([[80, 170], [150, 176]], { rng, size: 2, overshoot: 0 }));
+  s2 += `<path d="M112 160l-8 14h10l-6 14" fill="none" stroke="${P.butterDeep}" stroke-width="3"/>`;
+  s2 += note(PW / 2, 296, 'burned for you', { size: 24 });
+  let s3 = panel(0, 0, PW, PH, T.cream, rng) + head(3, 'other indirect');
+  const bin = polyD([[70, 170], [158, 170], [150, 232], [78, 232]]);
+  s3 += cut(bin, { rng, fill: P.leaf, filter: FLAT }) + L(ink(bin, { rng, size: 2 }));
+  s3 += label(PW / 2, 150, 'waste, supply chain', { size: 19, weight: 700 });
+  s3 += note(PW / 2, 296, 'caused by you', { size: 24 });
+  const panels = [s1, s2, s3];
+  return {
+    W: 720, H: 358, b: panels.map((q, i) => at(8 + i * 238, 14, q)).join(''),
+    narrow: { W: 252, H: 1034, b: panels.map((q, i) => at(12, 12 + i * 342, q)).join('') },
+  };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -2890,6 +3315,20 @@ export const FIGURES = [
   ['fig-who-does-what', whoDoesWhat],
   ['fig-staff-report', staffReport],
   ['fig-flood-odds', floodOdds],
+  ['fig-planning-sequence', planningSequence],
+  ['fig-hazards-first', hazardsFirst],
+  ['fig-tradeoff', tradeoffOptions],
+  ['fig-growth-drift', growthDrift],
+  ['fig-flu-zoning', fluVsZoning],
+  ['fig-consistency', consistencySpectrum],
+  ['fig-plan-family', planFamily],
+  ['fig-plan-hierarchy', planHierarchy],
+  ['fig-smart', smartObjective],
+  ['fig-directive-words', directiveWords],
+  ['fig-goals-matrix', goalsMatrix],
+  ['fig-scenarios', scenarioGrid],
+  ['fig-buildable-gap', buildableGap],
+  ['fig-ghg-scopes', ghgScopes],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

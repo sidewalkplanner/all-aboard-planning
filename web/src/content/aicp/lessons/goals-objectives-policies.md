@@ -22,6 +22,10 @@ Plans move from the general to the specific. The terms vary a little from plan t
 
 A quick test: **a goal is broad, an objective is measurable, and a policy guides decisions.** "Improve walkability" is a goal. "Increase the share of residents living within a ten-minute walk of a park from 60% to 80% by 2035" is an objective.
 
+:::figure fig-plan-hierarchy | A funnel narrowing from top to bottom, with the housing example from the table beside each level. Vision: room for every age and income. Goal: housing for all income levels. Objective: 2,000 affordable homes by 2035. Policy: shall allow duplexes citywide. Action: draft the code by June 2026. A note says broad at the top, assigned at the bottom.
+Each level answers the one above it: the goal says what, the objective says how much and by when, and the action says who does it.
+:::
+
 :::video From vision to action: the plan hierarchy | about 2 min
 Builds one example from a vision statement down to an assigned action, so the difference between a goal, an objective, and a policy is easy to see.
 :::
@@ -39,6 +43,10 @@ Objectives are how you'll know whether the plan is working. Many planners use th
 
 Objectives connect directly to plan monitoring. See [Implementation programs, partnerships, and monitoring](/aicp/lessons/monitoring-and-implementation-programs).
 
+:::figure fig-smart | A bar from 0% to 100% for the share of residents within a 10-minute walk of a park. The baseline, 60% today, is filled in; the stretch from 60% to the target, 80% by 2035, is hatched. A note says an objective needs a number, a starting point, a target, and a date.
+The hatched stretch is what monitoring tracks: without the baseline, you couldn't tell how far the plan has come.
+:::
+
 ### Drafting policy
 
 Policies are applied again and again: in staff reports, rezonings, capital budgets, and design reviews. They need to be clear enough that two planners reading them would reach the same conclusion.
@@ -48,6 +56,10 @@ Policies are applied again and again: in staff reports, rezonings, capital budge
 - **Avoid undefined terms.** "Compatible," "appropriate," and "high-quality" invite argument unless the plan says what they mean.
 - **Stay within authority.** Don't write policies the jurisdiction has no power to carry out.
 - **Keep the logic visible.** Each policy should trace up to a goal and down to actions.
+
+:::figure fig-directive-words | Three blocks of increasing height. "May" and "encourage" permit. "Should" expects, with room for judgment. "Shall" and "will" commit. A note says an all-"encourage" plan commits to nothing.
+Choose the word for how firmly the city means it, because the word is what the next staff report will be held to.
+:::
 
 :::checkpoint cp:goals-shall
 
