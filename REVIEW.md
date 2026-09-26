@@ -215,7 +215,7 @@ This is the hand-off for the build described in `PLAN.md`: what was built, the a
 
 ## VERIFY flags
 
-There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
+There are 96 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
 
 | Location | What to check |
 |---|---|
@@ -238,8 +238,8 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:51` | confirm the current status of federal LEP guidance (Executive Order 13166 and agency guidance), which may have changed in 2025. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:52` | federal environmental justice executive orders have been revoked or amended since 2025; confirm the current status of EO 12898 before relying on it. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:69` | confirm the 2024 DOJ Title II web accessibility rule's standard (WCAG 2.1 AA) and its current compliance dates. |
-| `web/src/content/aicp/lessons/federal-policy-and-planning.md:24` | confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. |
-| `web/src/content/aicp/lessons/federal-policy-and-planning.md:35` | confirm the 1962 Act as the origin of the 3C planning requirement. |
+| `web/src/content/aicp/lessons/federal-policy-and-planning.md:26` | confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. |
+| `web/src/content/aicp/lessons/federal-policy-and-planning.md:37` | confirm the 1962 Act as the origin of the 3C planning requirement. |
 | `web/src/content/aicp/lessons/goals-objectives-policies.md:79` | "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:22` | confirm the SmartCode transect zone numbering (T1–T6) and names if you want to teach them precisely. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:38` | performance zoning is often associated with Lane Kendig's work in Bucks County, Pennsylvania, in the 1970s; confirm before attributing. |
@@ -257,19 +257,19 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:47` | some states (for example, California and Arizona) require water supply assessments or assured supply for large developments; confirm before naming them. |
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:64` | MS4 = municipal separate storm sewer system permits under the NPDES program; confirm terminology before expanding. |
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:74` | confirm the general statement that investor-owned utilities are regulated by state public utility commissions. |
-| `web/src/content/aicp/lessons/land-use-law-foundations.md:79` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
+| `web/src/content/aicp/lessons/land-use-law-foundations.md:86` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
 | `web/src/content/aicp/lessons/leadership-in-planning.md:22` | adaptive leadership is usually attributed to Ronald Heifetz; confirm before attributing. |
 | `web/src/content/aicp/lessons/mentoring-and-professional-development.md:86` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
 | `web/src/content/aicp/lessons/mentoring-and-professional-development.md:87` | confirm which advanced specialty certifications AICP currently offers. |
-| `web/src/content/aicp/lessons/planning-history.md:32` | the "make no little plans" quotation's attribution to Burnham is disputed; keep the "popularly attributed" hedge or remove. |
-| `web/src/content/aicp/lessons/planning-history.md:41` | Hartford 1907 as the first official municipal planning commission is commonly cited; confirm before publishing. |
-| `web/src/content/aicp/lessons/planning-history.md:43` | SZEA publication history is given variously as 1922, 1924, and 1926; confirm the dates you want to teach. |
-| `web/src/content/aicp/lessons/planning-history.md:98` | Oregon's statewide land use planning law (Senate Bill 100) is commonly dated to 1973; confirm. |
-| `web/src/content/aicp/lessons/planning-history.md:104` | confirm the founding years 1917 (ACPI/AIP) and 1934 (ASPO). |
-| `web/src/content/aicp/lessons/planning-history.md:108` | confirm CNU's founding year (1993). |
-| `web/src/content/aicp/lessons/planning-history.md:109` | confirm Maryland Smart Growth program year (1997). |
-| `web/src/content/aicp/lessons/planning-theory.md:59` | Krumholz served as Cleveland planning director roughly 1969–1979, and the Cleveland Policy Planning Report is usually dated 1975; confirm if dates are added. |
-| `web/src/content/aicp/lessons/planning-theory.md:82` | confirm the conflict labels in Campbell's planner's triangle (property, resource, development) and the 1996 date. The figure `fig-planners-triangle` just below repeats the three labels, so a change here means redrawing it. |
+| `web/src/content/aicp/lessons/planning-history.md:50` | the "make no little plans" quotation's attribution to Burnham is disputed; keep the "popularly attributed" hedge or remove. |
+| `web/src/content/aicp/lessons/planning-history.md:61` | Hartford 1907 as the first official municipal planning commission is commonly cited; confirm before publishing. |
+| `web/src/content/aicp/lessons/planning-history.md:63` | SZEA publication history is given variously as 1922, 1924, and 1926; confirm the dates you want to teach. |
+| `web/src/content/aicp/lessons/planning-history.md:129` | Oregon's statewide land use planning law (Senate Bill 100) is commonly dated to 1973; confirm. |
+| `web/src/content/aicp/lessons/planning-history.md:135` | confirm the founding years 1917 (ACPI/AIP) and 1934 (ASPO). |
+| `web/src/content/aicp/lessons/planning-history.md:139` | confirm CNU's founding year (1993). |
+| `web/src/content/aicp/lessons/planning-history.md:140` | confirm Maryland Smart Growth program year (1997). |
+| `web/src/content/aicp/lessons/planning-theory.md:64` | Krumholz served as Cleveland planning director roughly 1969–1979, and the Cleveland Policy Planning Report is usually dated 1975; confirm if dates are added. |
+| `web/src/content/aicp/lessons/planning-theory.md:95` | confirm the conflict labels in Campbell's planner's triangle (property, resource, development) and the 1996 date. The figure `fig-planners-triangle` just below repeats the three labels, so a change here means redrawing it. |
 | `web/src/content/aicp/lessons/project-and-contract-management.md:71` | the federal QBS requirement for A/E services comes from the Brooks Act (1972); confirm it applies to the planning services in question. |
 | `web/src/content/aicp/lessons/research-design-and-data.md:105` | confirm that the 65,000-population threshold for ACS 1-year estimates is current, and that the 3-year product remains discontinued. |
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:26` | confirm the claim that most states have right-to-farm laws. |
@@ -305,16 +305,16 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/pages/exam-strategy.md:38` | confirm APA's current scoring policy on unanswered questions. |
 | `web/src/content/pages/exam-strategy.md:89` | confirm calculator policy with APA's current candidate guide. |
 | `web/src/content/pages/exam-strategy.md:112` | confirm APA still includes unscored pretest items. |
-| `web/src/content/pages/quick-reference.md:22` | confirm this holding summary. |
-| `web/src/content/pages/quick-reference.md:56` | Mount Laurel I is usually dated 1975 and Mount Laurel II 1983. |
-| `web/src/content/pages/quick-reference.md:62` | SZEA publication dates are given variously as 1922, 1924, and 1926. |
-| `web/src/content/pages/quick-reference.md:68` | confirm the 1962 Act as the origin of the 3C requirement. |
-| `web/src/content/pages/quick-reference.md:81` | LIHTC is usually dated to the Tax Reform Act of 1986. |
-| `web/src/content/pages/quick-reference.md:176` | confirm the 65,000 threshold is current. |
-| `web/src/content/pages/quick-reference.md:177` | confirm the current question count and time limit with APA. |
-| `web/src/content/pages/quick-reference.md:178` | confirm the credit remains 20%. |
-| `web/src/content/pages/quick-reference.md:179` | confirm the five-year update cycle. |
-| `web/src/content/pages/quick-reference.md:180` | confirm the current CM requirement. |
+| `web/src/content/pages/quick-reference.md:26` | confirm this holding summary. |
+| `web/src/content/pages/quick-reference.md:61` | Mount Laurel I is usually dated 1975 and Mount Laurel II 1983. |
+| `web/src/content/pages/quick-reference.md:68` | SZEA publication dates are given variously as 1922, 1924, and 1926. |
+| `web/src/content/pages/quick-reference.md:74` | confirm the 1962 Act as the origin of the 3C requirement. |
+| `web/src/content/pages/quick-reference.md:89` | LIHTC is usually dated to the Tax Reform Act of 1986. |
+| `web/src/content/pages/quick-reference.md:201` | confirm the 65,000 threshold is current. |
+| `web/src/content/pages/quick-reference.md:202` | confirm the current question count and time limit with APA. |
+| `web/src/content/pages/quick-reference.md:203` | confirm the credit remains 20%. |
+| `web/src/content/pages/quick-reference.md:204` | confirm the five-year update cycle. |
+| `web/src/content/pages/quick-reference.md:205` | confirm the current CM requirement. |
 
 Other placeholders, which aren't VERIFY flags:
 - `web/src/content/pages/about.md` has `<!-- PLACEHOLDER -->` for the founder bio.

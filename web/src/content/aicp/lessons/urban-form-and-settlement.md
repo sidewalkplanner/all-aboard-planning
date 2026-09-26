@@ -1,7 +1,8 @@
 ## Learning objectives
 
 - Compare the concentric zone, sector, and multiple nuclei models of urban structure.
-- Explain central place theory and its key ideas of threshold, range, and hierarchy.
+- Explain how land values sort uses by location (von Thünen, bid-rent) and how central place theory explains threshold, range, and hierarchy.
+- Describe how neighborhoods change through filtering, succession, and gentrification, and how households sort among local governments.
 - Describe the forces behind American suburbanization and the rise of edge cities.
 - Explain how redlining, restrictive covenants, and exclusionary practices produced segregated settlement patterns, and the legal turning points that followed.
 - Apply Kevin Lynch's five elements of the city image, and explain why natural, social, and economic systems must be analyzed together.
@@ -26,6 +27,15 @@ Rings, wedges, and several centers: that visual difference is usually enough to 
 
 :::checkpoint cp:form-nuclei
 
+### Land value and location: von Thünen and bid-rent
+
+Why do offices crowd downtown while houses spread outward? Two related models answer with transportation cost and land value.
+
+- **Johann Heinrich von Thünen** (1826) modeled farming around a single market town. Crops that were bulky, perishable, or intensively grown occupied the rings nearest the market, and extensive uses such as grazing lay farthest out, because each use could afford land only where its transport costs left a profit.
+- **Bid-rent theory**, developed for cities by William Alonso (1964), applies the same logic to urban land. Each user bids for land according to how much it values access to the center. Commercial users value access most and outbid everyone near the core; residential users take the next ring, trading a longer commute for cheaper land and more space. The result is that **land values and density fall with distance from the center**, the pattern the concentric zone model sketches.
+
+:::checkpoint cp:form-bid-rent
+
 ### Central place theory
 
 **Walter Christaller** (1933) explained the size, number, and spacing of settlements by the goods and services they provide to surrounding areas.
@@ -33,6 +43,8 @@ Rings, wedges, and several centers: that visual difference is usually enough to 
 - **Threshold**: the minimum population needed to support a good or service. A hospital needs a much larger threshold than a convenience store.
 - **Range**: the maximum distance people will travel to get it.
 - **Hierarchy**: many small places offer everyday goods, and fewer, larger places offer specialized ones. On a uniform plain, market areas form a hexagonal pattern.
+
+Two related observations describe city sizes across a country. The **rank-size rule** says the second-largest city tends to be about half the size of the largest, the third about a third, and so on. A **primate city** is one far larger than any other in its country, dominating its economy and culture, as capital cities often do.
 
 Central place ideas still inform retail market analysis and regional service planning.
 
@@ -49,12 +61,24 @@ American cities spread outward in waves:
 1. **Streetcar suburbs** (late 1800s to early 1900s) grew in linear patterns along rail lines.
 2. **Automobile suburbs** grew after the 1920s, and exploded after World War II, powered by federally insured mortgages, the GI Bill, cheap land at the fringe, and later the Interstate highways. Mass-produced subdivisions such as **Levittown, New York** (begun in 1947) became symbols of the era.
 3. **Edge cities**: journalist Joel Garreau's term (1991) for suburban concentrations of office and retail space, usually at highway interchanges, that rival traditional downtowns.
+4. **Exurbs**: low-density, largely residential development beyond the suburbs, often in rural areas, whose residents commute into the metropolitan area.
+
+At the largest scale, metropolitan areas grow together into **megaregions**, networks of metros linked by economies, infrastructure, and commuting. Geographer Jean Gottmann's *Megalopolis* (1961) described the urbanized Northeast corridor from Boston to Washington.
 
 Decentralization moved jobs and tax base away from central cities, contributing to disinvestment, fiscal strain, and **spatial mismatch**, a gap between where low-income workers live and where jobs are.
 
 :::figure fig-suburban-waves | A map of a metro area. Downtown sits in the middle. Streetcar suburbs line three rail lines that run out from downtown. Car suburbs, drawn as loops and cul-de-sacs, fill the spaces between the lines. A freeway ring circles the city, and a cluster of office towers, an edge city, stands where a radial freeway crosses the ring.
 Each wave followed the transportation of its day: rails made fingers of growth, and cars and freeways filled the gaps and pulled offices out to the interchanges.
 :::
+
+### How neighborhoods change
+
+- **Filtering**: as housing ages, it tends to pass down the income ladder to less affluent households, while higher-income households move into newer housing. Filtering is a main source of lower-cost housing, but it depends on enough new construction at the top.
+- **Invasion and succession**: Chicago School sociologists described neighborhoods changing as new groups moved in and earlier residents moved out, borrowing the terms from plant ecology.
+- **Gentrification**: the influx of higher-income residents and investment into lower-income neighborhoods, raising rents and property values and often displacing existing residents and businesses. British sociologist Ruth Glass coined the term in 1964. See [Housing and community development](/aicp/lessons/housing-and-community-development) for responses.
+- **Tiebout sorting**: economist Charles Tiebout (1956) argued that households "vote with their feet," choosing among local governments that offer different packages of taxes and services. The model helps explain fiscal zoning and why suburbs compete for tax base, and critics note that it rewards households who can afford to move.
+
+:::checkpoint cp:form-filtering
 
 ### How segregation was built
 
@@ -112,6 +136,14 @@ Settlements sit inside interlocking systems. Paving a watershed changes stormwat
 - **Restrictive covenant**: A private deed restriction on the use or sale of property; racial covenants were held unenforceable in 1948.
 - **Exclusionary zoning**: Zoning rules that effectively keep lower-income households out of a community.
 - **Imageability**: Lynch's term for how easily a city forms a clear mental image.
+- **Bid-rent theory**: The model in which land users bid for locations by the value of access, so land values fall with distance from the center.
+- **Rank-size rule**: The pattern in which a country's nth-largest city is about 1/n the size of the largest.
+- **Primate city**: A city far larger than any other in its country.
+- **Exurb**: Low-density development beyond the suburbs, tied to the metro area by commuting.
+- **Megaregion**: A network of metropolitan areas linked by economies, infrastructure, and commuting.
+- **Filtering**: The passing of aging housing to lower-income households.
+- **Gentrification**: Higher-income residents and investment moving into a lower-income area, often displacing existing residents.
+- **Tiebout sorting**: Households choosing among local governments by their mix of taxes and services.
 
 ## Real-world examples
 
@@ -123,12 +155,13 @@ Settlements sit inside interlocking systems. Paving a watershed changes stormwat
 
 ## Exam tips
 
-- Rings are **Burgess**, wedges along corridors are **Hoyt**, and several centers are **Harris and Ullman**.
+- Rings are **Burgess**, wedges along corridors are **Hoyt**, and several centers are **Harris and Ullman**; land values falling with distance from the center is **bid-rent** (Alonso).
 - Christaller's **threshold** is the minimum market to support a good; **range** is the maximum distance people will travel for it.
 - *Shelley v. Kraemer* (1948) made racial covenants unenforceable by courts; *Buchanan v. Warley* (1917) struck down racial zoning.
 - Redlining is tied to the **Home Owners' Loan Corporation** "residential security maps" of the 1930s.
 - Lynch's five elements: **paths, edges, districts, nodes, landmarks**.
+- Aging housing moving down the income ladder is **filtering**; "voting with your feet" among local governments is **Tiebout**.
 
 ## Summary
 
-Burgess's concentric zones, Hoyt's sectors, and Harris and Ullman's multiple nuclei are simplified models of urban structure; the multiple nuclei model fits today's regions best. Christaller's central place theory explains settlement hierarchies through threshold and range. Suburbanization, driven by transportation technology and federal housing and highway policy, produced edge cities and spatial mismatch. Segregation was built through racial covenants, redlining, urban renewal, and exclusionary zoning. The courts struck racial zoning in 1917 and barred covenant enforcement in 1948, and the Fair Housing Act followed in 1968. Lynch's paths, edges, districts, nodes, and landmarks describe how people read cities, and good analysis treats natural, social, and economic systems as connected.
+Burgess's concentric zones, Hoyt's sectors, and Harris and Ullman's multiple nuclei are simplified models of urban structure; the multiple nuclei model fits today's regions best. Christaller's central place theory explains settlement hierarchies through threshold and range. Bid-rent theory explains why land values and density fall with distance from the center. Suburbanization, driven by transportation technology and federal housing and highway policy, produced edge cities and spatial mismatch. Neighborhoods change through filtering, succession, and gentrification, and households sort among local governments. Segregation was built through racial covenants, redlining, urban renewal, and exclusionary zoning. The courts struck racial zoning in 1917 and barred covenant enforcement in 1948, and the Fair Housing Act followed in 1968. Lynch's paths, edges, districts, nodes, and landmarks describe how people read cities, and good analysis treats natural, social, and economic systems as connected.

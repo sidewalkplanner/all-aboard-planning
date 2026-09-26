@@ -223,13 +223,11 @@ When you collect information from people, you owe them informed consent, confide
 ## Exam tips
 
 - Small area plus detailed characteristics (income, commuting, rent burden) points to **ACS 5-year estimates**; a complete count for apportionment points to the **decennial census**.
-- Only a **probability sample** supports generalizing to the whole population. An open online survey or a public meeting is **self-selected**, however many people respond.
+- Only a **probability sample** supports generalizing to the whole population. An open online survey or a public meeting is **self-selected**, however many people respond. Halving a margin of error takes about four times the sample; for a large population, its size barely affects precision.
 - Validity is *measuring the right thing*; reliability is *measuring it consistently*. A reliable measure can still be invalid.
-- When a question asks how to understand people's experiences, the answer is qualitative (interviews, focus groups), not another survey.
-- Using a second method to confirm a finding is **triangulation**.
+- To understand people's experiences, use qualitative methods (interviews, focus groups), not another survey; using a second method to confirm a finding is **triangulation**.
 - To show a program worked, compare the change where it happened with the change in similar places that didn't get it. Before-and-after alone can't separate the program from everything else that changed.
 - Asset mapping starts from a community's strengths; a needs assessment starts from its gaps.
-- Halving a margin of error takes about four times the sample. For a large population, the population's size barely affects precision.
 
 ## Summary
 

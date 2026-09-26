@@ -20,6 +20,8 @@ Land use regulation is mostly a state and local power, but federal money and fed
 | **Housing Act of 1954** | Broadened urban renewal toward rehabilitation and created the **Section 701** program of federal grants for local, metropolitan, and state planning. It required a "workable program," including a comprehensive plan, for renewal funding. |
 | **Model Cities (1966)** | The Demonstration Cities and Metropolitan Development Act funded coordinated, comprehensive antipoverty and neighborhood improvement efforts in selected cities, with resident participation. |
 | **Housing and Community Development Act of 1974** | Consolidated categorical programs, including urban renewal and Model Cities, into the flexible **Community Development Block Grant (CDBG)** and created the **Section 8** rental assistance program. |
+| **HOPE VI (1992)** | Funded demolition of severely distressed public housing and its replacement with mixed-income communities, often with fewer deeply affordable units than before. |
+| **Choice Neighborhoods (2010)** | Succeeded HOPE VI, pairing public and assisted housing redevelopment with investment in the surrounding neighborhood. |
 
 <!-- VERIFY: confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. -->
 
@@ -33,7 +35,13 @@ The 1974 act didn't add another program on top; it rolled the older categorical 
 
 - The **Federal-Aid Highway Act of 1956** created the **Highway Trust Fund**, financed by fuel taxes, and paid 90% of the cost of the **Interstate Highway System**. It accelerated suburbanization and routed freeways through many central-city neighborhoods, especially Black neighborhoods. It did *not* create metropolitan planning organizations.
 - The **Federal-Aid Highway Act of 1962** required a "continuing, comprehensive, and cooperative" ("3C") urban transportation planning process for federal highway funding in urbanized areas, the root of today's **metropolitan planning organizations (MPOs)**. <!-- VERIFY: confirm the 1962 Act as the origin of the 3C planning requirement. -->
-- The **Intermodal Surface Transportation Efficiency Act (ISTEA)** of **1991** gave MPOs more authority and flexibility, allowing highway money to be spent on transit, bicycle, and pedestrian projects. Later surface transportation laws built on it. See [Transportation planning](/aicp/lessons/transportation-planning).
+- The **Intermodal Surface Transportation Efficiency Act (ISTEA)** of **1991** gave MPOs more authority and flexibility, allowing highway money to be spent on transit, bicycle, and pedestrian projects. Later surface transportation laws built on it:
+  - **TEA-21** (1998) and **SAFETEA-LU** (2005) continued ISTEA's flexible, multimodal approach.
+  - **MAP-21** (2012) introduced **performance-based planning**: national goals, performance measures, and targets that states and MPOs must set and track.
+  - The **FAST Act** (2015) continued that framework.
+  - The **Infrastructure Investment and Jobs Act** (2021), also called the Bipartisan Infrastructure Law, brought the largest federal infrastructure investment in decades, with new programs for safety, transit, bridges, electric vehicle charging, and resilience.
+
+  See [Transportation planning](/aicp/lessons/transportation-planning).
 
 :::checkpoint cp:fed-istea
 
@@ -44,6 +52,7 @@ The 1974 act didn't add another program on top; it rolled the older categorical 
 - The **Clean Water Act** (1972) regulates discharges into waters of the United States. Its **Section 404** permit program, administered by the Army Corps of Engineers, governs filling of wetlands and other waters.
 - The **Coastal Zone Management Act** (1972) encourages states to adopt coastal management programs, with federal funding and a "federal consistency" review.
 - The **Endangered Species Act** (1973) protects listed species and their critical habitat, and can shape local development through habitat conservation plans.
+- The **Inflation Reduction Act** (2022) funded clean energy and climate programs largely through tax credits and grants, including money for communities facing environmental burdens.
 - **CERCLA** (1980), known as Superfund, governs cleanup of hazardous waste sites and liability for contamination. The 2002 **Brownfields** amendments added liability protections and grants for redeveloping contaminated sites.
 
 :::checkpoint cp:fed-nepa-procedural
@@ -58,6 +67,7 @@ The **National Historic Preservation Act** (1966) created the **National Registe
 
 - **Title VI of the Civil Rights Act of 1964** prohibits discrimination based on race, color, or national origin in programs receiving federal funds. That reaches most planning agencies and MPOs, and it underpins requirements for language access and equitable engagement.
 - The **Fair Housing Act** (Title VIII of the Civil Rights Act of **1968**) prohibits discrimination in the sale, rental, and financing of housing based on race, color, religion, and national origin; **sex** was added in 1974; and **disability** and **familial status** were added by the **Fair Housing Amendments Act of 1988**. It also requires federal agencies and grantees to **affirmatively further fair housing**.
+- The **Home Mortgage Disclosure Act** (1975) requires lenders to report mortgage application data, which lets the public see lending patterns by neighborhood and race. The **Community Reinvestment Act** (1977) requires federally regulated banks to meet the credit needs of their whole service areas, including low- and moderate-income neighborhoods. Both responded to redlining.
 - The **Americans with Disabilities Act** (1990) prohibits disability discrimination and sets accessibility requirements for public facilities, public rights-of-way, and programs, including public meetings and digital communication.
 
 :::figure fig-fair-housing-classes | Three stacks of protected classes under the Fair Housing Act. 1968, the act: race, color, religion, and national origin. 1974, amended: sex is added. 1988 amendments: disability and familial status are added, for seven classes in all.
@@ -88,6 +98,9 @@ The two most-tested additions are the last ones: disability and familial status 
 - **Section 404**: The Clean Water Act permit program for filling wetlands and waters.
 - **Fair Housing Act**: The 1968 law prohibiting housing discrimination; disability and familial status were added in 1988.
 - **Affirmatively furthering fair housing**: The Fair Housing Act duty to take meaningful steps to overcome segregation and foster inclusive communities.
+- **Performance-based planning**: Planning organized around national goals, measures, and targets, required since MAP-21 (2012).
+- **HOPE VI**: A 1992 federal program that replaced distressed public housing with mixed-income communities.
+- **Community Reinvestment Act**: A 1977 law requiring banks to serve the credit needs of their whole communities, including low- and moderate-income areas.
 
 ## Real-world examples
 
@@ -103,11 +116,12 @@ Each requirement comes from a different law, often with a different agency, so a
 
 ## Exam tips
 
-- Pair the act with its signature program: **1949** urban renewal, **1954** Section 701, **1956** Interstates, **1974** CDBG and Section 8.
+- Pair the act with its signature program: **1949** urban renewal, **1954** Section 701, **1956** Interstates (which did **not** create MPOs), **1974** CDBG and Section 8.
+- Transportation laws in order: **ISTEA (1991) → TEA-21 (1998) → SAFETEA-LU (2005) → MAP-21 (2012, performance-based planning) → FAST Act (2015) → IIJA (2021)**.
 - NEPA requires an EIS for **major federal actions significantly affecting the environment**. It's procedural, not a mandate to choose the least harmful option.
-- The 1956 Highway Act did **not** create MPOs. Metropolitan planning requirements came later.
 - Fair Housing Act protected classes: race, color, religion, national origin, sex, disability, and familial status (the last two added in **1988**).
 - Wetland fill permits are Clean Water Act **Section 404**; historic review of federal projects is NHPA **Section 106**.
+- HMDA (1975) makes lending data public; the CRA (1977) requires banks to serve low- and moderate-income neighborhoods. Both answered redlining.
 
 ## Summary
 

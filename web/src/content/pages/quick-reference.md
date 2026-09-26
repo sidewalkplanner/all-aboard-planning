@@ -6,11 +6,15 @@
 
 | Case | Year | Holding in brief | Lesson |
 |---|---|---|---|
+| *Welch v. Swasey* | 1909 | Building height limits that differ by district upheld | [Land use law](/aicp/lessons/land-use-law-foundations) |
+| *Hadacheck v. Sebastian* | 1915 | A brickyard could be barred from an area that had turned residential, despite the loss in value | [Land use law](/aicp/lessons/land-use-law-foundations) |
 | *Buchanan v. Warley* | 1917 | Racial zoning is unconstitutional | [Settlement](/aicp/lessons/urban-form-and-settlement) |
 | *Village of Euclid v. Ambler Realty* | 1926 | Comprehensive zoning is a valid use of the police power | [Land use law](/aicp/lessons/land-use-law-foundations) |
+| *Gorieb v. Fox* | 1927 | Front setback requirements upheld | [Land use law](/aicp/lessons/land-use-law-foundations) |
 | *Nectow v. City of Cambridge* | 1928 | Zoning can be invalid **as applied** to one parcel | [Land use law](/aicp/lessons/land-use-law-foundations) |
 | *Shelley v. Kraemer* | 1948 | Courts can't enforce racially restrictive covenants | [Settlement](/aicp/lessons/urban-form-and-settlement) |
 | *Village of Belle Terre v. Boraas* | 1974 | Limits on the number of **unrelated** people in a household upheld | [Land use law](/aicp/lessons/land-use-law-foundations) |
+| *Young v. American Mini Theatres* | 1976 | Dispersing adult theaters upheld | [Land use law](/aicp/lessons/land-use-law-foundations) |
 | *Moore v. City of East Cleveland* | 1977 | A narrow definition of **related** family struck down | [Land use law](/aicp/lessons/land-use-law-foundations) |
 | *Village of Arlington Heights v. Metropolitan Housing* | 1977 | Equal protection claims require proof of **discriminatory intent** | [Land use law](/aicp/lessons/land-use-law-foundations) |
 | *City of Cleburne v. Cleburne Living Center* | 1985 | Special permit for a group home failed even rational basis review | [Land use law](/aicp/lessons/land-use-law-foundations) |
@@ -28,6 +32,7 @@
 | *Pennsylvania Coal v. Mahon* | 1922 | A regulation that goes "too far" is a taking |
 | *Berman v. Parker* | 1954 | Public purpose, including aesthetics, supports eminent domain |
 | *Penn Central v. New York City* | 1978 | Three-factor balancing test; judge the **parcel as a whole** |
+| *Agins v. City of Tiburon* | 1980 | Two-part takings test, including "substantially advances" (later rejected in *Lingle*) |
 | *Loretto v. Teleprompter Manhattan CATV* | 1982 | Permanent physical occupation is a **per se** taking |
 | *Hawaii Housing Authority v. Midkiff* | 1984 | Redistributing land to break up concentrated ownership is a public use |
 | *First English Lutheran Church v. Los Angeles County* | 1987 | Compensation is owed for **temporary** takings |
@@ -59,6 +64,7 @@ Full explanations: [Takings, exactions, and property rights](/aicp/lessons/takin
 
 | Year | Law or program | Remember it for |
 |---|---|---|
+| 1785 | Land Ordinance | Rectangular survey: 6-mile townships of 36 one-square-mile sections |
 | 1922–1928 | Standard State Zoning and Standard City Planning Enabling Acts <!-- VERIFY: SZEA publication dates are given variously as 1922, 1924, and 1926. --> | Model laws most states copied |
 | 1934 | National Housing Act | Created the FHA and insured mortgages |
 | 1937 | Housing Act | Public housing |
@@ -77,14 +83,24 @@ Full explanations: [Takings, exactions, and property rights](/aicp/lessons/takin
 | 1972 | Coastal Zone Management Act | State coastal programs |
 | 1973 | Endangered Species Act | Listed species and critical habitat |
 | 1974 | Housing and Community Development Act | CDBG and Section 8 |
+| 1975 | Home Mortgage Disclosure Act (HMDA) | Public mortgage lending data by neighborhood and race |
+| 1977 | Community Reinvestment Act (CRA) | Banks must serve their whole service areas, including low- and moderate-income neighborhoods |
 | 1980 | CERCLA (Superfund) | Contaminated site cleanup and liability |
 | 1986 | Low-Income Housing Tax Credit <!-- VERIFY: LIHTC is usually dated to the Tax Reform Act of 1986. --> | The largest source of new affordable rentals |
 | 1988 | Stafford Act | Federal disaster declarations |
 | 1990 | Americans with Disabilities Act | Accessible facilities, programs, and communication |
 | 1991 | ISTEA | Stronger MPOs, flexible transportation funding |
+| 1992 | HOPE VI | Distressed public housing replaced with mixed-income communities |
+| 1996 | Telecommunications Act | Local cell tower siting, within federal limits |
+| 1998, 2005 | TEA-21, SAFETEA-LU | Continued ISTEA's multimodal approach |
 | 2000 | Disaster Mitigation Act | FEMA-approved local hazard mitigation plans |
 | 2000 | RLUIPA | Protection for religious land uses |
+| 2010 | Choice Neighborhoods | Succeeded HOPE VI; housing plus neighborhood investment |
+| 2012 | MAP-21 | Performance-based transportation planning |
+| 2015 | FAST Act | Continued the MAP-21 framework |
 | 2017 | Opportunity Zones | Capital gains incentives in low-income tracts |
+| 2021 | Infrastructure Investment and Jobs Act (IIJA) | Bipartisan Infrastructure Law: the largest infrastructure investment in decades |
+| 2022 | Inflation Reduction Act | Clean energy and climate programs, largely through tax credits |
 
 More: [Federal laws and programs that shaped planning](/aicp/lessons/federal-policy-and-planning).
 
@@ -92,6 +108,9 @@ More: [Federal laws and programs that shaped planning](/aicp/lessons/federal-pol
 
 | Person | Remember them for |
 |---|---|
+| Pierre L'Enfant | 1791 plan for Washington, D.C. |
+| James Oglethorpe | Savannah's wards around public squares (1733) |
+| Baron Haussmann | Boulevards of Second Empire Paris |
 | Frederick Law Olmsted (and Calvert Vaux) | Central Park; Riverside, Illinois |
 | Jacob Riis | *How the Other Half Lives*, tenement reform |
 | Daniel Burnham | 1893 Chicago exposition, City Beautiful, 1909 Plan of Chicago |
@@ -101,21 +120,27 @@ More: [Federal laws and programs that shaped planning](/aicp/lessons/federal-pol
 | Lewis Mumford | Regional Planning Association of America |
 | Alfred Bettman | The *Euclid* amicus brief |
 | Rexford Tugwell | The New Deal greenbelt towns |
+| Le Corbusier / Frank Lloyd Wright | Radiant City (towers in the park) / Broadacre City (an acre per family) |
 | Robert Moses | Large-scale public works in New York |
 | Jane Jacobs | *The Death and Life of Great American Cities*, "eyes on the street" |
 | Ian McHarg | *Design with Nature*, overlay suitability analysis |
 | Kevin Lynch | *The Image of the City*: paths, edges, districts, nodes, landmarks |
 | William H. Whyte | How people use small urban spaces |
 | Walter Christaller | Central place theory |
+| Johann Heinrich von Thünen / William Alonso | Rings of land use around a market / urban bid-rent |
+| Charles Tiebout | Households "vote with their feet" among local governments |
+| Jean Gottmann | *Megalopolis*, the Boston–Washington corridor |
 | Ernest Burgess / Homer Hoyt / Harris and Ullman | Concentric zones / sectors / multiple nuclei |
 | Joel Garreau | Edge cities |
+| Andreas Faludi | Procedural (theory *of*) vs. substantive (theory *in*) planning |
 | Herbert Simon | Bounded rationality and satisficing |
 | Charles Lindblom | Incrementalism, "muddling through" |
 | Amitai Etzioni | Mixed scanning |
 | Paul Davidoff | Advocacy planning |
 | Sherry Arnstein | The ladder of citizen participation |
 | Norman Krumholz | Equity planning in Cleveland |
-| John Friedmann | Transactive planning |
+| John Friedmann | Transactive planning; later radical planning |
+| Leonie Sandercock | Insurgent, multicultural planning (*Towards Cosmopolis*) |
 | John Forester, Judith Innes, Patsy Healey | Communicative and collaborative planning |
 | Susan Fainstein | The just city: equity, diversity, democracy |
 | Horst Rittel and Melvin Webber | Wicked problems |
@@ -189,6 +214,9 @@ Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Popu
 | Area variance vs. use variance | Dimensional relief vs. allowing an unlisted use (banned in many states) |
 | Legislative vs. quasi-judicial | Making general policy vs. applying rules to one property (findings, record, no ex parte contact) |
 | Facial vs. as-applied challenge | The law is invalid everywhere vs. invalid for this property (*Euclid* vs. *Nectow*) |
+| Procedural vs. substantive theory | How planning decisions are made vs. the things being planned (Faludi) |
+| Filtering vs. gentrification | Aging housing moves down the income ladder vs. higher-income residents move into lower-income areas |
+| HMDA vs. CRA | Lenders disclose mortgage data vs. banks must serve low- and moderate-income areas |
 | Eminent domain vs. regulatory taking | Taking title with compensation vs. regulation so burdensome it counts as a taking |
 | Contract zoning vs. conditional zoning | A bargain that surrenders the police power vs. conditions attached to a rezoning |
 | TDR vs. PDR | Development rights sold on a private market vs. bought with public funds |
