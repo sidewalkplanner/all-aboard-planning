@@ -1006,6 +1006,204 @@ function gravity() {
   return { W, H, b };
 }
 
+// A little cut-paper person for counting charts: head and body, scaled by s.
+function tally(x, y, s, fill, rng) {
+  const head = ellipseD(x, y - 30 * s, 7 * s, 7 * s);
+  const body = roundRectD(x - 9 * s, y - 21 * s, 18 * s, 21 * s, 7 * s);
+  return `<path d="${body}" fill="${fill}"/><path d="${head}" fill="${fill}"/>` + L(ink(body, { rng, size: 1.6 }) + ink(head, { rng, size: 1.6 }));
+}
+
+// The dependency ratio from the lesson's example, one figure per 1,000 people.
+function dependencyRatio() {
+  const rng = makeRng(1306);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  b += label(360, 36, 'each figure = 1,000 people', { color: MUTED, weight: 500 });
+  b += title(20, 92, 'Working age, 15–64', { anchor: 'start' });
+  for (let i = 0; i < 20; i++) b += tally(36 + (i % 10) * 34, 150 + Math.floor(i / 10) * 56, 1, P.civic, rng);
+  b += label(190, 250, '20,000', { color: P.civicDeep });
+  b += title(420, 92, 'Dependents', { anchor: 'start' });
+  for (let i = 0; i < 6; i++) b += tally(436 + (i % 3) * 34, 158 + Math.floor(i / 3) * 48, 0.8, P.butter, rng);
+  for (let i = 0; i < 4; i++) b += tally(578 + (i % 2) * 38, 150 + Math.floor(i / 2) * 56, 1, P.lavender, rng);
+  b += label(470, 250, '6,000', { color: P.kraftDeep });
+  b += label(470, 282, 'under 15', { weight: 500, color: MUTED });
+  b += label(597, 250, '4,000', { color: '#6B559E' });
+  b += label(597, 282, '65+', { weight: 500, color: MUTED });
+  b += L(inkLine([[400, 76], [400, 290]], { rng, size: 1.4, opacity: 0.4, overshoot: 0 }));
+  b += title(360, 340, '(6,000 + 4,000) ÷ 20,000 × 100 = 50', { size: 28 });
+  b += note(360, 386, '50 dependents per 100 working-age people', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// The index of dissimilarity: the same two groups, spread evenly or apart.
+function dissimilarity() {
+  const rng = makeRng(1307);
+  // People per tract (each dot = 10), for group A and group B.
+  const regions = [
+    ['Evenly spread', [20, 20, 20, 20], [20, 20, 20, 20]],
+    ['Mostly apart', [40, 40, 10, 10], [10, 10, 40, 40]],
+  ];
+  const D = (a, c) => {
+    const A = a.reduce((x, y) => x + y, 0);
+    const B = c.reduce((x, y) => x + y, 0);
+    return Math.round(50 * a.reduce((s, v, i) => s + Math.abs(v / A - c[i] / B), 0));
+  };
+  const region = ([heading, a, c]) => {
+    let s = panel(0, 0, 330, 330, T.cream, rng);
+    s += title(20, 40, heading, { size: 25, anchor: 'start' });
+    s += title(310, 40, `D = ${D(a, c)}`, { size: 25, anchor: 'end', color: P.tomatoDeep });
+    for (let t = 0; t < 4; t++) {
+      const tx = 34 + (t % 2) * 134;
+      const ty = 62 + Math.floor(t / 2) * 96;
+      const d = rectD(tx, ty, 128, 90);
+      s += cut(d, { rng, fill: '#FBF8F1', shadow: false, filter: FLAT }) + L(ink(d, { rng, size: 1.6 }));
+      const dots = [...Array(a[t] / 10).fill(P.civic), ...Array(c[t] / 10).fill(P.butter)];
+      dots.forEach((fill, k) => {
+        const x = tx + 22 + (k % 4) * 28;
+        const y = ty + 24 + Math.floor(k / 4) * 28;
+        s += `<circle cx="${x}" cy="${y}" r="10" fill="${fill}" stroke="${P.ink}" stroke-width="1.6"/>`;
+      });
+    }
+    return s;
+  };
+  const [even, apart] = regions.map(region);
+  const key = (x, y) => `<circle cx="${x}" cy="${y - 8}" r="10" fill="${P.civic}" stroke="${P.ink}" stroke-width="1.6"/>` + label(x + 18, y, 'group A', { size: 22, anchor: 'start' })
+    + `<circle cx="${x + 140}" cy="${y - 8}" r="10" fill="${P.butter}" stroke="${P.ink}" stroke-width="1.6"/>` + label(x + 158, y, 'group B', { size: 22, anchor: 'start' });
+  const explain = note(165, 280, '60% of one group would', { size: 25 }) + note(165, 308, 'have to move to even it out', { size: 25 });
+  const evenNote = label(165, 292, 'every tract: half A, half B', { size: 22, color: MUTED, weight: 500 });
+  const per = (x, y) => label(x, y, 'each dot = 10 people', { size: 22, anchor: 'start', color: MUTED, weight: 500 });
+  return {
+    W: 720, H: 410, b: at(20, 12, even + evenNote) + at(370, 12, apart + explain) + key(40, 386) + per(400, 386),
+    narrow: { W: 354, H: 760, b: at(12, 12, even + evenNote) + at(12, 354, apart + explain) + key(24, 712) + per(24, 744) },
+  };
+}
+
+// The Lorenz curve and the Gini coefficient.
+function lorenzGini() {
+  const rng = makeRng(1308);
+  const W = 720;
+  const H = 450;
+  let b = '';
+  // Illustrative income shares by fifth of households, poorest first.
+  const shares = [3, 8, 14, 23, 52];
+  const cum = [0];
+  for (const v of shares) cum.push(cum[cum.length - 1] + v);
+  const gini = 1 - shares.reduce((s, _, i) => s + 0.2 * (cum[i] + cum[i + 1]) / 100, 0);
+  const x0 = 90;
+  const y0 = 370;
+  const S = 320;
+  const X = (p) => x0 + (p / 100) * S;
+  const Y = (p) => y0 - (p / 100) * S;
+  // The curve joins the quintile points with straight segments, which is
+  // exactly what the Gini below is computed from.
+  const pts = cum.map((c, i) => [X(i * 20), Y(c)]);
+  // Area A: between the diagonal and the curve. Area B: under the curve.
+  const back = [...pts].reverse().map(([x, y]) => `L${x} ${y}`).join('');
+  b += `<path d="M${X(0)} ${Y(0)}L${X(100)} ${Y(100)}${back}Z" fill="${T.blush}"/>`;
+  b += `<path d="M${X(0)} ${Y(0)}${pts.slice(1).map(([x, y]) => `L${x} ${y}`).join('')}L${X(100)} ${Y(0)}Z" fill="${T.sky}"/>`;
+  b += L(inkLine([[X(0), Y(0)], [X(100), Y(100)]], { rng, size: 2, color: P.civicDeep, overshoot: 0 }));
+  b += L(inkLine(pts, { rng, size: 3.4, color: P.tomatoDeep, overshoot: 0, wobble: 0.6 }));
+  for (const [x, y] of pts.slice(1, -1)) b += `<circle cx="${x}" cy="${y}" r="5.5" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.6"/>`;
+  b += L(inkLine([[X(0), Y(100) - 6], [X(0), Y(0)], [X(100) + 6, Y(0)]], { rng, size: 2.4, overshoot: 0 }));
+  for (const p of [0, 50, 100]) {
+    b += label(X(p), y0 + 36, `${p}%`);
+    if (p) b += label(x0 - 12, Y(p) + 10, `${p}%`, { anchor: 'end' });
+  }
+  b += title(X(46), Y(32), 'A', { size: 30, color: P.tomatoDeep });
+  b += title(X(72), Y(18), 'B', { size: 30, color: P.civicDeep });
+  b += label(X(50), y0 + 68, 'households, poorest to richest', { weight: 500, color: MUTED });
+  b += label(x0 - 6, 34, 'share of income', { weight: 500, color: MUTED, anchor: 'start' });
+  b += `<g transform="rotate(-45 ${X(42)} ${Y(42)})">${label(X(42), Y(42) - 12, 'perfect equality', { color: P.civicDeep, weight: 500 })}</g>`;
+  const rx = 440;
+  b += title(rx, 100, 'Gini = A ÷ (A + B)', { size: 28, anchor: 'start' });
+  b += title(rx, 148, `= ${gini.toFixed(2)} here`, { size: 28, anchor: 'start', color: P.tomatoDeep });
+  b += note(rx, 208, 'the more the curve', { anchor: 'start' });
+  b += note(rx, 244, 'sags, the higher', { anchor: 'start' });
+  b += note(rx, 280, 'the Gini', { anchor: 'start' });
+  b += label(rx, 326, 'no sag: Gini 0', { anchor: 'start', color: MUTED, weight: 500 });
+  b += label(rx, 360, 'all to one: Gini 1', { anchor: 'start', color: MUTED, weight: 500 });
+  return { W, H, b, gini };
+}
+
+// The same twelve tract values, classed two ways.
+function classBreaks() {
+  const rng = makeRng(1406);
+  // Illustrative poverty rates, laid out in a 4 x 3 grid of tracts.
+  const vals = [6, 12, 4, 9, 14, 7, 30, 5, 10, 34, 6, 8];
+  const sorted = [...vals].sort((a, c) => a - c);
+  const lo = sorted[0];
+  const hi = sorted[sorted.length - 1];
+  const step = (hi - lo) / 3;
+  const equal = (v) => Math.min(2, Math.floor((v - lo) / step));
+  const quant = (v) => { const r = sorted.indexOf(v); return r < 4 ? 0 : r < 8 ? 1 : 2; };
+  const shade = [T.blush, P.blush, P.tomatoDeep];
+  const map = (heading, classOf, legend) => {
+    let s = title(0, 28, heading, { size: 25, anchor: 'start' });
+    vals.forEach((v, i) => {
+      const x = (i % 4) * 78;
+      const y = 48 + Math.floor(i / 4) * 78;
+      const d = rectD(x, y, 76, 76);
+      const k = classOf(v);
+      s += cut(d, { rng, fill: shade[k], shadow: false, jitter: 0.5, filter: FLAT }) + L(ink(d, { rng, size: 1.4 }));
+      s += label(x + 38, y + 47, `${v}%`, { size: 24, weight: 700, color: k === 2 ? '#FFFFFF' : P.ink });
+    });
+    legend.forEach(([text, k], i) => {
+      s += `<rect x="0" y="${298 + i * 32}" width="22" height="22" rx="4" fill="${shade[k]}" stroke="${P.ink}" stroke-width="1.4"/>`;
+      s += label(32, 316 + i * 32, text, { size: 22, anchor: 'start', weight: 500 });
+    });
+    return s;
+  };
+  const e = (k) => `${Math.round(lo + k * step)}–${Math.round(lo + (k + 1) * step) - (k < 2 ? 1 : 0)}%`;
+  const eq = map('Equal intervals', equal, [0, 1, 2].map((k) => [`${e(k)}: ${vals.filter((v) => equal(v) === k).length} tract${vals.filter((v) => equal(v) === k).length === 1 ? '' : 's'}`, k]));
+  const qs = map('Quantiles', quant, [[`${sorted[0]}–${sorted[3]}%: 4 tracts`, 0], [`${sorted[4]}–${sorted[7]}%: 4 tracts`, 1], [`${sorted[8]}–${sorted[11]}%: 4 tracts`, 2]]);
+  return {
+    W: 720, H: 460, b: at(24, 12, eq) + at(392, 12, qs) + note(360, 446, 'same data, two different stories', { size: 30, color: P.tomatoDeep }),
+    narrow: { W: 360, H: 900, b: at(24, 12, eq) + at(24, 440, qs) + note(180, 886, 'same data, two stories', { size: 28, color: P.tomatoDeep }) },
+  };
+}
+
+// The modifiable areal unit problem: the same households, zoned two ways.
+function maup() {
+  const rng = makeRng(1407);
+  const COLS = 6;
+  const ROWS = 4;
+  const SP = 46;
+  const SY = 60; // taller rows leave room for the share tags between them
+  // High-income households fill the top-left and bottom-right quarters.
+  const high = (c, r) => (r < 2 && c < 3) || (r >= 2 && c >= 3);
+  const shade = (p) => (p >= 0.75 ? T.sage : p <= 0.25 ? '#FBF8F1' : '#EEF3E4');
+  const map = (heading, zones, sub) => {
+    let s = title(0, 28, heading, { size: 25, anchor: 'start' });
+    s += label(0, 60, sub, { size: 22, anchor: 'start', color: MUTED, weight: 500 });
+    const TOP = 96;
+    const tags = [];
+    for (const [c0, r0, c1, r1] of zones) {
+      let n = 0; let h = 0;
+      for (let r = r0; r < r1; r++) for (let c = c0; c < c1; c++) { n++; if (high(c, r)) h++; }
+      const d = rectD(c0 * SP, TOP + r0 * SY, (c1 - c0) * SP, (r1 - r0) * SY);
+      s += cut(d, { rng, fill: shade(h / n), shadow: false, jitter: 0.4, filter: FLAT });
+      s += L(ink(d, { rng, size: 2.2 }));
+      tags.push([((c0 + c1) / 2) * SP, TOP + r0 * SY, `${Math.round((100 * h) / n)}%`]);
+    }
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        s += `<circle cx="${c * SP + SP / 2}" cy="${TOP + r * SY + SY / 2 + 4}" r="9" fill="${high(c, r) ? P.leafDeep : P.paper}" stroke="${P.ink}" stroke-width="1.6"/>`;
+      }
+    }
+    for (const [x, y, t] of tags) s += `<rect x="${x - 34}" y="${y - 15}" width="68" height="30" rx="8" fill="#FFFDF8" stroke="${P.ink}" stroke-width="1.6"/>` + label(x, y + 8, t, { size: 22, weight: 700 });
+    return s;
+  };
+  const two = map('Two big zones', [[0, 0, 3, 4], [3, 0, 6, 4]], 'no pattern at all');
+  const four = map('Four small zones', [[0, 0, 3, 2], [3, 0, 6, 2], [0, 2, 3, 4], [3, 2, 6, 4]], 'a sharp pattern');
+  const key = (x, y) => `<circle cx="${x}" cy="${y - 7}" r="9" fill="${P.leafDeep}" stroke="${P.ink}" stroke-width="1.6"/>` + label(x + 16, y, 'high-income household', { size: 22, anchor: 'start', weight: 500 })
+    + label(x, y + 30, '%: share with high incomes', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  return {
+    W: 720, H: 424, b: at(24, 12, two) + at(420, 12, four) + key(24, 380),
+    narrow: { W: 340, H: 790, b: at(32, 12, two) + at(32, 376, four) + key(20, 744) },
+  };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -1028,6 +1226,11 @@ export const FIGURES = [
   ['fig-mcharg', mchargOverlay],
   ['fig-counts-rates', countsVsRates],
   ['fig-gravity', gravity],
+  ['fig-dependency', dependencyRatio],
+  ['fig-dissimilarity', dissimilarity],
+  ['fig-lorenz', lorenzGini],
+  ['fig-class-breaks', classBreaks],
+  ['fig-maup', maup],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

@@ -77,6 +77,10 @@ The **total dependency ratio** compares people usually outside working age with 
 
 **Worked example.** 6,000 under 15, 4,000 aged 65 and over, and 20,000 aged 15–64: (6,000 + 4,000) ÷ 20,000 × 100 = **50**. That means there are 50 dependents for every 100 working-age residents. (Some sources use 18–64 as the working-age band, so check the definition.)
 
+:::figure fig-dependency | Figures of people, each standing for 1,000. Working age, 15 to 64: 20 figures, or 20,000 people. Dependents: 6 children (6,000 under 15) and 4 older adults (4,000 aged 65 and over). The calculation (6,000 + 4,000) ÷ 20,000 × 100 = 50 gives 50 dependents per 100 working-age people.
+A ratio of 50 means every two working-age residents support, on average, one child or older adult.
+:::
+
 ### Location quotient
 
 A **location quotient (LQ)** compares an industry's share of local employment with its share of a reference economy (usually the nation):
@@ -124,7 +128,15 @@ Calculates a location quotient from a simple employment table, then splits one i
 ### Measuring segregation and inequality
 
 - The **index of dissimilarity** measures how evenly two groups are spread across the subareas (usually tracts) of a region. It runs from 0 (perfectly even) to 100 (completely separated). It can be read as the percentage of one group that would have to move to a different tract for the two groups to be evenly distributed.
-- The **Gini coefficient** measures inequality in a distribution, most often of income. It runs from 0 (everyone has the same income) to 1 (one person has all of it).
+- The **Gini coefficient** measures inequality in a distribution, most often of income. It runs from 0 (everyone has the same income) to 1 (one person has all of it). On a **Lorenz curve**, which lines households up from poorest to richest and plots the cumulative share of income they hold, the Gini is the area between the curve and the line of perfect equality, divided by the whole area under that line.
+
+:::figure fig-dissimilarity | Two regions of four tracts each, where every dot is 10 people from group A or group B. Evenly spread: every tract is half A and half B, so the index of dissimilarity D = 0. Mostly apart: two tracts hold 40 A and 10 B each, the other two hold 10 A and 40 B each, so D = 60, meaning 60% of one group would have to move to even it out.
+Illustrative numbers. D is half the sum, across tracts, of the gap between each group's share of its regional total: here ½ × (0.3 + 0.3 + 0.3 + 0.3) = 0.6, or 60.
+:::
+
+:::figure fig-lorenz | A Lorenz curve, with households from poorest to richest along the bottom and their cumulative share of income up the side. The straight diagonal is perfect equality. The curve passes through 3% of income at 20% of households, 11% at 40%, 25% at 60%, and 48% at 80%. Area A lies between the diagonal and the curve; area B lies under the curve. Gini = A ÷ (A + B), which is 0.45 here. The more the curve sags, the higher the Gini: no sag is 0, and all income going to one household is 1.
+Illustrative income shares by fifth of households, poorest first: 3%, 8%, 14%, 23%, and 52%.
+:::
 
 :::checkpoint cp:demo-dissimilarity
 
@@ -142,6 +154,7 @@ Calculates a location quotient from a simple employment table, then splits one i
 - **Shift-share analysis**: A breakdown of local employment change into national, industry-mix, and local components.
 - **Index of dissimilarity**: A 0–100 measure of how unevenly two groups are distributed across subareas.
 - **Gini coefficient**: A 0–1 measure of inequality in a distribution.
+- **Lorenz curve**: A graph of the cumulative share of income held by households ranked from poorest to richest; the farther it sags below the diagonal, the greater the inequality.
 
 ## Real-world examples
 
