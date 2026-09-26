@@ -1,4 +1,4 @@
-> **Read the Code itself.** This lesson summarizes the AICP Code of Ethics and Professional Conduct in our own words. The Code is short, it's tested directly, and its exact wording matters. Read the current version on APA's website alongside this lesson. <!-- VERIFY: confirm the current Code version (a revised Code took effect in 2021, with later amendments possible) and link to it. -->
+> **Read the Code itself.** This lesson summarizes the AICP Code of Ethics and Professional Conduct in our own words. The Code is short, it's tested directly, and its exact wording matters. **[Read the current Code on APA's website](https://www.planning.org/ethics/)** alongside this lesson, and read it through once more before exam day. <!-- VERIFY: confirm the current Code version (a revised Code took effect in 2021, with later amendments possible) and that the link leads to it. -->
 
 ## Learning objectives
 
@@ -149,6 +149,7 @@ Then apply the method in [Working through ethics scenarios](/aicp/lessons/solvin
 - **Any person** may file a charge of misconduct.
 - Unsure whether something complies? Ask the **Ethics Officer** for advice or a formal advisory opinion.
 - Sanctions are reprimand, suspension, or expulsion. AICP can't impose criminal penalties.
+- Read the [full Code](https://www.planning.org/ethics/) at least once before the exam. Questions often turn on its exact wording.
 
 ## Summary
 

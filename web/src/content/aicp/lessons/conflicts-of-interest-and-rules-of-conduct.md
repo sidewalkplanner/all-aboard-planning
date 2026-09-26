@@ -1,4 +1,4 @@
-> This lesson paraphrases the themes of the AICP Code's Rules of Conduct in our own words and doesn't reproduce rule numbers or exact text. Always check the current Code for the precise wording. <!-- VERIFY: check each paraphrased rule theme below against the current Rules of Conduct text. -->
+> This lesson paraphrases the themes of the AICP Code's Rules of Conduct in our own words and doesn't reproduce rule numbers or exact text. Always check the [current Code on APA's website](https://www.planning.org/ethics/) for the precise wording. <!-- VERIFY: check each paraphrased rule theme below against the current Rules of Conduct text. -->
 
 ## Learning objectives
 

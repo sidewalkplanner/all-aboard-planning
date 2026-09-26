@@ -135,7 +135,7 @@ These changes followed the first build (described below). They supersede anythin
 | `web/src/content/aicp/lessons/land-use-law-foundations.md:41` | Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min |
 | `web/src/content/aicp/lessons/planning-history.md:112` | American planning history on one timeline | about 4 min |
 | `web/src/content/aicp/lessons/public-engagement-design.md:57` | Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min |
-| `web/src/content/aicp/lessons/solving-ethics-questions.md:93` | Working an ethics scenario with the five-step method | about 5 min |
+| `web/src/content/aicp/lessons/solving-ethics-questions.md:95` | Working an ethics scenario with the five-step method | about 5 min |
 | `web/src/content/aicp/lessons/statistics-for-planners.md:119` | Present value and benefit-cost ratios | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:50` | Penn Central's three factors, applied | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:96` | Nollan and Dolan: the two-part test for exactions | about 4 min |
@@ -219,7 +219,8 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 
 | Location | What to check |
 |---|---|
-| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:1` | confirm the current Code version (a revised Code took effect in 2021, with later amendments possible) and link to it. |
+| `web/src/content/aicp/lessons/aicp-code-of-ethics.md:1` | confirm the current Code version (a revised Code took effect in 2021, with later amendments possible) and that the link leads to it. |
+| `web/src/content/aicp/lessons/solving-ethics-questions.md:1` | confirm the link leads to the current Code. |
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:15` | confirm to whom the Code currently applies (AICP members, and whether candidates are covered). |
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:50` | confirm that the current Code's principles include explicit language on racial and economic equity and on eliminating historic inequities. |
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:67` | the wording and grouping of these principles are paraphrased from our understanding of the Code; check each against the current text. |

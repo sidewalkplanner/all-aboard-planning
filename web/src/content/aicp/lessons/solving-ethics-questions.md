@@ -1,3 +1,5 @@
+> **Read the full Code before exam day.** The method and scenarios here apply our summaries of the AICP Code of Ethics and Professional Conduct. The [Code itself, on APA's website](https://www.planning.org/ethics/), is the authority, and reading it once through makes the exam's wording familiar. <!-- VERIFY: confirm the link leads to the current Code. -->
+
 ## Learning objectives
 
 - Use a repeatable five-step method to answer ethics questions.
