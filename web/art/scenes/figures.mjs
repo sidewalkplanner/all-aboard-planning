@@ -2512,6 +2512,104 @@ function participationGap() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 3.2
+
+// Who a weeknight hearing at city hall hears from, and who it misses.
+function whoMissing() {
+  const rng = makeRng(3201);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const missing = [
+    ['works nights', P.tomato], ['no childcare', P.leaf], ['no car', P.lavender],
+    ['needs an interpreter', P.civic], ['needs captions', P.kraftDeep],
+  ];
+  b += title(20, 44, 'Who it misses', { anchor: 'start', size: 28 });
+  missing.forEach(([why, coat], i) => {
+    const y = 110 + i * 74;
+    b += person(44, y + 30, 0.8, { coat, seed: 100 + i });
+    const w = why.length * 15.4 + 32;
+    const d = roundRectD(76, y - 22, w, 44, 10);
+    b += cut(d, { rng, fill: P.paper, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + label(92, y + 10, why, { anchor: 'start', weight: 500 });
+  });
+  // City hall at night, with the people who do come.
+  b += title(700, 44, 'Who it hears', { anchor: 'end', size: 28 });
+  b += cityHall(470, 330, 220, 190, { seed: 40 });
+  for (let k = 0; k < 3; k++) b += person(512 + k * 56, 410, 1, { coat: P.sky, seed: 110 + k });
+  b += label(706, 460, '7 pm weeknight hearing', { anchor: 'end', color: MUTED, weight: 500 });
+  b += note(360, 506, 'take the meeting to them', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// Procedural, distributive, and structural equity.
+function threeEquities() {
+  const rng = makeRng(3202);
+  const PW = 228;
+  const PH = 370;
+  const head = (t, sub) => title(PW / 2, 40, t, { size: 23 }) + label(PW / 2, 68, sub, { size: 19, color: MUTED, weight: 500 });
+  let proc = panel(0, 0, PW, PH, T.cream, rng) + head('Procedural', 'who takes part');
+  const tbl = ellipseD(114, 200, 54, 34);
+  for (let k = 0; k < 6; k++) {
+    const a = (k / 6) * Math.PI * 2 + 0.3;
+    const x = 114 + Math.cos(a) * 82;
+    const y = 200 + Math.sin(a) * 58;
+    proc += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="14" fill="${[P.tomato, P.leaf, P.civic, P.butter, P.lavender, P.kraft][k]}" stroke="${P.ink}" stroke-width="1.8"/>`;
+  }
+  proc += cut(tbl, { rng, fill: P.kraft, filter: FLAT }) + L(ink(tbl, { rng, size: 2 }));
+  proc += note(PW / 2, 318, 'a fair, open process', { size: 24 });
+  let dist = panel(0, 0, PW, PH, T.cream, rng) + head('Distributive', 'benefits and burdens');
+  // One side gets the park; the other already hosts three burdens.
+  dist += `<rect x="18" y="150" width="90" height="110" rx="8" fill="${T.sage}"/>` + `<rect x="120" y="150" width="90" height="110" rx="8" fill="${T.blush}"/>`;
+  dist += `<circle cx="48" cy="200" r="18" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.6"/><circle cx="80" cy="222" r="15" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.6"/>`;
+  for (let k = 0; k < 3; k++) {
+    const x = 132 + k * 24;
+    dist += `<rect x="${x}" y="${190 - k * 10}" width="14" height="${70 + k * 10}" fill="${P.kraftDeep}" stroke="${P.ink}" stroke-width="1.6"/>`;
+    dist += `<circle cx="${x + 9}" cy="${176 - k * 10}" r="7" fill="#B9B3C4"/><circle cx="${x + 17}" cy="${164 - k * 10}" r="9" fill="#CFCAD8"/>`;
+  }
+  dist += label(63, 288, 'gains', { size: 19, weight: 700, color: P.leafDeep }) + label(165, 288, 'bears', { size: 19, weight: 700, color: P.tomatoDeep });
+  dist += note(PW / 2, 318, 'who gets what', { size: 24 });
+  let struc = panel(0, 0, PW, PH, T.cream, rng) + head('Structural', 'past harms, future effects');
+  struc += L(arrow(24, 200, 206, 200, rng, { size: 2.6, head: 12 }));
+  const red = roundRectD(26, 130, 64, 50, 6);
+  struc += cut(red, { rng, fill: P.paper, filter: FLAT }) + hatch(red, { rng, angle: 45, gap: 9, color: P.tomatoDeep, opacity: 0.5, size: 1.2 }) + L(ink(red, { rng, size: 3, color: P.tomatoDeep }));
+  const now = roundRectD(136, 130, 64, 50, 6);
+  struc += cut(now, { rng, fill: T.blush, filter: FLAT }) + L(ink(now, { rng, size: 3, color: P.tomatoDeep }));
+  struc += label(58, 234, '1930s', { size: 19, weight: 700 }) + label(168, 234, 'today', { size: 19, weight: 700 });
+  struc += label(PW / 2, 266, 'same lines, still felt', { size: 19, color: MUTED, weight: 500 });
+  struc += note(PW / 2, 318, 'correct, or entrench?', { size: 24 });
+  const panels = [proc, dist, struc];
+  return {
+    W: 720, H: 398, b: panels.map((q, i) => at(8 + i * 238, 14, q)).join(''),
+    narrow: { W: 252, H: 1152, b: panels.map((q, i) => at(12, 12 + i * 384, q)).join('') },
+  };
+}
+
+// WCAG's four principles.
+function wcagPour() {
+  const rng = makeRng(3203);
+  const CW = 166;
+  const CH = 250;
+  const cards = [
+    ['P', 'Perceivable', ['alt text,', 'captions'], P.sky],
+    ['O', 'Operable', ['works with', 'a keyboard'], P.sage],
+    ['U', 'Understandable', ['plain', 'language'], T.butter],
+    ['R', 'Robust', ['works with', 'screen readers'], T.lav],
+  ];
+  const card = ([letter, name, ex, fill]) => {
+    const d = roundRectD(0, 0, CW, CH, 14);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    s += title(CW / 2, 86, letter, { size: 64 });
+    s += label(CW / 2, 134, name, { size: name.length > 12 ? 19 : 22, weight: 800 });
+    ex.forEach((t, k) => { s += label(CW / 2, 180 + k * 28, t, { size: 19, weight: 500 }); });
+    return s;
+  };
+  const cs = cards.map(card);
+  return {
+    W: 720, H: 282, b: cs.map((c, i) => at(12 + i * 176, 16, c)).join(''),
+    narrow: { W: 372, H: 556, b: cs.map((c, i) => at(14 + (i % 2) * 180, 14 + Math.floor(i / 2) * 266, c)).join('') },
+  };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -2568,6 +2666,9 @@ export const FIGURES = [
   ['fig-engage-early', engageEarly],
   ['fig-hearing-meeting', hearingVsMeeting],
   ['fig-participation-gap', participationGap],
+  ['fig-who-missing', whoMissing],
+  ['fig-three-equities', threeEquities],
+  ['fig-wcag', wcagPour],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

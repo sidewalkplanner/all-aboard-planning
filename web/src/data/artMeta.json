@@ -295,6 +295,26 @@
     "fig-participation-gap": {
       "w": 720,
       "h": 380
+    },
+    "fig-who-missing": {
+      "w": 720,
+      "h": 520
+    },
+    "fig-three-equities": {
+      "w": 720,
+      "h": 398,
+      "narrow": {
+        "w": 252,
+        "h": 1152
+      }
+    },
+    "fig-wcag": {
+      "w": 720,
+      "h": 282,
+      "narrow": {
+        "w": 372,
+        "h": 556
+      }
     }
   },
   "hero": {
