@@ -367,7 +367,8 @@ Question order is deterministic (seeded) in `lib/shuffle.js`.
 - **Site map for learners** (header nav, `lib/nav.js`; pages use the same names): Overview
   (`/aicp`) · Lessons (`/aicp/course`) · Practice exams (`/aicp/exams`) · Flashcards
   (`/aicp/review/flashcards`) · Study guides (`/aicp/review`: the exam strategy guide and quick
-  reference) · Exam info (`/aicp/exam-info`, plus the FAQ) · Dashboard (`/aicp/progress`, signed in).
+  reference) · Exam info (`/aicp/exam-info`, plus the FAQ) · About (`/about`, the founder) · Dashboard
+  (`/aicp/progress`, signed in).
   Keep these names consistent in headings, buttons, and links (say "lessons", not "course overview";
   "study guides", not "review tools").
 - **Lesson page** (`pages/aicp/LessonPage.jsx`): body with mid-lesson checkpoints

@@ -15,6 +15,7 @@ export const AICP_NAV = [
   { label: 'Exam info', to: P.examInfo, match: [P.examInfo, P.faq] },
   // Pricing returns to the header when paid plans launch (lib/access.js).
   ...(PAID_TIER_ENABLED ? [{ label: 'Pricing', to: P.pricing }] : []),
+  { label: 'About', to: P.about },
 ];
 
 // Footer sitemap, grouped. The last group is firm-level; when the consulting
