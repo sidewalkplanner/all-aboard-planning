@@ -31,7 +31,7 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
     lib/nav.js              Header/footer navigation config
     lib/theme.js            JS copies of the colour tokens (used by inline-styled exam UI)
     components/             Header, Footer, PageHeader, Art, LessonBody, Checkpoint, RecallCards, AccessGate, RequireSignIn, ...
-    components/interactives/  Practice pieces for :::try (TryIt, SortIt, the live-sketch kit)
+    components/interactives/  Practice pieces for :::try (TryIt, SortIt, WalkTest, Scene, the live-sketch kit)
     hooks/                  usePageTitle, useAccess (who can open what), useMembership (future paid tier)
     context/AuthContext.jsx Accounts via Supabase Auth: sign up/in/out, password reset
     lib/supabase.js         Supabase client (project URL + publishable key)
@@ -46,7 +46,7 @@ web/                        The site (React 19 + Vite 8 + react-router 7). All r
       studyPlans.js         8- and 12-week schedules (reference lesson slugs)
       checkpoints.js        Original lesson checkpoint questions (+ checkpoints/d1..d9 per domain)
       flashcards.js         The flashcard deck (built from every lesson's Key terms by a Vite plugin)
-      interactives/         Practice pieces placed with :::try (calculators.js, sorts.js; see "Practice pieces")
+      interactives/         Practice pieces placed with :::try (calculators, sorts, tests, scenes; see "Practice pieces")
     content/pages/*.md      Exam Info, About, Exam strategy, Quick reference bodies (same renderer as lessons)
     content/site.js         Owner settings (CONTACT_EMAIL, used on About and Contact)
     data/                   Question banks (exam1/2/3), domain weights; diagnostic-items.js is retired (kept, unused)
@@ -268,6 +268,13 @@ the id's prefix names the kind (`kindOf` in `index.js`), and each kind's compone
   for screen readers. Mark invented numbers `illustrative: true`.
 - **Sort it** (`sort-`, `sorts.js`): cards dealt one at a time into 2 to 5 piles, each card with a
   reason. Write original situations, not the lesson's own examples or any checkpoint or exam item.
+- **Walk the test** (`test-`, `tests.js`): two to four fact patterns taken through a legal test
+  stop by stop (drawn as a transit line); each step has a yes/no answer and a reason, and a case
+  ends at its last step. Keep every rule identical to the lesson's statement of it.
+- **You're the planner** (`scene-`, `scenes.js`): linked judgment calls, each with 2 to 4 shuffled
+  responses, exactly one best, each with a result, a stamp ("By the book", "Too passive", "Too
+  aggressive", "Crosses a line"), and a reason. Keep the best response from standing out by length
+  (the checker warns).
 - **Before you go** (`components/RecallCards.jsx`) is automatic: five of the lesson's key-term
   flashcards at the end of every lesson, rated into the same Leitner boxes as the Flashcards page.
 - At most three pieces per lesson, each used once, between Key concepts and Summary

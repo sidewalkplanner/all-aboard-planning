@@ -7,6 +7,8 @@ import { kindOf, loadDefs } from '../../content/aicp/interactives';
 const COMPONENTS = {
   calc: lazy(() => import('./TryIt')),
   sort: lazy(() => import('./SortIt')),
+  test: lazy(() => import('./WalkTest')),
+  scene: lazy(() => import('./Scene')),
 };
 
 const Loading = () => <p className="small practice-loading" role="status">Loading the practice&hellip;</p>;

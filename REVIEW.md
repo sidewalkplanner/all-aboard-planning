@@ -1,5 +1,21 @@
 # REVIEW: AICP course build
 
+## Update 7: interactive practice in the lessons
+
+Lessons now have ungraded practice pieces, placed with `:::try` (the plan and placements are in `INTERACTIVITY-PLAN.md`; CLAUDE.md explains how to add more). Checkpoints are still the graded part.
+
+- **Batch 1 (live):** Before you go recall cards at the end of every lesson; 12 Try it calculators with live sketches and "Your turn" problems; 4 Sort it decks.
+- **Batch 2:**
+  - four Walk the test pieces: the board of adjustment (variances), the takings route, Nollan/Dolan, and NEPA review levels;
+  - one You're the planner scenario, "A week at the planning desk," with five ethics judgment calls.
+
+**Please review:** the practice content restates the lessons, but a planner should read it before it's relied on, especially:
+- the three variance cases and the three takings cases, which apply multi-part tests to invented facts;
+- the NEPA cases (they carry the lesson's 2025 VERIFY flag);
+- the stamps in the ethics week.
+
+Line numbers in the VERIFY and video tables below were refreshed, since adding practice lines shifted them.
+
 ## Update 6: lessons deepened to the full exam outline
 
 Every module was checked against the topics the AICP exam covers, not just the practice questions, and each lesson gained sections where it fell short. The additions keep the existing structure: new `###` sections with their own checkpoints, new key terms (which feed the flashcards), exam tips trimmed to six or fewer per lesson, updated reading times and descriptions, and new Quick reference entries. Course reading time rose from about 15 to about 17 hours, and modules 2 to 9 gained 44 new checkpoints.
@@ -140,21 +156,21 @@ These changes followed the first build (described below). They supersede anythin
 |---|---|---|
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:34` | Principles versus Rules of Conduct | about 2 min |
 | `web/src/content/aicp/lessons/capital-planning-and-finance.md:70` | How tax increment financing works | about 3 min |
-| `web/src/content/aicp/lessons/demographic-and-economic-analysis.md:141` | Location quotients and shift-share, worked through | about 4 min |
+| `web/src/content/aicp/lessons/demographic-and-economic-analysis.md:145` | Location quotients and shift-share, worked through | about 4 min |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:27` | The NEPA process: categorical exclusion, EA, or EIS? | about 3 min |
-| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:77` | What a "100-year flood" really means | about 2 min |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:79` | What a "100-year flood" really means | about 2 min |
 | `web/src/content/aicp/lessons/goals-objectives-policies.md:29` | From vision to action: the plan hierarchy | about 2 min |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:81` | How a TDR program moves development | about 3 min |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:62` | How the Low-Income Housing Tax Credit finances a building | about 3 min |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:64` | How the Low-Income Housing Tax Credit finances a building | about 3 min |
 | `web/src/content/aicp/lessons/implementation-math.md:38` | Solving FAR problems step by step | about 4 min |
-| `web/src/content/aicp/lessons/implementation-math.md:69` | Gross versus net density | about 3 min |
+| `web/src/content/aicp/lessons/implementation-math.md:71` | Gross versus net density | about 3 min |
 | `web/src/content/aicp/lessons/land-use-law-foundations.md:46` | Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min |
 | `web/src/content/aicp/lessons/planning-history.md:144` | American planning history on one timeline | about 4 min |
 | `web/src/content/aicp/lessons/public-engagement-design.md:58` | Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min |
 | `web/src/content/aicp/lessons/solving-ethics-questions.md:96` | Working an ethics scenario with the five-step method | about 5 min |
-| `web/src/content/aicp/lessons/statistics-for-planners.md:167` | Present value and benefit-cost ratios | about 3 min |
+| `web/src/content/aicp/lessons/statistics-for-planners.md:173` | Present value and benefit-cost ratios | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:48` | Penn Central's three factors, applied | about 3 min |
-| `web/src/content/aicp/lessons/takings-and-exactions.md:95` | Nollan and Dolan: the two-part test for exactions | about 4 min |
+| `web/src/content/aicp/lessons/takings-and-exactions.md:97` | Nollan and Dolan: the two-part test for exactions | about 4 min |
 | `web/src/content/aicp/lessons/transportation-planning.md:62` | The four-step travel demand model | about 4 min |
 | `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:39` | Area versus use variances: the hardship test in practice | about 3 min |
 
@@ -231,7 +247,7 @@ This is the hand-off for the build described in `PLAN.md`: what was built, the a
 
 ## VERIFY flags
 
-There are 100 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
+There are 101 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
 
 | Location | What to check |
 |---|---|
@@ -247,17 +263,18 @@ There are 100 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well
 | `web/src/content/aicp/lessons/conflicts-of-interest-and-rules-of-conduct.md:1` | check each paraphrased rule theme below against the current Rules of Conduct text. |
 | `web/src/content/aicp/lessons/conflicts-of-interest-and-rules-of-conduct.md:106` | the Hatch Act's coverage of state and local employees was narrowed in 2012; confirm current coverage before describing it in detail. |
 | `web/src/content/aicp/lessons/consensus-and-negotiation.md:114` | this five-part typology is usually attributed to Christopher Moore's "circle of conflict"; confirm the attribution if named. |
-| `web/src/content/aicp/lessons/economic-development.md:73` | this is the Main Street America "Four Point Approach"; confirm current terminology if named. |
-| `web/src/content/aicp/lessons/economic-development.md:124` | Opportunity Zone rules were modified by 2025 federal tax legislation; confirm current program terms before describing details. |
-| `web/src/content/aicp/lessons/economic-development.md:126` | confirm the current status of the New Markets Tax Credit and EDA programs if expanded. |
+| `web/src/content/aicp/lessons/economic-development.md:75` | this is the Main Street America "Four Point Approach"; confirm current terminology if named. |
+| `web/src/content/aicp/lessons/economic-development.md:126` | Opportunity Zone rules were modified by 2025 federal tax legislation; confirm current program terms before describing details. |
+| `web/src/content/aicp/lessons/economic-development.md:128` | confirm the current status of the New Markets Tax Credit and EDA programs if expanded. |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:21` | federal NEPA implementing procedures changed substantially in 2025 (CEQ regulations rescinded, agency procedures revised); confirm the current process terms before publishing detailed steps. |
-| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:85` | confirm the five-year update cycle and which FEMA grant programs currently require an approved plan. |
+| `web/src/content/aicp/interactives/tests.js:140` | the NEPA practice cases ("Which level of NEPA review?") follow the lesson's NEPA steps; recheck them if that lesson's 2025 flag changes the steps. |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:89` | confirm the five-year update cycle and which FEMA grant programs currently require an approved plan. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:68` | confirm the current status of federal LEP guidance (Executive Order 13166 and agency guidance), which may have changed in 2025. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:69` | federal environmental justice executive orders have been revoked or amended since 2025; confirm the current status of EO 12898 before relying on it. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:86` | confirm the 2024 DOJ Title II web accessibility rule's standard (WCAG 2.1 AA) and its current compliance dates. |
 | `web/src/content/aicp/lessons/federal-policy-and-planning.md:26` | confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. |
 | `web/src/content/aicp/lessons/federal-policy-and-planning.md:37` | confirm the 1962 Act as the origin of the 3C planning requirement. |
-| `web/src/content/aicp/lessons/goals-objectives-policies.md:79` | "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. |
+| `web/src/content/aicp/lessons/goals-objectives-policies.md:81` | "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:22` | confirm the SmartCode transect zone numbering (T1–T6) and names if you want to teach them precisely. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:38` | performance zoning is often associated with Lane Kendig's work in Bucks County, Pennsylvania, in the 1970s; confirm before attributing. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:92` | Florida's statewide concurrency mandate was substantially relaxed in 2011 (except for certain facilities); confirm the current status before describing it. |
@@ -267,10 +284,10 @@ There are 100 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well
 | `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:109` | confirm the descriptions of Portland Metro and the Twin Cities Metropolitan Council if expanded. |
 | `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:113` | the Twin Cities Fiscal Disparities program (1971) is the usual example; confirm before naming it. |
 | `web/src/content/aicp/lessons/housing-and-community-development.md:25` | HUD's extremely low/very low/low categories are 30/50/80% of area median; "moderate" is defined by individual programs and states. Confirm wording if used for specific programs. |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:46` | LIHTC was created by the Tax Reform Act of 1986; confirm current affordability periods and the 9%/4% credit structure if added. |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:76` | HUD's AFFH rule has been issued, rescinded, and reissued several times; confirm its current status before describing specific requirements. |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:82` | Mount Laurel I is usually dated 1975 and Mount Laurel II (builder's remedy) 1983; confirm before adding dates. |
-| `web/src/content/aicp/lessons/implementation-math.md:164` | confirm what calculator tools are available on the current exam. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:48` | LIHTC was created by the Tax Reform Act of 1986; confirm current affordability periods and the 9%/4% credit structure if added. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:78` | HUD's AFFH rule has been issued, rescinded, and reissued several times; confirm its current status before describing specific requirements. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:84` | Mount Laurel I is usually dated 1975 and Mount Laurel II (builder's remedy) 1983; confirm before adding dates. |
+| `web/src/content/aicp/lessons/implementation-math.md:170` | confirm what calculator tools are available on the current exam. |
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:48` | some states (for example, California and Arizona) require water supply assessments or assured supply for large developments; confirm before naming them. |
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:76` | MS4 = municipal separate storm sewer system permits under the NPDES program; confirm terminology before expanding. |
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:86` | confirm the general statement that investor-owned utilities are regulated by state public utility commissions. |
@@ -301,7 +318,7 @@ There are 100 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well
 | `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:86` | this is Section 4(f) of the Department of Transportation Act of 1966; confirm wording before naming it. |
 | `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:129` | confirm the credit remains 20% and the current rules on claiming it (spread over five years since 2017), and that the 10% non-historic credit remains repealed. |
 | `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:30` | confirm the commonly cited height-to-width ranges for enclosure before relying on specific numbers. |
-| `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:56` | identify which states currently follow Fasano if a list is added. |
+| `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:58` | identify which states currently follow Fasano if a list is added. |
 | `web/src/content/pages/exam-info.md:1` | confirm this URL is still APA's main AICP certification page. |
 | `web/src/content/pages/exam-info.md:21` | domain names and weights are taken from uploads/aicp-diagnostic-exam-spec.md in this repo; confirm them against APA's current published content outline. |
 | `web/src/content/pages/exam-info.md:28` | confirm the current question count and time limit with APA. |

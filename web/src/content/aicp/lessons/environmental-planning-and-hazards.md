@@ -28,6 +28,8 @@ The level of review follows how significant the effects might be, and even the h
 A decision-tree walkthrough of which level of review a project needs and what each ends in (a FONSI or a record of decision).
 :::
 
+:::try test-nepa
+
 ### Brownfields
 
 A **brownfield** is a property whose expansion, redevelopment, or reuse is **complicated by the presence or potential presence of contamination**: old gas stations, dry cleaners, rail yards, factories. Redeveloping them reuses infrastructure and cleans up neighborhoods, but buyers fear liability.

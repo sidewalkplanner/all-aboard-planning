@@ -16,7 +16,8 @@
 //  - no figure's baked-in text is smaller than 13px on screen;
 //  - every :::try practice piece exists, is used once, sits between Key
 //    concepts and Summary, and is well formed: sorts have reasons for every
-//    card, calculators reproduce the lesson's worked example (`expect`), their
+//    card, tests and scenes have a reason for every step and choice (and one
+//    best choice per scene step), calculators reproduce the lesson's worked example (`expect`), their
 //    "Your turn" problems compute, and sketch text is at least 13px on a phone.
 //
 // Needs no dependencies beyond the site's own (marked, via markdown.mjs).
@@ -260,7 +261,9 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
   const { kindOf } = await imp('content/aicp/interactives/index.js');
   const { SORTS } = await imp('content/aicp/interactives/sorts.js');
   const { CALCULATORS } = await imp('content/aicp/interactives/calculators.js');
-  const DEFS = { sort: SORTS, calc: CALCULATORS };
+  const { TESTS } = await imp('content/aicp/interactives/tests.js');
+  const { SCENES } = await imp('content/aicp/interactives/scenes.js');
+  const DEFS = { sort: SORTS, test: TESTS, scene: SCENES, calc: CALCULATORS };
   for (const [kind, defs] of Object.entries(DEFS)) {
     for (const id of Object.keys(defs)) if (kindOf(id) !== kind) err(`interactives: "${id}" is defined as a ${kind} but its prefix makes it a ${kindOf(id)}`);
   }
@@ -293,6 +296,36 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
       if (!c.text || !(typeof c.why === 'string' && c.why.trim().length >= 20)) err(`${where}: card ${i + 1} needs text and a reason ("why")`);
     }
     for (const p of piles) if (!d.cards.some((c) => c.pile === p)) err(`${where}: no card belongs in pile "${p}"`);
+  }
+
+  const why = (x) => typeof x === 'string' && x.trim().length >= 20;
+  for (const [id, d] of Object.entries(TESTS)) {
+    const where = `tests.js: ${id}`;
+    if (!d.title || !d.intro) err(`${where}: needs a title and an intro`);
+    if (!Array.isArray(d.gates) || d.gates.length < 2) err(`${where}: needs at least 2 gates`);
+    for (const g of d.gates || []) if (!g.label || !g.question) err(`${where}: every gate needs a label and a question`);
+    if (!Array.isArray(d.cases) || d.cases.length < 2) err(`${where}: needs at least 2 cases`);
+    for (const c of d.cases || []) {
+      if (!c.title || !c.facts) err(`${where}: case "${c.title}" needs a title and facts`);
+      if (!c.steps?.length || c.steps.length > d.gates.length) err(`${where}: case "${c.title}" needs 1 to ${d.gates.length} steps`);
+      for (const st of c.steps || []) if (typeof st.answer !== 'boolean' || !why(st.why)) err(`${where}: case "${c.title}" has a step without a true/false answer and a reason`);
+      if (!c.outcome?.stamp || !['ok', 'err'].includes(c.outcome.tone) || !c.outcome.text) err(`${where}: case "${c.title}" needs an outcome { stamp, tone: 'ok'|'err', text }`);
+    }
+  }
+  for (const [id, d] of Object.entries(SCENES)) {
+    const where = `scenes.js: ${id}`;
+    if (!d.title || !d.intro || !d.role) err(`${where}: needs a title, intro, and role`);
+    if (!Array.isArray(d.steps) || d.steps.length < 2) err(`${where}: needs at least 2 steps`);
+    for (const st of d.steps || []) {
+      if (!st.tag || !st.title || !st.text) err(`${where}: step "${st.title}" needs a tag, title, and text`);
+      if (!Array.isArray(st.choices) || st.choices.length < 2 || st.choices.length > 4) err(`${where}: step "${st.title}" needs 2 to 4 choices`);
+      if ((st.choices || []).filter((c) => c.best).length !== 1) err(`${where}: step "${st.title}" needs exactly one best choice`);
+      for (const c of st.choices || []) if (!c.label || !c.stamp || !c.result || !why(c.why)) err(`${where}: step "${st.title}" has a choice without a label, stamp, result, and reason`);
+      // The best choice shouldn't give itself away by length.
+      const lens = (st.choices || []).map((c) => c.label.length);
+      const best = (st.choices || []).find((c) => c.best);
+      if (best && best.label.length > 1.4 * Math.max(...lens.filter((l) => l !== best.label.length), 1)) warn(`${where}: step "${st.title}": the best choice is much longer than the others`);
+    }
   }
 
   // Sketch text: a sketch is 400 wide and drawn about 288px wide on a phone.
@@ -333,7 +366,7 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
       if (px < 13) { err(`${where}: sketch text is ${px.toFixed(1)}px on a phone; use at least 19 (24 handwritten)`); break; }
     }
   }
-  console.log(`Practice pieces: ${usedTry.size} placed (${Object.keys(SORTS).length} sorts, ${Object.keys(CALCULATORS).length} calculators defined).`);
+  console.log(`Practice pieces: ${usedTry.size} placed (${Object.keys(CALCULATORS).length} calculators, ${Object.keys(SORTS).length} sorts, ${Object.keys(TESTS).length} tests, ${Object.keys(SCENES).length} scenes defined).`);
 }
 
 // ------------------------------------------------------------------ report

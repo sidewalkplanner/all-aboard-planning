@@ -1,9 +1,11 @@
 # Interactive lessons: the plan
 
-Status: **approved; batch 1 built** (the `:::try` block and checker rules, Before you go, Try it
-with live sketches for the 11 calculators plus bid-rent, and Sort it with 4 sorts). Next: batch 2.
-Changes from the proposal: `affordability` moved to the housing lesson (Measuring affordability)
-so Implementation math keeps three pieces; `rate-times-size` became `parking`.
+Status: **batch 1 merged and live; batch 2 built** (Walk the test: `test-variance`,
+`test-takings`, `test-nollan-dolan`, `test-nepa`; You're the planner: `scene-week`). Next: batch 3
+(Red pen, and the richer sketches). Changes from the proposal: `affordability` moved to the
+housing lesson (Measuring affordability) so Implementation math keeps three pieces;
+`rate-times-size` became `parking`; `scene-week` sits after "Ethics online and with new tools"
+(its Wednesday and Thursday use that section).
 
 ## The idea in one paragraph
 

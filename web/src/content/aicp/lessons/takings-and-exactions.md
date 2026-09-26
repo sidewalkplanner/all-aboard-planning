@@ -63,6 +63,8 @@ In a few situations, a taking is automatic, with no balancing:
 Ask the per se questions first, because they end the analysis; only if both answers are no do you start balancing.
 :::
 
+:::try test-takings
+
 :::checkpoint cp:takings-loretto
 
 ### Clarifications and procedure
@@ -95,6 +97,8 @@ Order matters: a condition with no connection to the impact fails at the first s
 :::video Nollan and Dolan: the two-part test for exactions | about 4 min
 Walks a single dedication request through the essential nexus question and then rough proportionality, using a simple flowchart, and shows how *Koontz* (money demands and denials) and *Sheetz* (legislative fees) extend the test.
 :::
+
+:::try test-nollan-dolan
 
 :::checkpoint cp:takings-proportional
 

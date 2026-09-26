@@ -40,6 +40,8 @@ Every stop has to be passed; most failed requests stop at the first or third.
 Applies the typical variance findings to two contrasting requests (an oddly shaped lot and a request for more profit) to show what counts as a hardship and what doesn't.
 :::
 
+:::try test-variance
+
 :::checkpoint cp:relief-financial
 
 ### Rezonings: legislative or quasi-judicial?

@@ -111,6 +111,8 @@ Run each situation through the same five steps; the medium is new, but the oblig
 
 :::checkpoint cp:solve-ai-tools
 
+:::try scene-week
+
 ### Common traps
 
 - **"It was a small gift."** The rule turns on the reasonable perception of influence, not value.
