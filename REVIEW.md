@@ -125,11 +125,11 @@ These changes followed the first build (described below). They supersede anythin
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:34` | Principles versus Rules of Conduct | about 2 min |
 | `web/src/content/aicp/lessons/capital-planning-and-finance.md:70` | How tax increment financing works | about 3 min |
 | `web/src/content/aicp/lessons/demographic-and-economic-analysis.md:141` | Location quotients and shift-share, worked through | about 4 min |
-| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:25` | The NEPA process: categorical exclusion, EA, or EIS? | about 3 min |
-| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:64` | What a "100-year flood" really means | about 2 min |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:27` | The NEPA process: categorical exclusion, EA, or EIS? | about 3 min |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:77` | What a "100-year flood" really means | about 2 min |
 | `web/src/content/aicp/lessons/goals-objectives-policies.md:29` | From vision to action: the plan hierarchy | about 2 min |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:81` | How a TDR program moves development | about 3 min |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:61` | How the Low-Income Housing Tax Credit finances a building | about 3 min |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:62` | How the Low-Income Housing Tax Credit finances a building | about 3 min |
 | `web/src/content/aicp/lessons/implementation-math.md:38` | Solving FAR problems step by step | about 4 min |
 | `web/src/content/aicp/lessons/implementation-math.md:69` | Gross versus net density | about 3 min |
 | `web/src/content/aicp/lessons/land-use-law-foundations.md:48` | Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min |
@@ -139,7 +139,7 @@ These changes followed the first build (described below). They supersede anythin
 | `web/src/content/aicp/lessons/statistics-for-planners.md:167` | Present value and benefit-cost ratios | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:50` | Penn Central's three factors, applied | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:97` | Nollan and Dolan: the two-part test for exactions | about 4 min |
-| `web/src/content/aicp/lessons/transportation-planning.md:61` | The four-step travel demand model | about 4 min |
+| `web/src/content/aicp/lessons/transportation-planning.md:62` | The four-step travel demand model | about 4 min |
 | `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:39` | Area versus use variances: the hardship test in practice | about 3 min |
 
 ---
@@ -215,7 +215,7 @@ This is the hand-off for the build described in `PLAN.md`: what was built, the a
 
 ## VERIFY flags
 
-There are 98 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
+There are 99 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
 
 | Location | What to check |
 |---|---|
@@ -230,11 +230,11 @@ There are 98 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/comprehensive-plans.md:68` | confirm which states to cite as consistency states (Oregon, Florida, and California are commonly cited) and how each applies the requirement. |
 | `web/src/content/aicp/lessons/conflicts-of-interest-and-rules-of-conduct.md:1` | check each paraphrased rule theme below against the current Rules of Conduct text. |
 | `web/src/content/aicp/lessons/consensus-and-negotiation.md:114` | this five-part typology is usually attributed to Christopher Moore's "circle of conflict"; confirm the attribution if named. |
-| `web/src/content/aicp/lessons/economic-development.md:72` | this is the Main Street America "Four Point Approach"; confirm current terminology if named. |
-| `web/src/content/aicp/lessons/economic-development.md:109` | Opportunity Zone rules were modified by 2025 federal tax legislation; confirm current program terms before describing details. |
-| `web/src/content/aicp/lessons/economic-development.md:111` | confirm the current status of the New Markets Tax Credit and EDA programs if expanded. |
-| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:19` | federal NEPA implementing procedures changed substantially in 2025 (CEQ regulations rescinded, agency procedures revised); confirm the current process terms before publishing detailed steps. |
-| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:72` | confirm the five-year update cycle and which FEMA grant programs currently require an approved plan. |
+| `web/src/content/aicp/lessons/economic-development.md:73` | this is the Main Street America "Four Point Approach"; confirm current terminology if named. |
+| `web/src/content/aicp/lessons/economic-development.md:124` | Opportunity Zone rules were modified by 2025 federal tax legislation; confirm current program terms before describing details. |
+| `web/src/content/aicp/lessons/economic-development.md:126` | confirm the current status of the New Markets Tax Credit and EDA programs if expanded. |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:21` | federal NEPA implementing procedures changed substantially in 2025 (CEQ regulations rescinded, agency procedures revised); confirm the current process terms before publishing detailed steps. |
+| `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:85` | confirm the five-year update cycle and which FEMA grant programs currently require an approved plan. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:68` | confirm the current status of federal LEP guidance (Executive Order 13166 and agency guidance), which may have changed in 2025. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:69` | federal environmental justice executive orders have been revoked or amended since 2025; confirm the current status of EO 12898 before relying on it. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:86` | confirm the 2024 DOJ Title II web accessibility rule's standard (WCAG 2.1 AA) and its current compliance dates. |
@@ -245,18 +245,18 @@ There are 98 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:38` | performance zoning is often associated with Lane Kendig's work in Bucks County, Pennsylvania, in the 1970s; confirm before attributing. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:92` | Florida's statewide concurrency mandate was substantially relaxed in 2011 (except for certain facilities); confirm the current status before describing it. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:108` | confirm details sometimes cited for these cases (Ramapo's roughly 18-year capital program; Petaluma's cap of about 500 units a year) before adding them. |
-| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:47` | confirm the USDA food access thresholds (commonly 1 mile urban / 10 miles rural, with additional 0.5- and 20-mile variants) before citing numbers. |
-| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:76` | service radii by park type vary by source (older NRPA guidance); confirm figures before citing specific distances beyond the neighborhood park range. |
-| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:92` | confirm the descriptions of Portland Metro and the Twin Cities Metropolitan Council if expanded. |
-| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:96` | the Twin Cities Fiscal Disparities program (1971) is the usual example; confirm before naming it. |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:24` | HUD's extremely low/very low/low categories are 30/50/80% of area median; "moderate" is defined by individual programs and states. Confirm wording if used for specific programs. |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:45` | LIHTC was created by the Tax Reform Act of 1986; confirm current affordability periods and the 9%/4% credit structure if added. |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:75` | HUD's AFFH rule has been issued, rescinded, and reissued several times; confirm its current status before describing specific requirements. |
-| `web/src/content/aicp/lessons/housing-and-community-development.md:81` | Mount Laurel I is usually dated 1975 and Mount Laurel II (builder's remedy) 1983; confirm before adding dates. |
+| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:48` | confirm the USDA food access thresholds (commonly 1 mile urban / 10 miles rural, with additional 0.5- and 20-mile variants) before citing numbers. |
+| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:77` | service radii by park type vary by source (older NRPA guidance); confirm figures before citing specific distances beyond the neighborhood park range. |
+| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:109` | confirm the descriptions of Portland Metro and the Twin Cities Metropolitan Council if expanded. |
+| `web/src/content/aicp/lessons/health-food-parks-and-regional-planning.md:113` | the Twin Cities Fiscal Disparities program (1971) is the usual example; confirm before naming it. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:25` | HUD's extremely low/very low/low categories are 30/50/80% of area median; "moderate" is defined by individual programs and states. Confirm wording if used for specific programs. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:46` | LIHTC was created by the Tax Reform Act of 1986; confirm current affordability periods and the 9%/4% credit structure if added. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:76` | HUD's AFFH rule has been issued, rescinded, and reissued several times; confirm its current status before describing specific requirements. |
+| `web/src/content/aicp/lessons/housing-and-community-development.md:82` | Mount Laurel I is usually dated 1975 and Mount Laurel II (builder's remedy) 1983; confirm before adding dates. |
 | `web/src/content/aicp/lessons/implementation-math.md:164` | confirm what calculator tools are available on the current exam. |
-| `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:47` | some states (for example, California and Arizona) require water supply assessments or assured supply for large developments; confirm before naming them. |
-| `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:64` | MS4 = municipal separate storm sewer system permits under the NPDES program; confirm terminology before expanding. |
-| `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:74` | confirm the general statement that investor-owned utilities are regulated by state public utility commissions. |
+| `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:48` | some states (for example, California and Arizona) require water supply assessments or assured supply for large developments; confirm before naming them. |
+| `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:76` | MS4 = municipal separate storm sewer system permits under the NPDES program; confirm terminology before expanding. |
+| `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:86` | confirm the general statement that investor-owned utilities are regulated by state public utility commissions. |
 | `web/src/content/aicp/lessons/land-use-law-foundations.md:86` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
 | `web/src/content/aicp/lessons/leadership-in-planning.md:22` | adaptive leadership is usually attributed to Ronald Heifetz; confirm before attributing. |
 | `web/src/content/aicp/lessons/mentoring-and-professional-development.md:99` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
@@ -273,16 +273,17 @@ There are 98 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/planning-theory.md:95` | confirm the conflict labels in Campbell's planner's triangle (property, resource, development) and the 1996 date. The figure `fig-planners-triangle` just below repeats the three labels, so a change here means redrawing it. |
 | `web/src/content/aicp/lessons/project-and-contract-management.md:90` | the federal QBS requirement for A/E services comes from the Brooks Act (1972); confirm it applies to the planning services in question. |
 | `web/src/content/aicp/lessons/research-design-and-data.md:105` | confirm that the 65,000-population threshold for ACS 1-year estimates is current, and that the 3-year product remains discontinued. |
-| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:26` | confirm the claim that most states have right-to-farm laws. |
-| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:46` | extraterritorial jurisdiction exists in some states (for example, Texas and North Carolina historically); confirm before naming states. |
-| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:56` | the USDA Rural Development programs are the usual federal source; confirm current program names if cited. |
-| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:65` | confirm this general statement on the application of state and local zoning to trust land; jurisdiction over fee land within reservations is complex and case-specific. |
+| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:27` | confirm the claim that most states have right-to-farm laws. |
+| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:47` | extraterritorial jurisdiction exists in some states (for example, Texas and North Carolina historically); confirm before naming states. |
+| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:57` | the USDA Rural Development programs are the usual federal source; confirm current program names if cited. |
+| `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:78` | confirm this general statement on the application of state and local zoning to trust land; jurisdiction over fee land within reservations is complex and case-specific. |
 | `web/src/content/aicp/lessons/subdivision-and-development-review.md:62` | vesting rules vary widely by state; if specific states are named, confirm them. |
 | `web/src/content/aicp/lessons/the-planning-process.md:104` | confirm that the governing body, not the commission, adopts the comprehensive plan in most states today. |
-| `web/src/content/aicp/lessons/transportation-planning.md:28` | confirm current federal rules on MTP update cycles (commonly every 4 years in nonattainment/maintenance areas and 5 in attainment areas) and the minimum TIP period (4 years). |
-| `web/src/content/aicp/lessons/transportation-planning.md:70` | California's SB 743 (2013) directed the shift from LOS to VMT for CEQA transportation analysis; confirm details if expanded. |
-| `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:79` | this is Section 4(f) of the Department of Transportation Act of 1966; confirm wording before naming it. |
-| `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:112` | confirm the credit remains 20% and the current rules on claiming it (spread over five years since 2017), and that the 10% non-historic credit remains repealed. |
+| `web/src/content/aicp/lessons/transportation-planning.md:29` | confirm current federal rules on MTP update cycles (commonly every 4 years in nonattainment/maintenance areas and 5 in attainment areas) and the minimum TIP period (4 years). |
+| `web/src/content/aicp/lessons/transportation-planning.md:71` | California's SB 743 (2013) directed the shift from LOS to VMT for CEQA transportation analysis; confirm details if expanded. |
+| `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:86` | this is Section 4(f) of the Department of Transportation Act of 1966; confirm wording before naming it. |
+| `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:129` | confirm the credit remains 20% and the current rules on claiming it (spread over five years since 2017), and that the 10% non-historic credit remains repealed. |
+| `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:30` | confirm the commonly cited height-to-width ranges for enclosure before relying on specific numbers. |
 | `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:56` | identify which states currently follow Fasano if a list is added. |
 | `web/src/content/pages/exam-info.md:1` | confirm this URL is still APA's main AICP certification page. |
 | `web/src/content/pages/exam-info.md:21` | domain names and weights are taken from uploads/aicp-diagnostic-exam-spec.md in this repo; confirm them against APA's current published content outline. |
@@ -311,12 +312,12 @@ There are 98 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/pages/quick-reference.md:61` | Mount Laurel I is usually dated 1975 and Mount Laurel II 1983. |
 | `web/src/content/pages/quick-reference.md:68` | SZEA publication dates are given variously as 1922, 1924, and 1926. |
 | `web/src/content/pages/quick-reference.md:74` | confirm the 1962 Act as the origin of the 3C requirement. |
-| `web/src/content/pages/quick-reference.md:89` | LIHTC is usually dated to the Tax Reform Act of 1986. |
-| `web/src/content/pages/quick-reference.md:215` | confirm the 65,000 threshold is current. |
-| `web/src/content/pages/quick-reference.md:216` | confirm the current question count and time limit with APA. |
-| `web/src/content/pages/quick-reference.md:217` | confirm the credit remains 20%. |
-| `web/src/content/pages/quick-reference.md:218` | confirm the five-year update cycle. |
-| `web/src/content/pages/quick-reference.md:219` | confirm the current CM requirement. |
+| `web/src/content/pages/quick-reference.md:91` | LIHTC is usually dated to the Tax Reform Act of 1986. |
+| `web/src/content/pages/quick-reference.md:222` | confirm the 65,000 threshold is current. |
+| `web/src/content/pages/quick-reference.md:223` | confirm the current question count and time limit with APA. |
+| `web/src/content/pages/quick-reference.md:224` | confirm the credit remains 20%. |
+| `web/src/content/pages/quick-reference.md:225` | confirm the five-year update cycle. |
+| `web/src/content/pages/quick-reference.md:226` | confirm the current CM requirement. |
 
 Other placeholders, which aren't VERIFY flags:
 - `web/src/content/pages/about.md` has `<!-- PLACEHOLDER -->` for the founder bio.

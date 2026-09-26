@@ -84,11 +84,14 @@ Full explanations: [Takings, exactions, and property rights](/aicp/lessons/takin
 | 1973 | Endangered Species Act | Listed species and critical habitat |
 | 1974 | Housing and Community Development Act | CDBG and Section 8 |
 | 1975 | Home Mortgage Disclosure Act (HMDA) | Public mortgage lending data by neighborhood and race |
+| 1976 | Resource Conservation and Recovery Act (RCRA) | Solid and hazardous waste, including landfill standards |
+| 1976 | HUD Code | Federal construction standard for manufactured homes |
 | 1977 | Community Reinvestment Act (CRA) | Banks must serve their whole service areas, including low- and moderate-income neighborhoods |
 | 1980 | CERCLA (Superfund) | Contaminated site cleanup and liability |
 | 1986 | Low-Income Housing Tax Credit <!-- VERIFY: LIHTC is usually dated to the Tax Reform Act of 1986. --> | The largest source of new affordable rentals |
 | 1988 | Stafford Act | Federal disaster declarations |
 | 1990 | Americans with Disabilities Act | Accessible facilities, programs, and communication |
+| 1990 | NAGPRA | Return of Native American remains and cultural items |
 | 1991 | ISTEA | Stronger MPOs, flexible transportation funding |
 | 1992 | HOPE VI | Distressed public housing replaced with mixed-income communities |
 | 1996 | Telecommunications Act | Local cell tower siting, within federal limits |
@@ -132,6 +135,10 @@ More: [Federal laws and programs that shaped planning](/aicp/lessons/federal-pol
 | Jean Gottmann | *Megalopolis*, the Boston–Washington corridor |
 | Ernest Burgess / Homer Hoyt / Harris and Ullman | Concentric zones / sectors / multiple nuclei |
 | Joel Garreau | Edge cities |
+| Donald Shoup | *The High Cost of Free Parking*: the costs of parking minimums |
+| Jarrett Walker | The transit ridership vs. coverage tradeoff |
+| Richard Florida | *The Rise of the Creative Class* |
+| Gordon Cullen | *Townscape*, serial vision |
 | Andreas Faludi | Procedural (theory *of*) vs. substantive (theory *in*) planning |
 | Herbert Simon | Bounded rationality and satisficing |
 | Charles Lindblom | Incrementalism, "muddling through" |
@@ -262,6 +269,11 @@ Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Popu
 | Quorum vs. majority vote | Members needed present to act vs. votes needed to pass a motion |
 | Public hearing vs. public meeting | Formal, noticed, creates the record vs. informal, for ideas and information |
 | LOS vs. VMT | Driver delay vs. the amount of driving |
+| Ridership vs. coverage | Frequent service where riders are vs. thin service everywhere |
+| Indirect vs. induced effects | Supplier spending vs. workers' household spending |
+| Riparian vs. prior appropriation | Reasonable use by streamside owners (East) vs. first in time, first in right (West) |
+| Rent control vs. rent stabilization | Caps rents at a set level vs. limits annual increases |
+| ESA Section 7 vs. Section 10 | Consultation for federal actions vs. incidental take permits with an HCP for others |
 | Climate mitigation vs. adaptation | Cutting emissions vs. preparing for expected impacts |
 | EA vs. EIS | Determines significance (may end in a FONSI) vs. full analysis for significant effects |
 | National Register vs. local historic district | Largely honorific for private owners vs. binding review of changes |

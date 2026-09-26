@@ -177,15 +177,15 @@ export default {
     explanation: 'The commission typically holds a hearing and recommends; the governing body then holds its own hearing and adopts. Under the 1928 Standard City Planning Enabling Act, the commission itself adopted the plan.',
   },
   'cp:analysis-hia': {
-    text: 'What is the first step of a health impact assessment?',
+    text: 'A county wants to know how a proposed freeway interchange would affect asthma rates in nearby neighborhoods, and what design changes would reduce the harm. Which analysis fits best?',
     options: [
-      'Screening, to decide whether an HIA is worth doing',
-      'Scoping, to choose which health effects to study',
-      'Assessment of baseline health conditions',
-      'Recommendations to decision-makers',
+      'A fiscal impact analysis',
+      'A health impact assessment',
+      'A buildable lands inventory',
+      'A goals-achievement matrix',
     ],
-    correct: 0,
-    explanation: 'An HIA runs screening, scoping, assessment, recommendations, reporting, and monitoring and evaluation. Screening comes first because HIAs are often voluntary.',
+    correct: 1,
+    explanation: 'A health impact assessment estimates a proposal’s effects on health and how they’re distributed, and recommends changes. A fiscal impact analysis looks at public costs and revenues.',
   },
   'cp:analysis-funding': {
     text: 'A city issues revenue bonds to build a water treatment plant and repays them from water rates. Which statement is accurate?',

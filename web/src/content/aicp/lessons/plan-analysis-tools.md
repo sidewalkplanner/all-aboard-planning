@@ -102,7 +102,7 @@ The scopes sort emissions by how directly you control them, which is why most lo
 Several kinds of assessment look ahead at a proposal's effects on a particular dimension of community life:
 
 - **Environmental review** under NEPA or a state "little NEPA" law examines environmental effects. See [Environmental planning and hazards](/aicp/lessons/environmental-planning-and-hazards).
-- A **health impact assessment (HIA)** estimates how a plan, policy, or project will affect health and how those effects are distributed, and recommends changes. It usually runs in six steps: **screening** (is an HIA worth doing?), **scoping** (which health effects and populations?), **assessment**, **recommendations**, **reporting**, and **monitoring and evaluation**. HIAs are often voluntary, which is why the screening step matters.
+- A **health impact assessment (HIA)** estimates how a plan, policy, or project will affect health and how those effects are distributed, and recommends changes. It usually runs in six steps: **screening** (is an HIA worth doing?), **scoping** (which health effects and populations?), **assessment**, **recommendations**, **reporting**, and **monitoring and evaluation**. HIAs are often voluntary, which is why the screening step matters. See [Health, food, parks, and regional planning](/aicp/lessons/health-food-parks-and-regional-planning).
 - A **social impact assessment** looks at effects on people's way of life, community cohesion, and access to services, including displacement.
 - An **equity analysis** asks who benefits and who is burdened. See [Equitable, inclusive, and accessible engagement](/aicp/lessons/equitable-and-accessible-engagement).
 

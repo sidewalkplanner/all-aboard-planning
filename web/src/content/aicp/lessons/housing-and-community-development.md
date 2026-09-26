@@ -4,7 +4,8 @@
 - Describe the parts of a housing needs assessment.
 - Explain how LIHTC, Housing Choice Vouchers, CDBG, HOME, and Housing First work.
 - Summarize the Fair Housing Act, affirmatively furthering fair housing, and the key cases (*Inclusive Communities*, *Edmonds*, *Mount Laurel*).
-- Use supply, preservation, and tenant-protection tools, including missing middle housing and ADUs, to address affordability and displacement.
+- Use supply, preservation, and tenant-protection tools, including missing middle housing, ADUs, and manufactured housing, to address affordability and displacement.
+- Distinguish rent control from rent stabilization and weigh their tradeoffs.
 
 ## Key concepts
 
@@ -86,6 +87,7 @@ In the ***Mount Laurel*** decisions, the New Jersey Supreme Court held that deve
 
 - **Missing middle housing**: house-scale buildings with multiple units, such as **duplexes, triplexes, fourplexes, townhouses, and courtyard apartments**. They were common before mid-century zoning banned them from most residential districts.
 - **Accessory dwelling units (ADUs)**: backyard cottages, garage apartments, and basement units that add **gentle density** and housing supply within existing neighborhoods.
+- **Manufactured housing**: factory-built homes constructed to the federal **HUD Code**, the national standard since 1976 that takes the place of local building codes for these homes. It's one of the largest sources of unsubsidized affordable housing, but many zoning codes exclude it or confine it to parks. Residents of manufactured home communities who own their homes but rent the land beneath them are vulnerable when a park is sold or closed, which is why some states and nonprofits help residents buy their communities.
 - **Zoning reforms**: allowing more units per lot, reducing minimum lot sizes, eliminating parking minimums, streamlining approvals, and upzoning near transit and jobs.
 
 :::figure fig-missing-middle | A row of buildings on one street: a house, a duplex, a fourplex, townhouses, and a mid-rise. A bracket over the duplex, fourplex, and townhouses labels them the missing middle. Note: house-scale, but zoned out of most neighborhoods.
@@ -101,6 +103,19 @@ When investment, including public investment such as new transit or parks, raise
 - **preservation**: acquiring or subsidizing existing lower-cost rental housing, including unsubsidized "naturally occurring" affordable housing;
 - **production**: inclusionary requirements and public land for affordable housing; and
 - **protection**: tenant protections such as just-cause eviction rules, relocation assistance, right to counsel, and rental registries.
+
+### Rent regulation
+
+**Rent control** in the strict sense caps rents at a set level. Most programs today are **rent stabilization**: they limit how much rent can rise each year for existing tenants, often tied to inflation, and some let rents reset when a unit turns over (**vacancy decontrol**).
+
+The tradeoffs are debated:
+
+- **For**: tenants gain stability and protection from sudden increases that force moves, which keeps neighborhoods and schools intact.
+- **Against**: strict caps can discourage new construction and maintenance, lead owners to convert units to condominiums, and benefit tenants who don't need help as well as those who do.
+
+Many programs exempt new construction to protect supply, and **many states preempt** local rent regulation entirely, so whether a city can use it depends on state law. Whatever the policy, it works best paired with new supply, since regulation alone doesn't add homes.
+
+:::checkpoint cp:housing-rent-stabilization
 
 ## Key terms
 
@@ -119,6 +134,9 @@ When investment, including public investment such as new transit or parks, raise
 - **Missing middle housing**: House-scale buildings containing multiple units.
 - **Accessory dwelling unit (ADU)**: A secondary home on the same lot as a primary dwelling.
 - **Community land trust (CLT)**: A nonprofit that holds land in trust to keep housing permanently affordable.
+- **HUD Code**: The federal construction standard for manufactured homes, in effect since 1976.
+- **Rent stabilization**: Limits on annual rent increases for existing tenants, often tied to inflation.
+- **Vacancy decontrol**: A rule letting a regulated unit's rent reset when a tenant moves out.
 
 ## Real-world examples
 
@@ -135,8 +153,8 @@ When investment, including public investment such as new transit or parks, raise
 - Housing Choice Vouchers are **tenant-based**; CDBG funds activities that **primarily benefit low- and moderate-income** people.
 - *Inclusive Communities* (2015) allowed **disparate-impact** claims under the Fair Housing Act.
 - *Mount Laurel*: a municipality's **fair share** of regional affordable housing need.
-- Housing First means permanent housing **without preconditions**.
+- Housing First means permanent housing **without preconditions**. **Rent stabilization** limits annual increases; many states **preempt** local rent regulation.
 
 ## Summary
 
-Households paying more than 30% of income for housing are cost-burdened, and above 50% severely so. HUD's categories (30%, 50%, and 80% of AMI) anchor programs. Needs assessments examine growth, cost burden, condition, and gaps by income and tenure. LIHTC channels investor equity into affordable rentals through state allocations; vouchers subsidize tenants; CDBG and HOME fund local housing and community development; Housing First provides housing without preconditions. The Fair Housing Act covers zoning and allows disparate-impact claims (*Inclusive Communities*), group-home rules are subject to it (*Edmonds*), and *Mount Laurel* requires New Jersey municipalities to accommodate their fair share. Expand supply with missing middle housing and ADUs, and pair investment with preservation and tenant protection.
+Households paying more than 30% of income for housing are cost-burdened, and above 50% severely so. HUD's categories (30%, 50%, and 80% of AMI) anchor programs. Needs assessments examine growth, cost burden, condition, and gaps by income and tenure. LIHTC channels investor equity into affordable rentals through state allocations; vouchers subsidize tenants; CDBG and HOME fund local housing and community development; Housing First provides housing without preconditions. The Fair Housing Act covers zoning and allows disparate-impact claims (*Inclusive Communities*), group-home rules are subject to it (*Edmonds*), and *Mount Laurel* requires New Jersey municipalities to accommodate their fair share. Expand supply with missing middle housing and ADUs, and pair investment with preservation and tenant protection. Manufactured housing, built to the federal HUD Code, is a major unsubsidized affordable source often excluded by zoning. Rent stabilization protects existing tenants from sharp increases but can deter supply if it's strict, and many states preempt it.

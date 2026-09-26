@@ -2,7 +2,8 @@
 
 - Explain how the built environment affects health and walk through the steps of a health impact assessment.
 - Describe the food system, define food deserts, and identify planning tools for food access.
-- Classify parks and measure park access with both acreage and walk-access standards.
+- Classify parks and measure park access with both acreage and walk-access standards, and use joint use agreements to add park space.
+- Plan for residents of all ages, including aging in place, universal design, and visitability.
 - Describe regional and multijurisdictional planning bodies and tools.
 - Identify the privacy and equity questions raised by smart-city data.
 
@@ -81,7 +82,23 @@ Park systems have traditionally been measured by a **level of service** in **acr
 Acres per 1,000 residents would score these towns the same; the walk-access measure shows the difference residents actually feel.
 :::
 
+Where land for new parks is scarce, a **joint use agreement** can open existing public facilities, most often school playgrounds, fields, and gyms, to the public outside school hours, with the partners sharing costs, maintenance, and liability.
+
 :::checkpoint cp:health-park-access
+
+### Planning for all ages
+
+The share of Americans over 65 is growing, and most older adults want to **age in place**, staying in their own homes and neighborhoods. Planning helps by:
+
+- allowing **accessory dwelling units** and smaller homes, so people can downsize nearby or house a caregiver;
+- promoting **universal design**, which makes buildings and products usable by people of all ages and abilities without special adaptation;
+- adopting **visitability** standards for new homes: at least one zero-step entrance, wide enough doors, and an accessible bathroom on the main floor, so a person using a wheelchair can visit or stay;
+- locating housing near transit, shops, and health care, with safe sidewalks, benches, and longer crossing times at signals; and
+- planning for children too: safe routes to school, playgrounds within walking distance, and streets calm enough for independent travel.
+
+The World Health Organization's **age-friendly cities** framework and its network of participating communities are a common starting point. A place that works for an 8-year-old and an 80-year-old tends to work for everyone.
+
+:::checkpoint cp:health-visitability
 
 ### Regional and multijurisdictional planning
 
@@ -123,6 +140,10 @@ Sensors, cameras, app data, and connected infrastructure promise better traffic 
 - **Council of governments (COG)**: A voluntary regional association of local governments.
 - **Interlocal agreement**: A contract between local governments to share services or coordinate.
 - **Tax-base sharing**: Pooling part of regional tax-base growth among jurisdictions.
+- **Joint use agreement**: An agreement opening facilities such as school grounds to public use, with shared costs and responsibilities.
+- **Aging in place**: Living safely and independently in one's own home and community as one ages.
+- **Universal design**: Design usable by people of all ages and abilities without special adaptation.
+- **Visitability**: Basic access features in new homes: a zero-step entrance, wide doors, and a main-floor accessible bathroom.
 
 ## Real-world examples
 
@@ -136,10 +157,11 @@ Sensors, cameras, app data, and connected infrastructure promise better traffic 
 
 - An HIA evaluates health effects **before** a decision.
 - Food deserts are identified by **distance to a grocery store, vehicle access, and income**.
-- A neighborhood park typically serves about **a quarter to a half mile**.
+- A neighborhood park typically serves about **a quarter to a half mile**; **joint use agreements** open school grounds to add park space.
 - Smart-city sensor data raises **privacy, surveillance, and equity** concerns.
+- **Visitability** means a zero-step entrance, wide doors, and a main-floor accessible bathroom; it supports **aging in place**.
 - Public health topics in a comprehensive plan include active transportation, food access, air quality, and housing quality.
 
 ## Summary
 
-The built environment shapes health through active living, air quality, safety, housing, food access, and heat; an HIA evaluates a proposal's health effects before the decision, from screening to monitoring. Food deserts combine distance, vehicle access, and income; zoning, incentives, and food policy councils improve access. Parks are classified from pocket parks to regional parks; neighborhood parks serve roughly a quarter to a half mile, and access-based metrics complement acreage standards. Regional problems call for MPOs, COGs, special districts, interlocal agreements, and fair-share and tax-base sharing tools. Smart-city data needs governance for privacy and equity.
+The built environment shapes health through active living, air quality, safety, housing, food access, and heat; an HIA evaluates a proposal's health effects before the decision, from screening to monitoring. Food deserts combine distance, vehicle access, and income; zoning, incentives, and food policy councils improve access. Parks are classified from pocket parks to regional parks; neighborhood parks serve roughly a quarter to a half mile, and access-based metrics complement acreage standards. Regional problems call for MPOs, COGs, special districts, interlocal agreements, and fair-share and tax-base sharing tools. Smart-city data needs governance for privacy and equity. Joint use agreements open school grounds where park land is scarce. Plan for all ages with ADUs, universal design, visitability, and walkable access to daily needs, so people can age in place.

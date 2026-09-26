@@ -4,6 +4,7 @@
 - Use location quotients to identify basic industries, and recognize their assumptions.
 - Describe cluster-based strategies and the main economic development approaches: retention, attraction, entrepreneurship, and workforce development.
 - Calculate and interpret retail capture and leakage.
+- Distinguish direct, indirect, and induced effects in an economic impact analysis.
 - Evaluate incentives and place-based programs, including TIF, Opportunity Zones, and business improvement districts.
 
 ## Key concepts
@@ -71,7 +72,21 @@ The links are the asset: a cluster strategy invests in the web that makes firms 
 
 Many downtown and main street programs follow a structured approach that combines organization, promotion, design, and economic vitality. <!-- VERIFY: this is the Main Street America "Four Point Approach"; confirm current terminology if named. -->
 
+Two ideas shape the debate over which strategy to favor. **Economic gardening**, pioneered in Littleton, Colorado, focuses on helping existing local firms grow with market research, data, and networks, rather than recruiting outside firms with incentives (sometimes called "smokestack chasing"). And economist Richard Florida's *The Rise of the Creative Class* (2002) argued that firms follow talented workers, who choose places for their amenities, openness, and quality of life. Critics, including Florida himself in later work, have noted that the strategy can deepen inequality and housing costs in the places that succeed.
+
 :::checkpoint cp:econ-bre
+
+### Measuring economic impact
+
+When a new plant, stadium, or program is proposed, an **economic impact analysis** estimates the jobs, income, and output it will generate. Most use **input-output models** (common ones include IMPLAN and the federal RIMS II multipliers), which trace spending through the local economy in three layers:
+
+- **Direct effects**: the jobs and spending of the project itself (the plant's own workers and purchases).
+- **Indirect effects**: the added activity at local **suppliers** that sell to the project.
+- **Induced effects**: the added activity when **workers spend their paychecks** locally, at stores, restaurants, and services.
+
+The total impact divided by the direct impact is the **multiplier**, the same idea as the economic base multiplier. Read impact claims critically: multipliers are larger for bigger, more self-sufficient regions; money spent locally on a new venue is often money that would have been spent locally anyway (the **substitution effect**); and impact isn't the same as net benefit, since the analysis usually ignores public costs.
+
+:::checkpoint cp:econ-induced
 
 ### Retail market analysis
 
@@ -124,6 +139,11 @@ Bidding wars between neighboring jurisdictions for the same firm often shift job
 - **Capture rate**: The share of trade-area spending captured by local businesses.
 - **Clawback**: A provision requiring repayment of incentives if performance targets aren't met.
 - **Opportunity Zone**: A designated low-income tract where qualified investments receive capital gains tax benefits.
+- **Economic gardening**: Growing an area's economy by helping existing local firms expand.
+- **Direct effects**: The jobs and spending of a project itself.
+- **Indirect effects**: Added activity at local suppliers to a project.
+- **Induced effects**: Added activity from workers spending their wages locally.
+- **Substitution effect**: Local spending that shifts from one local business to another rather than adding new spending.
 
 ## Real-world examples
 
@@ -139,9 +159,9 @@ Bidding wars between neighboring jurisdictions for the same firm often shift job
 - An LQ well below 1.0 suggests the area **imports** that good.
 - Relying only on LQs assumes **similar consumption patterns** to the nation.
 - A **cluster** is a concentration of interconnected firms, suppliers, and institutions.
-- Capture rate is local sales ÷ trade-area spending.
+- Capture rate is local sales ÷ trade-area spending. In an impact analysis, supplier activity is **indirect** and workers' household spending is **induced**.
 - Opportunity Zones offer **capital gains** tax incentives.
 
 ## Summary
 
-Economic base theory says basic (export) industries bring money in and drive growth; the multiplier (total ÷ basic employment) estimates total effects, in both directions. LQs above 1.0 suggest exports but assume national consumption patterns. Cluster strategies strengthen networks of related firms and institutions. Retention and expansion is usually the most cost-effective strategy, alongside attraction, entrepreneurship, workforce development, and placemaking. Retail analysis compares spending with sales to find leakage and capture rates. Use incentives with "but for" tests, performance terms, and clawbacks, and understand place-based tools like Opportunity Zones and BIDs.
+Economic base theory says basic (export) industries bring money in and drive growth; the multiplier (total ÷ basic employment) estimates total effects, in both directions. LQs above 1.0 suggest exports but assume national consumption patterns. Cluster strategies strengthen networks of related firms and institutions. Retention and expansion is usually the most cost-effective strategy, alongside attraction, entrepreneurship, workforce development, and placemaking. Retail analysis compares spending with sales to find leakage and capture rates. Use incentives with "but for" tests, performance terms, and clawbacks, and understand place-based tools like Opportunity Zones and BIDs. Economic impact analyses separate direct, indirect (supplier), and induced (household spending) effects; read them critically for substitution and ignored public costs.
