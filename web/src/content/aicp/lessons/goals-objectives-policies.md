@@ -30,6 +30,8 @@ Each level answers the one above it: the goal says what, the objective says how 
 Builds one example from a vision statement down to an assigned action, so the difference between a goal, an objective, and a policy is easy to see.
 :::
 
+:::try sort-goal-objective-policy
+
 :::checkpoint cp:goals-policy-level
 
 ### Writing good objectives

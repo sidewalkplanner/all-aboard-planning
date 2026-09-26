@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumb';
 import LessonBody from '../../components/LessonBody';
 import AccessGate from '../../components/AccessGate';
+import RecallCards from '../../components/RecallCards';
 import { useStudyState, setLessonComplete, noteLessonOpened } from '../../lib/studyState';
 import useAccess from '../../hooks/useAccess';
 import NotFound from '../NotFound';
@@ -120,6 +121,7 @@ export default function LessonPage() {
             : <a href={`#${h.id}`}>{h.text}</a>}
         </li>
       ))}
+      {!locked && <li><a href="#before-you-go">Before you go</a></li>}
       <li><a href="#practice-heading">Practice exams</a></li>
     </ul>
   );
@@ -160,6 +162,7 @@ export default function LessonPage() {
             ) : (
               <>
                 <LessonBody html={body.html} slug={lesson.slug} />
+                <RecallCards key={lesson.slug} slug={lesson.slug} />
                 <section aria-label="Lesson completion" className="card" style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 14, alignItems: 'center', justifyContent: 'space-between', ...(complete ? { borderColor: 'var(--ok-fg)', background: 'var(--ok-bg)' } : {}) }}>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 16.5 }}>{complete ? 'Lesson complete' : 'Finished this lesson?'}</div>

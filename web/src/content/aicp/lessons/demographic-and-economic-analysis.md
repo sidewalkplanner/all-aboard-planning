@@ -86,6 +86,8 @@ A housing plan needs units, not people. Two steps turn a population projection i
 
 Shrinking household size matters as much as growth: if the same population's average household size falls from 2.6 to 2.4, it needs about 8% more homes with no one new moving in.
 
+:::try households
+
 :::checkpoint cp:demo-households
 
 ### Dependency ratio
@@ -117,6 +119,8 @@ An LQ of 2.0 means the industry's share of local jobs is twice its national shar
 :::
 
 Location quotients assume that local consumption patterns and productivity match the nation's, which isn't always true. Treat them as a screening tool, not proof. The [economic development lesson](/aicp/lessons/economic-development) shows how LQs feed economic base analysis.
+
+:::try lq
 
 :::checkpoint cp:demo-lq
 

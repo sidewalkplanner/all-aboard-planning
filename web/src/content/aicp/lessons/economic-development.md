@@ -39,6 +39,8 @@ Multipliers are rough. They vary by industry and region, and they assume stable 
 The multiplier counts the new basic jobs themselves, so 250 is the total, not the extra.
 :::
 
+:::try multiplier
+
 :::checkpoint cp:econ-multiplier
 
 ### Finding the export base with location quotients

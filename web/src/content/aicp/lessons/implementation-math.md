@@ -39,6 +39,8 @@ All three have exactly the same floor area; FAR fixes how much you can build, no
 Works the two-acre, FAR 2.0 example on screen, including the shortcut of dividing FAR by lot coverage to get the number of stories.
 :::
 
+:::try far
+
 :::checkpoint cp:math-far-stories
 
 ### Lot coverage
@@ -70,6 +72,8 @@ The same 180 homes are 6 per net acre and 4.5 per gross acre, so always check wh
 Shows, with a site diagram, what gets subtracted to get net acreage, and why the same project can have very different gross and net densities.
 :::
 
+:::try density
+
 :::checkpoint cp:math-net-units
 
 ### Minimum lot area per unit
@@ -100,6 +104,8 @@ This is why parking minimums matter so much for land use. Many cities have reduc
 :::figure fig-parking-land | The retail example drawn to scale: a one-story store of 60,000 square feet beside its parking lot of 240 spaces at 350 square feet each, or 84,000 square feet (1.93 acres). The parking rectangle is 1.4 times the size of the store. A note says the parking is bigger than the building.
 At 4 spaces per 1,000 square feet, a one-story store always needs more land for cars than for the store itself.
 :::
+
+:::try parking
 
 :::checkpoint cp:math-parking-spaces
 

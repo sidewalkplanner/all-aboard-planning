@@ -59,6 +59,8 @@ Pick the level before the technique, and then keep the promise that level makes.
 Places common engagement techniques on both frameworks and shows how to spot tokenism in a process that looks participatory.
 :::
 
+:::try sort-iap2
+
 :::checkpoint cp:engage-promise
 
 ### Designing an engagement strategy

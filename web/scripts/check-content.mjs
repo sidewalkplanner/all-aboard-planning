@@ -13,7 +13,11 @@
 //  - every :::video slot has a title and length (and an https URL if any);
 //  - every :::figure names a rendered figure (public/art/<name>.webp, sized in
 //    src/data/artMeta.json) and has alt text;
-//  - no figure's baked-in text is smaller than 13px on screen.
+//  - no figure's baked-in text is smaller than 13px on screen;
+//  - every :::try practice piece exists, is used once, sits between Key
+//    concepts and Summary, and is well formed: sorts have reasons for every
+//    card, calculators reproduce the lesson's worked example (`expect`), their
+//    "Your turn" problems compute, and sketch text is at least 13px on a phone.
 //
 // Needs no dependencies beyond the site's own (marked, via markdown.mjs).
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
@@ -249,6 +253,87 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
       if (px < MIN_PX) err(`Figure ${f.name} (${which} layout): smallest text is ${px.toFixed(1)}px on screen; make it at least ${Math.ceil((MIN_PX * w) / shown)} in the drawing (${Math.ceil((MIN_PX * w) / shown / 0.8)} for handwriting), or add a narrow layout`);
     }
   }
+}
+
+// ------------------------------------------------------------------ practice pieces
+{
+  const { kindOf } = await imp('content/aicp/interactives/index.js');
+  const { SORTS } = await imp('content/aicp/interactives/sorts.js');
+  const { CALCULATORS } = await imp('content/aicp/interactives/calculators.js');
+  const DEFS = { sort: SORTS, calc: CALCULATORS };
+  for (const [kind, defs] of Object.entries(DEFS)) {
+    for (const id of Object.keys(defs)) if (kindOf(id) !== kind) err(`interactives: "${id}" is defined as a ${kind} but its prefix makes it a ${kindOf(id)}`);
+  }
+  const usedTry = new Map();
+  for (const [slug, r] of rendered) {
+    if (r.tries.length > 3) err(`Lesson ${slug}: ${r.tries.length} practice pieces (keep it to 3 or fewer)`);
+    const md = readFileSync(join(lessonDir, `${slug}.md`), 'utf8');
+    const start = md.indexOf('## Key concepts');
+    const end = md.indexOf('## Summary');
+    for (const id of r.tries) {
+      const def = DEFS[kindOf(id)][id];
+      if (!def) err(`Lesson ${slug}: :::try ${id} isn't defined in content/aicp/interactives/`);
+      if (usedTry.has(id)) err(`Lesson ${slug}: :::try ${id} is already used in ${usedTry.get(id)}`);
+      usedTry.set(id, slug);
+      const at = md.indexOf(`:::try ${id}`);
+      if (at < start || at > end) err(`Lesson ${slug}: :::try ${id} must sit between Key concepts and Summary`);
+    }
+    if ((md.match(/^:::try/gm) || []).length !== r.tries.length) err(`Lesson ${slug}: malformed :::try line (":::try id")`);
+  }
+  for (const [kind, defs] of Object.entries(DEFS)) for (const id of Object.keys(defs)) if (!usedTry.has(id)) warn(`interactives: ${kind} ${id} isn't placed in any lesson`);
+
+  for (const [id, d] of Object.entries(SORTS)) {
+    const where = `sorts.js: ${id}`;
+    if (!d.title || !d.intro) err(`${where}: needs a title and an intro`);
+    const piles = new Set((d.piles || []).map((p) => p.id));
+    if (piles.size < 2 || piles.size > 5 || piles.size !== d.piles.length) err(`${where}: needs 2 to 5 piles with unique ids`);
+    if (!d.cards || d.cards.length < 6) err(`${where}: needs at least 6 cards`);
+    for (const [i, c] of (d.cards || []).entries()) {
+      if (!piles.has(c.pile)) err(`${where}: card ${i + 1} names an unknown pile "${c.pile}"`);
+      if (!c.text || !(typeof c.why === 'string' && c.why.trim().length >= 20)) err(`${where}: card ${i + 1} needs text and a reason ("why")`);
+    }
+    for (const p of piles) if (!d.cards.some((c) => c.pile === p)) err(`${where}: no card belongs in pile "${p}"`);
+  }
+
+  // Sketch text: a sketch is 400 wide and drawn about 288px wide on a phone.
+  const SHOWN = 288;
+  const sketchPx = (sk) => Math.min(...[...sk.svg.matchAll(/<text[^>]*font-family="([^"]+)"[^>]*font-size="([\d.]+)"/g)]
+    .map((m) => Number(m[2]) * (/Caveat/.test(m[1]) ? 0.8 : 1))) * SHOWN / sk.w;
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  for (const [id, d] of Object.entries(CALCULATORS)) {
+    const where = `calculators.js: ${id}`;
+    if (!d.title || !d.intro || !Array.isArray(d.inputs) || !d.inputs.length) { err(`${where}: needs a title, intro, and inputs`); continue; }
+    for (const i of d.inputs) {
+      if (!i.id || !i.label || !Number.isFinite(i.value)) err(`${where}: input ${i.id || '?'} needs an id, label, and numeric value`);
+      if (i.slider && !(Number.isFinite(i.min) && Number.isFinite(i.max) && i.value >= i.min && i.value <= i.max)) err(`${where}: slider ${i.id} needs min and max around its value`);
+    }
+    const v = Object.fromEntries(d.inputs.map((i) => [i.id, i.value]));
+    const out = d.compute(v);
+    if (!out) { err(`${where}: the default inputs don't compute`); continue; }
+    if (!d.expect || !Object.keys(d.expect).length) err(`${where}: needs \`expect\`, the lesson's worked answer`);
+    for (const [label, want] of Object.entries(d.expect || {})) {
+      const got = out.results.find((x) => x.label === label);
+      if (!got || !got.value.includes(want)) err(`${where}: expected "${label}" to show ${want}, got ${got ? got.value : 'nothing'}`);
+    }
+    const sketches = [];
+    if (d.draw) {
+      if (typeof d.describe !== 'function') err(`${where}: a sketch needs describe() for screen readers`);
+      sketches.push(d.draw(v, out));
+    }
+    for (const make of d.problems || []) {
+      for (let k = 0; k < 25; k++) {
+        const p = make(pick);
+        const o = d.compute(p.values);
+        if (!p.text || !Number.isFinite(p.answer) || !Number.isInteger(p.dp) || !o) { err(`${where}: a "Your turn" problem doesn't compute (${p.text})`); break; }
+        if (d.draw && k < 3) sketches.push(d.draw(p.values, o));
+      }
+    }
+    for (const sk of sketches) {
+      const px = sketchPx(sk);
+      if (px < 13) { err(`${where}: sketch text is ${px.toFixed(1)}px on a phone; use at least 19 (24 handwritten)`); break; }
+    }
+  }
+  console.log(`Practice pieces: ${usedTry.size} placed (${Object.keys(SORTS).length} sorts, ${Object.keys(CALCULATORS).length} calculators defined).`);
 }
 
 // ------------------------------------------------------------------ report

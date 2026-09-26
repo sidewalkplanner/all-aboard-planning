@@ -34,6 +34,8 @@ Why do offices crowd downtown while houses spread outward? Two related models an
 - **Johann Heinrich von Thünen** (1826) modeled farming around a single market town. Crops that were bulky, perishable, or intensively grown occupied the rings nearest the market, and extensive uses such as grazing lay farthest out, because each use could afford land only where its transport costs left a profit.
 - **Bid-rent theory**, developed for cities by William Alonso (1964), applies the same logic to urban land. Each user bids for land according to how much it values access to the center. Commercial users value access most and outbid everyone near the core; residential users take the next ring, trading a longer commute for cheaper land and more space. The result is that **land values and density fall with distance from the center**, the pattern the concentric zone model sketches.
 
+:::try bid-rent
+
 :::checkpoint cp:form-bid-rent
 
 ### Central place theory

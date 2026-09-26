@@ -28,6 +28,8 @@ The most widely used planning measure: a household is **cost-burdened** when it 
 Each category is a ceiling, not a band of its own: a household at 25% of AMI also counts as very low and low income.
 :::
 
+:::try affordability
+
 ### The housing needs assessment
 
 A **housing needs assessment** is the analytical foundation of a housing element or strategy. It typically analyzes:

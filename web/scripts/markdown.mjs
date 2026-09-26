@@ -136,7 +136,32 @@ const checkpointExtension = (checkpoints) => ({
   },
 });
 
-// Returns { html, headings, links, videos, checkpoints, figures }.
+// PRACTICE PIECES. A line like
+//
+//   :::try far
+//
+// places an interactive practice piece (defined in
+// src/content/aicp/interactives/) in the lesson. It renders an empty slot
+// that LessonBody fills; the id's prefix names the kind (see index.js).
+const tryExtension = (tries) => ({
+  name: 'try',
+  level: 'block',
+  start(src) {
+    const m = src.match(/^:::try /m);
+    return m ? m.index : undefined;
+  },
+  tokenizer(src) {
+    const m = /^:::try[ \t]+([a-z0-9-]+)[ \t]*(?:\n|$)/.exec(src);
+    if (!m) return undefined;
+    tries.push(m[1]);
+    return { type: 'try', raw: m[0], id: m[1] };
+  },
+  renderer(token) {
+    return `<div class="try-slot" data-try="${escapeAttr(token.id)}"></div>\n`;
+  },
+});
+
+// Returns { html, headings, links, videos, checkpoints, figures, tries }.
 // - headings: every h2 as { id, text }, in order (drives "In this lesson").
 // - links: every href as written in the source (for the link checker).
 // Root-relative links ("/aicp/...") get the deploy base path prepended so
@@ -148,10 +173,11 @@ export function renderMarkdown(src, { base = '/' } = {}) {
   const videos = [];
   const checkpoints = [];
   const figures = [];
+  const tries = [];
   const used = new Map();
   const basePrefix = base.replace(/\/$/, '');
   const marked = new Marked({ gfm: true });
-  marked.use({ extensions: [videoExtension(videos), checkpointExtension(checkpoints), figureExtension(figures, basePrefix)] });
+  marked.use({ extensions: [videoExtension(videos), checkpointExtension(checkpoints), figureExtension(figures, basePrefix), tryExtension(tries)] });
   marked.use({
     renderer: {
       heading({ tokens, depth }) {
@@ -181,7 +207,7 @@ export function renderMarkdown(src, { base = '/' } = {}) {
     }
   });
   const html = marked.parse(src);
-  return { html, headings, links, videos, checkpoints, figures };
+  return { html, headings, links, videos, checkpoints, figures, tries };
 }
 
 // Flashcards: every "- **Term**: definition" bullet in a lesson's
