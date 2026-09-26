@@ -711,6 +711,22 @@
         "w": 366,
         "h": 802
       }
+    },
+    "fig-base-flows": {
+      "w": 720,
+      "h": 448
+    },
+    "fig-multiplier": {
+      "w": 720,
+      "h": 406
+    },
+    "fig-leakage": {
+      "w": 720,
+      "h": 380
+    },
+    "fig-cluster-web": {
+      "w": 720,
+      "h": 466
     }
   },
   "hero": {

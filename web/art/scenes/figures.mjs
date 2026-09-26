@@ -4893,6 +4893,101 @@ function climateMA() {
   };
 }
 
+// ============================================================ Lesson 8.4
+
+// Economic base: export sales bring money in; local spending recirculates it.
+function baseFlows() {
+  const rng = makeRng(8401);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const reg = ellipseD(470, 222, 236, 176);
+  b += cut(reg, { rng, fill: T.sage, filter: FLAT }) + L(ink(reg, { rng, size: 2.2, color: P.leafDeep }));
+  b += label(440, 88, 'the region', { weight: 700, color: P.leafDeep });
+  const fac = polyD([[300, 250], [300, 180], [330, 200], [330, 180], [360, 200], [360, 160], [380, 160], [380, 250]]);
+  b += cut(fac, { rng, fill: P.lavender, filter: FLAT }) + L(ink(fac, { rng, size: 2 }));
+  b += label(340, 286, 'basic', { weight: 800 });
+  b += house(440, 360, 70, 80, { seed: 41 });
+  const shop = rectD(560, 170, 90, 70);
+  const awn = polyD([[552, 170], [658, 170], [650, 150], [560, 150]]);
+  b += cut(shop, { rng, fill: P.butter, filter: FLAT }) + L(ink(shop, { rng, size: 2 })) + cut(awn, { rng, fill: P.tomato, filter: FLAT }) + L(ink(awn, { rng, size: 2 }));
+  b += label(605, 134, 'nonbasic', { weight: 800 });
+  b += L(arrow(300, 190, 150, 120, rng, { size: 2.6, head: 11 }));
+  b += label(20, 100, 'goods out', { anchor: 'start', weight: 700 });
+  b += L(arrow(150, 250, 296, 226, rng, { size: 3, head: 12, color: P.leafDeep }));
+  b += label(20, 280, 'new money in', { anchor: 'start', weight: 800, color: P.leafDeep });
+  b += L(arrow(384, 250, 432, 300, rng, { size: 2.2, head: 9, bend: -10 }));
+  b += label(372, 340, 'wages', { anchor: 'end', color: MUTED, weight: 500 });
+  b += L(arrow(510, 312, 570, 250, rng, { size: 2.2, head: 9, bend: -10 }));
+  b += label(526, 318, 'spent here', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(W / 2, 432, 'basic jobs bring money in; nonbasic jobs recirculate it', { color: P.civicDeep });
+  return { W, H: H + 8, b };
+}
+
+// The multiplier worked example: 100 basic jobs at 2.5 make 250 in all.
+function multiplierJobs() {
+  const rng = makeRng(8402);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const sq = (x, y, fill) => { const d = roundRectD(x, y, 30, 30, 5); return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 1.6 })); };
+  b += label(20, 40, '25,000 total jobs ÷ 10,000 basic = 2.5', { anchor: 'start', weight: 700 });
+  b += label(20, 108, 'basic', { anchor: 'start', weight: 800 });
+  for (let i = 0; i < 10; i++) b += sq(200 + i * 40, 84, P.lavender);
+  b += label(20, 184, 'nonbasic', { anchor: 'start', weight: 800 });
+  for (let i = 0; i < 15; i++) b += sq(200 + (i % 10) * 40, 160 + Math.floor(i / 10) * 40, P.butter);
+  b += label(620, 108, '100', { anchor: 'start', weight: 800 });
+  b += label(620, 204, '150', { anchor: 'start', weight: 800 });
+  b += L(inkLine('M200 256L596 256', { rng, size: 2.2 }));
+  b += label(20, 300, 'total', { anchor: 'start', weight: 800 });
+  b += label(200, 300, '100 × 2.5 = 250 jobs', { anchor: 'start', weight: 800, color: P.civicDeep });
+  b += label(20, 348, 'each square = 10 jobs', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(W / 2, 394, 'it runs in reverse when a big employer cuts jobs', { color: P.tomatoDeep });
+  return { W, H: H + 6, b };
+}
+
+// Retail leakage: trade-area spending against local sales, to scale.
+function leakage() {
+  const rng = makeRng(8403);
+  const W = 720;
+  const H = 380;
+  let b = '';
+  const X = (m) => 40 + m * 12;
+  b += label(40, 50, 'trade-area apparel spending', { anchor: 'start', weight: 700 });
+  const all = rectD(X(0), 66, X(50) - X(0), 60);
+  b += cut(all, { rng, fill: T.sky, filter: FLAT }) + L(ink(all, { rng, size: 2 })) + label(X(50) - 14, 106, '$50M', { anchor: 'end', weight: 800 });
+  b += label(40, 176, 'sold by local stores', { anchor: 'start', weight: 700 });
+  const loc = rectD(X(0), 192, X(10) - X(0), 60);
+  b += cut(loc, { rng, fill: P.leaf, filter: FLAT }) + L(ink(loc, { rng, size: 2 })) + label(X(10) + 14, 232, '$10M', { anchor: 'start', weight: 800 });
+  b += `<rect x="${X(10)}" y="192" width="${X(50) - X(10)}" height="60" fill="url(#none)" stroke="${P.tomatoDeep}" stroke-width="2" stroke-dasharray="8 6"/>`;
+  b += label((X(10) + X(50)) / 2 + 40, 232, 'leaks out: $40M', { weight: 800, color: P.tomatoDeep });
+  b += label(40, 306, 'capture rate: 10 ÷ 50 = 20%', { anchor: 'start', weight: 800, color: P.civicDeep });
+  b += note(W / 2, 362, 'leakage signals room for more local stores', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// A cluster: interconnected firms, suppliers, and institutions.
+function clusterWeb() {
+  const rng = makeRng(8404);
+  const W = 720;
+  const H = 460;
+  let b = '';
+  const cx = 360;
+  const cy = 220;
+  const nodes = [[160, 80, 'suppliers', T.butter], [560, 80, 'university', T.lav], [120, 250, 'training', T.sage], [590, 250, 'service firms', T.blush], [360, 390, 'trade group', T.kraft]];
+  nodes.forEach(([x, y]) => { b += L(inkLine(`M${cx} ${cy}L${x} ${y}`, { rng, size: 2, color: MUTED })); });
+  nodes.forEach(([x, y, t, fill]) => {
+    const w = t.length * 15 + 36;
+    const d = roundRectD(x - w / 2, y - 30, w, 58, 12);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 })) + label(x, y + 9, t, { weight: 700 });
+  });
+  const core = ellipseD(cx, cy, 110, 62);
+  b += cut(core, { rng, fill: P.butter, filter: FLAT }) + L(ink(core, { rng, size: 2.6 }));
+  b += label(cx, cy - 4, 'firms in', { weight: 800 }) + label(cx, cy + 28, 'one field', { weight: 800 });
+  b += note(W / 2, 452, 'strengthen the whole web, not one firm at a time', { color: P.civicDeep });
+  return { W, H: H + 6, b };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -5013,6 +5108,7 @@ const FIGURES = [
   ['fig-four-step', fourStep], ['fig-functional-class', functionalClass], ['fig-induced-demand', inducedDemand], ['fig-road-diet', roadDiet], ['fig-los-vmt', losVmt],
   ['fig-ami-bands', amiBands], ['fig-lihtc-flow', lihtcFlow], ['fig-voucher-split', voucherSplit], ['fig-missing-middle', missingMiddle],
   ['fig-nepa-levels', nepaLevels], ['fig-mitigation-sequence', mitigationSequence], ['fig-floodplain', floodplainSection], ['fig-climate-ma', climateMA],
+  ['fig-base-flows', baseFlows], ['fig-multiplier', multiplierJobs], ['fig-leakage', leakage], ['fig-cluster-web', clusterWeb],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
