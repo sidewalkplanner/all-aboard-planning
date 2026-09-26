@@ -371,6 +371,22 @@
     "fig-growth-drift": {
       "w": 720,
       "h": 440
+    },
+    "fig-flu-zoning": {
+      "w": 720,
+      "h": 448,
+      "narrow": {
+        "w": 366,
+        "h": 882
+      }
+    },
+    "fig-consistency": {
+      "w": 720,
+      "h": 360
+    },
+    "fig-plan-family": {
+      "w": 720,
+      "h": 540
     }
   },
   "hero": {

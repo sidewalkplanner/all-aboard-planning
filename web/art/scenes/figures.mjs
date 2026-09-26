@@ -2955,6 +2955,84 @@ function growthDrift() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 4.2
+
+// The future land use map beside the zoning map of the same blocks.
+function fluVsZoning() {
+  const rng = makeRng(4201);
+  const PW = 338;
+  const PH = 420;
+  const colors = { R: P.butter, C: P.tomato, I: P.lavender, P: P.leaf };
+  const now = ['RRRC', 'RRCC', 'IIRR', 'IIPR'];
+  const future = ['RRRC', 'RRCC', 'RRRR', 'CRPR'];
+  const map = (grid, other, ring) => {
+    let s = '';
+    grid.forEach((row, r) => [...row].forEach((z, c) => {
+      const d = rectD(46 + c * 62, 96 + r * 62, 60, 60);
+      s += cut(d, { rng, fill: colors[z], shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: 1.4, opacity: 0.8 }));
+      if (ring && other[r][c] !== z) s += L(ink(rectD(46 + c * 62 - 3, 96 + r * 62 - 3, 66, 66), { rng, size: 3.4, color: P.tomatoDeep }));
+    }));
+    return s;
+  };
+  const key = (y) => [['R', 'homes'], ['C', 'shops'], ['I', 'industry'], ['P', 'park']].map(([z, t], i) => { const kx = 46 + (i % 2) * 130; const ky = y + Math.floor(i / 2) * 28; return `<rect x="${kx}" y="${ky - 16}" width="18" height="18" fill="${colors[z]}" stroke="${P.ink}" stroke-width="1.4"/>` + label(kx + 26, ky, t, { size: 19, anchor: 'start', weight: 500 }); }).join('');
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Zoning map', { size: 25, anchor: 'start' }) + label(20, 70, 'the rules in force today', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  a += map(now, future, false) + key(372);
+  let c = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Future land use map', { size: 25, anchor: 'start' }) + label(20, 70, 'where the plan wants to go', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  c += map(future, now, true) + note(20, 382, 'circled: where they differ', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 448, b: at(14, 14, a) + at(368, 14, c),
+    narrow: { W: 366, H: 882, b: at(14, 14, a) + at(14, 448, c) },
+  };
+}
+
+// How much legal weight the plan carries, state by state.
+function consistencySpectrum() {
+  const rng = makeRng(4202);
+  const W = 720;
+  const H = 360;
+  let b = '';
+  const y = 150;
+  const bar = polyD([[40, y - 8], [640, y - 20], [640, y - 36], [690, y], [640, y + 36], [640, y + 20], [40, y + 8]]);
+  b += cut(bar, { rng, fill: P.civic, filter: FLAT }) + L(ink(bar, { rng, size: 2 }));
+  const stops = [
+    [140, ['Zoning is', 'the plan'], 'no separate plan', T.sky],
+    [330, ['One factor'], 'courts weigh it', P.sky],
+    [586, ['Consistency'], 'zoning must match', P.butter],
+  ];
+  stops.forEach(([x, lines, what, fill], i) => {
+    const d = ellipseD(x, y, 22, 22);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.6 }));
+    lines.forEach((t, k) => { b += title(x, y + 70 + k * 32, t, { size: 28 }); });
+    b += label(x, y + 70 + lines.length * 32 + 4, what, { color: MUTED, weight: 500 });
+  });
+  b += label(40, 70, 'less legal weight', { anchor: 'start', color: MUTED, weight: 500 });
+  b += label(690, 70, 'more legal weight', { anchor: 'end', color: MUTED, weight: 500 });
+  b += note(700, 340, 'there, rezone to match the plan', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// The family of plans around the comprehensive plan.
+function planFamily() {
+  const rng = makeRng(4203);
+  const W = 720;
+  const H = 540;
+  let b = '';
+  const box = (x, y, w, h, fill, head, sub) => {
+    const d = roundRectD(x, y, w, h, 14);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 })) + title(x + w / 2, y + 40, head, { size: 28 }) + label(x + w / 2, y + 74, sub, { color: MUTED, weight: 500 });
+  };
+  b += box(160, 16, 400, 96, T.lav, 'Regional plan', 'across jurisdictions');
+  b += box(110, 164, 500, 110, P.butter, 'Comprehensive plan', 'whole city, all topics, 20 years');
+  b += box(14, 330, 340, 96, T.sky, 'Area plans', 'a place, block by block');
+  b += box(366, 330, 340, 96, T.sage, 'Functional plans', 'one system, citywide');
+  b += L(arrow(360, 114, 360, 158, rng, { size: 2.4, head: 10 }));
+  b += L(arrow(250, 278, 190, 324, rng, { size: 2.4, head: 10 }));
+  b += L(arrow(470, 278, 530, 324, rng, { size: 2.4, head: 10 }));
+  b += label(360, 474, 'carried out by zoning, the CIP, and programs', { weight: 700 });
+  b += note(360, 518, 'adopt area plans into the plan to give them weight', { color: P.tomatoDeep, size: 35 });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -3025,6 +3103,9 @@ export const FIGURES = [
   ['fig-hazards-first', hazardsFirst],
   ['fig-tradeoff', tradeoffOptions],
   ['fig-growth-drift', growthDrift],
+  ['fig-flu-zoning', fluVsZoning],
+  ['fig-consistency', consistencySpectrum],
+  ['fig-plan-family', planFamily],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
