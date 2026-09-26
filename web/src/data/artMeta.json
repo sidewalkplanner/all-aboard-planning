@@ -94,7 +94,7 @@
     },
     "fig-walkshed": {
       "w": 720,
-      "h": 530
+      "h": 542
     },
     "fig-mcharg": {
       "w": 720,
@@ -603,6 +603,26 @@
     "fig-discipline": {
       "w": 720,
       "h": 440
+    },
+    "fig-lead-styles": {
+      "w": 720,
+      "h": 418,
+      "narrow": {
+        "w": 366,
+        "h": 822
+      }
+    },
+    "fig-lead-middle": {
+      "w": 720,
+      "h": 492
+    },
+    "fig-public-interest": {
+      "w": 720,
+      "h": 482
+    },
+    "fig-after-loss": {
+      "w": 720,
+      "h": 470
     }
   },
   "hero": {

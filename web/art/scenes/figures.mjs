@@ -891,7 +891,7 @@ function walkshed() {
   b += label(100, 470, 'streets within a half-mile walk', { anchor: 'start' });
   b += L(inkLine([[40, 500], [84, 500]], { rng, size: 3.4, color: P.civicDeep, overshoot: 0 }));
   b += label(100, 510, 'half-mile circle', { anchor: 'start', color: P.civicDeep });
-  return { W, H: H + 10, b };
+  return { W, H: H + 22, b };
 }
 
 // McHarg's overlay: stack the constraint layers, and the darkest spots are
@@ -4282,7 +4282,110 @@ function progressiveDiscipline() {
   return { W, H, b };
 }
 
-export const FIGURES = [
+export // ============================================================ Lesson 7.1
+
+// Transactional (exchange) versus transformational (vision) leadership.
+function leadStyles() {
+  const rng = makeRng(7101);
+  const PW = 338;
+  const PH = 390;
+  const box = (x, y, w, t, fill) => {
+    const d = roundRectD(x, y, w, 60, 10);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 })) + label(x + w / 2, y + 38, t, { size: 21, weight: 700 });
+  };
+  let tr = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Transactional', { size: 25, anchor: 'start' });
+  tr += label(20, 70, 'motivates through exchange', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  tr += box(20, 160, 146, 'performance', T.sky) + box(186, 160, 132, 'reward', T.butter);
+  tr += L(arrow(100, 154, 246, 154, rng, { size: 2.2, head: 9, bend: -34 }) + arrow(250, 226, 96, 226, rng, { size: 2.2, head: 9, bend: -34 }));
+  tr += label(169, 270, 'pay, recognition,', { size: 19, color: MUTED, weight: 500 });
+  tr += label(169, 294, 'corrections', { size: 19, color: MUTED, weight: 500 });
+  tr += note(20, 342, 'efficient for routine work,', { size: 24, anchor: 'start', color: P.civicDeep });
+  tr += note(20, 372, 'rarely inspires change', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let tf = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Transformational', { size: 25, anchor: 'start' });
+  tf += label(20, 70, 'motivates through vision', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  tf += star(169, 124, 26, { fill: P.butter, seed: 71 });
+  tf += label(169, 180, 'shared vision', { size: 19, weight: 700 });
+  const people = [[80, 0.8, P.leaf], [169, 1.0, P.civic], [258, 1.2, P.tomato]];
+  people.forEach(([x, sc, coat], i) => {
+    tf += L(arrow(x, 296 - 62 * sc - 8, x + (169 - x) * 0.45, 196, rng, { size: 2, head: 8 }));
+    tf += person(x, 300, sc, { coat, seed: 72 + i });
+  });
+  tf += note(20, 342, 'works beyond self-interest;', { size: 24, anchor: 'start', color: P.civicDeep });
+  tf += note(20, 372, 'people grow along the way', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 418, b: at(14, 14, tr) + at(368, 14, tf),
+    narrow: { W: 366, H: 822, b: at(14, 14, tr) + at(14, 418, tf) },
+  };
+}
+
+// Leading from the middle: four departments, none reporting to the planner.
+function leadMiddle() {
+  const rng = makeRng(7102);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  const depts = [[14, 20, 'Public works', 'fewer crashes', T.kraft], [456, 20, 'Transit', 'faster buses', T.sky], [14, 250, 'Police', 'fewer crashes', T.lav], [456, 250, 'Parks', 'safer park access', T.sage]];
+  const cx = 360;
+  const cy = 190;
+  depts.forEach(([x, y, t, why, fill]) => {
+    const w = 250;
+    const ex = x < cx ? x + w : x;
+    b += L(dashed(ex, y + 60, x < cx ? cx - 70 : cx + 70, cy + 10, rng, { size: 2, color: MUTED }));
+    const d = roundRectD(x, y, w, 120, 12);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += label(x + w / 2, y + 50, t, { weight: 800 });
+    b += label(x + w / 2, y + 90, why, { weight: 500 });
+  });
+  b += person(cx, 150, 1.4, { coat: P.tomato, prop: 'clipboard', seed: 74 });
+  b += label(cx, 184, 'planner', { weight: 700 });
+  const c = roundRectD(cx - 80, 204, 160, 56, 10);
+  b += cut(c, { rng, fill: P.butter, filter: FLAT }) + L(ink(c, { rng, size: 2.4 })) + label(cx, 241, 'crash data', { weight: 800 });
+  b += label(cx, 296, 'shared', { color: MUTED, weight: 500 }) + label(cx, 328, 'problem', { color: MUTED, weight: 500 });
+  b += note(cx, 424, 'no one here reports to the planner:', { color: P.tomatoDeep });
+  b += note(cx, 468, 'each joins for its own reason', { color: P.civicDeep });
+  return { W, H: H + 22, b };
+}
+
+// The public interest as a balance of competing values.
+function publicInterest() {
+  const rng = makeRng(7103);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  const rows = [['individual rights', 'community needs', 0.55], ['present', 'future generations', 0.4], ['efficiency', 'equity', 0.62], ['local', 'regional', 0.35]];
+  rows.forEach(([a, z, pos], i) => {
+    const y = 40 + i * 96;
+    b += label(40, y + 10, a, { anchor: 'start', weight: 700 });
+    b += label(680, y + 10, z, { anchor: 'end', weight: 700 });
+    const d = roundRectD(40, y + 30, 640, 16, 8);
+    b += cut(d, { rng, fill: T.sky, filter: FLAT }) + L(ink(d, { rng, size: 1.8 }));
+    const mx = 40 + 640 * pos;
+    b += `<circle cx="${mx}" cy="${y + 38}" r="15" fill="${P.butter}" stroke="${P.ink}" stroke-width="2.2"/>`;
+  });
+  b += note(360, 432, 'one decision’s balance (illustrative):', { color: P.civicDeep });
+  b += note(360, 466, 'weigh the values in the open', { color: P.civicDeep });
+  return { W, H: H + 12, b };
+}
+
+// Leading after a loss: implement the lawful decision, then return with data.
+function afterLoss() {
+  const rng = makeRng(7104);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  const rows = [['Recommend', 'reduce parking minimums', T.sky], ['Council', 'adopts a smaller reduction', T.blush], ['Implement', 'promptly; count parking use', T.butter], ['Return', '2 years on: lots half empty', T.sky], ['Council', 'adopts the fuller reform', T.sage]];
+  b += L(inkLine('M40 40L40 344', { rng, size: 2.4, color: MUTED }));
+  rows.forEach(([h, t, fill], i) => {
+    const y = 40 + i * 76;
+    b += `<circle cx="40" cy="${y}" r="20" fill="${fill}" stroke="${P.ink}" stroke-width="2.2"/>` + label(40, y + 10, String(i + 1), { weight: 800 });
+    b += label(78, y + 10, h, { anchor: 'start', weight: 800 });
+    b += label(272, y + 10, t, { anchor: 'start', weight: 500 });
+  });
+  b += note(360, 432, 'carry it out, then bring the data back', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
   ['fig-census-acs', censusVsAcs],
@@ -4397,6 +4500,7 @@ export const FIGURES = [
   ['fig-org-structures', orgStructures],
   ['fig-budget-formats', budgetFormats],
   ['fig-discipline', progressiveDiscipline],
+  ['fig-lead-styles', leadStyles], ['fig-lead-middle', leadMiddle], ['fig-public-interest', publicInterest], ['fig-after-loss', afterLoss],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
