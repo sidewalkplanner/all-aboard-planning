@@ -387,6 +387,18 @@
     "fig-plan-family": {
       "w": 720,
       "h": 540
+    },
+    "fig-plan-hierarchy": {
+      "w": 720,
+      "h": 500
+    },
+    "fig-smart": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-directive-words": {
+      "w": 720,
+      "h": 360
     }
   },
   "hero": {

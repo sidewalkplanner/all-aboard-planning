@@ -3033,6 +3033,91 @@ function planFamily() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 4.3
+
+// The plan hierarchy as a funnel, with the lesson's housing example.
+function planHierarchy() {
+  const rng = makeRng(4301);
+  const W = 720;
+  const H = 500;
+  let b = '';
+  const rows = [
+    ['Vision', 'room for every age and income', P.sky],
+    ['Goal', 'housing for all income levels', T.sky],
+    ['Objective', '2,000 affordable homes by 2035', P.butter],
+    ['Policy', 'shall allow duplexes citywide', P.sage],
+    ['Action', 'draft the code by June 2026', P.blush],
+  ];
+  const top = 20;
+  const rh = 88;
+  const cx = 140;
+  const half = (i) => 124 - i * 13;
+  rows.forEach(([name, ex, fill], i) => {
+    const y = top + i * rh;
+    const d = polyD([[cx - half(i), y], [cx + half(i), y], [cx + half(i + 1), y + rh - 6], [cx - half(i + 1), y + rh - 6]]);
+    b += cut(d, { rng, fill, filter: FLAT, jitter: 0.5 }) + L(ink(d, { rng, size: 2 }));
+    b += title(cx, y + rh / 2 + 8, name, { size: 28 });
+    b += label(290, y + rh / 2 + 8, ex, { anchor: 'start', weight: 500 });
+    b += L(inkLine([[cx + half(i) + 8, y + rh / 2], [280, y + rh / 2]], { rng, size: 1.4, overshoot: 0, opacity: 0.6 }));
+  });
+  b += note(360, 486, 'broad at the top, assigned at the bottom', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// A SMART objective, drawn from its own numbers: 60% today, 80% by 2035.
+function smartObjective() {
+  const rng = makeRng(4302);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const x0 = 60;
+  const w = 560;
+  const X = (p) => x0 + (p / 100) * w;
+  const y = 170;
+  const track = rectD(x0, y, w, 50);
+  b += cut(track, { rng, fill: '#EFE7D6', filter: FLAT }) + L(ink(track, { rng, size: 2 }));
+  const now = rectD(x0, y, X(60) - x0, 50);
+  b += cut(now, { rng, fill: P.leaf, filter: FLAT, shadow: false }) + L(ink(now, { rng, size: 2 }));
+  const gap = rectD(X(60), y, X(80) - X(60), 50);
+  b += `<path d="${gap}" fill="${P.sage}" opacity="0.7"/>` + hatch(gap, { rng, angle: 45, gap: 9, color: P.leafDeep, opacity: 0.5, size: 1.2 });
+  for (const p of [0, 20, 40, 60, 80, 100]) b += label(X(p), y + 90, `${p}%`, { color: MUTED, weight: 500 });
+  const flag = (x, text, sub, color, anchor) => {
+    const tx = anchor === 'end' ? x - 10 : x + 10;
+    let s = L(inkLine([[x, y - 2], [x, y - 90]], { rng, size: 2.4, color, overshoot: 0 }));
+    s += label(tx, y - 62, text, { color, weight: 800, anchor });
+    s += label(tx, y - 30, sub, { color, weight: 500, anchor });
+    return s;
+  };
+  b += flag(X(60), 'baseline', '60% today', P.leafDeep, 'end');
+  b += flag(X(80), 'target', '80% by 2035', P.tomatoDeep, 'start');
+  b += label(x0, 330, 'metric: residents within a 10-minute walk of a park', { anchor: 'start', weight: 500 });
+  b += note(x0, 380, 'a number, a starting point, a target, and a date', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Directive words, from permissive to binding.
+function directiveWords() {
+  const rng = makeRng(4303);
+  const W = 720;
+  const H = 360;
+  let b = '';
+  const words = [['may', 'encourage', 'permits', T.sky], ['should', '', 'expects, with judgment', P.sky], ['shall', 'will', 'commits', P.civic]];
+  words.forEach(([w1, w2, what, fill], i) => {
+    const x = 20 + i * 234;
+    const h = 90 + i * 60;
+    const d = roundRectD(x, 280 - h, 212, h, 12);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    const tc = i === 2 ? '#FFFFFF' : P.ink;
+    b += title(x + 106, 280 - h + 46, `“${w1}”`, { size: 32, color: tc });
+    if (w2) b += title(x + 106, 280 - h + 84, `“${w2}”`, { size: 28, color: tc });
+    b += label(x + 106, 318, what, { weight: 700 });
+  });
+  b += L(inkLine([[16, 282], [704, 282]], { rng, size: 2.4, overshoot: 0 }));
+  b += note(20, 50, 'an all-“encourage” plan', { anchor: 'start', color: P.tomatoDeep });
+  b += note(20, 86, 'commits to nothing', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -3106,6 +3191,9 @@ export const FIGURES = [
   ['fig-flu-zoning', fluVsZoning],
   ['fig-consistency', consistencySpectrum],
   ['fig-plan-family', planFamily],
+  ['fig-plan-hierarchy', planHierarchy],
+  ['fig-smart', smartObjective],
+  ['fig-directive-words', directiveWords],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
