@@ -5095,6 +5095,98 @@ function treatments() {
   return { W: 720, H: 350, b: wideB, narrow: { W: 370, H: 630, b: narB } };
 }
 
+// ============================================================ Lesson 8.6
+
+// The six steps of a health impact assessment.
+function hiaSteps() {
+  const rng = makeRng(8601);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const rows = [['Screening', 'will an HIA add value?'], ['Scoping', 'which effects, who, how?'], ['Assessment', 'baseline, then predictions'], ['Recommend', 'cut harms, add benefits'], ['Report', 'to decision-makers, public'], ['Monitor', 'did it play out?']];
+  b += L(inkLine('M40 36L40 406', { rng, size: 2.4, color: MUTED }));
+  rows.forEach(([h, t], i) => {
+    const y = 36 + i * 74;
+    b += `<circle cx="40" cy="${y}" r="20" fill="${i === 0 ? P.butter : T.sky}" stroke="${P.ink}" stroke-width="2.2"/>` + label(40, y + 10, String(i + 1), { weight: 800 });
+    b += label(78, y + 10, h, { anchor: 'start', weight: 800 });
+    b += label(270, y + 10, t, { anchor: 'start', weight: 500 });
+  });
+  b += note(W / 2, 468, 'all before the decision, except monitoring', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// A food desert combines distance, car access, and income.
+function foodDesert() {
+  const rng = makeRng(8602);
+  const W = 720;
+  const H = 540;
+  let b = '';
+  const circ = [[270, 180, T.sky, 'far from', 'a grocery', 226, 130], [450, 180, T.butter, 'no car', 'at home', 494, 130], [360, 330, T.blush, 'low', 'income', 360, 410]];
+  circ.forEach(([x, y, fill]) => { b += `<circle cx="${x}" cy="${y}" r="140" fill="${fill}" fill-opacity="0.75" stroke="${P.ink}" stroke-width="2"/>`; });
+  circ.forEach(([, , , a, z, lx, ly]) => { b += label(lx, ly, a, { weight: 700 }) + label(lx, ly + 32, z, { weight: 700 }); });
+  b += `<rect x="296" y="210" width="128" height="62" rx="10" fill="#FFFDF8" stroke="${P.tomatoDeep}" stroke-width="2.4"/>`;
+  b += label(360, 238, 'food', { weight: 800, color: P.tomatoDeep }) + label(360, 266, 'desert', { weight: 800, color: P.tomatoDeep });
+  b += note(W / 2, 530, 'distance alone isn’t enough', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Park acreage versus walking access: same acres, different reach.
+function parkAccess() {
+  const rng = makeRng(8603);
+  const PW = 338;
+  const PH = 420;
+  const R = 62;
+  const homes = [];
+  for (let r = 0; r < 5; r++) for (let c = 0; c < 7; c++) homes.push([44 + c * 42, 116 + r * 40]);
+  const map = (parks, t, sub) => {
+    let o = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, t, { size: 25, anchor: 'start' }) + label(20, 70, sub, { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+    parks.forEach(([x1, y1, x2, y2]) => { const d = rectD(x1, y1, x2 - x1, y2 - y1); o += cut(d, { rng, fill: P.leaf, filter: FLAT }) + L(ink(d, { rng, size: 1.8, color: P.leafDeep })); });
+    let inside = 0;
+    let total = 0;
+    homes.forEach(([x, y]) => {
+      if (parks.some(([x1, y1, x2, y2]) => x > x1 - 8 && x < x2 + 8 && y > y1 - 8 && y < y2 + 8)) return;
+      total++;
+      const d = Math.min(...parks.map(([x1, y1, x2, y2]) => Math.hypot(Math.max(x1 - x, 0, x - x2), Math.max(y1 - y, 0, y - y2))));
+      const ok = d <= R;
+      if (ok) inside++;
+      o += `<rect x="${x - 8}" y="${y - 8}" width="16" height="16" rx="3" fill="${ok ? P.butter : '#FFFDF8'}" stroke="${P.ink}" stroke-width="1.4"/>`;
+    });
+    const acres = parks.reduce((s2, [x1, y1, x2, y2]) => s2 + (x2 - x1) * (y2 - y1), 0);
+    return { o, share: Math.round((100 * inside) / total), acres, total, inside };
+  };
+  const one = map([[250, 96, 318, 296]], 'One big park', 'at the edge of town');
+  const s = Math.sqrt(one.acres / 4);
+  const four = map([[70 - s / 2, 156 - s / 2, 70 + s / 2, 156 + s / 2], [238 - s / 2, 156 - s / 2, 238 + s / 2, 156 + s / 2], [70 - s / 2, 246 - s / 2, 70 + s / 2, 246 + s / 2], [238 - s / 2, 246 - s / 2, 238 + s / 2, 246 + s / 2]].map((a) => a.map((v) => Math.round(v))), 'Four small parks', 'the same total acres');
+  const foot = (m, color) => label(20, 344, `${m.share}% of homes within`, { size: 21, anchor: 'start', weight: 800, color }) + label(20, 374, 'a 10-minute walk', { size: 21, anchor: 'start', weight: 800, color }) + label(20, 402, `(${m.inside} of ${m.total} homes, illustrative)`, { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const a = one.o + foot(one, P.tomatoDeep);
+  const bb = four.o + foot(four, P.leafDeep);
+  return {
+    W: 720, H: 448, b: at(14, 14, a) + at(368, 14, bb),
+    narrow: { W: 366, H: 882, b: at(14, 14, a) + at(14, 448, bb) },
+  };
+}
+
+// Regional tools, from voluntary cooperation to real authority.
+function regionalSpectrum() {
+  const rng = makeRng(8604);
+  const W = 720;
+  const H = 446;
+  let b = '';
+  b += L(arrow(40, 200, 690, 200, rng, { size: 4, head: 16, color: P.civicDeep }));
+  b += label(40, 40, 'voluntary', { anchor: 'start', color: MUTED, weight: 600 }) + label(700, 40, 'real authority', { anchor: 'end', color: MUTED, weight: 600 });
+  const pts = [[110, 'Interlocal', 'agreements', T.sage, -1], [270, 'Councils of', 'governments', T.sky, 1], [450, 'MPOs', 'transportation', T.butter, -1], [600, 'Regional', 'government', T.blush, 1]];
+  pts.forEach(([x, a, z, fill, up]) => {
+    b += `<circle cx="${x}" cy="200" r="14" fill="${fill}" stroke="${P.ink}" stroke-width="2.2"/>`;
+    const y = up < 0 ? 70 : 300;
+    const w = Math.max(a.length, z.length) * 15 + 30;
+    const d = roundRectD(x - w / 2, y, w, 86, 10);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 })) + label(x, y + 36, a, { weight: 800 }) + label(x, y + 70, z, { weight: 500 });
+    b += L(inkLine(`M${x} ${up < 0 ? 156 : 214}L${x} ${up < 0 ? 186 : 300}`, { rng, size: 1.8, color: MUTED }));
+  });
+  b += note(600, 432, 'rare in the U.S.', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -5217,6 +5309,7 @@ const FIGURES = [
   ['fig-nepa-levels', nepaLevels], ['fig-mitigation-sequence', mitigationSequence], ['fig-floodplain', floodplainSection], ['fig-climate-ma', climateMA],
   ['fig-base-flows', baseFlows], ['fig-multiplier', multiplierJobs], ['fig-leakage', leakage], ['fig-cluster-web', clusterWeb],
   ['fig-enclosure', enclosure], ['fig-cpted', cpted], ['fig-register-vs-local', registerVsLocal], ['fig-treatments', treatments],
+  ['fig-hia-steps', hiaSteps], ['fig-food-desert', foodDesert], ['fig-park-access', parkAccess], ['fig-regional-spectrum', regionalSpectrum],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

@@ -34,6 +34,10 @@ A **health impact assessment (HIA)** is used to **evaluate the potential health 
 
 HIAs often involve collecting information about individuals. Protect confidentiality and obtain informed consent.
 
+:::figure fig-hia-steps | The six steps of a health impact assessment, in order. 1 Screening: will an HIA add value? 2 Scoping: which effects, who, and how? 3 Assessment: baseline, then predictions. 4 Recommendations: cut harms, add benefits. 5 Reporting: to decision-makers and the public. 6 Monitoring: did it play out? Note: all before the decision, except monitoring.
+An HIA only matters if it reaches the decision in time, which is why screening asks first whether it can.
+:::
+
 :::checkpoint cp:health-hia-screening
 
 ### Food systems planning
@@ -49,6 +53,10 @@ Planning tools include:
 - **healthy corner store** programs and grocery attraction incentives;
 - transit connections to grocery stores; and
 - **food policy councils** that bring together growers, retailers, health agencies, and residents.
+
+:::figure fig-food-desert | Three overlapping circles: far from a grocery, no car at home, and low income. The area where all three overlap is labeled food desert. Note: distance alone isn't enough.
+A household far from a store but with a car and a good income can still get groceries; it's the combination that cuts off access.
+:::
 
 :::checkpoint cp:health-food-tools
 
@@ -69,6 +77,10 @@ Planning tools include:
 
 Park systems have traditionally been measured by a **level of service** in **acres per 1,000 residents**. Many cities now also measure **access**, for example the share of residents within a **10-minute walk** of a park, because acreage alone can hide neighborhoods with no park nearby. Other tools include **joint-use agreements** that open schoolyards to the public, **cap (deck) parks** built over sunken freeways to reconnect neighborhoods, and park equity analyses that direct investment to underserved areas. See [Vision, goals, objectives, and policies](/aicp/lessons/goals-objectives-policies) for an example objective.
 
+:::figure fig-park-access | Two maps of the same homes with the same total park acres (illustrative). One big park at the edge of town: 20% of homes, 5 of 25, are within a 10-minute walk. Four small parks spread through town: 100% of homes, 23 of 23, are within a 10-minute walk.
+Acres per 1,000 residents would score these towns the same; the walk-access measure shows the difference residents actually feel.
+:::
+
 :::checkpoint cp:health-park-access
 
 ### Regional and multijurisdictional planning
@@ -84,6 +96,10 @@ Many problems ignore city limits: traffic, housing markets, watersheds, air qual
 - **Regional tax-base sharing**, which pools part of commercial and industrial tax growth to reduce competition between jurisdictions. <!-- VERIFY: the Twin Cities Fiscal Disparities program (1971) is the usual example; confirm before naming it. -->
 
 Regional planning succeeds when there's a shared problem, a fair process, and some mix of incentives and requirements, since local governments rarely give up authority voluntarily.
+
+:::figure fig-regional-spectrum | A line running from voluntary to real authority. In order along it: interlocal agreements, councils of governments, MPOs for transportation, and regional government, which is rare in the U.S.
+Most regional planning in the U.S. sits toward the voluntary end, which is why it depends on shared problems and incentives.
+:::
 
 :::checkpoint cp:health-cog
 

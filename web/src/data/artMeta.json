@@ -759,6 +759,26 @@
         "w": 370,
         "h": 630
       }
+    },
+    "fig-hia-steps": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-food-desert": {
+      "w": 720,
+      "h": 540
+    },
+    "fig-park-access": {
+      "w": 720,
+      "h": 448,
+      "narrow": {
+        "w": 366,
+        "h": 882
+      }
+    },
+    "fig-regional-spectrum": {
+      "w": 720,
+      "h": 446
     }
   },
   "hero": {
