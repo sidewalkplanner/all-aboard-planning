@@ -231,8 +231,13 @@ Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Popu
 | GO bond vs. revenue bond | Backed by taxing power vs. repaid by the project's own revenues |
 | Funding vs. financing | Where the money ultimately comes from vs. spreading the cost over time by borrowing |
 | TIF vs. special assessment | Captures growth in property tax vs. charges properties for a special benefit |
+| Zoning vs. covenants | Public rules the city enforces vs. private deed restrictions owners or an HOA enforce |
+| Fairly debatable vs. substantial evidence | Court's test for legislative decisions vs. for quasi-judicial ones |
+| Tax abatement vs. PILOT | Reduces or freezes the tax vs. replaces it with a negotiated payment |
+| Land bank vs. community land trust | Returns vacant property to use vs. holds land permanently for affordability |
 | RFQ vs. RFP | Qualifications first vs. approach and (usually) price |
 | Output vs. outcome measure | Work produced vs. results in the community |
+| Logic model order | Inputs → activities → outputs → outcomes → impact |
 | Validity vs. reliability | Measures the right thing vs. measures it consistently |
 | Needs assessment vs. asset mapping | Starts from a community's gaps vs. from its strengths |
 | Cross-sectional vs. longitudinal | Many cases at one time vs. the same cases over time |

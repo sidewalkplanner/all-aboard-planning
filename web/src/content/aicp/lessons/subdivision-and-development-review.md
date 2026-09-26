@@ -5,6 +5,7 @@
 - Describe improvement guarantees such as performance bonds, and the role of dedications.
 - Explain site plan review and how staff assess a proposal for consistency with the plan and code.
 - Explain vested rights, development agreements, negotiated exactions, and the official map.
+- Distinguish private covenants and homeowners associations from public regulation.
 
 ## Key concepts
 
@@ -95,6 +96,20 @@ Reserving the path costs little while land is still farms, and a great deal once
 
 :::checkpoint cp:subdiv-map-limit
 
+### Private restrictions: covenants and HOAs
+
+Many subdivisions come with a second set of rules that aren't public regulation at all. **Covenants, conditions, and restrictions (CC&Rs)** are recorded with the property's deed and bind later owners. They can control architecture, fences, paint colors, parking, rentals, and more. A **homeowners association (HOA)** usually enforces them and maintains common areas, such as the open space in a cluster subdivision or private streets and stormwater ponds.
+
+Covenants and zoning work independently:
+
+- The **city enforces zoning**; the **HOA or other lot owners enforce covenants**, usually in civil court. A planner shouldn't deny a permit because it violates a covenant, and a covenant that allows something doesn't override zoning that forbids it.
+- A project must satisfy **both**, so in practice the stricter rule controls.
+- Covenants can't be enforced when they violate law. Racially restrictive covenants became unenforceable after *Shelley v. Kraemer* (1948), and discriminatory covenants violate the Fair Housing Act. Some states now also limit covenants that bar solar panels or accessory dwellings.
+
+For planners, HOAs matter in two more ways: the city may require one to maintain common facilities before approving a plat, and residents in HOA communities sometimes expect the city to enforce rules that are purely private.
+
+:::checkpoint cp:subdiv-covenant
+
 ## Key terms
 
 - **Subdivision regulations**: Rules governing the division of land into lots and the required infrastructure.
@@ -109,6 +124,8 @@ Reserving the path costs little while land is still farms, and a great deal once
 - **Development agreement**: A contract fixing development standards for a period in exchange for public benefits.
 - **Negotiated exaction**: An improvement or dedication agreed to in negotiation, beyond code minimums.
 - **Official map**: An adopted map reserving locations for future public facilities.
+- **Covenants (CC&Rs)**: Private restrictions recorded with the deed and enforced by owners or an association, not by the city.
+- **Homeowners association (HOA)**: A private organization that enforces a development's covenants and maintains its common areas.
 
 ## Real-world examples
 
@@ -124,9 +141,9 @@ Reserving the path costs little while land is still farms, and a great deal once
 - A **performance bond** guarantees required public improvements will be completed.
 - Common-law vested rights: **substantial expenditures in good faith under a valid permit**.
 - A **development agreement** trades locked-in standards (vested rights) for public benefits.
-- An **official map** reserves locations for future streets and facilities.
+- An **official map** reserves locations for future streets and facilities. **Covenants** are private: the city enforces zoning, not CC&Rs.
 - When a project is inconsistent with the plan, the staff analysis must say so.
 
 ## Summary
 
-Subdivision regulations govern how land is divided and the infrastructure that serves it; zoning governs what's built on the lots. Approval runs from sketch plan to preliminary plat, improvements or a performance guarantee, and a recorded final plat that legally creates the lots. Dedications and fees in lieu are exactions subject to nexus and proportionality. Site plan review checks a single project's layout, and consistency review compares proposals with the plan and code; report inconsistencies honestly. Vested rights generally arise from substantial expenditures under a valid permit. Development agreements trade certainty for public benefits, and the official map reserves land for future public facilities.
+Subdivision regulations govern how land is divided and the infrastructure that serves it; zoning governs what's built on the lots. Approval runs from sketch plan to preliminary plat, improvements or a performance guarantee, and a recorded final plat that legally creates the lots. Dedications and fees in lieu are exactions subject to nexus and proportionality. Site plan review checks a single project's layout, and consistency review compares proposals with the plan and code; report inconsistencies honestly. Vested rights generally arise from substantial expenditures under a valid permit. Development agreements trade certainty for public benefits, and the official map reserves land for future public facilities. Private covenants and HOAs add a separate layer of rules that the city doesn't enforce, and a project must satisfy both.

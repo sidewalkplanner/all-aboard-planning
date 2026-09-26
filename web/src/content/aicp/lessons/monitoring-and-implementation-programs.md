@@ -2,8 +2,9 @@
 
 - Build an implementation program that assigns each action a responsible party, timeframe, cost, and funding source.
 - Explain how strategic partnerships extend what a public agency can accomplish.
+- Describe redevelopment and reinvestment tools such as land banks, brownfield programs, and tax abatements.
 - Identify common obstacles to implementation and ways to reduce them.
-- Design plan monitoring with indicators tied to objectives and measured against a baseline.
+- Design plan monitoring with indicators tied to objectives and measured against a baseline, using a logic model.
 - Explain how level-of-service standards and integrated project delivery connect plans to results.
 
 ## Key concepts
@@ -45,6 +46,20 @@ No single agency can implement a comprehensive plan alone. Partners bring money,
 
 Good partnerships have a shared goal, clear roles, a written agreement where needed (memorandum of understanding, development agreement, public-private partnership contract), and regular coordination.
 
+### Redevelopment and reinvestment tools
+
+Some plan goals, such as reviving a disinvested corridor or reusing vacant property, need more than regulation. Common tools:
+
+- A **land bank** is a public or nonprofit entity that acquires **vacant, abandoned, and tax-foreclosed properties**, clears their titles and back taxes, maintains them, and returns them to productive use through sale, side-lot transfers to neighbors, or partnerships. Land banks grew in older industrial cities with many vacant properties; Genesee County, Michigan (Flint) is a well-known early example.
+- **Brownfield programs** use environmental assessments, cleanup grants, and liability protections to return contaminated sites to use. See [Environmental planning and hazards](/aicp/lessons/environmental-planning-and-hazards).
+- **Tax abatements** reduce or freeze property taxes on new investment for a set period. A **payment in lieu of taxes (PILOT)** agreement replaces some or all of the tax with a negotiated payment. Both should carry clear public benefits and "clawback" terms if promised jobs or investment don't happen. See [Economic development](/aicp/lessons/economic-development).
+- **Redevelopment authorities** can assemble land, including through eminent domain where state law allows it, and partner with private developers. *Kelo* (2005) allowed economic development as a public use, and many states then restricted it.
+- **Community land trusts** hold land permanently and sell or lease the homes on it at affordable prices.
+
+These tools shape *who benefits* from reinvestment, so pair them with anti-displacement measures where values are likely to rise.
+
+:::checkpoint cp:impl-land-bank
+
 ### Overcoming obstacles
 
 | Obstacle | Mitigation |
@@ -81,13 +96,19 @@ The purpose of monitoring is to **track progress against the plan's objectives**
 - **Implementation (output) monitoring**: Are we doing what we said? (Was the zoning amendment adopted? Was the trail built?)
 - **Outcome monitoring**: Is it making a difference? (Did the share of residents within a 10-minute walk of a park rise?)
 
+A **logic model** lays out how a program is supposed to work, so monitoring knows what to measure at each link:
+
+**Inputs** (money, staff, partners) → **activities** (what the program does) → **outputs** (the direct products: trees planted, loans made) → **outcomes** (changes in the community, short- and long-term: shade, lower heat illness) → **impact** (the lasting goal).
+
+If outcomes don't improve, the logic model helps show where the chain broke: the activities didn't happen, the outputs didn't reach the right people, or the assumed link between outputs and outcomes was wrong.
+
 Monitoring is **most credible when indicators are tied to adopted objectives and baselined at adoption**, measured the same way each time, and reported publicly on a regular schedule (often an annual report card or dashboard). Good indicators are relevant, measurable with available data, understandable, and sensitive to change within a reasonable period.
 
 :::figure fig-output-outcome | A chain of three boxes. Action: build a new trail. Output: trail built, yes. Outcome: park access rises. Notes say output asks whether we're doing what we said, and outcome asks whether it's making a difference.
 A plan can score perfectly on outputs and still miss its goals, so track both.
 :::
 
-:::checkpoint cp:monitor-outcome
+:::checkpoint cp:monitor-outcome cp:monitor-logic
 
 ### Updating the plan
 
@@ -106,6 +127,11 @@ Monitoring results should feed back into decisions: adjusting actions that aren'
 - **Baseline**: The indicator's value at the start, against which progress is measured.
 - **Output measure**: A measure of work completed.
 - **Outcome measure**: A measure of results in the community.
+- **Land bank**: An entity that acquires vacant and tax-foreclosed properties and returns them to productive use.
+- **Tax abatement**: A temporary reduction or freeze of property taxes on new investment.
+- **Payment in lieu of taxes (PILOT)**: A negotiated payment that replaces some or all of a property's taxes.
+- **Clawback**: A provision recovering incentives when promised jobs or investment don't materialize.
+- **Logic model**: A chain from inputs and activities to outputs, outcomes, and impact.
 
 ## Real-world examples
 
@@ -121,8 +147,9 @@ Monitoring results should feed back into decisions: adjusting actions that aren'
 - Monitoring is most credible with indicators **tied to adopted objectives and baselined at adoption**.
 - Setting an **LOS standard** commits the jurisdiction to funding the facilities to meet it.
 - Combining projects for efficiency and shared infrastructure is **integration** ("dig once").
-- Output measures count work done; outcome measures show results in the community.
+- Output measures count work done; outcome measures show results in the community. A **logic model** runs inputs → activities → outputs → outcomes → impact.
+- A **land bank** returns vacant, tax-foreclosed property to use; abatements and PILOTs need **clawbacks**.
 
 ## Summary
 
-Implementation programs are most useful when every action has a responsible party, a timeframe, a cost and funding source, and a measure. Use the full toolkit (regulations, capital investments, programs, incentives, partnerships) and align funding with plan goals. Partnerships extend public capacity; anticipate obstacles and plan around them. LOS standards set measurable thresholds and commit the jurisdiction to meeting them. Monitor both outputs and outcomes with indicators tied to objectives and baselined at adoption, report publicly, and use the results to adjust, amend, or update the plan.
+Implementation programs are most useful when every action has a responsible party, a timeframe, a cost and funding source, and a measure. Use the full toolkit (regulations, capital investments, programs, incentives, partnerships) and align funding with plan goals. Partnerships extend public capacity; anticipate obstacles and plan around them. LOS standards set measurable thresholds and commit the jurisdiction to meeting them. Monitor both outputs and outcomes with indicators tied to objectives and baselined at adoption, report publicly, and use the results to adjust, amend, or update the plan. A logic model links inputs and activities to outputs, outcomes, and impact. Land banks, brownfield programs, abatements, PILOTs, and redevelopment authorities help revive disinvested places, and they work best with clear public benefits, clawbacks, and anti-displacement measures.

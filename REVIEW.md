@@ -123,7 +123,7 @@ These changes followed the first build (described below). They supersede anythin
 | Location | Video | Length |
 |---|---|---|
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:34` | Principles versus Rules of Conduct | about 2 min |
-| `web/src/content/aicp/lessons/capital-planning-and-finance.md:69` | How tax increment financing works | about 3 min |
+| `web/src/content/aicp/lessons/capital-planning-and-finance.md:70` | How tax increment financing works | about 3 min |
 | `web/src/content/aicp/lessons/demographic-and-economic-analysis.md:141` | Location quotients and shift-share, worked through | about 4 min |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:25` | The NEPA process: categorical exclusion, EA, or EIS? | about 3 min |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:64` | What a "100-year flood" really means | about 2 min |
@@ -140,7 +140,7 @@ These changes followed the first build (described below). They supersede anythin
 | `web/src/content/aicp/lessons/takings-and-exactions.md:50` | Penn Central's three factors, applied | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:97` | Nollan and Dolan: the two-part test for exactions | about 4 min |
 | `web/src/content/aicp/lessons/transportation-planning.md:61` | The four-step travel demand model | about 4 min |
-| `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:38` | Area versus use variances: the hardship test in practice | about 3 min |
+| `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:39` | Area versus use variances: the hardship test in practice | about 3 min |
 
 ---
 
@@ -276,13 +276,13 @@ There are 97 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:46` | extraterritorial jurisdiction exists in some states (for example, Texas and North Carolina historically); confirm before naming states. |
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:56` | the USDA Rural Development programs are the usual federal source; confirm current program names if cited. |
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:65` | confirm this general statement on the application of state and local zoning to trust land; jurisdiction over fee land within reservations is complex and case-specific. |
-| `web/src/content/aicp/lessons/subdivision-and-development-review.md:61` | vesting rules vary widely by state; if specific states are named, confirm them. |
+| `web/src/content/aicp/lessons/subdivision-and-development-review.md:62` | vesting rules vary widely by state; if specific states are named, confirm them. |
 | `web/src/content/aicp/lessons/the-planning-process.md:104` | confirm that the governing body, not the commission, adopts the comprehensive plan in most states today. |
 | `web/src/content/aicp/lessons/transportation-planning.md:28` | confirm current federal rules on MTP update cycles (commonly every 4 years in nonattainment/maintenance areas and 5 in attainment areas) and the minimum TIP period (4 years). |
 | `web/src/content/aicp/lessons/transportation-planning.md:70` | California's SB 743 (2013) directed the shift from LOS to VMT for CEQA transportation analysis; confirm details if expanded. |
 | `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:79` | this is Section 4(f) of the Department of Transportation Act of 1966; confirm wording before naming it. |
 | `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:112` | confirm the credit remains 20% and the current rules on claiming it (spread over five years since 2017), and that the 10% non-historic credit remains repealed. |
-| `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:55` | identify which states currently follow Fasano if a list is added. |
+| `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:56` | identify which states currently follow Fasano if a list is added. |
 | `web/src/content/pages/exam-info.md:1` | confirm this URL is still APA's main AICP certification page. |
 | `web/src/content/pages/exam-info.md:21` | domain names and weights are taken from uploads/aicp-diagnostic-exam-spec.md in this repo; confirm them against APA's current published content outline. |
 | `web/src/content/pages/exam-info.md:28` | confirm the current question count and time limit with APA. |

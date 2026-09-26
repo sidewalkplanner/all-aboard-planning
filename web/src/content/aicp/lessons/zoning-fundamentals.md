@@ -5,6 +5,7 @@
 - Distinguish permitted, conditional (special), accessory, and prohibited uses.
 - Explain how overlay and floating zones work.
 - Identify who administers zoning and how text and map amendments are made.
+- Describe how zoning is enforced and how codes adapt to newer uses such as short-term rentals.
 
 ## Key concepts
 
@@ -100,9 +101,37 @@ An overlay is already on the map and stacks rules; a floating zone waits in the 
 | **Zoning administrator** (staff) | Interprets the ordinance, reviews and issues permits for by-right uses, enforces the code |
 | **Planning commission** | Reviews and recommends on text and map amendments; may decide conditional uses and site plans in some places |
 | **Board of zoning adjustment (appeals)** | Decides variances and appeals of the administrator's decisions; may decide special exceptions |
+| **Hearing examiner** (in some places) | An appointed official, often an attorney, who holds quasi-judicial hearings and decides or recommends on variances, conditional uses, and appeals in place of a citizen board |
 | **Governing body** | Adopts the ordinance and amendments |
 
-Enforcement tools include permit review, certificates of occupancy, inspections, notices of violation, fines, and court action.
+When the text is unclear, the zoning administrator issues a **formal interpretation**, which can be appealed to the board. Written interpretations keep the code applied the same way from one case to the next.
+
+### Enforcing the code
+
+A code that isn't enforced isn't really a code. Enforcement usually runs in stages:
+
+1. **Prevention**: permit review and a **certificate of occupancy** before a building is used confirm compliance up front.
+2. **Detection**: most departments are **complaint-driven**, responding to reports from neighbors; some also do **proactive** inspections for priority issues, such as unsafe rental housing.
+3. **Notice**: a **notice of violation** describes the problem, cites the code section, and sets a reasonable time to fix it.
+4. **Escalation**: if the violation continues, **administrative citations** or fines, then a **lien** on the property, **abatement** (the city fixes the problem and bills the owner), or court action.
+
+The aim is **compliance, not revenue**. Good practice enforces consistently, so similar violations get similar treatment whoever the owner is, and keeps in mind that fines alone can push a struggling owner further behind. Pairing enforcement with repair assistance often fixes more problems. Purely complaint-driven enforcement can also be uneven, because some neighborhoods complain far more than others.
+
+:::checkpoint cp:zoning-enforce
+
+### Regulating newer uses
+
+Codes have to catch up with uses that didn't exist when they were written. **Short-term rentals** (homes rented by the night through online platforms) are a common example. Cities weigh visitor spending and owner income against lost long-term housing and neighborhood effects, and common tools include:
+
+- a **registration or permit** requirement, with the permit number shown on listings;
+- **primary-residence** rules that allow rentals only of the host's own home, limiting investor conversions;
+- **caps** by number of nights, number of permits, or area;
+- occupancy, parking, and noise standards; and
+- collection of **lodging taxes**, often through agreements with the platforms.
+
+The same approach, defining the use, deciding where it belongs, and setting standards, applies to other newcomers such as data centers, battery storage, and cannabis businesses where state law allows them.
+
+:::checkpoint cp:zoning-str
 
 ### Zoning's limits and critiques
 
@@ -122,6 +151,11 @@ Euclidean zoning brought predictability and protected homes from harmful uses. I
 - **Floating zone**: A district defined in the text but mapped only when applied to a property.
 - **Text amendment**: A change to the zoning ordinance's rules.
 - **Map amendment (rezoning)**: A change to the district designation of land.
+- **Hearing examiner**: An appointed official who holds quasi-judicial hearings in place of a citizen board.
+- **Certificate of occupancy**: The approval confirming a building complies before it's used.
+- **Notice of violation**: A written notice describing a code violation and the time allowed to correct it.
+- **Abatement**: The government correcting a violation itself and charging the owner.
+- **Short-term rental**: A dwelling rented to visitors by the night or week, often through an online platform.
 
 ## Real-world examples
 
@@ -137,8 +171,8 @@ Euclidean zoning brought predictability and protected homes from harmful uses. I
 - A **conditional (special) use** is allowed if it meets standards stated in the ordinance, after discretionary review.
 - Changing the district on the map is a **rezoning**; changing the rules is a **text amendment**. Both are usually legislative.
 - A **floating zone** is written into the text but mapped only when an owner applies and qualifies.
-- Zoning is one of several implementation tools, alongside subdivision regulations, the CIP, the official map, and incentives.
+- Zoning is one of several implementation tools, alongside subdivision regulations, the CIP, the official map, and incentives. Enforcement aims at **compliance**: notice and a chance to fix come before fines, liens, or abatement.
 
 ## Summary
 
-Zoning divides land into districts with rules for use and dimensions, and implements the comprehensive plan as parcel-level regulation. An ordinance has a map and a text; map and text amendments are usually legislative. Uses are permitted by right, conditional (discretionary review against stated standards), accessory, or prohibited. Dimensional standards control lot size, setbacks, height, coverage, FAR, and density. Overlay districts add rules on top of base zoning; floating zones are mapped only when applied. Zoning administrators, planning commissions, zoning boards, and governing bodies each have distinct roles.
+Zoning divides land into districts with rules for use and dimensions, and implements the comprehensive plan as parcel-level regulation. An ordinance has a map and a text; map and text amendments are usually legislative. Uses are permitted by right, conditional (discretionary review against stated standards), accessory, or prohibited. Dimensional standards control lot size, setbacks, height, coverage, FAR, and density. Overlay districts add rules on top of base zoning; floating zones are mapped only when applied. Zoning administrators, planning commissions, zoning boards, and governing bodies each have distinct roles. Enforcement moves from prevention and notice to fines, liens, and abatement, aiming at compliance. Codes adapt to newer uses such as short-term rentals by defining them and setting permits, caps, and standards.
