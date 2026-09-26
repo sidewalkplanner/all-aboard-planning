@@ -23,6 +23,10 @@ Many form-based codes are organized by the **transect**, a gradient of contexts 
 
 Form-based codes are especially useful for corridors and downtowns where the goal is a predictable, walkable street frontage over time.
 
+:::figure fig-form-based | The same three-lot corridor twice. Euclidean, buildings behind parking: each building sits back on its lot with a parking lot between it and the sidewalk; set back and car-first. Form-based, built to the sidewalk: each building meets a dashed build-to line with shop windows facing the street, street trees along the curb, and parking behind; build-to line, active fronts.
+The form-based code writes the street wall into the rules, so the walkable frontage appears lot by lot as the corridor redevelops.
+:::
+
 :::checkpoint cp:growth-regulating-plan
 
 ### Planned unit developments
@@ -38,6 +42,10 @@ A **planned unit development (PUD)** treats a larger site as a single unit. Inst
 ### Cluster (conservation) subdivisions
 
 A **cluster** or **conservation subdivision** keeps the same overall number of homes allowed on a site but **concentrates them on smaller lots**, preserving the rest (often half or more) as permanent open space, farmland, or habitat. It reduces infrastructure length and protects the land's most valuable features.
+
+:::figure fig-cluster | The same site with the same 16 homes, laid out two ways. Conventional: sixteen large lots cover the whole site, so all of the land is divided. Conservation: sixteen smaller lots are grouped on one side, and more than half the site is kept as open space with trees.
+Same number of homes, same density overall; what changes is how much land stays open and how far the streets and pipes run.
+:::
 
 ### Incentive zoning and density bonuses
 
@@ -66,6 +74,10 @@ A workable TDR program needs, at a minimum, **designated sending and receiving a
 
 **Purchase of development rights (PDR)** uses **public (or nonprofit) funds** to buy development rights directly, typically as a **conservation easement**. It's common for protecting farmland at the urban fringe. Unlike TDR, PDR doesn't depend on a private market for credits, but it does require a funding source.
 
+:::figure fig-tdr | A sending area of farmland with a farmhouse, stamped with an easement, and a receiving area where growth is wanted, with a building rising above the base height line. Development rights flow from the farm to the center, and payment flows back. Notes say it works only if developers want the extra rights, and that PDR skips the market: public funds buy the rights.
+The farm keeps farming and its owner is paid; the extra height in town is what makes someone willing to pay.
+:::
+
 :::video How a TDR program moves development | about 3 min
 Follows one development right from a farm in a sending area to a building in a receiving area, and explains why programs fail without real demand for credits.
 :::
@@ -81,6 +93,10 @@ Follows one development right from a farm in a sending area to a building in a r
 - **Adequate public facilities ordinances (APFOs)** similarly condition approval on adequate roads, schools, water, and sewer.
 - **Agricultural zoning** protects farmland with very large minimum lot sizes and limits on non-farm uses, often paired with TDR or PDR.
 - **Phased growth and rate caps** tie the timing or amount of development to infrastructure.
+
+:::figure fig-ugb | A map with an urban growth boundary drawn around a city. Inside are urban uses and services, with infill sites marked in the built-up core; outside are rural farms and forest. A note says the boundary needs enough room inside for projected growth.
+The boundary only holds if the land inside can take the growth, which is why UGBs go hand in hand with infill and higher densities.
+:::
 
 :::checkpoint cp:growth-service-boundary
 

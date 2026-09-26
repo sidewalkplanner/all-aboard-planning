@@ -231,11 +231,12 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
    any invented data is marked "illustrative". The lettering is baked into the image, so the alt
    text carries it. Legibility rules (the header of `figures.mjs` has the detail):
    - **Size.** Text must be at least 13px on screen, and `npm run check` enforces it. In the
-     720-wide canvas that means 28+ for labels and 35+ for handwriting (Caveat's letters run
-     smaller). Side-by-side figures instead return a `narrow` layout with the panels stacked;
+     720-wide canvas that means 28+ for labels and 35+ for notes (`note` sizes are given in
+     Caveat terms and drawn in Patrick Hand at 0.96 of that). Side-by-side figures instead return a `narrow` layout with the panels stacked;
      phones get `<name>-narrow.webp`, and the wide layout then needs only 19+ (24+ handwritten).
    - **Voices.** `title` (Fraunces) for headings, `label` (Figtree) for data: numbers, ticks,
-     legends, names. `note` (Caveat) only for the one or two remarks that make the point.
+     legends, names. `note` (Patrick Hand, a print-style hand that stays readable on phones; Caveat was
+     too hard to read at figure size) only for the one or two remarks that make the point.
    - **Flat color under text.** Shapes that carry labels skip the paper grain (`filter: FLAT`).
    If text won't fit at the minimum, cut words or add a narrow layout; never shrink the type.
 
@@ -252,7 +253,10 @@ urban form 5, land use law 4, takings 3, federal policy 3). Module 3 (Communicat
 Interaction) has 15 across its four lessons (engagement design 5, equitable engagement 3,
 consensus 4, decision-makers 3). Module 4 (Plan and Policy Development) has 14 across its four
 lessons (planning process 4, comprehensive plans 3, goals and policies 3, analysis tools 4).
-Next is module 5 (Plan Implementation), in course order, starting with `zoning-fundamentals`. Aim for two to five figures per lesson, one per
+Module 5 (Plan Implementation) has 28 across its seven lessons
+(zoning 4, zoning relief 4, subdivision 4, growth management 4, implementation math 4, capital
+finance 4, monitoring 4). Module 6 (Administration and Management) has 7 across its two lessons (project
+management 3, managing an agency 4). Next is module 7 (Leadership), in course order, starting with `leadership-in-planning`. Aim for two to five figures per lesson, one per
 section where a picture teaches faster than the text: a process, a comparison, a
 distribution, a map, or a worked calculation. Skip sections a picture wouldn't improve.
 

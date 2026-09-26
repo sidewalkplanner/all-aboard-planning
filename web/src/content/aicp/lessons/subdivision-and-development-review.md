@@ -26,6 +26,10 @@ Terms vary, but the typical sequence is:
 
 Many codes offer a simpler **minor subdivision** or lot-split process for divisions of just a few lots that need no new streets.
 
+:::figure fig-plat-process | The subdivision approval route with five stops: 1 sketch plan, 2 preliminary plat, noted as the main design review, 3 build the improvements or post a bond, 4 final plat, recorded, highlighted with the note "now the lots legally exist," and 5 accept the streets.
+The preliminary plat is where the design gets settled; the final plat is the legal paperwork that makes the lots real.
+:::
+
 :::checkpoint cp:subdiv-preliminary
 
 ### Improvement guarantees and dedications
@@ -56,6 +60,10 @@ When a proposal is **inconsistent with the adopted plan**, the planner's profess
 
 **Vested rights** protect a developer's right to proceed under the rules in place at a certain point, even if the rules later change. Under the **common law rule** followed in most states, rights vest when the developer has **made substantial expenditures (or incurred substantial obligations) in good-faith reliance on a validly issued permit**, usually a building permit. Some states vest earlier by statute, for example at the filing of a complete application or at approval of a preliminary plat. <!-- VERIFY: vesting rules vary widely by state; if specific states are named, confirm them. -->
 
+:::figure fig-vested-rights | A timeline of points where development rights can vest: a complete application, preliminary plat approval, permit issued, and substantial spending. Some states vest early, at the first two points, by statute. Most states follow the common law, vesting after the permit once there's substantial spending in good faith under a valid permit.
+The further right your state vests, the longer a rule change can still catch a project in progress.
+:::
+
 :::checkpoint cp:subdiv-vesting-statute
 
 ### Development agreements
@@ -67,6 +75,10 @@ A **development agreement** is a contract between a local government and a devel
 
 Development agreements are adopted through a public process and must stay within the jurisdiction's statutory authority.
 
+:::figure fig-dev-agreement | A balance with two pans, from the development agreement example below. The city gives standards locked for 15 years. The developer gives a fire station site, trails, and 10% affordable homes. A note says certainty for the developer, benefits for the public; the agreement is adopted in public, within state authority.
+Both sides give up something the other values: the city gives up flexibility, and the developer commits to benefits beyond the code.
+:::
+
 :::checkpoint cp:subdiv-da-benefits
 
 ### Negotiated exactions
@@ -76,6 +88,10 @@ When a developer offers improvements beyond what the code strictly requires, suc
 ### The official map
 
 An **official map** is an adopted map that **reserves the locations of future streets, parks, and other public facilities**. It shows property owners and developers where public improvements are planned, so they aren't built over. Because it can restrict private land for long periods, many states limit how long a reservation lasts before the government must acquire the land or release it.
+
+:::figure fig-official-map | Two panels with a future road's path drawn as a dashed line. No official map: homes are built in the road's path, so building the road now means buying homes. Official map: a strip of right-of-way is reserved in advance, and subdivisions leave room for it.
+Reserving the path costs little while land is still farms, and a great deal once homes are built on it.
+:::
 
 :::checkpoint cp:subdiv-map-limit
 

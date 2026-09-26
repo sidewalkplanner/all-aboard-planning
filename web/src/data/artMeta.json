@@ -419,6 +419,190 @@
         "w": 252,
         "h": 1034
       }
+    },
+    "fig-cumulative": {
+      "w": 720,
+      "h": 388,
+      "narrow": {
+        "w": 366,
+        "h": 762
+      }
+    },
+    "fig-lot-standards": {
+      "w": 720,
+      "h": 520
+    },
+    "fig-overlay-floating": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-use-paths": {
+      "w": 720,
+      "h": 470
+    },
+    "fig-variance-gates": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-area-use": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-spot-zoning": {
+      "w": 720,
+      "h": 458,
+      "narrow": {
+        "w": 366,
+        "h": 872
+      }
+    },
+    "fig-nonconforming": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-plat-process": {
+      "w": 720,
+      "h": 390
+    },
+    "fig-official-map": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
+    },
+    "fig-vested-rights": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-dev-agreement": {
+      "w": 720,
+      "h": 444
+    },
+    "fig-form-based": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
+    },
+    "fig-cluster": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
+    },
+    "fig-tdr": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-ugb": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-far-shapes": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-gross-net": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-parking-land": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-cost-burden": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-cip-rolling": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-tif": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-bonds": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-cip-table": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-action-row": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-dig-once": {
+      "w": 720,
+      "h": 388,
+      "narrow": {
+        "w": 366,
+        "h": 762
+      }
+    },
+    "fig-output-outcome": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-los": {
+      "w": 720,
+      "h": 420
+    },
+    "fig-critical-path": {
+      "w": 720,
+      "h": 500
+    },
+    "fig-selection-funnel": {
+      "w": 720,
+      "h": 420
+    },
+    "fig-change-order": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-gov-forms": {
+      "w": 720,
+      "h": 468,
+      "narrow": {
+        "w": 366,
+        "h": 922
+      }
+    },
+    "fig-org-structures": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-budget-formats": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-discipline": {
+      "w": 720,
+      "h": 440
     }
   },
   "hero": {

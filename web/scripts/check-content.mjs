@@ -219,10 +219,10 @@ for (const file of walk(src).filter((f) => /\.(md|jsx?|html)$/.test(f))) {
 {
   const { buildFigures } = await import(join(root, 'art', 'scenes', 'figures.mjs'));
   const MIN_PX = 13;
-  // Caveat's letters are about 80% as tall as Figtree's or Fraunces's at the
-  // same font size, so handwriting counts as 0.8 of its size.
+  // Handwriting has shorter letters than Figtree or Fraunces at the same font
+  // size: Caveat counts as 0.8 of its size, Patrick Hand (the figure notes) 0.94.
   const smallest = (svg) => Math.min(...[...svg.matchAll(/<text[^>]*font-family="([^"]+)"[^>]*font-size="([\d.]+)"/g)]
-    .map((m) => Number(m[2]) * (/Caveat/.test(m[1]) ? 0.8 : 1)));
+    .map((m) => Number(m[2]) * (/Caveat/.test(m[1]) ? 0.8 : /Patrick Hand/.test(m[1]) ? 0.94 : 1)));
   for (const f of buildFigures()) {
     const views = f.narrow ? [['wide', f.w, 500, f.svg], ['phone', f.narrow.w, 340, f.narrow.svg]] : [['wide', f.w, 340, f.svg]];
     for (const [which, w, shown, svg] of views) {

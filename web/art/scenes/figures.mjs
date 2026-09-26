@@ -6,13 +6,13 @@
 // Legibility rules (npm run check enforces the first two):
 // - Text must be at least 13px where the figure is shown. A figure is drawn
 //   720 wide and shrinks to about 340px on a phone, so labels are 28 or
-//   larger, and handwriting 35 or larger (its letters run about 80% as
-//   tall). Side-by-side figures can instead return a `narrow` layout
+//   larger, and notes 35 or larger (sizes are in Caveat terms; `note`
+//   converts them). Side-by-side figures can instead return a `narrow` layout
 //   (panels stacked, about 360-400 wide) that phones get in its place; then
 //   the wide layout only needs 19 or larger (24 handwritten).
 // - Every text uses one of three voices: `title` (Fraunces) for headings,
 //   `label` (Figtree) for data (numbers, ticks, legends, names), and `note`
-//   (Caveat) for the one or two handwritten remarks that make the point.
+//   (Patrick Hand) for the one or two handwritten remarks that make the point.
 // - Text sits on flat colour: shapes under labels skip the paper grain.
 //
 // Lettering is baked in, so each figure's alt text in the lesson must say
@@ -35,7 +35,11 @@ const T = { sky: '#DCE9F5', butter: '#F8E4AE', kraft: '#EFE1C8', blush: '#F9D9D2
 
 // The three voices.
 const title = (x, y, text, o = {}) => serif(x, y, text, { size: 28, ...o });
-const note = (x, y, text, o = {}) => hand(x, y, text, { size: 35, color: P.civicDeep, ...o });
+// Notes are in Patrick Hand, a print-style hand that stays readable at phone
+// size. Sizes are still given in Caveat terms (35 by default) and set at 0.96
+// of that, which keeps a note the same width it had in Caveat.
+const note = (x, y, text, { size = 35, ...o } = {}) =>
+  hand(x, y, text, { color: P.civicDeep, ...o, size: Math.round(size * 0.96), weight: 400 }).replace('font-family="Caveat, cursive"', 'font-family="Patrick Hand, cursive"');
 const label = (x, y, text, { size = 28, color = P.ink, anchor = 'middle', weight = 600 } = {}) =>
   `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="Figtree, sans-serif" font-weight="${weight}" font-size="${size}" fill="${color}">${text}</text>`;
 
@@ -2999,7 +3003,7 @@ function consistencySpectrum() {
     [330, ['One factor'], 'courts weigh it', P.sky],
     [586, ['Consistency'], 'zoning must match', P.butter],
   ];
-  stops.forEach(([x, lines, what, fill], i) => {
+  stops.forEach(([x, lines, what, fill]) => {
     const d = ellipseD(x, y, 22, 22);
     b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.6 }));
     lines.forEach((t, k) => { b += title(x, y + 70 + k * 32, t, { size: 28 }); });
@@ -3249,6 +3253,1035 @@ function ghgScopes() {
   };
 }
 
+// ============================================================ Lesson 5.1
+
+// Cumulative (pyramid) zoning versus exclusive zoning, as two use grids.
+function cumulativeZoning() {
+  const rng = makeRng(5101);
+  const PW = 338;
+  const PH = 360;
+  const dists = ['R', 'C', 'I'];
+  const uses = [['homes', P.butter], ['shops', P.tomato], ['factories', P.lavender]];
+  const grid = (allowed, key = true) => {
+    let s = '';
+    dists.forEach((d, c) => { s += label(136 + c * 66, 108, d, { size: 22, weight: 800 }); });
+    uses.forEach(([u, fill], r) => {
+      const y = 126 + r * 62;
+      s += label(20, y + 38, u, { size: 20, anchor: 'start', weight: 500 });
+      dists.forEach((d, c) => {
+        const on = allowed(r, c);
+        const x = 106 + c * 66;
+        const cell = rectD(x, y, 60, 56);
+        s += cut(cell, { rng, fill: on ? fill : '#EFE7D6', shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(cell, { rng, size: 1.4, opacity: 0.8 }));
+        if (on) s += L(inkLine([[x + 18, y + 30], [x + 27, y + 40], [x + 44, y + 16]], { rng, size: 3, color: P.ink, overshoot: 0 }));
+      });
+    });
+    if (key) s += label(20, 344, 'R homes · C commercial · I industrial', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+    return s;
+  };
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Cumulative', { size: 25, anchor: 'start' }) + label(20, 70, 'higher uses allowed lower down', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += grid((r, c) => r <= c);
+  let b2 = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Exclusive', { size: 25, anchor: 'start' }) + label(20, 70, 'each district lists its own uses', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  b2 += grid((r, c) => r === c, false);
+  b2 += note(20, 344, 'keeps homes out of industry', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 388, b: at(14, 14, a) + at(368, 14, b2),
+    narrow: { W: 366, H: 762, b: at(14, 14, a) + at(14, 388, b2) },
+  };
+}
+
+// A lot in plan view: setbacks leave the buildable area.
+function lotStandards() {
+  const rng = makeRng(5102);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const lx = 150;
+  const ly = 40;
+  const lw = 300;
+  const lh = 380;
+  const [front, side, rear] = [70, 40, 80];
+  const lot = rectD(lx, ly, lw, lh);
+  b += cut(lot, { rng, fill: T.sage, filter: FLAT }) + L(ink(lot, { rng, size: 2.6 }));
+  const env = rectD(lx + side, ly + rear, lw - 2 * side, lh - front - rear);
+  b += `<path d="${env}" fill="${T.butter}"/>`;
+  const o = { color: P.civicDeep, size: 2, dash: 9, gap: 6 };
+  b += L(dashed(lx + side, ly + rear, lx + lw - side, ly + rear, rng, o) + dashed(lx + lw - side, ly + rear, lx + lw - side, ly + lh - front, rng, o) + dashed(lx + lw - side, ly + lh - front, lx + side, ly + lh - front, rng, o) + dashed(lx + side, ly + lh - front, lx + side, ly + rear, rng, o));
+  const house2 = rectD(lx + side + 30, ly + rear + 40, 150, 120);
+  b += cut(house2, { rng, fill: P.tomato, filter: FLAT }) + L(ink(house2, { rng, size: 2.4 }));
+  b += label(lx + side + 105, ly + rear + 108, 'building', { color: '#FFFFFF', weight: 800 });
+  // Street along the front.
+  b += `<rect x="40" y="${ly + lh + 16}" width="640" height="44" fill="#9C95A8"/>`;
+  b += label(360, ly + lh + 48, 'street', { color: '#FFFFFF', weight: 700 });
+  // Dimension ticks for each setback.
+  const dim = (x1, y1, x2, y2) => L(inkLine([[x1, y1], [x2, y2]], { rng, size: 1.8, overshoot: 0 }) + inkLine([[x1 - (y2 - y1 ? 6 : 0), y1 - (x2 - x1 ? 6 : 0)], [x1 + (y2 - y1 ? 6 : 0), y1 + (x2 - x1 ? 6 : 0)]], { rng, size: 1.8, overshoot: 0 }) + inkLine([[x2 - (y2 - y1 ? 6 : 0), y2 - (x2 - x1 ? 6 : 0)], [x2 + (y2 - y1 ? 6 : 0), y2 + (x2 - x1 ? 6 : 0)]], { rng, size: 1.8, overshoot: 0 }));
+  b += dim(lx + lw / 2, ly + lh - front, lx + lw / 2, ly + lh);
+  b += dim(lx + lw / 2, ly, lx + lw / 2, ly + rear);
+  b += dim(lx + lw - side, ly + 200, lx + lw, ly + 200);
+  const cx = 480;
+  const call = (y, text, tx, ty, color = P.ink) => label(cx, y, text, { anchor: 'start', color }) + L(arrow(cx - 8, y - 8, tx, ty, rng, { size: 2, head: 9, color, bend: 6 }));
+  b += call(80, 'rear setback', lx + lw / 2 + 8, ly + rear / 2);
+  b += call(210, 'side setback', lx + lw - side / 2, ly + 190);
+  b += call(300, 'buildable area', lx + lw - side - 24, ly + 290, P.kraftDeep);
+  b += call(390, 'front setback', lx + lw / 2 + 8, ly + lh - front / 2);
+  b += note(20, 130, 'lot', { anchor: 'start', color: P.leafDeep });
+  b += note(20, 166, 'coverage:', { anchor: 'start', color: P.leafDeep });
+  b += note(20, 202, 'building', { anchor: 'start', color: P.leafDeep });
+  b += note(20, 238, '÷ lot', { anchor: 'start', color: P.leafDeep });
+  return { W, H, b };
+}
+
+// Overlay zones add rules on top; floating zones land when applied.
+function overlayFloating() {
+  const rng = makeRng(5103);
+  const PW = 338;
+  const PH = 400;
+  const sheet = (x0, y0, w, h, sk) => ([u, v]) => [x0 + u * w + (1 - v) * sk, y0 + v * h];
+  let ov = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Overlay district', { size: 25, anchor: 'start' }) + label(20, 70, 'extra rules on top of the base', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const top = sheet(20, 104, 180, 80, 44);
+  const bot = sheet(20, 214, 180, 80, 44);
+  const quad = (T0, u0, u1) => polyD([[u0, 0], [u1, 0], [u1, 1], [u0, 1]].map(T0));
+  // Base districts: three colored strips.
+  [[0, 0.4, P.butter], [0.4, 0.7, P.tomato], [0.7, 1, P.lavender]].forEach(([u0, u1, f]) => { ov += `<path d="${quad(bot, u0, u1)}" fill="${f}"/>`; });
+  ov += L(ink(quad(bot, 0, 1), { rng, size: 1.8 }));
+  ov += `<path d="${quad(top, 0, 1)}" fill="#FBF8F1" opacity="0.9"/>` + `<path d="${quad(top, 0.25, 0.6)}" fill="${P.sky}"/>` + L(ink(quad(top, 0, 1), { rng, size: 1.8 }));
+  ov += label(256, 150, 'overlay', { size: 19, anchor: 'start', color: P.civicDeep, weight: 700 }) + label(256, 262, 'base', { size: 19, anchor: 'start', weight: 700 });
+  ov += note(20, 340, 'meet both sets of rules', { size: 24, anchor: 'start', color: P.civicDeep });
+  ov += label(20, 376, 'e.g. historic, floodplain, airport', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  let fl = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Floating zone', { size: 25, anchor: 'start' }) + label(20, 70, 'in the text, not on the map', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const card = roundRectD(110, 96, 120, 56, 10);
+  fl += `<g transform="rotate(-6 170 124)">${cut(card, { rng, fill: P.butter, filter: FLAT }) + L(ink(card, { rng, size: 2 })) + label(170, 132, 'MXD', { size: 22, weight: 800 })}</g>`;
+  for (let r = 0; r < 2; r++) for (let c = 0; c < 4; c++) {
+    const on = r === 1 && c === 2;
+    const d = rectD(50 + c * 62, 214 + r * 56, 58, 52);
+    fl += cut(d, { rng, fill: on ? P.butter : T.sage, shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: on ? 2.6 : 1.4 }));
+  }
+  fl += L(arrow(176, 162, 210, 262, rng, { size: 2.4, head: 11, color: P.tomatoDeep, bend: -14 }));
+  fl += note(20, 340, 'lands by rezoning,', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  fl += note(20, 370, 'once an owner qualifies', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, ov) + at(368, 14, fl),
+    narrow: { W: 366, H: 842, b: at(14, 14, ov) + at(14, 428, fl) },
+  };
+}
+
+// Which path a use takes, from the lesson's coffee shop example.
+function usePaths() {
+  const rng = makeRng(5104);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  const rows = [
+    ['Permitted', 'coffee shop', 'staff check standards', 'permit issued', T.sage, P.leafDeep],
+    ['Conditional', 'drive-through', 'hearing, criteria, findings', 'approved with conditions', T.butter, P.kraftDeep],
+    ['Prohibited', 'not on the list', 'no permit possible', 'rezone or amend the text', T.blush, P.tomatoDeep],
+  ];
+  rows.forEach(([kind, ex, how, result, fill, color], i) => {
+    const y = 20 + i * 150;
+    const d = roundRectD(14, y, 692, 132, 14);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += title(34, y + 46, kind, { anchor: 'start', size: 28, color });
+    b += label(34, y + 82, ex, { anchor: 'start', color: MUTED, weight: 500 });
+    b += label(270, y + 46, how, { anchor: 'start', weight: 500 });
+    b += L(arrow(270, y + 72, 300, y + 98, rng, { size: 2, head: 9, bend: 8 }));
+    b += label(314, y + 110, result, { anchor: 'start', weight: 800, color });
+  });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 5.2
+
+// The typical variance findings as five gates on one line.
+function varianceGates() {
+  const rng = makeRng(5201);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const y = 200;
+  const band = roundRectD(40, y - 11, 540, 22, 11);
+  b += cut(band, { rng, fill: P.civic }) + L(ink(band, { rng, size: 2.2 }));
+  const end = roundRectD(566, y - 30, 144, 60, 14);
+  b += cut(end, { rng, fill: P.leaf, filter: FLAT }) + L(ink(end, { rng, size: 2.6 })) + label(638, y + 10, 'variance', { color: '#FFFFFF', weight: 800, size: 28 });
+  const gates = [[80, ['Unique', 'to the lot']], [195, ['Not', 'self-created']], [310, ['Denies', 'reasonable use']], [420, ['Keeps the', 'character']], [516, ['The', 'minimum']]];
+  gates.forEach(([x, lines], i) => {
+    const d = ellipseD(x, y, 24, 24);
+    b += cut(d, { rng, fill: P.butter, filter: FLAT }) + L(ink(d, { rng, size: 3 })) + title(x, y + 10, String(i + 1));
+    const above = i % 2 === 1;
+    lines.forEach((t, k) => { b += label(x, above ? y - 82 + k * 32 : y + 66 + k * 32, t, { weight: k ? 500 : 800 }); });
+  });
+  b += note(20, 400, 'fail any one: no variance', { anchor: 'start', color: P.tomatoDeep });
+  b += note(700, 400, 'profit alone isn’t hardship', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// Area variance versus use variance.
+function areaVsUse() {
+  const rng = makeRng(5202);
+  const PW = 338;
+  const PH = 400;
+  const head = (t, sub) => title(20, 40, t, { size: 25, anchor: 'start' }) + label(20, 70, sub, { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  let a = panel(0, 0, PW, PH, T.cream, rng) + head('Area variance', 'relaxes a setback, height, coverage');
+  const lot = polyD([[40, 110], [300, 110], [300, 190], [40, 250]]);
+  a += cut(lot, { rng, fill: T.sage, filter: FLAT }) + L(ink(lot, { rng, size: 2.2 }));
+  a += L(dashed(40, 220, 300, 160, rng, { color: P.civicDeep, size: 2 }));
+  const hs = rectD(150, 126, 90, 62);
+  a += cut(hs, { rng, fill: P.butter, filter: FLAT }) + L(ink(hs, { rng, size: 2.2 }));
+  a += label(170, 280, 'odd-shaped lot', { size: 20, weight: 700 }) + label(170, 306, 'house crosses the setback line', { size: 19, color: MUTED, weight: 500 });
+  a += note(20, 354, 'often a lower bar:', { size: 24, anchor: 'start', color: P.leafDeep }) + note(20, 382, '“practical difficulty”', { size: 24, anchor: 'start', color: P.leafDeep });
+  let u = panel(0, 0, PW, PH, T.cream, rng) + head('Use variance', 'allows a use the district bans');
+  for (let k = 0; k < 4; k++) u += house(40 + k * 70, 230, 52, 64, { seed: 60 + k, wall: T.butter, roof: P.kraftDeep, chimney: false });
+  u += block(180, 230, 56, 80, { seed: 7, wall: P.tomato, cols: 2, rows: 3 });
+  u += label(170, 280, 'a shop on a homes-only street', { size: 19, weight: 700 });
+  u += note(20, 354, '“unnecessary hardship”;', { size: 24, anchor: 'start', color: P.tomatoDeep }) + note(20, 382, 'banned in many states', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, a) + at(368, 14, u),
+    narrow: { W: 366, H: 842, b: at(14, 14, a) + at(14, 428, u) },
+  };
+}
+
+// Spot zoning versus a small rezoning that carries out the plan.
+function spotZoning() {
+  const rng = makeRng(5203);
+  const PW = 338;
+  const PH = 400;
+  const colors = { R: P.butter, C: P.tomato, I: P.lavender };
+  const map = (grid, ring) => {
+    let s = '';
+    grid.forEach((row, r) => [...row].forEach((z, c) => {
+      const d = rectD(46 + c * 50, 96 + r * 50, 48, 48);
+      s += cut(d, { rng, fill: colors[z], shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: 1.3, opacity: 0.8 }));
+    }));
+    if (ring) s += L(ink(ellipseD(ring[0], ring[1], 64, 64), { rng, size: 2.4, color: P.civicDeep }));
+    return s;
+  };
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Spot zoning', { size: 25, anchor: 'start' }) + label(20, 70, 'one lot singled out', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += map(['RRRRR', 'RRIRR', 'RRRRR', 'RRRRR'], null);
+  a += L(ink(rectD(143, 143, 54, 54), { rng, size: 3.4, color: P.tomatoDeep }));
+  a += note(20, 346, 'against the plan,', { size: 24, anchor: 'start', color: P.tomatoDeep }) + note(20, 376, 'for the owner', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let c = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Defensible', { size: 25, anchor: 'start' }) + label(20, 70, 'small, but carries out the plan', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  c += map(['RRRRR', 'RRRRR', 'RRCRR', 'RRRRR'], [170, 220]);
+  c += label(170, 318, 'plan: shops here', { size: 19, color: P.civicDeep, weight: 700 });
+  c += note(20, 346, 'consistent with the plan,', { size: 24, anchor: 'start', color: P.leafDeep }) + note(20, 376, 'serves the public', { size: 24, anchor: 'start', color: P.leafDeep });
+  const key = (x, y) => [['R', 'homes'], ['C', 'shops'], ['I', 'industry']].map(([z, t], i) => `<rect x="${x + i * 120}" y="${y - 16}" width="18" height="18" fill="${colors[z]}" stroke="${P.ink}" stroke-width="1.4"/>` + label(x + 26 + i * 120, y, t, { size: 20, anchor: 'start', weight: 500 })).join('');
+  return {
+    W: 720, H: 458, b: at(14, 14, a) + at(368, 14, c) + key(40, 444),
+    narrow: { W: 366, H: 872, b: at(14, 14, a) + at(14, 428, c) + key(20, 858) },
+  };
+}
+
+// What a legal nonconforming use may and may not do.
+function nonconformingRules() {
+  const rng = makeRng(5204);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  // A fenced salvage yard with stacked old cars, among homes.
+  const yard = rectD(40, 150, 220, 110);
+  b += cut(yard, { rng, fill: T.kraft, filter: FLAT }) + L(ink(yard, { rng, size: 2.2 }));
+  for (let x = 48; x < 256; x += 14) b += L(inkLine([[x, 150], [x, 142]], { rng, size: 1.6, overshoot: 0 }));
+  const car = (x, y, fill) => {
+    const d = roundRectD(x, y, 70, 30, 10);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + `<circle cx="${x + 16}" cy="${y + 30}" r="7" fill="${P.ink}"/><circle cx="${x + 54}" cy="${y + 30}" r="7" fill="${P.ink}"/>`;
+  };
+  b += car(58, 214, P.sky) + car(136, 214, P.tomato) + car(96, 176, P.butter) + car(176, 176, P.sage);
+  b += house(60, 124, 50, 56, { seed: 23, wall: T.butter, roof: P.kraftDeep, chimney: false }) + house(190, 124, 50, 56, { seed: 24, wall: T.butter, roof: P.kraftDeep, chimney: false });
+  b += label(150, 312, 'salvage yard,', { weight: 700 }) + label(150, 344, 'now zoned homes', { weight: 500, color: MUTED });
+  const rules = [
+    [true, 'keep operating'],
+    [false, 'expand or intensify'],
+    [false, 'rebuild after a big loss'],
+    [false, 'restart after abandonment'],
+  ];
+  rules.forEach(([ok, text], i) => {
+    const y = 60 + i * 84;
+    const d = ellipseD(316, y - 9, 20, 20);
+    b += cut(d, { rng, fill: ok ? P.leaf : P.tomato, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += ok ? L(inkLine([[306, y - 9], [314, y - 1], [327, y - 18]], { rng, size: 3, color: '#FFFFFF', overshoot: 0 }))
+      : L(inkLine([[308, y - 17], [324, y - 1]], { rng, size: 3, color: '#FFFFFF', overshoot: 0 }) + inkLine([[324, y - 17], [308, y - 1]], { rng, size: 3, color: '#FFFFFF', overshoot: 0 }));
+    b += label(348, y, text, { anchor: 'start', weight: ok ? 800 : 500 });
+  });
+  b += label(348, 60 + 2 * 84 + 32, '(often over 50% of value)', { anchor: 'start', color: MUTED, weight: 500 });
+  b += label(348, 60 + 3 * 84 + 32, '(often 6 to 12 months)', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(20, 404, 'the goal: let nonconformities fade out over time', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 5.3
+
+// The subdivision approval route, from sketch to accepted streets.
+function platProcess() {
+  const rng = makeRng(5301);
+  const W = 720;
+  const H = 390;
+  let b = '';
+  const y = 200;
+  const band = roundRectD(40, y - 11, 640, 22, 11);
+  b += cut(band, { rng, fill: P.civic }) + L(ink(band, { rng, size: 2.2 }));
+  const stops = [[80, ['Sketch', 'plan']], [220, ['Preliminary', 'plat']], [360, ['Build or', 'bond']], [500, ['Final plat,', 'recorded']], [640, ['Accept', 'streets']]];
+  stops.forEach(([x, lines], i) => {
+    const key = i === 3;
+    const d = ellipseD(x, y, key ? 28 : 24, key ? 28 : 24);
+    b += cut(d, { rng, fill: key ? P.tomato : P.paper, filter: FLAT }) + L(ink(d, { rng, size: 3 })) + title(x, y + 10, String(i + 1), { color: key ? '#FFFFFF' : P.ink });
+    const above = i % 2 === 1;
+    lines.forEach((t, k) => { b += label(x, above ? y - 82 + k * 32 : y + 66 + k * 32, t, { weight: k ? 500 : 800 }); });
+  });
+  b += note(220, 60, 'the main design review', { color: P.civicDeep });
+  b += note(560, 360, 'now the lots legally exist', { color: P.tomatoDeep });
+  b += L(arrow(530, 336, 506, 290, rng, { color: P.tomatoDeep, size: 2.2, head: 10, bend: 8 }));
+  return { W, H, b };
+}
+
+// The official map: reserve the road's path before the homes arrive.
+function officialMap() {
+  const rng = makeRng(5302);
+  const PW = 338;
+  const PH = 380;
+  const lots = (skip) => {
+    let s = '';
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 5; c++) {
+      const x = 40 + c * 54;
+      const yy = 110 + r * 64;
+      if (skip && c === 2) continue;
+      const d = rectD(x, yy, 48, 56);
+      s += cut(d, { rng, fill: P.butter, shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: 1.4, opacity: 0.8 }));
+      s += `<rect x="${x + 14}" y="${yy + 16}" width="20" height="18" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.2"/>`;
+    }
+    return s;
+  };
+  const road = (s0) => L(dashed(169, 96, 169, 310, rng, { color: P.tomatoDeep, size: 3, dash: 12, gap: 8 })) + s0;
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'No official map', { size: 25, anchor: 'start' }) + label(20, 70, 'homes built in the road’s path', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += lots(false) + road('');
+  a += note(20, 350, 'road now means buying homes', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let c = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Official map', { size: 25, anchor: 'start' }) + label(20, 70, 'right-of-way reserved in advance', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  c += `<rect x="146" y="100" width="46" height="208" fill="#D9D2C2"/>` + lots(true) + road('');
+  c += note(20, 350, 'subdivisions leave room for it', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, a) + at(368, 14, c),
+    narrow: { W: 366, H: 802, b: at(14, 14, a) + at(14, 408, c) },
+  };
+}
+
+// When rights vest: the common-law rule and earlier statutory points.
+function vestedRights() {
+  const rng = makeRng(5303);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const y = 180;
+  b += L(arrow(30, y, 700, y, rng, { size: 3, head: 14 }));
+  const pts = [
+    [90, 'Complete', 'application', P.sky, 'up'],
+    [260, 'Preliminary', 'plat approved', P.sky, 'down'],
+    [430, 'Permit', 'issued', P.butter, 'up'],
+    [600, 'Substantial', 'spending', P.leaf, 'down'],
+  ];
+  pts.forEach(([x, l1, l2, fill, dir]) => {
+    b += `<circle cx="${x}" cy="${y}" r="14" fill="${fill}" stroke="${P.ink}" stroke-width="2"/>`;
+    const ty = dir === 'up' ? y - 72 : y + 62;
+    b += label(x, ty, l1, { weight: 800 }) + label(x, ty + 32, l2, { weight: 500 });
+  });
+  const brace = (x0, x1, yy, text, color) => L(inkLine([[x0, yy - 10], [x0, yy], [x1, yy], [x1, yy - 10]], { rng, size: 2.2, color, overshoot: 0 })) + label((x0 + x1) / 2, yy + 32, text, { color, weight: 700 });
+  b += brace(70, 290, 320, 'some states vest early', P.civicDeep);
+  b += brace(410, 640, 320, 'most states: common law', P.leafDeep);
+  b += note(700, 386, 'in good faith, under a valid permit', { anchor: 'end', color: P.leafDeep });
+  return { W, H, b };
+}
+
+// A development agreement as a trade, from the lesson's example.
+function devAgreement() {
+  const rng = makeRng(5304);
+  const W = 720;
+  const H = 444;
+  let b = '';
+  // A balance beam on a post.
+  b += L(inkLine([[360, 130], [360, 380]], { rng, size: 4, overshoot: 0 }));
+  b += `<path d="M320 392L360 370L400 392Z" fill="${P.kraft}" stroke="${P.ink}" stroke-width="2"/>`;
+  b += L(inkLine([[80, 130], [640, 130]], { rng, size: 4, overshoot: 0 }));
+  const pan = (cx, fill, head, lines) => {
+    let s = L(inkLine([[cx - 60, 130], [cx - 100, 200]], { rng, size: 1.8, overshoot: 0 }) + inkLine([[cx + 60, 130], [cx + 100, 200]], { rng, size: 1.8, overshoot: 0 }));
+    const d = roundRectD(cx - 150, 196, 300, 170, 14);
+    s += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    s += title(cx, 238, head, { size: 28 });
+    lines.forEach((t, k) => { s += label(cx, 278 + k * 30, t, { weight: 500 }); });
+    return s;
+  };
+  b += pan(180, T.sky, 'City gives', ['standards locked', 'for 15 years']);
+  b += pan(540, T.sage, 'Developer gives', ['fire station site,', 'trails, and 10%', 'affordable homes']);
+  b += note(360, 60, 'certainty for the developer, benefits for the public', { color: P.civicDeep, size: 35 });
+  b += label(360, 426, 'adopted in public, within state authority', { color: MUTED, weight: 500 });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 5.4
+
+// The same corridor under Euclidean rules and under a form-based code.
+function formBased() {
+  const rng = makeRng(5401);
+  const PW = 338;
+  const PH = 380;
+  const street = (s0) => `<rect x="12" y="290" width="314" height="40" fill="#9C95A8"/>` + `<rect x="12" y="276" width="314" height="14" fill="#E3DCCB"/>` + s0;
+  const lotLines = (y0) => [0, 1, 2].map((k) => L(inkLine([[12 + k * 105 + 105, y0], [12 + k * 105 + 105, 276]], { rng, size: 1.2, opacity: 0.5, overshoot: 0 }))).join('');
+  let eu = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Euclidean', { size: 25, anchor: 'start' }) + label(20, 70, 'buildings behind parking', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  eu += street('');
+  for (let k = 0; k < 3; k++) {
+    const x = 22 + k * 105;
+    eu += `<rect x="${x}" y="190" width="85" height="80" fill="#D6D1C6"/>`;
+    for (let j = 0; j < 3; j++) eu += `<rect x="${x + 8 + j * 26}" y="210" width="18" height="36" fill="none" stroke="#FFFFFF" stroke-width="2"/>`;
+    const bd = rectD(x + 10, 100 + (k % 2) * 20, 65, 70 - (k % 2) * 20);
+    eu += cut(bd, { rng, fill: [P.tomato, P.butter, P.lavender][k], filter: FLAT }) + L(ink(bd, { rng, size: 2 }));
+  }
+  eu += lotLines(96);
+  eu += note(20, 362, 'set back, car-first', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let fb = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Form-based', { size: 25, anchor: 'start' }) + label(20, 70, 'built to the sidewalk', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  fb += street('');
+  for (let k = 0; k < 3; k++) {
+    const x = 22 + k * 105;
+    fb += `<rect x="${x}" y="100" width="85" height="60" fill="#D6D1C6"/>`;
+    const bd = rectD(x + 4, 176, 80, 96);
+    fb += cut(bd, { rng, fill: [P.tomato, P.butter, P.lavender][k], filter: FLAT }) + L(ink(bd, { rng, size: 2 }));
+    fb += `<rect x="${x + 14}" y="236" width="60" height="30" fill="${P.sky}" stroke="${P.ink}" stroke-width="1.4"/>`;
+    fb += `<circle cx="${x + 94}" cy="283" r="9" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.4"/>`;
+  }
+  fb += L(dashed(12, 272, 326, 272, rng, { color: P.civicDeep, size: 2 }));
+  fb += label(169, 138, 'parking behind', { size: 19, color: MUTED, weight: 700 });
+  fb += note(20, 362, 'build-to line, active fronts', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, eu) + at(368, 14, fb),
+    narrow: { W: 366, H: 802, b: at(14, 14, eu) + at(14, 408, fb) },
+  };
+}
+
+// Conventional and conservation subdivisions with the same 16 homes.
+function clusterSubdivision() {
+  const rng = makeRng(5402);
+  const PW = 338;
+  const PH = 380;
+  const site = (s0) => { const d = rectD(34, 90, 270, 216); return cut(d, { rng, fill: T.sage, filter: FLAT }) + L(ink(d, { rng, size: 2.2 })) + s0; };
+  const home = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${P.butter}" stroke="${P.ink}" stroke-width="1.4"/><rect x="${x + w / 2 - 6}" y="${y + h / 2 - 5}" width="12" height="10" fill="${P.tomato}"/>`;
+  let conv = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Conventional', { size: 25, anchor: 'start' }) + label(20, 70, '16 homes on big lots', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  let homes = '';
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) homes += home(34 + c * 67.5, 90 + r * 54, 67.5, 54);
+  conv += site(homes);
+  conv += note(20, 350, 'all of the land divided', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let cl = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Conservation', { size: 25, anchor: 'start' }) + label(20, 70, 'the same 16 homes, clustered', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  let ch = '';
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) ch += home(34 + c * 30, 90 + r * 54, 30, 54);
+  let trees = '';
+  for (const [x, y] of [[200, 130], [250, 170], [190, 220], [270, 250], [230, 110]]) trees += `<circle cx="${x}" cy="${y}" r="14" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.4"/>`;
+  cl += site(ch + trees);
+  cl += label(220, 300, 'open space', { size: 19, weight: 700, color: P.leafDeep });
+  cl += note(20, 350, 'more than half kept open', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, conv) + at(368, 14, cl),
+    narrow: { W: 366, H: 802, b: at(14, 14, conv) + at(14, 408, cl) },
+  };
+}
+
+// Transfer of development rights: from a sending farm to a receiving center.
+function tdrFlow() {
+  const rng = makeRng(5403);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  // Sending area: a farm under easement.
+  const field = rectD(20, 150, 250, 150);
+  b += cut(field, { rng, fill: T.sage, filter: FLAT }) + L(ink(field, { rng, size: 2 }));
+  for (let k = 0; k < 6; k++) b += L(inkLine([[34, 170 + k * 22], [256, 170 + k * 22]], { rng, size: 1.2, color: P.leafDeep, opacity: 0.6, overshoot: 0 }));
+  b += house(110, 200, 60, 60, { seed: 31, wall: P.blush, roof: P.tomato });
+  b += stamp(145, 270, 'EASEMENT', P.leafDeep, rng, { size: 28, rot: -6 });
+  b += title(145, 60, 'Sending area', { size: 28 }) + label(145, 94, 'farmland, habitat', { color: MUTED, weight: 500 });
+  // Receiving area: a center with a taller building.
+  b += block(470, 300, 70, 100, { seed: 32, wall: P.sky, cols: 2, rows: 3 });
+  b += block(550, 300, 80, 180, { seed: 33, wall: P.lavender, cols: 3, rows: 6 });
+  b += block(640, 300, 60, 90, { seed: 34, wall: P.butter, cols: 2, rows: 3 });
+  b += L(dashed(540, 204, 640, 204, rng, { color: P.tomatoDeep, size: 2 }));
+  b += label(590, 330, 'extra height', { color: P.tomatoDeep, weight: 700 });
+  b += title(560, 60, 'Receiving area', { size: 28 }) + label(560, 94, 'where growth is wanted', { color: MUTED, weight: 500 });
+  // Rights go one way; money comes back.
+  b += L(arrow(284, 200, 452, 200, rng, { size: 3, head: 13, color: P.civicDeep, bend: -20 }));
+  b += label(368, 170, 'rights', { color: P.civicDeep, weight: 800 });
+  b += L(arrow(452, 262, 284, 262, rng, { size: 3, head: 13, color: P.leafDeep, bend: -20 }));
+  b += label(368, 316, 'payment', { color: P.leafDeep, weight: 800 });
+  b += note(20, 400, 'works only if developers want the extra rights', { anchor: 'start', color: P.tomatoDeep });
+  b += label(20, 434, 'PDR skips the market: public funds buy the rights', { anchor: 'start', color: MUTED, weight: 500, size: 28 });
+  return { W, H, b };
+}
+
+// An urban growth boundary: urban inside, rural outside.
+function growthBoundary() {
+  const rng = makeRng(5404);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const bg = rectD(14, 14, 692, 452);
+  b += cut(bg, { rng, fill: T.sage, filter: FLAT, shadow: false }) + L(ink(bg, { rng, size: 1.8 }));
+  for (let k = 0; k < 14; k++) b += L(inkLine([[30, 36 + k * 30], [690, 30 + k * 30]], { rng, size: 1, color: P.leafDeep, opacity: 0.35, overshoot: 0 }));
+  const ugb = blobD(330, 240, 200, 150, makeRng(21), 8, 0.08);
+  b += cut(ugb, { rng, fill: T.butter, filter: FLAT }) + L(ink(ugb, { rng, size: 3.4, color: P.tomatoDeep }));
+  // Built-up core, with infill sites marked inside.
+  const core = blobD(330, 240, 110, 80, makeRng(22), 7, 0.1);
+  b += cut(core, { rng, fill: P.butter, filter: FLAT }) + L(ink(core, { rng, size: 1.8 }));
+  for (const [x, y] of [[280, 210], [330, 250], [380, 220], [300, 270], [360, 280], [250, 250], [410, 250]]) b += `<rect x="${x}" y="${y}" width="18" height="18" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.2"/>`;
+  b += label(330, 196, 'urban uses and services', { weight: 700 });
+  b += label(580, 440, 'rural: farms, forest', { weight: 700, color: P.leafDeep });
+  b += label(600, 70, 'growth boundary', { weight: 800, color: P.tomatoDeep });
+  b += L(arrow(600, 84, 500, 150, rng, { color: P.tomatoDeep, size: 2.2, head: 10, bend: 6 }));
+  b += note(34, 420, 'needs enough room inside', { anchor: 'start', color: P.civicDeep });
+  b += note(34, 454, 'for projected growth', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 5.5
+
+// FAR 2.0 built three ways, drawn to scale: stories = FAR / coverage.
+function farShapes() {
+  const rng = makeRng(5501);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const FAR = 2.0;
+  const lotW = 190;
+  const story = 26;
+  const base = 330;
+  [1, 0.5, 0.25].forEach((cov, i) => {
+    const cx = 124 + i * 236;
+    const x0 = cx - lotW / 2;
+    const floors = FAR / cov;
+    const bw = lotW * cov;
+    b += `<rect x="${x0}" y="${base}" width="${lotW}" height="12" fill="${P.sage}" stroke="${P.ink}" stroke-width="1.6"/>`;
+    for (let f = 0; f < floors; f++) {
+      const d = rectD(cx - bw / 2, base - (f + 1) * story, bw, story);
+      b += cut(d, { rng, fill: [P.butter, P.sky, P.lavender][i], shadow: f === 0, jitter: 0.3, filter: FLAT }) + L(ink(d, { rng, size: 1.6 }));
+    }
+    b += title(cx, base + 52, `${floors} stories`, { size: 28 });
+    b += label(cx, base + 86, `${Math.round(cov * 100)}% coverage`, { weight: 500, color: MUTED });
+  });
+  b += note(360, 60, 'same FAR 2.0: stories = FAR ÷ coverage', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Gross versus net density, from the lesson's 40-acre example.
+function grossNet() {
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const acres = 40;
+  const setAside = 0.25;
+  const perNet = 6;
+  const net = acres * (1 - setAside);
+  const units = net * perNet;
+  const gross = units / acres;
+  const cell = 48;
+  // 8 x 5 acres; streets and open space take a column and part of a row.
+  const off = new Set([3, 11, 19, 27, 35, 32, 33, 34, 36, 37]);
+  for (let i = 0; i < acres; i++) {
+    const x = 24 + (i % 8) * (cell + 2);
+    const y = 60 + Math.floor(i / 8) * (cell + 2);
+    const out = off.has(i);
+    b += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="4" fill="${out ? '#B9B3C4' : P.butter}" stroke="${P.ink}" stroke-width="1.2"/>`;
+  }
+  b += label(24, 40, 'each square: 1 acre', { anchor: 'start', color: MUTED, weight: 500 });
+  const lx = 440;
+  const rows = [
+    [`${acres} acres`, P.ink, 800], [`− ${acres - net} for streets,`, MUTED, 500], ['open space', MUTED, 500],
+    [`= ${net} net acres`, P.kraftDeep, 800], [`× ${perNet} per net acre`, MUTED, 500], [`= ${units} units`, P.tomatoDeep, 800],
+  ];
+  rows.forEach(([t, color, weight], k) => { b += label(lx, 80 + k * 38, t, { anchor: 'start', color, weight }); });
+  b += `<rect x="24" y="340" width="22" height="22" fill="#B9B3C4" stroke="${P.ink}" stroke-width="1.2"/>` + label(56, 358, 'streets, open space', { anchor: 'start', weight: 500 });
+  b += note(24, 418, `gross density: ${units} ÷ ${acres} = ${gross} per acre`, { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Parking land against the store's own footprint, drawn to the same scale.
+function parkingLand() {
+  const rng = makeRng(5503);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const store = 60000;
+  const spaces = (store / 1000) * 4;
+  const park = spaces * 350;
+  const h = 200;
+  const k = 1 / 300; // px of width per sq ft, at 200 px tall
+  const sw = store * k;
+  const pw = park * k;
+  const y = 110;
+  const sd = rectD(30, y, sw, h);
+  b += cut(sd, { rng, fill: P.tomato, filter: FLAT }) + L(ink(sd, { rng, size: 2.2 }));
+  b += label(30 + sw / 2, y + h / 2 + 10, 'store', { color: '#FFFFFF', weight: 800 });
+  const pd = rectD(50 + sw, y, pw, h);
+  b += `<path d="${pd}" fill="#9C95A8"/>`;
+  for (let x = 50 + sw + 14; x < 50 + sw + pw - 6; x += 20) b += `<line x1="${x}" y1="${y + 8}" x2="${x}" y2="${y + 70}" stroke="#FFFFFF" stroke-width="2"/><line x1="${x}" y1="${y + h - 70}" x2="${x}" y2="${y + h - 8}" stroke="#FFFFFF" stroke-width="2"/>`;
+  b += L(ink(pd, { rng, size: 2.2 }));
+  b += label(50 + sw + pw / 2, y + h / 2 + 10, 'parking', { color: '#FFFFFF', weight: 800 });
+  b += label(30, 60, `one story, ${fmt(store)} sq ft`, { anchor: 'start', color: P.tomatoDeep, weight: 700 });
+  b += label(700, 60, `${spaces} spaces × 350 sq ft`, { anchor: 'end', weight: 700 });
+  b += label(30, y + h + 44, `store: ${fmt(store)} sq ft`, { anchor: 'start', weight: 500 });
+  b += label(700, y + h + 44, `lot: ${fmt(park)} sq ft (${(park / 43560).toFixed(2)} acres)`, { anchor: 'end', weight: 500 });
+  b += note(360, 420, 'the parking is bigger than the building', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// Cost burden, from the lesson's example household.
+function costBurden() {
+  const rng = makeRng(5504);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const income = 42000;
+  const monthly = income / 12;
+  const rent = 1300;
+  const afford = monthly * 0.3;
+  const x0 = 40;
+  const w = 640;
+  const X = (v) => x0 + (v / monthly) * w;
+  const y = 150;
+  const all = rectD(x0, y, w, 70);
+  b += cut(all, { rng, fill: '#EFE7D6', filter: FLAT }) + L(ink(all, { rng, size: 2 }));
+  const r = rectD(x0, y, X(rent) - x0, 70);
+  b += cut(r, { rng, fill: P.tomato, filter: FLAT, shadow: false }) + L(ink(r, { rng, size: 2 }));
+  b += label((x0 + X(afford)) / 2, y + 46, `rent $${fmt(rent)}`, { color: '#FFFFFF', weight: 800 });
+  b += L(dashed(X(afford), y - 30, X(afford), y + 110, rng, { color: P.civicDeep, size: 2.6 }));
+  b += label(X(afford) + 10, y - 16, `30% of income: $${fmt(afford)}`, { anchor: 'start', color: P.civicDeep, weight: 800 });
+  b += label(x0, 60, `income: $${fmt(monthly)} a month`, { anchor: 'start', weight: 700 });
+  b += label(x0 + w, y + 110, `$${fmt(monthly)}`, { anchor: 'end', color: MUTED, weight: 500 });
+  b += label(x0, y + 110, '$0', { anchor: 'start', color: MUTED, weight: 500 });
+  b += title(x0, 350, `${Math.round((rent / monthly) * 100)}% of income: cost-burdened`, { anchor: 'start', size: 28, color: P.tomatoDeep });
+  b += note(700, 390, 'over the line by $250 a month', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 5.6
+
+// The CIP rolls forward each year; its first year is the capital budget.
+function cipRolling() {
+  const rng = makeRng(5601);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const row = (y, start, headLabel) => {
+    let s = title(20, y + 44, headLabel, { anchor: 'start', size: 28 });
+    for (let k = 0; k < 5; k++) {
+      const yr = start + k;
+      const x = 170 + (yr - 1) * 88;
+      const d = roundRectD(x, y, 80, 70, 10);
+      s += cut(d, { rng, fill: k === 0 ? P.butter : T.sky, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+      s += label(x + 40, y + 46, `Y${yr}`, { weight: 800 });
+    }
+    return s;
+  };
+  b += row(60, 1, 'This year');
+  b += row(210, 2, 'Next year');
+  b += `<g opacity="0.45">${L(ink(roundRectD(170, 210, 80, 70, 10), { rng, size: 2 }))}</g>` + label(210, 256, 'done', { color: MUTED, weight: 500 });
+  b += L(arrow(676, 164, 654, 204, rng, { color: P.leafDeep, size: 2.4, head: 10, bend: 6 }));
+  b += label(706, 150, 'new year', { anchor: 'end', color: P.leafDeep, weight: 700 });
+  b += `<rect x="20" y="330" width="24" height="24" fill="${P.butter}" stroke="${P.ink}" stroke-width="1.6"/>` + label(54, 350, 'the capital budget, adopted with this year’s budget', { anchor: 'start', weight: 500 });
+  return { W, H, b };
+}
+
+// Tax increment financing: the base is frozen, the increment is captured.
+function tifIncrement() {
+  const rng = makeRng(5602);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  // Illustrative: a $100M base growing 4% a year for 20 years.
+  const base = 100;
+  const g = 0.04;
+  const years = 20;
+  const x0 = 130;
+  const x1 = 660;
+  const yB = 340;
+  const yT = 60;
+  const vmax = 240;
+  const X = (t) => x0 + (t / years) * (x1 - x0);
+  const Y = (v) => yB - (v / vmax) * (yB - yT);
+  const pts = [];
+  for (let t = 0; t <= years; t++) pts.push([X(t), Y(base * (1 + g) ** t)]);
+  b += `<path d="${polyD([[X(0), yB], [X(0), Y(base)], [X(years), Y(base)], [X(years), yB]])}" fill="${T.sky}"/>`;
+  b += `<path d="${polyD([[X(0), Y(base)], ...pts, [X(years), Y(base)]])}" fill="${T.butter}"/>`;
+  b += L(inkLine(pts, { rng, size: 3, color: P.kraftDeep, overshoot: 0 }) + inkLine([[X(0), Y(base)], [X(years), Y(base)]], { rng, size: 2.4, color: P.civicDeep, overshoot: 0 }));
+  b += L(inkLine([[x0, yT - 10], [x0, yB], [x1 + 10, yB]], { rng, size: 2.4, overshoot: 0 }));
+  for (const t of [0, 10, 20]) b += label(X(t), yB + 38, String(t));
+  for (const v of [100, 200]) b += label(x0 - 12, Y(v) + 10, `$${v}M`, { anchor: 'end' });
+  b += label((x0 + x1) / 2, yB + 80, 'years since the district began (illustrative)', { color: MUTED, weight: 500 });
+  const end = base * (1 + g) ** years;
+  b += label(X(years) - 10, Y(end) - 14, `$${Math.round(end)}M`, { anchor: 'end', weight: 800, color: P.kraftDeep });
+  b += label(X(10), Y(base) + 60, 'frozen base: taxes go on', { color: P.civicDeep, weight: 700 });
+  b += label(X(10), Y(base) + 94, 'to schools, county, city', { color: P.civicDeep, weight: 500 });
+  b += label(X(14), Y(base) - 50, 'increment: to the', { color: P.kraftDeep, weight: 700 });
+  b += label(X(14), Y(base) - 18, 'TIF district', { color: P.kraftDeep, weight: 700 });
+  return { W, H, b };
+}
+
+// General obligation versus revenue bonds.
+function bondTypes() {
+  const rng = makeRng(5603);
+  const PW = 338;
+  const PH = 400;
+  const head = (t, sub) => title(20, 40, t, { size: 25, anchor: 'start' }) + label(20, 70, sub, { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  let go = panel(0, 0, PW, PH, T.cream, rng) + head('General obligation', 'backed by the power to tax');
+  go += cityHall(40, 250, 120, 130, { seed: 44 });
+  const fs = rectD(196, 170, 124, 80);
+  go += cut(fs, { rng, fill: P.tomato, filter: FLAT }) + L(ink(fs, { rng, size: 2 })) + label(258, 204, 'fire', { size: 20, color: '#FFFFFF', weight: 800 }) + label(258, 230, 'station', { size: 20, color: '#FFFFFF', weight: 800 });
+  go += L(arrow(162, 200, 196, 210, rng, { size: 2.2, head: 9 }));
+  go += label(20, 296, 'fire stations, parks, schools', { size: 20, anchor: 'start', weight: 700 });
+  go += note(20, 340, 'often needs voter approval;', { size: 24, anchor: 'start', color: P.civicDeep }) + note(20, 370, 'usually lower interest', { size: 24, anchor: 'start', color: P.civicDeep });
+  let rv = panel(0, 0, PW, PH, T.cream, rng) + head('Revenue bond', 'repaid by the project’s own fees');
+  const tank = ellipseD(110, 140, 50, 34);
+  rv += L(inkLine([[80, 170], [80, 250]], { rng, size: 3, overshoot: 0 }) + inkLine([[140, 170], [140, 250]], { rng, size: 3, overshoot: 0 }));
+  rv += cut(tank, { rng, fill: P.sky, filter: FLAT }) + L(ink(tank, { rng, size: 2 })) + label(110, 148, 'water', { size: 19, weight: 800 });
+  rv += house(210, 250, 60, 64, { seed: 45, wall: T.butter, roof: P.kraftDeep, chimney: false });
+  rv += L(arrow(270, 170, 150, 150, rng, { size: 2.2, head: 9, color: P.leafDeep, bend: -12 }));
+  rv += label(232, 144, '$ rates', { size: 19, color: P.leafDeep, weight: 800 });
+  rv += label(20, 296, 'water, parking, airports', { size: 20, anchor: 'start', weight: 700 });
+  rv += note(20, 340, 'usually no vote;', { size: 24, anchor: 'start', color: P.civicDeep }) + note(20, 370, 'usually a bit more interest', { size: 24, anchor: 'start', color: P.civicDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, go) + at(368, 14, rv),
+    narrow: { W: 366, H: 842, b: at(14, 14, go) + at(14, 428, rv) },
+  };
+}
+
+// Reading the lesson's CIP table: the Year 2 column, totaled.
+function cipTable() {
+  const rng = makeRng(5604);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const rows = [['Fire station', 'GO bond', [0.5, 2.5, 0.3]], ['Water main', 'revenue bond', [1.2, 1.0, 0]], ['Park renovation', 'grant + general fund', [0.4, 0.6, 0.8]]];
+  const cols = [440, 540, 640];
+  const top = 90;
+  const rh = 80;
+  const hl = roundRectD(cols[1] - 46, top - 50, 92, rh * 3 + 136, 12);
+  b += cut(hl, { rng, fill: T.butter, filter: FLAT, shadow: false }) + L(ink(hl, { rng, size: 2.4, color: P.kraftDeep }));
+  ['Year 1', 'Year 2', 'Year 3'].forEach((t, i) => { b += label(cols[i], 60, t, { weight: 800 }); });
+  b += L(inkLine([[20, 74], [700, 74]], { rng, size: 2, overshoot: 0 }));
+  rows.forEach(([name, fund, vals], r) => {
+    const y = top + r * rh;
+    b += label(20, y + 30, name, { anchor: 'start', weight: 800 }) + label(20, y + 62, fund, { anchor: 'start', color: MUTED, weight: 500 });
+    vals.forEach((v, c) => { b += label(cols[c], y + 44, v ? `$${v.toFixed(1)}M` : '$0', { weight: c === 1 ? 800 : 500 }); });
+  });
+  const tot = rows.reduce((a, [, , v]) => a + v[1], 0);
+  b += L(inkLine([[cols[1] - 40, top + 3 * rh + 4], [cols[1] + 40, top + 3 * rh + 4]], { rng, size: 2.4, overshoot: 0 }));
+  b += label(cols[1], top + 3 * rh + 46, `$${tot.toFixed(1)}M`, { weight: 800, color: P.tomatoDeep });
+  b += label(cols[0] + 40, top + 3 * rh + 46, 'Year 2 total', { anchor: 'end', weight: 700, color: P.tomatoDeep }).replace(`x="${cols[0] + 40}"`, `x="${cols[1] - 60}"`);
+  b += note(20, 426, `2.5 + 1.0 + 0.6 = ${tot.toFixed(1)}`, { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 5.7
+
+// One row of an action table, as a ticket with six fields.
+function actionRow() {
+  const rng = makeRng(5701);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const t = roundRectD(14, 30, 692, 380, 16);
+  b += cut(t, { rng, fill: P.paper, filter: FLAT }) + L(ink(t, { rng, size: 2.4 }));
+  b += tape(310, 18, 100, 24, -3, { seed: 7 });
+  const fields = [
+    ['Action', 'allow duplexes citywide', 'what'],
+    ['Goal', 'housing for all incomes', 'why'],
+    ['Lead', 'Planning Department', 'who'],
+    ['When', 'by June 2026', 'when'],
+    ['Funding', 'staff time', 'how much'],
+    ['Measure', 'amendment adopted', 'how we’ll know'],
+  ];
+  fields.forEach(([name, val, q], i) => {
+    const y = 70 + i * 56;
+    b += label(44, y + 24, name, { anchor: 'start', weight: 800 });
+    b += label(210, y + 24, val, { anchor: 'start', weight: 500 });
+    b += note(690, y + 24, q, { anchor: 'end', color: P.civicDeep, size: 35 });
+    if (i) b += L(inkLine([[36, y - 6], [684, y - 6]], { rng, size: 1, opacity: 0.35, overshoot: 0 }));
+  });
+  b += label(360, 434, 'an example row', { color: MUTED, weight: 500 });
+  return { W, H, b };
+}
+
+// Dig once: three projects on one street, done separately or together.
+function digOnce() {
+  const rng = makeRng(5702);
+  const PW = 338;
+  const PH = 360;
+  const head = (t, sub) => title(20, 40, t, { size: 25, anchor: 'start' }) + label(20, 70, sub, { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const cone = (x, y) => `<path d="M${x - 9} ${y}L${x} ${y - 26}L${x + 9} ${y}Z" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.4"/><rect x="${x - 7}" y="${y - 14}" width="14" height="4" fill="#FFFFFF"/>`;
+  const street = (x, y, w, items) => {
+    let s = `<rect x="${x}" y="${y}" width="${w}" height="36" rx="6" fill="#9C95A8"/>`;
+    s += cone(x + 14, y + 4) + cone(x + w - 14, y + 4);
+    s += label(x + w / 2, y + 26, items, { size: 19, color: '#FFFFFF', weight: 700 });
+    return s;
+  };
+  let sep = panel(0, 0, PW, PH, T.cream, rng) + head('Separately', 'three digs, three detours');
+  sep += label(20, 140, 'Year 1', { size: 19, anchor: 'start', weight: 700 }) + street(96, 116, 222, 'repave');
+  sep += label(20, 204, 'Year 3', { size: 19, anchor: 'start', weight: 700 }) + street(96, 180, 222, 'water main');
+  sep += label(20, 268, 'Year 5', { size: 19, anchor: 'start', weight: 700 }) + street(96, 244, 222, 'bike lanes');
+  sep += note(20, 322, 'the same street torn up 3 times', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let one = panel(0, 0, PW, PH, T.cream, rng) + head('Together', 'one project, one dig');
+  one += label(20, 178, 'Year 1', { size: 19, anchor: 'start', weight: 700 });
+  one += `<rect x="96" y="120" width="222" height="96" rx="8" fill="#9C95A8"/>` + cone(110, 124) + cone(304, 124);
+  one += label(207, 150, 'water main', { size: 19, color: '#FFFFFF', weight: 700 }) + label(207, 176, 'repave', { size: 19, color: '#FFFFFF', weight: 700 }) + label(207, 202, 'bike lanes', { size: 19, color: '#FFFFFF', weight: 700 });
+  one += note(20, 322, 'lower cost, less disruption', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 388, b: at(14, 14, sep) + at(368, 14, one),
+    narrow: { W: 366, H: 762, b: at(14, 14, sep) + at(14, 388, one) },
+  };
+}
+
+// Output versus outcome, from action to result.
+function outputOutcome() {
+  const rng = makeRng(5703);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const box = (x, head, lines, fill, color) => {
+    const d = roundRectD(x, 90, 210, 180, 14);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    s += title(x + 105, 134, head, { size: 28, color });
+    lines.forEach((t, k) => { s += label(x + 105, 180 + k * 32, t, { weight: 500 }); });
+    return s;
+  };
+  b += box(14, 'Action', ['build a', 'new trail'], T.kraft, P.ink);
+  b += box(255, 'Output', ['trail built:', 'yes'], T.sky, P.civicDeep);
+  b += box(496, 'Outcome', ['park access', 'rises'], T.sage, P.leafDeep);
+  b += L(arrow(226, 180, 250, 180, rng, { size: 2.6, head: 10 }) + arrow(467, 180, 491, 180, rng, { size: 2.6, head: 10 }));
+  b += note(360, 330, 'output: are we doing what we said?', { color: P.civicDeep });
+  b += note(360, 370, 'outcome: is it making a difference?', { color: P.leafDeep });
+  return { W, H, b };
+}
+
+// A level-of-service standard turns growth into a funding commitment.
+function losCommitment() {
+  const rng = makeRng(5704);
+  const W = 720;
+  const H = 420;
+  let b = '';
+  // Illustrative: 5 acres of parkland per 1,000 residents.
+  const std = 5;
+  const pop0 = 20000;
+  const pop1 = 24000;
+  const need0 = (pop0 / 1000) * std;
+  const need1 = (pop1 / 1000) * std;
+  const x0 = 260;
+  const w = 420;
+  const X = (a) => x0 + (a / need1) * w;
+  const bar = (y, a, fill, name, sub) => {
+    const d = rectD(x0, y, X(a) - x0, 60);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    s += title(x0 - 16, y + 30, name, { size: 28, anchor: 'end' }) + label(x0 - 16, y + 60, sub, { anchor: 'end', color: MUTED, weight: 500 });
+    s += label(Math.min(X(a), X(need0)) - 14, y + 40, `${a} acres`, { anchor: 'end', weight: 800 });
+    return s;
+  };
+  b += bar(90, need0, P.leaf, 'Today', `${fmt(pop0)} people`);
+  b += bar(210, need1, P.leaf, 'In 10 years', `${fmt(pop1)} people`);
+  const gap = rectD(X(need0), 210, X(need1) - X(need0), 60);
+  b += `<path d="${gap}" fill="${P.butter}"/>` + L(ink(gap, { rng, size: 2, color: P.kraftDeep }));
+  b += label((X(need0) + X(need1)) / 2, 300, `+${need1 - need0} acres`, { color: P.kraftDeep, weight: 800 });
+  b += label(20, 50, `standard: ${std} acres of park per 1,000 people (illustrative)`, { anchor: 'start', weight: 500, color: MUTED });
+  b += note(20, 360, 'adopt the standard, and you’ve promised', { anchor: 'start', color: P.tomatoDeep });
+  b += note(20, 396, 'to fund the extra acres', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 6.1
+
+// The lesson's plan update as a Gantt chart, with the critical path and
+// float computed from the task table.
+function criticalPath() {
+  const rng = makeRng(6101);
+  const W = 720;
+  const H = 500;
+  let b = '';
+  const tasks = { A: [3, [], 'conditions'], B: [2, [], 'engagement'], C: [2, ['A', 'B'], 'alternatives'], D: [3, ['C'], 'draft plan'], E: [1, [], 'website'] };
+  const ids = Object.keys(tasks);
+  const es = {};
+  for (const id of ids) es[id] = Math.max(0, ...tasks[id][1].map((d) => es[d] + tasks[d][0]));
+  const finish = Math.max(...ids.map((id) => es[id] + tasks[id][0]));
+  // Latest finish: a task's successors' earliest start, or the project finish.
+  const lf = {};
+  for (const id of [...ids].reverse()) {
+    const succ = ids.filter((k) => tasks[k][1].includes(id));
+    lf[id] = succ.length ? Math.min(...succ.map((k) => es[k])) : finish;
+  }
+  const x0 = 220;
+  const X = (m) => x0 + (m / 9) * 470;
+  const rowY = (i) => 60 + i * 64;
+  for (let m = 0; m <= 8; m += 2) {
+    b += L(inkLine([[X(m), 44], [X(m), rowY(4) + 44]], { rng, size: 1, opacity: 0.3, overshoot: 0 }));
+    b += label(X(m), rowY(4) + 80, String(m), { color: MUTED, weight: 500 });
+  }
+  b += label(X(4.5), rowY(4) + 118, 'months', { color: MUTED, weight: 500 });
+  ids.forEach((id, i) => {
+    const [dur, , name] = tasks[id];
+    const y = rowY(i);
+    const crit = lf[id] - (es[id] + dur) === 0;
+    const flt = lf[id] - (es[id] + dur);
+    if (flt > 0) b += L(dashed(X(es[id] + dur), y + 18, X(lf[id]), y + 18, rng, { color: P.civicDeep, size: 2, dash: 7, gap: 6 }));
+    const d = roundRectD(X(es[id]), y, X(es[id] + dur) - X(es[id]), 36, 8);
+    b += cut(d, { rng, fill: crit ? P.tomato : P.sky, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += label(20, y + 28, `${id}  ${name}`, { anchor: 'start', weight: crit ? 800 : 500, color: crit ? P.tomatoDeep : P.ink });
+    if (flt > 0 && flt < 3) b += label(X(lf[id]) + 8, y + 28, `float ${flt}`, { anchor: 'start', color: P.civicDeep, weight: 700 });
+    if (flt >= 3) { const mx = (X(es[id] + dur) + X(lf[id])) / 2; b += backing(mx - 60, y + 2, 120, 34) + label(mx, y + 28, `float ${flt}`, { color: P.civicDeep, weight: 700 }); }
+  });
+  b += note(700, 488, `critical path A, C, D: ${finish} months`, { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// A two-step selection: qualifications first, then proposals, then a fee.
+function selectionFunnel() {
+  const rng = makeRng(6102);
+  const W = 720;
+  const H = 420;
+  let b = '';
+  const stages = [[11, 'RFQ responses', ['scored on', 'qualifications'], T.sky], [3, 'shortlisted', ['full proposals,', 'interviews'], P.sky], [1, 'top firm', ['negotiate', 'the fee'], P.butter]];
+  stages.forEach(([n, name, sub, fill], i) => {
+    const y = 40 + i * 120;
+    const w = 460 - i * 120;
+    const cx = 250;
+    const x = cx - w / 2;
+    const inset = w * 0.16;
+    const d = polyD([[x, y], [x + w, y], [x + w - inset, y + 96], [x + inset, y + 96]]);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    const gap = 30;
+    for (let k = 0; k < n; k++) b += `<circle cx="${cx + (k - (n - 1) / 2) * gap}" cy="${y + 28}" r="10" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.6"/>`;
+    b += label(cx, y + 72, `${n} ${name}`, { weight: 800 });
+    sub.forEach((t, k) => { b += label(496, y + 40 + k * 32, t, { anchor: 'start', color: MUTED, weight: 500 }); });
+  });
+  b += note(20, 404, 'qualifications first, price last', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Controlling scope creep with a change order, from the lesson's example.
+function changeOrder() {
+  const rng = makeRng(6103);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const steps = [['Request', 'add a', 'parking', 'study'], ['Document', 'write it up'], ['Estimate', 'cost and', 'schedule'], ['Approve', 'change', 'order', 'signed']];
+  steps.forEach(([head, ...lines], i) => {
+    const x = 14 + i * 176;
+    const d = roundRectD(x, 60, 160, 170, 14);
+    b += cut(d, { rng, fill: [T.blush, T.sky, T.butter, T.sage][i], filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += title(x + 80, 104, head, { size: 28 });
+    lines.forEach((t, k) => { b += label(x + 80, 148 + k * 32, t, { weight: 500 }); });
+    if (i < 3) b += L(arrow(x + 162, 145, x + 174, 145, rng, { size: 2.4, head: 8 }));
+  });
+  b += label(20, 290, 'result: the study gets its own budget,', { anchor: 'start', weight: 700 });
+  b += label(20, 324, 'and the plan adds six weeks, openly', { anchor: 'start', weight: 700 });
+  b += note(20, 380, 'scope creep is change without this paperwork', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 6.2
+
+// Who the planning director reports to, under two forms of government.
+function govForms() {
+  const rng = makeRng(6201);
+  const PW = 338;
+  const PH = 440;
+  const box = (x, y, w, t, fill, bold) => {
+    const d = roundRectD(x, y, w, 50, 10);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: bold ? 3 : 2 })) + label(x + w / 2, y + 33, t, { size: 21, weight: bold ? 800 : 600 });
+  };
+  const down = (x, y1, y2) => L(arrow(x, y1, x, y2, rng, { size: 2.2, head: 9 }));
+  let cm = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Council-manager', { size: 25, anchor: 'start' });
+  cm += box(69, 80, 200, 'Voters', T.kraft) + down(169, 132, 160);
+  cm += box(69, 164, 200, 'Council', T.sky) + down(169, 216, 244);
+  cm += box(69, 248, 200, 'City manager', T.sky) + down(169, 300, 328);
+  cm += box(49, 332, 240, 'Planning director', P.butter, true);
+  cm += note(20, 420, 'council sets policy, manager runs it', { size: 24, anchor: 'start', color: P.civicDeep });
+  let sm = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Strong mayor', { size: 25, anchor: 'start' });
+  sm += box(69, 80, 200, 'Voters', T.kraft);
+  sm += L(arrow(130, 132, 90, 160, rng, { size: 2.2, head: 9 }) + arrow(208, 132, 248, 160, rng, { size: 2.2, head: 9 }));
+  sm += box(20, 164, 140, 'Mayor', T.blush) + box(178, 164, 140, 'Council', T.sky);
+  sm += L(arrow(90, 216, 150, 326, rng, { size: 2.2, head: 9, bend: 10 }));
+  sm += box(49, 332, 240, 'Planning director', P.butter, true);
+  sm += label(250, 268, 'legislates', { size: 19, color: MUTED, weight: 500 });
+  sm += note(20, 420, 'mayor appoints department heads', { size: 24, anchor: 'start', color: P.civicDeep });
+  return {
+    W: 720, H: 468, b: at(14, 14, cm) + at(368, 14, sm),
+    narrow: { W: 366, H: 922, b: at(14, 14, cm) + at(14, 468, sm) },
+  };
+}
+
+// Functional versus matrix organization.
+function orgStructures() {
+  const rng = makeRng(6202);
+  const PW = 338;
+  const PH = 400;
+  const cols = [['Current', 66], ['Long-range', 186], ['Code', 290]];
+  const heads = () => cols.map(([t, x]) => { const hw = t.length * 11 + 22; const d = roundRectD(x - hw / 2, 90, hw, 44, 8); return cut(d, { rng, fill: T.sky, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + label(x, 118, t, { size: 19, weight: 700 }); }).join('');
+  const dot = (x, y, fill) => `<circle cx="${x}" cy="${y}" r="12" fill="${fill}" stroke="${P.ink}" stroke-width="1.6"/>`;
+  let fn = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Functional', { size: 25, anchor: 'start' }) + label(20, 70, 'grouped by specialty', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  fn += heads();
+  for (const [, x] of cols) {
+    fn += L(inkLine([[x, 134], [x, 290]], { rng, size: 1.8, overshoot: 0 }));
+    for (const y of [180, 230, 280]) fn += dot(x, y, P.butter);
+  }
+  fn += note(20, 350, 'deep expertise,', { size: 24, anchor: 'start', color: P.leafDeep }) + note(20, 378, 'risk of silos', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let mx = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Matrix', { size: 25, anchor: 'start' }) + label(20, 70, 'two bosses: specialty and project', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  mx += heads();
+  for (const [name, y, fill] of [['Project X', 200, T.butter], ['Project Y', 270, T.sage]]) {
+    const band = roundRectD(20, y - 22, 300, 44, 10);
+    mx += cut(band, { rng, fill, filter: FLAT, shadow: false }) + L(ink(band, { rng, size: 1.4 }));
+    mx += backing(22, y - 46, 96, 26) + label(26, y - 27, name, { size: 19, anchor: 'start', weight: 700 });
+  }
+  for (const [, x] of cols) mx += L(inkLine([[x, 134], [x, 294]], { rng, size: 1.8, overshoot: 0 }));
+  for (const [, x] of cols) for (const y of [200, 270]) mx += dot(x, y, P.butter);
+  mx += note(20, 350, 'flexible teams,', { size: 24, anchor: 'start', color: P.leafDeep }) + note(20, 378, 'competing priorities', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, fn) + at(368, 14, mx),
+    narrow: { W: 366, H: 842, b: at(14, 14, fn) + at(14, 428, mx) },
+  };
+}
+
+// The same illustrative budget, organized two ways.
+function budgetFormats() {
+  const rng = makeRng(6203);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const x0 = 40;
+  const w = 640;
+  const bar = (y, head, parts) => {
+    let s = title(x0, y - 16, head, { anchor: 'start', size: 28 });
+    let x = x0;
+    for (const [name, pct, fill, dark] of parts) {
+      const pw = (pct / 100) * w;
+      const d = rectD(x, y, pw, 64);
+      s += cut(d, { rng, fill, filter: FLAT, shadow: false, jitter: 0.4 }) + L(ink(d, { rng, size: 1.8 }));
+      s += label(x + pw / 2, y + 42, `${pct}%`, { weight: 800, color: dark ? '#FFFFFF' : P.ink });
+      s += label(x + pw / 2, y + 100, name, { weight: 500 });
+      x += pw;
+    }
+    return s;
+  };
+  b += bar(70, 'Line-item: what it buys', [['salaries', 60, P.civic, true], ['contracts', 25, P.sky], ['supplies', 15, T.sky]]);
+  b += bar(250, 'Program: what it does', [['current planning', 45, P.leaf, true], ['long-range', 35, P.sage], ['housing', 20, T.sage]]);
+  b += note(700, 424, 'same budget, sliced two ways (illustrative)', { anchor: 'end', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Progressive discipline, step by step.
+function progressiveDiscipline() {
+  const rng = makeRng(6204);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const steps = [['Meet privately', 'find the cause'], ['Verbal counseling', 'documented'], ['Written warning', 'in the file'], ['Further steps', 'per HR rules']];
+  steps.forEach(([head, sub], i) => {
+    const y = 140 + i * 72;
+    const len = 280 + i * 60;
+    const d = roundRectD(20, y, len, 56, 10);
+    b += cut(d, { rng, fill: [T.sage, T.butter, T.blush, P.blush][i], filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += label(40, y + 38, `${i + 1}  ${head}`, { anchor: 'start', weight: 800 });
+    b += label(len + 36, y + 38, sub, { anchor: 'start', color: MUTED, weight: 500 });
+  });
+  b += note(20, 60, 'start private, and put each', { anchor: 'start', color: P.civicDeep });
+  b += note(20, 96, 'step in writing', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -3329,6 +4362,41 @@ export const FIGURES = [
   ['fig-scenarios', scenarioGrid],
   ['fig-buildable-gap', buildableGap],
   ['fig-ghg-scopes', ghgScopes],
+  ['fig-cumulative', cumulativeZoning],
+  ['fig-lot-standards', lotStandards],
+  ['fig-overlay-floating', overlayFloating],
+  ['fig-use-paths', usePaths],
+  ['fig-variance-gates', varianceGates],
+  ['fig-area-use', areaVsUse],
+  ['fig-spot-zoning', spotZoning],
+  ['fig-nonconforming', nonconformingRules],
+  ['fig-plat-process', platProcess],
+  ['fig-official-map', officialMap],
+  ['fig-vested-rights', vestedRights],
+  ['fig-dev-agreement', devAgreement],
+  ['fig-form-based', formBased],
+  ['fig-cluster', clusterSubdivision],
+  ['fig-tdr', tdrFlow],
+  ['fig-ugb', growthBoundary],
+  ['fig-far-shapes', farShapes],
+  ['fig-gross-net', grossNet],
+  ['fig-parking-land', parkingLand],
+  ['fig-cost-burden', costBurden],
+  ['fig-cip-rolling', cipRolling],
+  ['fig-tif', tifIncrement],
+  ['fig-bonds', bondTypes],
+  ['fig-cip-table', cipTable],
+  ['fig-action-row', actionRow],
+  ['fig-dig-once', digOnce],
+  ['fig-output-outcome', outputOutcome],
+  ['fig-los', losCommitment],
+  ['fig-critical-path', criticalPath],
+  ['fig-selection-funnel', selectionFunnel],
+  ['fig-change-order', changeOrder],
+  ['fig-gov-forms', govForms],
+  ['fig-org-structures', orgStructures],
+  ['fig-budget-formats', budgetFormats],
+  ['fig-discipline', progressiveDiscipline],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

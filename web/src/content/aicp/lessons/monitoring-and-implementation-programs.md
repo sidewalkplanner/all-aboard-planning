@@ -27,6 +27,10 @@ An implementation element (or action plan) turns policies into work. It's **most
 
 The action table should use the tools the jurisdiction actually has: **regulations** (zoning and subdivision amendments), **capital investments** (the CIP), **programs and services**, **incentives**, **partnerships**, and **further planning** (area and functional plans). Pursuing grants and partnerships that advance plan objectives, and prioritizing capital projects that implement plan goals, are both core ways to **align funding with the plan**.
 
+:::figure fig-action-row | An example row of an action table, as a ticket with six fields, each answering a question. Action, what: allow duplexes citywide. Goal, why: housing for all incomes. Lead, who: Planning Department. When: by June 2026. Funding, how much: staff time. Measure, how we'll know: amendment adopted.
+If any field is blank, that's usually where the action will stall.
+:::
+
 :::checkpoint cp:monitor-action-table
 
 ### Strategic partnerships
@@ -54,11 +58,19 @@ Good partnerships have a shared goal, clear roles, a written agreement where nee
 
 Pursuing projects together to gain efficiencies, such as repaving a street, replacing the water main underneath, and adding bike lanes in one project, is sometimes called **integration** or coordinated project delivery. It saves money and avoids tearing up the same street three times.
 
+:::figure fig-dig-once | Two panels. Separately, three digs and three detours: the same street is repaved in year 1, dug up for a water main in year 3, and dug up again for bike lanes in year 5. Together, one project and one dig: the water main, repaving, and bike lanes all happen in year 1, for lower cost and less disruption.
+Integration only works if departments share their schedules early enough to line the projects up.
+:::
+
 :::checkpoint cp:monitor-turnover
 
 ### Level-of-service standards
 
 A **level-of-service (LOS) standard** defines a **measurable threshold** for public facilities: acres of parkland per 1,000 residents, response times for fire service, gallons of water capacity, or intersection delay. LOS standards are used to plan capital needs, calculate impact fees, and (under concurrency) decide whether development can proceed. **Setting an LOS standard in the plan commits the jurisdiction to funding the facilities needed to meet it**, so standards should be realistic and affordable.
+
+:::figure fig-los | An illustrative level-of-service standard of 5 acres of park per 1,000 people. Today, 20,000 people need 100 acres. In 10 years, 24,000 people need 120 acres, a gap of 20 acres. A note says adopting the standard means promising to fund the extra acres.
+The standard turns population growth straight into a capital bill, which is why it has to be one the city can afford.
+:::
 
 :::checkpoint cp:monitor-los-example
 
@@ -70,6 +82,10 @@ The purpose of monitoring is to **track progress against the plan's objectives**
 - **Outcome monitoring**: Is it making a difference? (Did the share of residents within a 10-minute walk of a park rise?)
 
 Monitoring is **most credible when indicators are tied to adopted objectives and baselined at adoption**, measured the same way each time, and reported publicly on a regular schedule (often an annual report card or dashboard). Good indicators are relevant, measurable with available data, understandable, and sensitive to change within a reasonable period.
+
+:::figure fig-output-outcome | A chain of three boxes. Action: build a new trail. Output: trail built, yes. Outcome: park access rises. Notes say output asks whether we're doing what we said, and outcome asks whether it's making a difference.
+A plan can score perfectly on outputs and still miss its goals, so track both.
+:::
 
 :::checkpoint cp:monitor-outcome
 
