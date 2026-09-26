@@ -143,6 +143,58 @@
         "w": 340,
         "h": 790
       }
+    },
+    "fig-history-timeline": {
+      "w": 720,
+      "h": 640
+    },
+    "fig-wedding-cake": {
+      "w": 720,
+      "h": 458,
+      "narrow": {
+        "w": 366,
+        "h": 902
+      }
+    },
+    "fig-garden-city": {
+      "w": 720,
+      "h": 448,
+      "narrow": {
+        "w": 366,
+        "h": 882
+      }
+    },
+    "fig-neighborhood-unit": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-radburn": {
+      "w": 720,
+      "h": 470
+    },
+    "fig-rational-model": {
+      "w": 720,
+      "h": 470
+    },
+    "fig-decision-styles": {
+      "w": 720,
+      "h": 628,
+      "narrow": {
+        "w": 366,
+        "h": 1276
+      }
+    },
+    "fig-planner-roles": {
+      "w": 720,
+      "h": 620,
+      "narrow": {
+        "w": 366,
+        "h": 1228
+      }
+    },
+    "fig-planners-triangle": {
+      "w": 720,
+      "h": 548
     }
   },
   "hero": {

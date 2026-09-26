@@ -19,7 +19,7 @@
 // everything the figure says. The embedded fonts have no ≈, →, or σ, so
 // labels spell those out ("about", drawn arrows, "SD").
 import { svgDoc, cut, ink, inkLine, hatch, rectD, roundRectD, ellipseD, blobD, polyD, makeRng, PALETTE as P } from '../lib/draw.mjs';
-import { house, block, person, sun, tape, sparkle, star } from '../lib/props.mjs';
+import { house, block, cityHall, person, sun, tape, sparkle, star } from '../lib/props.mjs';
 import { hand, serif } from './spots.mjs';
 
 const OFF = 'translate(-1.5,-1.1)';
@@ -1204,6 +1204,549 @@ function maup() {
   };
 }
 
+// ============================================================ Lesson 2.1
+
+// The eras of American planning on one to-scale time axis, drawn as
+// transit lines: where each starts and ends, and how they overlap.
+function historyTimeline() {
+  const rng = makeRng(2101);
+  const W = 720;
+  const H = 640;
+  let b = '';
+  const y0 = 1850;
+  const y1 = 2025;
+  const X = (yr) => 44 + ((yr - y0) / (y1 - y0)) * 640;
+  // [name, start, end, colour, label side]. Spans follow the lesson's section
+  // headings; "today" is drawn as 2025.
+  const eras = [
+    ['Sanitary and tenement reform', 1850, 1910, P.sky, 'right'],
+    ['City Beautiful', 1893, 1919, P.butter, 'right'],
+    ['Zoning and model laws', 1900, 1929, P.lavender, 'right'],
+    ['Garden City ideas', 1898, 1939, P.sage, 'right'],
+    ['New Deal', 1933, 1939, P.leaf, 'right'],
+    ['Urban renewal, Interstates', 1949, 1969, P.tomato, 'left'],
+    ['The backlash', 1961, 1979, P.blush, 'left'],
+    ['New Urbanism', 1980, 2025, P.civic, 'left'],
+    ['Smart Growth', 1990, 2025, P.kraft, 'left'],
+  ];
+  const top = 130;
+  const pitch = 44;
+  eras.forEach(([name, s, e, fill, side], i) => {
+    const y = top + i * pitch;
+    const d = roundRectD(X(s), y - 9, X(e) - X(s), 18, 9);
+    b += cut(d, { rng, fill, jitter: 0.5 });
+    b += L(ink(d, { rng, size: 2 }));
+    b += side === 'right' ? label(X(e) + 12, y + 10, name, { anchor: 'start' }) : label(X(s) - 12, y + 10, name, { anchor: 'end' });
+  });
+  // The profession consolidates in 1978.
+  const ay = top + eras.length * pitch + 10;
+  const axisY = ay + 34;
+  b += L(dashed(X(1978), ay + 12, X(1978), axisY - 4, rng, { color: P.tomatoDeep, size: 2, dash: 6, gap: 5 }));
+  b += star(X(1978), ay - 4, 14, { fill: P.butter, seed: 21 });
+  b += label(X(1978) - 22, ay + 6, '1978: APA and AICP', { anchor: 'end', color: P.tomatoDeep });
+  b += L(inkLine([[X(y0) - 6, axisY], [X(y1) + 6, axisY]], { rng, size: 2.6, overshoot: 0 }));
+  for (const yr of [1850, 1900, 1950, 2000]) {
+    b += L(inkLine([[X(yr), axisY], [X(yr), axisY + 9]], { rng, size: 2, overshoot: 0 }));
+    b += label(X(yr), axisY + 40, String(yr));
+  }
+  for (let yr = 1860; yr < 2025; yr += 10) if (yr % 50) b += L(inkLine([[X(yr), axisY], [X(yr), axisY + 5]], { rng, size: 1.4, overshoot: 0, opacity: 0.7 }));
+  b += note(34, 46, 'each era answers the problems', { anchor: 'start' });
+  b += note(34, 80, 'of the one before', { anchor: 'start' });
+  b += sparkle(660, 44, 11, { seed: 5 });
+  return { W, H, b };
+}
+
+// The 1916 height-and-setback rules: a sheer tower shades the street, a
+// stepped one lets the light down. Shadows are cast from the drawn outline.
+function weddingCake() {
+  const rng = makeRng(2102);
+  const PW = 338;
+  const PH = 430;
+  const G = 330; // ground line
+  const slope = 2.2; // sun rays fall 2.2 px for every 1 px across
+  const street = [180, 270];
+  const RY = 100; // rays start here
+  // A building as tiers [left, right, top], widest at the base.
+  const scene = (heading, sub, tiers, remark, remarkColor) => {
+    let s = panel(0, 0, PW, PH, T.sky, rng);
+    s += title(20, 42, heading, { size: 25, anchor: 'start' });
+    s += label(20, 72, sub, { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+    // Shadow: each tier's corner away from the sun, cast along the rays.
+    let shade = '';
+    for (const [, r, t] of tiers) shade += `<path d="${polyD([[r, t], [r + (G - t) / slope, G], [r, G]])}" fill="#27233A"/>`;
+    // Sun rays from the upper left, each stopping where it meets a building.
+    let rays = '';
+    for (let k = 0; k < 8; k++) {
+      const x = -130 + k * 56;
+      const xAt = (y) => x + (y - RY) / slope;
+      let end = Math.min(G, RY + (PW - 14 - x) * slope);
+      for (const [l, r, t] of [...tiers, [street[1], PW - 12, G - 90]]) {
+        if (xAt(t) >= l && xAt(t) <= r) end = Math.min(end, t);
+        const yl = RY + (l - x) * slope;
+        if (yl >= t && yl <= G) end = Math.min(end, yl);
+      }
+      if (xAt(end) > 8 && end > RY + 20) {
+        const y0 = xAt(RY) < 10 ? RY + (10 - x) * slope : RY;
+        if (y0 < end - 20) rays += dashed(xAt(y0), y0, xAt(end), end, rng, { color: P.butterDeep, size: 2, dash: 9, gap: 8 });
+      }
+    }
+    s += `<g opacity="0.8">${L(rays)}</g>`;
+    s += `<g opacity="0.22">${shade}</g>`;
+    // Street and sidewalk strip.
+    s += `<rect x="${street[0]}" y="${G}" width="${street[1] - street[0]}" height="14" fill="#8C8698"/>`;
+    s += L(inkLine([[8, G], [PW - 8, G]], { rng, size: 2.4, overshoot: 0 }));
+    // One stepped outline: tiers are nested, each narrower and taller.
+    const outline = [[tiers[0][0], G]];
+    tiers.forEach(([l, , t], i) => { if (i) outline.push([l, tiers[i - 1][2]]); outline.push([l, t]); });
+    [...tiers].reverse().forEach(([, r, t], i, rev) => { outline.push([r, t]); outline.push([r, i < rev.length - 1 ? rev[i + 1][2] : G]); });
+    const body = polyD(outline);
+    s += cut(body, { rng, fill: P.lavender, jitter: 0.5 });
+    s += L(ink(body, { rng, size: 2.2 }));
+    tiers.forEach(([l, r, t], i) => {
+      const bottom = i ? tiers[i - 1][2] : G;
+      for (let wy = t + 14; wy < bottom - 16; wy += 22) for (let wx = l + 10; wx < r - 12; wx += 18) s += `<rect x="${wx}" y="${wy}" width="8" height="10" fill="${P.paper}" opacity="0.8"/>`;
+    });
+    const across = rectD(street[1], G - 90, PW - 12 - street[1], 90);
+    s += cut(across, { rng, fill: P.butter, jitter: 0.5 }) + L(ink(across, { rng, size: 2.2 }));
+    s += label((street[0] + street[1]) / 2, G + 42, 'street', { size: 20, color: MUTED, weight: 500 });
+    s += note(PW / 2, PH - 20, remark, { size: 25, color: remarkColor });
+    return s;
+  };
+  const sheer = scene('Straight up', 'like the Equitable Building', [[16, street[0], 108]], 'the street sits in shadow', P.tomatoDeep);
+  const stepped = scene('Set back', 'the 1916 setback rules', [
+    [16, street[0], 280], [28, 150, 220], [40, 124, 160], [52, 106, 108],
+  ], 'light reaches the street', P.leafDeep);
+  return {
+    W: 720, H: 458, b: at(14, 14, sheer) + at(368, 14, stepped),
+    narrow: { W: 366, H: 902, b: at(14, 14, sheer) + at(14, 458, stepped) },
+  };
+}
+
+// Howard's garden city: a size-limited town in a permanent greenbelt, and
+// the cluster of towns linked by rail that he called the social city.
+function gardenCity() {
+  const rng = makeRng(2103);
+  const PW = 338;
+  const PH = 420;
+  const town = (cx, cy, rt, rg, detail) => {
+    let s = '';
+    const belt = ellipseD(cx, cy, rg, rg);
+    s += cut(belt, { rng, fill: P.sage, jitter: 0.6, filter: FLAT });
+    if (detail) {
+      // Farm fields: strips of hatching in the greenbelt.
+      for (let a = 0; a < 12; a++) {
+        const a0 = (a / 12) * Math.PI * 2;
+        const a1 = a0 + Math.PI / 6;
+        const f = polyD([[cx + Math.cos(a0) * (rt + 6), cy + Math.sin(a0) * (rt + 6)], [cx + Math.cos(a0) * (rg - 6), cy + Math.sin(a0) * (rg - 6)], [cx + Math.cos(a1) * (rg - 6), cy + Math.sin(a1) * (rg - 6)], [cx + Math.cos(a1) * (rt + 6), cy + Math.sin(a1) * (rt + 6)]]);
+        s += hatch(f, { rng, angle: a * 30 + (a % 2 ? 40 : -20), gap: 7, opacity: 0.4, size: 1.1, color: P.leafDeep });
+      }
+    }
+    s += L(ink(belt, { rng, size: 2 }));
+    const core = ellipseD(cx, cy, rt, rt);
+    s += cut(core, { rng, fill: P.butter, jitter: 0.5, filter: FLAT });
+    s += L(ink(core, { rng, size: 2.2 }));
+    return s;
+  };
+  const rail = (x1, y1, x2, y2) => {
+    let s = inkLine([[x1, y1], [x2, y2]], { rng, size: 2.6, overshoot: 0, color: P.ink });
+    const len = Math.hypot(x2 - x1, y2 - y1);
+    const nx = -(y2 - y1) / len;
+    const ny = (x2 - x1) / len;
+    for (let t = 10; t < len - 6; t += 12) {
+      const px = x1 + ((x2 - x1) * t) / len;
+      const py = y1 + ((y2 - y1) * t) / len;
+      s += inkLine([[px - nx * 5, py - ny * 5], [px + nx * 5, py + ny * 5]], { rng, size: 1.4, overshoot: 0 });
+    }
+    return L(s);
+  };
+
+  let one = panel(0, 0, PW, PH, T.cream, rng);
+  one += title(20, 42, 'One garden city', { size: 25, anchor: 'start' });
+  one += town(169, 196, 56, 118, true);
+  one += label(169, 204, 'town', { size: 22, weight: 700 });
+  one += label(20, 358, 'town: about 32,000 people', { size: 22, anchor: 'start' });
+  one += label(20, 390, 'greenbelt: permanent farms', { size: 22, anchor: 'start', color: P.leafDeep });
+
+  let cluster = panel(0, 0, PW, PH, T.cream, rng);
+  cluster += title(20, 42, 'The social city', { size: 25, anchor: 'start' });
+  const cx = 169;
+  const cy = 194;
+  const ring = 106;
+  const sats = [0, 1, 2, 3, 4, 5].map((k) => {
+    const a = -Math.PI / 2 + (k / 6) * Math.PI * 2;
+    return [cx + Math.cos(a) * ring, cy + Math.sin(a) * ring];
+  });
+  let lines = '';
+  sats.forEach(([x, y], k) => {
+    const [nx2, ny2] = sats[(k + 1) % 6];
+    lines += rail(x, y, nx2, ny2) + rail(x, y, cx, cy);
+  });
+  cluster += lines;
+  cluster += town(cx, cy, 38, 54, false);
+  for (const [x, y] of sats) cluster += town(x, y, 17, 32, false);
+  cluster += note(20, 370, 'a town is full? start a', { size: 25, anchor: 'start' });
+  cluster += note(20, 400, 'new one down the line', { size: 25, anchor: 'start' });
+  cluster += label(cx, cy + 7, 'central', { size: 19, weight: 700 });
+
+  return {
+    W: 720, H: 448, b: at(14, 14, one) + at(368, 14, cluster),
+    narrow: { W: 366, H: 882, b: at(14, 14, one) + at(14, 448, cluster) },
+  };
+}
+
+// Perry's neighborhood unit: arterials at the edges, a school at the center.
+function neighborhoodUnit() {
+  const rng = makeRng(2104);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const x0 = 40;
+  const y0 = 50;
+  const S = 380;
+  const road = 22;
+  // Arterials around the edge.
+  const outer = rectD(x0 - road, y0 - road, S + 2 * road, S + 2 * road);
+  b += cut(outer, { rng, fill: '#9C95A8', jitter: 0.4, filter: FLAT });
+  const inner = rectD(x0, y0, S, S);
+  b += cut(inner, { rng, fill: T.butter, jitter: 0.4, filter: FLAT, shadow: false });
+  b += L(ink(outer, { rng, size: 2.2 }) + ink(inner, { rng, size: 2 }));
+  for (const [ax, ay, bx2, by] of [[x0 - road, y0 - road / 2, x0 + S + road, y0 - road / 2], [x0 - road, y0 + S + road / 2, x0 + S + road, y0 + S + road / 2], [x0 - road / 2, y0 - road, x0 - road / 2, y0 + S + road], [x0 + S + road / 2, y0 - road, x0 + S + road / 2, y0 + S + road]]) {
+    b += dashed(ax, ay, bx2, by, rng, { color: P.paper, size: 2, dash: 12, gap: 10 });
+  }
+  // Curving local streets that don't run straight through.
+  const cx = x0 + S / 2;
+  const cy = y0 + S / 2;
+  const locals = [
+    `M${x0} ${y0 + 110}C${x0 + 90} ${y0 + 100} ${cx - 60} ${cy - 90} ${cx - 50} ${cy - 44}`,
+    `M${x0 + S} ${y0 + S - 110}C${x0 + S - 90} ${y0 + S - 100} ${cx + 60} ${cy + 90} ${cx + 50} ${cy + 44}`,
+    `M${x0 + 110} ${y0 + S}C${x0 + 100} ${y0 + S - 90} ${cx - 90} ${cy + 60} ${cx - 44} ${cy + 50}`,
+    `M${x0 + S - 110} ${y0}C${x0 + S - 100} ${y0 + 90} ${cx + 90} ${cy - 60} ${cx + 44} ${cy - 50}`,
+  ];
+  for (const d of locals) b += `<path d="${d}" fill="none" stroke="#FFFDF8" stroke-width="10" stroke-linecap="round"/>`;
+  b += L(locals.map((d) => ink(d, { rng, size: 1.2, opacity: 0.5 })).join(''));
+  const ring = ellipseD(cx, cy, 74, 74);
+  b += `<path d="${ring}" fill="none" stroke="#FFFDF8" stroke-width="10"/>`;
+  // Small parks throughout.
+  const parks = [[x0 + 58, y0 + 36, 60, 44], [x0 + S - 130, y0 + S - 100, 62, 46], [x0 + 30, y0 + S - 160, 46, 58], [x0 + S - 70, y0 + 176, 48, 56]];
+  for (const [px, py, pw, ph] of parks) {
+    const d = roundRectD(px, py, pw, ph, 10);
+    b += cut(d, { rng, fill: P.leaf, jitter: 0.8 }) + L(ink(d, { rng, size: 1.8 }));
+  }
+  // The school and community center at the heart.
+  const green = ellipseD(cx, cy, 62, 62);
+  b += cut(green, { rng, fill: P.sage, filter: FLAT }) + L(ink(green, { rng, size: 2 }));
+  const school = rectD(cx - 52, cy - 22, 104, 44);
+  b += cut(school, { rng, fill: P.civic, filter: FLAT }) + L(ink(school, { rng, size: 2.2 }));
+  b += label(cx, cy + 10, 'school', { size: 28, weight: 700, color: '#FFFFFF' });
+  // Shops at the corners, where the arterials meet.
+  const shops = [[x0, y0], [x0 + S, y0], [x0, y0 + S], [x0 + S, y0 + S]];
+  for (const [sx, sy] of shops) {
+    const dx = sx === x0 ? 0 : -46;
+    const dy = sy === y0 ? 0 : -46;
+    const d = rectD(sx + dx, sy + dy, 46, 46);
+    b += cut(d, { rng, fill: P.tomato, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+  }
+  // Callouts on the right.
+  const lx = 474;
+  const call = (y, lines, color, tx, ty) => {
+    let s = lines.map((t, k) => label(lx, y + k * 32, t, { anchor: 'start', color })).join('');
+    if (tx) s += L(arrow(lx - 8, y - 8, tx, ty, rng, { color, size: 2.2, head: 10, bend: 10 }));
+    return s;
+  };
+  b += call(66, ['shops at the', 'corners'], P.tomatoDeep, x0 + S - 6, y0 + 30);
+  b += call(186, ['elementary school', 'at the center'], P.civicDeep, cx + 56, cy - 10);
+  b += call(300, ['small parks', 'throughout'], P.leafDeep, x0 + S - 70, y0 + S - 80);
+  b += call(410, ['arterials along', 'the edges'], P.ink, x0 + S + road / 2 + 2, y0 + S - 30);
+  return { W, H, b };
+}
+
+// Radburn's superblock: cul-de-sacs for cars, a park and paths for people.
+function radburn() {
+  const rng = makeRng(2105);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  const x0 = 40;
+  const y0 = 40;
+  const w = 400;
+  const h = 390;
+  const road = 20;
+  const outer = rectD(x0 - road, y0 - road, w + 2 * road, h + 2 * road);
+  b += cut(outer, { rng, fill: '#9C95A8', jitter: 0.4, filter: FLAT });
+  const inner = rectD(x0, y0, w, h);
+  b += cut(inner, { rng, fill: T.butter, jitter: 0.4, filter: FLAT, shadow: false });
+  b += L(ink(outer, { rng, size: 2.2 }) + ink(inner, { rng, size: 2 }));
+  // The interior park.
+  const park = blobD(x0 + w / 2, y0 + h / 2, 92, 128, makeRng(9), 7, 0.08);
+  b += cut(park, { rng, fill: P.sage, filter: FLAT }) + L(ink(park, { rng, size: 2 }));
+  // Cul-de-sacs from the edge roads, each lined with houses facing the park.
+  const culs = [
+    [x0, y0 + 80, 1], [x0, y0 + 200, 1], [x0, y0 + 320, 1],
+    [x0 + w, y0 + 80, -1], [x0 + w, y0 + 200, -1], [x0 + w, y0 + 320, -1],
+  ];
+  let homes = '';
+  for (const [sx, sy, dir] of culs) {
+    const ex = sx + dir * 92;
+    b += `<path d="M${sx} ${sy}H${ex}" stroke="#9C95A8" stroke-width="14" stroke-linecap="round"/>`;
+    b += `<circle cx="${ex}" cy="${sy}" r="15" fill="#9C95A8"/>`;
+    for (const off of [-1, 1]) {
+      for (let k = 0; k < 3; k++) {
+        const hx = sx + dir * (22 + k * 30);
+        const hy = sy + off * 30;
+        const d = rectD(hx - 11, hy - 10, 22, 20);
+        homes += cut(d, { rng, fill: [P.tomato, P.butter, P.civic][(k + (off > 0 ? 1 : 0)) % 3], jitter: 0.3, filter: FLAT }) + L(ink(d, { rng, size: 1.5 }));
+        // The door is on the side away from the cul-de-sac.
+        homes += `<rect x="${hx - 4}" y="${off > 0 ? hy + 8 : hy - 12}" width="8" height="4" fill="${P.ink}"/>`;
+      }
+    }
+  }
+  b += homes;
+  // Footpaths: a spine through the park, and walks between the house rows,
+  // which the homes front onto. Door marks show which way each home faces.
+  const paths = [
+    `M${x0 + w / 2} ${y0 + 24}V${y0 + h + road + 16}`,
+    `M${x0 + 8} ${y0 + 140}H${x0 + w - 8}`,
+    `M${x0 + 8} ${y0 + 260}H${x0 + w - 8}`,
+  ];
+  b += L(paths.map((d) => inkLine(d, { rng, size: 2.8, color: P.tomatoDeep, overshoot: 0 })).join(''));
+  // Underpass: the road bridges over the path at the bottom edge.
+  const ux = x0 + w / 2;
+  const uy = y0 + h + road / 2;
+  b += `<rect x="${ux - 16}" y="${uy - road / 2 - 1}" width="32" height="${road + 2}" fill="#9C95A8"/>`;
+  b += L(inkLine([[ux - 18, uy - road / 2 - 4], [ux + 18, uy - road / 2 - 4]], { rng, size: 2.4, overshoot: 0 }) + inkLine([[ux - 18, uy + road / 2 + 4], [ux + 18, uy + road / 2 + 4]], { rng, size: 2.4, overshoot: 0 }));
+  const lx = 490;
+  b += label(lx, 70, 'cul-de-sacs', { anchor: 'start', color: P.ink });
+  b += label(lx, 102, 'for cars', { anchor: 'start', color: P.ink });
+  b += L(arrow(lx - 8, 88, x0 + w - 70, y0 + 80, rng, { size: 2.2, head: 10, bend: -8 }));
+  b += label(lx, 190, 'homes face the', { anchor: 'start', color: P.leafDeep });
+  b += label(lx, 222, 'paths and park', { anchor: 'start', color: P.leafDeep });
+  b += L(arrow(lx - 8, 206, x0 + w - 66, y0 + 126, rng, { color: P.leafDeep, size: 2.2, head: 10, bend: 8 }));
+  b += label(lx, 310, 'paths for', { anchor: 'start', color: P.tomatoDeep });
+  b += label(lx, 342, 'people', { anchor: 'start', color: P.tomatoDeep });
+  b += L(arrow(lx - 8, 326, x0 + w - 30, y0 + 266, rng, { color: P.tomatoDeep, size: 2.2, head: 10, bend: -8 }));
+  b += note(lx, 412, 'an underpass', { anchor: 'start', color: P.tomatoDeep });
+  b += note(lx, 446, 'under the road', { anchor: 'start', color: P.tomatoDeep });
+  b += L(arrow(lx - 10, 432, ux + 22, uy, rng, { color: P.tomatoDeep, size: 2.2, head: 10, bend: 10 }));
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 2.2
+
+// The rational-comprehensive model as a route with five stops, looping back.
+function rationalModel() {
+  const rng = makeRng(2201);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  const y = 176;
+  const band = roundRectD(40, y - 11, 640, 22, 11);
+  b += cut(band, { rng, fill: P.civic });
+  b += L(ink(band, { rng, size: 2.2 }));
+  const stops = [
+    [80, ['Problem', 'and goals']], [220, ['All the', 'alternatives']], [360, ['Evaluate', 'each one']],
+    [500, ['Choose', 'the best']], [640, ['Implement,', 'monitor']],
+  ];
+  stops.forEach(([x, lines], i) => {
+    const r = 24;
+    const d = ellipseD(x, y, r, r);
+    b += cut(d, { rng, fill: i === 0 ? P.butter : P.paper, jitter: 0.5, filter: FLAT });
+    b += L(ink(d, { rng, size: 3 }));
+    b += title(x, y + 10, String(i + 1));
+    const above = i % 2 === 1;
+    lines.forEach((line, k) => { b += label(x, above ? y - 80 + k * 32 : y + 66 + k * 32, line); });
+  });
+  // Monitoring feeds the next round.
+  b += L(inkLine(`M640 ${y + 110}C640 ${y + 170} 600 ${y + 186} 360 ${y + 186}C120 ${y + 186} 80 ${y + 170} 80 ${y + 110}`, { rng, size: 2.6, color: P.civicDeep, overshoot: 0 }));
+  b += L(arrow(81, y + 124, 80, y + 106, rng, { color: P.civicDeep, size: 2.6, head: 12 }));
+  b += note(360, y + 178, 'what you learn starts the next round');
+  b += note(360, 422, 'critics: nobody has full information,', { color: P.tomatoDeep });
+  b += note(360, 458, 'unlimited time, or agreed goals', { color: P.tomatoDeep });
+  b += sparkle(672, 40, 11, { seed: 6 });
+  return { W, H, b };
+}
+
+// Four ways to decide, shown on the same field of eighteen options.
+function decisionStyles() {
+  const rng = makeRng(2202);
+  const COLS = 6;
+  const SP = 44;
+  const R = 11;
+  const PW = 342;
+  const PH = 256;
+  const pt = (i) => [61 + (i % COLS) * SP, 124 + Math.floor(i / COLS) * SP];
+  const dot = (i, kind) => {
+    const [x, y] = pt(i);
+    if (kind === 'now') {
+      const d = rectD(x - 12, y - 12, 24, 24);
+      return cut(d, { rng, fill: P.kraft, jitter: 0.3 }) + L(ink(d, { rng, size: 2.2 }));
+    }
+    const d = ellipseD(x, y, R, R);
+    const fill = kind === 'seen' ? P.civic : kind === 'glance' ? T.sky : P.paper;
+    return cut(d, { rng, fill, shadow: kind === 'seen', jitter: 0.4 }) + L(ink(d, { rng, size: kind === 'seen' ? 2.2 : 1.5, opacity: kind === 'none' ? 0.6 : 1 }));
+  };
+  const field = (kinds) => kinds.map((k, i) => dot(i, k)).join('');
+  const pick = (i) => { const [x, y] = pt(i); return star(x, y - 1, 17, { fill: P.butter, seed: 30 + i, size: 2.2 }); };
+  const head = (heading, sub) => title(20, 40, heading, { size: 23, anchor: 'start' }) + note(20, 72, sub, { size: 24, anchor: 'start' });
+  const all = (k) => Array(18).fill(k);
+
+  let rational = panel(0, 0, PW, PH, T.cream, rng) + head('Rational-comprehensive', 'weigh every option, take the best');
+  rational += field(all('seen')) + pick(10);
+
+  let satisfice = panel(0, 0, PW, PH, T.cream, rng) + head('Satisficing: Simon', 'stop at the first good-enough one');
+  satisfice += field(all('none').map((k, i) => (i <= 8 ? 'seen' : k))) + pick(8);
+  satisfice += L(arrow(pt(0)[0] - 4, pt(0)[1] - 22, pt(5)[0] + 4, pt(5)[1] - 22, rng, { color: P.civicDeep, size: 2, head: 9 }));
+  satisfice += L(arrow(pt(6)[0] - 4, pt(6)[1] - 22, pt(8)[0] - 18, pt(8)[1] - 22, rng, { color: P.civicDeep, size: 2, head: 9 }));
+
+  let incremental = panel(0, 0, PW, PH, T.cream, rng) + head('Incrementalism: Lindblom', 'small steps from where you are');
+  incremental += field(all('none').map((k, i) => ([1, 6, 8, 13].includes(i) ? 'seen' : i === 7 ? 'now' : k))) + pick(8);
+  incremental += L(arrow(pt(7)[0] + 16, pt(7)[1] - 2, pt(8)[0] - 20, pt(8)[1] - 2, rng, { color: P.tomatoDeep, size: 2.6, head: 8 }));
+
+  let mixed = panel(0, 0, PW, PH, T.cream, rng) + head('Mixed scanning: Etzioni', 'quick look at all, close look at a few');
+  const focus = [3, 4, 5, 9, 10, 11];
+  const [fx0, fy0] = pt(3);
+  const zone = roundRectD(fx0 - 22, fy0 - 22, 2 * SP + 44, SP + 44, 12);
+  mixed += cut(zone, { rng, fill: T.butter, shadow: false, jitter: 0.6, filter: FLAT }) + L(ink(zone, { rng, size: 1.8 }));
+  mixed += field(all('glance').map((k, i) => (focus.includes(i) ? 'seen' : k))) + pick(11);
+
+  // Legend under the panels.
+  const legend = (x, y) => {
+    const items = [['seen', 'looked at closely'], ['glance', 'a quick glance'], ['none', 'not considered'], ['now', 'the status quo']];
+    let s = '';
+    items.forEach(([k, text], i) => {
+      const lx = x + (i % 2) * 226;
+      const ly = y + Math.floor(i / 2) * 34;
+      if (k === 'now') s += `<rect x="${lx - 10}" y="${ly - 17}" width="20" height="20" fill="${P.kraft}" stroke="${P.ink}" stroke-width="1.8"/>`;
+      else s += `<circle cx="${lx}" cy="${ly - 7}" r="10" fill="${k === 'seen' ? P.civic : k === 'glance' ? T.sky : P.paper}" stroke="${P.ink}" stroke-width="1.6"/>`;
+      s += label(lx + 18, ly, text, { size: 20, anchor: 'start', weight: 500 });
+    });
+    s += star(x + 452, y - 6, 14, { fill: P.butter, seed: 3 });
+    s += label(x + 472, y + 1, 'the choice', { size: 20, anchor: 'start', weight: 500 });
+    return s;
+  };
+  const legendN = (x, y) => {
+    const items = [['seen', 'looked at closely'], ['glance', 'a quick glance'], ['none', 'not considered'], ['now', 'the status quo']];
+    let s = '';
+    items.forEach(([k, text], i) => {
+      const ly = y + i * 32;
+      if (k === 'now') s += `<rect x="${x - 10}" y="${ly - 17}" width="20" height="20" fill="${P.kraft}" stroke="${P.ink}" stroke-width="1.8"/>`;
+      else s += `<circle cx="${x}" cy="${ly - 7}" r="10" fill="${k === 'seen' ? P.civic : k === 'glance' ? T.sky : P.paper}" stroke="${P.ink}" stroke-width="1.6"/>`;
+      s += label(x + 18, ly, text, { size: 20, anchor: 'start', weight: 500 });
+    });
+    s += star(x, y + 4 * 32 - 7, 14, { fill: P.butter, seed: 3 });
+    s += label(x + 18, y + 4 * 32, 'the choice', { size: 20, anchor: 'start', weight: 500 });
+    return s;
+  };
+  const panels = [rational, satisfice, incremental, mixed];
+  const wide = [[12, 12], [366, 12], [12, 282], [366, 282]];
+  return {
+    W: 720, H: 628, b: panels.map((p, i) => at(...wide[i], p)).join('') + legend(40, 576),
+    narrow: { W: 366, H: 1276, b: panels.map((p, i) => at(12, 12 + i * 268, p)).join('') + legendN(40, 1110) },
+  };
+}
+
+// The planner's role: four answers to "whose interests does planning serve?"
+function plannerRoles() {
+  const rng = makeRng(2203);
+  const PW = 342;
+  const PH = 290;
+  const head = (heading, sub) => title(20, 40, heading, { size: 24, anchor: 'start' }) + label(20, 70, sub, { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  const sheet = (x, y, text, fill, rot = 0) => {
+    const d = rectD(x, y, 88, 70);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    for (let k = 0; k < 3; k++) s += L(inkLine([[x + 12, y + 16 + k * 10], [x + 76 - k * 10, y + 16 + k * 10]], { rng, size: 1.3, overshoot: 0, opacity: 0.6 }));
+    s += label(x + 44, y + 62, text, { size: 19, weight: 700 });
+    return `<g transform="rotate(${rot} ${x + 44} ${y + 35})">${s}</g>`;
+  };
+  const planner = (x, y, flip = false) => person(x, y, 1.25, { coat: P.tomato, prop: flip ? undefined : 'clipboard', flip, seed: 7 });
+  const crowd = (x, y, seed) => [0, 1, 2].map((k) => person(x + k * 30, y + (k % 2) * 6, 1.05, { coat: [P.leaf, P.civic, P.lavender][k], hair: [P.ink, P.kraftDeep, P.ink][k], seed: seed + k, flip: true })).join('');
+
+  let tech = panel(0, 0, PW, PH, T.cream, rng) + head('Technician', 'the rational model');
+  tech += planner(52, 214);
+  tech += sheet(110, 118, 'the plan', P.paper, -3);
+  tech += crowd(242, 214, 40);
+  tech += L(arrow(206, 160, 228, 160, rng, { size: 2.4, head: 10 }));
+  tech += note(20, 266, 'one plan for one public interest', { size: 24, anchor: 'start' });
+
+  let adv = panel(0, 0, PW, PH, T.cream, rng) + head('Advocate', 'Davidoff');
+  adv += sheet(34, 92, 'city plan', P.paper, -3);
+  adv += sheet(206, 92, 'our plan', T.butter, 3);
+  adv += planner(196, 236, false);
+  adv += crowd(242, 236, 50);
+  adv += label(120, 210, 'versus', { size: 19, color: MUTED, weight: 500 });
+  adv += note(20, 266, 'speaks for a group left out', { size: 24, anchor: 'start' });
+
+  let eq = panel(0, 0, PW, PH, T.cream, rng) + head('Equity planner', 'Krumholz');
+  eq += cityHall(22, 214, 110, 110, { seed: 3 });
+  eq += planner(158, 214, true);
+  eq += house(232, 214, 40, 52, { seed: 5, wall: P.sky, roof: P.civic, chimney: false });
+  eq += house(282, 214, 36, 46, { seed: 6, wall: P.blush, roof: P.tomato, chimney: false });
+  eq += L(arrow(176, 140, 262, 140, rng, { color: P.leafDeep, size: 2.6, head: 11, bend: -16 }));
+  eq += label(222, 112, 'resources', { size: 19, color: P.leafDeep });
+  eq += note(20, 266, 'inside city hall, for those with least', { size: 24, anchor: 'start' });
+
+  let mutual = panel(0, 0, PW, PH, T.cream, rng) + head('Mutual learner', 'Friedmann');
+  mutual += planner(40, 236);
+  mutual += person(302, 236, 1.25, { coat: P.leaf, seed: 9, flip: true });
+  mutual += label(171, 108, 'technical knowledge', { size: 19, color: P.civicDeep });
+  mutual += L(arrow(92, 122, 250, 122, rng, { color: P.civicDeep, size: 2.4, head: 10 }));
+  mutual += L(arrow(250, 150, 92, 150, rng, { color: P.leafDeep, size: 2.4, head: 10 }));
+  mutual += label(171, 178, 'experiential knowledge', { size: 19, color: P.leafDeep });
+  mutual += note(20, 266, 'face to face, each learns', { size: 24, anchor: 'start' });
+
+  const panels = [tech, adv, eq, mutual];
+  const wide = [[12, 12], [366, 12], [12, 316], [366, 316]];
+  return {
+    W: 720, H: 620, b: panels.map((p, i) => at(...wide[i], p)).join(''),
+    narrow: { W: 366, H: 1228, b: panels.map((p, i) => at(12, 12 + i * 302, p)).join('') },
+  };
+}
+
+// Campbell's planner's triangle: the three E's pull against each other.
+function plannersTriangle() {
+  const rng = makeRng(2204);
+  const W = 720;
+  const H = 548;
+  let b = '';
+  const A = [360, 92]; // environment
+  const B = [128, 440]; // economy
+  const C = [592, 440]; // equity
+  const tri = polyD([A, B, C]);
+  b += cut(tri, { rng, fill: T.sage, jitter: 0.8, filter: FLAT });
+  b += L(ink(tri, { rng, size: 2.4 }));
+  // The planner in the middle.
+  const cx = (A[0] + B[0] + C[0]) / 3;
+  const cy = (A[1] + B[1] + C[1]) / 3;
+  const mid = ellipseD(cx, cy + 22, 104, 58);
+  b += cut(mid, { rng, fill: P.paper, filter: FLAT }) + L(ink(mid, { rng, size: 1.8 }));
+  b += label(cx, cy + 18, 'sustainable');
+  b += label(cx, cy + 50, 'development');
+  b += person(cx, cy - 36, 1.1, { coat: P.tomato, prop: 'clipboard', seed: 4 });
+  const corner = ([x, y], text, fill, dy) => {
+    const d = ellipseD(x, y, 30, 30);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.6 })) + title(x, y + dy, text, { size: 30 });
+  };
+  b += corner(A, 'Environment', P.leaf, -44);
+  b += corner(B, 'Economy', P.butter, 74);
+  b += corner(C, 'Equity', P.tomato, 74);
+  // Conflict labels along each side, turned to follow it.
+  const side = (P1, P2, text, out) => {
+    const mx = (P1[0] + P2[0]) / 2;
+    const my = (P1[1] + P2[1]) / 2;
+    let ang = (Math.atan2(P2[1] - P1[1], P2[0] - P1[0]) * 180) / Math.PI;
+    if (ang > 90 || ang < -90) ang += 180;
+    const nx = -(P2[1] - P1[1]);
+    const ny = P2[0] - P1[0];
+    const len = Math.hypot(nx, ny);
+    const x = mx + (nx / len) * out;
+    const y = my + (ny / len) * out;
+    return `<g transform="rotate(${ang.toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)})">${label(x, y + 10, text, { color: P.tomatoDeep })}</g>`;
+  };
+  b += side(A, B, 'resource conflict', 30);
+  b += side(C, A, 'development conflict', 30);
+  b += side(B, C, 'property conflict', 34);
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -1231,6 +1774,15 @@ export const FIGURES = [
   ['fig-lorenz', lorenzGini],
   ['fig-class-breaks', classBreaks],
   ['fig-maup', maup],
+  ['fig-history-timeline', historyTimeline],
+  ['fig-wedding-cake', weddingCake],
+  ['fig-garden-city', gardenCity],
+  ['fig-neighborhood-unit', neighborhoodUnit],
+  ['fig-radburn', radburn],
+  ['fig-rational-model', rationalModel],
+  ['fig-decision-styles', decisionStyles],
+  ['fig-planner-roles', plannerRoles],
+  ['fig-planners-triangle', plannersTriangle],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

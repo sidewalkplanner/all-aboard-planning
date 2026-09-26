@@ -133,7 +133,7 @@ These changes followed the first build (described below). They supersede anythin
 | `web/src/content/aicp/lessons/implementation-math.md:34` | Solving FAR problems step by step | about 4 min |
 | `web/src/content/aicp/lessons/implementation-math.md:57` | Gross versus net density | about 3 min |
 | `web/src/content/aicp/lessons/land-use-law-foundations.md:29` | Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min |
-| `web/src/content/aicp/lessons/planning-history.md:82` | American planning history on one timeline | about 4 min |
+| `web/src/content/aicp/lessons/planning-history.md:112` | American planning history on one timeline | about 4 min |
 | `web/src/content/aicp/lessons/public-engagement-design.md:47` | Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min |
 | `web/src/content/aicp/lessons/solving-ethics-questions.md:73` | Working an ethics scenario with the five-step method | about 5 min |
 | `web/src/content/aicp/lessons/statistics-for-planners.md:87` | Present value and benefit-cost ratios | about 3 min |
@@ -260,15 +260,15 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/leadership-in-planning.md:22` | adaptive leadership is usually attributed to Ronald Heifetz; confirm before attributing. |
 | `web/src/content/aicp/lessons/mentoring-and-professional-development.md:74` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
 | `web/src/content/aicp/lessons/mentoring-and-professional-development.md:75` | confirm which advanced specialty certifications AICP currently offers. |
-| `web/src/content/aicp/lessons/planning-history.md:28` | the "make no little plans" quotation's attribution to Burnham is disputed; keep the "popularly attributed" hedge or remove. |
-| `web/src/content/aicp/lessons/planning-history.md:37` | Hartford 1907 as the first official municipal planning commission is commonly cited; confirm before publishing. |
-| `web/src/content/aicp/lessons/planning-history.md:39` | SZEA publication history is given variously as 1922, 1924, and 1926; confirm the dates you want to teach. |
-| `web/src/content/aicp/lessons/planning-history.md:78` | Oregon's statewide land use planning law (Senate Bill 100) is commonly dated to 1973; confirm. |
-| `web/src/content/aicp/lessons/planning-history.md:84` | confirm the founding years 1917 (ACPI/AIP) and 1934 (ASPO). |
-| `web/src/content/aicp/lessons/planning-history.md:88` | confirm CNU's founding year (1993). |
-| `web/src/content/aicp/lessons/planning-history.md:89` | confirm Maryland Smart Growth program year (1997). |
-| `web/src/content/aicp/lessons/planning-theory.md:51` | Krumholz served as Cleveland planning director roughly 1969–1979, and the Cleveland Policy Planning Report is usually dated 1975; confirm if dates are added. |
-| `web/src/content/aicp/lessons/planning-theory.md:70` | confirm the conflict labels in Campbell's planner's triangle (property, resource, development) and the 1996 date. |
+| `web/src/content/aicp/lessons/planning-history.md:32` | the "make no little plans" quotation's attribution to Burnham is disputed; keep the "popularly attributed" hedge or remove. |
+| `web/src/content/aicp/lessons/planning-history.md:41` | Hartford 1907 as the first official municipal planning commission is commonly cited; confirm before publishing. |
+| `web/src/content/aicp/lessons/planning-history.md:43` | SZEA publication history is given variously as 1922, 1924, and 1926; confirm the dates you want to teach. |
+| `web/src/content/aicp/lessons/planning-history.md:98` | Oregon's statewide land use planning law (Senate Bill 100) is commonly dated to 1973; confirm. |
+| `web/src/content/aicp/lessons/planning-history.md:104` | confirm the founding years 1917 (ACPI/AIP) and 1934 (ASPO). |
+| `web/src/content/aicp/lessons/planning-history.md:108` | confirm CNU's founding year (1993). |
+| `web/src/content/aicp/lessons/planning-history.md:109` | confirm Maryland Smart Growth program year (1997). |
+| `web/src/content/aicp/lessons/planning-theory.md:59` | Krumholz served as Cleveland planning director roughly 1969–1979, and the Cleveland Policy Planning Report is usually dated 1975; confirm if dates are added. |
+| `web/src/content/aicp/lessons/planning-theory.md:82` | confirm the conflict labels in Campbell's planner's triangle (property, resource, development) and the 1996 date. The figure `fig-planners-triangle` just below repeats the three labels, so a change here means redrawing it. |
 | `web/src/content/aicp/lessons/project-and-contract-management.md:63` | the federal QBS requirement for A/E services comes from the Brooks Act (1972); confirm it applies to the planning services in question. |
 | `web/src/content/aicp/lessons/research-design-and-data.md:50` | confirm that the 65,000-population threshold for ACS 1-year estimates is current, and that the 3-year product remains discontinued. |
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:26` | confirm the claim that most states have right-to-farm laws. |

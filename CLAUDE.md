@@ -246,9 +246,10 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
 ## Lesson figures: workflow and status
 
 **Status (update this as you go).** Module 1 (Research and Assessment Methods) is fully
-illustrated: 26 figures across its four lessons. Next is module 2 (Fundamental Planning
-Knowledge), in course order, starting with `planning-history` (a timeline suits it) and
-`planning-theory` (comparison diagrams). Aim for two to five figures per lesson, one per
+illustrated: 26 figures across its four lessons. Module 2 (Fundamental Planning Knowledge) is
+under way: `planning-history` has 5 figures (era timeline, 1916 setbacks, garden city, neighborhood
+unit, Radburn) and `planning-theory` has 4 (rational model, decision styles, planner roles,
+planner's triangle). Next are the rest of module 2's lessons, in course order. Aim for two to five figures per lesson, one per
 section where a picture teaches faster than the text: a process, a comparison, a
 distribution, a map, or a worked calculation. Skip sections a picture wouldn't improve.
 
