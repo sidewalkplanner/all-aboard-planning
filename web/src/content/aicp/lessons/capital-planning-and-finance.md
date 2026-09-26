@@ -18,6 +18,10 @@ A **capital improvements program (CIP)** is a **multi-year schedule** (typically
 
 **Capital versus operating spending:** capital spending buys or builds assets that last many years; operating spending pays for ongoing services (salaries, maintenance, supplies). A new fire station is capital; the firefighters' salaries are operating costs, and every new facility creates **ongoing operating costs** the CIP should acknowledge.
 
+:::figure fig-cip-rolling | Two rows of five year boxes. This year: Y1 through Y5, with Y1 highlighted as the capital budget. Next year: Y1 is done, Y2 through Y5 carry forward with Y2 now the capital budget, and a new Y6 is added at the end.
+The CIP always looks five years ahead, and its first year is the only part adopted as a budget.
+:::
+
 :::checkpoint cp:cip-capital-budget
 
 ### Why the CIP matters to planners
@@ -42,6 +46,10 @@ Common CIP ranking criteria include public health and safety, legal mandates, co
 
 A **bond rating** (from a credit rating agency) reflects the issuer's **creditworthiness**, meaning the likelihood of timely repayment. Higher ratings mean lower borrowing costs. State law usually sets **debt limits**.
 
+:::figure fig-bonds | Two panels. General obligation, backed by the power to tax: city hall funds a fire station, the kind of facility with no fee to repay it, like fire stations, parks, and schools; often needs voter approval and usually pays lower interest. Revenue bond, repaid by the project's own fees: water rates from homes flow back to a water tower, as for water, parking, and airports; usually no vote and usually a bit more interest.
+Ask where the repayment money comes from: taxes point to a GO bond, user fees to a revenue bond.
+:::
+
 :::checkpoint cp:cip-revenue-bond
 
 ### Tax increment financing
@@ -53,6 +61,10 @@ A **bond rating** (from a credit rating agency) reflects the issuer's **creditwo
 3. The **increment**, meaning taxes on any value **above the frozen base**, is captured for a set term to pay for improvements, often by repaying bonds.
 
 Many states require a finding that the area is blighted or that development wouldn't occur "but for" the public investment. Critics note that TIF can divert revenue that schools and other bodies would otherwise receive, and that it can capture growth that would have happened anyway.
+
+:::figure fig-tif | An illustrative chart of a TIF district's assessed value over 20 years, growing from a frozen base of $100 million to $219 million at 4% a year. Taxes on the frozen base go on to schools, the county, and the city; taxes on the increment above it go to the TIF district.
+Everything above the flat line is the increment; if the value would have grown anyway, the other taxing bodies lose that growth.
+:::
 
 :::video How tax increment financing works | about 3 min
 Animates a TIF district's frozen base and growing increment over time, and shows where the increment goes and why school districts often care.
@@ -97,6 +109,10 @@ Exhibit questions often show a CIP table. Read carefully: rows are projects, col
 | Park renovation (grant + general fund) | $0.4M | $0.6M | $0.8M |
 
 Year 2 total: 2.5 + 1.0 + 0.6 = **$4.1M**. The fire station suits a GO bond because it **has no dedicated revenue stream**; the water main suits a revenue bond because water rates can repay it.
+
+:::figure fig-cip-table | The CIP table above, with the Year 2 column highlighted: fire station (GO bond) $2.5 million, water main (revenue bond) $1.0 million, and park renovation (grant plus general fund) $0.6 million, for a Year 2 total of $4.1 million.
+For a column total, read down one year; for a project total, read across one row.
+:::
 
 ## Key terms
 

@@ -3848,6 +3848,124 @@ function costBurden() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 5.6
+
+// The CIP rolls forward each year; its first year is the capital budget.
+function cipRolling() {
+  const rng = makeRng(5601);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const row = (y, start, headLabel) => {
+    let s = title(20, y + 44, headLabel, { anchor: 'start', size: 28 });
+    for (let k = 0; k < 5; k++) {
+      const yr = start + k;
+      const x = 170 + (yr - 1) * 88;
+      const d = roundRectD(x, y, 80, 70, 10);
+      s += cut(d, { rng, fill: k === 0 ? P.butter : T.sky, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+      s += label(x + 40, y + 46, `Y${yr}`, { weight: 800 });
+    }
+    return s;
+  };
+  b += row(60, 1, 'This year');
+  b += row(210, 2, 'Next year');
+  b += `<g opacity="0.45">${L(ink(roundRectD(170, 210, 80, 70, 10), { rng, size: 2 }))}</g>` + label(210, 256, 'done', { color: MUTED, weight: 500 });
+  b += L(arrow(676, 164, 654, 204, rng, { color: P.leafDeep, size: 2.4, head: 10, bend: 6 }));
+  b += label(706, 150, 'new year', { anchor: 'end', color: P.leafDeep, weight: 700 });
+  b += `<rect x="20" y="330" width="24" height="24" fill="${P.butter}" stroke="${P.ink}" stroke-width="1.6"/>` + label(54, 350, 'the capital budget, adopted with this year’s budget', { anchor: 'start', weight: 500 });
+  return { W, H, b };
+}
+
+// Tax increment financing: the base is frozen, the increment is captured.
+function tifIncrement() {
+  const rng = makeRng(5602);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  // Illustrative: a $100M base growing 4% a year for 20 years.
+  const base = 100;
+  const g = 0.04;
+  const years = 20;
+  const x0 = 130;
+  const x1 = 660;
+  const yB = 340;
+  const yT = 60;
+  const vmax = 240;
+  const X = (t) => x0 + (t / years) * (x1 - x0);
+  const Y = (v) => yB - (v / vmax) * (yB - yT);
+  const pts = [];
+  for (let t = 0; t <= years; t++) pts.push([X(t), Y(base * (1 + g) ** t)]);
+  b += `<path d="${polyD([[X(0), yB], [X(0), Y(base)], [X(years), Y(base)], [X(years), yB]])}" fill="${T.sky}"/>`;
+  b += `<path d="${polyD([[X(0), Y(base)], ...pts, [X(years), Y(base)]])}" fill="${T.butter}"/>`;
+  b += L(inkLine(pts, { rng, size: 3, color: P.kraftDeep, overshoot: 0 }) + inkLine([[X(0), Y(base)], [X(years), Y(base)]], { rng, size: 2.4, color: P.civicDeep, overshoot: 0 }));
+  b += L(inkLine([[x0, yT - 10], [x0, yB], [x1 + 10, yB]], { rng, size: 2.4, overshoot: 0 }));
+  for (const t of [0, 10, 20]) b += label(X(t), yB + 38, String(t));
+  for (const v of [100, 200]) b += label(x0 - 12, Y(v) + 10, `$${v}M`, { anchor: 'end' });
+  b += label((x0 + x1) / 2, yB + 80, 'years since the district began (illustrative)', { color: MUTED, weight: 500 });
+  const end = base * (1 + g) ** years;
+  b += label(X(years) - 10, Y(end) - 14, `$${Math.round(end)}M`, { anchor: 'end', weight: 800, color: P.kraftDeep });
+  b += label(X(10), Y(base) + 60, 'frozen base: taxes go on', { color: P.civicDeep, weight: 700 });
+  b += label(X(10), Y(base) + 94, 'to schools, county, city', { color: P.civicDeep, weight: 500 });
+  b += label(X(14), Y(base) - 50, 'increment: to the', { color: P.kraftDeep, weight: 700 });
+  b += label(X(14), Y(base) - 18, 'TIF district', { color: P.kraftDeep, weight: 700 });
+  return { W, H, b };
+}
+
+// General obligation versus revenue bonds.
+function bondTypes() {
+  const rng = makeRng(5603);
+  const PW = 338;
+  const PH = 400;
+  const head = (t, sub) => title(20, 40, t, { size: 25, anchor: 'start' }) + label(20, 70, sub, { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  let go = panel(0, 0, PW, PH, T.cream, rng) + head('General obligation', 'backed by the power to tax');
+  go += cityHall(40, 250, 120, 130, { seed: 44 });
+  const fs = rectD(196, 170, 124, 80);
+  go += cut(fs, { rng, fill: P.tomato, filter: FLAT }) + L(ink(fs, { rng, size: 2 })) + label(258, 204, 'fire', { size: 20, color: '#FFFFFF', weight: 800 }) + label(258, 230, 'station', { size: 20, color: '#FFFFFF', weight: 800 });
+  go += L(arrow(162, 200, 196, 210, rng, { size: 2.2, head: 9 }));
+  go += label(20, 296, 'fire stations, parks, schools', { size: 20, anchor: 'start', weight: 700 });
+  go += note(20, 340, 'often needs voter approval;', { size: 24, anchor: 'start', color: P.civicDeep }) + note(20, 370, 'usually lower interest', { size: 24, anchor: 'start', color: P.civicDeep });
+  let rv = panel(0, 0, PW, PH, T.cream, rng) + head('Revenue bond', 'repaid by the project’s own fees');
+  const tank = ellipseD(110, 140, 50, 34);
+  rv += L(inkLine([[80, 170], [80, 250]], { rng, size: 3, overshoot: 0 }) + inkLine([[140, 170], [140, 250]], { rng, size: 3, overshoot: 0 }));
+  rv += cut(tank, { rng, fill: P.sky, filter: FLAT }) + L(ink(tank, { rng, size: 2 })) + label(110, 148, 'water', { size: 19, weight: 800 });
+  rv += house(210, 250, 60, 64, { seed: 45, wall: T.butter, roof: P.kraftDeep, chimney: false });
+  rv += L(arrow(270, 170, 150, 150, rng, { size: 2.2, head: 9, color: P.leafDeep, bend: -12 }));
+  rv += label(232, 144, '$ rates', { size: 19, color: P.leafDeep, weight: 800 });
+  rv += label(20, 296, 'water, parking, airports', { size: 20, anchor: 'start', weight: 700 });
+  rv += note(20, 340, 'usually no vote;', { size: 24, anchor: 'start', color: P.civicDeep }) + note(20, 370, 'usually a bit more interest', { size: 24, anchor: 'start', color: P.civicDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, go) + at(368, 14, rv),
+    narrow: { W: 366, H: 842, b: at(14, 14, go) + at(14, 428, rv) },
+  };
+}
+
+// Reading the lesson's CIP table: the Year 2 column, totaled.
+function cipTable() {
+  const rng = makeRng(5604);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const rows = [['Fire station', 'GO bond', [0.5, 2.5, 0.3]], ['Water main', 'revenue bond', [1.2, 1.0, 0]], ['Park renovation', 'grant + general fund', [0.4, 0.6, 0.8]]];
+  const cols = [440, 540, 640];
+  const top = 90;
+  const rh = 80;
+  const hl = roundRectD(cols[1] - 46, top - 50, 92, rh * 3 + 136, 12);
+  b += cut(hl, { rng, fill: T.butter, filter: FLAT, shadow: false }) + L(ink(hl, { rng, size: 2.4, color: P.kraftDeep }));
+  ['Year 1', 'Year 2', 'Year 3'].forEach((t, i) => { b += label(cols[i], 60, t, { weight: 800 }); });
+  b += L(inkLine([[20, 74], [700, 74]], { rng, size: 2, overshoot: 0 }));
+  rows.forEach(([name, fund, vals], r) => {
+    const y = top + r * rh;
+    b += label(20, y + 30, name, { anchor: 'start', weight: 800 }) + label(20, y + 62, fund, { anchor: 'start', color: MUTED, weight: 500 });
+    vals.forEach((v, c) => { b += label(cols[c], y + 44, v ? `$${v.toFixed(1)}M` : '$0', { weight: c === 1 ? 800 : 500 }); });
+  });
+  const tot = rows.reduce((a, [, , v]) => a + v[1], 0);
+  b += L(inkLine([[cols[1] - 40, top + 3 * rh + 4], [cols[1] + 40, top + 3 * rh + 4]], { rng, size: 2.4, overshoot: 0 }));
+  b += label(cols[1], top + 3 * rh + 46, `$${tot.toFixed(1)}M`, { weight: 800, color: P.tomatoDeep });
+  b += label(cols[0] + 40, top + 3 * rh + 46, 'Year 2 total', { anchor: 'end', weight: 700, color: P.tomatoDeep }).replace(`x="${cols[0] + 40}"`, `x="${cols[1] - 60}"`);
+  b += note(20, 426, `2.5 + 1.0 + 0.6 = ${tot.toFixed(1)}`, { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -3948,6 +4066,10 @@ export const FIGURES = [
   ['fig-gross-net', grossNet],
   ['fig-parking-land', parkingLand],
   ['fig-cost-burden', costBurden],
+  ['fig-cip-rolling', cipRolling],
+  ['fig-tif', tifIncrement],
+  ['fig-bonds', bondTypes],
+  ['fig-cip-table', cipTable],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
