@@ -48,7 +48,7 @@ const GROUPS = [
     items: [
       {
         q: 'Do I need to pay for anything?',
-        a: <p>No. Everything in the course is open to anyone with an account: every lesson, all three full-length practice exams, the flashcards, and the study guides.</p>,
+        a: <p>No. Everything in the course is open to anyone with an account: every lesson, all three full-length practice exams, the flashcards, the quick reference, and the exam strategy guide.</p>,
       },
       {
         q: 'Why do I need an account?',

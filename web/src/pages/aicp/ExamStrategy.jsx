@@ -6,7 +6,7 @@ import { P } from '../../lib/paths';
 export default function ExamStrategy() {
   return (
     <ContentPage
-      eyebrow="Study guides"
+      eyebrow="Exam info"
       title="Exam strategy guide"
       art="spot-compass" artW={300} artH={300}
       artAlt="A paper compass rose"

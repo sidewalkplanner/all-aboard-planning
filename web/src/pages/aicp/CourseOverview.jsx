@@ -41,7 +41,8 @@ export default function CourseOverview() {
           </div>
         )}
         <p className="small" style={{ margin: '16px 0 0' }}>
-          New to the exam? Read the <Link to={P.strategy} className="link-underline">test-taking strategy guide</Link> first.
+          New to the exam? Read the <Link to={P.strategy} className="link-underline">exam strategy guide</Link> first. The{' '}
+          <Link to={P.quickRef} className="link-underline">quick reference</Link> sums up the key cases, laws, and formulas on one page.
           {!signedIn && <> Every lesson opens once you sign in{PAID_TIER_ENABLED ? '' : ', and you can preview each one\u2019s learning objectives without signing in'}.</>}
         </p>
       </PageHeader>

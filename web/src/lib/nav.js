@@ -1,18 +1,19 @@
 import { P } from './paths.js';
 import { PAID_TIER_ENABLED, STUDY_PLANS_ENABLED } from './access.js';
 
-// Primary navigation for the AICP prep section (header). Each item names one
-// kind of thing, and the pages use the same names (Lessons, Practice exams, ...).
+// Primary navigation for the AICP prep section (header). Each item opens a real
+// page, and the pages use the same names (Lessons, Practice exams, ...). The quick
+// reference counts as part of Lessons (it summarizes them) and the exam strategy
+// guide as part of Exam info; both are linked from those pages, not the header.
 // `exact` items are active only on their own path; `match` lists other paths
 // that count as that section.
 export const AICP_NAV = [
   { label: 'Overview', to: P.aicp, exact: true },
-  { label: 'Lessons', to: P.course, match: [P.course, `${P.aicp}/lessons`] },
+  { label: 'Lessons', to: P.course, match: [P.course, `${P.aicp}/lessons`, P.quickRef] },
   { label: 'Practice exams', to: P.exams, match: [P.exams, P.run] },
   { label: 'Flashcards', to: P.flashcards },
-  { label: 'Study guides', to: P.review, exact: true, match: [P.strategy, P.quickRef] },
   ...(STUDY_PLANS_ENABLED ? [{ label: 'Study plan', to: P.studyPlan }] : []),
-  { label: 'Exam info', to: P.examInfo, match: [P.examInfo, P.faq] },
+  { label: 'Exam info', to: P.examInfo, match: [P.examInfo, P.faq, P.strategy] },
   // Pricing returns to the header when paid plans launch (lib/access.js).
   ...(PAID_TIER_ENABLED ? [{ label: 'Pricing', to: P.pricing }] : []),
   { label: 'About', to: P.about },

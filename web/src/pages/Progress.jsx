@@ -131,7 +131,7 @@ export default function Progress() {
                 <>
                   <h2 id="dash-plan" className="h3">You finished the {plan.title}</h2>
                   <p className="small" style={{ margin: '6px 0 16px' }}>Keep taking timed exams and reviewing flashcards until test day.</p>
-                  <Link className="btn btn-secondary" to={P.review}>Study guides</Link>
+                  <Link className="btn btn-secondary" to={P.quickRef}>Quick reference</Link>
                 </>
               )
             ) : (
@@ -229,11 +229,14 @@ export default function Progress() {
 
             {/* FLASHCARDS */}
             <section className="card" aria-labelledby="dash-cards">
-              <h2 id="dash-cards" className="h3" style={{ marginBottom: 6 }}>Flashcards</h2>
+              <h2 id="dash-cards" className="h3" style={{ marginBottom: 6 }}>Flashcards and quick reference</h2>
               <p className="small" style={{ margin: '0 0 12px' }}>
                 {seenCards ? `${mastered} mastered, ${seenCards - mastered} still learning, ${ALL_CARDS.length - seenCards} not seen yet.` : `${ALL_CARDS.length} cards covering every lesson's key terms. Ten minutes a day adds up.`}
               </p>
-              <Link className="btn btn-secondary btn-sm" to={P.flashcards}>{seenCards ? 'Review your weakest cards' : 'Start flashcards'}</Link>
+              <div className="row-wrap" style={{ gap: 8 }}>
+                <Link className="btn btn-secondary btn-sm" to={P.flashcards}>{seenCards ? 'Review your weakest cards' : 'Start flashcards'}</Link>
+                <Link className="btn btn-secondary btn-sm" to={P.quickRef}>Quick reference</Link>
+              </div>
             </section>
 
             {/* RECENT */}

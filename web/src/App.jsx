@@ -23,7 +23,6 @@ import SignIn from './pages/SignIn';
 import ExamsList from './pages/ExamsList';
 import Pricing from './pages/Pricing';
 import NotFound from './pages/NotFound';
-import Review from './pages/aicp/Review';
 
 // Route-split: the exam runner pulls in the large bundled question banks
 // via useExamSession. Lazy-loading it
@@ -77,7 +76,7 @@ export default function App() {
                   <Route path={P.course} element={<CourseOverview />} />
                   <Route path={`${P.aicp}/lessons/:slug`} element={<LessonPage />} />
                   <Route path={P.studyPlan} element={STUDY_PLANS_ENABLED ? <StudyPlan /> : <Navigate to={P.course} replace />} />
-                  <Route path={P.review} element={<Review />} />
+                  <Route path={P.review} element={<Navigate to={P.quickRef} replace />} />
                   <Route path={P.flashcards} element={<RequireSignIn title="Flashcards" what="the flashcards"><Flashcards /></RequireSignIn>} />
                   <Route path={P.quickRef} element={<RequireSignIn title="Quick reference" what="the quick reference"><QuickReference /></RequireSignIn>} />
                   <Route path={P.strategy} element={<RequireSignIn title="Exam strategy guide" what="the exam strategy guide"><ExamStrategy /></RequireSignIn>} />
