@@ -136,7 +136,31 @@ const checkpointExtension = (checkpoints) => ({
   },
 });
 
-// Returns { html, headings, links, videos, checkpoints, figures }.
+// CALCULATORS. A line like
+//
+//   :::calc far
+//
+// places an interactive calculator (defined in src/content/aicp/calculators.js)
+// in the lesson. It renders an empty slot that LessonBody fills.
+const calcExtension = (calcs) => ({
+  name: 'calc',
+  level: 'block',
+  start(src) {
+    const m = src.match(/^:::calc /m);
+    return m ? m.index : undefined;
+  },
+  tokenizer(src) {
+    const m = /^:::calc[ \t]+([a-z0-9-]+)[ \t]*(?:\n|$)/.exec(src);
+    if (!m) return undefined;
+    calcs.push(m[1]);
+    return { type: 'calc', raw: m[0], id: m[1] };
+  },
+  renderer(token) {
+    return `<div class="calc-slot" data-calc="${escapeAttr(token.id)}"></div>\n`;
+  },
+});
+
+// Returns { html, headings, links, videos, checkpoints, figures, calcs }.
 // - headings: every h2 as { id, text }, in order (drives "In this lesson").
 // - links: every href as written in the source (for the link checker).
 // Root-relative links ("/aicp/...") get the deploy base path prepended so
@@ -148,10 +172,11 @@ export function renderMarkdown(src, { base = '/' } = {}) {
   const videos = [];
   const checkpoints = [];
   const figures = [];
+  const calcs = [];
   const used = new Map();
   const basePrefix = base.replace(/\/$/, '');
   const marked = new Marked({ gfm: true });
-  marked.use({ extensions: [videoExtension(videos), checkpointExtension(checkpoints), figureExtension(figures, basePrefix)] });
+  marked.use({ extensions: [videoExtension(videos), checkpointExtension(checkpoints), figureExtension(figures, basePrefix), calcExtension(calcs)] });
   marked.use({
     renderer: {
       heading({ tokens, depth }) {
@@ -181,7 +206,7 @@ export function renderMarkdown(src, { base = '/' } = {}) {
     }
   });
   const html = marked.parse(src);
-  return { html, headings, links, videos, checkpoints, figures };
+  return { html, headings, links, videos, checkpoints, figures, calcs };
 }
 
 // Flashcards: every "- **Term**: definition" bullet in a lesson's
