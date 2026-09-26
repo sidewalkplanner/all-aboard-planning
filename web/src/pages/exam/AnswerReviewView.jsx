@@ -1,4 +1,5 @@
 import RichText from '../../components/RichText';
+import OptionNotes from '../../components/OptionNotes';
 import ExhibitTable from '../../components/ExhibitTable';
 import { chipStyle, cardStyle } from '../../lib/style';
 import { GREEN, themeTokens } from '../../lib/theme';
@@ -36,6 +37,7 @@ export default function AnswerReviewView(s) {
                 )}
               </div>
               <RichText as="p" text={r.explanation} style={{ fontSize: 15, lineHeight: 1.65, color: T.mute, margin: '16px 0 0', paddingTop: 16, borderTop: `1px solid ${T.line}` }} />
+              <OptionNotes q={r.q} picked={r.yours} showText style={{ fontSize: 14.5, lineHeight: 1.6, color: T.mute, marginTop: 14 }} headingStyle={{ color: T.ink }} />
             </div>
           ))}
         </div>

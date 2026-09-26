@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import OptionButton from './OptionButton';
 import RichText from './RichText';
+import OptionNotes from './OptionNotes';
 import { LETTERS } from '../data/domains';
 import { loadQuestions } from '../lib/questionBank';
 import { useStudyState, recordCheckpoint, clearCheckpoint } from '../lib/studyState';
@@ -59,6 +60,7 @@ export default function Checkpoint({ slug, refs, number, total }) {
                     {answer.correct ? 'Correct.' : `Not quite. The answer is ${LETTERS[q.correct]}.`}
                   </p>
                   <RichText as="p" text={q.explanation} style={{ margin: 0 }} />
+                  <OptionNotes q={q} picked={answer.pick} style={{ margin: '10px 0 0' }} />
                   {!answer.correct && (
                     <p style={{ margin: '8px 0 0' }}>Reread the section above, then try again.</p>
                   )}

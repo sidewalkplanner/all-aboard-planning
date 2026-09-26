@@ -143,6 +143,25 @@ for (const [id, q] of Object.entries(CHECKPOINTS)) {
   if (!usedCp.has(id)) warn(`checkpoints.js: ${id} isn't used in any lesson`);
 }
 
+// Per-option notes ("why the other answers are wrong"): optional while they're
+// being written. When present: four entries, the correct one empty (the
+// explanation covers it), every wrong one a real sentence.
+let notedQs = 0;
+let allQs = 0;
+const checkNotes = (where, q) => {
+  allQs++;
+  if (q.optionNotes === undefined) return;
+  notedQs++;
+  const n = q.optionNotes;
+  if (!Array.isArray(n) || n.length !== q.options.length) return err(`${where}: optionNotes must have one entry per option`);
+  n.forEach((note, i) => {
+    if (i === q.correct && note) err(`${where}: optionNotes for the correct option should be empty (the explanation covers it)`);
+    if (i !== q.correct && !(typeof note === 'string' && note.trim().length >= 20)) err(`${where}: optionNotes[${i}] is missing or too short`);
+  });
+};
+for (const [id, q] of Object.entries(CHECKPOINTS)) checkNotes(`checkpoints.js: ${id}`, q);
+for (const [b, bank] of Object.entries(BANKS)) for (const q of bank) checkNotes(`exam bank ${b}: item ${q.n}`, q);
+
 // ------------------------------------------------------------ study plans
 for (const plan of STUDY_PLANS) {
   const listed = plan.weeks.flatMap((w) => w.lessons);
@@ -237,7 +256,7 @@ const totalRefs = LESSONS.reduce((s, l) => s + (l.practice || []).length, 0);
 const videos = [...rendered.values()].flatMap((r) => r.videos);
 const placeholders = videos.filter((v) => !v.url).length;
 const figureCount = [...rendered.values()].reduce((n, r) => n + r.figures.length, 0);
-console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} exam items mapped to lessons, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders), ${figureCount} figures, ${totalCards} flashcards, ${totalCheckpoints} checkpoints.`);
+console.log(`Checked ${LESSONS.length} lessons in ${DOMAINS.length} domains, ${totalRefs} exam items mapped to lessons, ${STUDY_PLANS.length} study plans, ${verifyCount} VERIFY flags, ${videos.length} video slots (${placeholders} still placeholders), ${figureCount} figures, ${totalCards} flashcards, ${totalCheckpoints} checkpoints, ${notedQs} of ${allQs} questions with per-option notes.`);
 warnings.forEach((w) => console.log(`  warning: ${w}`));
 if (errors.length) {
   errors.forEach((e) => console.error(`  ERROR: ${e}`));
