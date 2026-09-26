@@ -71,7 +71,7 @@ export default function AicpHome() {
         <section aria-label="Pick up where you left off" className="container" style={{ paddingTop: 22 }}>
           <div className="card card-sm" style={{ '--r': '-0.4deg', display: 'flex', flexWrap: 'wrap', gap: '10px 20px', alignItems: 'center', justifyContent: 'space-between', background: 'var(--butter) var(--grain-tex)' }}>
             <p className="body-text" style={{ margin: 0, color: 'var(--ink)' }}>
-              <strong className="hand" style={{ fontSize: 26, color: 'var(--ink)' }}>Welcome back{user && user.name ? `, ${user.name.split(' ')[0]}` : ''}!</strong>{' '}
+              <strong className="hand" style={{ display: 'block', fontSize: 26, color: 'var(--ink)' }}>Welcome back{user && user.name ? `, ${user.name.split(' ')[0]}` : ''}!</strong>
               {doneCount} of {LESSONS.length} lessons complete.{resume ? ` Up next: lesson ${resume.number}, ${resume.title}.` : ''}
             </p>
             <div className="row-wrap" style={{ gap: 10 }}>
