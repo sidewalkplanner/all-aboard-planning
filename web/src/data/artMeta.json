@@ -795,6 +795,22 @@
     "fig-trust-fee": {
       "w": 720,
       "h": 476
+    },
+    "fig-lifecycle": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-combined-sewer": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
+    },
+    "fig-service-area": {
+      "w": 720,
+      "h": 406
     }
   },
   "hero": {

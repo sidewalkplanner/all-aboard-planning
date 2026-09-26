@@ -4638,10 +4638,8 @@ function losVmt() {
     const x = 26 + i * 48;
     const hit = g === 'E';
     const was = g === 'D';
-    b0: {
-      const d = roundRectD(x, 120, 42, 50, 6);
-      a += cut(d, { rng, fill: hit ? P.tomato : was ? T.butter : '#FFFDF8', filter: FLAT }) + L(ink(d, { rng, size: hit ? 2.6 : 1.6 }));
-    }
+    const d = roundRectD(x, 120, 42, 50, 6);
+    a += cut(d, { rng, fill: hit ? P.tomato : was ? T.butter : '#FFFDF8', filter: FLAT }) + L(ink(d, { rng, size: hit ? 2.6 : 1.6 }));
     a += label(x + 21, 154, g, { size: 21, weight: 800 });
   });
   a += L(arrow(26 + 3 * 48 + 21, 188, 26 + 4 * 48 + 21, 188, rng, { size: 2.2, head: 8, bend: -14 }));
@@ -4777,7 +4775,6 @@ function missingMiddle() {
 function nepaLevels() {
   const rng = makeRng(8301);
   const W = 720;
-  const H = 470;
   let b = '';
   const box = (x, y, w, h, t, sub, fill) => {
     const d = roundRectD(x, y, w, h, 12);
@@ -4816,9 +4813,9 @@ function mitigationSequence() {
     return o + label(111, 238, steps[k][1], { size: 19, weight: 600 });
   };
   const wide = (k) => {
-    let o = panel(0, 0, 338, 170, T.cream, rng) + icons[k](96, 76);
-    o += title(196, 70, steps[k][0], { size: 25, anchor: 'start' });
-    return o + label(196, 108, steps[k][1], { size: 19, anchor: 'start', weight: 600 });
+    let o = panel(0, 0, 338, 170, T.cream, rng) + `<g transform="translate(76 78) scale(0.72) translate(-111 -128)">${icons[k](111, 128)}</g>`;
+    o += title(156, 70, steps[k][0], { size: 22, anchor: 'start' });
+    return o + label(156, 108, steps[k][1], { size: 19, anchor: 'start', weight: 600 });
   };
   return {
     W: 720, H: 350, b: at(14, 14, tall(0)) + at(249, 14, tall(1)) + at(484, 14, tall(2)) + note(360, 338, 'in this order: compensation is the last resort', { size: 24, color: P.civicDeep }),
@@ -5117,7 +5114,6 @@ function hiaSteps() {
 
 // A food desert combines distance, car access, and income.
 function foodDesert() {
-  const rng = makeRng(8602);
   const W = 720;
   const H = 540;
   let b = '';
@@ -5258,6 +5254,85 @@ function trustFee() {
   return { W, H: H + 36, b };
 }
 
+// ============================================================ Lesson 8.8
+
+// Life-cycle cost: building is the tip of the iceberg (illustrative).
+function lifecycleIceberg() {
+  const rng = makeRng(8801);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  b += `<rect x="0" y="150" width="${W}" height="290" fill="${T.sky}"/>`;
+  b += L(inkLine('M0 150Q90 142 180 150T360 150T540 150T720 150', { rng, size: 2, color: P.civicDeep }));
+  const tip = polyD([[300, 150], [352, 66], [372, 78], [424, 150]]);
+  const body = polyD([[210, 152], [514, 152], [566, 280], [470, 392], [290, 398], [182, 300]]);
+  b += cut(body, { rng, fill: '#EEF5FB', filter: FLAT }) + L(ink(body, { rng, size: 2 }));
+  b += cut(tip, { rng, fill: '#FFFDF8', filter: FLAT }) + L(ink(tip, { rng, size: 2 }));
+  b += label(290, 92, 'design and', { anchor: 'end', weight: 800 }) + label(290, 124, 'construction', { anchor: 'end', weight: 800 });
+  b += label(372, 222, 'operation', { weight: 700 }) + label(372, 262, 'maintenance', { weight: 700 }) + label(372, 302, 'repair and replacement', { weight: 700 });
+  b += label(700, 40, '(illustrative proportions)', { anchor: 'end', color: MUTED, weight: 500 });
+  b += note(W / 2, 430, 'most of the cost comes after the ribbon-cutting', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// A combined sewer in dry weather and in a storm.
+function combinedSewer() {
+  const rng = makeRng(8802);
+  const PW = 338;
+  const PH = 380;
+  const scene = (storm) => {
+    let o = '';
+    o += `<rect x="20" y="270" width="140" height="40" fill="${T.sky}"/>` + label(90, 298, 'river', { size: 19, weight: 600, color: P.civicDeep });
+    o += house(34, 170, 60, 60, { seed: 61, chimney: false });
+    o += `<rect x="120" y="164" width="30" height="8" fill="${P.ink}"/>` + label(135, 158, 'drain', { size: 19, weight: 500, color: MUTED });
+    const plant = rectD(236, 186, 82, 60);
+    o += cut(plant, { rng, fill: P.lavender, filter: FLAT }) + L(ink(plant, { rng, size: 2 })) + label(277, 222, 'plant', { size: 19, weight: 700 });
+    o += L(inkLine('M64 172L64 216', { rng, size: 3, color: P.kraftDeep }) + inkLine('M135 172L135 216', { rng, size: 3, color: P.civic }));
+    o += `<rect x="40" y="210" width="196" height="16" rx="6" fill="${storm ? P.civic : T.sky}" stroke="${P.ink}" stroke-width="1.8"/>`;
+    if (storm) {
+      o += `<rect x="92" y="226" width="14" height="44" fill="#8C6A48" stroke="${P.ink}" stroke-width="1.6"/>`;
+      o += L(arrow(99, 238, 99, 282, rng, { size: 2.4, head: 9, color: P.tomatoDeep }));
+      o += `<ellipse cx="270" cy="112" rx="44" ry="20" fill="#C9CDD6" stroke="${P.ink}" stroke-width="1.6"/>`;
+      for (let i = 0; i < 6; i++) o += L(inkLine(`M${242 + i * 12} 140L${236 + i * 12} 160`, { rng, size: 1.6, color: P.civic }));
+    } else {
+      o += `<rect x="92" y="226" width="14" height="44" fill="none" stroke="${MUTED}" stroke-width="1.6" stroke-dasharray="4 3"/>`;
+      o += sun(274, 124, 14);
+    }
+    return o;
+  };
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Dry weather', { size: 25, anchor: 'start' }) + label(20, 70, 'sewage and runoff, one pipe', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += scene(false) + note(20, 350, 'all of it reaches the plant', { size: 24, anchor: 'start', color: P.leafDeep });
+  let r = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Heavy rain', { size: 25, anchor: 'start' }) + label(20, 70, 'the pipe fills up', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  r += scene(true) + note(20, 350, 'overflow into the river', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, a) + at(368, 14, r),
+    narrow: { W: 366, H: 802, b: at(14, 14, a) + at(14, 408, r) },
+  };
+}
+
+// A sewer extension steers where subdivisions go.
+function serviceArea() {
+  const rng = makeRng(8803);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const land = rectD(20, 20, 680, 300);
+  b += cut(land, { rng, fill: T.sage, filter: FLAT }) + L(ink(land, { rng, size: 2, color: P.leafDeep }));
+  const town = ellipseD(120, 170, 90, 80);
+  b += cut(town, { rng, fill: P.butter, filter: FLAT }) + L(ink(town, { rng, size: 2 })) + label(120, 180, 'town', { weight: 800 });
+  b += `<path d="M200 60 L520 60 Q560 60 560 100 L560 240 Q560 280 520 280 L200 280" fill="none" stroke="${P.civicDeep}" stroke-width="2.4" stroke-dasharray="10 7"/>`;
+  b += label(540, 48, 'sewer service area', { anchor: 'end', weight: 700, color: P.civicDeep });
+  b += L(inkLine('M210 170L620 170', { rng, size: 6, color: P.civic, overshoot: 0 }));
+  b += label(640, 150, 'new', { anchor: 'start', weight: 600 }) + label(640, 182, 'line', { anchor: 'start', weight: 600 });
+  for (let i = 0; i < 6; i++) {
+    const x = 240 + i * 50;
+    [118, 204].forEach((y) => { b += `<rect x="${x}" y="${y}" width="36" height="30" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.4"/>`; });
+  }
+  b += label(360, 360, 'subdivisions follow the pipe', { weight: 700 });
+  b += note(W / 2, 396, 'plan the service area with the land use map', { color: P.civicDeep });
+  return { W, H: H + 6, b };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -5382,6 +5457,7 @@ const FIGURES = [
   ['fig-enclosure', enclosure], ['fig-cpted', cpted], ['fig-register-vs-local', registerVsLocal], ['fig-treatments', treatments],
   ['fig-hia-steps', hiaSteps], ['fig-food-desert', foodDesert], ['fig-park-access', parkAccess], ['fig-regional-spectrum', regionalSpectrum],
   ['fig-ag-zoning', agZoning], ['fig-scatter-village', scatterVillage], ['fig-trust-fee', trustFee],
+  ['fig-lifecycle', lifecycleIceberg], ['fig-combined-sewer', combinedSewer], ['fig-service-area', serviceArea],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

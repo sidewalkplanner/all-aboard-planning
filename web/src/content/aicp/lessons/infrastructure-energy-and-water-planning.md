@@ -19,6 +19,10 @@ Water, sewer, roads, energy, and broadband don't just serve development; they **
 
 When an infrastructure plan and a land use plan disagree, the infrastructure usually wins, because private development follows capacity.
 
+:::figure fig-service-area | A map with a town at the left and a new sewer line running out across farmland inside a dashed sewer service area. Rows of new subdivisions line both sides of the pipe. Labels: subdivisions follow the pipe. Note: plan the service area with the land use map.
+Drawing the service area is a land use decision in disguise, because development follows capacity.
+:::
+
 :::checkpoint cp:infra-steers-growth
 
 ### Asset management and life-cycle cost
@@ -28,6 +32,10 @@ Building infrastructure is the cheap part; owning it isn't. **Asset management**
 - **Life-cycle cost** includes design, construction, operation, maintenance, and eventual replacement.
 - **Deferred maintenance** (postponing repairs) usually raises long-term costs and risks failures.
 - Development patterns matter: serving dispersed development requires more pipe and road per household, which means higher life-cycle costs per resident.
+
+:::figure fig-lifecycle | An iceberg in illustrative proportions. The small tip above the waterline is design and construction; the much larger mass below is operation, maintenance, and repair and replacement. Note: most of the cost comes after the ribbon-cutting.
+Budgeting only for construction leaves the bigger bill, keeping the thing running, for later councils to find.
+:::
 
 :::checkpoint cp:infra-lifecycle
 
@@ -44,6 +52,10 @@ Water supply planning forecasts demand (often from population projections and pe
 - **Centralized sewer systems** treat wastewater at a plant; their capacity limits growth in their service area.
 - **Septic (on-site) systems** serve rural areas but can fail and contaminate groundwater where soils or density are wrong. See [Rural, small-town, and tribal planning](/aicp/lessons/rural-small-town-and-tribal-planning).
 - **Combined sewer systems**, common in older cities, carry both sewage and stormwater in the same pipes. In heavy rain they can overflow into rivers (**combined sewer overflows**), which is a major driver of green infrastructure and sewer separation projects.
+
+:::figure fig-combined-sewer | Two panels of the same combined sewer, where a house's sewage and a street drain's runoff share one pipe to the treatment plant. Dry weather: all of it reaches the plant, and the overflow pipe to the river stays empty. Heavy rain: the pipe fills up and the excess overflows into the river.
+Every roof and parking lot that sends rain into a combined pipe brings the overflow closer, which is why green infrastructure helps.
+:::
 
 :::checkpoint cp:infra-cso
 
