@@ -3118,6 +3118,137 @@ function directiveWords() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 4.4
+
+// A goals-achievement matrix whose winner flips when one weight doubles.
+function goalsMatrix() {
+  const rng = makeRng(4401);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  // Illustrative scores, 1 (poor) to 5 (best), for three criteria.
+  const alts = [['A', [2, 5, 4]], ['B', [3, 4, 5]], ['C', [5, 4, 2]]];
+  const eq = alts.map(([, sc]) => sc.reduce((a, c) => a + c, 0));
+  const dbl = alts.map(([, sc]) => sc[0] * 2 + sc[1] + sc[2]);
+  const best = (arr) => arr.indexOf(Math.max(...arr));
+  const cols = [180, 300, 415, 545, 660];
+  const top = 130;
+  const rh = 76;
+  const heads = [['Housing'], ['Farmland'], ['Cost'], ['Equal', 'weights'], ['Housing', 'x 2']];
+  b += label(60, 58, 'Option', { weight: 800 });
+  heads.forEach((h, i) => h.forEach((t, k) => { b += label(cols[i], 58 + k * 32, t, { weight: 800, color: i >= 3 ? P.civicDeep : P.ink }); }));
+  const hl = (x, y, fill) => { const d = roundRectD(x - 50, y, 100, rh - 12, 10); return cut(d, { rng, fill, filter: FLAT, shadow: false }) + L(ink(d, { rng, size: 2.4 })); };
+  b += hl(cols[3], top + best(eq) * rh, P.butter) + hl(cols[4], top + best(dbl) * rh, P.butter);
+  alts.forEach(([name, sc], r) => {
+    const y = top + r * rh + 44;
+    b += title(60, y, name, { size: 32 });
+    sc.forEach((v, c) => { b += label(cols[c], y, String(v)); });
+    b += label(cols[3], y, String(eq[r]), { weight: 800 }) + label(cols[4], y, String(dbl[r]), { weight: 800 });
+  });
+  b += L(inkLine([[20, top - 8], [700, top - 8]], { rng, size: 2, overshoot: 0 }) + inkLine([[478, 40], [478, top + 3 * rh]], { rng, size: 1.6, overshoot: 0, opacity: 0.6 }));
+  b += label(40, top + 3 * rh + 40, 'scores 1 to 5, illustrative', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(700, top + 3 * rh + 86, 'one weight changed, and the winner flips', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// Scenario planning: four futures from two uncertainties, one robust strategy.
+function scenarioGrid() {
+  const rng = makeRng(4402);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const x0 = 170;
+  const y0 = 40;
+  const cw = 250;
+  const ch = 180;
+  const cells = [
+    [0, 0, 'Fast growth,', 'high impact', T.blush], [1, 0, 'Slow growth,', 'high impact', T.butter],
+    [0, 1, 'Fast growth,', 'low impact', T.sky], [1, 1, 'Slow growth,', 'low impact', T.sage],
+  ];
+  for (const [c, r, l1, l2, fill] of cells) {
+    const x = x0 + c * (cw + 10);
+    const y = y0 + r * (ch + 10);
+    const d = roundRectD(x, y, cw, ch, 14);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    b += label(x + cw / 2, y + (r ? ch - 54 : 44), l1, { weight: 700 }) + label(x + cw / 2, y + (r ? ch - 22 : 76), l2, { weight: 500 });
+  }
+  const cx = x0 + cw + 5;
+  const cy = y0 + ch + 5;
+  const hub = roundRectD(cx - 110, cy - 46, 220, 92, 46);
+  b += cut(hub, { rng, fill: P.paper, filter: FLAT }) + L(ink(hub, { rng, size: 2.6, color: P.leafDeep }));
+  b += star(cx - 72, cy, 18, { fill: P.butter, seed: 4 });
+  b += label(cx + 14, cy - 6, 'robust', { weight: 800, color: P.leafDeep }) + label(cx + 14, cy + 26, 'strategy', { weight: 800, color: P.leafDeep });
+  b += title(150, y0 + ch / 2 - 14, 'Climate', { size: 28, anchor: 'end' });
+  b += title(150, y0 + ch / 2 + 18, 'impact', { size: 28, anchor: 'end' });
+  b += label(150, y0 + ch / 2 + 54, 'high', { anchor: 'end', color: MUTED, weight: 500 });
+  b += label(150, y0 + ch * 1.5 + 30, 'low', { anchor: 'end', color: MUTED, weight: 500 });
+  b += title(x0 + cw / 2, y0 + 2 * ch + 60, 'fast growth', { size: 28 }) + title(x0 + cw * 1.5 + 10, y0 + 2 * ch + 60, 'slow growth', { size: 28 });
+  b += note(360, 506, 'not predictions: tests for a strategy', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// The buildable lands gap from the lesson: demand 12,000, capacity 7,500.
+function buildableGap() {
+  const rng = makeRng(4403);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const demand = 12000;
+  const cap = 7500;
+  const x0 = 224;
+  const w = 470;
+  const X = (v) => x0 + (v / demand) * w;
+  const bar = (y, v, fill, name, sub) => {
+    const d = rectD(x0, y, X(v) - x0, 64);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    s += title(x0 - 16, y + 32, name, { size: 28, anchor: 'end' }) + label(x0 - 16, y + 62, sub, { anchor: 'end', color: MUTED, weight: 500 });
+    s += label(X(v) - 16, y + 44, fmt(v), { anchor: 'end', weight: 800 });
+    return s;
+  };
+  b += bar(50, demand, P.sky, 'Demand', '20 years');
+  b += bar(170, cap, P.leaf, 'Capacity', 'current zoning');
+  const gap = rectD(X(cap), 170, X(demand) - X(cap), 64);
+  b += `<path d="${gap}" fill="${T.blush}"/>` + L(dashed(X(cap), 170, X(demand), 170, rng, { color: P.tomatoDeep }) + dashed(X(demand), 170, X(demand), 234, rng, { color: P.tomatoDeep }) + dashed(X(cap), 234, X(demand), 234, rng, { color: P.tomatoDeep }));
+  b += label((X(cap) + X(demand)) / 2, 214, `gap ${fmt(demand - cap)}`, { color: P.tomatoDeep, weight: 800 });
+  b += label(x0, 300, 'floodplains, steep slopes removed', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(x0, 356, 'close it with infill: upzone corridors,', { anchor: 'start', color: P.leafDeep });
+  b += note(x0, 390, 'allow middle housing', { anchor: 'start', color: P.leafDeep });
+  return { W, H, b };
+}
+
+// The three scopes of a greenhouse gas inventory.
+function ghgScopes() {
+  const rng = makeRng(4404);
+  const PW = 228;
+  const PH = 330;
+  const head = (n, sub) => title(PW / 2, 42, `Scope ${n}`, { size: 26 }) + label(PW / 2, 72, sub, { size: 19, color: MUTED, weight: 500 });
+  const puff = (x, y) => `<circle cx="${x}" cy="${y}" r="10" fill="#C9C3D3"/><circle cx="${x + 14}" cy="${y - 12}" r="13" fill="#D9D4E1"/>`;
+  let s1 = panel(0, 0, PW, PH, T.cream, rng) + head(1, 'direct');
+  const truck = roundRectD(50, 170, 110, 56, 8);
+  s1 += cut(truck, { rng, fill: P.civic, filter: FLAT }) + L(ink(truck, { rng, size: 2 }));
+  s1 += `<circle cx="78" cy="232" r="12" fill="${P.ink}"/><circle cx="136" cy="232" r="12" fill="${P.ink}"/>` + puff(176, 206) + puff(196, 186);
+  s1 += label(PW / 2, 150, 'city fleet', { size: 19, weight: 700 });
+  s1 += note(PW / 2, 296, 'burned by you', { size: 24 });
+  let s2 = panel(0, 0, PW, PH, T.cream, rng) + head(2, 'purchased electricity');
+  const plant = rectD(24, 150, 56, 80);
+  s2 += cut(plant, { rng, fill: P.kraft, filter: FLAT }) + L(ink(plant, { rng, size: 2 })) + puff(46, 138);
+  const bldg = rectD(150, 160, 56, 70);
+  s2 += cut(bldg, { rng, fill: P.sky, filter: FLAT }) + L(ink(bldg, { rng, size: 2 }));
+  s2 += L(inkLine([[80, 170], [150, 176]], { rng, size: 2, overshoot: 0 }));
+  s2 += `<path d="M112 160l-8 14h10l-6 14" fill="none" stroke="${P.butterDeep}" stroke-width="3"/>`;
+  s2 += note(PW / 2, 296, 'burned for you', { size: 24 });
+  let s3 = panel(0, 0, PW, PH, T.cream, rng) + head(3, 'other indirect');
+  const bin = polyD([[70, 170], [158, 170], [150, 232], [78, 232]]);
+  s3 += cut(bin, { rng, fill: P.leaf, filter: FLAT }) + L(ink(bin, { rng, size: 2 }));
+  s3 += label(PW / 2, 150, 'waste, supply chain', { size: 19, weight: 700 });
+  s3 += note(PW / 2, 296, 'caused by you', { size: 24 });
+  const panels = [s1, s2, s3];
+  return {
+    W: 720, H: 358, b: panels.map((q, i) => at(8 + i * 238, 14, q)).join(''),
+    narrow: { W: 252, H: 1034, b: panels.map((q, i) => at(12, 12 + i * 342, q)).join('') },
+  };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -3194,6 +3325,10 @@ export const FIGURES = [
   ['fig-plan-hierarchy', planHierarchy],
   ['fig-smart', smartObjective],
   ['fig-directive-words', directiveWords],
+  ['fig-goals-matrix', goalsMatrix],
+  ['fig-scenarios', scenarioGrid],
+  ['fig-buildable-gap', buildableGap],
+  ['fig-ghg-scopes', ghgScopes],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

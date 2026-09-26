@@ -127,7 +127,7 @@ These changes followed the first build (described below). They supersede anythin
 | `web/src/content/aicp/lessons/demographic-and-economic-analysis.md:92` | Location quotients and shift-share, worked through | about 4 min |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:21` | The NEPA process: categorical exclusion, EA, or EIS? | about 3 min |
 | `web/src/content/aicp/lessons/environmental-planning-and-hazards.md:48` | What a "100-year flood" really means | about 2 min |
-| `web/src/content/aicp/lessons/goals-objectives-policies.md:25` | From vision to action: the plan hierarchy | about 2 min |
+| `web/src/content/aicp/lessons/goals-objectives-policies.md:29` | From vision to action: the plan hierarchy | about 2 min |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:65` | How a TDR program moves development | about 3 min |
 | `web/src/content/aicp/lessons/housing-and-community-development.md:47` | How the Low-Income Housing Tax Credit finances a building | about 3 min |
 | `web/src/content/aicp/lessons/implementation-math.md:34` | Solving FAR problems step by step | about 4 min |
@@ -225,8 +225,8 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:63` | the wording and grouping of these principles are paraphrased from our understanding of the Code; check each against the current text. |
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:86` | confirm the current names and process for informal advice and formal advisory opinions under the Code's procedures. |
 | `web/src/content/aicp/lessons/aicp-code-of-ethics.md:97` | confirm the current complaint procedure steps, the name of the deciding body, and the list of available sanctions (for example, whether a "letter of admonition" still exists). |
-| `web/src/content/aicp/lessons/comprehensive-plans.md:52` | confirm the names of the principles and processes in APA's Comprehensive Plan Standards for Sustaining Places, and whether APA has updated them. |
-| `web/src/content/aicp/lessons/comprehensive-plans.md:64` | confirm which states to cite as consistency states (Oregon, Florida, and California are commonly cited) and how each applies the requirement. |
+| `web/src/content/aicp/lessons/comprehensive-plans.md:56` | confirm the names of the principles and processes in APA's Comprehensive Plan Standards for Sustaining Places, and whether APA has updated them. |
+| `web/src/content/aicp/lessons/comprehensive-plans.md:68` | confirm which states to cite as consistency states (Oregon, Florida, and California are commonly cited) and how each applies the requirement. |
 | `web/src/content/aicp/lessons/conflicts-of-interest-and-rules-of-conduct.md:1` | check each paraphrased rule theme below against the current Rules of Conduct text. |
 | `web/src/content/aicp/lessons/consensus-and-negotiation.md:103` | this five-part typology is usually attributed to Christopher Moore's "circle of conflict"; confirm the attribution if named. |
 | `web/src/content/aicp/lessons/economic-development.md:60` | this is the Main Street America "Four Point Approach"; confirm current terminology if named. |
@@ -239,7 +239,7 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:69` | confirm the 2024 DOJ Title II web accessibility rule's standard (WCAG 2.1 AA) and its current compliance dates. |
 | `web/src/content/aicp/lessons/federal-policy-and-planning.md:24` | confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. |
 | `web/src/content/aicp/lessons/federal-policy-and-planning.md:35` | confirm the 1962 Act as the origin of the 3C planning requirement. |
-| `web/src/content/aicp/lessons/goals-objectives-policies.md:67` | "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. |
+| `web/src/content/aicp/lessons/goals-objectives-policies.md:79` | "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:22` | confirm the SmartCode transect zone numbering (T1–T6) and names if you want to teach them precisely. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:34` | performance zoning is often associated with Lane Kendig's work in Bucks County, Pennsylvania, in the 1970s; confirm before attributing. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:80` | Florida's statewide concurrency mandate was substantially relaxed in 2011 (except for certain facilities); confirm the current status before describing it. |

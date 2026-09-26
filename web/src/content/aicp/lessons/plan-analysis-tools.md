@@ -19,6 +19,10 @@ Once a planning process has two or more alternatives, it needs a fair way to com
 
 A **goals-achievement matrix** lays out alternatives in columns and criteria in rows, scoring how well each alternative advances each goal, sometimes with weights. **Multi-criteria analysis** is the broader family of methods for this. **Sensitivity analysis** tests whether the preferred alternative changes when weights or assumptions change. If a small change in weights flips the result, decision-makers should know that.
 
+:::figure fig-goals-matrix | A goals-achievement matrix with illustrative scores from 1 to 5. Option A scores 2 for housing, 5 for farmland, and 4 for cost; B scores 3, 4, and 5; C scores 5, 4, and 2. With equal weights the totals are 11, 12, and 11, so B wins. With housing counted twice they're 13, 15, and 16, so C wins. A note says one weight changed, and the winner flips.
+That flip is exactly what a sensitivity analysis is for: it tells decision-makers the choice rests on how much they value housing.
+:::
+
 :::checkpoint cp:analysis-sensitivity
 
 ### Scenario planning
@@ -35,6 +39,10 @@ A typical process:
 
 Scenarios are **not predictions**. Some processes use *exploratory* scenarios (what could happen?) and others *normative* ones (what do we want to happen, and how do we get there?).
 
+:::figure fig-scenarios | Four scenarios in a grid built from two uncertainties: fast or slow growth, and high or low climate impact. The four cells are fast growth with high impact, slow growth with high impact, fast growth with low impact, and slow growth with low impact. A robust strategy, marked with a star, sits where all four meet. A note says scenarios are not predictions but tests for a strategy.
+Don't bet on one box: look for strategies that hold up in every one, and signposts that show which one is arriving.
+:::
+
 :::checkpoint cp:analysis-robust
 
 ### Buildable lands and capacity analysis
@@ -47,6 +55,10 @@ Before a plan can say where growth goes, it needs to know how much land can take
 4. compares the resulting **capacity** with **projected demand** for housing and jobs.
 
 If demand exceeds capacity, and the jurisdiction can't or won't expand outward (because of an urban growth boundary, for example), the plan must accommodate growth through **infill, redevelopment, and increased intensity** on underused land.
+
+:::figure fig-buildable-gap | Two bars from the buildable lands example later in this lesson. Demand over 20 years: 12,000 homes. Capacity under current zoning, with floodplains and steep slopes removed: 7,500. The gap of 4,500 is outlined, with a note: close it with infill by upzoning corridors and allowing middle housing.
+Inside a fixed boundary, the gap can't be closed by adding land, so it has to be closed by adding capacity to land already inside.
+:::
 
 :::checkpoint cp:analysis-buildable
 
@@ -75,7 +87,11 @@ A local **greenhouse gas (GHG) inventory** is the baseline for a climate action 
 - **community-wide emissions** by sector (transportation, residential and commercial energy, industry, waste, and sometimes agriculture); and
 - **government operations** emissions (the city's own buildings, fleet, and facilities).
 
-Emissions are often grouped by **scope**: Scope 1 covers direct emissions, Scope 2 covers purchased electricity, and Scope 3 covers other indirect emissions. Once you have the baseline, you set reduction targets, model strategies, and re-inventory periodically to track progress.
+Emissions are often grouped by **scope**: Scope 1 covers direct emissions, Scope 2 covers purchased electricity, and Scope 3 covers other indirect emissions, such as those from waste sent to landfills or from producing the goods and services a community buys. Once you have the baseline, you set reduction targets, model strategies, and re-inventory periodically to track progress.
+
+:::figure fig-ghg-scopes | Three panels. Scope 1, direct: a city fleet truck with exhaust, burned by you. Scope 2, purchased electricity: a power plant wired to a building, burned for you. Scope 3, other indirect: a waste bin, for waste and supply chains, caused by you.
+The scopes sort emissions by how directly you control them, which is why most local inventories start with Scopes 1 and 2.
+:::
 
 :::checkpoint cp:analysis-scope2
 
