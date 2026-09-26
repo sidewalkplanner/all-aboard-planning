@@ -63,6 +63,7 @@ const videoExtension = (videos) => ({
 // renders a lesson figure from public/art/<name>.webp. Figures are drawn in
 // art/scenes/figures.mjs (`npm run art -- fig-`), which records each one's
 // size in src/data/artMeta.json so the image reserves its space while loading.
+// A figure with a `narrow` layout also has <name>-narrow.webp, served to phones.
 // The lettering is baked into the image, so the alt text must carry it.
 const figureSizes = () => {
   try {
@@ -92,11 +93,17 @@ const figureExtension = (figures, basePrefix) => {
     },
     renderer(token) {
       const caption = this.parser.parseInline(token.tokens);
-      const dims = token.size ? ` width="${token.size.w}" height="${token.size.h}"` : '';
+      const size = token.size || {};
+      const dims = size.w ? ` width="${size.w}" height="${size.h}"` : '';
       const src = `${basePrefix}/art/${token.name}.webp`;
-      // The image links to itself so phone readers can open it full size and zoom.
-      const zoom = '<span class="figure-zoom-hint">Tap the figure to open it full size.</span>';
-      return `<figure class="lesson-figure" id="figure-${token.name}"><a class="figure-image" href="${src}" target="_blank" rel="noopener"><img src="${src}"${dims} alt="${escapeAttr(token.alt)}" loading="lazy" decoding="async"></a><figcaption>${caption}${zoom}</figcaption></figure>\n`;
+      // Side-by-side figures have a stacked layout for phones.
+      const narrow = size.narrow
+        ? `<source media="(max-width: 600px)" srcset="${basePrefix}/art/${token.name}-narrow.webp" width="${size.narrow.w}" height="${size.narrow.h}">`
+        : '';
+      // The image links to itself so readers can open it full size and zoom;
+      // phones get a hint when the figure has no stacked layout.
+      const zoom = size.narrow ? '' : '<span class="figure-zoom-hint">Tap the figure to open it full size.</span>';
+      return `<figure class="lesson-figure" id="figure-${token.name}"><a class="figure-image" href="${src}" target="_blank" rel="noopener"><picture>${narrow}<img src="${src}"${dims} alt="${escapeAttr(token.alt)}" loading="lazy" decoding="async"></picture></a><figcaption>${caption}${zoom}</figcaption></figure>\n`;
     },
   };
 };

@@ -89,7 +89,7 @@ A **location quotient (LQ)** compares an industry's share of local employment wi
 - **LQ = 1.0**: the local share matches the nation.
 - **LQ < 1.0**: the industry is less concentrated than nationally, suggesting the area imports those goods or services.
 
-:::figure fig-location-quotient | Two grids of 100 squares. In this county, 6 of every 100 jobs are in manufacturing; in the nation, 3 of every 100. Six percent divided by three percent gives a location quotient of 2.0. A number line from 0 to 3 shows below 1.0 as less concentrated (imports), 1.0 as matching the nation, and above 1.0 as more concentrated (likely an export); this county sits at 2.0.
+:::figure fig-location-quotient | Two grids of 100 squares. In this county, 6 of every 100 jobs are in manufacturing; in the nation, 3 per 100. Six percent divided by three percent gives a location quotient of 2.0. A number line from 0 to 3 marks below 1.0 as imports and above 1.0 as likely exports; this county sits at 2.0.
 An LQ of 2.0 means the industry's share of local jobs is twice its national share.
 :::
 
@@ -111,7 +111,7 @@ Location quotients assume that local consumption patterns and productivity match
 - Industry-mix share: 1,000 × (12% − 5%) = **70 jobs**
 - If the local industry actually grew by 150 jobs, the local share is 150 − 50 − 70 = 30 jobs, a sign of local competitive advantage.
 
-:::figure fig-shift-share | A bar of 150 new jobs in one local industry, split into three parts: 50 jobs of national growth (1,000 × 5%), 70 jobs of industry mix (1,000 × (12% − 5%)), and a 30-job local share, which is what's left. A note says a positive local share hints at a local competitive advantage.
+:::figure fig-shift-share | A bar of 150 new jobs in one local industry, split into three parts: 50 jobs of national growth (1,000 × 5%), 70 jobs of industry mix (1,000 × (12% − 5%)), and a 30-job local share, which is the rest. A note says a positive local share means a competitive edge.
 Only the last piece is about the place itself. The first two would have happened to any area with the same industry.
 :::
 

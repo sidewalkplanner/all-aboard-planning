@@ -19,7 +19,7 @@ A **geographic information system (GIS)** stores, analyzes, and displays data ti
 
 Rule of thumb: boundaries and networks call for vector; surfaces call for raster.
 
-:::figure fig-vector-raster | Two panels. Vector, "points, lines, and polygons": parcels drawn as polygons, a street and a stream drawn as lines, and hydrants drawn as points. Raster, "a grid of cells, each with a value": a 10 by 10 grid shaded from light green to brown, where darker cells are higher ground.
+:::figure fig-vector-raster | Two panels. Vector, "points, lines, and polygons": parcels drawn as polygons, a street and a stream drawn as lines, and hydrants drawn as points. Raster, "a grid of cells, each a value": a 10 by 10 grid shaded from light green to brown, where darker cells are higher ground.
 Parcels have edges, so they're vector. Elevation changes smoothly from place to place, so it's raster.
 :::
 

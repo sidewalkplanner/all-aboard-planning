@@ -32,7 +32,7 @@ Ride the line in order. Pick a dataset before stop 1 and you'll end up answering
 
 Most planning studies combine the two. For example, you might pair a survey of local businesses (primary) with ACS income data (secondary).
 
-:::figure fig-primary-secondary | Two panels. Primary data, "you collect it for your question": a planner with a clipboard and a tally sheet of bikes counted. Plus: fits your exact question. Minus: costs time and money. Secondary data, "someone else already collected it": a stack of census tables, permit records, and a crash database. Plus: fast and cheap. Minus: built for another purpose.
+:::figure fig-primary-secondary | Two panels. Primary data, "you collect it for your question": a planner with a clipboard and a tally sheet counting bikes. Plus: fits your exact question. Minus: costs time and money. Secondary data, "someone else collected it": a stack of census tables, permit records, and a crash database. Plus: fast and cheap. Minus: built for another purpose.
 The tradeoff in one line: primary data fits but costs; secondary data is cheap but was made for someone else's question.
 :::
 
@@ -55,7 +55,7 @@ The **American Community Survey** is a continuous *sample* survey run by the Cen
 - **1-year estimates** are the most current but are published only for larger geographies (areas of 65,000 people or more).
 - **5-year estimates** pool five years of responses, are available down to census tracts and block groups, and are the standard choice for small areas. They describe a *period*, not a single year.
 
-:::figure fig-census-acs | Two rows of ten houses. Decennial census, "everyone, every 10 years: the full count": every house has a check mark. American Community Survey (ACS), "a sample, every year: estimates with a margin of error": only three of the ten houses are checked.
+:::figure fig-census-acs | Two rows of ten houses. Decennial census, "everyone, every 10 years: the full count": every house has a check mark. American Community Survey (ACS), "a sample each year: estimates with a ± margin": only three of the ten houses are checked.
 A full count gives exact totals but asks only a few basic questions. A sample can ask far more, but every figure comes with a margin of error.
 :::
 
@@ -76,7 +76,7 @@ You can rarely survey everyone, so you survey a sample and generalize. How you c
   - *Systematic sampling:* pick every *k*th unit from a list after a random start.
 - **Nonprobability sampling** includes convenience samples, snowball samples, and **self-selected** samples, such as an online survey open to anyone who wants to respond. These are useful for engagement and idea generation, but you can't treat the results as representative.
 
-:::figure fig-sampling | Four panels of 24 dots, with the sampled dots in red. Simple random, "everyone has an equal chance": six dots scattered anywhere. Stratified, "sample within each group": one row of renters and three rows of owners, with dots sampled inside each group. Cluster, "pick whole blocks, survey everyone": the dots form six blocks of four, and two whole blocks are sampled. Systematic, "every 4th, after a random start": every fourth dot is sampled.
+:::figure fig-sampling | Four panels of 24 dots, with the sampled dots in red. Simple random, "everyone has an equal chance": six dots scattered anywhere. Stratified, "sample within each group": one row of renters and three rows of owners, with dots sampled inside each group. Cluster, "pick whole blocks, survey all": the dots form six blocks of four, and two whole blocks are sampled. Systematic, "every 4th, after a random start": every fourth dot is sampled.
 All four are probability samples: everyone has a known chance of being picked. They differ in how the picking is done.
 :::
 
