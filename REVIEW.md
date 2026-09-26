@@ -258,8 +258,8 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:62` | confirm the general statement that investor-owned utilities are regulated by state public utility commissions. |
 | `web/src/content/aicp/lessons/land-use-law-foundations.md:79` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
 | `web/src/content/aicp/lessons/leadership-in-planning.md:22` | adaptive leadership is usually attributed to Ronald Heifetz; confirm before attributing. |
-| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:74` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
-| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:75` | confirm which advanced specialty certifications AICP currently offers. |
+| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:86` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
+| `web/src/content/aicp/lessons/mentoring-and-professional-development.md:87` | confirm which advanced specialty certifications AICP currently offers. |
 | `web/src/content/aicp/lessons/planning-history.md:32` | the "make no little plans" quotation's attribution to Burnham is disputed; keep the "popularly attributed" hedge or remove. |
 | `web/src/content/aicp/lessons/planning-history.md:41` | Hartford 1907 as the first official municipal planning commission is commonly cited; confirm before publishing. |
 | `web/src/content/aicp/lessons/planning-history.md:43` | SZEA publication history is given variously as 1922, 1924, and 1926; confirm the dates you want to teach. |

@@ -18,9 +18,17 @@ Delegation develops staff and frees leaders to lead, but only if it's real. Effe
 
 Match the task to the person's readiness, and increase the challenge over time. Delegating responsibility without authority sets people up to fail.
 
+:::figure fig-delegation | Two stools. Real delegation: a stool on three legs, expectations, accountability, and authority, stands; the task stands. Responsibility only: the authority leg is missing (a dashed outline), and the stool tips over on its other two legs; set up to fail.
+Take away any leg and the stool falls, but authority is the one most often left out: the person owns the result without the power to decide.
+:::
+
 ### Resolving staff conflict
 
 When two staff members are in an escalating dispute, the leader's best approach is usually to **meet with each separately** to understand their perspectives, then **convene a facilitated conversation** focused on their underlying **interests** and the work, not on personalities or blame. Agree on specific next steps and follow up. Ignoring conflict lets it spread; imposing a solution without listening rarely lasts.
+
+:::figure fig-conflict-steps | Four steps on a line. 1 Meet each separately: the leader talks with each person on their own. 2 Facilitate on interests: all three at one table. 3 Agree on next steps: a written checklist. 4 Follow up: a date on the calendar. Notes: the work and the interests, not personalities or blame; ignored, conflict spreads; imposed, it rarely lasts.
+Listening to each person first is what makes the joint conversation possible; the follow-up is what makes the agreement stick.
+:::
 
 :::checkpoint cp:mentor-ignore-conflict
 
@@ -31,6 +39,10 @@ When two staff members are in an escalating dispute, the leader's best approach 
 - **Sponsorship** means using your influence to open doors, such as recommending a junior planner for a visible assignment or a promotion.
 
 Mentoring an early-career planner is most effective when the mentor provides **progressively challenging assignments with candid feedback**, plus **guidance and opportunity**: exposure to decision-makers, networks, and stretch projects. Mentoring serves the individual, and it also **develops the profession's future capacity**.
+
+:::figure fig-coach-mentor-sponsor | Three cards. Coaching, shown with a target: a specific skill, such as running a meeting, over a defined period. Mentoring, shown with rising steps toward a star: career growth, judgment and values, in a long relationship. Sponsorship, shown with an open door: your influence, recommending someone, opens doors.
+A coach sharpens a skill and a mentor guides a career; a sponsor spends their own standing to get someone into the room.
+:::
 
 :::checkpoint cp:mentor-sponsorship
 

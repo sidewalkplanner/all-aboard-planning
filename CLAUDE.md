@@ -256,7 +256,8 @@ lessons (planning process 4, comprehensive plans 3, goals and policies 3, analys
 Module 5 (Plan Implementation) has 28 across its seven lessons
 (zoning 4, zoning relief 4, subdivision 4, growth management 4, implementation math 4, capital
 finance 4, monitoring 4). Module 6 (Administration and Management) has 7 across its two lessons (project
-management 3, managing an agency 4). Next is module 7 (Leadership), in course order, starting with `leadership-in-planning`. Aim for two to five figures per lesson, one per
+management 3, managing an agency 4). Module 7 (Leadership) has 7 across its two lessons (leadership 4,
+mentoring and development 3). Next is module 8 (Areas of Practice), in course order, starting with `transportation-planning`. Aim for two to five figures per lesson, one per
 section where a picture teaches faster than the text: a process, a comparison, a
 distribution, a map, or a worked calculation. Skip sections a picture wouldn't improve.
 

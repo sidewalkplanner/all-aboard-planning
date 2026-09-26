@@ -24,6 +24,10 @@
 
 A common exam distinction: **transformational leaders motivate through vision and development; transactional leaders motivate through exchange.**
 
+:::figure fig-lead-styles | Two panels. Transactional leadership motivates through exchange: arrows loop between performance and reward (pay, recognition, corrections); efficient for routine work, rarely inspires change. Transformational leadership motivates through vision: three people of growing size look up to a star labeled shared vision; people work beyond self-interest and grow along the way.
+One trades rewards for results; the other gives people a reason to reach past their own interest, and grows them in the process.
+:::
+
 :::checkpoint cp:lead-adaptive
 
 ### Leading from the middle
@@ -37,6 +41,10 @@ Most planners don't control the departments, agencies, or elected bodies whose c
 - build **coalitions** of allies inside and outside government.
 
 When jurisdictions or departments have a history of disputes, the most useful first move is to **establish shared ground rules, clarify roles, and build a shared problem statement** before debating solutions. See [Facilitation, consensus building, and negotiation](/aicp/lessons/consensus-and-negotiation).
+
+:::figure fig-lead-middle | A planner stands in the middle holding crash data, labeled the shared problem, with dashed lines to four departments: public works (fewer crashes), transit (faster buses), police (fewer crashes), and parks (safer park access). Note: no one here reports to the planner; each joins for its own reason.
+The corridor example below: without authority over any department, the planner makes one shared problem worth solving for each of them.
+:::
 
 :::checkpoint cp:lead-disputes
 
@@ -56,6 +64,10 @@ Susan Fainstein's "just city" framework of equity, diversity, and democracy is o
 
 When a proposed decision would serve a **vocal interest group** but conflict with the **broader public interest**, the planning leader should **advocate for the public interest and explain why**, openly, with evidence, and respectfully.
 
+:::figure fig-public-interest | Four sliders, each with a marker set somewhere between two ends: individual rights and community needs, present and future generations, efficiency and equity, local and regional. Note: one decision's balance (illustrative); weigh the values in the open.
+There's no correct setting to look up. Each decision strikes its own balance, and the planner's job is to make the tradeoffs visible.
+:::
+
 :::checkpoint cp:lead-public-interest
 
 ### The ethics of advocacy
@@ -68,6 +80,10 @@ Planners advocate for plans, policies, and communities. Ethical advocacy is:
 - **grounded in the public interest**, not personal preference or career advantage.
 
 When the governing body **rejects your professional recommendation** and adopts a **lawful alternative within its authority**, you **implement the decision professionally**. You can keep making the case in future cycles, but you don't undermine a lawful decision. (If a directive would require unethical or illegal conduct, the analysis is different. See [Working through ethics scenarios](/aicp/lessons/solving-ethics-questions).)
+
+:::figure fig-after-loss | Five numbered steps: 1 Recommend: reduce parking minimums. 2 Council adopts a smaller reduction. 3 Implement promptly; count parking use. 4 Return two years on: lots half empty. 5 Council adopts the fuller reform. Note: carry it out, then bring the data back.
+The "leading after a loss" example below: losing the vote doesn't end the advocacy, it changes its tools from argument to evidence.
+:::
 
 :::checkpoint cp:lead-advocacy
 
