@@ -2,6 +2,7 @@
 // the Vite plugin in vite.config.js (so no Markdown parser ships to the
 // browser) and by scripts/check-content.mjs (so the checker sees exactly the
 // headings and links the site renders).
+import { readFileSync } from 'node:fs';
 import { Marked } from 'marked';
 
 const stripTags = (s) => String(s).replace(/<[^>]+>/g, '');
@@ -53,6 +54,53 @@ const videoExtension = (videos) => ({
   },
 });
 
+// FIGURES. A block like
+//
+//   :::figure fig-skew | Alt text: everything the figure shows, in words.
+//   Caption shown under the figure (inline Markdown).
+//   :::
+//
+// renders a lesson figure from public/art/<name>.webp. Figures are drawn in
+// art/scenes/figures.mjs (`npm run art -- fig-`), which records each one's
+// size in src/data/artMeta.json so the image reserves its space while loading.
+// The lettering is baked into the image, so the alt text must carry it.
+const figureSizes = () => {
+  try {
+    return JSON.parse(readFileSync(new URL('../src/data/artMeta.json', import.meta.url), 'utf8')).figures || {};
+  } catch {
+    return {};
+  }
+};
+
+const figureExtension = (figures, basePrefix) => {
+  const sizes = figureSizes();
+  return {
+    name: 'figure',
+    level: 'block',
+    start(src) {
+      const m = src.match(/^:::figure/m);
+      return m ? m.index : undefined;
+    },
+    tokenizer(src) {
+      const m = /^:::figure[ \t]+([^\n|]+)\|([^\n]*)\n([\s\S]*?)\n:::[ \t]*(?:\n|$)/.exec(src);
+      if (!m) return undefined;
+      const name = m[1].trim();
+      const alt = m[2].trim();
+      const size = sizes[name] || null;
+      figures.push({ name, alt, size });
+      return { type: 'figure', raw: m[0], name, alt, size, tokens: this.lexer.inlineTokens(m[3].trim()) };
+    },
+    renderer(token) {
+      const caption = this.parser.parseInline(token.tokens);
+      const dims = token.size ? ` width="${token.size.w}" height="${token.size.h}"` : '';
+      const src = `${basePrefix}/art/${token.name}.webp`;
+      // The image links to itself so phone readers can open it full size and zoom.
+      const zoom = '<span class="figure-zoom-hint">Tap the figure to open it full size.</span>';
+      return `<figure class="lesson-figure" id="figure-${token.name}"><a class="figure-image" href="${src}" target="_blank" rel="noopener"><img src="${src}"${dims} alt="${escapeAttr(token.alt)}" loading="lazy" decoding="async"></a><figcaption>${caption}${zoom}</figcaption></figure>\n`;
+    },
+  };
+};
+
 // CHECKPOINTS. A line like
 //
 //   :::checkpoint e3:104
@@ -81,7 +129,7 @@ const checkpointExtension = (checkpoints) => ({
   },
 });
 
-// Returns { html, headings, links, videos, checkpoints }.
+// Returns { html, headings, links, videos, checkpoints, figures }.
 // - headings: every h2 as { id, text }, in order (drives "In this lesson").
 // - links: every href as written in the source (for the link checker).
 // Root-relative links ("/aicp/...") get the deploy base path prepended so
@@ -92,10 +140,11 @@ export function renderMarkdown(src, { base = '/' } = {}) {
   const links = [];
   const videos = [];
   const checkpoints = [];
+  const figures = [];
   const used = new Map();
   const basePrefix = base.replace(/\/$/, '');
   const marked = new Marked({ gfm: true });
-  marked.use({ extensions: [videoExtension(videos), checkpointExtension(checkpoints)] });
+  marked.use({ extensions: [videoExtension(videos), checkpointExtension(checkpoints), figureExtension(figures, basePrefix)] });
   marked.use({
     renderer: {
       heading({ tokens, depth }) {
@@ -125,7 +174,7 @@ export function renderMarkdown(src, { base = '/' } = {}) {
     }
   });
   const html = marked.parse(src);
-  return { html, headings, links, videos, checkpoints };
+  return { html, headings, links, videos, checkpoints, figures };
 }
 
 // Flashcards: every "- **Term**: definition" bullet in a lesson's

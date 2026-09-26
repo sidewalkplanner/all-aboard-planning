@@ -25,7 +25,8 @@ export default function LessonBody({ html, slug }) {
     const a = e.target.closest('a');
     if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     const href = a.getAttribute('href') || '';
-    if (href.startsWith(BASE)) {
+    // Links that open a new tab (a figure's full-size image) aren't routes.
+    if (href.startsWith(BASE) && a.target !== '_blank') {
       e.preventDefault();
       navigate('/' + href.slice(BASE.length));
     }

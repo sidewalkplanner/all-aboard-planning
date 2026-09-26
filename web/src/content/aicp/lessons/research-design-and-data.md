@@ -20,13 +20,21 @@ A research design spells out:
 - the method of analysis; and
 - the limits of what the results can tell you.
 
-### Primary and secondary data
+:::figure fig-research-route | A transit line with five numbered stops in order: 1 Question, 2 Unit of analysis, 3 Data sources, 4 Method, 5 Limits. A note at the first stop says "start here, not with the data."
+Ride the line in order. Pick a dataset before stop 1 and you'll end up answering a question nobody asked.
+:::
 
-**Secondary data** already exists because someone else collected it: census tables, permit records, crash databases, assessor files, or another agency's survey. It's cheap and fast, but it was built for another purpose, so check its definitions, geography, and date before relying on it.
+### Primary and secondary data
 
 **Primary data** is collected by you for your question: a survey, a traffic count, a windshield survey of building conditions, interviews, or focus groups. It's tailored to your need but costs time and money, and its quality depends entirely on your design.
 
-Most planning studies combine the two. For example, you might pair ACS income data (secondary) with a survey of local businesses (primary).
+**Secondary data** already exists because someone else collected it: census tables, permit records, crash databases, assessor files, or another agency's survey. It's cheap and fast, but it was built for another purpose, so check its definitions, geography, and date before relying on it.
+
+Most planning studies combine the two. For example, you might pair a survey of local businesses (primary) with ACS income data (secondary).
+
+:::figure fig-primary-secondary | Two panels. Primary data, "you collect it for your question": a planner with a clipboard and a tally sheet of bikes counted. Plus: fits your exact question. Minus: costs time and money. Secondary data, "someone else already collected it": a stack of census tables, permit records, and a crash database. Plus: fast and cheap. Minus: built for another purpose.
+The tradeoff in one line: primary data fits but costs; secondary data is cheap but was made for someone else's question.
+:::
 
 ### Quantitative and qualitative methods
 
@@ -47,6 +55,10 @@ The **American Community Survey** is a continuous *sample* survey run by the Cen
 - **1-year estimates** are the most current but are published only for larger geographies (areas of 65,000 people or more).
 - **5-year estimates** pool five years of responses, are available down to census tracts and block groups, and are the standard choice for small areas. They describe a *period*, not a single year.
 
+:::figure fig-census-acs | Two rows of ten houses. Decennial census, "everyone, every 10 years: the full count": every house has a check mark. American Community Survey (ACS), "a sample, every year: estimates with a margin of error": only three of the ten houses are checked.
+A full count gives exact totals but asks only a few basic questions. A sample can ask far more, but every figure comes with a margin of error.
+:::
+
 <!-- VERIFY: confirm that the 65,000-population threshold for ACS 1-year estimates is current, and that the 3-year product remains discontinued. -->
 
 > **Exam tip:** For detailed characteristics (like median household income) of a small area such as a neighborhood or tract, the answer is almost always ACS 5-year estimates. For a complete population count used for apportionment, it's the decennial census.
@@ -63,6 +75,10 @@ You can rarely survey everyone, so you survey a sample and generalize. How you c
   - *Cluster sampling:* randomly select groups (for example, blocks), then survey within them. It's cheaper but less precise.
   - *Systematic sampling:* pick every *k*th unit from a list after a random start.
 - **Nonprobability sampling** includes convenience samples, snowball samples, and **self-selected** samples, such as an online survey open to anyone who wants to respond. These are useful for engagement and idea generation, but you can't treat the results as representative.
+
+:::figure fig-sampling | Four panels of 24 dots, with the sampled dots in red. Simple random, "everyone has an equal chance": six dots scattered anywhere. Stratified, "sample within each group": one row of renters and three rows of owners, with dots sampled inside each group. Cluster, "pick whole blocks, survey everyone": the dots form six blocks of four, and two whole blocks are sampled. Systematic, "every 4th, after a random start": every fourth dot is sampled.
+All four are probability samples: everyone has a known chance of being picked. They differ in how the picking is done.
+:::
 
 :::checkpoint cp:rd-stratified
 
@@ -82,6 +98,10 @@ You can rarely survey everyone, so you survey a sample and generalize. How you c
 - **Reliability** asks whether the measure gives consistent results when repeated. A traffic counter that reports wildly different totals on identical days isn't reliable.
 
 A measure can be reliable without being valid: a scale that is always five pounds off is consistent but wrong. It can't be valid without being reasonably reliable.
+
+:::figure fig-validity | Three targets with hits marked. Neither, "scattered and off target": hits spread all over. Reliable, not valid, "consistent, but wrong": hits in a tight cluster away from the bullseye. Valid and reliable, "consistent and on target": hits in a tight cluster on the bullseye.
+The middle target is the scale that's always five pounds off: consistent, and consistently wrong.
+:::
 
 ### Metadata and data quality
 
@@ -127,6 +147,6 @@ When you collect information from people, you owe them informed consent, confide
 
 ## Summary
 
-Planning research starts with a clear question and a design that fits it. Secondary data is fast but built for other purposes; primary data fits your need but has to be designed carefully. Use the decennial census for complete counts and the ACS for detailed characteristics, choosing 5-year estimates for small areas and always minding the margin of error. Only probability samples can be generalized to a population, and every survey must guard against coverage, self-selection, nonresponse, and wording bias. Aim for measures that are both valid and reliable, confirm important findings through triangulation, and treat the people behind the data with care.
+Planning research starts with a clear question and a design that fits it. Primary data fits your need but has to be designed carefully; secondary data is fast but built for other purposes. Use the decennial census for complete counts and the ACS for detailed characteristics, choosing 5-year estimates for small areas and always minding the margin of error. Only probability samples can be generalized to a population, and every survey must guard against coverage, self-selection, nonresponse, and wording bias. Aim for measures that are both valid and reliable, confirm important findings through triangulation, and treat the people behind the data with care.
 
 Next, [Statistics and quantitative evaluation](/aicp/lessons/statistics-for-planners) covers how to summarize and interpret the numbers once you have them.
