@@ -243,6 +243,38 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
 5. **Add it to the study plans** in `studyPlans.js` if it should be scheduled.
 6. Run `npm run check && npm run build` in `web/`.
 
+## Lesson figures: workflow and status
+
+**Status (update this as you go).** Module 1 (Research and Assessment Methods) is fully
+illustrated: 26 figures across its four lessons. Next is module 2 (Fundamental Planning
+Knowledge), in course order, starting with `planning-history` (a timeline suits it) and
+`planning-theory` (comparison diagrams). Aim for two to five figures per lesson, one per
+section where a picture teaches faster than the text: a process, a comparison, a
+distribution, a map, or a worked calculation. Skip sections a picture wouldn't improve.
+
+**Before showing or pushing figures, look at them.** `npm run check` only catches small text.
+Also:
+1. Render (`npm run art -- fig-`) and view every new figure at full size, looking for
+   overlapping labels, text running off the edge, and marks that collide.
+2. View each one at phone width (340px; the `-narrow` version if it has one) and confirm the
+   words are comfortably readable.
+3. Confirm every chart is computed from the numbers in its labels, never drawn by eye (an early
+   Lorenz curve got invented wiggles from curve smoothing). Invented data says "illustrative"
+   in the figure or caption, and the caption's arithmetic must check out.
+4. Keep figure facts consistent with the lesson. If a figure needs a concept the lesson doesn't
+   explain, add a sentence (and a key term if it's testable) to the lesson.
+
+**Working with the owner (Bobby).** Work on the session's `claude/...` branch and push there.
+Merging to `main` makes the site live, so merge only when Bobby says to (for example "merge"
+or "go live"): open a pull request and merge it. After a merge, restart the branch from
+`origin/main` before the next change. Send a few of the new figures as images with each
+update so he can review without opening the site.
+
+**Open items outside the code.** The two account email templates (confirm signup, reset
+password) changed after they were last pasted into Supabase and need pasting again (see
+`supabase/templates/README.md`). The fact-check checklist Bobby works from lists the VERIFY
+flags; `REVIEW.md` has the same flags with current line numbers.
+
 ## The exam runner
 
 `/aicp/exam/run` takes `?aid=e1|e2|e3&mode=practice|timed`: the three full-length exams
