@@ -3966,6 +3966,120 @@ function cipTable() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 5.7
+
+// One row of an action table, as a ticket with six fields.
+function actionRow() {
+  const rng = makeRng(5701);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const t = roundRectD(14, 30, 692, 380, 16);
+  b += cut(t, { rng, fill: P.paper, filter: FLAT }) + L(ink(t, { rng, size: 2.4 }));
+  b += tape(310, 18, 100, 24, -3, { seed: 7 });
+  const fields = [
+    ['Action', 'allow duplexes citywide', 'what'],
+    ['Goal', 'housing for all incomes', 'why'],
+    ['Lead', 'Planning Department', 'who'],
+    ['When', 'by June 2026', 'when'],
+    ['Funding', 'staff time', 'how much'],
+    ['Measure', 'amendment adopted', 'how we’ll know'],
+  ];
+  fields.forEach(([name, val, q], i) => {
+    const y = 70 + i * 56;
+    b += label(44, y + 24, name, { anchor: 'start', weight: 800 });
+    b += label(210, y + 24, val, { anchor: 'start', weight: 500 });
+    b += note(690, y + 24, q, { anchor: 'end', color: P.civicDeep, size: 35 });
+    if (i) b += L(inkLine([[36, y - 6], [684, y - 6]], { rng, size: 1, opacity: 0.35, overshoot: 0 }));
+  });
+  b += label(360, 434, 'an example row', { color: MUTED, weight: 500 });
+  return { W, H, b };
+}
+
+// Dig once: three projects on one street, done separately or together.
+function digOnce() {
+  const rng = makeRng(5702);
+  const PW = 338;
+  const PH = 360;
+  const head = (t, sub) => title(20, 40, t, { size: 25, anchor: 'start' }) + label(20, 70, sub, { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const cone = (x, y) => `<path d="M${x - 9} ${y}L${x} ${y - 26}L${x + 9} ${y}Z" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.4"/><rect x="${x - 7}" y="${y - 14}" width="14" height="4" fill="#FFFFFF"/>`;
+  const street = (x, y, w, items) => {
+    let s = `<rect x="${x}" y="${y}" width="${w}" height="36" rx="6" fill="#9C95A8"/>`;
+    s += cone(x + 14, y + 4) + cone(x + w - 14, y + 4);
+    s += label(x + w / 2, y + 26, items, { size: 19, color: '#FFFFFF', weight: 700 });
+    return s;
+  };
+  let sep = panel(0, 0, PW, PH, T.cream, rng) + head('Separately', 'three digs, three detours');
+  sep += label(20, 140, 'Year 1', { size: 19, anchor: 'start', weight: 700 }) + street(96, 116, 222, 'repave');
+  sep += label(20, 204, 'Year 3', { size: 19, anchor: 'start', weight: 700 }) + street(96, 180, 222, 'water main');
+  sep += label(20, 268, 'Year 5', { size: 19, anchor: 'start', weight: 700 }) + street(96, 244, 222, 'bike lanes');
+  sep += note(20, 322, 'the same street torn up 3 times', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let one = panel(0, 0, PW, PH, T.cream, rng) + head('Together', 'one project, one dig');
+  one += label(20, 178, 'Year 1', { size: 19, anchor: 'start', weight: 700 });
+  one += `<rect x="96" y="120" width="222" height="96" rx="8" fill="#9C95A8"/>` + cone(110, 124) + cone(304, 124);
+  one += label(207, 150, 'water main', { size: 19, color: '#FFFFFF', weight: 700 }) + label(207, 176, 'repave', { size: 19, color: '#FFFFFF', weight: 700 }) + label(207, 202, 'bike lanes', { size: 19, color: '#FFFFFF', weight: 700 });
+  one += note(20, 322, 'lower cost, less disruption', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 388, b: at(14, 14, sep) + at(368, 14, one),
+    narrow: { W: 366, H: 762, b: at(14, 14, sep) + at(14, 388, one) },
+  };
+}
+
+// Output versus outcome, from action to result.
+function outputOutcome() {
+  const rng = makeRng(5703);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const box = (x, head, lines, fill, color) => {
+    const d = roundRectD(x, 90, 210, 180, 14);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    s += title(x + 105, 134, head, { size: 28, color });
+    lines.forEach((t, k) => { s += label(x + 105, 180 + k * 32, t, { weight: 500 }); });
+    return s;
+  };
+  b += box(14, 'Action', ['build a', 'new trail'], T.kraft, P.ink);
+  b += box(255, 'Output', ['trail built:', 'yes'], T.sky, P.civicDeep);
+  b += box(496, 'Outcome', ['park access', 'rises'], T.sage, P.leafDeep);
+  b += L(arrow(226, 180, 250, 180, rng, { size: 2.6, head: 10 }) + arrow(467, 180, 491, 180, rng, { size: 2.6, head: 10 }));
+  b += note(360, 330, 'output: are we doing what we said?', { color: P.civicDeep });
+  b += note(360, 370, 'outcome: is it making a difference?', { color: P.leafDeep });
+  return { W, H, b };
+}
+
+// A level-of-service standard turns growth into a funding commitment.
+function losCommitment() {
+  const rng = makeRng(5704);
+  const W = 720;
+  const H = 420;
+  let b = '';
+  // Illustrative: 5 acres of parkland per 1,000 residents.
+  const std = 5;
+  const pop0 = 20000;
+  const pop1 = 24000;
+  const need0 = (pop0 / 1000) * std;
+  const need1 = (pop1 / 1000) * std;
+  const x0 = 260;
+  const w = 420;
+  const X = (a) => x0 + (a / need1) * w;
+  const bar = (y, a, fill, name, sub) => {
+    const d = rectD(x0, y, X(a) - x0, 60);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    s += title(x0 - 16, y + 30, name, { size: 28, anchor: 'end' }) + label(x0 - 16, y + 60, sub, { anchor: 'end', color: MUTED, weight: 500 });
+    s += label(Math.min(X(a), X(need0)) - 14, y + 40, `${a} acres`, { anchor: 'end', weight: 800 });
+    return s;
+  };
+  b += bar(90, need0, P.leaf, 'Today', `${fmt(pop0)} people`);
+  b += bar(210, need1, P.leaf, 'In 10 years', `${fmt(pop1)} people`);
+  const gap = rectD(X(need0), 210, X(need1) - X(need0), 60);
+  b += `<path d="${gap}" fill="${P.butter}"/>` + L(ink(gap, { rng, size: 2, color: P.kraftDeep }));
+  b += label((X(need0) + X(need1)) / 2, 300, `+${need1 - need0} acres`, { color: P.kraftDeep, weight: 800 });
+  b += label(20, 50, `standard: ${std} acres of park per 1,000 people (illustrative)`, { anchor: 'start', weight: 500, color: MUTED });
+  b += note(20, 360, 'adopt the standard, and you’ve promised', { anchor: 'start', color: P.tomatoDeep });
+  b += note(20, 396, 'to fund the extra acres', { anchor: 'start', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -4070,6 +4184,10 @@ export const FIGURES = [
   ['fig-tif', tifIncrement],
   ['fig-bonds', bondTypes],
   ['fig-cip-table', cipTable],
+  ['fig-action-row', actionRow],
+  ['fig-dig-once', digOnce],
+  ['fig-output-outcome', outputOutcome],
+  ['fig-los', losCommitment],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

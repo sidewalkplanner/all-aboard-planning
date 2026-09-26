@@ -252,7 +252,9 @@ urban form 5, land use law 4, takings 3, federal policy 3). Module 3 (Communicat
 Interaction) has 15 across its four lessons (engagement design 5, equitable engagement 3,
 consensus 4, decision-makers 3). Module 4 (Plan and Policy Development) has 14 across its four
 lessons (planning process 4, comprehensive plans 3, goals and policies 3, analysis tools 4).
-Next is module 5 (Plan Implementation), in course order, starting with `zoning-fundamentals`. Aim for two to five figures per lesson, one per
+Module 5 (Plan Implementation) has 28 across its seven lessons
+(zoning 4, zoning relief 4, subdivision 4, growth management 4, implementation math 4, capital
+finance 4, monitoring 4). Next is module 6 (Administration and Management), in course order, starting with `project-and-contract-management`. Aim for two to five figures per lesson, one per
 section where a picture teaches faster than the text: a process, a comparison, a
 distribution, a map, or a worked calculation. Skip sections a picture wouldn't improve.
 

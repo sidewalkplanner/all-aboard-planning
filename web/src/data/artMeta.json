@@ -547,6 +547,26 @@
     "fig-cip-table": {
       "w": 720,
       "h": 440
+    },
+    "fig-action-row": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-dig-once": {
+      "w": 720,
+      "h": 388,
+      "narrow": {
+        "w": 366,
+        "h": 762
+      }
+    },
+    "fig-output-outcome": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-los": {
+      "w": 720,
+      "h": 420
     }
   },
   "hero": {
