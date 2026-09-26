@@ -3727,6 +3727,127 @@ function growthBoundary() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 5.5
+
+// FAR 2.0 built three ways, drawn to scale: stories = FAR / coverage.
+function farShapes() {
+  const rng = makeRng(5501);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const FAR = 2.0;
+  const lotW = 190;
+  const story = 26;
+  const base = 330;
+  [1, 0.5, 0.25].forEach((cov, i) => {
+    const cx = 124 + i * 236;
+    const x0 = cx - lotW / 2;
+    const floors = FAR / cov;
+    const bw = lotW * cov;
+    b += `<rect x="${x0}" y="${base}" width="${lotW}" height="12" fill="${P.sage}" stroke="${P.ink}" stroke-width="1.6"/>`;
+    for (let f = 0; f < floors; f++) {
+      const d = rectD(cx - bw / 2, base - (f + 1) * story, bw, story);
+      b += cut(d, { rng, fill: [P.butter, P.sky, P.lavender][i], shadow: f === 0, jitter: 0.3, filter: FLAT }) + L(ink(d, { rng, size: 1.6 }));
+    }
+    b += title(cx, base + 52, `${floors} stories`, { size: 28 });
+    b += label(cx, base + 86, `${Math.round(cov * 100)}% coverage`, { weight: 500, color: MUTED });
+  });
+  b += note(360, 60, 'same FAR 2.0: stories = FAR ÷ coverage', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Gross versus net density, from the lesson's 40-acre example.
+function grossNet() {
+  const rng = makeRng(5502);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const acres = 40;
+  const setAside = 0.25;
+  const perNet = 6;
+  const net = acres * (1 - setAside);
+  const units = net * perNet;
+  const gross = units / acres;
+  const cell = 48;
+  // 8 x 5 acres; streets and open space take a column and part of a row.
+  const off = new Set([3, 11, 19, 27, 35, 32, 33, 34, 36, 37]);
+  for (let i = 0; i < acres; i++) {
+    const x = 24 + (i % 8) * (cell + 2);
+    const y = 60 + Math.floor(i / 8) * (cell + 2);
+    const out = off.has(i);
+    b += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="4" fill="${out ? '#B9B3C4' : P.butter}" stroke="${P.ink}" stroke-width="1.2"/>`;
+  }
+  b += label(24, 40, 'each square: 1 acre', { anchor: 'start', color: MUTED, weight: 500 });
+  const lx = 440;
+  const rows = [
+    [`${acres} acres`, P.ink, 800], [`− ${acres - net} for streets,`, MUTED, 500], ['open space', MUTED, 500],
+    [`= ${net} net acres`, P.kraftDeep, 800], [`× ${perNet} per net acre`, MUTED, 500], [`= ${units} units`, P.tomatoDeep, 800],
+  ];
+  rows.forEach(([t, color, weight], k) => { b += label(lx, 80 + k * 38, t, { anchor: 'start', color, weight }); });
+  b += `<rect x="24" y="340" width="22" height="22" fill="#B9B3C4" stroke="${P.ink}" stroke-width="1.2"/>` + label(56, 358, 'streets, open space', { anchor: 'start', weight: 500 });
+  b += note(24, 418, `gross density: ${units} ÷ ${acres} = ${gross} per acre`, { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Parking land against the store's own footprint, drawn to the same scale.
+function parkingLand() {
+  const rng = makeRng(5503);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const store = 60000;
+  const spaces = (store / 1000) * 4;
+  const park = spaces * 350;
+  const h = 200;
+  const k = 1 / 300; // px of width per sq ft, at 200 px tall
+  const sw = store * k;
+  const pw = park * k;
+  const y = 110;
+  const sd = rectD(30, y, sw, h);
+  b += cut(sd, { rng, fill: P.tomato, filter: FLAT }) + L(ink(sd, { rng, size: 2.2 }));
+  b += label(30 + sw / 2, y + h / 2 + 10, 'store', { color: '#FFFFFF', weight: 800 });
+  const pd = rectD(50 + sw, y, pw, h);
+  b += `<path d="${pd}" fill="#9C95A8"/>`;
+  for (let x = 50 + sw + 14; x < 50 + sw + pw - 6; x += 20) b += `<line x1="${x}" y1="${y + 8}" x2="${x}" y2="${y + 70}" stroke="#FFFFFF" stroke-width="2"/><line x1="${x}" y1="${y + h - 70}" x2="${x}" y2="${y + h - 8}" stroke="#FFFFFF" stroke-width="2"/>`;
+  b += L(ink(pd, { rng, size: 2.2 }));
+  b += label(50 + sw + pw / 2, y + h / 2 + 10, 'parking', { color: '#FFFFFF', weight: 800 });
+  b += label(30, 60, `one story, ${fmt(store)} sq ft`, { anchor: 'start', color: P.tomatoDeep, weight: 700 });
+  b += label(700, 60, `${spaces} spaces × 350 sq ft`, { anchor: 'end', weight: 700 });
+  b += label(30, y + h + 44, `store: ${fmt(store)} sq ft`, { anchor: 'start', weight: 500 });
+  b += label(700, y + h + 44, `lot: ${fmt(park)} sq ft (${(park / 43560).toFixed(2)} acres)`, { anchor: 'end', weight: 500 });
+  b += note(360, 420, 'the parking is bigger than the building', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// Cost burden, from the lesson's example household.
+function costBurden() {
+  const rng = makeRng(5504);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const income = 42000;
+  const monthly = income / 12;
+  const rent = 1300;
+  const afford = monthly * 0.3;
+  const x0 = 40;
+  const w = 640;
+  const X = (v) => x0 + (v / monthly) * w;
+  const y = 150;
+  const all = rectD(x0, y, w, 70);
+  b += cut(all, { rng, fill: '#EFE7D6', filter: FLAT }) + L(ink(all, { rng, size: 2 }));
+  const r = rectD(x0, y, X(rent) - x0, 70);
+  b += cut(r, { rng, fill: P.tomato, filter: FLAT, shadow: false }) + L(ink(r, { rng, size: 2 }));
+  b += label((x0 + X(afford)) / 2, y + 46, `rent $${fmt(rent)}`, { color: '#FFFFFF', weight: 800 });
+  b += L(dashed(X(afford), y - 30, X(afford), y + 110, rng, { color: P.civicDeep, size: 2.6 }));
+  b += label(X(afford) + 10, y - 16, `30% of income: $${fmt(afford)}`, { anchor: 'start', color: P.civicDeep, weight: 800 });
+  b += label(x0, 60, `income: $${fmt(monthly)} a month`, { anchor: 'start', weight: 700 });
+  b += label(x0 + w, y + 110, `$${fmt(monthly)}`, { anchor: 'end', color: MUTED, weight: 500 });
+  b += label(x0, y + 110, '$0', { anchor: 'start', color: MUTED, weight: 500 });
+  b += title(x0, 350, `${Math.round((rent / monthly) * 100)}% of income: cost-burdened`, { anchor: 'start', size: 28, color: P.tomatoDeep });
+  b += note(700, 390, 'over the line by $250 a month', { anchor: 'end', color: P.tomatoDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -3823,6 +3944,10 @@ export const FIGURES = [
   ['fig-cluster', clusterSubdivision],
   ['fig-tdr', tdrFlow],
   ['fig-ugb', growthBoundary],
+  ['fig-far-shapes', farShapes],
+  ['fig-gross-net', grossNet],
+  ['fig-parking-land', parkingLand],
+  ['fig-cost-burden', costBurden],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

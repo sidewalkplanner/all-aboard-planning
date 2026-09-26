@@ -511,6 +511,22 @@
     "fig-ugb": {
       "w": 720,
       "h": 480
+    },
+    "fig-far-shapes": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-gross-net": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-parking-land": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-cost-burden": {
+      "w": 720,
+      "h": 400
     }
   },
   "hero": {

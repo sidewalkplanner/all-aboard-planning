@@ -31,6 +31,10 @@ FAR controls bulk without dictating shape: a FAR of 2.0 allows a two-story build
 - Footprint: 87,120 × 0.50 = 43,560 sq ft
 - Stories: 174,240 ÷ 43,560 = **4** (or simply 2.0 ÷ 0.50 = 4)
 
+:::figure fig-far-shapes | Three buildings on identical lots, drawn to scale, each with a FAR of 2.0. Two stories covering 100% of the lot; four stories covering 50%; eight stories covering 25%. A note says stories equal FAR divided by coverage.
+All three have exactly the same floor area; FAR fixes how much you can build, not what shape it takes.
+:::
+
 :::video Solving FAR problems step by step | about 4 min
 Works the two-acre, FAR 2.0 example on screen, including the shortcut of dividing FAR by lot coverage to get the number of stories.
 :::
@@ -57,6 +61,10 @@ Net density is always higher than gross density for the same project. Always che
 - Net area: 40 × (1 − 0.25) = 30 acres
 - Units: 30 × 6 = **180**
 - Gross density: 180 ÷ 40 = 4.5 units per gross acre
+
+:::figure fig-gross-net | The 40-acre example as a grid of 40 one-acre squares, with 10 shaded for streets and open space. The arithmetic beside it: 40 acres, minus 10 for streets and open space, equals 30 net acres; times 6 units per net acre equals 180 units. A note says gross density is 180 ÷ 40 = 4.5 per acre.
+The same 180 homes are 6 per net acre and 4.5 per gross acre, so always check which one the code means.
+:::
 
 :::video Gross versus net density | about 3 min
 Shows, with a site diagram, what gets subtracted to get net acreage, and why the same project can have very different gross and net densities.
@@ -89,6 +97,10 @@ Some codes set density as a minimum amount of land per dwelling unit.
 
 This is why parking minimums matter so much for land use. Many cities have reduced or eliminated them, especially near transit.
 
+:::figure fig-parking-land | The retail example drawn to scale: a one-story store of 60,000 square feet beside its parking lot of 240 spaces at 350 square feet each, or 84,000 square feet (1.93 acres). The parking rectangle is 1.4 times the size of the store. A note says the parking is bigger than the building.
+At 4 spaces per 1,000 square feet, a one-story store always needs more land for cars than for the store itself.
+:::
+
 :::checkpoint cp:math-parking-spaces
 
 ### Trip generation
@@ -113,6 +125,10 @@ The standard planning benchmark: a household is **cost-burdened** when it spends
 - Cost burden: 15,600 ÷ 42,000 ≈ **37%**, so the household is cost-burdened
 - Affordable at 30%: 42,000 × 0.30 ÷ 12 = **$1,050 a month**
 - Income as a share of AMI: 42,000 ÷ 84,000 = **50% of AMI**
+
+:::figure fig-cost-burden | A bar for the example household's $3,500 monthly income. Rent of $1,300 fills part of it, past a dashed line at 30% of income, $1,050. The result: 37% of income, cost-burdened, over the line by $250 a month.
+The dashed line is the whole test: anything past 30% of income is a cost burden, and past 50% is severe.
+:::
 
 :::checkpoint cp:math-affordable
 
