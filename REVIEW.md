@@ -132,13 +132,13 @@ These changes followed the first build (described below). They supersede anythin
 | `web/src/content/aicp/lessons/housing-and-community-development.md:47` | How the Low-Income Housing Tax Credit finances a building | about 3 min |
 | `web/src/content/aicp/lessons/implementation-math.md:34` | Solving FAR problems step by step | about 4 min |
 | `web/src/content/aicp/lessons/implementation-math.md:57` | Gross versus net density | about 3 min |
-| `web/src/content/aicp/lessons/land-use-law-foundations.md:29` | Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min |
+| `web/src/content/aicp/lessons/land-use-law-foundations.md:41` | Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min |
 | `web/src/content/aicp/lessons/planning-history.md:112` | American planning history on one timeline | about 4 min |
 | `web/src/content/aicp/lessons/public-engagement-design.md:47` | Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min |
 | `web/src/content/aicp/lessons/solving-ethics-questions.md:73` | Working an ethics scenario with the five-step method | about 5 min |
 | `web/src/content/aicp/lessons/statistics-for-planners.md:87` | Present value and benefit-cost ratios | about 3 min |
-| `web/src/content/aicp/lessons/takings-and-exactions.md:42` | Penn Central's three factors, applied | about 3 min |
-| `web/src/content/aicp/lessons/takings-and-exactions.md:74` | Nollan and Dolan: the two-part test for exactions | about 4 min |
+| `web/src/content/aicp/lessons/takings-and-exactions.md:50` | Penn Central's three factors, applied | about 3 min |
+| `web/src/content/aicp/lessons/takings-and-exactions.md:96` | Nollan and Dolan: the two-part test for exactions | about 4 min |
 | `web/src/content/aicp/lessons/transportation-planning.md:51` | The four-step travel demand model | about 4 min |
 | `web/src/content/aicp/lessons/zoning-relief-and-nonconformities.md:30` | Area versus use variances: the hardship test in practice | about 3 min |
 
@@ -238,7 +238,7 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:44` | federal environmental justice executive orders have been revoked or amended since 2025; confirm the current status of EO 12898 before relying on it. |
 | `web/src/content/aicp/lessons/equitable-and-accessible-engagement.md:61` | confirm the 2024 DOJ Title II web accessibility rule's standard (WCAG 2.1 AA) and its current compliance dates. |
 | `web/src/content/aicp/lessons/federal-policy-and-planning.md:24` | confirm the "workable program" requirement is correctly attributed to the Housing Act of 1954. |
-| `web/src/content/aicp/lessons/federal-policy-and-planning.md:31` | confirm the 1962 Act as the origin of the 3C planning requirement. |
+| `web/src/content/aicp/lessons/federal-policy-and-planning.md:35` | confirm the 1962 Act as the origin of the 3C planning requirement. |
 | `web/src/content/aicp/lessons/goals-objectives-policies.md:67` | "targeted universalism" is commonly attributed to john a. powell; confirm before attributing. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:22` | confirm the SmartCode transect zone numbering (T1–T6) and names if you want to teach them precisely. |
 | `web/src/content/aicp/lessons/growth-management-and-innovative-tools.md:34` | performance zoning is often associated with Lane Kendig's work in Bucks County, Pennsylvania, in the 1970s; confirm before attributing. |
@@ -256,7 +256,7 @@ There are 94 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:39` | some states (for example, California and Arizona) require water supply assessments or assured supply for large developments; confirm before naming them. |
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:52` | MS4 = municipal separate storm sewer system permits under the NPDES program; confirm terminology before expanding. |
 | `web/src/content/aicp/lessons/infrastructure-energy-and-water-planning.md:62` | confirm the general statement that investor-owned utilities are regulated by state public utility commissions. |
-| `web/src/content/aicp/lessons/land-use-law-foundations.md:67` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
+| `web/src/content/aicp/lessons/land-use-law-foundations.md:79` | confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). |
 | `web/src/content/aicp/lessons/leadership-in-planning.md:22` | adaptive leadership is usually attributed to Ronald Heifetz; confirm before attributing. |
 | `web/src/content/aicp/lessons/mentoring-and-professional-development.md:74` | confirm the current CM total, reporting period, and each required topic minimum (historically 1.5 ethics, 1.5 law, 1 equity, 1 sustainability and resilience). |
 | `web/src/content/aicp/lessons/mentoring-and-professional-development.md:75` | confirm which advanced specialty certifications AICP currently offers. |

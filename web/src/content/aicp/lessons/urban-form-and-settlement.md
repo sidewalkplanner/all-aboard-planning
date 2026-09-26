@@ -15,10 +15,14 @@ Early twentieth-century sociologists and economists tried to explain where diffe
 | Model | Associated with | Picture |
 |---|---|---|
 | **Concentric zone** (1920s) | Ernest Burgess (Chicago School) | Rings around the central business district: CBD, a "zone in transition," working-class housing, middle-class housing, and an outer commuter zone. Groups move outward as they prosper. |
-| **Sector** (1939) | Homer Hoyt | Wedges radiating from the center along transportation corridors. High-rent areas extend outward along particular sectors, such as a scenic lakefront or a main rail line. |
+| **Sector** (1939) | Homer Hoyt | Wedges radiating from the center along transportation corridors. High-rent areas extend outward along particular sectors, such as a scenic lakefront or a main rail line, while industry and lower-rent housing follow other wedges. |
 | **Multiple nuclei** (1945) | Chauncy Harris and Edward Ullman | Several centers (a downtown, an industrial district, a university, an outlying business center), each drawing related uses around it. |
 
 The multiple nuclei model fits modern metropolitan regions best, with their many job and retail centers.
+
+:::figure fig-urban-models | Three city diagrams with numbered keys. Concentric zones (Burgess): five rings, from the center out: 1 CBD, 2 zone in transition, 3 working-class homes, 4 middle-class homes, 5 commuter zone. Sectors (Hoyt): wedges around 1 the CBD, with 5 high-rent homes along one corridor, 4 middle-rent homes beside it, and 2 industry along a rail line flanked by 3 lower-rent homes. Multiple nuclei (Harris and Ullman): separate centers scattered through the city, 1 the CBD, 2 an industrial district, 3 a university, and 4 an outlying business center, with homes filling the rest.
+Rings, wedges, and several centers: that visual difference is usually enough to answer the exam's "which model" question.
+:::
 
 :::checkpoint cp:form-nuclei
 
@@ -32,6 +36,10 @@ The multiple nuclei model fits modern metropolitan regions best, with their many
 
 Central place ideas still inform retail market analysis and regional service planning.
 
+:::figure fig-central-place | A plain covered in three sizes of hexagonal market areas. Many small villages, each with a small hexagon, offer everyday goods such as a corner store. Fewer towns, one in three places, each have a larger hexagon whose corners fall on six surrounding villages. One city, marked with a star, has the largest hexagon, with its corners on six towns, and offers specialized goods such as a hospital. A note says: bigger threshold, longer range.
+Each level up needs a bigger threshold and draws people from farther away, so larger places are fewer and farther apart.
+:::
+
 :::checkpoint cp:form-threshold
 
 ### Suburbanization and decentralization
@@ -44,6 +52,10 @@ American cities spread outward in waves:
 
 Decentralization moved jobs and tax base away from central cities, contributing to disinvestment, fiscal strain, and **spatial mismatch**, a gap between where low-income workers live and where jobs are.
 
+:::figure fig-suburban-waves | A map of a metro area. Downtown sits in the middle. Streetcar suburbs line three rail lines that run out from downtown. Car suburbs, drawn as loops and cul-de-sacs, fill the spaces between the lines. A freeway ring circles the city, and a cluster of office towers, an edge city, stands where a radial freeway crosses the ring.
+Each wave followed the transportation of its day: rails made fingers of growth, and cars and freeways filled the gaps and pulled offices out to the interchanges.
+:::
+
 ### How segregation was built
 
 American residential segregation didn't simply happen; public policy and private practice created it.
@@ -55,6 +67,10 @@ American residential segregation didn't simply happen; public policy and private
 - **Exclusionary zoning**, such as large minimum lot sizes, bans on apartments, and high minimum house sizes, kept lower-income households out of many suburbs.
 
 The **Fair Housing Act** of 1968 prohibited discrimination in housing transactions. Planners today use HOLC maps, covenant research, and segregation measures such as the index of dissimilarity (see [Population projections and economic analysis](/aicp/lessons/demographic-and-economic-analysis)) to understand present-day disparities in health, wealth, and environmental burden.
+
+:::figure fig-segregation-timeline | A timeline from 1910 to 1975. 1917, Buchanan v. Warley: racial zoning struck down, and segregation shifts to covenants. The 1930s: HOLC maps, as redlining starves areas of credit. 1948, Shelley v. Kraemer: courts can't enforce racial covenants, and segregation moves on to urban renewal, highways, and exclusionary zoning. 1968: the Fair Housing Act prohibits housing discrimination.
+Each ruling closed one tool, and segregation moved to the next, which is why the pattern outlasted every single decision.
+:::
 
 :::checkpoint cp:form-shelley
 
@@ -69,6 +85,10 @@ In ***The Image of the City*** (1960), **Kevin Lynch** studied how people form m
 - **Landmarks**: external reference points (a tower, a distinctive building, a mountain).
 
 A city with strong, clear elements has high **imageability**, meaning it's easy to understand and navigate. Lynch's elements are a practical vocabulary for urban design analysis (see [Urban design and historic preservation](/aicp/lessons/urban-design-and-historic-preservation)).
+
+:::figure fig-lynch | A small city map with Lynch's five elements labeled. District: a hatched area with its own character, such as a warehouse district. Landmark: a tall tower seen from far away, like towers or peaks. Node: a square where two main streets cross, like squares or stations. Path: a street with a transit line along it. Edge: a river along one side of the city, like rivers or freeways.
+Paths you move along, edges you don't cross easily, districts you're inside, nodes you enter, and landmarks you see from outside.
+:::
 
 :::checkpoint cp:form-lynch-edge
 

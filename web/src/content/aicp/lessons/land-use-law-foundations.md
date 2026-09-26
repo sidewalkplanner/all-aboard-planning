@@ -18,6 +18,10 @@
 - **Home rule** states give cities (sometimes counties) broad authority over local affairs without a specific grant, subject to state law.
 - **Preemption**: state or federal law can override local rules. Examples include federal limits on regulating telecommunications towers, and federal fair housing and disability laws.
 
+:::figure fig-power-flow | The state, drawn as a capitol, holds the police power. Enabling acts pass authority to cities. A thin arrow runs to a city under Dillon's Rule: only what's granted, implied, or essential. A thick arrow runs to a city under home rule: broad power over local affairs. A note says: no grant, no power; cities have none of their own.
+Either way the power starts with the state. The difference is how much a city can do without pointing to a specific grant.
+:::
+
 :::checkpoint cp:law-police-power
 
 ### The foundation case: *Euclid*
@@ -29,6 +33,10 @@ In ***Village of Euclid v. Ambler Realty Co.*** **(1926)**, the U.S. Supreme Cou
 ### Facial versus as-applied challenges: *Nectow*
 
 *Euclid* was a **facial** challenge to the ordinance as a whole. Two years later, in ***Nectow v. City of Cambridge*** **(1928)**, the Court struck down a zoning classification **as applied** to one particular parcel. The residential zoning there didn't promote the public welfare in light of the parcel's surroundings. The lesson: an ordinance that is valid overall can still be unconstitutional as applied to a specific property.
+
+:::figure fig-facial-as-applied | The same zoning map of homes, shops, and industry, twice. Euclid, 1926, a facial challenge to the whole ordinance: the map is stamped valid. Nectow, 1928, an as-applied challenge to one parcel: a single residential parcel with industry above and beside it is outlined and stamped invalid here. A note says: homes zoned amid industry.
+Winning Euclid didn't settle every parcel: a sound ordinance can still fail where its map makes no sense on the ground.
+:::
 
 :::video Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min
 Contrasts the facial challenge in *Euclid* with the as-applied challenge in *Nectow*, and explains what each means for defending a zoning decision today.
@@ -58,6 +66,10 @@ Key cases:
 - ***City of Cleburne v. Cleburne Living Center*** **(1985)** held that requiring a special use permit for a group home for people with intellectual disabilities, when similar uses didn't need one, violated equal protection *even under rational basis review*. The requirement rested on irrational prejudice.
 - ***Village of Willowbrook v. Olech*** **(2000)** recognized a **"class of one"** equal protection claim: a single property owner can sue if intentionally treated differently from others similarly situated, with no rational basis.
 
+:::figure fig-household-cases | Two houses. Belle Terre, 1974, a cap on unrelated housemates: five unrelated young adults outside a house, stamped upheld, because under rational basis review quiet family neighborhoods are a legitimate goal. Moore, 1977, a narrow definition of family: a grandmother and two grandsons outside a house, stamped struck down, because family life gets more protection.
+The line is who the rule reaches: a city may limit unrelated housemates, but not decide which relatives count as family.
+:::
+
 :::checkpoint cp:law-cleburne
 
 ### The First Amendment
@@ -67,6 +79,10 @@ Land use rules that touch speech, assembly, or religion get closer scrutiny.
 - **Signs.** In ***Reed v. Town of Gilbert*** **(2015)**, the Court held that a sign code that treated signs differently based on their communicative content (for example, stricter rules for directional signs to events than for political or ideological signs) was **content-based** and subject to **strict scrutiny**. Sign codes should regulate size, placement, lighting, and duration without depending on what the sign says. In *City of Austin v. Reagan National Advertising* (2022), the Court held that an on-premises/off-premises distinction isn't automatically content-based. <!-- VERIFY: confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). -->
 - **Adult businesses** may be regulated through reasonable time, place, and manner rules aimed at their **secondary effects** (such as crime and blight) rather than at the content of their speech, as long as reasonable alternative locations remain (*City of Renton v. Playtime Theatres*, 1986).
 - **Religious uses.** The federal **Religious Land Use and Institutionalized Persons Act (RLUIPA)** (2000) bars land use regulations that impose a *substantial burden* on religious exercise unless they're the least restrictive means of serving a compelling interest. It also bars treating religious assemblies on less than equal terms with nonreligious ones.
+
+:::figure fig-sign-content | Two rows of three signs reading IDEAS, VOTE, and EVENT. Content-based, where the rule depends on the message: each sign may be a different size, the event sign smallest; this gets strict scrutiny and usually falls. Content-neutral, where size, place, and time are the same for all: all three signs are the same size under one dashed size limit; this is the safe way to write a code.
+If you have to read a sign to know which rule applies, the rule is content-based.
+:::
 
 :::checkpoint cp:law-rluipa
 

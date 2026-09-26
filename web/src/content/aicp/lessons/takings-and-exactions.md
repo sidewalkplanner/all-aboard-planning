@@ -43,6 +43,10 @@ Most regulatory takings claims are decided under a balancing test:
 
   The Court looked at the **parcel as a whole**, not just the airspace, and noted the owner could still earn a reasonable return, and could transfer development rights to nearby sites.
 
+:::figure fig-parcel-whole | A side view of a train terminal, with a dashed outline above it for the tower the landmark law blocked. Measured against the airspace alone, all of it is lost. Measured against the whole parcel, terminal and airspace together, the property still earns a reasonable return. A note says the Court used the whole parcel.
+What you divide by decides the answer: the same loss looks total against the airspace and modest against the whole property.
+:::
+
 :::video Penn Central's three factors, applied | about 3 min
 Takes one landmark-designation dispute through economic impact, investment-backed expectations, and the character of the government action, then shows why the whole parcel is the unit of analysis.
 :::
@@ -56,6 +60,10 @@ In a few situations, a taking is automatic, with no balancing:
 - ***Loretto v. Teleprompter Manhattan CATV Corp.*** **(1982)**: a **permanent physical occupation** authorized by government is a taking, no matter how small. The case involved cable boxes attached to an apartment building.
 - ***Lucas v. South Carolina Coastal Council*** **(1992)**: a regulation that deprives land of **all economically beneficial use** is a taking unless the use was already prohibited by "background principles" of the state's property and nuisance law. Lucas had bought beachfront lots, and a later law barred building on them.
 - ***Cedar Point Nursery v. Hassid*** **(2021)**: a regulation that grants third parties a right to **physically access** private property (here, union organizers entering farms for limited hours) is a per se physical taking, even though the access isn't continuous.
+
+:::figure fig-takings-route | A flowchart. First question: does government occupy the property, or give others access? Yes leads to a per se taking (Loretto, Cedar Point). No leads to the second question: does it wipe out all economic use? Yes leads to a per se taking (Lucas, unless nuisance law already barred the use). No leads to Penn Central, which weighs 1 economic impact, 2 investment-backed expectations, and 3 the character of the action. A note says most claims end up there.
+Ask the per se questions first, because they end the analysis; only if both answers are no do you start balancing.
+:::
 
 :::checkpoint cp:takings-loretto
 
@@ -80,6 +88,10 @@ An **exaction** is a condition on a development approval that requires the devel
 - ***Sheetz v. County of El Dorado*** **(2024)** held that *legislatively* adopted fees, such as fees set by a general schedule, aren't exempt from the *Nollan*/*Dolan* tests simply because a legislature set them. The Court left open how the tests apply to fees assessed on a class of properties.
 
 Many state courts had long used a similar **rational nexus** test for impact fees. See [Capital planning and public finance](/aicp/lessons/capital-planning-and-finance).
+
+:::figure fig-exaction-gates | An exaction travels a line with two stops. Stop 1, essential nexus (Nollan, 1987): is the condition tied to the project's impact? If no, it fails. Stop 2, rough proportionality (Dolan, 1994): is it sized to that impact? If no, it fails. If yes at both, the condition stands. A card below adds: Koontz, 2013, covers denials and money demands too; Sheetz, 2024, covers fees set by a legislature too.
+Order matters: a condition with no connection to the impact fails at the first stop, however small it is.
+:::
 
 :::video Nollan and Dolan: the two-part test for exactions | about 4 min
 Walks a single dedication request through the essential nexus question and then rough proportionality, using a simple flowchart, and shows how *Koontz* (money demands and denials) and *Sheetz* (legislative fees) extend the test.

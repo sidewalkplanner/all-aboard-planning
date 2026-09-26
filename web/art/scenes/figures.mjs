@@ -1747,6 +1747,616 @@ function plannersTriangle() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 2.3
+
+// Burgess, Hoyt, and Harris-Ullman: three pictures of the same city.
+function urbanModels() {
+  const rng = makeRng(2301);
+  const PW = 228;
+  const PH = 438;
+  const R = 96;
+  const cx = PW / 2;
+  const cy = 164;
+  const key = (items, y0) => items.map((t, i) => label(14, y0 + i * 27, `${i + 1}  ${t}`, { size: 19, anchor: 'start', weight: 500 })).join('');
+  const num = (x, y, n, color = P.ink) => label(x, y + 7, String(n), { size: 20, weight: 800, color });
+  const head = (t, who) => title(PW / 2, 34, t, { size: 23 }) + label(PW / 2, 60, who, { size: 19, color: MUTED, weight: 500 });
+
+  // Concentric zones.
+  let conc = panel(0, 0, PW, PH, T.cream, rng) + head('Concentric zones', 'Burgess');
+  const ringFill = [P.sage, P.sky, P.butter, P.blush, P.tomato];
+  [R, R * 0.8, R * 0.6, R * 0.4, R * 0.2].forEach((r, i) => {
+    const d = ellipseD(cx, cy, r, r);
+    conc += cut(d, { rng, fill: ringFill[i], shadow: i === 0, jitter: 0.5, filter: FLAT }) + L(ink(d, { rng, size: 1.8 }));
+  });
+  for (let i = 0; i < 5; i++) conc += num(cx, cy - R * (0.1 + i * 0.2) + (i === 0 ? R * 0.1 : 0), i + 1, i === 0 ? '#FFFFFF' : P.ink);
+  conc += key(['CBD', 'zone in transition', 'working-class homes', 'middle-class homes', 'commuter zone'], 300);
+
+  // Sectors: wedges out from the center, high rent along one corridor.
+  let sect = panel(0, 0, PW, PH, T.cream, rng) + head('Sectors', 'Hoyt');
+  // [start angle, end angle, class] in degrees, clockwise from east.
+  const wedges = [[-120, -60, 5], [-60, -25, 4], [-25, 20, 3], [20, 75, 2], [75, 130, 3], [130, 180, 4], [180, 240, 4]];
+  const fillOf = { 2: P.lavender, 3: P.butter, 4: P.sky, 5: P.leaf };
+  const pt = (a, r) => [cx + Math.cos((a * Math.PI) / 180) * r, cy + Math.sin((a * Math.PI) / 180) * r];
+  for (const [a0, a1, k] of wedges) {
+    const pts = [[cx, cy]];
+    for (let a = a0; a <= a1 + 0.1; a += 5) pts.push(pt(a, R));
+    const d = polyD(pts);
+    sect += cut(d, { rng, fill: fillOf[k], shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: 1.6 }));
+    const mid = k === 5 ? -72 : k === 2 ? 58 : (a0 + a1) / 2;
+    sect += num(...pt(mid, R * 0.66), k);
+  }
+  const hub = ellipseD(cx, cy, R * 0.2, R * 0.2);
+  sect += cut(hub, { rng, fill: P.tomato, filter: FLAT }) + L(ink(hub, { rng, size: 1.8 })) + num(cx, cy, 1, '#FFFFFF');
+  // The corridor the high-rent wedge follows, and a rail line through industry.
+  sect += L(inkLine([pt(-100, R * 0.22), pt(-100, R - 4)], { rng, size: 3, color: P.leafDeep, overshoot: 0 }));
+  sect += L(inkLine([pt(32, R * 0.22), pt(32, R - 4)], { rng, size: 2.4, overshoot: 0 }));
+  sect += key(['CBD', 'industry', 'lower-rent homes', 'middle-rent homes', 'high-rent homes'], 300);
+
+  // Multiple nuclei.
+  let nuc = panel(0, 0, PW, PH, T.cream, rng) + head('Multiple nuclei', 'Harris and Ullman');
+  const base = ellipseD(cx, cy, R, R);
+  nuc += cut(base, { rng, fill: P.butter, jitter: 0.5, filter: FLAT }) + L(ink(base, { rng, size: 1.8 }));
+  const nuclei = [[cx - 18, cy - 20, 24, 20, P.tomato, 1], [cx + 50, cy + 30, 30, 22, P.lavender, 2], [cx - 46, cy + 50, 22, 18, P.sky, 3], [cx + 34, cy - 58, 20, 16, P.leaf, 4]];
+  nuclei.forEach(([x, y, rx, ry, fill, n], i) => {
+    const d = blobD(x, y, rx, ry, makeRng(40 + i), 6, 0.12);
+    nuc += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + num(x, y, n, n === 1 ? '#FFFFFF' : P.ink);
+  });
+  nuc += key(['CBD', 'industrial district', 'university', 'outlying business'], 300);
+  nuc += `<rect x="14" y="${300 + 4 * 27 - 16}" width="18" height="18" fill="${P.butter}" stroke="${P.ink}" stroke-width="1.4"/>`;
+  nuc += label(42, 300 + 4 * 27, 'homes fill the rest', { size: 19, anchor: 'start', weight: 500 });
+
+  const panels = [conc, sect, nuc];
+  return {
+    W: 720, H: 466, b: panels.map((q, i) => at(8 + i * 238, 14, q)).join(''),
+    narrow: { W: 252, H: 1368, b: panels.map((q, i) => at(12, 12 + i * 452, q)).join('') },
+  };
+}
+
+// Christaller's central places: three levels of hexagonal market areas,
+// each town's hexagon passing through its six neighboring villages.
+function centralPlace() {
+  const rng = makeRng(2302);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  const d = 46; // village spacing
+  const ox = 230;
+  const oy = 236;
+  const P0 = (i, j) => [ox + d * (i + j / 2), oy + (d * j * Math.sqrt(3)) / 2];
+  const hex = ([x, y], r, rot) => polyD([0, 1, 2, 3, 4, 5].map((k) => {
+    const a = ((60 * k + rot) * Math.PI) / 180;
+    return [x + Math.cos(a) * r, y + Math.sin(a) * r];
+  }));
+  const clip = `<clipPath id="cp-map"><path d="${roundRectD(24, 24, 412, 422, 18)}"/></clipPath>`;
+  let small = '';
+  let mid = '';
+  let dots = '';
+  for (let j = -7; j <= 7; j++) {
+    for (let i = -9; i <= 9; i++) {
+      const p = P0(i, j);
+      if (p[0] < 0 || p[0] > 460 || p[1] < 0 || p[1] > 470) continue;
+      // Villages: every lattice point. Towns: one in three (K = 3). City: one in nine.
+      const town = ((i - j) % 3 + 3) % 3 === 0;
+      const city = town && i === 0 && j === 0;
+      small += `<path d="${hex(p, d / Math.sqrt(3), 30)}" fill="none" stroke="${P.leafDeep}" stroke-width="1.2" opacity="0.55"/>`;
+      if (town) mid += `<path d="${hex(p, d, 0)}" fill="none" stroke="${P.civicDeep}" stroke-width="2.4"/>`;
+      dots += city ? '' : town
+        ? `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="8" fill="${P.civic}" stroke="${P.ink}" stroke-width="1.8"/>`
+        : `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="4.5" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.4"/>`;
+    }
+  }
+  const cityHex = `<path d="${hex([ox, oy], d * Math.sqrt(3), 30)}" fill="${T.blush}" stroke="${P.tomatoDeep}" stroke-width="3.2"/>`;
+  b += panel(24, 24, 412, 422, T.cream, rng, 18);
+  b += `<defs>${clip}</defs><g clip-path="url(#cp-map)">${cityHex}${small}${mid}${dots}</g>`;
+  b += star(ox, oy, 17, { fill: P.tomato, seed: 8, size: 2.4 });
+  const lx = 466;
+  const item = (y, mark, name, what, color) => mark + label(lx + 34, y, name, { anchor: 'start', color }) + label(lx + 34, y + 32, what, { anchor: 'start', weight: 500, color: MUTED });
+  b += item(70, star(lx + 10, 60, 14, { fill: P.tomato, seed: 9 }), 'city', 'a hospital', P.tomatoDeep);
+  b += item(170, `<circle cx="${lx + 10}" cy="160" r="9" fill="${P.civic}" stroke="${P.ink}" stroke-width="1.8"/>`, 'town', 'mid-level goods', P.civicDeep);
+  b += item(270, `<circle cx="${lx + 10}" cy="260" r="5" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.4"/>`, 'village', 'a corner store', P.leafDeep);
+  b += note(lx, 390, 'bigger threshold,', { anchor: 'start' });
+  b += note(lx, 426, 'longer range', { anchor: 'start' });
+  return { W, H, b };
+}
+
+// Suburbanization in waves: streetcar fingers, then cars fill between,
+// then an edge city at a freeway interchange.
+function suburbanWaves() {
+  const rng = makeRng(2303);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const c = [220, 240];
+  const pol = (a, r) => [c[0] + Math.cos(a) * r, c[1] + Math.sin(a) * r];
+  b += panel(20, 20, 400, 440, T.cream, rng, 18);
+  // Automobile suburbs: loops and cul-de-sacs filling the gaps.
+  const autoSpots = [[0.75, 150], [2.6, 150], [4.2, 150], [0.15, 168], [1.45, 170], [3.1, 158], [4.6, 176]];
+  for (const [a, r] of autoSpots) {
+    const [x, y] = pol(a, r);
+    const blob = blobD(x, y, 34, 26, makeRng(Math.round(a * 10)), 6, 0.12);
+    b += cut(blob, { rng, fill: T.butter, shadow: false, jitter: 0.5, filter: FLAT });
+    b += L(ink(`M${x - 22} ${y}h30M${x + 8} ${y}v-14M${x - 8} ${y}v12`, { rng, size: 1.6, opacity: 0.7 }));
+    b += `<circle cx="${x + 8}" cy="${y - 16}" r="4" fill="${P.kraft}"/><circle cx="${x - 8}" cy="${y + 14}" r="4" fill="${P.kraft}"/>`;
+  }
+  // Freeway ring and one radial, with an interchange.
+  const ring = ellipseD(c[0], c[1], 118, 118);
+  b += `<path d="${ring}" fill="none" stroke="#9C95A8" stroke-width="12"/>`;
+  const fwA = pol(-0.6, 30);
+  const fwB = pol(-0.6, 230);
+  b += `<path d="M${fwA[0]} ${fwA[1]}L${fwB[0]} ${fwB[1]}" stroke="#9C95A8" stroke-width="12"/>`;
+  // Streetcar lines with development strung along them.
+  const lines = [2.0, 3.6, 5.0];
+  for (const a of lines) {
+    const p0 = pol(a, 30);
+    const p1 = pol(a, 200);
+    for (let r = 44; r < 190; r += 20) {
+      for (const side of [-1, 1]) {
+        const [x, y] = pol(a + side * (14 / r), r);
+        b += `<rect x="${(x - 6).toFixed(1)}" y="${(y - 6).toFixed(1)}" width="12" height="12" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.2"/>`;
+      }
+    }
+    b += L(inkLine([p0, p1], { rng, size: 2.6, overshoot: 0 }));
+    const len = 170;
+    for (let t = 6; t < len; t += 10) {
+      const [x, y] = pol(a, 30 + t);
+      const nx = -Math.sin(a) * 5;
+      const ny = Math.cos(a) * 5;
+      b += L(inkLine([[x - nx, y - ny], [x + nx, y + ny]], { rng, size: 1.2, overshoot: 0 }));
+    }
+  }
+  // Edge city at the interchange.
+  const [ex, ey] = pol(-0.6, 118);
+  b += block(ex + 6, ey + 4, 26, 62, { seed: 3, wall: P.lavender, cols: 2, rows: 5 });
+  b += block(ex - 26, ey + 10, 28, 44, { seed: 4, wall: P.sky, cols: 2, rows: 3 });
+  b += block(ex + 34, ey + 12, 24, 36, { seed: 5, wall: P.butter, cols: 2, rows: 3 });
+  // Downtown.
+  b += block(c[0] - 26, c[1] + 18, 22, 60, { seed: 6, wall: P.civic, cols: 2, rows: 5 });
+  b += block(c[0] - 2, c[1] + 18, 26, 78, { seed: 7, wall: P.tomato, cols: 2, rows: 6 });
+  b += block(c[0] + 26, c[1] + 18, 20, 46, { seed: 8, wall: P.lavender, cols: 2, rows: 4 });
+  const lx = 448;
+  const call = (y, lines2, color, tx, ty, bend = 10) => lines2.map((t, k) => label(lx, y + k * 32, t, { anchor: 'start', color })).join('') + L(arrow(lx - 8, y - 8, tx, ty, rng, { color, size: 2.2, head: 10, bend }));
+  b += call(60, ['edge city at an', 'interchange'], P.ink, ex + 60, ey - 30, 10);
+  b += call(196, ['downtown'], P.ink, c[0] + 50, c[1] - 20, -8);
+  b += call(290, ['streetcar suburbs', 'along the lines'], P.tomatoDeep, pol(2.0, 96)[0] + 20, pol(2.0, 96)[1] + 4, -10);
+  b += call(398, ['car suburbs fill', 'in between'], P.kraftDeep, pol(0.75, 150)[0] + 36, pol(0.75, 150)[1] + 6, 10);
+  return { W, H, b };
+}
+
+// Segregation's tools and the rulings that closed them, on a to-scale
+// vertical time line.
+function segregationTimeline() {
+  const rng = makeRng(2304);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const ax = 112;
+  const Y = (yr) => 40 + ((yr - 1910) / 65) * 430;
+  b += L(inkLine([[ax, Y(1910) - 10], [ax, Y(1975) + 10]], { rng, size: 3, overshoot: 0 }));
+  for (const yr of [1910, 1930, 1950, 1970]) {
+    b += L(inkLine([[ax - 8, Y(yr)], [ax, Y(yr)]], { rng, size: 2, overshoot: 0 }));
+    b += label(ax - 16, Y(yr) + 10, String(yr), { anchor: 'end', color: MUTED, weight: 500 });
+  }
+  // The 1930s HOLC maps as a span.
+  const span = roundRectD(ax - 9, Y(1930), 18, Y(1940) - Y(1930), 8);
+  b += cut(span, { rng, fill: P.tomato, filter: FLAT }) + L(ink(span, { rng, size: 2 }));
+  const ev = (yr, color, name, what, italic) => {
+    const y = Y(yr);
+    let s = `<circle cx="${ax}" cy="${y}" r="10" fill="${color}" stroke="${P.ink}" stroke-width="2"/>`;
+    s += L(inkLine([[ax + 14, y], [ax + 40, y]], { rng, size: 1.8, overshoot: 0 }));
+    s += serif(ax + 52, y + 2, name, { size: 28, italic, anchor: 'start' });
+    s += label(ax + 52, y + 36, what, { anchor: 'start', weight: 500, color: MUTED });
+    return s;
+  };
+  b += ev(1917, P.butter, 'Buchanan v. Warley, 1917', 'racial zoning struck down', true);
+  b += ev(1935, P.tomato, 'HOLC maps, 1930s', 'redlining starves areas of credit', false);
+  b += ev(1948, P.butter, 'Shelley v. Kraemer, 1948', 'courts can’t enforce racial covenants', true);
+  b += ev(1968, P.leaf, 'Fair Housing Act, 1968', 'housing discrimination prohibited', false);
+  b += note(ax + 52, Y(1926) + 14, 'segregation shifts to covenants', { color: P.tomatoDeep, anchor: 'start' });
+  b += note(ax + 52, Y(1957) + 10, 'and on to renewal, highways, zoning', { color: P.tomatoDeep, anchor: 'start' });
+  return { W, H, b };
+}
+
+// Kevin Lynch's five elements on one small city map.
+function lynchElements() {
+  const rng = makeRng(2305);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  b += panel(20, 20, 380, 480, T.cream, rng, 18);
+  // District: a textured warehouse district in the upper left.
+  const dist = polyD([[34, 34], [220, 34], [200, 200], [34, 214]]);
+  b += cut(dist, { rng, fill: T.lav, shadow: false, jitter: 0.6, filter: FLAT });
+  b += hatch(dist, { rng, angle: 40, gap: 12, opacity: 0.3, size: 1.2 });
+  // Edge: a river along the bottom right.
+  const river = `M180 506C220 440 300 420 400 392L400 470C320 488 280 500 250 506Z`;
+  b += cut(river, { rng, fill: P.sky, shadow: false, jitter: 0.6 }) + L(ink('M180 506C220 440 300 420 400 392', { rng, size: 2.2, color: P.civicDeep }));
+  // Paths: two main streets and a transit line.
+  const streets = ['M34 260H400', 'M250 34V440'];
+  for (const d of streets) b += `<path d="${d}" stroke="#FFFDF8" stroke-width="16" stroke-linecap="round"/>`;
+  b += L(streets.map((d) => ink(d, { rng, size: 1.4, opacity: 0.6 })).join(''));
+  b += `<path d="M34 262H400" stroke="${P.tomato}" stroke-width="4" stroke-dasharray="14 8"/>`;
+  // Node: a square at the crossing.
+  const sq = rectD(226, 236, 48, 48);
+  b += cut(sq, { rng, fill: P.butter, filter: FLAT }) + L(ink(sq, { rng, size: 2.2 }));
+  // Landmark: a tower that shows from far away.
+  const tower = polyD([[322, 196], [322, 110], [334, 84], [346, 110], [346, 196]]);
+  b += cut(tower, { rng, fill: P.kraft }) + L(ink(tower, { rng, size: 2.2 }));
+  b += `<rect x="330" y="120" width="8" height="10" fill="${P.paper}"/>`;
+  for (const [x, y] of [[70, 330], [110, 380], [80, 430], [330, 300], [150, 310]]) {
+    const d = rectD(x, y, 26, 22);
+    b += cut(d, { rng, fill: P.paper, shadow: false, filter: FLAT }) + L(ink(d, { rng, size: 1.4, opacity: 0.7 }));
+  }
+  const lx = 432;
+  const call = (y, name, what, color, tx, ty, bend = 10) => label(lx, y, name, { anchor: 'start', color, weight: 800 })
+    + label(lx, y + 32, what, { anchor: 'start', weight: 500, color: MUTED })
+    + L(arrow(lx - 8, y - 8, tx, ty, rng, { color, size: 2.2, head: 10, bend }));
+  b += call(70, 'District', 'a distinct area', P.ink, 206, 66, 0);
+  b += call(160, 'Landmark', 'towers, peaks', P.kraftDeep, 352, 150, 8);
+  b += call(260, 'Node', 'squares, stations', P.butterDeep === undefined ? P.ink : P.ink, 280, 262, 8);
+  b += call(350, 'Path', 'streets, transit', P.tomatoDeep, 330, 268, -10);
+  b += call(440, 'Edge', 'rivers, freeways', P.civicDeep, 360, 412, 10);
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 2.4
+
+// A rubber stamp: an inked frame with a word, turned a little.
+function stamp(x, y, text, color, rng, { size = 22, rot = -8 } = {}) {
+  const w = text.length * size * 0.7 + 28;
+  const h = size + 22;
+  const d = roundRectD(x - w / 2, y - h / 2, w, h, 8);
+  return `<g transform="rotate(${rot} ${x} ${y})"><path d="${d}" fill="#FFFDF8" opacity="0.85"/>${L(ink(d, { rng, size: 3, color }))}${label(x, y + size * 0.36, text, { size, color, weight: 800 })}</g>`;
+}
+
+// Where local land use power comes from: the state's police power, passed
+// down by enabling acts, read narrowly (Dillon's Rule) or broadly (home rule).
+function powerFlow() {
+  const rng = makeRng(2401);
+  const W = 720;
+  const H = 470;
+  let b = '';
+  b += cityHall(34, 300, 150, 150, { seed: 12 });
+  b += title(109, 346, 'The state', { size: 30 });
+  b += label(109, 380, 'holds the', { color: MUTED, weight: 500 });
+  b += label(109, 412, 'police power', { color: MUTED, weight: 500 });
+  // Two cities, two widths of grant.
+  const narrowPipe = `M196 212C260 200 300 150 350 132`;
+  b += L(arrow(196, 212, 352, 130, rng, { size: 2.4, head: 12, bend: -18 }));
+  const wide = polyD([[196, 262], [300, 300], [300, 286], [352, 318], [300, 350], [300, 336], [196, 302]]);
+  b += cut(wide, { rng, fill: P.butter, filter: FLAT }) + L(ink(wide, { rng, size: 2 }));
+  void narrowPipe;
+  b += note(222, 70, 'enabling acts', { anchor: 'start', rotate: -3 });
+  b += L(arrow(250, 80, 268, 150, rng, { color: P.civicDeep, size: 2, head: 10, bend: 8 }));
+  b += block(360, 164, 60, 74, { seed: 14, wall: P.sky, cols: 2, rows: 3 });
+  b += block(360, 360, 60, 74, { seed: 15, wall: P.blush, cols: 2, rows: 3 });
+  const lx = 444;
+  b += title(lx, 104, 'Dillon’s Rule', { anchor: 'start', size: 30 });
+  b += label(lx, 140, 'only what’s granted,', { anchor: 'start' });
+  b += label(lx, 172, 'implied, or essential', { anchor: 'start' });
+  b += title(lx, 300, 'Home rule', { anchor: 'start', size: 30 });
+  b += label(lx, 336, 'broad power over', { anchor: 'start' });
+  b += label(lx, 368, 'local affairs', { anchor: 'start' });
+  b += note(360, 448, 'no grant, no power: cities have none of their own', { color: P.tomatoDeep, size: 35 });
+  return { W, H, b };
+}
+
+// Euclid (facial) versus Nectow (as applied), on the same zoning map.
+function facialAsApplied() {
+  const rng = makeRng(2402);
+  const PW = 338;
+  const PH = 412;
+  const zone = { R: P.butter, C: P.tomato, I: P.lavender };
+  const grid = ['RRRCC', 'RRCCI', 'RRIII', 'RRRII'];
+  const map = (hl) => {
+    let s = '';
+    grid.forEach((row, r) => [...row].forEach((z, c) => {
+      const d = rectD(34 + c * 54, 104 + r * 54, 52, 52);
+      s += cut(d, { rng, fill: zone[z], shadow: false, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: 1.4, opacity: 0.8 }));
+    }));
+    if (hl) {
+      const [c, r] = hl;
+      const d = rectD(34 + c * 54 - 3, 104 + r * 54 - 3, 58, 58);
+      s += L(ink(d, { rng, size: 4, color: P.tomatoDeep }));
+    }
+    return s;
+  };
+  const keyRow = (y) => [['R', 'homes'], ['C', 'shops'], ['I', 'industry']].map(([z, t], i) => `<rect x="${34 + i * 96}" y="${y - 16}" width="18" height="18" fill="${zone[z]}" stroke="${P.ink}" stroke-width="1.4"/>` + label(58 + i * 96, y, t, { size: 19, anchor: 'start', weight: 500 })).join('');
+  let euclid = panel(0, 0, PW, PH, T.cream, rng);
+  euclid += title(20, 40, 'Euclid, 1926', { size: 25, anchor: 'start', italic: true });
+  euclid += label(20, 72, 'facial: the whole ordinance', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  euclid += map(null) + stamp(169, 212, 'VALID', P.leafDeep, rng, { size: 30, rot: -10 });
+  euclid += keyRow(346);
+  let nectow = panel(0, 0, PW, PH, T.cream, rng);
+  nectow += title(20, 40, 'Nectow, 1928', { size: 25, anchor: 'start', italic: true });
+  nectow += label(20, 72, 'as applied: one parcel', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  nectow += map([2, 3]) + stamp(184, 352, 'INVALID HERE', P.tomatoDeep, rng, { size: 19, rot: -4 });
+  nectow += note(20, 396, 'homes zoned amid industry', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 440, b: at(14, 14, euclid) + at(368, 14, nectow),
+    narrow: { W: 366, H: 866, b: at(14, 14, euclid) + at(14, 440, nectow) },
+  };
+}
+
+// Belle Terre versus Moore: who a household limit may and may not reach.
+function householdCases() {
+  const rng = makeRng(2403);
+  const PW = 338;
+  const PH = 390;
+  const scene = (heading, sub, people, verdict, color, why, sx = 250) => {
+    let s = panel(0, 0, PW, PH, T.cream, rng);
+    s += title(20, 40, heading, { size: 25, anchor: 'start', italic: true });
+    s += label(20, 72, sub, { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+    s += house(94, 262, 150, 150, { seed: 17, wall: T.butter, roof: P.kraftDeep, chimney: true });
+    s += people;
+    s += stamp(sx, 132, verdict, color, rng, { size: 20, rot: 8 });
+    s += note(20, 334, why[0], { size: 24, anchor: 'start', color });
+    s += note(20, 366, why[1], { size: 24, anchor: 'start', color });
+    return s;
+  };
+  const mates = [[70, P.civic, P.ink], [120, P.leaf, P.kraftDeep], [170, P.lavender, P.ink], [220, P.tomato, P.kraftDeep], [270, P.sky, P.ink]]
+    .map(([x, coat, hair], i) => person(x, 292, 1.05, { coat, hair, seed: 60 + i, flip: i % 2 === 1 })).join('');
+  const family = person(120, 292, 1.15, { coat: P.lavender, hair: '#CFC8D8', seed: 70 })
+    + person(176, 292, 0.8, { coat: P.civic, seed: 71, flip: true }) + person(220, 292, 0.8, { coat: P.leaf, hair: P.kraftDeep, seed: 72, flip: true });
+  const belle = scene('Belle Terre, 1974', 'a cap on unrelated housemates', mates, 'UPHELD', P.leafDeep, ['rational basis: quiet family', 'neighborhoods are legitimate']);
+  const moore = scene('Moore, 1977', 'a narrow definition of family', family, 'STRUCK DOWN', P.tomatoDeep, ['a grandmother and two', 'grandsons: family life wins'], 226);
+  return {
+    W: 720, H: 418, b: at(14, 14, belle) + at(368, 14, moore),
+    narrow: { W: 366, H: 822, b: at(14, 14, belle) + at(14, 418, moore) },
+  };
+}
+
+// Reed v. Town of Gilbert: rules keyed to a sign's message versus rules that
+// treat every sign alike.
+function signContent() {
+  const rng = makeRng(2404);
+  const PW = 338;
+  const PH = 350;
+  const sign = (cx, base, w, h, text, fill) => {
+    let s = L(inkLine([[cx, base], [cx, base - h - 40]], { rng, size: 3, overshoot: 0 }));
+    const d = rectD(cx - w / 2, base - h - 60, w, h);
+    s += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    s += label(cx, base - 60 - h / 2 + 7, text, { size: 19, weight: 800 });
+    return s;
+  };
+  let based = panel(0, 0, PW, PH, T.cream, rng);
+  based += title(20, 40, 'Content-based', { size: 25, anchor: 'start' });
+  based += label(20, 72, 'the rule depends on the message', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  based += sign(70, 270, 110, 96, 'IDEAS', P.sky) + sign(186, 270, 96, 70, 'VOTE', P.butter) + sign(282, 270, 84, 38, 'EVENT', P.blush);
+  based += L(inkLine([[20, 270], [318, 270]], { rng, size: 2, overshoot: 0 }));
+  based += note(20, 322, 'strict scrutiny: usually falls', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let neutral = panel(0, 0, PW, PH, T.cream, rng);
+  neutral += title(20, 40, 'Content-neutral', { size: 25, anchor: 'start' });
+  neutral += label(20, 72, 'size, place, time: same for all', { size: 20, anchor: 'start', color: MUTED, weight: 500 });
+  neutral += L(dashed(18, 118, 322, 118, rng, { color: P.civicDeep, size: 1.8 }));
+  neutral += label(322, 110, 'size limit', { size: 19, anchor: 'end', color: P.civicDeep, weight: 500 });
+  neutral += sign(66, 270, 84, 66, 'IDEAS', P.sky) + sign(170, 270, 84, 66, 'VOTE', P.butter) + sign(274, 270, 84, 66, 'EVENT', P.blush);
+  neutral += L(inkLine([[20, 270], [318, 270]], { rng, size: 2, overshoot: 0 }));
+  neutral += note(20, 322, 'the safe way to write a code', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 378, b: at(14, 14, based) + at(368, 14, neutral),
+    narrow: { W: 366, H: 742, b: at(14, 14, based) + at(14, 378, neutral) },
+  };
+}
+
+// ============================================================ Lesson 2.5
+
+// Is a regulation a taking? Two per se questions, then Penn Central.
+function takingsRoute() {
+  const rng = makeRng(2501);
+  const W = 720;
+  const H = 560;
+  let b = '';
+  const box = (x, y, w, h, fill, lines, { head } = {}) => {
+    const d = roundRectD(x, y, w, h, 14);
+    let s = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2.2 }));
+    let ty = y + 40;
+    if (head) { s += title(x + 20, ty, head, { anchor: 'start', size: 30 }); ty += 36; }
+    lines.forEach((t, k) => { s += label(x + 20, ty + k * 32, t, { anchor: 'start', weight: head ? 500 : 600 }); });
+    return s;
+  };
+  b += box(20, 20, 400, 104, T.sky, ['Does government occupy it,', 'or give others access?']);
+  b += box(20, 196, 400, 104, T.sky, ['Does it wipe out all', 'economic use?']);
+  b += box(20, 372, 682, 170, T.sage, ['1 economic impact', '2 investment-backed expectations', '3 character of the action'], { head: 'Penn Central: weigh' });
+  b += box(476, 20, 226, 136, T.blush, ['Loretto,', 'Cedar Point'], { head: 'Per se taking' });
+  b += box(476, 196, 226, 136, T.blush, ['Lucas, unless', 'nuisance law'], { head: 'Per se taking' });
+  const yes = (y) => L(arrow(424, y, 470, y, rng, { size: 2.6, head: 11 })) + label(447, y - 12, 'yes', { size: 28, color: P.tomatoDeep });
+  const no = (y0, y1) => L(arrow(120, y0, 120, y1, rng, { size: 2.6, head: 11 })) + label(136, (y0 + y1) / 2 + 10, 'no', { anchor: 'start', color: P.civicDeep });
+  b += yes(72) + yes(248);
+  b += no(128, 190) + no(304, 366);
+  b += note(684, 420, 'most claims', { anchor: 'end' });
+  b += note(684, 456, 'end up here', { anchor: 'end' });
+  return { W, H, b };
+}
+
+// Penn Central: measure the loss against the whole parcel, not the airspace.
+function parcelAsWhole() {
+  const rng = makeRng(2502);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const base = 420;
+  // The blocked tower, drawn as a dashed outline in the air.
+  const tx0 = 150;
+  const tx1 = 320;
+  const tTop = 40;
+  const o = { color: P.tomatoDeep, size: 2.4 };
+  b += `<rect x="${tx0}" y="${tTop}" width="${tx1 - tx0}" height="${270 - tTop}" fill="${T.blush}" opacity="0.6"/>`;
+  b += L(dashed(tx0, tTop, tx1, tTop, rng, o) + dashed(tx1, tTop, tx1, 270, rng, o) + dashed(tx0, 270, tx0, tTop, rng, o));
+  b += label((tx0 + tx1) / 2, 150, 'the tower', { color: P.tomatoDeep });
+  b += label((tx0 + tx1) / 2, 182, 'it blocked', { color: P.tomatoDeep });
+  // The terminal.
+  const term = polyD([[70, base], [70, 290], [120, 270], [350, 270], [400, 290], [400, base]]);
+  b += cut(term, { rng, fill: P.kraft }) + L(ink(term, { rng, size: 2.6 }));
+  for (const x of [110, 190, 270, 350]) {
+    const w = `M${x - 22} ${base - 16}V${base - 72}A22 22 0 0 1 ${x + 22} ${base - 72}V${base - 16}Z`;
+    b += cut(w, { rng, fill: P.paper, shadow: false, filter: FLAT }) + L(ink(w, { rng, size: 1.8 }));
+  }
+  b += label(235, 316, 'the terminal', { weight: 700 });
+  b += L(inkLine([[40, base], [430, base]], { rng, size: 2.6, overshoot: 0 }));
+  // Brackets: the airspace alone, and the whole parcel.
+  const bracket = (x, y0, y1, color) => L(inkLine([[x + 10, y0], [x, y0], [x, y1], [x + 10, y1]], { rng, size: 2.4, color, overshoot: 0 }));
+  b += bracket(40, tTop, 262, P.tomatoDeep);
+  b += bracket(20, tTop, base, P.leafDeep);
+  const lx = 452;
+  b += title(lx, 90, 'Airspace alone', { anchor: 'start', size: 30, color: P.tomatoDeep });
+  b += label(lx, 126, 'all of it lost', { anchor: 'start', weight: 500 });
+  b += title(lx, 250, 'The whole parcel', { anchor: 'start', size: 30, color: P.leafDeep });
+  b += label(lx, 286, 'still earns a', { anchor: 'start', weight: 500 });
+  b += label(lx, 318, 'reasonable return', { anchor: 'start', weight: 500 });
+  b += note(lx, 400, 'the Court used', { anchor: 'start' });
+  b += note(lx, 436, 'the whole parcel', { anchor: 'start' });
+  return { W, H, b };
+}
+
+// Exactions: two gates on one line, then the cases that widened the test.
+function exactionGates() {
+  const rng = makeRng(2503);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  const y = 218;
+  const band = roundRectD(40, y - 11, 640, 22, 11);
+  b += cut(band, { rng, fill: P.civic }) + L(ink(band, { rng, size: 2.2 }));
+  const stop = (x, n, fill) => {
+    const d = ellipseD(x, y, 26, 26);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 3 })) + title(x, y + 10, n);
+  };
+  b += stop(140, '1', P.butter) + stop(380, '2', P.butter);
+  const end = roundRectD(560, y - 30, 130, 60, 14);
+  b += cut(end, { rng, fill: P.leaf, filter: FLAT }) + L(ink(end, { rng, size: 2.6 })) + label(625, y + 10, 'stands', { color: '#FFFFFF', weight: 800 });
+  b += title(140, 58, 'Essential nexus', { size: 28 });
+  b += label(140, 92, 'Nollan, 1987', { color: MUTED, weight: 500 });
+  b += label(140, 136, 'tied to the', {});
+  b += label(140, 168, 'project’s impact?', {});
+  b += title(380, 58, 'Rough', { size: 28 });
+  b += title(380, 90, 'proportionality', { size: 28 });
+  b += label(380, 124, 'Dolan, 1994', { color: MUTED, weight: 500 });
+  b += label(380, 168, 'sized to it?', {});
+  for (const x of [140, 380]) {
+    b += L(arrow(x, y + 30, x, y + 88, rng, { color: P.tomatoDeep, size: 2.6, head: 11 }));
+    b += label(x + 14, y + 66, 'no', { anchor: 'start', color: P.tomatoDeep });
+    b += label(x, y + 124, 'fails', { color: P.tomatoDeep, weight: 800 });
+  }
+  b += label(260, y - 22, 'yes', { color: P.leafDeep });
+  b += label(495, y - 22, 'yes', { color: P.leafDeep });
+  const card = roundRectD(40, 390, 640, 112, 14);
+  b += cut(card, { rng, fill: T.kraft, filter: FLAT }) + L(ink(card, { rng, size: 2 }));
+  b += label(64, 432, 'Koontz, 2013: denials and money demands too', { anchor: 'start', weight: 500 });
+  b += label(64, 474, 'Sheetz, 2024: fees set by a legislature too', { anchor: 'start', weight: 500 });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 2.6
+
+// Federal housing programs on a to-scale time line, 1930 to 1980.
+function housingLaws() {
+  const rng = makeRng(2601);
+  const W = 720;
+  const H = 540;
+  let b = '';
+  const X = (yr) => 40 + ((yr - 1930) / 50) * 640;
+  // [label, start, end (1980 = still running), colour, label anchored at the end]
+  const rows = [
+    ['1934 FHA mortgage insurance', 1934, 1980, P.sky, false],
+    ['1937 public housing', 1937, 1980, P.butter, false],
+    ['1954 Section 701 grants', 1954, 1980, P.sage, false],
+    ['1949 urban renewal', 1949, 1974, P.tomato, false],
+    ['1966 Model Cities', 1966, 1974, P.lavender, true],
+  ];
+  const top = 60;
+  const pitch = 66;
+  rows.forEach(([name, s0, e, fill, atEnd], i) => {
+    const y = top + i * pitch;
+    const d = roundRectD(X(s0), y, X(e) - X(s0), 18, 9);
+    b += cut(d, { rng, fill, jitter: 0.5 }) + L(ink(d, { rng, size: 2 }));
+    if (e === 1980) b += L(arrow(X(1980) - 6, y + 9, X(1980) + 18, y + 9, rng, { size: 2, head: 8 }));
+    b += atEnd ? label(X(e), y - 12, name, { anchor: 'end' }) : label(X(s0), y - 12, name, { anchor: 'start' });
+  });
+  // Urban renewal and Model Cities fold into the block grant.
+  const yC = top + 5 * pitch;
+  const cd = roundRectD(X(1974), yC, X(1980) - X(1974), 18, 9);
+  b += cut(cd, { rng, fill: P.leaf, jitter: 0.5 }) + L(ink(cd, { rng, size: 2 }));
+  b += L(arrow(X(1980) - 6, yC + 9, X(1980) + 18, yC + 9, rng, { size: 2, head: 8 }));
+  b += label(X(1980), yC + 52, '1974 CDBG, Section 8', { anchor: 'end' });
+  for (const i of [3, 4]) b += L(arrow(X(1974) + 8, top + i * pitch + 20, X(1974) + 12, yC - 4, rng, { color: P.tomatoDeep, size: 2.2, head: 9, bend: i === 3 ? -22 : -8 }));
+  b += note(X(1974) - 20, yC + 20, 'folded into one block grant', { anchor: 'end', color: P.tomatoDeep });
+  const axisY = yC + 94;
+  b += L(inkLine([[X(1930) - 4, axisY], [X(1980) + 4, axisY]], { rng, size: 2.6, overshoot: 0 }));
+  for (let yr = 1930; yr <= 1980; yr += 10) {
+    b += L(inkLine([[X(yr), axisY], [X(yr), axisY + 9]], { rng, size: 2, overshoot: 0 }));
+    b += label(X(yr), axisY + 40, String(yr));
+  }
+  return { W, H, b };
+}
+
+// The Fair Housing Act's protected classes, as they grew.
+function fairHousingClasses() {
+  const rng = makeRng(2602);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const base = ['race', 'color', 'religion', 'national origin'];
+  const cols = [
+    ['1968', 'the act', base, []],
+    ['1974', 'amended', base, ['sex']],
+    ['1988', 'amendments', [...base, 'sex'], ['disability', 'familial status']],
+  ];
+  const tileH = 44;
+  const baseY = 450;
+  cols.forEach(([yr, sub, old, added], c) => {
+    const x = 16 + c * 236;
+    const all = [...old, ...added];
+    all.forEach((t, k) => {
+      const y = baseY - (k + 1) * (tileH + 6);
+      const isNew = k >= old.length;
+      const d = roundRectD(x, y, 216, tileH, 8);
+      b += cut(d, { rng, fill: isNew ? P.tomato : T.sky, jitter: 0.4, filter: FLAT }) + L(ink(d, { rng, size: 1.8 }));
+      b += label(x + 108, y + 31, t, { color: isNew ? '#FFFFFF' : P.ink, weight: isNew ? 800 : 600 });
+    });
+    const topY = baseY - all.length * (tileH + 6);
+    b += title(x + 108, topY - 50, yr, { size: 32 });
+    b += label(x + 108, topY - 16, sub, { color: MUTED, weight: 500 });
+  });
+  b += L(inkLine([[10, baseY + 4], [710, baseY + 4]], { rng, size: 2.4, overshoot: 0 }));
+  return { W, H, b };
+}
+
+// One federally funded bus line, and the federal requirements it meets.
+function oneProject() {
+  const rng = makeRng(2603);
+  const W = 720;
+  const H = 520;
+  let b = '';
+  // The bus.
+  const bx = 250;
+  const by = 30;
+  const bus = roundRectD(bx, by, 220, 86, 16);
+  b += cut(bus, { rng, fill: P.tomato }) + L(ink(bus, { rng, size: 2.6 }));
+  for (let i = 0; i < 4; i++) {
+    const w = roundRectD(bx + 16 + i * 50, by + 14, 40, 30, 5);
+    b += cut(w, { rng, fill: P.sky, shadow: false, filter: FLAT }) + L(ink(w, { rng, size: 1.6 }));
+  }
+  for (const wx of [bx + 50, bx + 170]) b += `<circle cx="${wx}" cy="${by + 88}" r="14" fill="${P.ink}"/><circle cx="${wx}" cy="${by + 88}" r="5" fill="${P.paper}"/>`;
+  b += label(bx + 110, by + 76, 'BRT', { color: '#FFFFFF', weight: 800, size: 28 });
+  const tags = [
+    ['MPO plan and TIP', P.butter], ['NEPA review', P.sage],
+    ['air quality conformity', T.sky], ['Section 106', T.lav],
+    ['Title VI', T.blush], ['ADA', T.kraft],
+  ];
+  tags.forEach(([t, fill], i) => {
+    const col = i % 2;
+    const row = Math.floor(i / 2);
+    const x = col ? 396 : 14;
+    const w = col ? 310 : 364;
+    const y = 170 + row * 96;
+    const d = roundRectD(x, y, w, 64, 12);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 })) + label(x + 60, y + 42, t, { anchor: 'start' });
+    b += L(inkLine([[x + 16, y + 34], [x + 26, y + 46], [x + 44, y + 18]], { rng, size: 3.4, color: P.leafDeep, overshoot: 0 }));
+  });
+  b += note(360, 500, 'one project, most of the laws in this lesson', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -1783,6 +2393,21 @@ export const FIGURES = [
   ['fig-decision-styles', decisionStyles],
   ['fig-planner-roles', plannerRoles],
   ['fig-planners-triangle', plannersTriangle],
+  ['fig-urban-models', urbanModels],
+  ['fig-central-place', centralPlace],
+  ['fig-suburban-waves', suburbanWaves],
+  ['fig-segregation-timeline', segregationTimeline],
+  ['fig-lynch', lynchElements],
+  ['fig-power-flow', powerFlow],
+  ['fig-facial-as-applied', facialAsApplied],
+  ['fig-household-cases', householdCases],
+  ['fig-sign-content', signContent],
+  ['fig-takings-route', takingsRoute],
+  ['fig-parcel-whole', parcelAsWhole],
+  ['fig-exaction-gates', exactionGates],
+  ['fig-housing-laws', housingLaws],
+  ['fig-fair-housing-classes', fairHousingClasses],
+  ['fig-one-project', oneProject],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
