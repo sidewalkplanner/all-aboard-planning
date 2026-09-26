@@ -271,6 +271,30 @@
     "fig-one-project": {
       "w": 720,
       "h": 520
+    },
+    "fig-arnstein": {
+      "w": 720,
+      "h": 600
+    },
+    "fig-iap2": {
+      "w": 720,
+      "h": 520
+    },
+    "fig-engage-early": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-hearing-meeting": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
+    },
+    "fig-participation-gap": {
+      "w": 720,
+      "h": 380
     }
   },
   "hero": {
