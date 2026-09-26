@@ -3608,6 +3608,125 @@ function devAgreement() {
   return { W, H, b };
 }
 
+// ============================================================ Lesson 5.4
+
+// The same corridor under Euclidean rules and under a form-based code.
+function formBased() {
+  const rng = makeRng(5401);
+  const PW = 338;
+  const PH = 380;
+  const street = (s0) => `<rect x="12" y="290" width="314" height="40" fill="#9C95A8"/>` + `<rect x="12" y="276" width="314" height="14" fill="#E3DCCB"/>` + s0;
+  const lotLines = (y0) => [0, 1, 2].map((k) => L(inkLine([[12 + k * 105 + 105, y0], [12 + k * 105 + 105, 276]], { rng, size: 1.2, opacity: 0.5, overshoot: 0 }))).join('');
+  let eu = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Euclidean', { size: 25, anchor: 'start' }) + label(20, 70, 'buildings behind parking', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  eu += street('');
+  for (let k = 0; k < 3; k++) {
+    const x = 22 + k * 105;
+    eu += `<rect x="${x}" y="190" width="85" height="80" fill="#D6D1C6"/>`;
+    for (let j = 0; j < 3; j++) eu += `<rect x="${x + 8 + j * 26}" y="210" width="18" height="36" fill="none" stroke="#FFFFFF" stroke-width="2"/>`;
+    const bd = rectD(x + 10, 100 + (k % 2) * 20, 65, 70 - (k % 2) * 20);
+    eu += cut(bd, { rng, fill: [P.tomato, P.butter, P.lavender][k], filter: FLAT }) + L(ink(bd, { rng, size: 2 }));
+  }
+  eu += lotLines(96);
+  eu += note(20, 362, 'set back, car-first', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let fb = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Form-based', { size: 25, anchor: 'start' }) + label(20, 70, 'built to the sidewalk', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  fb += street('');
+  for (let k = 0; k < 3; k++) {
+    const x = 22 + k * 105;
+    fb += `<rect x="${x}" y="100" width="85" height="60" fill="#D6D1C6"/>`;
+    const bd = rectD(x + 4, 176, 80, 96);
+    fb += cut(bd, { rng, fill: [P.tomato, P.butter, P.lavender][k], filter: FLAT }) + L(ink(bd, { rng, size: 2 }));
+    fb += `<rect x="${x + 14}" y="236" width="60" height="30" fill="${P.sky}" stroke="${P.ink}" stroke-width="1.4"/>`;
+    fb += `<circle cx="${x + 94}" cy="283" r="9" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.4"/>`;
+  }
+  fb += L(dashed(12, 272, 326, 272, rng, { color: P.civicDeep, size: 2 }));
+  fb += label(169, 138, 'parking behind', { size: 19, color: MUTED, weight: 700 });
+  fb += note(20, 362, 'build-to line, active fronts', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, eu) + at(368, 14, fb),
+    narrow: { W: 366, H: 802, b: at(14, 14, eu) + at(14, 408, fb) },
+  };
+}
+
+// Conventional and conservation subdivisions with the same 16 homes.
+function clusterSubdivision() {
+  const rng = makeRng(5402);
+  const PW = 338;
+  const PH = 380;
+  const site = (s0) => { const d = rectD(34, 90, 270, 216); return cut(d, { rng, fill: T.sage, filter: FLAT }) + L(ink(d, { rng, size: 2.2 })) + s0; };
+  const home = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${P.butter}" stroke="${P.ink}" stroke-width="1.4"/><rect x="${x + w / 2 - 6}" y="${y + h / 2 - 5}" width="12" height="10" fill="${P.tomato}"/>`;
+  let conv = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Conventional', { size: 25, anchor: 'start' }) + label(20, 70, '16 homes on big lots', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  let homes = '';
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) homes += home(34 + c * 67.5, 90 + r * 54, 67.5, 54);
+  conv += site(homes);
+  conv += note(20, 350, 'all of the land divided', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let cl = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Conservation', { size: 25, anchor: 'start' }) + label(20, 70, 'the same 16 homes, clustered', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  let ch = '';
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) ch += home(34 + c * 30, 90 + r * 54, 30, 54);
+  let trees = '';
+  for (const [x, y] of [[200, 130], [250, 170], [190, 220], [270, 250], [230, 110]]) trees += `<circle cx="${x}" cy="${y}" r="14" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.4"/>`;
+  cl += site(ch + trees);
+  cl += label(220, 300, 'open space', { size: 19, weight: 700, color: P.leafDeep });
+  cl += note(20, 350, 'more than half kept open', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, conv) + at(368, 14, cl),
+    narrow: { W: 366, H: 802, b: at(14, 14, conv) + at(14, 408, cl) },
+  };
+}
+
+// Transfer of development rights: from a sending farm to a receiving center.
+function tdrFlow() {
+  const rng = makeRng(5403);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  // Sending area: a farm under easement.
+  const field = rectD(20, 150, 250, 150);
+  b += cut(field, { rng, fill: T.sage, filter: FLAT }) + L(ink(field, { rng, size: 2 }));
+  for (let k = 0; k < 6; k++) b += L(inkLine([[34, 170 + k * 22], [256, 170 + k * 22]], { rng, size: 1.2, color: P.leafDeep, opacity: 0.6, overshoot: 0 }));
+  b += house(110, 200, 60, 60, { seed: 31, wall: P.blush, roof: P.tomato });
+  b += stamp(145, 270, 'EASEMENT', P.leafDeep, rng, { size: 28, rot: -6 });
+  b += title(145, 60, 'Sending area', { size: 28 }) + label(145, 94, 'farmland, habitat', { color: MUTED, weight: 500 });
+  // Receiving area: a center with a taller building.
+  b += block(470, 300, 70, 100, { seed: 32, wall: P.sky, cols: 2, rows: 3 });
+  b += block(550, 300, 80, 180, { seed: 33, wall: P.lavender, cols: 3, rows: 6 });
+  b += block(640, 300, 60, 90, { seed: 34, wall: P.butter, cols: 2, rows: 3 });
+  b += L(dashed(540, 204, 640, 204, rng, { color: P.tomatoDeep, size: 2 }));
+  b += label(590, 330, 'extra height', { color: P.tomatoDeep, weight: 700 });
+  b += title(560, 60, 'Receiving area', { size: 28 }) + label(560, 94, 'where growth is wanted', { color: MUTED, weight: 500 });
+  // Rights go one way; money comes back.
+  b += L(arrow(284, 200, 452, 200, rng, { size: 3, head: 13, color: P.civicDeep, bend: -20 }));
+  b += label(368, 170, 'rights', { color: P.civicDeep, weight: 800 });
+  b += L(arrow(452, 262, 284, 262, rng, { size: 3, head: 13, color: P.leafDeep, bend: -20 }));
+  b += label(368, 316, 'payment', { color: P.leafDeep, weight: 800 });
+  b += note(20, 400, 'works only if developers want the extra rights', { anchor: 'start', color: P.tomatoDeep });
+  b += label(20, 434, 'PDR skips the market: public funds buy the rights', { anchor: 'start', color: MUTED, weight: 500, size: 28 });
+  return { W, H, b };
+}
+
+// An urban growth boundary: urban inside, rural outside.
+function growthBoundary() {
+  const rng = makeRng(5404);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const bg = rectD(14, 14, 692, 452);
+  b += cut(bg, { rng, fill: T.sage, filter: FLAT, shadow: false }) + L(ink(bg, { rng, size: 1.8 }));
+  for (let k = 0; k < 14; k++) b += L(inkLine([[30, 36 + k * 30], [690, 30 + k * 30]], { rng, size: 1, color: P.leafDeep, opacity: 0.35, overshoot: 0 }));
+  const ugb = blobD(330, 240, 200, 150, makeRng(21), 8, 0.08);
+  b += cut(ugb, { rng, fill: T.butter, filter: FLAT }) + L(ink(ugb, { rng, size: 3.4, color: P.tomatoDeep }));
+  // Built-up core, with infill sites marked inside.
+  const core = blobD(330, 240, 110, 80, makeRng(22), 7, 0.1);
+  b += cut(core, { rng, fill: P.butter, filter: FLAT }) + L(ink(core, { rng, size: 1.8 }));
+  for (const [x, y] of [[280, 210], [330, 250], [380, 220], [300, 270], [360, 280], [250, 250], [410, 250]]) b += `<rect x="${x}" y="${y}" width="18" height="18" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.2"/>`;
+  b += label(330, 196, 'urban uses and services', { weight: 700 });
+  b += label(580, 440, 'rural: farms, forest', { weight: 700, color: P.leafDeep });
+  b += label(600, 70, 'growth boundary', { weight: 800, color: P.tomatoDeep });
+  b += L(arrow(600, 84, 500, 150, rng, { color: P.tomatoDeep, size: 2.2, head: 10, bend: 6 }));
+  b += note(34, 420, 'needs enough room inside', { anchor: 'start', color: P.civicDeep });
+  b += note(34, 454, 'for projected growth', { anchor: 'start', color: P.civicDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -3700,6 +3819,10 @@ export const FIGURES = [
   ['fig-official-map', officialMap],
   ['fig-vested-rights', vestedRights],
   ['fig-dev-agreement', devAgreement],
+  ['fig-form-based', formBased],
+  ['fig-cluster', clusterSubdivision],
+  ['fig-tdr', tdrFlow],
+  ['fig-ugb', growthBoundary],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
