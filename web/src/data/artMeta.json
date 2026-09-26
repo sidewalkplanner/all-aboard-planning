@@ -643,6 +643,34 @@
     "fig-conflict-steps": {
       "w": 720,
       "h": 406
+    },
+    "fig-four-step": {
+      "w": 720,
+      "h": 334,
+      "narrow": {
+        "w": 370,
+        "h": 588
+      }
+    },
+    "fig-functional-class": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-induced-demand": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-road-diet": {
+      "w": 720,
+      "h": 486
+    },
+    "fig-los-vmt": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
     }
   },
   "hero": {

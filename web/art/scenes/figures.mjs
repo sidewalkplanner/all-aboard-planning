@@ -4495,6 +4495,178 @@ function conflictSteps() {
   return { W, H: H + 6, b };
 }
 
+// ============================================================ Lesson 8.1
+
+// The four-step travel demand model, in order.
+function fourStep() {
+  const rng = makeRng(8101);
+  const CW = 166;
+  const CH = 250;
+  const zone = (x, y, w, fill, t) => { const d = roundRectD(x, y, w, w, 6); return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + (t ? label(x + w / 2, y + w / 2 + 7, t, { size: 19, weight: 700 }) : ''); };
+  const icons = [
+    () => zone(18, 150, 56, T.butter, '120') + zone(92, 150, 56, T.sky, '80'),
+    () => zone(14, 156, 44, T.butter) + zone(108, 156, 44, T.sky) + L(arrow(60, 170, 104, 170, rng, { size: 2.2, head: 8 }) + arrow(104, 190, 60, 190, rng, { size: 2.2, head: 8 })),
+    () => {
+      let o = '';
+      [['car', 70, P.tomato], ['bus', 20, P.civic], ['bike', 10, P.leaf]].forEach(([t, v, fill], i) => {
+        const y = 138 + i * 30;
+        o += `<rect x="72" y="${y}" width="${v}" height="20" rx="3" fill="${fill}" stroke="${P.ink}" stroke-width="1.4"/>` + label(64, y + 17, t, { size: 19, anchor: 'end', weight: 600 });
+      });
+      return o;
+    },
+    () => {
+      let o = '';
+      [34, 83, 132].forEach((x) => { o += L(inkLine(`M${x} 136L${x} 222`, { rng, size: 1.6, color: MUTED })); });
+      [146, 179, 212].forEach((y) => { o += L(inkLine(`M24 ${y}L142 ${y}`, { rng, size: 1.6, color: MUTED })); });
+      return o + L(inkLine('M34 212L83 212L83 146L132 146', { rng, size: 5, color: P.tomato, overshoot: 0 }));
+    },
+  ];
+  const steps = [['Generation', 'how many trips'], ['Distribution', 'where they go'], ['Mode choice', 'car, bus, bike?'], ['Assignment', 'which routes']];
+  const card = (i) => {
+    const [t, sub] = steps[i];
+    let c = panel(0, 0, CW, CH, T.cream, rng);
+    c += `<circle cx="${CW / 2}" cy="30" r="15" fill="${P.butter}" stroke="${P.ink}" stroke-width="2"/>` + label(CW / 2, 37, String(i + 1), { size: 19, weight: 800 });
+    c += label(CW / 2, 80, t, { size: 21, weight: 800 });
+    c += label(CW / 2, 108, sub, { size: 19, color: MUTED, weight: 500 });
+    return c + icons[i]();
+  };
+  const wideB = [0, 1, 2, 3].map((i) => at(14 + i * 176, 14, card(i))).join('')
+    + note(360, 316, 'always in this order; distribution often uses a gravity model', { size: 24, color: P.civicDeep });
+  const narB = [0, 1, 2, 3].map((i) => at(14 + (i % 2) * 176, 14 + Math.floor(i / 2) * 264, card(i))).join('')
+    + note(184, 570, 'always in this order', { size: 24, color: P.civicDeep });
+  return { W: 720, H: 334, b: wideB, narrow: { W: 370, H: 588, b: narB } };
+}
+
+// Functional classification: mobility versus access (illustrative shares).
+function functionalClass() {
+  const rng = makeRng(8102);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const x0 = 210;
+  const x1 = 690;
+  const rows = [['Arterial', 0.8], ['Collector', 0.5], ['Local', 0.2]];
+  rows.forEach(([t, m], i) => {
+    const y = 60 + i * 92;
+    b += label(x0 - 20, y + 38, t, { anchor: 'end', weight: 800 });
+    const xm = x0 + (x1 - x0) * m;
+    const a = rectD(x0, y, xm - x0, 56);
+    const c = rectD(xm, y, x1 - xm, 56);
+    b += cut(a, { rng, fill: T.sky, filter: FLAT }) + cut(c, { rng, fill: T.butter, filter: FLAT }) + L(ink(rectD(x0, y, x1 - x0, 56), { rng, size: 2 }) + inkLine(`M${xm} ${y}L${xm} ${y + 56}`, { rng, size: 1.8 }));
+    if (i === 0) {
+      b += label((x0 + xm) / 2, y - 14, 'mobility', { weight: 700, color: P.civicDeep });
+      b += label((xm + x1) / 2, y - 14, 'access', { weight: 700, color: P.kraftDeep });
+    }
+  });
+  b += note(W / 2, 358, 'more through-movement, less direct access (illustrative)', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Induced demand: travel time after a widening (illustrative).
+function inducedDemand() {
+  const rng = makeRng(8103);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const x0 = 110;
+  const x1 = 660;
+  const yB = 330;
+  const yT = 70;
+  const X = (n) => x0 + ((n + 2) / 10) * (x1 - x0);
+  const Y = (m) => yB - (m / 30) * (yB - yT);
+  const data = [[-2, 30], [-1, 30], [0, 30], [0.4, 18], [2, 21], [4, 25], [6, 27], [8, 28]];
+  for (const m of [10, 20, 30]) {
+    b += L(inkLine([[x0, Y(m)], [x1, Y(m)]], { rng, size: 1, opacity: 0.35, overshoot: 0 }));
+    b += label(x0 - 14, Y(m) + 10, String(m), { anchor: 'end' });
+  }
+  b += L(dashed(X(0), yT - 10, X(0), yB, rng, { size: 2, color: P.tomatoDeep }));
+  b += label(X(0) + 12, Y(2), 'road widened', { anchor: 'start', color: P.tomatoDeep, weight: 700 });
+  b += L(inkLine(data.map(([n, m]) => [X(n), Y(m)]), { rng, size: 3.4, color: P.civicDeep, overshoot: 0 }));
+  data.forEach(([n, m]) => { b += `<circle cx="${X(n)}" cy="${Y(m)}" r="5" fill="${P.civicDeep}"/>`; });
+  b += L(inkLine([[x0, yT - 20], [x0, yB], [x1 + 10, yB]], { rng, size: 2.4, overshoot: 0 }));
+  for (const n of [-2, 0, 2, 4, 6, 8]) b += label(X(n), yB + 38, String(n));
+  b += label((x0 + x1) / 2, yB + 78, 'years after widening (illustrative)', { color: MUTED, weight: 500 });
+  b += label(16, 30, 'peak trip, minutes', { anchor: 'start', color: MUTED, weight: 500 });
+  b += label(X(8), Y(28) - 20, '28', { weight: 800, color: P.civicDeep });
+  b += label(X(0.4) + 26, Y(18) + 34, '18', { weight: 800, color: P.civicDeep });
+  b += note(X(4.6), Y(9), 'new trips fill the new lanes', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// A road diet: four undivided lanes to two lanes, a center turn lane, and bike lanes.
+function roadDiet() {
+  const rng = makeRng(8104);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const road = (y, lanes, t) => {
+    let o = label(60, y - 18, t, { anchor: 'start', weight: 800 });
+    let x = 60;
+    const d = rectD(60, y, 600, 100);
+    o += cut(d, { rng, fill: '#D9D4CC', filter: FLAT });
+    lanes.forEach(([w, kind, dir], i) => {
+      if (kind === 'bike') o += `<rect x="${x}" y="${y}" width="${w}" height="100" fill="${T.sage}"/>`;
+      if (kind === 'turn') o += `<rect x="${x}" y="${y}" width="${w}" height="100" fill="${T.butter}"/>`;
+      if (dir) {
+        const cx = x + w / 2;
+        const car = roundRectD(cx - 22, y + 18, 44, 64, 10);
+        o += cut(car, { rng, fill: [P.tomato, P.civic, P.leaf, P.lavender][i % 4], filter: FLAT }) + L(ink(car, { rng, size: 1.6 }));
+        o += L(arrow(cx + 34, dir > 0 ? y + 80 : y + 20, cx + 34, dir > 0 ? y + 24 : y + 76, rng, { size: 1.8, head: 7 }));
+      }
+      if (kind === 'turn') o += L(arrow(x + w / 2 - 14, y + 70, x + w / 2 - 14, y + 34, rng, { size: 2, head: 7 }) + inkLine(`M${x + w / 2 - 14} ${y + 34}Q${x + w / 2 - 14} ${y + 20} ${x + w / 2 - 34} ${y + 20}`, { rng, size: 2 }));
+      o += label(x + w / 2, y + 132, kind, { size: 28, weight: 500 });
+      x += w;
+      if (i < lanes.length - 1) o += L(dashed(x, y + 6, x, y + 94, rng, { size: 1.8, color: '#FFFDF8', dash: 14, gap: 10 }));
+    });
+    return o + L(ink(d, { rng, size: 2 }));
+  };
+  b += road(60, [[150, 'travel', -1], [150, 'travel', -1], [150, 'travel', 1], [150, 'travel', 1]], 'Before: four undivided lanes');
+  b += road(290, [[80, 'bike'], [150, 'travel', -1], [140, 'turn'], [150, 'travel', 1], [80, 'bike']], 'After: a road diet');
+  b += note(W / 2, H - 4, 'fewer crashes; similar capacity at moderate volumes', { color: P.civicDeep });
+  return { W, H: H + 6, b };
+}
+
+// LOS versus VMT: the same infill project judged two ways (illustrative).
+function losVmt() {
+  const rng = makeRng(8105);
+  const PW = 338;
+  const PH = 400;
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Level of service', { size: 25, anchor: 'start' });
+  a += label(20, 70, 'delay at the intersection', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const grades = ['A', 'B', 'C', 'D', 'E', 'F'];
+  grades.forEach((g, i) => {
+    const x = 26 + i * 48;
+    const hit = g === 'E';
+    const was = g === 'D';
+    b0: {
+      const d = roundRectD(x, 120, 42, 50, 6);
+      a += cut(d, { rng, fill: hit ? P.tomato : was ? T.butter : '#FFFDF8', filter: FLAT }) + L(ink(d, { rng, size: hit ? 2.6 : 1.6 }));
+    }
+    a += label(x + 21, 154, g, { size: 21, weight: 800 });
+  });
+  a += L(arrow(26 + 3 * 48 + 21, 188, 26 + 4 * 48 + 21, 188, rng, { size: 2.2, head: 8, bend: -14 }));
+  a += label(169, 236, 'infill adds cars: D to E', { size: 19, weight: 700 });
+  a += label(169, 266, 'fix it by widening?', { size: 19, color: MUTED, weight: 500 });
+  a += note(20, 356, 'penalizes infill', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let v = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Vehicle miles traveled', { size: 25, anchor: 'start' });
+  v += label(20, 70, 'driving per resident, a day', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const bars = [['this infill', 14, P.leaf], ['region average', 24, P.sky]];
+  bars.forEach(([t, m, fill], i) => {
+    const y = 116 + i * 74;
+    const w = m * 10;
+    const d = rectD(20, y + 24, w, 34);
+    v += label(20, y + 14, t, { size: 19, anchor: 'start', weight: 700 });
+    v += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + label(20 + w + 10, y + 49, `${m} mi`, { size: 19, anchor: 'start', weight: 800 });
+  });
+  v += label(169, 290, 'less driving than average', { size: 19, weight: 700 });
+  v += label(169, 318, '(illustrative)', { size: 19, color: MUTED, weight: 500 });
+  v += note(20, 356, 'favors infill near transit', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, a) + at(368, 14, v),
+    narrow: { W: 366, H: 842, b: at(14, 14, a) + at(14, 428, v) },
+  };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -4612,6 +4784,7 @@ const FIGURES = [
   ['fig-discipline', progressiveDiscipline],
   ['fig-lead-styles', leadStyles], ['fig-lead-middle', leadMiddle], ['fig-public-interest', publicInterest], ['fig-after-loss', afterLoss],
   ['fig-delegation', delegationStool], ['fig-coach-mentor-sponsor', coachMentorSponsor], ['fig-conflict-steps', conflictSteps],
+  ['fig-four-step', fourStep], ['fig-functional-class', functionalClass], ['fig-induced-demand', inducedDemand], ['fig-road-diet', roadDiet], ['fig-los-vmt', losVmt],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by
