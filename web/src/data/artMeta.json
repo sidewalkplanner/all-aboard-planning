@@ -315,6 +315,26 @@
         "w": 372,
         "h": 556
       }
+    },
+    "fig-positions-interests": {
+      "w": 720,
+      "h": 500
+    },
+    "fig-adr": {
+      "w": 720,
+      "h": 430,
+      "narrow": {
+        "w": 252,
+        "h": 1162
+      }
+    },
+    "fig-agreement": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-nominal-group": {
+      "w": 720,
+      "h": 300
     }
   },
   "hero": {

@@ -2610,6 +2610,123 @@ function wcagPour() {
   };
 }
 
+// ============================================================ Lesson 3.3
+
+// Positions above the water, interests below: the lesson's apartment example.
+function positionsInterests() {
+  const rng = makeRng(3301);
+  const W = 720;
+  const H = 500;
+  let b = '';
+  const wl = 170;
+  b += `<rect x="0" y="${wl}" width="${W}" height="${H - wl}" fill="${T.sky}"/>`;
+  b += L(ink(`M0 ${wl}q30 -8 60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0`, { rng, size: 2, color: P.civicDeep }));
+  const tip = polyD([[300, wl], [338, 104], [372, 92], [410, 130], [436, wl]]);
+  const body = polyD([[300, wl], [436, wl], [520, 250], [560, 360], [500, 460], [330, 476], [210, 420], [196, 300], [240, 220]]);
+  b += cut(body, { rng, fill: '#F1F7FC', filter: FLAT, shadow: false }) + L(ink(body, { rng, size: 2, color: P.civicDeep, opacity: 0.7 }));
+  b += cut(tip, { rng, fill: '#FFFFFF', filter: FLAT }) + L(ink(tip, { rng, size: 2.4 }));
+  b += title(24, 56, 'Position', { anchor: 'start', size: 30 });
+  b += label(24, 90, 'what they say', { anchor: 'start', color: MUTED, weight: 500 });
+  const bub = roundRectD(466, 36, 234, 86, 14);
+  b += cut(bub, { rng, fill: P.paper, filter: FLAT }) + L(ink(bub, { rng, size: 2 }));
+  b += label(583, 72, '“No apartments', {}) + label(583, 104, 'on this site!”', {});
+  b += L(inkLine([[470, 110], [420, 132]], { rng, size: 2, overshoot: 0 }));
+  b += title(24, 226, 'Interests', { anchor: 'start', size: 30 });
+  b += label(24, 260, 'why they say it', { anchor: 'start', color: MUTED, weight: 500 });
+  b += label(368, 310, 'traffic on', { weight: 700 }) + label(368, 342, 'my street', { weight: 700 });
+  b += label(368, 396, 'losing', { weight: 700 }) + label(368, 428, 'afternoon sun', { weight: 700 });
+  b += note(704, 420, 'negotiate', { anchor: 'end', color: P.civicDeep });
+  b += note(704, 456, 'down here', { anchor: 'end', color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Facilitation, mediation, arbitration: who decides?
+function adrWhoDecides() {
+  const rng = makeRng(3302);
+  const PW = 228;
+  const PH = 360;
+  const head = (t) => title(PW / 2, 40, t, { size: 24 });
+  const crown = (x, y) => star(x, y, 13, { fill: P.butter, seed: Math.round(x) });
+  const neutral = (x, y) => person(x, y, 1, { coat: P.ink, hair: P.kraftDeep, seed: 140 });
+  let fac = panel(0, 0, PW, PH, T.cream, rng) + head('Facilitation');
+  const chart = rectD(84, 84, 60, 70);
+  fac += cut(chart, { rng, fill: P.paper, filter: FLAT }) + L(ink(chart, { rng, size: 1.8 }));
+  fac += neutral(114, 230);
+  fac += [40, 188].map((x, i) => person(x, 236, 0.9, { coat: [P.leaf, P.sky][i], seed: 141 + i, flip: i === 1 })).join('');
+  fac += label(PW / 2, 280, 'runs the process', { size: 19, weight: 500, color: MUTED });
+  fac += crown(40, 146) + crown(188, 146);
+  fac += note(PW / 2, 324, 'the group decides', { size: 24, color: P.leafDeep });
+  let med = panel(0, 0, PW, PH, T.cream, rng) + head('Mediation');
+  med += person(46, 236, 1, { coat: P.tomato, seed: 150 }) + person(182, 236, 1, { coat: P.leaf, seed: 151, flip: true }) + neutral(114, 236);
+  med += crown(46, 134) + crown(182, 134);
+  med += label(PW / 2, 280, 'helps them agree', { size: 19, weight: 500, color: MUTED });
+  med += note(PW / 2, 324, 'the parties decide', { size: 24, color: P.leafDeep });
+  let arb = panel(0, 0, PW, PH, T.cream, rng) + head('Arbitration');
+  const bench = rectD(74, 150, 80, 36);
+  arb += neutral(114, 170) + cut(bench, { rng, fill: P.kraft, filter: FLAT }) + L(ink(bench, { rng, size: 2 }));
+  arb += crown(114, 84);
+  arb += person(46, 250, 0.9, { coat: P.tomato, seed: 152 }) + person(182, 250, 0.9, { coat: P.leaf, seed: 153, flip: true });
+  arb += label(PW / 2, 280, 'hears both sides', { size: 19, weight: 500, color: MUTED });
+  arb += note(PW / 2, 324, 'the arbitrator decides', { size: 24, color: P.tomatoDeep });
+  const panels = [fac, med, arb];
+  const key = (x, y) => star(x, y - 8, 13, { fill: P.butter, seed: 7 }) + label(x + 22, y, 'makes the decision', { size: 20, anchor: 'start', weight: 500 });
+  return {
+    W: 720, H: 430, b: panels.map((q, i) => at(8 + i * 238, 14, q)).join('') + key(24, 410),
+    narrow: { W: 252, H: 1162, b: panels.map((q, i) => at(12, 12 + i * 372, q)).join('') + key(20, 1146) },
+  };
+}
+
+// Gradients of agreement: consensus when nobody blocks.
+function agreementGradients() {
+  const rng = makeRng(3303);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const zones = [['endorse', T.sage, P.leafDeep], ['live with it', T.butter, P.kraftDeep], ['block', T.blush, P.tomatoDeep]];
+  const x0 = 180;
+  const zw = 176;
+  zones.forEach(([name, fill, color], i) => {
+    const d = roundRectD(x0 + i * zw, 60, zw - 8, 300, 12);
+    b += cut(d, { rng, fill, shadow: false, filter: FLAT }) + L(ink(d, { rng, size: 1.6, opacity: 0.8 }));
+    b += label(x0 + i * zw + (zw - 8) / 2, 44, name, { color });
+  });
+  // Illustrative groups of twelve.
+  const rows = [['Group A', [5, 7, 0]], ['Group B', [6, 5, 1]]];
+  rows.forEach(([name, counts], r) => {
+    const y = 140 + r * 150;
+    b += title(20, y + 10, name, { anchor: 'start', size: 28 });
+    counts.forEach((n, i) => {
+      for (let k = 0; k < n; k++) {
+        const cx = x0 + i * zw + 26 + (k % 4) * 38;
+        const cy = y - 18 + Math.floor(k / 4) * 38;
+        b += `<circle cx="${cx}" cy="${cy}" r="13" fill="${[P.leaf, P.butter, P.tomato][i]}" stroke="${P.ink}" stroke-width="1.8"/>`;
+      }
+    });
+    b += label(20, y + 44, r === 0 ? 'consensus' : 'not yet', { anchor: 'start', weight: 800, color: r === 0 ? P.leafDeep : P.tomatoDeep });
+  });
+  b += note(360, 414, 'consensus isn’t unanimity: it’s no blocks (illustrative)', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// The nominal group technique as a four-stop line.
+function nominalGroup() {
+  const rng = makeRng(3304);
+  const W = 720;
+  const H = 300;
+  let b = '';
+  const y = 120;
+  const band = roundRectD(40, y - 11, 640, 22, 11);
+  b += cut(band, { rng, fill: P.civic }) + L(ink(band, { rng, size: 2.2 }));
+  const stops = [[100, ['Write', 'silently']], [273, ['Share', 'round-robin']], [447, ['Discuss', 'to clarify']], [620, ['Rank', 'individually']]];
+  stops.forEach(([x, lines], i) => {
+    const d = ellipseD(x, y, 26, 26);
+    b += cut(d, { rng, fill: i === 0 ? P.butter : P.paper, filter: FLAT }) + L(ink(d, { rng, size: 3 })) + title(x, y + 10, String(i + 1));
+    b += label(x, y + 66, lines[0], { weight: 800 }) + label(x, y + 98, lines[1], { weight: 500 });
+  });
+  b += note(360, 284, 'no one can dominate: ideas start on paper', { color: P.civicDeep });
+  return { W, H, b };
+}
+
 export const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -2669,6 +2786,10 @@ export const FIGURES = [
   ['fig-who-missing', whoMissing],
   ['fig-three-equities', threeEquities],
   ['fig-wcag', wcagPour],
+  ['fig-positions-interests', positionsInterests],
+  ['fig-adr', adrWhoDecides],
+  ['fig-agreement', agreementGradients],
+  ['fig-nominal-group', nominalGroup],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

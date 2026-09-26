@@ -42,6 +42,10 @@ Reflecting back confirms understanding, shows respect, and often reveals the **i
 - **Consensus isn't unanimity.** It usually means every participant can at least "live with" the agreement, even if it isn't their first choice. Gradients of agreement (from "fully endorse" to "can live with it" to "block") help groups see where they stand.
 - Good consensus processes start by agreeing on **ground rules and roles**, build a **shared understanding of the problem**, often through joint fact-finding, and only then generate options.
 
+:::figure fig-agreement | Three zones: endorse, live with it, and block. In an illustrative group of twelve, Group A has 5 who fully endorse, 7 who can live with it, and none who block: consensus. Group B has 6, 5, and 1 who blocks: not yet. A note says consensus isn't unanimity; it's no blocks.
+Group A reached consensus with fewer enthusiasts than Group B, because what matters is whether anyone blocks.
+:::
+
 :::checkpoint cp:consensus-live-with
 
 ### Structured group techniques
@@ -52,6 +56,10 @@ Reflecting back confirms understanding, shows respect, and often reveals the **i
 | **Nominal group technique** | Individuals generate ideas **silently** in writing, share them round-robin, discuss them for clarity, then **rank or vote** individually | Getting everyone's input and a clear priority list without domination by a few voices |
 | **Delphi technique** | A panel of experts answers questionnaires over **multiple anonymous rounds**; a coordinator summarizes the responses and feeds them back between rounds, so views can converge | Building expert consensus or forecasts without face-to-face pressure or status effects |
 | **Dot voting** | Participants place a limited number of stickers (or digital votes) on options | Quick, visible prioritization |
+
+:::figure fig-nominal-group | The nominal group technique as a line with four stops: 1 write silently, 2 share round-robin, 3 discuss to clarify, 4 rank individually. A note says no one can dominate, because ideas start on paper.
+The silent first step is the point: every idea is on the table before the most confident voices can steer the room.
+:::
 
 :::checkpoint cp:consensus-ngt
 
@@ -66,6 +74,10 @@ In **positional bargaining**, each side stakes out a position and concedes grudg
 3. **Invent options for mutual gain** before deciding.
 4. **Insist on objective criteria**, such as engineering standards, market data, or precedent, rather than a contest of will.
 
+:::figure fig-positions-interests | An iceberg. Above the water is the position, what they say: a speech bubble reading "No apartments on this site!" Below the water, much larger, are the interests, why they say it: traffic on my street, and losing afternoon sun. A note says negotiate down here.
+A position allows only a yes or a no; the interests underneath can often be met with a different site plan.
+:::
+
 A party's **BATNA** (best alternative to a negotiated agreement) is what it will do if talks fail. Knowing your BATNA, and theirs, tells you when to accept a deal and when to walk away.
 
 :::checkpoint cp:consensus-interest
@@ -79,6 +91,10 @@ These are forms of **alternative dispute resolution**:
 - **Arbitration**: a neutral arbitrator **hears the arguments and decides**. The decision may be binding or advisory, depending on the agreement.
 
 The distinction the exam tests most often: a mediator assists; an arbitrator decides.
+
+:::figure fig-adr | Three scenes, with a star marking who makes the decision. Facilitation: a neutral runs the process at a flip chart, and the group decides. Mediation: a neutral stands between two parties and helps them agree; the parties decide. Arbitration: a neutral at a bench hears both sides, and the arbitrator decides.
+Follow the star: the more authority moves to the neutral, the less control the parties keep over the outcome.
+:::
 
 :::checkpoint cp:consensus-arbitration
 
