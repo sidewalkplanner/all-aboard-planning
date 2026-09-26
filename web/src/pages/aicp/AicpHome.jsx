@@ -25,9 +25,9 @@ const STOPS = [
   },
   {
     title: 'Study what it points to',
-    body: 'Work through the lessons for your weakest domains first, on an 8- or 12-week study plan. Checkpoints test you as you read, and flashcards keep key terms fresh.',
+    body: 'Work through the lessons for your weakest domains first. Checkpoints test you as you read, and flashcards keep key terms fresh.',
     art: ['page-books', 420, 310], bg: 'var(--butter)',
-    links: [[P.course, 'Browse the lessons'], [P.studyPlan, 'See the study plans']],
+    links: [[P.course, 'Browse the lessons']],
   },
   {
     title: 'Rehearse and track',
@@ -90,13 +90,12 @@ export default function AicpHome() {
 
         <div className="container hero-grid">
           <div>
-            <span className="chip chip-warn" style={{ transform: 'rotate(-2deg)' }}>AICP exam prep: lessons, study plans, and practice</span>
             <h1 className="display hero-title">
               Your one stop for <em className="marker">AICP prep!</em>
             </h1>
             <p className="lead hero-lead">
               A complete course for the AICP Certification Exam, built around APA&rsquo;s nine-domain content outline. Study
-              plain-language lessons, follow a week-by-week plan, and practice with exam-style questions that explain every answer.
+              plain-language lessons and practice with exam-style questions that explain every answer.
             </p>
             <div className="row-wrap hero-actions">
               <Link className="btn btn-rust btn-lg" to={P.course}>Browse the course</Link>

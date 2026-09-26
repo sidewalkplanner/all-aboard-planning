@@ -20,14 +20,14 @@ const GROUPS = [
         q: 'What\u2019s the best way to use the course?',
         a: (
           <>
-            <p>Take <Link to={P.runExam('e1', 'practice')}>Practice Exam 1</Link> in practice mode as your baseline, follow a <Link to={P.studyPlan}>study plan</Link>, and for each lesson: read it, answer each checkpoint as you reach it, and mark it complete. Your results rank the domains to study first. Spend ten minutes a day on <Link to={P.flashcards}>flashcards</Link>.</p>
+            <p>Take <Link to={P.runExam('e1', 'practice')}>Practice Exam 1</Link> in practice mode as your baseline, then work through the <Link to={P.course}>lessons</Link>, starting with your weakest domains. For each lesson: read it, answer each checkpoint as you reach it, and mark it complete. Your results rank the domains to study first. Spend ten minutes a day on <Link to={P.flashcards}>flashcards</Link>.</p>
             <p>Midway through, take Practice Exam 2 to see what has moved. In the final weeks, take full-length timed exams, reread the lessons your <Link to={P.progress}>dashboard</Link> lists for review, and read the <Link to={P.strategy}>exam strategy guide</Link> and <Link to={P.quickRef}>quick reference</Link>.</p>
           </>
         ),
       },
       {
         q: 'How long should I study?',
-        a: <p>Most candidates do well with a steady plan of two to three months. We offer an <Link to={P.studyPlan + '#8-week'}>8-week plan</Link> (8 to 10 hours a week) and a <Link to={P.studyPlan + '#12-week'}>12-week plan</Link> (5 to 7 hours a week). Take Practice Exam 1 first so you can spend extra time on your weakest domains.</p>,
+        a: <p>Most candidates do well with steady study over two to three months: roughly 8 to 10 hours a week for two months, or 5 to 7 hours a week for three. Take Practice Exam 1 first so you can spend extra time on your weakest domains.</p>,
       },
       {
         q: 'Are the practice questions taken from the real exam?',
@@ -48,11 +48,11 @@ const GROUPS = [
     items: [
       {
         q: 'Do I need to pay for anything?',
-        a: <p>No. Everything in the course is open to anyone with an account: every lesson, all three full-length practice exams, the review tools, and both study plans.</p>,
+        a: <p>No. Everything in the course is open to anyone with an account: every lesson, all three full-length practice exams, and the review tools.</p>,
       },
       {
         q: 'Why do I need an account?',
-        a: <p>So your scores and progress are saved in one place and the <Link to={P.progress}>progress page</Link> can show which domains need work. Without an account you can browse the course, read the study plans, and preview each lesson&rsquo;s learning objectives.</p>,
+        a: <p>So your scores and progress are saved in one place and the <Link to={P.progress}>progress page</Link> can show which domains need work. Without an account you can browse the course and preview each lesson&rsquo;s learning objectives.</p>,
       },
       {
         q: 'Where is my account stored?',
