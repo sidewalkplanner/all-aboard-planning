@@ -125,8 +125,8 @@ export const DOMAINS = [
     summary: 'Turning community values and analysis into plans: the planning process, plan types and elements, policy writing, and evaluating alternatives.',
     lessons: [
       {
-        slug: 'the-planning-process', title: 'The planning process, from scoping to adoption', minutes: 22, access: 'free',
-        description: 'Preparing to plan, the steps of a plan-making process, existing conditions, and when a plan needs an amendment or a full update.',
+        slug: 'the-planning-process', title: 'The planning process, from scoping to adoption', minutes: 26, access: 'free',
+        description: 'Preparing to plan, the steps of a plan-making process, policy analysis, existing conditions, adoption, and when a plan needs an amendment or a full update.',
         outline: ['4.1 Preparing to plan', '4.2 Planning as sequential steps and multivariate analyses'],
         practice: ['e1:27', 'e1:30', 'e1:50', 'e2:29', 'e2:46', 'e2:47', 'e2:48', 'e3:24', 'e3:193', 'e3:198'],
       },
@@ -137,14 +137,14 @@ export const DOMAINS = [
         practice: ['e1:31', 'e1:32', 'e1:33', 'e1:104', 'e2:27', 'e2:32', 'e2:34', 'e2:42', 'e2:51', 'e3:195', 'e3:197', 'e3:199'],
       },
       {
-        slug: 'goals-objectives-policies', title: 'Vision, goals, objectives, and policies', minutes: 20, access: 'paid',
-        description: 'The plan hierarchy from vision to action, writing measurable objectives, drafting policy, and building in an equity framework.',
+        slug: 'goals-objectives-policies', title: 'Vision, goals, objectives, and policies', minutes: 22, access: 'paid',
+        description: 'The plan hierarchy from vision to action, writing measurable objectives, drafting policy, building in an equity framework, and setting priorities.',
         outline: ['4.4 Formulating and drafting policies', '4.5 Vision, goal, objective, policy, and priority statements', '4.6 Objectives and actions within an equity framework'],
         practice: ['e1:29', 'e1:34', 'e1:39', 'e1:41', 'e2:28', 'e2:31', 'e2:35', 'e3:25', 'e3:26', 'e3:74', 'e3:192'],
       },
       {
-        slug: 'plan-analysis-tools', title: 'Scenario planning, fiscal impact, and consequence analysis', minutes: 22, access: 'paid',
-        description: 'Comparing alternatives, scenario planning under uncertainty, buildable lands, fiscal impact methods, and greenhouse gas inventories.',
+        slug: 'plan-analysis-tools', title: 'Scenario planning, fiscal impact, and consequence analysis', minutes: 28, access: 'paid',
+        description: 'Comparing alternatives, scenario planning under uncertainty, buildable lands, fiscal impact methods, greenhouse gas inventories, impact assessments, and funding versus financing.',
         outline: ['4.9 Applying innovations and best practices', '4.10 Identifying and evaluating consequences', '4.11 Funding and financing considerations'],
         practice: ['e1:35', 'e1:43', 'e1:132', 'e2:30', 'e2:36', 'e2:37', 'e2:40', 'e2:41', 'e2:45', 'e3:136'],
       },

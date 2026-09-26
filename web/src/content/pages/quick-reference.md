@@ -136,6 +136,8 @@ More: [Federal laws and programs that shaped planning](/aicp/lessons/federal-pol
 | Herbert Simon | Bounded rationality and satisficing |
 | Charles Lindblom | Incrementalism, "muddling through" |
 | Amitai Etzioni | Mixed scanning |
+| Morris Hill / Nathaniel Lichfield | Goals-achievement matrix / planning balance sheet |
+| Carl Patton and David Sawicki | *Basic Methods of Policy Analysis and Planning* |
 | Paul Davidoff | Advocacy planning |
 | Sherry Arnstein | The ladder of citizen participation |
 | James Fishkin | Deliberative polling |
@@ -227,6 +229,7 @@ Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Popu
 | TDR vs. PDR | Development rights sold on a private market vs. bought with public funds |
 | Inclusionary vs. incentive zoning | Requires affordable units vs. offers a bonus for any public benefit |
 | GO bond vs. revenue bond | Backed by taxing power vs. repaid by the project's own revenues |
+| Funding vs. financing | Where the money ultimately comes from vs. spreading the cost over time by borrowing |
 | TIF vs. special assessment | Captures growth in property tax vs. charges properties for a special benefit |
 | RFQ vs. RFP | Qualifications first vs. approach and (usually) price |
 | Output vs. outcome measure | Work produced vs. results in the community |

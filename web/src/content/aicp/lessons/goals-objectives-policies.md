@@ -85,6 +85,15 @@ An **equity lens** examines how the benefits and burdens of a policy are distrib
 
 Plans usually contain more actions than a community can fund at once. **Priority statements** and phasing tell implementers what to do first. Common criteria: the degree of impact on key goals, urgency (safety, legal deadlines), cost and available funding, readiness, equity, and whether an action unlocks others.
 
+Two simple tools make the ranking visible:
+
+- An **impact-effort matrix** plots each action by how much it advances the plan's goals and how much money, time, and political capital it takes. High-impact, low-effort actions ("quick wins") go first; high-impact, high-effort actions become major projects planned over several years; low-impact, high-effort actions drop down the list.
+- **Phasing** assigns each action a time frame, such as short term (one to two years), medium term (three to five), and long term (six or more), and ties the early ones to the budget and work program so they actually start.
+
+Some actions have to come first no matter how they score, because others depend on them. A zoning update that implements the plan's land use map, for example, usually needs to happen before incentive programs that rely on the new districts.
+
+:::checkpoint cp:goals-priority
+
 ### Measuring "character"
 
 When residents want to "preserve rural character," the planner's job is to **translate that value into measurable standards** without dismissing it. What does rural character mean here? Views of open fields from the road? Low building coverage? Narrow roads without curbs? Farm operations? Once named, each quality can become an objective and a policy, such as a maximum lot coverage, a scenic road setback, or a conservation subdivision standard.
@@ -103,6 +112,8 @@ When residents want to "preserve rural character," the planner's job is to **tra
 - **Equity lens**: A set of questions examining who benefits, who is burdened, and who is included.
 - **Disaggregated data**: Data broken out by subgroup or geography rather than reported only as a total.
 - **Priority statement**: A statement ranking or sequencing actions.
+- **Impact-effort matrix**: A chart that ranks actions by their benefit and the effort they require.
+- **Phasing**: Assigning actions to short-, medium-, and long-term time frames.
 
 ## Real-world examples
 
@@ -118,8 +129,9 @@ When residents want to "preserve rural character," the planner's job is to **tra
 - When asked which statement is an objective, pick the one with a **number and a date**.
 - Order from general to specific: **vision → goal → objective → policy → action**.
 - An equity lens examines how **benefits and burdens are distributed**.
+- When asked what to do first, look for **high-impact, low-effort** actions and for the actions others depend on.
 - To address a historic harm meaningfully, a plan sets **measurable objectives** for the affected neighborhoods, not just acknowledgment.
 
 ## Summary
 
-Plans flow from vision (the shared picture) to goals (broad end states), objectives (measurable, time-bound targets), policies (commitments that guide decisions), and actions (specific tasks with owners and deadlines). Write SMART objectives with baselines, and write policies with deliberate directive words, one idea each, within the jurisdiction's authority. Apply an equity lens: disaggregate data, ask who benefits and who's burdened, and set measurable objectives for disparities. Set priorities so implementers know what comes first, and translate values like "character" into standards you can measure.
+Plans flow from vision (the shared picture) to goals (broad end states), objectives (measurable, time-bound targets), policies (commitments that guide decisions), and actions (specific tasks with owners and deadlines). Write SMART objectives with baselines, and write policies with deliberate directive words, one idea each, within the jurisdiction's authority. Apply an equity lens: disaggregate data, ask who benefits and who's burdened, and set measurable objectives for disparities. Set priorities, with tools such as an impact-effort matrix and phasing, so implementers know what comes first, and translate values like "character" into standards you can measure.

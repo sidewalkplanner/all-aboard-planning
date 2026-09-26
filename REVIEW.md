@@ -215,7 +215,7 @@ This is the hand-off for the build described in `PLAN.md`: what was built, the a
 
 ## VERIFY flags
 
-There are 96 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
+There are 97 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
 
 | Location | What to check |
 |---|---|
@@ -277,6 +277,7 @@ There are 96 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:56` | the USDA Rural Development programs are the usual federal source; confirm current program names if cited. |
 | `web/src/content/aicp/lessons/rural-small-town-and-tribal-planning.md:65` | confirm this general statement on the application of state and local zoning to trust land; jurisdiction over fee land within reservations is complex and case-specific. |
 | `web/src/content/aicp/lessons/subdivision-and-development-review.md:61` | vesting rules vary widely by state; if specific states are named, confirm them. |
+| `web/src/content/aicp/lessons/the-planning-process.md:104` | confirm that the governing body, not the commission, adopts the comprehensive plan in most states today. |
 | `web/src/content/aicp/lessons/transportation-planning.md:28` | confirm current federal rules on MTP update cycles (commonly every 4 years in nonattainment/maintenance areas and 5 in attainment areas) and the minimum TIP period (4 years). |
 | `web/src/content/aicp/lessons/transportation-planning.md:70` | California's SB 743 (2013) directed the shift from LOS to VMT for CEQA transportation analysis; confirm details if expanded. |
 | `web/src/content/aicp/lessons/urban-design-and-historic-preservation.md:79` | this is Section 4(f) of the Department of Transportation Act of 1966; confirm wording before naming it. |
@@ -310,11 +311,11 @@ There are 96 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/pages/quick-reference.md:68` | SZEA publication dates are given variously as 1922, 1924, and 1926. |
 | `web/src/content/pages/quick-reference.md:74` | confirm the 1962 Act as the origin of the 3C requirement. |
 | `web/src/content/pages/quick-reference.md:89` | LIHTC is usually dated to the Tax Reform Act of 1986. |
-| `web/src/content/pages/quick-reference.md:206` | confirm the 65,000 threshold is current. |
-| `web/src/content/pages/quick-reference.md:207` | confirm the current question count and time limit with APA. |
-| `web/src/content/pages/quick-reference.md:208` | confirm the credit remains 20%. |
-| `web/src/content/pages/quick-reference.md:209` | confirm the five-year update cycle. |
-| `web/src/content/pages/quick-reference.md:210` | confirm the current CM requirement. |
+| `web/src/content/pages/quick-reference.md:208` | confirm the 65,000 threshold is current. |
+| `web/src/content/pages/quick-reference.md:209` | confirm the current question count and time limit with APA. |
+| `web/src/content/pages/quick-reference.md:210` | confirm the credit remains 20%. |
+| `web/src/content/pages/quick-reference.md:211` | confirm the five-year update cycle. |
+| `web/src/content/pages/quick-reference.md:212` | confirm the current CM requirement. |
 
 Other placeholders, which aren't VERIFY flags:
 - `web/src/content/pages/about.md` has `<!-- PLACEHOLDER -->` for the founder bio.
