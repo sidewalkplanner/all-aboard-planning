@@ -19,6 +19,10 @@ A **geographic information system (GIS)** stores, analyzes, and displays data ti
 
 Rule of thumb: boundaries and networks call for vector; surfaces call for raster.
 
+:::figure fig-vector-raster | Two panels. Vector, "points, lines, and polygons": parcels drawn as polygons, a street and a stream drawn as lines, and hydrants drawn as points. Raster, "a grid of cells, each with a value": a 10 by 10 grid shaded from light green to brown, where darker cells are higher ground.
+Parcels have edges, so they're vector. Elevation changes smoothly from place to place, so it's raster.
+:::
+
 :::checkpoint cp:gis-vector
 
 ### Core analysis operations
@@ -29,9 +33,17 @@ Rule of thumb: boundaries and networks call for vector; surfaces call for raster
 - **Geocoding**: turn addresses into mapped points, such as permit locations or crash reports.
 - **Spatial statistics**: test whether values cluster, for example whether crash hot spots are more concentrated than chance would produce (spatial autocorrelation).
 
+:::figure fig-walkshed | A street map with a transit stop in the middle and a half-mile circle drawn around it. On the left is a connected street grid; on the right, a looping collector road with cul-de-sacs. Streets within a half-mile walk are highlighted: many on the grid side, but only a short stretch of the collector on the cul-de-sac side, which is "close by air, far on foot."
+Both sides get the same circle, but the connected grid gives far more people a real half-mile walk. This is why station-area plans measure along the network.
+:::
+
 ### Suitability analysis and McHarg
 
 Landscape architect and planner **Ian McHarg**, in *Design with Nature* (1969), argued that development should respond to natural processes. His method mapped each factor (slopes, soils, drainage, habitats, scenic value) on a separate transparent sheet and stacked them so the darkest areas showed where development would do the most harm. That **overlay method** is a direct ancestor of GIS **land suitability analysis**, in which layers are scored, weighted, and combined to rank locations for a use such as housing, conservation, or industry.
+
+:::figure fig-mcharg | Three map layers drawn as stacked sheets, each with shaded patches: steep slopes, wet soils, and habitat. An arrow leads to the stacked result, where overlapping patches are darkest. The darkest areas are where development would do the most harm, and clear areas are best suited.
+McHarg did this with transparent sheets on a light table. GIS does the same thing with scored layers and weights.
+:::
 
 A suitability analysis is only as good as its weights. Deciding how much slope matters compared with transit access is a value judgment, so it should be made transparently and, ideally, with stakeholders.
 
@@ -45,6 +57,10 @@ A **choropleth map** shades areas (tracts, counties) by value. It's the most com
 - **Choose classification breaks deliberately.** Equal intervals, quantiles, and natural breaks can make the same data look very different. State the method in the legend.
 - **Watch the color scheme.** Use a sequential scheme (light to dark) for low-to-high values, and a diverging scheme only when there's a meaningful midpoint.
 
+:::figure fig-counts-rates | The same six tracts mapped two ways. Count in poverty (breaks at 600 and 1,200 people): the tract with 1,800 people in poverty is darkest, then 800 and 750, then 500, 400, and 350. This map mostly shows where people live. Poverty rate (breaks at 12% and 20%): the 32% and 25% tracts are darkest, the 15% tract is middle, and three tracts at 10% are lightest. This map shows where poverty concentrates.
+Illustrative numbers. The darkest tract on the count map is simply the biggest, with 12,000 residents. Its poverty rate, 15%, is only middling.
+:::
+
 The **modifiable areal unit problem (MAUP)** is the fact that results change depending on how you draw the boundaries (scale or zoning of units). The same income data can show a sharp pattern at the tract level and none at the county level, or a different pattern if the tracts were drawn differently.
 
 The **ecological fallacy** is inferring something about individuals from area-level data. A tract with high average income may still have many low-income households.
@@ -57,6 +73,10 @@ The **gravity model** borrows from physics: interaction between two places incre
 
 - distribute trips between zones in the travel demand model (the *trip distribution* step, covered in the [transportation lesson](/aicp/lessons/transportation-planning)); and
 - estimate retail trade areas: how far shoppers will travel to a larger center rather than a nearer, smaller one.
+
+:::figure fig-gravity | A shopper stands between two destinations, with pull calculated as size divided by distance squared. Corner shops, size 1, are 2 miles away: 1 ÷ 2² = 0.25. A regional center, size 4, is 3 miles away: 4 ÷ 3² = 0.44. A thicker arrow points toward the regional center.
+Illustrative numbers. The bigger center is farther away but still pulls harder. Double its distance, though, and its pull falls to a quarter.
+:::
 
 :::checkpoint cp:gis-gravity
 

@@ -43,6 +43,46 @@
     "fig-discounting": {
       "w": 720,
       "h": 420
+    },
+    "fig-pyramid": {
+      "w": 720,
+      "h": 470
+    },
+    "fig-projections": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-housing-unit": {
+      "w": 720,
+      "h": 250
+    },
+    "fig-location-quotient": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-shift-share": {
+      "w": 720,
+      "h": 280
+    },
+    "fig-vector-raster": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-walkshed": {
+      "w": 720,
+      "h": 470
+    },
+    "fig-mcharg": {
+      "w": 720,
+      "h": 430
+    },
+    "fig-counts-rates": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-gravity": {
+      "w": 720,
+      "h": 362
     }
   },
   "hero": {
