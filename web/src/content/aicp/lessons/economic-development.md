@@ -17,6 +17,10 @@
 
 The theory holds that **regional growth is driven principally by basic industries**: when they grow, the new income they bring in supports more nonbasic jobs.
 
+:::figure fig-base-flows | A region drawn as a circle. A factory, labeled basic, sends goods out of the region and brings new money in. Its wages go to a household inside the region, which spends them at a local shop, labeled nonbasic. Note: basic jobs bring money in; nonbasic jobs recirculate it.
+Only the arrows that cross the boundary add money to the region; everything inside moves money that's already there.
+:::
+
 :::checkpoint cp:econ-basic-example
 
 ### The economic base multiplier
@@ -29,6 +33,10 @@ The theory holds that **regional growth is driven principally by basic industrie
 - The multiplier works in reverse too. If a major basic employer cuts jobs sharply, economic base theory predicts a **multiplied job loss** as local spending falls.
 
 Multipliers are rough. They vary by industry and region, and they assume stable relationships over time.
+
+:::figure fig-multiplier | The worked example: 25,000 total jobs divided by 10,000 basic jobs gives a multiplier of 2.5. Ten squares show 100 new basic jobs and fifteen show 150 nonbasic jobs, each square standing for 10 jobs; 100 times 2.5 is 250 jobs in all. Note: it runs in reverse when a big employer cuts jobs.
+The multiplier counts the new basic jobs themselves, so 250 is the total, not the extra.
+:::
 
 :::checkpoint cp:econ-multiplier
 
@@ -43,6 +51,10 @@ Relying solely on LQs to identify the export base **assumes that local consumpti
 ### Clusters
 
 A **cluster** is a **geographically concentrated group of interconnected firms, specialized suppliers, service providers, and institutions** (universities, training programs, trade associations) in a related field. Michael Porter popularized the concept. **Cluster-based development** strengthens the whole ecosystem, through workforce training, supplier networks, research partnerships, and shared infrastructure, rather than recruiting one firm at a time.
+
+:::figure fig-cluster-web | Firms in one field sit at the center of a web, linked to suppliers, a university, training programs, service firms, and a trade group. Note: strengthen the whole web, not one firm at a time.
+The links are the asset: a cluster strategy invests in the web that makes firms want to locate near each other.
+:::
 
 :::checkpoint cp:econ-cluster-approach
 
@@ -74,6 +86,10 @@ Planners assess whether a trade area can support more retail, and which kinds:
 > **Capture rate = local sales in a category ÷ trade-area spending in that category**
 
 **Worked example.** Trade-area residents spend $50 million a year on apparel, and local stores sell $10 million. The capture rate is 10 ÷ 50 = **20%**: local stores capture 20% of area spending, and 80% leaks elsewhere.
+
+:::figure fig-leakage | Two bars drawn to scale. Trade-area apparel spending is $50 million; local stores sell $10 million, and the remaining $40 million leaks out of the area. Capture rate: 10 divided by 50 is 20%. Note: leakage signals room for more local stores.
+Leakage is spending by the area's own residents that goes elsewhere; the bigger the gap, the stronger the case for new stores.
+:::
 
 :::checkpoint cp:econ-leakage
 

@@ -39,6 +39,10 @@ Streets are classified by the role they play in the network:
 
 The core tradeoff is that the more a road serves through-movement, the less it should serve direct property access, and the reverse.
 
+:::figure fig-functional-class | Three bars split between mobility and access (illustrative shares): arterials are mostly mobility, collectors are about half and half, and local streets are mostly access. Note: more through-movement, less direct access.
+Each class trades one job for the other, which is why driveways belong on local streets and not on arterials.
+:::
+
 ### The four-step travel demand model
 
 The conventional regional travel model estimates future travel in four steps, **in this order**:
@@ -49,6 +53,10 @@ The conventional regional travel model estimates future travel in four steps, **
 4. **Trip assignment (route choice)**: which routes the trips take on the network.
 
 Many large MPOs now also use **activity-based models**, which simulate individuals' daily schedules and tours of activity rather than isolated trips.
+
+:::figure fig-four-step | Four numbered cards in order. 1 Generation: how many trips (zones producing 120 and 80 trips). 2 Distribution: where they go (arrows between two zones). 3 Mode choice: car, bus, or bike (a bar for each). 4 Assignment: which routes (a path traced on a street grid). Note: always in this order; distribution often uses a gravity model.
+How many, where, by what mode, on which roads: each step feeds the next, so the order is fixed.
+:::
 
 :::video The four-step travel demand model | about 4 min
 Animates trip generation, distribution, mode choice, and assignment for a small region, so the order of the steps sticks.
@@ -61,11 +69,19 @@ Animates trip generation, distribution, mode choice, and assignment for a small 
 - **Level of service (LOS)** grades traffic operations from **A** (free flow) to **F** (breakdown). At **signalized intersections**, LOS is conventionally measured by **average control delay per vehicle**. LOS measures driver delay. Using it as a development standard tends to penalize infill and favor road widening.
 - **Vehicle miles traveled (VMT)** measures the total amount of driving. As an impact metric, VMT **favors compact infill near transit** (which produces less driving per person) and penalizes dispersed development. **VMT per capita** is the best metric for evaluating a project's effect on regional greenhouse gas emissions. California's shift from LOS to VMT in environmental review is the best-known example. <!-- VERIFY: California's SB 743 (2013) directed the shift from LOS to VMT for CEQA transportation analysis; confirm details if expanded. -->
 
+:::figure fig-los-vmt | The same infill project judged two ways (illustrative). Level of service, measuring delay at the intersection: infill adds cars and moves the grade from D to E, which invites widening; it penalizes infill. Vehicle miles traveled, driving per resident per day: 14 miles for the infill residents against a regional average of 24; it favors infill near transit.
+The metric decides the verdict: LOS counts delay at one intersection, while VMT counts how much everyone drives.
+:::
+
 :::checkpoint cp:trans-vmt-infill
 
 ### Induced demand
 
 Adding road capacity lowers the "price" of driving (in time), which **generates additional trips over time**: people drive more, take new routes, travel at peak times, or move farther out. That's **induced demand**. Widening a congested road rarely solves congestion permanently. It's the best professional answer to "Will widening fix this for good?"
+
+:::figure fig-induced-demand | A line chart of peak trip time in minutes, illustrative. It holds at 30 for two years, drops to 18 right after the road is widened, then climbs back to 21, 25, 27, and 28 over the next eight years. Note: new trips fill the new lanes.
+The widening buys a few good years, then induced demand spends most of the time savings.
+:::
 
 ### Complete streets and safety
 
@@ -73,6 +89,10 @@ Adding road capacity lowers the "price" of driving (in time), which **generates 
 - A **road diet** most commonly converts a **four-lane undivided road to two through lanes with a center turn lane**, often adding bike lanes. It typically reduces crashes with little effect on capacity at moderate volumes.
 - **Traffic calming** uses physical design (narrower lanes, speed humps, curb extensions, roundabouts) to slow vehicles.
 - **Vision Zero** is a framework **aimed at eliminating traffic deaths and serious injuries**. It treats them as preventable, and relies on the **safe system approach**: humans make mistakes, so the system (street design, speeds, vehicles) must be forgiving of them.
+
+:::figure fig-road-diet | Two road cross-sections. Before: four undivided travel lanes, two each way. After a road diet: a bike lane, a travel lane, a center turn lane, a travel lane, and a bike lane. Note: fewer crashes; similar capacity at moderate volumes.
+The center turn lane takes left-turning cars out of the through lanes, one reason crashes drop without a big loss of capacity.
+:::
 
 :::checkpoint cp:trans-safe-system
 

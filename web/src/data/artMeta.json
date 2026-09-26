@@ -643,6 +643,174 @@
     "fig-conflict-steps": {
       "w": 720,
       "h": 406
+    },
+    "fig-four-step": {
+      "w": 720,
+      "h": 334,
+      "narrow": {
+        "w": 370,
+        "h": 588
+      }
+    },
+    "fig-functional-class": {
+      "w": 720,
+      "h": 400
+    },
+    "fig-induced-demand": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-road-diet": {
+      "w": 720,
+      "h": 486
+    },
+    "fig-los-vmt": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-ami-bands": {
+      "w": 720,
+      "h": 408
+    },
+    "fig-lihtc-flow": {
+      "w": 720,
+      "h": 430
+    },
+    "fig-voucher-split": {
+      "w": 720,
+      "h": 386
+    },
+    "fig-missing-middle": {
+      "w": 720,
+      "h": 420
+    },
+    "fig-nepa-levels": {
+      "w": 720,
+      "h": 516
+    },
+    "fig-mitigation-sequence": {
+      "w": 720,
+      "h": 350,
+      "narrow": {
+        "w": 366,
+        "h": 604
+      }
+    },
+    "fig-floodplain": {
+      "w": 720,
+      "h": 450
+    },
+    "fig-climate-ma": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
+    },
+    "fig-base-flows": {
+      "w": 720,
+      "h": 448
+    },
+    "fig-multiplier": {
+      "w": 720,
+      "h": 406
+    },
+    "fig-leakage": {
+      "w": 720,
+      "h": 380
+    },
+    "fig-cluster-web": {
+      "w": 720,
+      "h": 466
+    },
+    "fig-enclosure": {
+      "w": 720,
+      "h": 388,
+      "narrow": {
+        "w": 366,
+        "h": 762
+      }
+    },
+    "fig-cpted": {
+      "w": 720,
+      "h": 384,
+      "narrow": {
+        "w": 366,
+        "h": 750
+      }
+    },
+    "fig-register-vs-local": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-treatments": {
+      "w": 720,
+      "h": 350,
+      "narrow": {
+        "w": 370,
+        "h": 630
+      }
+    },
+    "fig-hia-steps": {
+      "w": 720,
+      "h": 480
+    },
+    "fig-food-desert": {
+      "w": 720,
+      "h": 540
+    },
+    "fig-park-access": {
+      "w": 720,
+      "h": 448,
+      "narrow": {
+        "w": 366,
+        "h": 882
+      }
+    },
+    "fig-regional-spectrum": {
+      "w": 720,
+      "h": 446
+    },
+    "fig-ag-zoning": {
+      "w": 720,
+      "h": 360
+    },
+    "fig-scatter-village": {
+      "w": 720,
+      "h": 428,
+      "narrow": {
+        "w": 366,
+        "h": 842
+      }
+    },
+    "fig-trust-fee": {
+      "w": 720,
+      "h": 476
+    },
+    "fig-lifecycle": {
+      "w": 720,
+      "h": 440
+    },
+    "fig-combined-sewer": {
+      "w": 720,
+      "h": 408,
+      "narrow": {
+        "w": 366,
+        "h": 802
+      }
+    },
+    "fig-service-area": {
+      "w": 720,
+      "h": 406
     }
   },
   "hero": {

@@ -4495,6 +4495,844 @@ function conflictSteps() {
   return { W, H: H + 6, b };
 }
 
+// ============================================================ Lesson 8.1
+
+// The four-step travel demand model, in order.
+function fourStep() {
+  const rng = makeRng(8101);
+  const CW = 166;
+  const CH = 250;
+  const zone = (x, y, w, fill, t) => { const d = roundRectD(x, y, w, w, 6); return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + (t ? label(x + w / 2, y + w / 2 + 7, t, { size: 19, weight: 700 }) : ''); };
+  const icons = [
+    () => zone(18, 150, 56, T.butter, '120') + zone(92, 150, 56, T.sky, '80'),
+    () => zone(14, 156, 44, T.butter) + zone(108, 156, 44, T.sky) + L(arrow(60, 170, 104, 170, rng, { size: 2.2, head: 8 }) + arrow(104, 190, 60, 190, rng, { size: 2.2, head: 8 })),
+    () => {
+      let o = '';
+      [['car', 70, P.tomato], ['bus', 20, P.civic], ['bike', 10, P.leaf]].forEach(([t, v, fill], i) => {
+        const y = 138 + i * 30;
+        o += `<rect x="72" y="${y}" width="${v}" height="20" rx="3" fill="${fill}" stroke="${P.ink}" stroke-width="1.4"/>` + label(64, y + 17, t, { size: 19, anchor: 'end', weight: 600 });
+      });
+      return o;
+    },
+    () => {
+      let o = '';
+      [34, 83, 132].forEach((x) => { o += L(inkLine(`M${x} 136L${x} 222`, { rng, size: 1.6, color: MUTED })); });
+      [146, 179, 212].forEach((y) => { o += L(inkLine(`M24 ${y}L142 ${y}`, { rng, size: 1.6, color: MUTED })); });
+      return o + L(inkLine('M34 212L83 212L83 146L132 146', { rng, size: 5, color: P.tomato, overshoot: 0 }));
+    },
+  ];
+  const steps = [['Generation', 'how many trips'], ['Distribution', 'where they go'], ['Mode choice', 'car, bus, bike?'], ['Assignment', 'which routes']];
+  const card = (i) => {
+    const [t, sub] = steps[i];
+    let c = panel(0, 0, CW, CH, T.cream, rng);
+    c += `<circle cx="${CW / 2}" cy="30" r="15" fill="${P.butter}" stroke="${P.ink}" stroke-width="2"/>` + label(CW / 2, 37, String(i + 1), { size: 19, weight: 800 });
+    c += label(CW / 2, 80, t, { size: 21, weight: 800 });
+    c += label(CW / 2, 108, sub, { size: 19, color: MUTED, weight: 500 });
+    return c + icons[i]();
+  };
+  const wideB = [0, 1, 2, 3].map((i) => at(14 + i * 176, 14, card(i))).join('')
+    + note(360, 316, 'always in this order; distribution often uses a gravity model', { size: 24, color: P.civicDeep });
+  const narB = [0, 1, 2, 3].map((i) => at(14 + (i % 2) * 176, 14 + Math.floor(i / 2) * 264, card(i))).join('')
+    + note(184, 570, 'always in this order', { size: 24, color: P.civicDeep });
+  return { W: 720, H: 334, b: wideB, narrow: { W: 370, H: 588, b: narB } };
+}
+
+// Functional classification: mobility versus access (illustrative shares).
+function functionalClass() {
+  const rng = makeRng(8102);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const x0 = 210;
+  const x1 = 690;
+  const rows = [['Arterial', 0.8], ['Collector', 0.5], ['Local', 0.2]];
+  rows.forEach(([t, m], i) => {
+    const y = 60 + i * 92;
+    b += label(x0 - 20, y + 38, t, { anchor: 'end', weight: 800 });
+    const xm = x0 + (x1 - x0) * m;
+    const a = rectD(x0, y, xm - x0, 56);
+    const c = rectD(xm, y, x1 - xm, 56);
+    b += cut(a, { rng, fill: T.sky, filter: FLAT }) + cut(c, { rng, fill: T.butter, filter: FLAT }) + L(ink(rectD(x0, y, x1 - x0, 56), { rng, size: 2 }) + inkLine(`M${xm} ${y}L${xm} ${y + 56}`, { rng, size: 1.8 }));
+    if (i === 0) {
+      b += label((x0 + xm) / 2, y - 14, 'mobility', { weight: 700, color: P.civicDeep });
+      b += label((xm + x1) / 2, y - 14, 'access', { weight: 700, color: P.kraftDeep });
+    }
+  });
+  b += note(W / 2, 358, 'more through-movement, less direct access (illustrative)', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Induced demand: travel time after a widening (illustrative).
+function inducedDemand() {
+  const rng = makeRng(8103);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const x0 = 110;
+  const x1 = 660;
+  const yB = 330;
+  const yT = 70;
+  const X = (n) => x0 + ((n + 2) / 10) * (x1 - x0);
+  const Y = (m) => yB - (m / 30) * (yB - yT);
+  const data = [[-2, 30], [-1, 30], [0, 30], [0.4, 18], [2, 21], [4, 25], [6, 27], [8, 28]];
+  for (const m of [10, 20, 30]) {
+    b += L(inkLine([[x0, Y(m)], [x1, Y(m)]], { rng, size: 1, opacity: 0.35, overshoot: 0 }));
+    b += label(x0 - 14, Y(m) + 10, String(m), { anchor: 'end' });
+  }
+  b += L(dashed(X(0), yT - 10, X(0), yB, rng, { size: 2, color: P.tomatoDeep }));
+  b += label(X(0) + 12, Y(2), 'road widened', { anchor: 'start', color: P.tomatoDeep, weight: 700 });
+  b += L(inkLine(data.map(([n, m]) => [X(n), Y(m)]), { rng, size: 3.4, color: P.civicDeep, overshoot: 0 }));
+  data.forEach(([n, m]) => { b += `<circle cx="${X(n)}" cy="${Y(m)}" r="5" fill="${P.civicDeep}"/>`; });
+  b += L(inkLine([[x0, yT - 20], [x0, yB], [x1 + 10, yB]], { rng, size: 2.4, overshoot: 0 }));
+  for (const n of [-2, 0, 2, 4, 6, 8]) b += label(X(n), yB + 38, String(n));
+  b += label((x0 + x1) / 2, yB + 78, 'years after widening (illustrative)', { color: MUTED, weight: 500 });
+  b += label(16, 30, 'peak trip, minutes', { anchor: 'start', color: MUTED, weight: 500 });
+  b += label(X(8), Y(28) - 20, '28', { weight: 800, color: P.civicDeep });
+  b += label(X(0.4) + 26, Y(18) + 34, '18', { weight: 800, color: P.civicDeep });
+  b += note(X(4.6), Y(9), 'new trips fill the new lanes', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// A road diet: four undivided lanes to two lanes, a center turn lane, and bike lanes.
+function roadDiet() {
+  const rng = makeRng(8104);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const road = (y, lanes, t) => {
+    let o = label(60, y - 18, t, { anchor: 'start', weight: 800 });
+    let x = 60;
+    const d = rectD(60, y, 600, 100);
+    o += cut(d, { rng, fill: '#D9D4CC', filter: FLAT });
+    lanes.forEach(([w, kind, dir], i) => {
+      if (kind === 'bike') o += `<rect x="${x}" y="${y}" width="${w}" height="100" fill="${T.sage}"/>`;
+      if (kind === 'turn') o += `<rect x="${x}" y="${y}" width="${w}" height="100" fill="${T.butter}"/>`;
+      if (dir) {
+        const cx = x + w / 2;
+        const car = roundRectD(cx - 22, y + 18, 44, 64, 10);
+        o += cut(car, { rng, fill: [P.tomato, P.civic, P.leaf, P.lavender][i % 4], filter: FLAT }) + L(ink(car, { rng, size: 1.6 }));
+        o += L(arrow(cx + 34, dir > 0 ? y + 80 : y + 20, cx + 34, dir > 0 ? y + 24 : y + 76, rng, { size: 1.8, head: 7 }));
+      }
+      if (kind === 'turn') o += L(arrow(x + w / 2 - 14, y + 70, x + w / 2 - 14, y + 34, rng, { size: 2, head: 7 }) + inkLine(`M${x + w / 2 - 14} ${y + 34}Q${x + w / 2 - 14} ${y + 20} ${x + w / 2 - 34} ${y + 20}`, { rng, size: 2 }));
+      o += label(x + w / 2, y + 132, kind, { size: 28, weight: 500 });
+      x += w;
+      if (i < lanes.length - 1) o += L(dashed(x, y + 6, x, y + 94, rng, { size: 1.8, color: '#FFFDF8', dash: 14, gap: 10 }));
+    });
+    return o + L(ink(d, { rng, size: 2 }));
+  };
+  b += road(60, [[150, 'travel', -1], [150, 'travel', -1], [150, 'travel', 1], [150, 'travel', 1]], 'Before: four undivided lanes');
+  b += road(290, [[80, 'bike'], [150, 'travel', -1], [140, 'turn'], [150, 'travel', 1], [80, 'bike']], 'After: a road diet');
+  b += note(W / 2, H - 4, 'fewer crashes; similar capacity at moderate volumes', { color: P.civicDeep });
+  return { W, H: H + 6, b };
+}
+
+// LOS versus VMT: the same infill project judged two ways (illustrative).
+function losVmt() {
+  const rng = makeRng(8105);
+  const PW = 338;
+  const PH = 400;
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Level of service', { size: 25, anchor: 'start' });
+  a += label(20, 70, 'delay at the intersection', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const grades = ['A', 'B', 'C', 'D', 'E', 'F'];
+  grades.forEach((g, i) => {
+    const x = 26 + i * 48;
+    const hit = g === 'E';
+    const was = g === 'D';
+    const d = roundRectD(x, 120, 42, 50, 6);
+    a += cut(d, { rng, fill: hit ? P.tomato : was ? T.butter : '#FFFDF8', filter: FLAT }) + L(ink(d, { rng, size: hit ? 2.6 : 1.6 }));
+    a += label(x + 21, 154, g, { size: 21, weight: 800 });
+  });
+  a += L(arrow(26 + 3 * 48 + 21, 188, 26 + 4 * 48 + 21, 188, rng, { size: 2.2, head: 8, bend: -14 }));
+  a += label(169, 236, 'infill adds cars: D to E', { size: 19, weight: 700 });
+  a += label(169, 266, 'fix it by widening?', { size: 19, color: MUTED, weight: 500 });
+  a += note(20, 356, 'penalizes infill', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let v = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Vehicle miles traveled', { size: 25, anchor: 'start' });
+  v += label(20, 70, 'driving per resident, a day', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const bars = [['this infill', 14, P.leaf], ['region average', 24, P.sky]];
+  bars.forEach(([t, m, fill], i) => {
+    const y = 116 + i * 74;
+    const w = m * 10;
+    const d = rectD(20, y + 24, w, 34);
+    v += label(20, y + 14, t, { size: 19, anchor: 'start', weight: 700 });
+    v += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 1.8 })) + label(20 + w + 10, y + 49, `${m} mi`, { size: 19, anchor: 'start', weight: 800 });
+  });
+  v += label(169, 290, 'less driving than average', { size: 19, weight: 700 });
+  v += label(169, 318, '(illustrative)', { size: 19, color: MUTED, weight: 500 });
+  v += note(20, 356, 'favors infill near transit', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, a) + at(368, 14, v),
+    narrow: { W: 366, H: 842, b: at(14, 14, a) + at(14, 428, v) },
+  };
+}
+
+// ============================================================ Lesson 8.2
+
+// HUD income categories as shares of area median income.
+function amiBands() {
+  const rng = makeRng(8201);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const X = (pct) => 60 + pct * 5;
+  const segs = [[0, 30, P.tomato, ['extremely', 'low']], [30, 50, P.blush, ['very', 'low']], [50, 80, P.butter, ['low']], [80, 120, T.sage, ['moderate', '80 to 120%']]];
+  segs.forEach(([a, z, fill, lines], i) => {
+    const d = rectD(X(a), 150, X(z) - X(a), 70);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(i === 3 ? dashed(X(a), 150, X(z), 150, rng, { size: 2 }) + dashed(X(a), 220, X(z), 220, rng, { size: 2 }) + dashed(X(z), 150, X(z), 220, rng, { size: 2 }) : ink(d, { rng, size: 2 }));
+    lines.forEach((t, k) => { b += label((X(a) + X(z)) / 2, 132 - (lines.length - 1 - k) * 32, t, { weight: 700 }); });
+  });
+  b += L(dashed(X(100), 150, X(100), 236, rng, { size: 2.4, color: P.civicDeep }));
+  b += label(X(100), 264, 'AMI', { weight: 800, color: P.civicDeep });
+  b += label(X(100), 300, '$100k', { color: MUTED, weight: 500 });
+  [[30, '$30k'], [50, '$50k'], [80, '$80k']].forEach(([p, m]) => {
+    b += label(X(p), 264, `${p}%`);
+    b += label(X(p), 300, m, { color: MUTED, weight: 500 });
+  });
+  b += note(W / 2, 360, 'if the area median is $100,000 (illustrative)', { color: P.civicDeep });
+  b += note(W / 2, 400, 'moderate: set by each program', { color: MUTED });
+  return { W, H: H + 8, b };
+}
+
+// How the Low-Income Housing Tax Credit turns into equity.
+function lihtcFlow() {
+  const rng = makeRng(8202);
+  const W = 720;
+  const H = 430;
+  let b = '';
+  const box = (x, y, t, sub, fill) => {
+    const d = roundRectD(x, y, 300, 110, 12);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 })) + title(x + 150, y + 46, t, { size: 28 }) + label(x + 150, y + 86, sub, { color: MUTED, weight: 500 });
+  };
+  b += box(20, 30, 'Federal', 'allocates credits', T.sky);
+  b += box(400, 30, 'State agency', 'awards them', T.lav);
+  b += box(400, 230, 'Developer', 'builds, sells credits', T.butter);
+  b += box(20, 230, 'Investor', 'buys the credits', T.sage);
+  b += L(arrow(326, 85, 394, 85, rng, { size: 2.6, head: 11 }));
+  b += L(arrow(550, 146, 550, 224, rng, { size: 2.6, head: 11 }));
+  b += label(534, 194, 'by competition', { anchor: 'end', size: 28, color: MUTED, weight: 500 });
+  b += L(arrow(394, 266, 326, 266, rng, { size: 2.6, head: 11 }));
+  b += L(arrow(326, 310, 394, 310, rng, { size: 2.6, head: 11, color: P.leafDeep }));
+  b += label(360, 356, 'equity', { weight: 800, color: P.leafDeep });
+  b += note(W / 2, 414, 'equity replaces debt, so rents can stay low', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Who pays the rent with a Housing Choice Voucher (illustrative).
+function voucherSplit() {
+  const rng = makeRng(8203);
+  const W = 720;
+  const H = 380;
+  let b = '';
+  const X = (m) => 40 + m * 0.4;
+  b += label(40, 50, 'income $2,000 a month, 30% = $600', { anchor: 'start', weight: 700 });
+  const t = rectD(X(0), 110, X(600) - X(0), 80);
+  const v = rectD(X(600), 110, X(1400) - X(600), 80);
+  b += cut(t, { rng, fill: P.butter, filter: FLAT }) + cut(v, { rng, fill: P.sky, filter: FLAT }) + L(ink(rectD(X(0), 110, X(1400) - X(0), 80), { rng, size: 2.2 }) + inkLine(`M${X(600)} 110L${X(600)} 190`, { rng, size: 2 }));
+  b += label((X(0) + X(600)) / 2, 160, 'tenant $600', { weight: 800 });
+  b += label((X(600) + X(1400)) / 2, 160, 'voucher $800', { weight: 800 });
+  b += L(dashed(X(1500), 90, X(1500), 214, rng, { size: 2.4, color: P.tomatoDeep }));
+  b += label(X(1500), 244, 'payment', { anchor: 'middle', color: P.tomatoDeep, weight: 700 }) + label(X(1500), 276, 'standard', { anchor: 'middle', color: P.tomatoDeep, weight: 700 }) + label(X(1500), 308, '$1,500', { anchor: 'middle', color: P.tomatoDeep, weight: 500 });
+  b += label(X(700), 244, 'rent $1,400, paid to a private landlord', { weight: 500 });
+  b += note(X(620), 350, 'illustrative: the voucher covers the gap', { color: P.civicDeep });
+  return { W, H: H + 6, b };
+}
+
+// Missing middle: house-scale buildings with several homes.
+function missingMiddle() {
+  const rng = makeRng(8204);
+  const W = 720;
+  const H = 420;
+  let b = '';
+  const ground = 300;
+  const bldg = (cx, w, h, fill, doors, floors, roof = true) => {
+    const x = cx - w / 2;
+    const d = rectD(x, ground - h, w, h);
+    let o = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    if (roof) { const r = polyD([[x - 8, ground - h], [cx, ground - h - 38], [x + w + 8, ground - h]]); o += cut(r, { rng, fill: P.kraftDeep, filter: FLAT }) + L(ink(r, { rng, size: 2 })); }
+    for (let f = 0; f < floors; f++) for (let k = 0; k < doors; k++) {
+      const wx = x + (w / doors) * (k + 0.5);
+      const wy = ground - h + 14 + f * 34;
+      if (f < floors - 1 || floors === 1) o += `<rect x="${wx - 8}" y="${wy}" width="16" height="16" fill="#FFFDF8" stroke="${P.ink}" stroke-width="1.4"/>`;
+    }
+    for (let k = 0; k < doors; k++) { const wx = x + (w / doors) * (k + 0.5); o += `<rect x="${wx - 7}" y="${ground - 28}" width="14" height="28" fill="${P.civicDeep}" stroke="${P.ink}" stroke-width="1.4"/>`; }
+    return o;
+  };
+  b += bldg(72, 80, 60, T.sky, 1, 1);
+  b += bldg(216, 100, 70, T.butter, 2, 1);
+  b += bldg(360, 100, 104, T.butter, 2, 3);
+  b += bldg(504, 124, 104, T.butter, 3, 3);
+  b += bldg(648, 100, 230, T.lav, 3, 7, false);
+  b += L(inkLine(`M20 ${ground}L700 ${ground}`, { rng, size: 2.2 }));
+  [['house', 72], ['duplex', 216], ['fourplex', 360], ['townhouses', 504], ['mid-rise', 648]].forEach(([t, x]) => { b += label(x, ground + 40, t, { weight: 600 }); });
+  b += L(inkLine('M156 150L156 136L566 136L566 150', { rng, size: 2.4, color: P.tomatoDeep }));
+  b += label(361, 118, 'missing middle', { weight: 800, color: P.tomatoDeep });
+  b += note(W / 2, 404, 'house-scale, but zoned out of most neighborhoods', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 8.3
+
+// NEPA: the level of review scales with significance.
+function nepaLevels() {
+  const rng = makeRng(8301);
+  const W = 720;
+  let b = '';
+  const box = (x, y, w, h, t, sub, fill) => {
+    const d = roundRectD(x, y, w, h, 12);
+    return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 })) + title(x + w / 2, y + (sub ? 42 : h / 2 + 10), t, { size: 28 }) + (sub ? label(x + w / 2, y + 80, sub, { color: MUTED, weight: 500 }) : '');
+  };
+  b += label(20, 36, 'review scales with significance', { anchor: 'start', weight: 700, color: P.civicDeep });
+  b += box(20, 60, 250, 100, 'CE', 'minor, routine', T.sage);
+  b += box(20, 190, 250, 100, 'EA', 'unsure of impact', T.butter);
+  b += box(20, 340, 250, 100, 'EIS', 'significant', T.blush);
+  b += L(arrow(280, 110, 330, 110, rng, { size: 2.4, head: 10 })) + label(342, 120, 'no detailed review', { anchor: 'start', weight: 500 });
+  b += L(arrow(280, 225, 330, 225, rng, { size: 2.4, head: 10 })) + box(340, 196, 150, 58, 'FONSI', null, '#FFFDF8');
+  b += L(arrow(145, 294, 145, 336, rng, { size: 2.4, head: 9 }));
+  b += label(162, 326, 'or, if significant', { anchor: 'start', color: MUTED, weight: 500 });
+  b += L(arrow(280, 390, 330, 390, rng, { size: 2.4, head: 10 }));
+  b += label(342, 376, 'scoping, draft EIS,', { anchor: 'start', weight: 500 }) + label(342, 410, 'comment, final EIS', { anchor: 'start', weight: 500 });
+  b += box(560, 440, 140, 48, 'ROD', null, '#FFFDF8');
+  b += L(arrow(530, 420, 556, 450, rng, { size: 2.2, head: 9 }));
+  b += label(20, 500, 'NEPA is procedural: study and disclose', { anchor: 'start', weight: 700, color: P.tomatoDeep });
+  return { W, H: 516, b };
+}
+
+// The wetland mitigation sequence: avoid, minimize, then compensate.
+function mitigationSequence() {
+  const rng = makeRng(8302);
+  const wet = (x, y, w) => { const d = blobD(x, y, w, w * 0.55, rng); return cut(d, { rng, fill: T.sage, filter: FLAT }) + L(ink(d, { rng, size: 1.8, color: P.leafDeep })) + L([`M${x - 12} ${y + 6}l4 -16`, `M${x} ${y + 6}l0 -18`, `M${x + 12} ${y + 6}l-4 -16`].map((r) => inkLine(r, { rng, size: 1.6, color: P.leafDeep })).join('')); };
+  const road = (dPath) => L(inkLine(dPath, { rng, size: 14, color: '#B9B2A6', overshoot: 0 }));
+  const icons = [
+    (cx, cy) => wet(cx, cy, 56) + road(`M${cx - 80} ${cy + 50}Q${cx} ${cy + 70} ${cx + 80} ${cy + 50}`),
+    (cx, cy) => wet(cx, cy, 56) + road(`M${cx - 80} ${cy + 30}L${cx + 80} ${cy + 30}`),
+    (cx, cy) => wet(cx - 40, cy, 36) + road(`M${cx - 76} ${cy - 30}L${cx - 4} ${cy + 36}`) + L(arrow(cx - 6, cy - 6, cx + 26, cy - 6, rng, { size: 2, head: 8 })) + wet(cx + 54, cy, 40),
+  ];
+  const steps = [['1 Avoid', 'route around it'], ['2 Minimize', 'shrink the impact'], ['3 Compensate', 'restore elsewhere']];
+  const tall = (k) => {
+    let o = panel(0, 0, 222, 280, T.cream, rng) + title(111, 44, steps[k][0], { size: 25 });
+    o += icons[k](111, 128);
+    return o + label(111, 238, steps[k][1], { size: 19, weight: 600 });
+  };
+  const wide = (k) => {
+    let o = panel(0, 0, 338, 170, T.cream, rng) + `<g transform="translate(76 78) scale(0.72) translate(-111 -128)">${icons[k](111, 128)}</g>`;
+    o += title(156, 70, steps[k][0], { size: 22, anchor: 'start' });
+    return o + label(156, 108, steps[k][1], { size: 19, anchor: 'start', weight: 600 });
+  };
+  return {
+    W: 720, H: 350, b: at(14, 14, tall(0)) + at(249, 14, tall(1)) + at(484, 14, tall(2)) + note(360, 338, 'in this order: compensation is the last resort', { size: 24, color: P.civicDeep }),
+    narrow: { W: 366, H: 604, b: at(14, 14, wide(0)) + at(14, 198, wide(1)) + at(14, 382, wide(2)) + note(183, 590, 'compensation is the last resort', { size: 24, color: P.civicDeep }) },
+  };
+}
+
+// A floodplain in cross-section, with an elevated house.
+function floodplainSection() {
+  const rng = makeRng(8303);
+  const W = 720;
+  const H = 450;
+  let b = '';
+  const terr = [[0, 300], [60, 300], [80, 330], [160, 330], [180, 300], [260, 275], [400, 225], [520, 185], [640, 150], [720, 135]];
+  const yAt = (x) => { for (let i = 1; i < terr.length; i++) { const [x1, y1] = terr[i - 1]; const [x2, y2] = terr[i]; if (x <= x2) return y1 + (y2 - y1) * (x - x1) / (x2 - x1); } return 135; };
+  const reach = (y) => { for (let i = 1; i < terr.length; i++) { const [x1, y1] = terr[i - 1]; const [x2, y2] = terr[i]; if (y2 <= y && y1 >= y) return x1 + (x2 - x1) * (y1 - y) / (y1 - y2); } return 0; };
+  const pool = (y, fill) => { const xr = reach(y); const pts = [[0, y], [xr, y]]; for (let i = terr.length - 1; i >= 0; i--) if (terr[i][0] < xr) pts.push(terr[i]); return `<path d="${polyD(pts)}" fill="${fill}"/>`; };
+  b += pool(180, '#E6F0F8') + pool(210, P.sky);
+  b += `<path d="${polyD([[60, 305], [180, 305], [160, 330], [80, 330]])}" fill="${P.civic}" opacity="0.55"/>`;
+  const ground = polyD([...terr, [720, 340], [0, 340]]);
+  b += cut(ground, { rng, fill: T.kraft, filter: FLAT }) + L(inkLine(terr, { rng, size: 2.2, overshoot: 0 }));
+  b += L(inkLine([[0, 210], [reach(210), 210]], { rng, size: 2.4, color: P.civicDeep, overshoot: 0 }));
+  b += L(dashed(0, 180, reach(180), 180, rng, { size: 1.8, color: P.civicDeep }));
+  b += label(20, 244, 'base flood elevation', { anchor: 'start', weight: 700, color: P.civicDeep });
+  // The house: floor 16 above the base flood elevation.
+  const hx = 330;
+  const g = yAt(hx + 25);
+  b += L(inkLine(`M${hx + 6} ${g}L${hx + 6} 194`, { rng, size: 3 }) + inkLine(`M${hx + 44} ${g - 4}L${hx + 44} 194`, { rng, size: 3 }));
+  const body = rectD(hx - 4, 144, 58, 50);
+  const roof = polyD([[hx - 12, 144], [hx + 25, 110], [hx + 62, 144]]);
+  b += cut(body, { rng, fill: P.butter, filter: FLAT }) + L(ink(body, { rng, size: 2 })) + cut(roof, { rng, fill: P.kraftDeep, filter: FLAT }) + L(ink(roof, { rng, size: 2 }));
+  b += L([`M${hx + 64} 194L${hx + 76} 194`, `M${hx + 70} 194L${hx + 70} 210`, `M${hx + 64} 210L${hx + 76} 210`].map((r) => inkLine(r, { rng, size: 2, color: P.tomatoDeep })).join(''));
+  b += label(hx + 84, 104, 'floor above it:', { anchor: 'start', color: P.tomatoDeep, weight: 700 });
+  b += label(hx + 84, 136, 'freeboard', { anchor: 'start', color: P.tomatoDeep, weight: 700 });
+  b += L(arrow(hx + 84, 146, hx + 74, 190, rng, { size: 1.8, head: 7, color: P.tomatoDeep }));
+  const key = (y, fill, t, dash) => `<rect x="20" y="${y - 22}" width="34" height="26" fill="${fill}" stroke="${P.civicDeep}" stroke-width="1.6"${dash ? ' stroke-dasharray="5 4"' : ''}/>` + label(68, y, t, { anchor: 'start', weight: 600 });
+  b += key(390, P.sky, '1% a year: special flood hazard area');
+  b += key(432, '#E6F0F8', '0.2% a year: the "500-year" flood', true);
+  return { W, H, b };
+}
+
+// Climate mitigation versus adaptation.
+function climateMA() {
+  const rng = makeRng(8304);
+  const PW = 338;
+  const PH = 380;
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Mitigation', { size: 25, anchor: 'start' });
+  a += label(20, 70, 'cuts emissions', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const bus = roundRectD(30, 150, 150, 60, 10);
+  a += cut(bus, { rng, fill: P.civic, filter: FLAT }) + L(ink(bus, { rng, size: 2 }));
+  [48, 84, 120].forEach((x) => { a += `<rect x="${x}" y="162" width="26" height="20" fill="#FFFDF8" stroke="${P.ink}" stroke-width="1.4"/>`; });
+  a += `<circle cx="62" cy="214" r="10" fill="${P.ink}"/><circle cx="148" cy="214" r="10" fill="${P.ink}"/>`;
+  const panelD = polyD([[210, 200], [300, 200], [318, 150], [228, 150]]);
+  a += cut(panelD, { rng, fill: P.civicDeep, filter: FLAT }) + L(ink(panelD, { rng, size: 2 })) + L(inkLine('M262 200L262 226', { rng, size: 2.6 }));
+  a += sun(270, 118, 14);
+  a += label(169, 272, 'transit, efficiency, solar', { size: 19, weight: 600 });
+  a += note(20, 346, 'less carbon', { size: 24, anchor: 'start', color: P.leafDeep });
+  let d = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Adaptation', { size: 25, anchor: 'start' });
+  d += label(20, 70, 'prepares for expected impacts', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  d += `<path d="M20 222 Q60 208 100 222 T180 222 T260 222 L318 222 L318 240 L20 240Z" fill="${T.sky}"/>`;
+  const dune = polyD([[196, 222], [236, 176], [290, 170], [318, 222]]);
+  d += cut(dune, { rng, fill: P.butter, filter: FLAT }) + L(ink(dune, { rng, size: 2 }));
+  d += L(inkLine('M76 222L76 176', { rng, size: 3 }) + inkLine('M110 222L110 176', { rng, size: 3 }));
+  const body = rectD(66, 132, 56, 44);
+  const roof = polyD([[58, 132], [94, 100], [130, 132]]);
+  d += cut(body, { rng, fill: P.butter, filter: FLAT }) + L(ink(body, { rng, size: 2 })) + cut(roof, { rng, fill: P.kraftDeep, filter: FLAT }) + L(ink(roof, { rng, size: 2 }));
+  d += label(169, 272, 'elevate, restore dunes, shade', { size: 19, weight: 600 });
+  d += note(20, 346, 'less harm', { size: 24, anchor: 'start', color: P.civicDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, a) + at(368, 14, d),
+    narrow: { W: 366, H: 802, b: at(14, 14, a) + at(14, 408, d) },
+  };
+}
+
+// ============================================================ Lesson 8.4
+
+// Economic base: export sales bring money in; local spending recirculates it.
+function baseFlows() {
+  const rng = makeRng(8401);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const reg = ellipseD(470, 222, 236, 176);
+  b += cut(reg, { rng, fill: T.sage, filter: FLAT }) + L(ink(reg, { rng, size: 2.2, color: P.leafDeep }));
+  b += label(440, 88, 'the region', { weight: 700, color: P.leafDeep });
+  const fac = polyD([[300, 250], [300, 180], [330, 200], [330, 180], [360, 200], [360, 160], [380, 160], [380, 250]]);
+  b += cut(fac, { rng, fill: P.lavender, filter: FLAT }) + L(ink(fac, { rng, size: 2 }));
+  b += label(340, 286, 'basic', { weight: 800 });
+  b += house(440, 360, 70, 80, { seed: 41 });
+  const shop = rectD(560, 170, 90, 70);
+  const awn = polyD([[552, 170], [658, 170], [650, 150], [560, 150]]);
+  b += cut(shop, { rng, fill: P.butter, filter: FLAT }) + L(ink(shop, { rng, size: 2 })) + cut(awn, { rng, fill: P.tomato, filter: FLAT }) + L(ink(awn, { rng, size: 2 }));
+  b += label(605, 134, 'nonbasic', { weight: 800 });
+  b += L(arrow(300, 190, 150, 120, rng, { size: 2.6, head: 11 }));
+  b += label(20, 100, 'goods out', { anchor: 'start', weight: 700 });
+  b += L(arrow(150, 250, 296, 226, rng, { size: 3, head: 12, color: P.leafDeep }));
+  b += label(20, 280, 'new money in', { anchor: 'start', weight: 800, color: P.leafDeep });
+  b += L(arrow(384, 250, 432, 300, rng, { size: 2.2, head: 9, bend: -10 }));
+  b += label(372, 340, 'wages', { anchor: 'end', color: MUTED, weight: 500 });
+  b += L(arrow(510, 312, 570, 250, rng, { size: 2.2, head: 9, bend: -10 }));
+  b += label(526, 318, 'spent here', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(W / 2, 432, 'basic jobs bring money in; nonbasic jobs recirculate it', { color: P.civicDeep });
+  return { W, H: H + 8, b };
+}
+
+// The multiplier worked example: 100 basic jobs at 2.5 make 250 in all.
+function multiplierJobs() {
+  const rng = makeRng(8402);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const sq = (x, y, fill) => { const d = roundRectD(x, y, 30, 30, 5); return cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 1.6 })); };
+  b += label(20, 40, '25,000 total jobs ÷ 10,000 basic = 2.5', { anchor: 'start', weight: 700 });
+  b += label(20, 108, 'basic', { anchor: 'start', weight: 800 });
+  for (let i = 0; i < 10; i++) b += sq(200 + i * 40, 84, P.lavender);
+  b += label(20, 184, 'nonbasic', { anchor: 'start', weight: 800 });
+  for (let i = 0; i < 15; i++) b += sq(200 + (i % 10) * 40, 160 + Math.floor(i / 10) * 40, P.butter);
+  b += label(620, 108, '100', { anchor: 'start', weight: 800 });
+  b += label(620, 204, '150', { anchor: 'start', weight: 800 });
+  b += L(inkLine('M200 256L596 256', { rng, size: 2.2 }));
+  b += label(20, 300, 'total', { anchor: 'start', weight: 800 });
+  b += label(200, 300, '100 × 2.5 = 250 jobs', { anchor: 'start', weight: 800, color: P.civicDeep });
+  b += label(20, 348, 'each square = 10 jobs', { anchor: 'start', color: MUTED, weight: 500 });
+  b += note(W / 2, 394, 'it runs in reverse when a big employer cuts jobs', { color: P.tomatoDeep });
+  return { W, H: H + 6, b };
+}
+
+// Retail leakage: trade-area spending against local sales, to scale.
+function leakage() {
+  const rng = makeRng(8403);
+  const W = 720;
+  const H = 380;
+  let b = '';
+  const X = (m) => 40 + m * 12;
+  b += label(40, 50, 'trade-area apparel spending', { anchor: 'start', weight: 700 });
+  const all = rectD(X(0), 66, X(50) - X(0), 60);
+  b += cut(all, { rng, fill: T.sky, filter: FLAT }) + L(ink(all, { rng, size: 2 })) + label(X(50) - 14, 106, '$50M', { anchor: 'end', weight: 800 });
+  b += label(40, 176, 'sold by local stores', { anchor: 'start', weight: 700 });
+  const loc = rectD(X(0), 192, X(10) - X(0), 60);
+  b += cut(loc, { rng, fill: P.leaf, filter: FLAT }) + L(ink(loc, { rng, size: 2 })) + label(X(10) + 14, 232, '$10M', { anchor: 'start', weight: 800 });
+  b += `<rect x="${X(10)}" y="192" width="${X(50) - X(10)}" height="60" fill="url(#none)" stroke="${P.tomatoDeep}" stroke-width="2" stroke-dasharray="8 6"/>`;
+  b += label((X(10) + X(50)) / 2 + 40, 232, 'leaks out: $40M', { weight: 800, color: P.tomatoDeep });
+  b += label(40, 306, 'capture rate: 10 ÷ 50 = 20%', { anchor: 'start', weight: 800, color: P.civicDeep });
+  b += note(W / 2, 362, 'leakage signals room for more local stores', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// A cluster: interconnected firms, suppliers, and institutions.
+function clusterWeb() {
+  const rng = makeRng(8404);
+  const W = 720;
+  const H = 460;
+  let b = '';
+  const cx = 360;
+  const cy = 220;
+  const nodes = [[160, 80, 'suppliers', T.butter], [560, 80, 'university', T.lav], [120, 250, 'training', T.sage], [590, 250, 'service firms', T.blush], [360, 390, 'trade group', T.kraft]];
+  nodes.forEach(([x, y]) => { b += L(inkLine(`M${cx} ${cy}L${x} ${y}`, { rng, size: 2, color: MUTED })); });
+  nodes.forEach(([x, y, t, fill]) => {
+    const w = t.length * 15 + 36;
+    const d = roundRectD(x - w / 2, y - 30, w, 58, 12);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 })) + label(x, y + 9, t, { weight: 700 });
+  });
+  const core = ellipseD(cx, cy, 110, 62);
+  b += cut(core, { rng, fill: P.butter, filter: FLAT }) + L(ink(core, { rng, size: 2.6 }));
+  b += label(cx, cy - 4, 'firms in', { weight: 800 }) + label(cx, cy + 28, 'one field', { weight: 800 });
+  b += note(W / 2, 452, 'strengthen the whole web, not one firm at a time', { color: P.civicDeep });
+  return { W, H: H + 6, b };
+}
+
+// ============================================================ Lesson 8.5
+
+// Enclosure: buildings in proportion to the street make an outdoor room.
+function enclosure() {
+  const rng = makeRng(8501);
+  const PW = 338;
+  const PH = 360;
+  const bldg = (x, w, h, fill, floors) => {
+    const d = rectD(x, 270 - h, w, h);
+    let o = cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    for (let f = 0; f < floors; f++) o += `<rect x="${x + w / 2 - 9}" y="${270 - h + 12 + f * 32}" width="18" height="18" fill="#FFFDF8" stroke="${P.ink}" stroke-width="1.3"/>`;
+    return o;
+  };
+  const street = (s) => L(inkLine('M16 270L322 270', { rng, size: 2.2 })) + s;
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Little enclosure', { size: 25, anchor: 'start' });
+  a += street(bldg(20, 44, 40, T.kraft, 1) + bldg(274, 44, 40, T.kraft, 1));
+  a += person(169, 270, 0.8, { coat: P.civic, seed: 91 });
+  a += L(dashed(70, 250, 268, 250, rng, { size: 1.6, color: MUTED }));
+  a += label(169, 304, 'wide street, low buildings', { size: 19, color: MUTED, weight: 500 });
+  a += note(20, 342, 'exposed, hard to read', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  let r = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'An outdoor room', { size: 25, anchor: 'start' });
+  r += street(bldg(40, 70, 170, T.butter, 5) + bldg(228, 70, 170, T.butter, 5));
+  r += L(inkLine('M132 270L132 214', { rng, size: 3, color: P.kraftDeep }) + inkLine('M206 270L206 214', { rng, size: 3, color: P.kraftDeep }));
+  r += `<circle cx="132" cy="204" r="18" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.6"/><circle cx="206" cy="204" r="18" fill="${P.leaf}" stroke="${P.ink}" stroke-width="1.6"/>`;
+  r += person(169, 270, 0.8, { coat: P.civic, seed: 91 });
+  r += label(169, 304, 'height in proportion to width', { size: 19, color: MUTED, weight: 500 });
+  r += note(20, 342, 'walls, a ceiling of trees', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 388, b: at(14, 14, a) + at(368, 14, r),
+    narrow: { W: 366, H: 762, b: at(14, 14, a) + at(14, 388, r) },
+  };
+}
+
+// The four CPTED principles.
+function cpted() {
+  const rng = makeRng(8502);
+  const icons = [
+    (x, y) => { const d = rectD(x - 40, y - 34, 80, 68); let o = cut(d, { rng, fill: T.butter, filter: FLAT }) + L(ink(d, { rng, size: 2 })); [[x - 26, y - 22], [x + 6, y - 22]].forEach(([wx, wy]) => { o += `<rect x="${wx}" y="${wy}" width="20" height="20" fill="${P.butter}" stroke="${P.ink}" stroke-width="1.4"/>`; }); o += L(inkLine(`M${x + 60} ${y + 34}L${x + 60} ${y - 30}L${x + 76} ${y - 30}`, { rng, size: 2.4 })) + `<circle cx="${x + 76}" cy="${y - 22}" r="7" fill="${P.butter}" stroke="${P.ink}" stroke-width="1.4"/>`; return o; },
+    (x, y) => L(inkLine(`M${x - 60} ${y + 30}Q${x} ${y + 10} ${x + 60} ${y - 30}`, { rng, size: 10, color: '#C9C1B4', overshoot: 0 })) + `<rect x="${x - 14}" y="${y - 34}" width="8" height="44" fill="${P.kraftDeep}"/><rect x="${x + 16}" y="${y - 44}" width="8" height="44" fill="${P.kraftDeep}"/>`,
+    (x, y) => { let o = house(x - 10, y + 20, 60, 60, { seed: 44, chimney: false }); for (let i = -70; i <= 70; i += 16) o += `<circle cx="${x + i}" cy="${y + 34}" r="8" fill="${P.leaf}" stroke="${P.leafDeep}" stroke-width="1.2"/>`; return o; },
+    (x, y) => { const pot = polyD([[x - 30, y], [x + 30, y], [x + 22, y + 34], [x - 22, y + 34]]); let o = cut(pot, { rng, fill: P.kraft, filter: FLAT }) + L(ink(pot, { rng, size: 2 })); [-18, 0, 18].forEach((dx, i) => { o += L(inkLine(`M${x + dx} ${y}L${x + dx} ${y - 24}`, { rng, size: 2, color: P.leafDeep })) + `<circle cx="${x + dx}" cy="${y - 30}" r="8" fill="${[P.tomato, P.butter, P.lavender][i]}" stroke="${P.ink}" stroke-width="1.2"/>`; }); return o; },
+  ];
+  const cards = [['Natural surveillance', 'see and be seen'], ['Access control', 'guide the way in'], ['Territory', 'public or private?'], ['Maintenance', 'someone cares']];
+  const card = (i) => {
+    let o = panel(0, 0, 338, 170, T.cream, rng) + icons[i](82, 92);
+    o += title(170, 70, cards[i][0].split(' ')[0], { size: 22, anchor: 'start' });
+    if (cards[i][0].includes(' ')) o += title(170, 98, cards[i][0].split(' ')[1], { size: 22, anchor: 'start' });
+    return o + label(170, 136, cards[i][1], { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  };
+  const wide = [0, 1, 2, 3].map((i) => at(14 + (i % 2) * 354, 14 + Math.floor(i / 2) * 184, card(i))).join('');
+  const nar = [0, 1, 2, 3].map((i) => at(14, 14 + i * 184, card(i))).join('');
+  return { W: 720, H: 384, b: wide, narrow: { W: 366, H: 750, b: nar } };
+}
+
+// National Register listing versus a local historic district.
+function registerVsLocal() {
+  const rng = makeRng(8503);
+  const PW = 338;
+  const PH = 400;
+  const row = (y, q, a, color) => label(20, y, q, { size: 19, anchor: 'start', color: MUTED, weight: 500 }) + label(20, y + 28, a, { size: 21, anchor: 'start', weight: 800, color });
+  let n = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'National Register', { size: 25, anchor: 'start' });
+  n += label(20, 70, 'a federal list', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  n += row(120, 'owner remodels, own money', 'no review', P.leafDeep);
+  n += row(196, 'federal project affects it', 'Section 106 review', P.civicDeep);
+  n += row(272, 'owner wants to demolish', 'not blocked', P.tomatoDeep);
+  n += note(20, 368, 'largely honorific', { size: 24, anchor: 'start', color: MUTED });
+  let l = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Local district', { size: 25, anchor: 'start' });
+  l += label(20, 70, 'a city ordinance', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  l += row(120, 'owner changes the exterior', 'certificate of appropriateness', P.civicDeep);
+  l += row(196, 'who reviews it', 'preservation commission', P.civicDeep);
+  l += row(272, 'owner wants to demolish', 'often regulated or delayed', P.leafDeep);
+  l += note(20, 368, 'the strongest protection', { size: 24, anchor: 'start', color: P.leafDeep });
+  return {
+    W: 720, H: 428, b: at(14, 14, n) + at(368, 14, l),
+    narrow: { W: 366, H: 842, b: at(14, 14, n) + at(14, 428, l) },
+  };
+}
+
+// The Secretary of the Interior's four treatments, on one building.
+function treatments() {
+  const rng = makeRng(8504);
+  const CW = 166;
+  const CH = 270;
+  const facade = (x, y, dash) => {
+    const d = rectD(x, y, 90, 100);
+    let o = dash ? `<rect x="${x}" y="${y}" width="90" height="100" fill="${T.butter}" stroke="${P.ink}" stroke-width="2" stroke-dasharray="7 5"/>` : cut(d, { rng, fill: P.butter, filter: FLAT }) + L(ink(d, { rng, size: 2 }));
+    o += `<rect x="${x - 6}" y="${y - 10}" width="102" height="12" fill="${P.kraftDeep}" stroke="${P.ink}" stroke-width="1.4"/>`;
+    [x + 16, x + 58].forEach((wx) => { o += `<path d="M${wx} ${y + 44}L${wx} ${y + 24}Q${wx + 8} ${y + 12} ${wx + 16} ${y + 24}L${wx + 16} ${y + 44}Z" fill="#FFFDF8" stroke="${P.ink}" stroke-width="1.4"/>`; });
+    return o + `<rect x="${x + 36}" y="${y + 66}" width="18" height="34" fill="${P.civicDeep}" stroke="${P.ink}" stroke-width="1.4"/>`;
+  };
+  const extras = [
+    () => tape(120, 116, 44, 14, -20, { seed: 51 }),
+    () => `<rect x="30" y="144" width="106" height="16" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.4"/>` + label(83, 158, 'CAFE', { size: 19, weight: 800, color: '#FFFDF8' }),
+    () => `<rect x="128" y="126" width="30" height="64" fill="none" stroke="${P.tomatoDeep}" stroke-width="2" stroke-dasharray="5 4"/>` + L(inkLine('M130 130L156 186', { rng, size: 2.2, color: P.tomatoDeep }) + inkLine('M156 130L130 186', { rng, size: 2.2, color: P.tomatoDeep })),
+    () => '',
+  ];
+  const cards = [['Preservation', 'repair what', "is there"], ['Rehabilitation', 'a compatible', 'new use'], ['Restoration', 'back to one', 'period'], ['Reconstruction', "re-create what's", 'gone']];
+  const card = (i) => {
+    let o = panel(0, 0, CW, CH, T.cream, rng) + label(CW / 2, 40, cards[i][0], { size: 21, weight: 800 });
+    o += facade(i === 2 ? 28 : 38, 90, i === 3) + extras[i]();
+    return o + label(CW / 2, 250 - 26, cards[i][1], { size: 19, color: MUTED, weight: 500 }) + label(CW / 2, 250, cards[i][2], { size: 19, color: MUTED, weight: 500 });
+  };
+  const wideB = [0, 1, 2, 3].map((i) => at(14 + i * 176, 14, card(i))).join('') + note(360, 332, 'rehabilitation is the most common treatment', { size: 24, color: P.civicDeep });
+  const narB = [0, 1, 2, 3].map((i) => at(14 + (i % 2) * 176, 14 + Math.floor(i / 2) * 284, card(i))).join('') + note(184, 612, 'rehabilitation is the most common', { size: 24, color: P.civicDeep });
+  return { W: 720, H: 350, b: wideB, narrow: { W: 370, H: 630, b: narB } };
+}
+
+// ============================================================ Lesson 8.6
+
+// The six steps of a health impact assessment.
+function hiaSteps() {
+  const rng = makeRng(8601);
+  const W = 720;
+  const H = 480;
+  let b = '';
+  const rows = [['Screening', 'will an HIA add value?'], ['Scoping', 'which effects, who, how?'], ['Assessment', 'baseline, then predictions'], ['Recommend', 'cut harms, add benefits'], ['Report', 'to decision-makers, public'], ['Monitor', 'did it play out?']];
+  b += L(inkLine('M40 36L40 406', { rng, size: 2.4, color: MUTED }));
+  rows.forEach(([h, t], i) => {
+    const y = 36 + i * 74;
+    b += `<circle cx="40" cy="${y}" r="20" fill="${i === 0 ? P.butter : T.sky}" stroke="${P.ink}" stroke-width="2.2"/>` + label(40, y + 10, String(i + 1), { weight: 800 });
+    b += label(78, y + 10, h, { anchor: 'start', weight: 800 });
+    b += label(270, y + 10, t, { anchor: 'start', weight: 500 });
+  });
+  b += note(W / 2, 468, 'all before the decision, except monitoring', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// A food desert combines distance, car access, and income.
+function foodDesert() {
+  const W = 720;
+  const H = 540;
+  let b = '';
+  const circ = [[270, 180, T.sky, 'far from', 'a grocery', 226, 130], [450, 180, T.butter, 'no car', 'at home', 494, 130], [360, 330, T.blush, 'low', 'income', 360, 410]];
+  circ.forEach(([x, y, fill]) => { b += `<circle cx="${x}" cy="${y}" r="140" fill="${fill}" fill-opacity="0.75" stroke="${P.ink}" stroke-width="2"/>`; });
+  circ.forEach(([, , , a, z, lx, ly]) => { b += label(lx, ly, a, { weight: 700 }) + label(lx, ly + 32, z, { weight: 700 }); });
+  b += `<rect x="296" y="210" width="128" height="62" rx="10" fill="#FFFDF8" stroke="${P.tomatoDeep}" stroke-width="2.4"/>`;
+  b += label(360, 238, 'food', { weight: 800, color: P.tomatoDeep }) + label(360, 266, 'desert', { weight: 800, color: P.tomatoDeep });
+  b += note(W / 2, 530, 'distance alone isn’t enough', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// Park acreage versus walking access: same acres, different reach.
+function parkAccess() {
+  const rng = makeRng(8603);
+  const PW = 338;
+  const PH = 420;
+  const R = 62;
+  const homes = [];
+  for (let r = 0; r < 5; r++) for (let c = 0; c < 7; c++) homes.push([44 + c * 42, 116 + r * 40]);
+  const map = (parks, t, sub) => {
+    let o = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, t, { size: 25, anchor: 'start' }) + label(20, 70, sub, { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+    parks.forEach(([x1, y1, x2, y2]) => { const d = rectD(x1, y1, x2 - x1, y2 - y1); o += cut(d, { rng, fill: P.leaf, filter: FLAT }) + L(ink(d, { rng, size: 1.8, color: P.leafDeep })); });
+    let inside = 0;
+    let total = 0;
+    homes.forEach(([x, y]) => {
+      if (parks.some(([x1, y1, x2, y2]) => x > x1 - 8 && x < x2 + 8 && y > y1 - 8 && y < y2 + 8)) return;
+      total++;
+      const d = Math.min(...parks.map(([x1, y1, x2, y2]) => Math.hypot(Math.max(x1 - x, 0, x - x2), Math.max(y1 - y, 0, y - y2))));
+      const ok = d <= R;
+      if (ok) inside++;
+      o += `<rect x="${x - 8}" y="${y - 8}" width="16" height="16" rx="3" fill="${ok ? P.butter : '#FFFDF8'}" stroke="${P.ink}" stroke-width="1.4"/>`;
+    });
+    const acres = parks.reduce((s2, [x1, y1, x2, y2]) => s2 + (x2 - x1) * (y2 - y1), 0);
+    return { o, share: Math.round((100 * inside) / total), acres, total, inside };
+  };
+  const one = map([[250, 96, 318, 296]], 'One big park', 'at the edge of town');
+  const s = Math.sqrt(one.acres / 4);
+  const four = map([[70 - s / 2, 156 - s / 2, 70 + s / 2, 156 + s / 2], [238 - s / 2, 156 - s / 2, 238 + s / 2, 156 + s / 2], [70 - s / 2, 246 - s / 2, 70 + s / 2, 246 + s / 2], [238 - s / 2, 246 - s / 2, 238 + s / 2, 246 + s / 2]].map((a) => a.map((v) => Math.round(v))), 'Four small parks', 'the same total acres');
+  const foot = (m, color) => label(20, 344, `${m.share}% of homes within`, { size: 21, anchor: 'start', weight: 800, color }) + label(20, 374, 'a 10-minute walk', { size: 21, anchor: 'start', weight: 800, color }) + label(20, 402, `(${m.inside} of ${m.total} homes, illustrative)`, { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  const a = one.o + foot(one, P.tomatoDeep);
+  const bb = four.o + foot(four, P.leafDeep);
+  return {
+    W: 720, H: 448, b: at(14, 14, a) + at(368, 14, bb),
+    narrow: { W: 366, H: 882, b: at(14, 14, a) + at(14, 448, bb) },
+  };
+}
+
+// Regional tools, from voluntary cooperation to real authority.
+function regionalSpectrum() {
+  const rng = makeRng(8604);
+  const W = 720;
+  const H = 446;
+  let b = '';
+  b += L(arrow(40, 200, 690, 200, rng, { size: 4, head: 16, color: P.civicDeep }));
+  b += label(40, 40, 'voluntary', { anchor: 'start', color: MUTED, weight: 600 }) + label(700, 40, 'real authority', { anchor: 'end', color: MUTED, weight: 600 });
+  const pts = [[110, 'Interlocal', 'agreements', T.sage, -1], [270, 'Councils of', 'governments', T.sky, 1], [450, 'MPOs', 'transportation', T.butter, -1], [600, 'Regional', 'government', T.blush, 1]];
+  pts.forEach(([x, a, z, fill, up]) => {
+    b += `<circle cx="${x}" cy="200" r="14" fill="${fill}" stroke="${P.ink}" stroke-width="2.2"/>`;
+    const y = up < 0 ? 70 : 300;
+    const w = Math.max(a.length, z.length) * 15 + 30;
+    const d = roundRectD(x - w / 2, y, w, 86, 10);
+    b += cut(d, { rng, fill, filter: FLAT }) + L(ink(d, { rng, size: 2 })) + label(x, y + 36, a, { weight: 800 }) + label(x, y + 70, z, { weight: 500 });
+    b += L(inkLine(`M${x} ${up < 0 ? 156 : 214}L${x} ${up < 0 ? 186 : 300}`, { rng, size: 1.8, color: MUTED }));
+  });
+  b += note(600, 432, 'rare in the U.S.', { color: P.tomatoDeep });
+  return { W, H, b };
+}
+
+// ============================================================ Lesson 8.7
+
+// Agricultural zoning on a square mile: one home per 40 acres.
+function agZoning() {
+  const rng = makeRng(8701);
+  const W = 720;
+  const H = 360;
+  let b = '';
+  const S = 300;
+  const cell = S / 4;
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
+    const x = 20 + c * cell;
+    const y = 30 + r * cell;
+    b += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" fill="${(r + c) % 2 ? T.sage : T.butter}" stroke="${P.leafDeep}" stroke-width="1.2"/>`;
+    for (let k = 1; k < 4; k++) b += `<line x1="${x + 6}" y1="${y + k * cell / 4}" x2="${x + cell - 6}" y2="${y + k * cell / 4}" stroke="${P.leafDeep}" stroke-width="1" opacity="0.35"/>`;
+    b += `<rect x="${x + 8}" y="${y + 8}" width="14" height="12" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.2"/>`;
+  }
+  b += L(ink(rectD(20, 30, S, S), { rng, size: 2.4 }));
+  b += label(360, 90, '1 square mile = 640 acres', { anchor: 'start', weight: 700 });
+  b += label(360, 140, 'one home per 40 acres', { anchor: 'start', weight: 700 });
+  b += label(360, 200, '640 ÷ 40 = 16 homes', { anchor: 'start', weight: 800, color: P.civicDeep });
+  b += note(360, 280, 'parcels big enough', { anchor: 'start', color: P.leafDeep }) + note(360, 318, 'to keep farming', { anchor: 'start', color: P.leafDeep });
+  return { W, H, b };
+}
+
+// Scattered rural homes versus the same homes in a village.
+function scatterVillage() {
+  const rng = makeRng(8702);
+  const PW = 338;
+  const PH = 400;
+  const land = () => { const d = rectD(20, 90, 298, 210); return cut(d, { rng, fill: T.sage, filter: FLAT }) + L(ink(d, { rng, size: 1.8, color: P.leafDeep })); };
+  const home = (x, y) => `<rect x="${x - 7}" y="${y - 7}" width="14" height="14" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.3"/>`;
+  const road = (d) => L(inkLine(d, { rng, size: 3, color: '#9C9384', overshoot: 0 }));
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Scattered', { size: 25, anchor: 'start' }) + label(20, 70, '12 homes on big lots', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += land() + road('M20 196L318 196');
+  const spots = [[50, 120], [110, 150], [160, 116], [230, 140], [290, 120], [70, 236], [120, 270], [180, 230], [250, 262], [300, 232], [200, 160], [40, 280]];
+  spots.forEach(([x, y]) => { a += road(`M${x} ${y}L${x} 196`) + home(x, y); });
+  a += label(169, 334, 'long roads, septic systems,', { size: 19, weight: 600 }) + label(169, 360, 'farms split into pieces', { size: 19, weight: 600 });
+  let v = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Village', { size: 25, anchor: 'start' }) + label(20, 70, 'the same 12 homes', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  v += land();
+  [[20, 90, 150, 105, T.butter], [170, 90, 148, 105, T.sage], [20, 195, 150, 105, T.sage]].forEach(([x, y, w, h, fill]) => { v += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${P.leafDeep}" stroke-width="1"/>`; });
+  v += road('M20 196L318 196') + road('M231 196L231 300');
+  for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) v += home(186 + c * 30 + (c > 1 ? 16 : 0), 222 + r * 26);
+  v += label(169, 334, 'shared water and sewer,', { size: 19, weight: 600 }) + label(169, 360, 'farmland left whole', { size: 19, weight: 600 });
+  return {
+    W: 720, H: 428, b: at(14, 14, a) + at(368, 14, v),
+    narrow: { W: 366, H: 842, b: at(14, 14, a) + at(14, 428, v) },
+  };
+}
+
+// Trust and fee land within a reservation (illustrative pattern).
+function trustFee() {
+  const rng = makeRng(8703);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  const pattern = ['TTFTTF', 'TFFTTT', 'TTTFTF', 'FTTTFF', 'TTFTTT'];
+  const cw = 70;
+  const ch = 48;
+  pattern.forEach((row, r) => [...row].forEach((k, c) => {
+    b += `<rect x="${150 + c * cw}" y="${40 + r * ch}" width="${cw}" height="${ch}" fill="${k === 'T' ? P.sage : P.butter}" stroke="#FFFDF8" stroke-width="2"/>`;
+  }));
+  b += L(ink(rectD(150, 40, cw * 6, ch * 5), { rng, size: 3, color: P.ink }));
+  b += label(360, 318, 'reservation boundary (illustrative parcels)', { color: MUTED, weight: 500 });
+  const key = (y, fill, name, t) => `<rect x="60" y="${y - 24}" width="30" height="30" fill="${fill}" stroke="${P.ink}" stroke-width="1.6"/>` + label(104, y, name, { anchor: 'start', weight: 800 }) + label(250, y, t, { anchor: 'start', weight: 500 });
+  b += key(370, P.sage, 'Trust land', 'tribal and federal rules');
+  b += key(416, P.butter, 'Fee land', 'depends on owner and case');
+  b += note(W / 2, 466, 'which rules apply can change parcel by parcel', { color: P.civicDeep });
+  return { W, H: H + 36, b };
+}
+
+// ============================================================ Lesson 8.8
+
+// Life-cycle cost: building is the tip of the iceberg (illustrative).
+function lifecycleIceberg() {
+  const rng = makeRng(8801);
+  const W = 720;
+  const H = 440;
+  let b = '';
+  b += `<rect x="0" y="150" width="${W}" height="290" fill="${T.sky}"/>`;
+  b += L(inkLine('M0 150Q90 142 180 150T360 150T540 150T720 150', { rng, size: 2, color: P.civicDeep }));
+  const tip = polyD([[300, 150], [352, 66], [372, 78], [424, 150]]);
+  const body = polyD([[210, 152], [514, 152], [566, 280], [470, 392], [290, 398], [182, 300]]);
+  b += cut(body, { rng, fill: '#EEF5FB', filter: FLAT }) + L(ink(body, { rng, size: 2 }));
+  b += cut(tip, { rng, fill: '#FFFDF8', filter: FLAT }) + L(ink(tip, { rng, size: 2 }));
+  b += label(290, 92, 'design and', { anchor: 'end', weight: 800 }) + label(290, 124, 'construction', { anchor: 'end', weight: 800 });
+  b += label(372, 222, 'operation', { weight: 700 }) + label(372, 262, 'maintenance', { weight: 700 }) + label(372, 302, 'repair and replacement', { weight: 700 });
+  b += label(700, 40, '(illustrative proportions)', { anchor: 'end', color: MUTED, weight: 500 });
+  b += note(W / 2, 430, 'most of the cost comes after the ribbon-cutting', { color: P.civicDeep });
+  return { W, H, b };
+}
+
+// A combined sewer in dry weather and in a storm.
+function combinedSewer() {
+  const rng = makeRng(8802);
+  const PW = 338;
+  const PH = 380;
+  const scene = (storm) => {
+    let o = '';
+    o += `<rect x="20" y="270" width="140" height="40" fill="${T.sky}"/>` + label(90, 298, 'river', { size: 19, weight: 600, color: P.civicDeep });
+    o += house(34, 170, 60, 60, { seed: 61, chimney: false });
+    o += `<rect x="120" y="164" width="30" height="8" fill="${P.ink}"/>` + label(135, 158, 'drain', { size: 19, weight: 500, color: MUTED });
+    const plant = rectD(236, 186, 82, 60);
+    o += cut(plant, { rng, fill: P.lavender, filter: FLAT }) + L(ink(plant, { rng, size: 2 })) + label(277, 222, 'plant', { size: 19, weight: 700 });
+    o += L(inkLine('M64 172L64 216', { rng, size: 3, color: P.kraftDeep }) + inkLine('M135 172L135 216', { rng, size: 3, color: P.civic }));
+    o += `<rect x="40" y="210" width="196" height="16" rx="6" fill="${storm ? P.civic : T.sky}" stroke="${P.ink}" stroke-width="1.8"/>`;
+    if (storm) {
+      o += `<rect x="92" y="226" width="14" height="44" fill="#8C6A48" stroke="${P.ink}" stroke-width="1.6"/>`;
+      o += L(arrow(99, 238, 99, 282, rng, { size: 2.4, head: 9, color: P.tomatoDeep }));
+      o += `<ellipse cx="270" cy="112" rx="44" ry="20" fill="#C9CDD6" stroke="${P.ink}" stroke-width="1.6"/>`;
+      for (let i = 0; i < 6; i++) o += L(inkLine(`M${242 + i * 12} 140L${236 + i * 12} 160`, { rng, size: 1.6, color: P.civic }));
+    } else {
+      o += `<rect x="92" y="226" width="14" height="44" fill="none" stroke="${MUTED}" stroke-width="1.6" stroke-dasharray="4 3"/>`;
+      o += sun(274, 124, 14);
+    }
+    return o;
+  };
+  let a = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Dry weather', { size: 25, anchor: 'start' }) + label(20, 70, 'sewage and runoff, one pipe', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  a += scene(false) + note(20, 350, 'all of it reaches the plant', { size: 24, anchor: 'start', color: P.leafDeep });
+  let r = panel(0, 0, PW, PH, T.cream, rng) + title(20, 40, 'Heavy rain', { size: 25, anchor: 'start' }) + label(20, 70, 'the pipe fills up', { size: 19, anchor: 'start', color: MUTED, weight: 500 });
+  r += scene(true) + note(20, 350, 'overflow into the river', { size: 24, anchor: 'start', color: P.tomatoDeep });
+  return {
+    W: 720, H: 408, b: at(14, 14, a) + at(368, 14, r),
+    narrow: { W: 366, H: 802, b: at(14, 14, a) + at(14, 408, r) },
+  };
+}
+
+// A sewer extension steers where subdivisions go.
+function serviceArea() {
+  const rng = makeRng(8803);
+  const W = 720;
+  const H = 400;
+  let b = '';
+  const land = rectD(20, 20, 680, 300);
+  b += cut(land, { rng, fill: T.sage, filter: FLAT }) + L(ink(land, { rng, size: 2, color: P.leafDeep }));
+  const town = ellipseD(120, 170, 90, 80);
+  b += cut(town, { rng, fill: P.butter, filter: FLAT }) + L(ink(town, { rng, size: 2 })) + label(120, 180, 'town', { weight: 800 });
+  b += `<path d="M200 60 L520 60 Q560 60 560 100 L560 240 Q560 280 520 280 L200 280" fill="none" stroke="${P.civicDeep}" stroke-width="2.4" stroke-dasharray="10 7"/>`;
+  b += label(540, 48, 'sewer service area', { anchor: 'end', weight: 700, color: P.civicDeep });
+  b += L(inkLine('M210 170L620 170', { rng, size: 6, color: P.civic, overshoot: 0 }));
+  b += label(640, 150, 'new', { anchor: 'start', weight: 600 }) + label(640, 182, 'line', { anchor: 'start', weight: 600 });
+  for (let i = 0; i < 6; i++) {
+    const x = 240 + i * 50;
+    [118, 204].forEach((y) => { b += `<rect x="${x}" y="${y}" width="36" height="30" fill="${P.tomato}" stroke="${P.ink}" stroke-width="1.4"/>`; });
+  }
+  b += label(360, 360, 'subdivisions follow the pipe', { weight: 700 });
+  b += note(W / 2, 396, 'plan the service area with the land use map', { color: P.civicDeep });
+  return { W, H: H + 6, b };
+}
+
 const FIGURES = [
   ['fig-research-route', researchRoute],
   ['fig-primary-secondary', primarySecondary],
@@ -4612,6 +5450,14 @@ const FIGURES = [
   ['fig-discipline', progressiveDiscipline],
   ['fig-lead-styles', leadStyles], ['fig-lead-middle', leadMiddle], ['fig-public-interest', publicInterest], ['fig-after-loss', afterLoss],
   ['fig-delegation', delegationStool], ['fig-coach-mentor-sponsor', coachMentorSponsor], ['fig-conflict-steps', conflictSteps],
+  ['fig-four-step', fourStep], ['fig-functional-class', functionalClass], ['fig-induced-demand', inducedDemand], ['fig-road-diet', roadDiet], ['fig-los-vmt', losVmt],
+  ['fig-ami-bands', amiBands], ['fig-lihtc-flow', lihtcFlow], ['fig-voucher-split', voucherSplit], ['fig-missing-middle', missingMiddle],
+  ['fig-nepa-levels', nepaLevels], ['fig-mitigation-sequence', mitigationSequence], ['fig-floodplain', floodplainSection], ['fig-climate-ma', climateMA],
+  ['fig-base-flows', baseFlows], ['fig-multiplier', multiplierJobs], ['fig-leakage', leakage], ['fig-cluster-web', clusterWeb],
+  ['fig-enclosure', enclosure], ['fig-cpted', cpted], ['fig-register-vs-local', registerVsLocal], ['fig-treatments', treatments],
+  ['fig-hia-steps', hiaSteps], ['fig-food-desert', foodDesert], ['fig-park-access', parkAccess], ['fig-regional-spectrum', regionalSpectrum],
+  ['fig-ag-zoning', agZoning], ['fig-scatter-village', scatterVillage], ['fig-trust-fee', trustFee],
+  ['fig-lifecycle', lifecycleIceberg], ['fig-combined-sewer', combinedSewer], ['fig-service-area', serviceArea],
 ];
 
 // Every figure as { name, w, h, svg, narrow?: { w, h, svg } }. Also used by

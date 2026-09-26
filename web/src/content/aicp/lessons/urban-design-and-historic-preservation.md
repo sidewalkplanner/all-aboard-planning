@@ -20,6 +20,10 @@ Urban design shapes the physical setting for public life: the relationships amon
 - **Mix and diversity** of uses, building types, and people.
 - **A quality public realm**: sidewalks, trees, lighting, seating, and public spaces that invite people to stay.
 
+:::figure fig-enclosure | Two street sections with a person in the middle. Little enclosure: a wide street edged by low one-story buildings; exposed and hard to read. An outdoor room: buildings about five stories tall on a narrower street, with street trees; height in proportion to width, walls and a ceiling of trees.
+The same person feels different in each: the buildings on the right frame the street the way walls frame a room.
+:::
+
 ### Learning from how people use space
 
 Observational research shaped modern practice. **William H. Whyte**'s studies of New York plazas (*The Social Life of Small Urban Spaces*, 1980) found that successful plazas have plenty of **sittable space**, sun, trees, water, food vendors, and a strong connection to the street. People attract people. Danish architect **Jan Gehl** similarly documented how design at eye level affects whether people linger in public spaces.
@@ -38,6 +42,10 @@ Observational research shaped modern practice. **William H. Whyte**'s studies of
 - **Maintenance** (and activity support): well-kept places signal that someone cares.
 
 CPTED is about design; it doesn't include criminal justice measures such as sentencing. Apply it carefully so it doesn't become a pretext for excluding people from public space.
+
+:::figure fig-cpted | Four cards for the CPTED principles. Natural surveillance: windows and a streetlight; see and be seen. Access control: a path between two posts; guide the way in. Territory: a hedge in front of a house; public or private? Maintenance: a planter of flowers; someone cares.
+All four work through design and upkeep, which is why CPTED belongs to planners and designers rather than to police.
+:::
 
 :::checkpoint cp:design-territorial
 
@@ -76,6 +84,10 @@ Like NEPA, Section 106 is **procedural**: it requires consideration and consulta
 
 The strongest protection for historic buildings is **local**. A local preservation ordinance creates a **historic preservation commission** and designates landmarks and districts. Changes to designated properties usually require a **certificate of appropriateness**, reviewed against adopted **design guidelines**. Many ordinances also regulate or delay **demolition**.
 
+:::figure fig-register-vs-local | Two panels. National Register, a federal list: an owner remodeling with their own money faces no review; a federal project affecting the property gets Section 106 review; a demolition is not blocked. Largely honorific. Local district, a city ordinance: an owner changing the exterior needs a certificate of appropriateness from the preservation commission, and demolition is often regulated or delayed. The strongest protection.
+Listing opens doors to incentives and federal review; only a local ordinance puts private changes under review.
+:::
+
 :::checkpoint cp:design-local-strongest
 
 ### The Secretary of the Interior's Standards
@@ -88,6 +100,10 @@ The **Secretary of the Interior's Standards for the Treatment of Historic Proper
 | **Rehabilitation** | Make possible a compatible **new use** while preserving the features that convey historic character. It's the most common treatment. |
 | **Restoration** | Accurately depict the property as it appeared at a particular period, removing later features |
 | **Reconstruction** | Re-create a vanished or non-surviving building or feature with new construction |
+
+:::figure fig-treatments | One historic storefront four ways. Preservation: repair what is there. Rehabilitation: a compatible new use, shown as a cafe sign. Restoration: back to one period, with a later addition removed. Reconstruction: re-create what's gone, shown as a dashed outline. Note: rehabilitation is the most common treatment.
+Rehabilitation is the only treatment built around a new use, which is why it's the standard for the federal tax credit.
+:::
 
 :::checkpoint cp:design-rehab
 

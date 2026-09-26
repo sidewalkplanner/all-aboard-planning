@@ -23,6 +23,10 @@ The most widely used planning measure: a household is **cost-burdened** when it 
 
 <!-- VERIFY: HUD's extremely low/very low/low categories are 30/50/80% of area median; "moderate" is defined by individual programs and states. Confirm wording if used for specific programs. -->
 
+:::figure fig-ami-bands | A bar of household income as a share of area median income (AMI). Extremely low runs to 30%, very low to 50%, low to 80%, and moderate from 80 to 120% (dashed, because each program sets it). If the area median is $100,000 (illustrative), the lines fall at $30k, $50k, $80k, and $100k at the median.
+Each category is a ceiling, not a band of its own: a household at 25% of AMI also counts as very low and low income.
+:::
+
 ### The housing needs assessment
 
 A **housing needs assessment** is the analytical foundation of a housing element or strategy. It typically analyzes:
@@ -45,6 +49,14 @@ A **housing needs assessment** is the analytical foundation of a housing element
 - **HOME Investment Partnerships Program**: block grants specifically for affordable housing: construction, rehabilitation, homebuyer assistance, and tenant-based rental assistance.
 - **Housing First**: an approach to homelessness that provides **permanent housing without preconditions** (such as sobriety or treatment compliance), then offers voluntary support services.
 - Local tools include **housing trust funds**, **community land trusts** (which keep land in nonprofit ownership so homes stay affordable over resales), and inclusionary zoning (see [Growth management and innovative land use tools](/aicp/lessons/growth-management-and-innovative-tools)).
+
+:::figure fig-lihtc-flow | Four boxes. The federal government allocates credits to a state agency, which awards them to developers by competition. The developer builds and sells the credits to an investor, and the investor's money flows back to the developer as equity. Note: equity replaces debt, so rents can stay low.
+The credits are worth money only to someone with a tax bill, which is why the investor, not the developer, ends up holding them.
+:::
+
+:::figure fig-voucher-split | A bar for a $1,400 monthly rent paid to a private landlord, split into the tenant's $600 (30% of a $2,000 monthly income) and the voucher's $800. A dashed line marks the $1,500 payment standard just past the rent. Illustrative: the voucher covers the gap.
+The tenant's share tracks income, not rent; the voucher absorbs the difference up to the payment standard.
+:::
 
 :::video How the Low-Income Housing Tax Credit finances a building | about 3 min
 Follows the credits from the federal government to a state agency, a developer, and an investor, and shows how the investor's equity keeps rents affordable.
@@ -75,6 +87,10 @@ In the ***Mount Laurel*** decisions, the New Jersey Supreme Court held that deve
 - **Missing middle housing**: house-scale buildings with multiple units, such as **duplexes, triplexes, fourplexes, townhouses, and courtyard apartments**. They were common before mid-century zoning banned them from most residential districts.
 - **Accessory dwelling units (ADUs)**: backyard cottages, garage apartments, and basement units that add **gentle density** and housing supply within existing neighborhoods.
 - **Zoning reforms**: allowing more units per lot, reducing minimum lot sizes, eliminating parking minimums, streamlining approvals, and upzoning near transit and jobs.
+
+:::figure fig-missing-middle | A row of buildings on one street: a house, a duplex, a fourplex, townhouses, and a mid-rise. A bracket over the duplex, fourplex, and townhouses labels them the missing middle. Note: house-scale, but zoned out of most neighborhoods.
+These buildings fit on house-sized lots next to houses, which is why reformers target them first.
+:::
 
 :::checkpoint cp:housing-missing-middle
 

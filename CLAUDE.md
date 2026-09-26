@@ -248,7 +248,7 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
 
 **Status (update this as you go).** Module 1 (Research and Assessment Methods) is fully
 illustrated: 26 figures across its four lessons. Module 2 (Fundamental Planning
-Knowledge) is fully illustrated too: 33 figures across its six lessons (history 5, theory 4,
+Knowledge) is fully illustrated too: 24 figures across its six lessons (history 5, theory 4,
 urban form 5, land use law 4, takings 3, federal policy 3). Module 3 (Communication and
 Interaction) has 15 across its four lessons (engagement design 5, equitable engagement 3,
 consensus 4, decision-makers 3). Module 4 (Plan and Policy Development) has 14 across its four
@@ -257,7 +257,10 @@ Module 5 (Plan Implementation) has 28 across its seven lessons
 (zoning 4, zoning relief 4, subdivision 4, growth management 4, implementation math 4, capital
 finance 4, monitoring 4). Module 6 (Administration and Management) has 7 across its two lessons (project
 management 3, managing an agency 4). Module 7 (Leadership) has 7 across its two lessons (leadership 4,
-mentoring and development 3). Next is module 8 (Areas of Practice), in course order, starting with `transportation-planning`. Aim for two to five figures per lesson, one per
+mentoring and development 3). Module 8 (Areas of Practice) has 31 across its eight lessons (transportation 5,
+housing 4, environment 4, economic development 4, urban design and preservation 4, health, food, parks,
+and regional 4, rural and tribal 3, infrastructure 3). Next is module 9 (Ethics), in course order, starting with
+`aicp-code-of-ethics`. Aim for two to five figures per lesson, one per
 section where a picture teaches faster than the text: a process, a comparison, a
 distribution, a map, or a worked calculation. Skip sections a picture wouldn't improve.
 
