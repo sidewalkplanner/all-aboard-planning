@@ -304,14 +304,14 @@ export const DOMAINS = [
         practice: ['e1:137', 'e1:138', 'e1:139', 'e1:142', 'e1:144', 'e1:147', 'e1:149', 'e2:133', 'e2:134', 'e2:135', 'e2:142', 'e2:148', 'e3:171', 'e3:177', 'e3:178', 'e3:179', 'e3:186'],
       },
       {
-        slug: 'conflicts-of-interest-and-rules-of-conduct', title: 'Conflicts of interest and the Rules of Conduct', minutes: 22, access: 'paid',
-        description: 'Gifts, financial interests, disclosure and recusal, confidential information, competence, honest claims about qualifications, and prior relationships.',
+        slug: 'conflicts-of-interest-and-rules-of-conduct', title: 'Conflicts of interest and the Rules of Conduct', minutes: 25, access: 'paid',
+        description: 'Gifts, financial interests, disclosure and recusal, confidential information, competence, honest claims about qualifications, prior relationships, and government ethics laws.',
         outline: ['9.4 Upholding the rules of conduct'],
         practice: ['e1:134', 'e1:135', 'e1:140', 'e1:143', 'e1:146', 'e2:136', 'e2:138', 'e2:139', 'e2:140', 'e2:141', 'e2:149', 'e3:172', 'e3:173', 'e3:174', 'e3:175', 'e3:176', 'e3:184', 'e3:187'],
       },
       {
-        slug: 'solving-ethics-questions', title: 'Working through ethics scenarios', minutes: 20, access: 'paid',
-        description: 'A repeatable method for ethics questions, with worked cases on political pressure, client advocacy, and objective analysis.',
+        slug: 'solving-ethics-questions', title: 'Working through ethics scenarios', minutes: 23, access: 'paid',
+        description: 'A repeatable method for ethics questions, with worked cases on political pressure, client advocacy, objective analysis, and social media, data, and AI tools.',
         outline: ['9.1 Overall responsibility to the public', '9.4 Upholding the rules of conduct'],
         practice: ['e1:136', 'e1:141', 'e1:145', 'e1:148', 'e1:150', 'e2:137', 'e2:144', 'e2:145', 'e2:146', 'e2:147', 'e3:181', 'e3:182', 'e3:183', 'e3:185'],
       },

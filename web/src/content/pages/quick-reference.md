@@ -278,3 +278,4 @@ Worked examples: [Implementation math](/aicp/lessons/implementation-math), [Popu
 | EA vs. EIS | Determines significance (may end in a FONSI) vs. full analysis for significant effects |
 | National Register vs. local historic district | Largely honorific for private owners vs. binding review of changes |
 | Aspirational principles vs. Rules of Conduct | Ideals, not enforceable alone vs. enforceable standards |
+| AICP Code vs. government ethics law | Professional standard for certified planners vs. statutes binding public officials; follow the stricter |

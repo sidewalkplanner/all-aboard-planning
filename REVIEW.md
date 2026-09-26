@@ -1,5 +1,21 @@
 # REVIEW: AICP course build
 
+## Update 6: lessons deepened to the full exam outline
+
+Every module was checked against the topics the AICP exam covers, not just the practice questions, and each lesson gained sections where it fell short. The additions keep the existing structure: new `###` sections with their own checkpoints, new key terms (which feed the flashcards), exam tips trimmed to six or fewer per lesson, updated reading times and descriptions, and new Quick reference entries. Course reading time rose from about 15 to about 17 hours, and modules 2 to 9 gained 44 new checkpoints.
+
+- **Module 1** (merged earlier): research designs, census geography, surveys, levels of measurement, hypothesis testing, constant dollars, natural increase, map projections and joins.
+- **Module 2:** colonial and early town plans, the 1785 Land Ordinance, modernist visions, the quiet revolution, New Urbanism's charters; procedural vs. substantive theory, radical and insurgent planning; bid-rent, rank-size, megaregions, filtering and Tiebout; the early zoning cases, more First Amendment cases, cell towers, ripeness and standing; *Agins*; HOPE VI, the post-ISTEA laws, HMDA and the CRA.
+- **Module 3:** stakeholder analysis, deliberative polling and citizens' assemblies; equity analysis with disaggregated data; group dynamics, groupthink, ZOPA, conflict styles, NIMBY opposition; presentations and honest visuals; Robert's Rules, quorums, and consent agendas.
+- **Module 4:** a compact policy analysis method, plan adoption, priorities, the planning balance sheet, impact assessments, and funding vs. financing.
+- **Module 5:** code enforcement, short-term rentals, hearing examiners, appeals and standards of judicial review, covenants and HOAs, hybrid codes, life-cycle costs and debt capacity, logic models, land banks and other redevelopment tools.
+- **Module 6:** work breakdown structures, risk registers, earned value, sole-source procurement, MOUs and interlocal agreements; fees and cost recovery, hiring, internal controls and audits.
+- **Module 7:** sources of power, Kotter's change model, emotional intelligence, and motivation theories.
+- **Module 8:** transit service, parking, access management; manufactured housing and rent regulation; the ESA, TMDLs, coastal management, Superfund, disaster recovery; economic impact analysis; enclosure ratios and preservation tools; aging and joint use; gateway communities and NAGPRA; water rights and solid waste.
+- **Module 9:** government ethics laws alongside the Code, and ethics with social media, data, and AI tools.
+
+**Please review:** the new sections restate widely documented facts, and anything I was less sure of carries a VERIFY flag (four new ones: plan adoption, New Jersey licensing, enclosure ratios, and the Hatch Act). As with earlier content, a planner should read the new checkpoints before they're relied on. Outline sub-areas 2.5, 2.6, 4.7, and 4.13, and several in domain 8, still aren't tagged on any lesson because their names aren't in the repo; matching them to APA's outline would let exam results point to them.
+
 ## Update 5: the streetcar on screen, and exams replace the diagnostic
 
 ### The home page
@@ -135,7 +151,7 @@ These changes followed the first build (described below). They supersede anythin
 | `web/src/content/aicp/lessons/land-use-law-foundations.md:48` | Euclid and Nectow: why zoning is valid, and when it isn't | about 3 min |
 | `web/src/content/aicp/lessons/planning-history.md:144` | American planning history on one timeline | about 4 min |
 | `web/src/content/aicp/lessons/public-engagement-design.md:58` | Arnstein's ladder and the IAP2 spectrum, side by side | about 3 min |
-| `web/src/content/aicp/lessons/solving-ethics-questions.md:95` | Working an ethics scenario with the five-step method | about 5 min |
+| `web/src/content/aicp/lessons/solving-ethics-questions.md:96` | Working an ethics scenario with the five-step method | about 5 min |
 | `web/src/content/aicp/lessons/statistics-for-planners.md:167` | Present value and benefit-cost ratios | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:50` | Penn Central's three factors, applied | about 3 min |
 | `web/src/content/aicp/lessons/takings-and-exactions.md:97` | Nollan and Dolan: the two-part test for exactions | about 4 min |
@@ -215,7 +231,7 @@ This is the hand-off for the build described in `PLAN.md`: what was built, the a
 
 ## VERIFY flags
 
-There are 99 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
+There are 100 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-known facts whose details change, such as APA exam logistics, federal rules that shifted in 2025, and attributions. Exam Info and the ethics lessons deserve the closest review, because APA's current documents decide them.
 
 | Location | What to check |
 |---|---|
@@ -229,6 +245,7 @@ There are 99 flags. Find them with `grep -rn "VERIFY:" web/src`. Most flag well-
 | `web/src/content/aicp/lessons/comprehensive-plans.md:56` | confirm the names of the principles and processes in APA's Comprehensive Plan Standards for Sustaining Places, and whether APA has updated them. |
 | `web/src/content/aicp/lessons/comprehensive-plans.md:68` | confirm which states to cite as consistency states (Oregon, Florida, and California are commonly cited) and how each applies the requirement. |
 | `web/src/content/aicp/lessons/conflicts-of-interest-and-rules-of-conduct.md:1` | check each paraphrased rule theme below against the current Rules of Conduct text. |
+| `web/src/content/aicp/lessons/conflicts-of-interest-and-rules-of-conduct.md:106` | the Hatch Act's coverage of state and local employees was narrowed in 2012; confirm current coverage before describing it in detail. |
 | `web/src/content/aicp/lessons/consensus-and-negotiation.md:114` | this five-part typology is usually attributed to Christopher Moore's "circle of conflict"; confirm the attribution if named. |
 | `web/src/content/aicp/lessons/economic-development.md:73` | this is the Main Street America "Four Point Approach"; confirm current terminology if named. |
 | `web/src/content/aicp/lessons/economic-development.md:124` | Opportunity Zone rules were modified by 2025 federal tax legislation; confirm current program terms before describing details. |

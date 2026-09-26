@@ -7,6 +7,7 @@
 - Apply the rules on confidential information, including information about public projects.
 - Apply the competence rule and the rules on honest claims about qualifications and others' work.
 - Identify the rules that protect the ethics process itself.
+- Explain how the Code works alongside government ethics laws and employer policies.
 
 ## Key concepts
 
@@ -95,6 +96,19 @@ The Rules also protect the integrity of the ethics system:
 - **Cooperate** with the Ethics Officer, and don't obstruct an investigation.
 - Don't commit wrongful acts, such as crimes, that reflect adversely on your professional fitness.
 
+### Beyond the Code: government ethics laws
+
+The AICP Code isn't the only ethics standard a planner answers to. Public employees and appointed officials are also bound by:
+
+- **State and local government ethics laws**: conflict-of-interest statutes, gift limits, rules on outside employment, and restrictions on lobbying a former agency for a period after leaving.
+- **Financial disclosure** requirements for officials and, in many places, senior staff.
+- **Open-meetings and public-records laws**. See [Managing a planning agency](/aicp/lessons/managing-a-planning-agency).
+- **Employer policies** on political activity, social media, and use of public resources. Some public employees in federally funded programs are also covered by federal limits on partisan political activity. <!-- VERIFY: the Hatch Act's coverage of state and local employees was narrowed in 2012; confirm current coverage before describing it in detail. -->
+
+These standards overlap but don't replace one another. When they differ, **follow the stricter one**: a gift that local law allows may still be one the Code tells you to decline, and a disclosure the Code would accept may not satisfy a state statute. When in doubt, ask the agency's attorney or ethics office about the law, and seek informal advice on the Code.
+
+:::checkpoint cp:coi-stricter-rule
+
 ### Rules or principles?
 
 Many exam questions list several obligations and ask which are **Rules of Conduct** rather than aspirational principles. Specific prohibitions (on gifts, conflicts, confidentiality, competence, false claims, frivolous charges) are **rules**. Broad commitments (serve the public interest, seek social justice, consider long-range consequences, educate the public) are **principles**. See [How the AICP Code of Ethics is organized](/aicp/lessons/aicp-code-of-ethics).
@@ -110,6 +124,8 @@ Many exam questions list several obligations and ask which are **Rules of Conduc
 - **Misrepresentation**: A false or misleading statement of fact, findings, or qualifications.
 - **Frivolous charge**: An ethics charge filed knowing it lacks basis.
 - **Retaliation**: Adverse action against someone for raising or cooperating with an ethics charge.
+- **Government ethics law**: State or local statutes and ordinances on conflicts, gifts, disclosure, and post-employment for public officials and employees.
+- **Financial disclosure**: A required public report of an official's financial interests.
 
 ## Real-world examples
 
@@ -126,7 +142,8 @@ Many exam questions list several obligations and ask which are **Rules of Conduc
 - Confidential information stays confidential unless the **law requires** disclosure, even after the relationship ends.
 - Unfamiliar method? Accept only if the work is done **under someone competent**.
 - Claiming a credential you don't have is a rules violation, not just poor judgment.
+- The Code works **alongside** state and local ethics laws; when they differ, follow the **stricter** standard.
 
 ## Summary
 
-Conflicts of interest arise from financial interests, personal relationships, organizational roles, prior clients, and outside work; appearance matters. Disclose in writing and withdraw from matters in which you have a personal or financial interest, and disclose prior relationships on the record. Decline gifts from anyone with matters pending before you, and never use your position for advantage. Protect confidential information, even after a relationship ends, and never profit from it. Take work only within your competence or under competent supervision. Be honest about your qualifications and others' work, identify whom you represent when advocating, and don't file frivolous charges or retaliate.
+Conflicts of interest arise from financial interests, personal relationships, organizational roles, prior clients, and outside work; appearance matters. Disclose in writing and withdraw from matters in which you have a personal or financial interest, and disclose prior relationships on the record. Decline gifts from anyone with matters pending before you, and never use your position for advantage. Protect confidential information, even after a relationship ends, and never profit from it. Take work only within your competence or under competent supervision. Be honest about your qualifications and others' work, identify whom you represent when advocating, and don't file frivolous charges or retaliate. Government ethics laws, financial disclosure rules, and employer policies apply alongside the Code, and when they differ, the stricter standard governs.

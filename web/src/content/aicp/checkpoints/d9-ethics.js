@@ -149,4 +149,26 @@ export default {
     correct: 0,
     explanation: 'Private conversations about pending quasi-judicial matters raise ex parte concerns. The planner can explain the standards and direct the commissioner to the record, but should not advise privately on the outcome.',
   },
+  'cp:coi-stricter-rule': {
+    text: 'A city’s ethics ordinance lets staff accept meals worth up to $50, but the gift comes from an applicant with a matter pending before the planner. What should the planner do?',
+    options: [
+      'Accept it, because local law allows it',
+      'Accept it and disclose it in the staff report',
+      'Decline it, following the stricter standard',
+      'Ask the applicant to wait until the decision is made',
+    ],
+    correct: 2,
+    explanation: 'The Code and local ethics law apply together, and the stricter standard governs. A gift from someone with a pending matter should be declined whatever the local limit.',
+  },
+  'cp:solve-ai-tools': {
+    text: 'A planner uses a generative AI tool to draft part of a housing needs assessment. Which approach is consistent with the planner’s ethical obligations?',
+    options: [
+      'Paste in confidential survey responses so the tool can summarize them',
+      'Check the output for accuracy and bias and take responsibility for the final analysis',
+      'Present the analysis as the planner’s own expert judgment without reviewing it',
+      'Avoid mentioning the tool, since only the results matter',
+    ],
+    correct: 1,
+    explanation: 'The planner remains responsible for accuracy and competence, must protect confidential information, and should be candid about how an analysis was produced.',
+  },
 };
