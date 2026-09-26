@@ -64,7 +64,7 @@ export default {
     options: [
       'Acceptable marketing, since relationships matter',
       'Acceptable if the statement is true',
-      'A violation of the Rules of Conduct',
+      'A violation, because it suggests the ability to influence decisions by improper means',
       'Only a violation if the project is approved',
     ],
     correct: 2,
@@ -74,7 +74,7 @@ export default {
     text: 'A consultant is retained to testify against a former client. What must the consultant do with information learned in confidence from that former client?',
     options: [
       'Use it freely, since the relationship has ended',
-      'Continue to protect it',
+      'Continue to protect it, because the duty of confidentiality outlasts the relationship',
       'Share it only with the new client',
       'Disclose it if it would help win the case',
     ],

@@ -205,9 +205,10 @@ with inked outlines, washi tape, pins, stamps, and pencil notes, with a transit 
    lesson's domain. Never use an exam item (`e1:`/`e2:`/`e3:`): lessons must not give away exam
    questions, and the checker fails if one appears. Write each from the section's own text,
    testing the idea from a different angle than the exam items do; vary which option is correct.
-   Write the correct option as a plain answer and put the reasoning in `explanation`: an option
-   that explains why it's right ("…, because …", "…, so …") gives itself away. Wrong options may
-   carry their own (wrong) reasoning, as on the real exam.
+   Read the four options together: the correct one shouldn't be the only one that explains itself
+   ("…, because …") or is far more detailed than the rest, since that gives it away. If the wrong
+   options carry their own reasons too, a reason in the right one is fine. Length alone isn't the
+   issue, and "I, II, III, and IV" answers are normal exam format.
    Several refs on one line make a multi-question checkpoint.
    Readers must answer every checkpoint before they can mark the lesson complete; answers are
    saved per account. Don't reuse a ref twice in one lesson (the checker enforces this).

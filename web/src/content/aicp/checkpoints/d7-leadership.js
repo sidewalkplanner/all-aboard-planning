@@ -7,7 +7,7 @@ export default {
     options: [
       'A technical problem, solvable with existing expertise',
       'A transactional problem, solved by rewards',
-      'An adaptive challenge',
+      'An adaptive challenge that requires people to change values, habits, or relationships',
       'A problem that leadership cannot affect',
     ],
     correct: 2,
@@ -108,7 +108,7 @@ export default {
     options: [
       'Take the work and learn as they go without telling anyone',
       'Decline all fiscal work permanently',
-      'Do the work only under the supervision of someone competent, or decline',
+      'Do the work only under the supervision of someone competent to perform it, or decline',
       'Hire a relative with finance experience',
     ],
     correct: 2,

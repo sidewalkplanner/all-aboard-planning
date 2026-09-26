@@ -6,7 +6,7 @@ export default {
     text: 'Which statement best describes how a comprehensive plan and a zoning ordinance relate?',
     options: [
       'They are two names for the same document',
-      'The plan sets long-range policy; the zoning ordinance turns it into parcel-level rules',
+      'The plan sets long-range policy; the zoning ordinance turns it into enforceable, parcel-level rules',
       'The zoning ordinance sets policy and the plan enforces it parcel by parcel',
       'Once a zoning ordinance is adopted, the plan no longer matters',
     ],
@@ -42,7 +42,7 @@ export default {
     options: [
       'It should be granted, because earning a return is a reasonable use',
       'It should be granted if the neighbors do not object',
-      'It should be denied',
+      'It should be denied: financial gain alone is not a hardship, and nothing about the lot is unique',
       'It should be granted as an area variance, which needs no findings',
     ],
     correct: 2,
@@ -120,7 +120,7 @@ export default {
     text: 'How do some states change the common law vested-rights rule by statute?',
     options: [
       'By abolishing vested rights entirely',
-      'By vesting rights earlier, such as at a complete application or preliminary plat',
+      'By vesting rights earlier, for example at the filing of a complete application or approval of a preliminary plat',
       'By vesting rights only after the certificate of occupancy is issued',
       'By letting neighbors decide when rights vest',
     ],
@@ -142,7 +142,7 @@ export default {
     text: 'Why do many states limit how long an official map can reserve private land for a future street or park?',
     options: [
       'Because official maps have no legal effect',
-      'Because the reservation can restrict private land for long periods',
+      'Because the reservation can restrict private land for long periods, so the government must eventually acquire it or release it',
       'Because the federal government must approve every reservation',
       'Because reserved land cannot be taxed',
     ],

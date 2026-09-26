@@ -82,7 +82,7 @@ export default {
     options: [
       'Act as neutral technicians who discover the single public interest',
       'Leave every value choice to elected officials',
-      'Openly represent groups whose interests are underrepresented',
+      'Openly represent groups whose interests are underrepresented, especially low-income and minority communities',
       'Avoid producing competing plans that could confuse decision-makers',
     ],
     correct: 2,
@@ -182,7 +182,7 @@ export default {
       'Is valid, because rational basis review is easy to meet',
       'Must pass strict scrutiny, because disability is a suspect class',
       'Is preempted by RLUIPA',
-      'Violates equal protection even under rational basis review',
+      'Violates equal protection even under rational basis review, because it rests on irrational prejudice',
     ],
     correct: 3,
     explanation: 'The Court applied rational basis review and still struck the requirement down: treating the group home differently from similar uses had no rational basis beyond prejudice.',
@@ -220,7 +220,7 @@ export default {
   'cp:takings-loretto': {
     text: 'A city ordinance requires landlords to let a utility permanently attach small equipment boxes to their buildings. Under *Loretto* (1982), this is:',
     options: [
-      'A per se taking',
+      'A per se taking, because it authorizes a permanent physical occupation, however small',
       'Not a taking, because the boxes take up so little space',
       'Decided under the *Penn Central* balancing test',
       'A valid exaction, as long as it is roughly proportional',

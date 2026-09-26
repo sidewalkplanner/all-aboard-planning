@@ -71,7 +71,7 @@ export default {
     text: 'An ACS estimate for one census tract reports 240 households below the poverty line, with a margin of error of ±210. What is the best way to use it?',
     options: [
       'Report 240 as a precise count',
-      'Combine tracts or use a longer period, and report the margin of error',
+      'Treat it as unreliable on its own: combine tracts or use a longer period, and report the margin of error',
       'Replace it with poverty data from the decennial census',
       'Drop the margin of error from the table, since it confuses readers',
     ],
@@ -108,7 +108,7 @@ export default {
     options: [
       '0.4: the county likely imports tourism services',
       '1.0: the county matches the nation',
-      '2.5: tourism is likely an export industry',
+      '2.5: tourism is more concentrated locally than nationally, so it is likely an export industry',
       '7.5: tourism is the county’s largest employer',
     ],
     correct: 2,
@@ -123,7 +123,7 @@ export default {
   'cp:demo-dissimilarity': {
     text: 'A region’s index of dissimilarity between two groups is 60. Which interpretation is correct?',
     options: [
-      'About 60% of one group would have to move for the two groups to be evenly distributed',
+      'About 60% of one group would have to move to a different tract for the two groups to be evenly distributed',
       '60% of the region’s income goes to one group',
       'The two groups are almost perfectly integrated',
       'Income inequality in the region is moderate',

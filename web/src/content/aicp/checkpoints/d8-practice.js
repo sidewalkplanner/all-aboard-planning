@@ -18,7 +18,7 @@ export default {
     options: [
       'Is the same for every pair of zones',
       'Depends only on the number of roads between the zones',
-      'Increases with the zones’ size and decreases with the distance between them',
+      'Increases with the zones’ size and decreases with the distance or travel time between them',
       'Decreases as the zones grow larger',
     ],
     correct: 2,
@@ -27,7 +27,7 @@ export default {
   'cp:trans-vmt-infill': {
     text: 'Why does using vehicle miles traveled (VMT) instead of intersection level of service tend to favor infill near transit?',
     options: [
-      'Infill near transit produces less driving per person',
+      'Infill near transit produces less driving per person, while LOS penalizes any added delay at nearby intersections',
       'VMT ignores development near transit entirely',
       'LOS cannot be measured in urban areas',
       'VMT only counts transit trips',
@@ -308,7 +308,7 @@ export default {
     text: 'A city plans to install sensors that count pedestrians and read license plates. Which practice best addresses the concerns this raises?',
     options: [
       'Collecting as much data as possible in case it is useful later',
-      'Adopting data governance policies with minimization, transparency, and oversight',
+      'Adopting data governance policies with data minimization, transparency, and community oversight',
       'Keeping the program confidential to avoid controversy',
       'Sharing the raw data with any company that asks',
     ],
@@ -320,7 +320,7 @@ export default {
   'cp:rural-cluster': {
     text: 'A conservation (cluster) subdivision typically:',
     options: [
-      'Keeps the same number of homes on smaller lots and preserves the rest as open land',
+      'Keeps the same number of homes on smaller lots and preserves the rest of the site as open land or farmland',
       'Doubles the number of homes allowed on the site',
       'Spreads homes evenly across the entire site on large lots',
       'Prohibits any homes on farmland',
@@ -346,7 +346,7 @@ export default {
     options: [
       'The land will stay in farming because the plan says so',
       'The sewer line will be removed',
-      'Development pressure will follow the new capacity',
+      'Development pressure will follow the new capacity, because infrastructure steers growth',
       'Nothing, since sewer lines do not affect land use',
     ],
     correct: 2,

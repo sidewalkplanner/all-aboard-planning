@@ -16,7 +16,7 @@ export default {
   'cp:process-hazards-early': {
     text: 'Why should floodplains, steep slopes, and other natural constraints be analyzed early, before a preferred land use pattern is chosen?',
     options: [
-      'They limit where growth can safely go',
+      'They limit where growth can safely go, so they should shape the land use pattern rather than be squeezed around it',
       'They are the cheapest data to collect',
       'Federal law requires them to be the first chapter of every plan',
       'So the constraints can be adjusted to fit the preferred pattern',
@@ -123,7 +123,7 @@ export default {
     options: [
       'Acknowledge the history in the plan’s introduction',
       'Report only citywide averages to avoid singling out neighborhoods',
-      'Set measurable objectives for those neighborhoods and track them over time',
+      'Set measurable objectives for those neighborhoods, such as tree canopy, sidewalk completeness, and park access, and track them over time',
       'Leave equity for a separate study after adoption',
     ],
     correct: 2,
