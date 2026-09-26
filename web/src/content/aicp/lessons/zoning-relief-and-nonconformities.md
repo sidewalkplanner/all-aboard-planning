@@ -5,6 +5,7 @@
 - Recognize spot zoning and distinguish contract zoning from conditional zoning.
 - Explain how nonconforming uses, structures, and lots are treated, including amortization and abandonment.
 - Describe what makes a development moratorium legally defensible.
+- Explain how zoning decisions are appealed and how courts review them.
 
 ## Key concepts
 
@@ -113,6 +114,24 @@ Under *Tahoe-Sierra* (2002), a moratorium isn't a per se taking. See [Takings, e
 
 :::checkpoint cp:relief-moratorium-weak
 
+### Appeals and judicial review
+
+Zoning decisions follow an appeal path:
+
+1. **Administrative appeal.** A decision by the zoning administrator, such as a permit denial or a code interpretation, is appealed first to the **board of zoning adjustment** (or a hearing examiner).
+2. **Judicial review.** A final local decision can then be challenged in state court, usually within a **short deadline** set by state law.
+
+Before going to court, a challenger generally must **exhaust administrative remedies**: use every appeal and relief process the local code offers. Courts want the local body to have the first chance to fix a mistake and to build a record. A related idea is **ripeness**: a takings claim isn't ready for court until the local government has reached a final decision on what it will allow. See [Takings, exactions, and property rights](/aicp/lessons/takings-and-exactions).
+
+Courts don't redo the decision; they review it with deference:
+
+- **Legislative** decisions (text amendments, most rezonings) are upheld if they're **"fairly debatable"** or have a rational basis, meaning reasonable people could differ.
+- **Quasi-judicial** decisions (variances, conditional uses, site-specific rezonings in *Fasano* states) are upheld if they're supported by **substantial evidence in the record** and follow the required procedure.
+
+That's why findings and a clean record matter so much: in a quasi-judicial appeal, the record is usually all the court looks at.
+
+:::checkpoint cp:relief-exhaust
+
 ## Key terms
 
 - **Variance**: Permission to depart from the ordinance's literal terms because of hardship unique to a property.
@@ -128,6 +147,9 @@ Under *Tahoe-Sierra* (2002), a moratorium isn't a per se taking. See [Takings, e
 - **Amortization**: Requiring a nonconforming use to end after a period meant to allow recovery of investment.
 - **Abandonment**: Discontinuing a nonconforming use for a set period, ending the right to resume it.
 - **Moratorium**: A temporary halt on specified development approvals.
+- **Exhaustion of administrative remedies**: The rule that a challenger must use local appeals before going to court.
+- **Fairly debatable**: The deferential standard courts apply to legislative zoning decisions.
+- **Substantial evidence**: The standard for quasi-judicial decisions: enough relevant evidence in the record to support the decision.
 
 ## Real-world examples
 
@@ -141,13 +163,13 @@ Under *Tahoe-Sierra* (2002), a moratorium isn't a per se taking. See [Takings, e
 
 ## Exam tips
 
-- Variances require hardship **unique to the property**, not self-created and not merely financial.
-- Many states **prohibit use variances**; allowing a new use is a rezoning question.
+- Variances require hardship **unique to the property**, not self-created and not merely financial. Many states **prohibit use variances**; allowing a new use is a rezoning question.
 - Spot zoning singles out a small parcel, **inconsistent with the plan**, mainly for the **owner's benefit**.
 - *Fasano* makes site-specific rezonings **quasi-judicial**: findings, record, burden on the applicant.
 - Nonconforming uses may **continue** but not expand; **amortization** phases them out over a reasonable period; **abandonment** ends the right.
 - A defensible moratorium is **limited in time and scope** and tied to a specific study.
+- Challengers must usually **exhaust administrative remedies** first. Courts uphold legislative decisions that are **fairly debatable** and quasi-judicial ones backed by **substantial evidence in the record**.
 
 ## Summary
 
-Variances, decided by the zoning board, relieve hardships unique to a property that weren't self-created and aren't merely financial. Area variances are common; use variances are restricted or banned in many states. Most rezonings are legislative, but under *Fasano* site-specific rezonings are quasi-judicial, with findings and due process. Spot zoning singles out a parcel for the owner's benefit against the plan; contract zoning bargains away the police power and is generally invalid, while conditional zoning is widely accepted. Legal nonconformities may continue but can't expand, may be lost through abandonment, and may be phased out by reasonable amortization. Moratoria should be limited, purposeful, and temporary.
+Variances, decided by the zoning board, relieve hardships unique to a property that weren't self-created and aren't merely financial. Area variances are common; use variances are restricted or banned in many states. Most rezonings are legislative, but under *Fasano* site-specific rezonings are quasi-judicial, with findings and due process. Spot zoning singles out a parcel for the owner's benefit against the plan; contract zoning bargains away the police power and is generally invalid, while conditional zoning is widely accepted. Legal nonconformities may continue but can't expand, may be lost through abandonment, and may be phased out by reasonable amortization. Moratoria should be limited, purposeful, and temporary. Appeals go from the administrator to the board, then to court after administrative remedies are exhausted; courts uphold legislative decisions that are fairly debatable and quasi-judicial decisions supported by substantial evidence in the record.

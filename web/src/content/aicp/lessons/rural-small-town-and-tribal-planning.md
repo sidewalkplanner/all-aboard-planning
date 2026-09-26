@@ -3,6 +3,7 @@
 - Describe what makes rural and small-town planning different from urban planning, including capacity, land economics, and infrastructure.
 - Apply farmland and rural-character tools: agricultural zoning, right-to-farm protections, conservation subdivisions, and TDR and PDR.
 - Explain why scattered septic-based development is costly, and how to direct rural growth to places that can serve it.
+- Describe how rural economies are changing, including amenity-driven growth in gateway communities.
 - Describe tribal nations' status as sovereign governments and what that means for land use authority and planning.
 - Practice respectful, government-to-government engagement and consultation with tribes.
 
@@ -55,6 +56,18 @@ Same number of homes, very different costs: every scattered home adds road to pl
 
 Small-town planning often centers on the historic downtown: keeping storefronts occupied, maintaining walkable main streets, adapting historic buildings, and supporting local businesses. Many small towns rely on regional agencies, state programs, and federal rural development programs for technical help and funding for housing, water and wastewater systems, and community facilities. <!-- VERIFY: the USDA Rural Development programs are the usual federal source; confirm current program names if cited. -->
 
+### Rural economies in transition
+
+Rural places aren't one type. Some are losing population as farming, mining, or manufacturing employs fewer people; others are growing fast because of their scenery and recreation.
+
+- **Resource-dependent** communities built around one industry are vulnerable when it declines, and often focus on diversifying, broadband, and keeping young people.
+- **Gateway communities** next to national parks, forests, and lakes attract tourists, second-home buyers, and remote workers. The growth brings money but can push housing costs beyond what local workers can pay, leaving service workers commuting long distances, and it can strain water, roads, and emergency services. Workforce housing, short-term rental rules, and protecting the landscape that draws people are common priorities.
+- **Persistent-poverty** regions, including parts of Appalachia, the rural South, tribal lands, and the border region, face deep gaps in infrastructure and capital, and many unincorporated settlements lack basic water and sewer service.
+
+Rural planning therefore starts with the specific economy: the same tool, such as tourism promotion, can help one town and overwhelm another.
+
+:::checkpoint cp:rural-gateway
+
 ### Tribal nations
 
 Federally recognized **tribal nations are sovereign governments**. The United States has a **government-to-government relationship** with them, rooted in the Constitution, treaties, federal law, and court decisions, and it carries a federal trust responsibility.
@@ -76,6 +89,7 @@ Before assuming whose rules govern a site within a reservation, find out the lan
 - **Engage as governments, not stakeholders.** A tribe isn't one more interest group at a public meeting. Formal consultation happens between governments, often through established protocols and designated officials.
 - **Start early and build relationships** before a project needs a decision.
 - **Respect cultural knowledge and data.** Information about sacred sites or cultural resources may be confidential; tribes decide what's shared and how it's used.
+- **Know the law on cultural items.** The **Native American Graves Protection and Repatriation Act** (NAGPRA, 1990) requires the return of Native American human remains, funerary objects, sacred objects, and objects of cultural patrimony held by federal agencies and federally funded museums to lineal descendants and tribes. It also protects burials on federal and tribal lands: when remains are discovered, work stops and the tribe and agency are notified.
 - **Coordinate across boundaries.** Transportation, water, emergency services, and economic development often cross reservation lines, and joint planning and intergovernmental agreements serve everyone.
 
 :::checkpoint cp:rural-tribal
@@ -93,6 +107,8 @@ Before assuming whose rules govern a site within a reservation, find out the lan
 - **Fee land**: Land owned outright, which within a reservation may be owned by tribal members or non-members.
 - **THPO**: A Tribal Historic Preservation Office, which takes on historic preservation responsibilities for tribal lands.
 - **Consultation**: A formal, good-faith process of engagement between governments before decisions are made.
+- **Gateway community**: A town next to public lands or other natural attractions whose economy and growth are shaped by visitors and newcomers.
+- **NAGPRA**: The 1990 federal law requiring the return of Native American remains and cultural items and protecting burials on federal and tribal lands.
 
 ## Real-world examples
 
@@ -107,9 +123,9 @@ Before assuming whose rules govern a site within a reservation, find out the lan
 - To protect farmland while allowing limited growth, pair **agricultural zoning with TDR or PDR**.
 - Scattered septic-based subdivision threatens **groundwater** and raises **infrastructure costs**.
 - With limited capacity, direct growth to **areas with adequate services**.
-- Translate rural character into **measurable standards**.
+- Translate rural character into **measurable standards**. Fast-growing **gateway communities** need workforce housing as much as tourism promotion.
 - Tribal nations are **sovereign governments**. Engage them through government-to-government **consultation**, not as one more stakeholder group.
 
 ## Summary
 
-Rural and small-town planning works with limited capacity, land economies based on working landscapes, costly infrastructure, and strong attachment to place, so it should be practical and proportionate. Agricultural zoning, right-to-farm laws, conservation subdivisions, and TDR and PDR protect farmland and rural character. Scattered septic-based development threatens groundwater and raises public costs, so direct growth to places that can serve it. Tribal nations are sovereign governments with their own land use authority and a government-to-government relationship with the United States; land status matters, Section 106 requires consultation with tribes, and respectful engagement starts early, treats tribes as governments, and protects cultural information.
+Rural and small-town planning works with limited capacity, land economies based on working landscapes, costly infrastructure, and strong attachment to place, so it should be practical and proportionate. Agricultural zoning, right-to-farm laws, conservation subdivisions, and TDR and PDR protect farmland and rural character. Scattered septic-based development threatens groundwater and raises public costs, so direct growth to places that can serve it. Tribal nations are sovereign governments with their own land use authority and a government-to-government relationship with the United States; land status matters, Section 106 requires consultation with tribes, and respectful engagement starts early, treats tribes as governments, and protects cultural information. Rural economies differ: resource-dependent towns work to diversify, while gateway communities must manage amenity-driven growth and housing costs. NAGPRA governs the return of Native American remains and cultural items and protects burials on federal and tribal lands.

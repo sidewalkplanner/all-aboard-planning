@@ -281,4 +281,59 @@ export default {
     correct: 2,
     explanation: 'Title VI reaches most planning agencies and MPOs because they receive federal funds. Accessibility standards come from the Americans with Disabilities Act.',
   },
+  'cp:hist-early-plans': {
+    text: 'Why do so many roads and property lines in the Midwest run in a regular grid of one-mile squares?',
+    options: [
+      'The Laws of the Indies required a grid around a central plaza',
+      'The Commissioners’ Plan of 1811 was copied by western states',
+      'The Federal-Aid Highway Act of 1956 laid out rural roads on section lines',
+      'The Land Ordinance of 1785 surveyed the public domain into townships and square-mile sections',
+    ],
+    correct: 3,
+    explanation: 'The 1785 ordinance divided land into townships 6 miles square, each with 36 sections of 640 acres. The Laws of the Indies shaped Spanish colonial towns, and the 1811 plan gridded Manhattan.',
+  },
+  'cp:theory-radical': {
+    text: 'A planner leaves a city agency to work with a tenants’ movement pressing for changes to how housing is owned and financed. Which tradition does this fit best?',
+    options: [
+      'Incrementalism',
+      'Radical planning',
+      'Rational-comprehensive planning',
+      'Mixed scanning',
+    ],
+    correct: 1,
+    explanation: 'Radical planning, as Friedmann described it, grows out of social movements and seeks structural change, with planners working alongside organized communities rather than for the state.',
+  },
+  'cp:form-bid-rent': {
+    text: 'According to bid-rent theory, why do commercial uses tend to occupy land nearest the city center?',
+    options: [
+      'Zoning codes reserve the center for commerce',
+      'Residents prefer to live far from noise and traffic',
+      'They value access to the center most, so they outbid other users there',
+      'Land near the center is cheapest to develop',
+    ],
+    correct: 2,
+    explanation: 'Each user bids according to how much it values central access. Commerce values it most, so land values and density fall with distance from the center.',
+  },
+  'cp:form-filtering': {
+    text: 'Forty-year-old homes that once sold to high-income buyers are now rented by moderate-income households, while high-income buyers purchase newly built homes. What is this process called?',
+    options: [
+      'Filtering',
+      'Gentrification',
+      'Tiebout sorting',
+      'Invasion and succession',
+    ],
+    correct: 0,
+    explanation: 'Filtering is housing passing down the income ladder as it ages. Gentrification runs the other way, with higher-income residents moving into lower-income neighborhoods.',
+  },
+  'cp:law-telecom': {
+    text: 'Under the Telecommunications Act of 1996, which of these may a local government do when reviewing a cell tower application?',
+    options: [
+      'Deny it because residents fear health effects from emissions that meet federal standards',
+      'Deny it by a vote with no written decision',
+      'Ban all new wireless facilities within city limits',
+      'Require the tower to be camouflaged and limit its height',
+    ],
+    correct: 3,
+    explanation: 'Local codes can still regulate location, height, and design. They can’t regulate on the basis of compliant emissions, must put denials in writing with substantial evidence, and can’t effectively prohibit service.',
+  },
 };

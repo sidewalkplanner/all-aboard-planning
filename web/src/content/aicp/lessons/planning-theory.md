@@ -2,13 +2,18 @@
 
 - Describe the rational-comprehensive model and the main critiques of it.
 - Distinguish bounded rationality, satisficing, incrementalism, and mixed scanning, and name the theorist behind each.
-- Explain advocacy, equity, transactive, and communicative planning and how they changed the planner's role.
+- Distinguish theory of planning (process) from theory in planning (substance).
+- Explain advocacy, equity, transactive, communicative, radical, and insurgent planning and how they changed the planner's role.
 - Describe the "just city" and "wicked problems" and use them to analyze a planning situation.
 - Recognize which theory an exam scenario is describing.
 
 ## Key concepts
 
 Planning theory asks two questions: *How should planners make decisions?* (process) and *Whose interests should planning serve?* (values). Most exam questions pair a theorist with a concept, or describe a planner's behavior and ask which theory it reflects.
+
+### Theory *of* planning and theory *in* planning
+
+Andreas Faludi (*Planning Theory*, 1973) drew a distinction that still organizes the field. **Procedural theory**, or theory *of* planning, is about how planning decisions are made: the rational model, incrementalism, and communicative planning. **Substantive theory**, or theory *in* planning, is about the things being planned: how cities grow, why neighborhoods change, what makes a transit system work. The theories in this lesson are mostly procedural, with value positions attached; [Patterns of human settlement](/aicp/lessons/urban-form-and-settlement) covers substantive theory.
 
 ### The rational-comprehensive model
 
@@ -58,10 +63,18 @@ The difference is how much of the field each approach examines, and whether it s
 
 **Norman Krumholz**, as Cleveland's planning director in the 1970s, practiced **equity planning**: using the resources of a public planning agency to expand choices for those with the fewest. His department's policy plan made that goal explicit, and Krumholz argued planners inside government could pursue it through analysis, persistence, and building relationships. <!-- VERIFY: Krumholz served as Cleveland planning director roughly 1969–1979, and the Cleveland Policy Planning Report is usually dated 1975; confirm if dates are added. -->
 
+### Radical and insurgent planning
+
+**Radical planning** goes beyond advocacy within the system to challenge the structures that produce inequality. Friedmann, in *Planning in the Public Domain* (1987), described it as planning that grows out of social movements and seeks structural change, with planners working alongside organized communities rather than for the state.
+
+**Insurgent** and **multicultural** planning build on that idea. **Leonie Sandercock**'s *Towards Cosmopolis* (1998) argued that planning's history was written from the top down and that a more just practice must recognize diverse cultures and the grassroots, often informal, planning that communities do for themselves.
+
+:::checkpoint cp:theory-radical
+
 ### Transactive and communicative planning
 
 - **John Friedmann**'s **transactive planning** centers on face-to-face dialogue and **mutual learning** between planners, who bring technical knowledge, and the people affected, who bring experiential knowledge.
-- **Communicative (collaborative) planning** treats planning as a process of structured dialogue and consensus building among stakeholders. **John Forester** examined how planners' everyday communication, including what they emphasize, omit, or frame, shapes power and outcomes. **Judith Innes** and **Patsy Healey** developed collaborative and consensus-building approaches.
+- **Communicative (collaborative) planning** treats planning as a process of structured dialogue and consensus building among stakeholders. It draws on philosopher **Jürgen Habermas**'s idea of communicative rationality: good decisions come from open, undistorted dialogue in which the better argument, not power, wins. **John Forester** examined how planners' everyday communication, including what they emphasize, omit, or frame, shapes power and outcomes. **Judith Innes** and **Patsy Healey** developed collaborative and consensus-building approaches.
 
 :::figure fig-planner-roles | Four panels on the planner's role. Technician, the rational model: a planner hands one plan to the public, one plan for one public interest. Advocate, Davidoff: a city plan versus "our plan," with the planner standing with the residents behind their plan; the planner speaks for a group left out. Equity planner, Krumholz: a planner at city hall steers resources toward modest homes, working inside city hall for those with the least. Mutual learner, Friedmann: a planner and a resident face each other, trading technical knowledge one way and experiential knowledge the other; face to face, each learns.
 Advocacy and equity planning share a goal but differ in where the planner stands: outside, representing a group, or inside government, steering its resources.
@@ -96,9 +109,12 @@ Each side is a tug-of-war between two of the three E's; sustainable development 
 | Advocacy planning | Paul Davidoff | Planners represent underrepresented interests; no single public interest |
 | Equity planning | Norman Krumholz | Public agencies expand choices for those with the fewest |
 | Transactive planning | John Friedmann | Dialogue and mutual learning with affected people |
+| Radical planning | John Friedmann (later work) | Planning from social movements to change structures of inequality |
+| Insurgent, multicultural planning | Leonie Sandercock | Recognize diverse cultures and grassroots planning from below |
 | Communicative planning | John Forester, Judith Innes, Patsy Healey | Planning as structured dialogue and consensus building |
 | The just city | Susan Fainstein | Judge outcomes by equity, diversity, and democracy |
 | Wicked problems | Rittel and Webber | Planning problems have no definitive formulation or solution |
+| Procedural vs. substantive theory | Andreas Faludi | Theory *of* planning (process) vs. theory *in* planning (content) |
 
 ## Key terms
 
@@ -113,6 +129,10 @@ Each side is a tug-of-war between two of the three E's; sustainable development 
 - **Communicative planning**: Planning as a process of dialogue, argument, and consensus building.
 - **Just city**: Fainstein's framework evaluating urban outcomes by equity, diversity, and democracy.
 - **Wicked problem**: A complex problem with no definitive formulation or final solution.
+- **Procedural theory**: Theory about how planning decisions are made (theory *of* planning).
+- **Substantive theory**: Theory about the things planning shapes, such as cities and regions (theory *in* planning).
+- **Radical planning**: Planning rooted in social movements that seeks structural change.
+- **Communicative rationality**: Habermas's idea that sound decisions come from open, undistorted dialogue.
 
 ## Real-world examples
 
@@ -128,8 +148,9 @@ Each side is a tug-of-war between two of the three E's; sustainable development 
 - "No single public interest; represent the underrepresented" is **Davidoff** (advocacy). "Expand choices for those with the fewest" is **Krumholz** (equity).
 - "Muddling through" and "successive limited comparisons" are **Lindblom**; a broad scan plus selective detail is **Etzioni**; "satisficing" is **Simon**.
 - Face-to-face dialogue and mutual learning is **Friedmann** (transactive).
+- Planning *from below*, rooted in social movements, is **radical** planning (Friedmann's later work) or **insurgent** planning (Sandercock).
 - The sustainability "three E's" are environment, economy, and **equity**, not efficiency.
 
 ## Summary
 
-The rational-comprehensive model gives planning its basic sequence but assumes more knowledge and agreement than real decisions allow. Simon's bounded rationality and satisficing, Lindblom's incrementalism, and Etzioni's mixed scanning describe more realistic decision processes. Davidoff's advocacy planning and Krumholz's equity planning made planners' values explicit, and Friedmann's transactive planning and the communicative school recast planning as dialogue. Fainstein's just city judges outcomes by equity, diversity, and democracy, and Rittel and Webber's wicked problems explain why planning rarely has final answers.
+The rational-comprehensive model gives planning its basic sequence but assumes more knowledge and agreement than real decisions allow. Simon's bounded rationality and satisficing, Lindblom's incrementalism, and Etzioni's mixed scanning describe more realistic decision processes. Davidoff's advocacy planning and Krumholz's equity planning made planners' values explicit, and Friedmann's transactive planning and the communicative school recast planning as dialogue. Radical and insurgent planning look to social movements and grassroots practice. Fainstein's just city judges outcomes by equity, diversity, and democracy, and Rittel and Webber's wicked problems explain why planning rarely has final answers.

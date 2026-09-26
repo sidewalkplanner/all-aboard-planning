@@ -2,9 +2,10 @@
 
 - Explain where a planning agency sits in council-manager and mayor-council governments.
 - Compare functional, matrix, and team-based organizational structures, and address silos.
-- Distinguish line-item, program, performance, and zero-based budgets.
+- Distinguish line-item, program, performance, and zero-based budgets, and explain how development fees recover costs.
 - Classify performance measures as inputs, outputs, efficiency, or outcomes, and use them in results-oriented management.
-- Apply sound supervision practices, and follow open-meetings and public-records requirements.
+- Apply sound hiring and supervision practices, and follow open-meetings and public-records requirements.
+- Explain internal controls and audits that protect public funds.
 
 ## Key concepts
 
@@ -53,6 +54,17 @@ Many governments blend formats, for example a program budget with line-item deta
 A line-item budget answers "what did we spend it on?"; a program budget answers "what did it pay for?"
 :::
 
+### Fees and cost recovery
+
+Planning departments are funded from a mix of the **general fund** (taxes) and **fees** paid by applicants. Development review mainly benefits the applicant, so many communities recover much of its cost through **application and permit fees**, while long-range planning, which benefits everyone, is usually paid from the general fund.
+
+- Fees are set through a **fee study** that estimates the staff time and overhead for each application type.
+- A regulatory fee generally **can't exceed the reasonable cost of providing the service**. A charge well above cost starts to look like a tax, which needs different legal authority.
+- Some functions, such as building permits in many places, run as a separate **enterprise or special revenue fund**, so the fees stay with the service they pay for.
+- Waiving or reducing fees (for affordable housing, for example) is a policy choice, and the lost revenue has to be covered from somewhere else.
+
+:::checkpoint cp:agency-fees
+
 ### Performance measures
 
 | Type | Measures | Example |
@@ -73,6 +85,18 @@ Outcomes are what the public cares about, but they're harder to measure and infl
 When a department's workload exceeds its capacity, the right response is to **prioritize work against adopted goals** (the comprehensive plan, the council's priorities, legal deadlines) and **communicate the tradeoffs** openly to leadership, rather than quietly letting some work slide or promising everything.
 
 :::checkpoint cp:agency-review-times
+
+### Hiring and developing staff
+
+Public hiring has to be fair and defensible:
+
+- Start from a current **job description** listing the duties and the qualifications they truly require.
+- Many governments use a **merit (civil service)** system: open recruitment, qualifications-based selection, and protection from political hiring and firing.
+- Use **structured interviews**: ask every candidate the same job-related questions and score answers against set criteria. It's fairer, easier to defend, and better at predicting performance than an unstructured conversation.
+- Follow equal employment opportunity law: no questions about age, religion, family plans, disability, or other protected characteristics, and **reasonable accommodation** for qualified applicants and employees with disabilities under the ADA.
+- Hold regular **performance evaluations** against the expectations set at hiring, and plan for turnover with cross-training and **succession planning** so knowledge doesn't leave with one person.
+
+:::checkpoint cp:agency-structured-interview
 
 ### Supervising and motivating staff
 
@@ -100,6 +124,16 @@ The first step is a conversation, not a penalty; the documentation is what makes
 
 **Transparency in grant-funded programs** requires accurate financial and performance reporting, compliance with the grant's conditions, and clear accountability for how money was spent.
 
+**Internal controls** are the routines that prevent errors and misuse before they happen:
+
+- **Separation of duties**: the person who approves a payment isn't the one who requests it or records it.
+- **Documentation**: invoices tied to deliverables, timesheets for staff charged to grants, and records kept for the retention period the grant or state law requires.
+- **Reconciliation**: comparing budgets, ledgers, and bank records regularly.
+
+**Audits** check afterward. Governments are audited annually, and those spending federal awards above a threshold also need a **single audit** of their federal programs. An audit finding isn't a scandal in itself; how the agency responds, with a corrective action plan and follow-through, is what builds trust.
+
+:::checkpoint cp:agency-internal-controls
+
 ## Key terms
 
 - **Council-manager form**: A government in which an elected council appoints a professional manager to run operations.
@@ -116,6 +150,13 @@ The first step is a conversation, not a penalty; the documentation is what makes
 - **Progressive discipline**: A stepwise approach to addressing performance problems.
 - **Open-meetings law**: A law requiring public bodies to meet openly with notice.
 - **Public-records law**: A law giving the public access to government records, subject to exemptions.
+- **Cost recovery**: Setting fees to cover some or all of the cost of providing a service.
+- **Enterprise fund**: A separate fund for a service paid for mainly by its own fees.
+- **Merit (civil service) system**: Hiring and promotion based on qualifications, protected from political influence.
+- **Structured interview**: An interview asking every candidate the same job-related questions, scored against set criteria.
+- **Succession planning**: Preparing staff to fill key roles before they're vacant.
+- **Internal controls**: Procedures, such as separation of duties, that prevent errors and misuse.
+- **Single audit**: An audit of a government's federal award programs, required above a spending threshold.
 
 ## Real-world examples
 
@@ -130,10 +171,10 @@ The first step is a conversation, not a penalty; the documentation is what makes
 - In council-manager government, the planning director usually reports to the **appointed manager**.
 - **Line-item** budgets organize by expense type; **program** budgets by service; **zero-based** budgets justify everything from zero.
 - "Percent of permits reviewed within 30 days" is an **output/efficiency** measure; "share of new housing in growth areas" is an **outcome**.
-- To speed up review, **map the current process** first.
-- With performance problems, **meet privately first**; progressive discipline starts with documented verbal counseling.
+- To speed up review, **map the current process** first. Regulatory fees can't exceed the **reasonable cost** of the service.
+- With performance problems, **meet privately first**; progressive discipline starts with documented verbal counseling. Hire with **structured interviews**, and separate duties so no one person controls a payment.
 - Public records: release **non-exempt** records on time. Open meetings: meet openly with notice.
 
 ## Summary
 
-Planning directors usually report to the manager in council-manager governments and to the mayor in strong-mayor systems. Functional structures build expertise but risk silos; matrix structures create dual reporting for project work; cross-departmental coordination breaks down silos. Line-item budgets organize by expenditure type, program budgets by service, performance budgets by results, and zero-based budgets justify everything from zero. Measure inputs, outputs, efficiency, and outcomes, and manage for results. Supervise with clear expectations, private conversations first, and progressive discipline. Follow open-meetings and public-records laws: meet openly with notice, and release non-exempt records on time.
+Planning directors usually report to the manager in council-manager governments and to the mayor in strong-mayor systems. Functional structures build expertise but risk silos; matrix structures create dual reporting for project work; cross-departmental coordination breaks down silos. Line-item budgets organize by expenditure type, program budgets by service, performance budgets by results, and zero-based budgets justify everything from zero. Measure inputs, outputs, efficiency, and outcomes, and manage for results. Supervise with clear expectations, private conversations first, and progressive discipline. Follow open-meetings and public-records laws: meet openly with notice, and release non-exempt records on time. Fees can recover the cost of development review but not more than the reasonable cost of the service. Hire through structured, merit-based processes, plan for succession, and protect public funds with internal controls such as separation of duties, with audits checking afterward.

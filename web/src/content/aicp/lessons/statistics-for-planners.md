@@ -207,15 +207,12 @@ Discounts a future benefit to today's dollars, shows how a higher discount rate 
 
 ## Exam tips
 
-- Skewed data such as income or home prices call for the **median**. If the mean is far above the median, the distribution is right-skewed.
+- Skewed data such as income or home prices call for the **median**. If the mean is far above the median, the distribution is right-skewed. Categories without order are **nominal** (mode only); ordered ratings are **ordinal**.
 - Memorize **68 / 95 / 99.7**: the share of a normal distribution within one, two, and three standard deviations.
-- An *r* of −0.85 is a *strong* relationship; the sign only gives the direction. R² is the share of variation explained.
+- An *r* of −0.85 is a *strong* relationship; the sign only gives the direction. R² is the share of variation explained. Watch for the confounding variable in correlation-causation traps.
 - Two categorical variables call for a **chi-square** test.
-- A higher discount rate *lowers* present value. A benefit-cost ratio below 1.0 means costs exceed benefits.
-- Watch for correlation-causation traps: look for the confounding variable in the answer choices.
-- Categories without order (land use type) are **nominal** and support only the mode; ordered ratings are **ordinal**.
+- A higher discount rate *lowers* present value. A benefit-cost ratio below 1.0 means costs exceed benefits. Compare dollars across years only in **constant dollars**.
 - A rise from 10% to 12% is **2 percentage points** but a **20 percent** increase.
-- Compare dollars across years only after converting to **constant dollars**.
 
 ## Summary
 

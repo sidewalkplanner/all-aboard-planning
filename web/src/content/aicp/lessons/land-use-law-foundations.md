@@ -4,7 +4,8 @@
 - Summarize *Euclid* and *Nectow* and the difference between facial and as-applied challenges.
 - Apply substantive and procedural due process and equal protection to land use decisions, including the standard of review courts use.
 - Identify the leading cases on household definitions, group homes, discriminatory intent, and "class of one" claims.
-- Explain how the First Amendment limits sign, adult-use, and religious land use regulation.
+- Explain how the First Amendment limits sign, adult-use, and religious land use regulation, and how federal law limits local rules on cell towers.
+- Recognize legal doctrines planners meet in practice: ultra vires, ripeness, estoppel, and standing.
 
 ## Key concepts
 
@@ -27,6 +28,12 @@ Either way the power starts with the state. The difference is how much a city ca
 ### The foundation case: *Euclid*
 
 In ***Village of Euclid v. Ambler Realty Co.*** **(1926)**, the U.S. Supreme Court upheld comprehensive zoning against a challenge that it violated due process by sharply reducing the value of Ambler's land. The Court held that separating uses into districts is a valid exercise of the police power unless it is "clearly arbitrary and unreasonable, having no substantial relation to the public health, safety, morals, or general welfare." Justice Sutherland compared a misplaced use to a nuisance, "like a pig in the parlor instead of the barnyard." The case established **Euclidean zoning** (named for the village, not the geometer) as the national norm. Alfred Bettman's amicus brief supporting the village is often credited with influencing the result.
+
+*Euclid* built on earlier cases that upheld land use rules under the police power:
+
+- ***Welch v. Swasey*** **(1909)** upheld Boston's building height limits, which differed by district.
+- ***Hadacheck v. Sebastian*** **(1915)** upheld a Los Angeles ordinance that barred an existing brickyard from an area that had become residential, even though it sharply reduced the land's value.
+- A year after *Euclid*, ***Gorieb v. Fox*** **(1927)** upheld front setback requirements.
 
 :::checkpoint cp:law-euclid-standard
 
@@ -78,6 +85,7 @@ Land use rules that touch speech, assembly, or religion get closer scrutiny.
 
 - **Signs.** In ***Reed v. Town of Gilbert*** **(2015)**, the Court held that a sign code that treated signs differently based on their communicative content (for example, stricter rules for directional signs to events than for political or ideological signs) was **content-based** and subject to **strict scrutiny**. Sign codes should regulate size, placement, lighting, and duration without depending on what the sign says. In *City of Austin v. Reagan National Advertising* (2022), the Court held that an on-premises/off-premises distinction isn't automatically content-based. <!-- VERIFY: confirm the holding summary for City of Austin v. Reagan National Advertising of Austin (2022). -->
 - **Adult businesses** may be regulated through reasonable time, place, and manner rules aimed at their **secondary effects** (such as crime and blight) rather than at the content of their speech, as long as reasonable alternative locations remain (*City of Renton v. Playtime Theatres*, 1986).
+- **More adult-use and sign cases.** *Young v. American Mini Theatres* (1976) upheld Detroit's rule dispersing adult theaters. *Schad v. Borough of Mount Ephraim* (1981) struck down a town's total ban on live entertainment. *Metromedia, Inc. v. City of San Diego* (1981) struck down parts of a billboard ban that favored commercial over noncommercial messages. *City of Ladue v. Gilleo* (1994) held that a city can't ban nearly all signs at people's homes, a uniquely important and cheap way to speak.
 - **Religious uses.** The federal **Religious Land Use and Institutionalized Persons Act (RLUIPA)** (2000) bars land use regulations that impose a *substantial burden* on religious exercise unless they're the least restrictive means of serving a compelling interest. It also bars treating religious assemblies on less than equal terms with nonreligious ones.
 
 :::figure fig-sign-content | Two rows of three signs reading IDEAS, VOTE, and EVENT. Content-based, where the rule depends on the message: each sign may be a different size, the event sign smallest; this gets strict scrutiny and usually falls. Content-neutral, where size, place, and time are the same for all: all three signs are the same size under one dashed size limit; this is the safe way to write a code.
@@ -85,6 +93,19 @@ If you have to read a sign to know which rule applies, the rule is content-based
 :::
 
 :::checkpoint cp:law-rluipa
+
+### Cell towers and the Telecommunications Act
+
+The federal **Telecommunications Act of 1996** leaves siting of wireless facilities to local governments, within limits. A local government may not prohibit, or effectively prohibit, personal wireless service; may not regulate towers on the basis of radio-frequency emissions that meet federal standards; must act on applications within a reasonable time; and must put any denial in writing, supported by substantial evidence in the record. Local codes can still guide location, height, design, and camouflage.
+
+:::checkpoint cp:law-telecom
+
+### Other doctrines planners meet
+
+- **Ultra vires** ("beyond the powers"): an action a local government has no authority to take is void. Under Dillon's Rule, courts look for an express or implied grant.
+- **Ripeness**: courts hear a takings or land use claim only after the government reaches a **final decision** on how the regulation applies to the property, usually after the owner has sought any available variance or other relief.
+- **Equitable estoppel**: in some states, a government can be barred from enforcing a rule when an owner relied in good faith on its official act, such as an issued permit, and would be seriously harmed. Courts apply it narrowly against governments.
+- **Standing**: only someone with a real, particular injury, such as a nearby owner harmed by a decision, may bring a legal challenge. The rules vary by state.
 
 ### Plans and the law
 
@@ -105,6 +126,10 @@ In some states the comprehensive plan is advisory. In **consistency** states, zo
 - **Class of one**: An equal protection claim by a single owner treated irrationally differently from similar owners.
 - **Content-based regulation**: A rule that applies differently depending on what a message says.
 - **RLUIPA**: The federal law protecting religious land uses from substantial burdens and unequal treatment.
+- **Ultra vires**: Beyond a government's legal authority, and therefore void.
+- **Ripeness**: The requirement that a government reach a final decision before a land use or takings claim can be heard.
+- **Equitable estoppel**: A doctrine that can bar a government from enforcing a rule when someone relied in good faith on its official act.
+- **Standing**: The requirement that a plaintiff show a real, particular injury to challenge a decision.
 
 ## Real-world examples
 
@@ -116,12 +141,12 @@ In some states the comprehensive plan is advisory. In **consistency** states, zo
 
 ## Exam tips
 
-- Zoning's constitutional basis is the **police power** (health, safety, morals, general welfare), not the Commerce Clause or the Takings Clause.
+- Zoning's constitutional basis is the **police power** (health, safety, morals, general welfare), not the Commerce Clause or the Takings Clause. Under **Dillon's Rule**, local governments have only the powers the state grants, necessarily implies, or makes essential.
 - *Euclid* is **facial** (zoning is valid); *Nectow* is **as-applied** (invalid for one parcel).
 - *Belle Terre* allowed limits on **unrelated** households; *Moore* struck down limits on **related** families.
 - *Arlington Heights* requires **intent** for an equal protection claim; the Fair Housing Act allows **disparate-impact** claims.
 - Sign rules that depend on what a sign *says* are content-based and get strict scrutiny (*Reed*).
-- Under **Dillon's Rule**, local governments have only the powers the state grants, necessarily implies, or makes essential.
+- Cell towers: local governments can guide siting but can't effectively prohibit wireless service or regulate radio-frequency emissions that meet federal standards, and denials must be in writing with substantial evidence.
 
 ## Summary
 

@@ -4,6 +4,7 @@
 - Name the rungs and groupings of Arnstein's ladder and the five levels of the IAP2 spectrum.
 - Design an engagement strategy by matching purpose, audience, timing, and technique.
 - Describe common engagement techniques, including charrettes, visioning, visual preference surveys, and the fishbowl.
+- Use a stakeholder analysis and choose deliberative methods, such as deliberative polling and citizens' assemblies, when informed judgment matters.
 - Distinguish a public hearing from a public meeting, and evaluate whether outreach worked.
 
 ## Key concepts
@@ -72,6 +73,15 @@ A good strategy, often written as a **communications and engagement plan**, answ
 6. **How will we report back?** "Closing the loop," showing people how their input was used, is what builds trust.
 7. **How will we evaluate it?**
 
+A **stakeholder analysis** goes one step past the list of who's affected. A common tool is the **power-interest grid**, which sorts stakeholders by how much influence they have over the decision and how much they care about it:
+
+| | Low interest | High interest |
+|---|---|---|
+| **High power** | Keep satisfied | Manage closely: involve and collaborate |
+| **Low power** | Monitor | Keep informed, and ask why their power is low |
+
+The grid comes from project management, and planners use it with one caution. Groups with a great deal at stake but little power, such as renters facing redevelopment, are exactly the ones whose voice engagement exists to strengthen. "Keep informed" is the grid's default for them, not the planner's.
+
 :::figure fig-engage-early | An illustrative line chart of the room left to change a plan at four stages: nearly all of it at problem definition, less at options, much less at the draft, and almost none at the hearing. A note at the start says engage here; a note at the hearing says too late to shape it.
 Early engagement is when input can still change the plan, so that's where the real engagement effort belongs.
 :::
@@ -92,8 +102,20 @@ Early engagement is when input can still change the plan, so that's where the re
 - **Pop-up engagement**: going to where people already are (markets, transit stops, festivals, schools).
 - **Online tools**: interactive maps, comment platforms, and virtual meetings, which extend reach but miss people without reliable internet.
 - **Participatory budgeting**: residents directly decide how to spend part of a public budget, at the upper end of the spectrum.
+- **Social media**: fast and far-reaching for announcements and two-way conversation, but its commenters are self-selected and it rewards the loudest posts. Treat it as a channel for reach, not as a measure of public opinion.
 
 :::checkpoint cp:engage-charrette
+
+### Deliberative methods
+
+Most techniques collect what people already think. **Deliberative** methods ask what people would think after learning about the issue and weighing it with others. They're useful when a question is complex, contested, or easily swayed by misinformation.
+
+- **Deliberative polling**, developed by political scientist James Fishkin, polls a **random sample** of residents, gives them balanced briefing materials, lets them question experts and discuss in small groups, and then polls them again. The change between the two polls shows how informed deliberation shifts opinion.
+- A **citizens' jury** or **citizens' assembly** is a group of residents chosen by lot, usually stratified so it mirrors the community's demographics, that hears evidence over several sessions and issues recommendations. British Columbia's Citizens' Assembly on Electoral Reform (2004) is a well-known example.
+
+Random selection is what sets these apart: participants aren't just the people who choose to show up, so the group looks like the community rather than like the usual meeting crowd. The trade-off is cost and time, and the result is advice to decision-makers, not a binding vote.
+
+:::checkpoint cp:engage-deliberative
 
 ### Public hearings versus public meetings
 
@@ -128,6 +150,9 @@ The gap between the two bars is the measure: when a group's share of participant
 - **Tokenism**: Participation that offers a voice without real influence (informing, consultation, placation).
 - **IAP2 spectrum**: Five levels of public influence: inform, consult, involve, collaborate, empower.
 - **Stakeholder mapping**: Identifying who is affected by or can affect a decision.
+- **Power-interest grid**: A stakeholder analysis tool that sorts stakeholders by their influence over a decision and their interest in it.
+- **Deliberative polling**: Polling a random sample before and after informed small-group deliberation.
+- **Citizens' assembly**: A group of residents chosen by lot to hear evidence, deliberate, and recommend.
 - **Communications plan**: A plan defining audiences, messages, methods, and timing.
 - **Charrette**: An intensive, time-limited, collaborative design workshop.
 - **Visioning**: A process for describing a community's desired long-range future.
@@ -148,11 +173,11 @@ The gap between the two bars is the measure: when a group's share of participant
 
 - On Arnstein's ladder, **informing and consultation are tokenism**; citizen control is the top rung.
 - IAP2 runs **inform → consult → involve → collaborate → empower**.
-- To shape a design while decisions are still open, pick the **charrette**. To measure how opinion is distributed, pick a **random-sample survey**.
+- To shape a design while decisions are still open, pick the **charrette**. To measure how opinion is distributed, pick a **random-sample survey**; to learn what an informed public would conclude, pick **deliberative polling** or a **citizens' assembly**.
 - A **public hearing** creates the official record; workshops and open houses don't.
 - When outreach missed a group, the answer is **targeted** outreach to that group, not more of the same.
 - "First step" engagement questions usually want early engagement on problem definition, before a draft exists.
 
 ## Summary
 
-Engagement brings in local knowledge, surfaces values, builds legitimacy, and is often legally required. Arnstein's ladder warns that informing and consultation can be tokenism, and the IAP2 spectrum asks planners to be honest about the level of influence they promise, from inform to empower. Good strategies start early, map stakeholders, match techniques to purpose (charrettes for design, random-sample surveys for measurement, pop-ups for reach), and close the loop. Hearings create the legal record but are the wrong tool for shaping a plan. Judge outreach by whether participants reflect the community and whether their input changed the result.
+Engagement brings in local knowledge, surfaces values, builds legitimacy, and is often legally required. Arnstein's ladder warns that informing and consultation can be tokenism, and the IAP2 spectrum asks planners to be honest about the level of influence they promise, from inform to empower. Good strategies start early, map and analyze stakeholders, match techniques to purpose (charrettes for design, random-sample surveys for measurement, pop-ups for reach, deliberative methods for informed judgment), and close the loop. Hearings create the legal record but are the wrong tool for shaping a plan. Judge outreach by whether participants reflect the community and whether their input changed the result.

@@ -154,4 +154,48 @@ export default {
     correct: 1,
     explanation: 'Scope 2 covers purchased electricity. Scope 1 is direct emissions, such as fuel burned in the city’s fleet, and Scope 3 is other indirect emissions.',
   },
+  'cp:goals-priority': {
+    text: 'On an impact-effort matrix, which actions usually go first?',
+    options: [
+      'Low impact, low effort',
+      'Low impact, high effort',
+      'High impact, high effort',
+      'High impact, low effort',
+    ],
+    correct: 3,
+    explanation: 'High-impact, low-effort actions are the quick wins. High-impact, high-effort actions become multiyear projects, and low-impact, high-effort actions drop down the list.',
+  },
+  'cp:process-adoption': {
+    text: 'In most places today, what is the planning commission’s usual role in adopting a comprehensive plan?',
+    options: [
+      'It adopts the plan by ordinance, with no action by the governing body',
+      'It holds a hearing and recommends the plan to the governing body',
+      'It certifies the plan to the state for final approval',
+      'It has no role; plans go directly to the governing body',
+    ],
+    correct: 1,
+    explanation: 'The commission typically holds a hearing and recommends; the governing body then holds its own hearing and adopts. Under the 1928 Standard City Planning Enabling Act, the commission itself adopted the plan.',
+  },
+  'cp:analysis-hia': {
+    text: 'A county wants to know how a proposed freeway interchange would affect asthma rates in nearby neighborhoods, and what design changes would reduce the harm. Which analysis fits best?',
+    options: [
+      'A fiscal impact analysis',
+      'A health impact assessment',
+      'A buildable lands inventory',
+      'A goals-achievement matrix',
+    ],
+    correct: 1,
+    explanation: 'A health impact assessment estimates a proposal’s effects on health and how they’re distributed, and recommends changes. A fiscal impact analysis looks at public costs and revenues.',
+  },
+  'cp:analysis-funding': {
+    text: 'A city issues revenue bonds to build a water treatment plant and repays them from water rates. Which statement is accurate?',
+    options: [
+      'The bonds are the funding source, and the rates are the financing',
+      'The bonds and the rates are both funding sources',
+      'The bonds are the financing, and the water rates are the funding',
+      'Neither is funding, because the plant is paid for by a grant',
+    ],
+    correct: 2,
+    explanation: 'Financing spreads the cost over time by borrowing; funding is the source that ultimately repays it. Here the users pay through rates, matching the source to who benefits.',
+  },
 };

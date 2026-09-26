@@ -1,10 +1,11 @@
 ## Learning objectives
 
-- Apply core urban design principles and the lessons of observational research on public space.
+- Apply core urban design principles, including enclosure ratios and serial vision, and the lessons of observational research on public space.
 - Explain placemaking and the principles of Crime Prevention Through Environmental Design (CPTED).
 - Describe design review tools, including context-sensitive standards and the transect.
 - Explain what National Register listing does and doesn't do, and walk through Section 106 review.
 - Distinguish the four treatments in the Secretary of the Interior's Standards, and explain local historic districts and the rehabilitation tax credit.
+- Use other preservation tools, such as demolition-by-neglect rules, preservation easements, and conservation districts.
 
 ## Key concepts
 
@@ -23,6 +24,12 @@ Urban design shapes the physical setting for public life: the relationships amon
 :::figure fig-enclosure | Two street sections with a person in the middle. Little enclosure: a wide street edged by low one-story buildings; exposed and hard to read. An outdoor room: buildings about five stories tall on a narrower street, with street trees; height in proportion to width, walls and a ceiling of trees.
 The same person feels different in each: the buildings on the right frame the street the way walls frame a room.
 :::
+
+#### Enclosure, sequence, and views
+
+Enclosure can be described with a ratio: the **height of the buildings lining a street to the street's width**, wall to wall. A commonly cited rule of thumb is that ratios between about 1:1 and 1:3 feel comfortably enclosed, while a street much wider than about four times its building height starts to lose its sense of being a room. <!-- VERIFY: confirm the commonly cited height-to-width ranges for enclosure before relying on specific numbers. --> A very tall, narrow street can feel canyon-like, so the ratio works best with trees, setbacks at upper floors, and sunlight in mind.
+
+People also experience places in motion. British designer Gordon Cullen's *Townscape* (1961) described **serial vision**: a walk through a town as a sequence of views, with each bend, gateway, or opening revealing something new. Designers use it to plan arrival points and to protect **view corridors** to landmarks, water, or mountains, often with height limits along the line of sight.
 
 ### Learning from how people use space
 
@@ -90,6 +97,16 @@ Listing opens doors to incentives and federal review; only a local ordinance put
 
 :::checkpoint cp:design-local-strongest
 
+#### Other preservation tools
+
+- **Demolition-by-neglect** provisions require owners of designated buildings to keep them weathertight and structurally sound, so a building can't be left to decay until demolition becomes unavoidable.
+- **Demolition delay** ordinances postpone demolition of older buildings for a set period so alternatives can be explored, even for buildings that aren't designated.
+- A **preservation easement** is a voluntary, recorded agreement in which an owner gives a qualified organization the right to protect a building's historic features permanently. A donated easement can qualify as a charitable deduction.
+- **Conservation districts** (sometimes called neighborhood conservation districts) protect a neighborhood's overall character, such as scale, setbacks, and massing, with lighter review than a historic district.
+- **Cultural landscapes** and **intangible heritage** such as traditions, businesses, and community gathering places are increasingly part of preservation planning, especially where a community's history isn't carried by grand buildings.
+
+:::checkpoint cp:design-demolition-neglect
+
 ### The Secretary of the Interior's Standards
 
 The **Secretary of the Interior's Standards for the Treatment of Historic Properties** describe four treatments:
@@ -127,6 +144,12 @@ The federal **Historic Rehabilitation Tax Credit** provides a **20% credit** for
 - **Certificate of appropriateness**: Approval for changes to a property in a local historic district.
 - **Rehabilitation**: A treatment adapting a historic property to a compatible new use while preserving its character.
 - **Historic Rehabilitation Tax Credit**: A 20% federal credit for certified rehabilitation of income-producing historic buildings.
+- **Height-to-width ratio**: The ratio of building height to street width, used to describe enclosure.
+- **Serial vision**: Gordon Cullen's idea of experiencing a place as a sequence of views while moving through it.
+- **View corridor**: A protected line of sight to a landmark or natural feature.
+- **Demolition by neglect**: Letting a building deteriorate until demolition is unavoidable.
+- **Preservation easement**: A recorded agreement giving an organization the right to protect a building's historic features.
+- **Conservation district**: A district that protects a neighborhood's general character with lighter review than a historic district.
 
 ## Real-world examples
 
@@ -141,10 +164,10 @@ The federal **Historic Rehabilitation Tax Credit** provides a **20% credit** for
 - National Register listing is **largely honorific** for private owners and doesn't by itself restrict them.
 - Section 106 requires federal agencies to **consider effects and consult**. It doesn't require preservation.
 - The Secretary's Standards cover **preservation, rehabilitation, restoration, and reconstruction**.
-- Local historic districts work through **certificates of appropriateness** against design guidelines.
+- Local historic districts work through **certificates of appropriateness** against design guidelines. **Demolition-by-neglect** rules require owners to maintain designated buildings.
 - The 20% federal credit is for **income-producing** certified historic buildings.
 - CPTED principles include natural surveillance, access control, territorial reinforcement, and maintenance, not criminal penalties.
 
 ## Summary
 
-Good urban design is human-scaled, enclosed, connected, legible, active at the edges, mixed, and centered on a strong public realm. Whyte's and Gehl's research show that seating, sun, food, and activity make spaces work. Placemaking starts with how people use space, and tactical urbanism tests ideas cheaply. CPTED relies on natural surveillance, access control, territorial reinforcement, and maintenance. National Register listing is largely honorific for private owners but triggers Section 106 review of federal undertakings, which is procedural. Local districts, through certificates of appropriateness, provide the strongest protection. The Secretary's Standards define preservation, rehabilitation, restoration, and reconstruction, and the 20% federal credit rewards certified rehabilitation of income-producing historic buildings.
+Good urban design is human-scaled, enclosed, connected, legible, active at the edges, mixed, and centered on a strong public realm. Whyte's and Gehl's research show that seating, sun, food, and activity make spaces work. Placemaking starts with how people use space, and tactical urbanism tests ideas cheaply. CPTED relies on natural surveillance, access control, territorial reinforcement, and maintenance. National Register listing is largely honorific for private owners but triggers Section 106 review of federal undertakings, which is procedural. Local districts, through certificates of appropriateness, provide the strongest protection. The Secretary's Standards define preservation, rehabilitation, restoration, and reconstruction, and the 20% federal credit rewards certified rehabilitation of income-producing historic buildings. Enclosure is described by the ratio of building height to street width, and Cullen's serial vision treats a place as a sequence of views. Beyond districts and credits, preservation uses demolition-by-neglect and demolition-delay rules, easements, and conservation districts.

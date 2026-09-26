@@ -5,6 +5,8 @@
 - Describe floodplain basics, the National Flood Insurance Program, and hazard mitigation planning under the Disaster Mitigation Act of 2000.
 - Distinguish climate mitigation from adaptation, and explain resilience and managed retreat.
 - Apply green infrastructure, wetland protection, and wildland-urban interface strategies.
+- Summarize the Endangered Species Act, NPDES permits and TMDLs, coastal zone management, and Superfund as they affect local planning.
+- Explain how communities plan for recovery before and after a disaster.
 
 ## Key concepts
 
@@ -48,6 +50,17 @@ Regulators ask the questions in sequence, so a mitigation bank can't buy a proje
 
 :::checkpoint cp:env-mitigation-sequence
 
+### Other natural resource laws
+
+- The **Endangered Species Act** (1973) protects listed species and their habitat. **Section 7** requires federal agencies to consult with the wildlife agencies so their actions don't jeopardize listed species. **Section 9** prohibits the "take" of listed animals, which includes significant habitat harm. **Section 10** lets a nonfederal landowner or local government obtain an **incidental take permit** by preparing a **habitat conservation plan (HCP)** that minimizes and mitigates the harm. Regional HCPs let counties set aside preserves in exchange for streamlined approval of development elsewhere.
+- Under the **Clean Water Act**, **NPDES** permits regulate discharges from point sources such as treatment plants and, through MS4 permits, municipal storm sewers. Waters that still don't meet quality standards are listed as impaired, and states set a **total maximum daily load (TMDL)**, the most of a pollutant a water body can take and still meet standards, divided among sources. A TMDL can shape local stormwater and land use rules across a watershed.
+- The **Coastal Zone Management Act** (1972) supports voluntary state coastal programs. Once a state program is approved, federal actions affecting the coast must be **consistent** with it, which gives states leverage over federal projects.
+- **CERCLA** (1980), known as **Superfund**, makes parties responsible for contamination liable for cleanup, a liability so broad that it helped create the brownfields problem, and the brownfield liability protections described above.
+
+Planners also increasingly describe nature's value in terms of **ecosystem services**: the flood storage, water filtration, cooling, and habitat that wetlands, forests, and floodplains provide for free.
+
+:::checkpoint cp:env-hcp
+
 ### Floodplains and the NFIP
 
 - The **"100-year flood"** (the base flood) has a **1% chance of occurring in any given year**. It isn't a flood that happens once a century. Over a 30-year mortgage, the chance of at least one such flood is roughly 26%. The "500-year" flood has a 0.2% annual chance.
@@ -76,6 +89,17 @@ Explains the 1% annual chance and why it adds up to roughly a one-in-four chance
 - a **plan maintenance** process.
 
 Integrating the hazard mitigation plan with the comprehensive plan, the capital program, and the zoning code is what turns it from a grant requirement into real risk reduction. Federal mitigation grant programs change over time, so check current availability rather than assuming a program will fund your project.
+
+### Recovery after a disaster
+
+Recovery is the slow phase after the emergency response ends, and it's where planning matters most. Two lessons from past disasters:
+
+- **Plan for recovery before the disaster.** A **pre-disaster recovery plan** sets up who leads, how decisions will be made, and which policies apply (temporary housing, debris, rebuilding permits) while there's time to think. After a disaster, pressure to rebuild quickly can lock in the same vulnerable pattern.
+- **Use the window.** Rebuilding creates a chance to **build back better**: stronger codes, elevated or relocated buildings, and voluntary **buyouts** of repeatedly flooded properties, which return land to open space permanently. A short, targeted rebuilding moratorium can give time to decide, if it's limited and tied to a plan.
+
+Recovery should also be equitable: renters, lower-income owners, and people without flood insurance often recover slowest, and a fair recovery plan reaches them deliberately.
+
+:::checkpoint cp:env-recovery
 
 ### Climate: mitigation and adaptation
 
@@ -120,6 +144,12 @@ The **wildland-urban interface (WUI)** is where development meets or mingles wit
 - **Climate mitigation**: Actions reducing greenhouse gas emissions.
 - **Managed retreat**: Planned relocation away from high-risk areas.
 - **Wildland-urban interface (WUI)**: The zone where development meets wildland vegetation.
+- **Habitat conservation plan (HCP)**: A plan that supports an incidental take permit under ESA Section 10 by minimizing and mitigating harm to a listed species.
+- **Total maximum daily load (TMDL)**: The most of a pollutant an impaired water body can receive and still meet standards.
+- **NPDES**: The Clean Water Act permit program for discharges from point sources.
+- **Ecosystem services**: Benefits nature provides, such as flood storage, water filtration, and cooling.
+- **Pre-disaster recovery plan**: A plan, adopted before a disaster, for how the community will make recovery decisions.
+- **Buyout**: Voluntary public purchase of hazard-prone property, which is then kept as open space.
 
 ## Real-world examples
 
@@ -135,9 +165,9 @@ The **wildland-urban interface (WUI)** is where development meets or mingles wit
 - NFIP participation requires **local floodplain regulations** meeting federal minimums.
 - Certain FEMA mitigation funds require a **FEMA-approved hazard mitigation plan** (Disaster Mitigation Act of 2000).
 - Elevating buildings and restoring dunes is **adaptation**; cutting emissions is **mitigation**.
-- A Phase I ESA is **records review, site reconnaissance, and interviews**, with no sampling.
-- The best long-term way to cut repetitive flood losses is to **direct development away from the floodplain**.
+- A Phase I ESA is **records review, site reconnaissance, and interviews**, with no sampling. A nonfederal project that would harm a listed species needs an **HCP** for an incidental take permit.
+- The best long-term way to cut repetitive flood losses is to **direct development away from the floodplain**, including through **buyouts**. Plan for recovery **before** the disaster.
 
 ## Summary
 
-NEPA scales from categorical exclusions to EAs (ending in a FONSI) to full EISs for major federal actions with significant effects, and it's procedural. Brownfield redevelopment starts with a Phase I assessment: records, reconnaissance, and interviews. Protect wetlands through avoid–minimize–compensate, and manage stormwater with green infrastructure. The 100-year flood is a 1% annual chance event; NFIP participation requires local floodplain regulations; and a FEMA-approved hazard mitigation plan is needed for certain mitigation funds. Mitigation cuts emissions; adaptation prepares for expected impacts. Managed retreat moves people and assets out of harm's way, and WUI planning reduces wildfire risk.
+NEPA scales from categorical exclusions to EAs (ending in a FONSI) to full EISs for major federal actions with significant effects, and it's procedural. Brownfield redevelopment starts with a Phase I assessment: records, reconnaissance, and interviews. Protect wetlands through avoid–minimize–compensate, and manage stormwater with green infrastructure. The 100-year flood is a 1% annual chance event; NFIP participation requires local floodplain regulations; and a FEMA-approved hazard mitigation plan is needed for certain mitigation funds. Mitigation cuts emissions; adaptation prepares for expected impacts. Managed retreat moves people and assets out of harm's way, and WUI planning reduces wildfire risk. The Endangered Species Act adds consultation for federal actions and habitat conservation plans for others, the Clean Water Act adds NPDES permits and TMDLs for impaired waters, and CERCLA's cleanup liability drives brownfield policy. Plan for recovery before a disaster, and use rebuilding to reduce risk, including through buyouts.

@@ -159,13 +159,11 @@ Illustrative numbers. The bigger center is farther away but still pulls harder. 
 ## Exam tips
 
 - Continuous surfaces (elevation, temperature) are **raster**; discrete features (parcels, roads) are **vector**.
-- A choropleth should show **rates or densities**, not raw counts.
+- A choropleth should show **rates or densities**, not raw counts; use proportional symbols for counts.
 - When results change with how boundaries are drawn, that's the **modifiable areal unit problem**; inferring individual traits from area data is the **ecological fallacy**.
-- Overlay suitability analysis traces back to **Ian McHarg**.
-- The **gravity model** distributes trips (and retail trade) by size and distance.
+- Overlay suitability analysis traces back to **Ian McHarg**; the **gravity model** distributes trips (and retail trade) by size and distance.
 - A **large-scale** map covers a *small* area in detail (1:1,200); a small-scale map covers a large area (1:1,000,000).
 - Layers that don't line up usually use different **coordinate systems**.
-- Proportional symbols for counts, choropleths for rates.
 
 ## Summary
 

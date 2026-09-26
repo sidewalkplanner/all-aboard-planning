@@ -329,4 +329,81 @@ export default {
     correct: 0,
     explanation: 'Output monitoring asks whether the actions happened: lanes striped, ordinance adopted, racks installed. Outcome monitoring asks whether it made a difference, such as more people actually commuting by bike.',
   },
+  'cp:zoning-enforce': {
+    text: 'A neighbor reports that a homeowner has converted a garage into an apartment without permits. After an inspection confirms it, what is the usual next step?',
+    options: [
+      'File a lien on the property',
+      'Issue a notice of violation with a reasonable time to correct it',
+      'Have city crews remove the apartment and bill the owner',
+      'Refer the matter to the district attorney for prosecution',
+    ],
+    correct: 1,
+    explanation: 'Enforcement aims at compliance: notice and a chance to fix come first. Fines, liens, abatement, and court action are escalation steps if the violation continues.',
+  },
+  'cp:zoning-str': {
+    text: 'A city wants to allow short-term rentals while limiting conversions of homes into full-time investor rentals. Which rule most directly does that?',
+    options: [
+      'A lodging tax on each night booked',
+      'A noise ordinance with fines for late-night parties',
+      'A maximum occupancy of two guests per bedroom',
+      'A primary-residence requirement that allows rentals only of the host’s own home',
+    ],
+    correct: 3,
+    explanation: 'A primary-residence rule keeps whole homes from being bought just to rent by the night. Taxes, noise rules, and occupancy limits address other concerns.',
+  },
+  'cp:relief-exhaust': {
+    text: 'An applicant whose permit was denied by the zoning administrator sues immediately in state court, skipping the board of zoning adjustment. What is the court most likely to do?',
+    options: [
+      'Decide the case on its merits, because permit denials go straight to court',
+      'Order the board to grant the permit',
+      'Dismiss the case for failure to exhaust administrative remedies',
+      'Transfer the case to federal court',
+    ],
+    correct: 2,
+    explanation: 'Challengers generally must use the local appeal process first. The board gets the first chance to correct the decision and build a record for the court.',
+  },
+  'cp:subdiv-covenant': {
+    text: 'A subdivision’s recorded covenants ban fences taller than 4 feet, but the zoning code allows 6-foot fences. A homeowner applies for a permit for a 6-foot fence. What should the city do?',
+    options: [
+      'Issue the permit if the fence meets the zoning code; the association enforces the covenant',
+      'Deny the permit, because the covenant is stricter',
+      'Refer the application to the homeowners association for approval first',
+      'Amend the zoning code to match the covenant',
+    ],
+    correct: 0,
+    explanation: 'The city enforces zoning, not private covenants. The owner must still satisfy the covenant, but that’s for the association or neighbors to enforce.',
+  },
+  'cp:cip-lifecycle': {
+    text: 'Two designs for a fire station have different price tags. Which comparison gives the best basis for choosing?',
+    options: [
+      'The lower construction bid, since the capital budget is fixed',
+      'The design the fire chief prefers for daily operations',
+      'The design that can open soonest to improve response times',
+      'The total cost of each over its useful life, in present value',
+    ],
+    correct: 3,
+    explanation: 'Life-cycle cost counts everything a facility will cost over its useful life, in present value. A lower bid can hide higher energy and upkeep costs.',
+  },
+  'cp:impl-land-bank': {
+    text: 'A city has hundreds of vacant, tax-foreclosed homes with tangled titles. Which tool is designed for this problem?',
+    options: [
+      'A business improvement district',
+      'A land bank',
+      'Tax increment financing',
+      'An urban growth boundary',
+    ],
+    correct: 1,
+    explanation: 'Land banks acquire vacant and tax-foreclosed properties, clear their titles and back taxes, and return them to productive use.',
+  },
+  'cp:monitor-logic': {
+    text: 'In a logic model for a tree-planting program, which item is an outcome?',
+    options: [
+      'The program’s $200,000 budget',
+      'Crews planting trees along 30 blocks',
+      'Lower summer temperatures on the planted blocks',
+      'The 1,200 trees planted',
+    ],
+    correct: 2,
+    explanation: 'The budget is an input, planting is an activity, and the number of trees is an output. Cooler streets are a change in the community, which makes them an outcome.',
+  },
 };

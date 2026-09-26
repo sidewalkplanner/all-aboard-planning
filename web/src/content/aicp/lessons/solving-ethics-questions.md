@@ -7,6 +7,7 @@
 - Explain the special obligation to the public interest that private-sector planners carry.
 - Respond correctly when a client wants an analysis that supports a predetermined conclusion.
 - Work through multi-part ethics scenarios involving conflicts, disclosure, and colleagues' misconduct.
+- Apply the same principles to social media, data, and new analytical tools such as AI.
 
 ## Key concepts
 
@@ -98,6 +99,18 @@ Talks through a multi-part conflict-of-interest scenario from start to finish, s
 
 :::checkpoint cp:solve-commissioner-call
 
+### Ethics online and with new tools
+
+The Code's principles don't change when the setting does, but the new settings create new traps:
+
+- **Social media.** A personal post about a pending application can look like prejudgment or reveal confidential information, even on a private account. Commissioners who discuss a quasi-judicial matter with residents online risk ex parte contact. Keep comments on pending matters to official channels, and treat posts about public business as potential public records.
+- **Data and privacy.** Survey responses, HIA interviews, and location data about individuals deserve the same confidentiality as any other information shared in trust. Collect what you need, protect it, and report results so individuals can't be identified.
+- **AI and automated tools.** A planner remains responsible for work produced with software, including generative AI: check the output for accuracy and bias, don't feed confidential information into tools that don't protect it, and don't present machine-generated analysis as expertise you don't have. Being candid about how an analysis was produced is part of honesty with the public.
+
+Run each situation through the same five steps; the medium is new, but the obligations are the familiar ones: honesty, confidentiality, competence, and fairness.
+
+:::checkpoint cp:solve-ai-tools
+
 ### Common traps
 
 - **"It was a small gift."** The rule turns on the reasonable perception of influence, not value.
@@ -114,6 +127,7 @@ Talks through a multi-part conflict-of-interest scenario from start to finish, s
 - **Proper channels**: The appropriate internal and professional routes for raising concerns.
 - **Ex parte communication**: Contact with a decision-maker about a pending quasi-judicial matter outside the hearing.
 - **Escalation**: Raising a concern to a higher level when it isn't resolved.
+- **Generative AI**: Software that produces text, images, or analysis from prompts; the planner remains responsible for its output.
 
 ## Real-world examples
 
@@ -128,8 +142,8 @@ Talks through a multi-part conflict-of-interest scenario from start to finish, s
 - A client wants support for a predetermined conclusion: explain that the Code requires **objective analysis**.
 - A colleague's misleading figures: **raise it through proper channels first**.
 - Rejected recommendation, lawful decision: **implement it professionally**.
-- Avoid the extremes: neither "ignore it" nor "go to the press" is usually the best answer.
+- Avoid the extremes: neither "ignore it" nor "go to the press" is usually the best answer. With social media, data, or AI, apply the **same** duties: honesty, confidentiality, and competence.
 
 ## Summary
 
-Answer ethics questions with a five-step method: identify the actor, name the issue, find the governing provision (rule or principle), choose the honest, proportionate, proper-channel response, and check it against the public interest. Never alter accurate analysis under pressure, but respect that policy decisions belong to officials. Private-sector planners carry a special obligation to the public interest, so they shouldn't manufacture support for predetermined conclusions, and they must identify their clients when advocating. Raise colleagues' errors through proper channels first. Decline gifts, disclose and withdraw for conflicts, point commissioners to the record, and implement lawful decisions professionally.
+Answer ethics questions with a five-step method: identify the actor, name the issue, find the governing provision (rule or principle), choose the honest, proportionate, proper-channel response, and check it against the public interest. Never alter accurate analysis under pressure, but respect that policy decisions belong to officials. Private-sector planners carry a special obligation to the public interest, so they shouldn't manufacture support for predetermined conclusions, and they must identify their clients when advocating. Raise colleagues' errors through proper channels first. Decline gifts, disclose and withdraw for conflicts, point commissioners to the record, and implement lawful decisions professionally. Social media, personal data, and AI tools don't change the obligations: keep pending matters to official channels, protect confidential information, and take responsibility for the accuracy of any tool's output.

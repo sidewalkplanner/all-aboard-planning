@@ -1,10 +1,10 @@
 ## Learning objectives
 
 - Distinguish leadership from management, and compare transformational, transactional, servant, and adaptive leadership.
-- Explain how planners lead without formal authority ("leading from the middle").
+- Explain how planners lead without formal authority ("leading from the middle"), and name the sources of power that make influence possible.
 - Describe the public interest as a contested standard and how planners discern and advance it.
 - Apply the ethics of advocacy, including how to respond when a governing body rejects your recommendation.
-- Build support for difficult change and communicate the value of planning.
+- Build support for difficult change, using a model such as Kotter's eight steps and the skills of emotional intelligence, and communicate the value of planning.
 
 ## Key concepts
 
@@ -47,6 +47,22 @@ The corridor example below: without authority over any department, the planner m
 :::
 
 :::checkpoint cp:lead-disputes
+
+### Sources of power
+
+Influence without authority still rests on some kind of power. Social psychologists John French and Bertram Raven (1959) described five bases:
+
+| Power | Where it comes from | A planner's version |
+|---|---|---|
+| **Legitimate** | A formal position or role | The director's authority to assign work |
+| **Reward** | The ability to give something valued | Grant funding, recognition, a faster review |
+| **Coercive** | The ability to impose a penalty | Code enforcement, denying a permit |
+| **Expert** | Knowledge and skill others respect | Command of the data, the code, and the plan |
+| **Referent** | Being trusted, liked, and respected | A reputation for fairness built over years |
+
+Planners without much positional power lean on **expert** and **referent** power, and those two last longest. Power that rests only on rewards or penalties tends to vanish when they do, and relying on coercion erodes trust.
+
+:::checkpoint cp:lead-power
 
 ### The public interest
 
@@ -97,6 +113,25 @@ Durable support for an **unpopular but necessary** policy is **best begun by eng
 
 :::checkpoint cp:lead-dept-heads
 
+### Leading change
+
+John Kotter's *Leading Change* (1996) lays out eight steps that organizations tend to need when a change is large:
+
+1. **Create a sense of urgency**: show why the status quo won't hold.
+2. **Build a guiding coalition** with enough credibility and influence to lead.
+3. **Form a vision and strategy.**
+4. **Communicate the vision** again and again, in words and actions.
+5. **Remove obstacles** and empower others to act.
+6. **Generate short-term wins** that people can see.
+7. **Consolidate gains** and keep going rather than declaring victory early.
+8. **Anchor the change in the culture**, so it survives new leaders.
+
+For a code rewrite or a new permitting system, the classic failures map onto the steps: no urgency, a coalition of one, or declaring victory at adoption before the new approach has settled in.
+
+Change also takes **emotional intelligence**, the set of skills psychologist Daniel Goleman popularized in the 1990s: **self-awareness, self-regulation, motivation, empathy, and social skill**. Leaders who notice their own reactions and read others' can hear resistance as information about what people fear losing, rather than as opposition to be overcome.
+
+:::checkpoint cp:lead-kotter
+
 ### Promoting the value of planning
 
 Planning's benefits are often invisible: the flood that didn't damage homes, the traffic that didn't happen. Leaders promote the value of planning by **communicating concrete benefits in accessible terms**: stories, photos, before-and-after comparisons, and simple numbers. They **build coalitions** with business, community, and civic groups who can speak for planning's results.
@@ -112,6 +147,11 @@ Planning's benefits are often invisible: the flood that didn't damage homes, the
 - **Public interest**: A contested standard balancing competing values for the community as a whole.
 - **Ethical advocacy**: Transparent, honest advocacy grounded in the public interest.
 - **Shared problem statement**: A jointly developed definition of a problem that frames later work.
+- **Expert power**: Influence that comes from knowledge and skill others respect.
+- **Referent power**: Influence that comes from being trusted and respected.
+- **Kotter's eight steps**: A model for leading organizational change, from creating urgency to anchoring change in the culture.
+- **Short-term wins**: Visible early results that build momentum for a larger change.
+- **Emotional intelligence**: Self-awareness, self-regulation, motivation, empathy, and social skill.
 
 ## Real-world examples
 
@@ -124,11 +164,12 @@ Planning's benefits are often invisible: the flood that didn't damage homes, the
 ## Exam tips
 
 - **Transformational** leaders motivate through vision and development; **transactional** leaders through exchange; **servant** leaders by serving their people.
-- Leading from the middle means influence **without formal authority**: relationships, a shared problem, coalitions.
+- Leading from the middle means influence **without formal authority**: relationships, a shared problem, coalitions. It rests on **expert and referent** power more than legitimate, reward, or coercive power.
 - With feuding jurisdictions, the first move is **ground rules, clear roles, and a shared problem statement**.
 - When the governing body lawfully rejects your recommendation, **implement it professionally**.
 - The public interest is a **contested standard** balancing competing values, not a fixed answer.
+- Kotter's change model starts with **urgency** and a **guiding coalition**, and it ends by anchoring the change in the culture.
 
 ## Summary
 
-Leadership sets direction and helps people handle change; management keeps operations running. Transformational leaders inspire through vision and development, transactional leaders through exchange, and servant leaders through serving their team and community. Planners often lead from the middle, building relationships, framing shared problems, and forming coalitions. The public interest is a contested balance of values, discerned through broad listening, attention to long-range consequences and equity, and evidence. Advocate transparently and honestly, implement lawful decisions professionally even when you disagreed, engage stakeholders early on difficult change, and make planning's value concrete.
+Leadership sets direction and helps people handle change; management keeps operations running. Transformational leaders inspire through vision and development, transactional leaders through exchange, and servant leaders through serving their team and community. Planners often lead from the middle, building relationships, framing shared problems, and forming coalitions. The public interest is a contested balance of values, discerned through broad listening, attention to long-range consequences and equity, and evidence. Advocate transparently and honestly, implement lawful decisions professionally even when you disagreed, engage stakeholders early on difficult change, and make planning's value concrete. Influence draws on five sources of power, and planners rely most on expertise and trust. Large changes tend to follow Kotter's steps, from creating urgency and a guiding coalition to short-term wins and anchoring the change in the culture, and they depend on the emotional intelligence to hear resistance as information.

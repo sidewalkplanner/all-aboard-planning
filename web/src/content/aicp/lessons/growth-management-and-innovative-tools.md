@@ -21,7 +21,7 @@ A **form-based code** regulates primarily **physical form and the public realm**
 
 Many form-based codes are organized by the **transect**, a gradient of contexts from rural to urban core, with standards calibrated to each zone along it. The widely used SmartCode model defines transect zones from natural and rural (T1, T2) through suburban and general urban to urban center and core (T6), plus special districts. <!-- VERIFY: confirm the SmartCode transect zone numbering (T1–T6) and names if you want to teach them precisely. -->
 
-Form-based codes are especially useful for corridors and downtowns where the goal is a predictable, walkable street frontage over time.
+Form-based codes are especially useful for corridors and downtowns where the goal is a predictable, walkable street frontage over time. Many cities adopt a **hybrid code**, adding form-based standards to a conventional ordinance for certain districts, rather than replacing the whole code. Many also combine zoning, subdivision, and other development rules into a single **unified development code (UDC)** so applicants find everything in one place.
 
 :::figure fig-form-based | The same three-lot corridor twice. Euclidean, buildings behind parking: each building sits back on its lot with a parking lot between it and the sidewalk; set back and car-first. Form-based, built to the sidewalk: each building meets a dashed build-to line with shop windows facing the street, street trees along the curb, and parking behind; build-to line, active fronts.
 The form-based code writes the street wall into the rules, so the walkable frontage appears lot by lot as the corridor redevelops.
@@ -126,6 +126,8 @@ Growth controls can protect services and character, but tight caps and boundarie
 - **Urban growth boundary (UGB)**: A line separating land planned for urban development from rural land.
 - **Concurrency**: The requirement that facilities be available at adopted levels of service as development occurs.
 - **Adequate public facilities ordinance (APFO)**: A rule conditioning approval on adequate infrastructure.
+- **Hybrid code**: A conventional zoning ordinance with form-based standards added for some districts.
+- **Unified development code**: A single ordinance combining zoning, subdivision, and other development regulations.
 
 ## Real-world examples
 

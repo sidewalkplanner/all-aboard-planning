@@ -72,9 +72,10 @@ Ask the per se questions first, because they end the analysis; only if both answ
 - ***First English Evangelical Lutheran Church v. County of Los Angeles*** **(1987)**: if a regulation is a taking, the government must pay compensation for the period it was in effect, a **temporary taking**, even if the regulation is later repealed.
 - ***Tahoe-Sierra Preservation Council v. Tahoe Regional Planning Agency*** **(2002)**: a temporary **development moratorium** (about 32 months) was *not* a per se taking. Moratoria are judged under *Penn Central*, looking at the parcel over time as a whole.
 - ***Palazzolo v. Rhode Island*** **(2001)**: buying property *after* a regulation took effect doesn't automatically bar a takings claim.
+- ***Agins v. City of Tiburon*** **(1980)** said a regulation is a taking if it doesn't substantially advance a legitimate state interest or denies an owner economically viable use of the land.
 - ***Lingle v. Chevron U.S.A.*** **(2005)**: the old test of whether a regulation "substantially advances" a legitimate interest belongs to **due process**, not takings. Takings analysis focuses on the burden on the owner.
 - ***Murr v. Wisconsin*** **(2017)** addressed the **"denominator problem"**: which property counts as "the parcel" when measuring a regulation's impact. The Court used a multi-factor test and treated two adjacent, commonly owned lots that state and local law had merged as a single parcel.
-- ***Knick v. Township of Scott*** **(2019)** held that a property owner may bring a takings claim in **federal court** right away, without first seeking compensation in state court. This overruled part of *Williamson County* (1985).
+- ***Knick v. Township of Scott*** **(2019)** held that a property owner may bring a takings claim in **federal court** right away, without first seeking compensation in state court. This overruled part of *Williamson County* (1985). A claim still isn't **ripe** until the government has made a final decision about how the regulation applies to the property.
 
 :::checkpoint cp:takings-moratorium
 

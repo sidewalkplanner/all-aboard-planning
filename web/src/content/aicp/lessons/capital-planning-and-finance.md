@@ -4,6 +4,7 @@
 - Compare pay-as-you-go and debt financing, and general obligation and revenue bonds.
 - Explain how tax increment financing, special assessments, and business improvement districts work.
 - Apply the legal requirements for impact fees.
+- Account for life-cycle and operating costs and a community's debt capacity when ranking projects.
 - Respond sensibly when a funding source changes, and read a CIP table.
 
 ## Key concepts
@@ -98,6 +99,17 @@ Federal and state grants (for example, CDBG and transportation grants) often req
 
 **Value capture** tools, such as special assessments, TIF, and joint development with private partners, recover part of the increase in land value that public investment (especially transit) creates.
 
+### Life-cycle costs and debt capacity
+
+The price of building something is only the start. A project's **life-cycle cost** adds up everything it will cost over its useful life: design and construction, operation (staff, energy), routine maintenance, major repairs, and eventual replacement or disposal. A cheaper building with high energy and maintenance costs can cost more over 40 years than a more expensive, efficient one, which is why life-cycle comparisons use present value (see [Implementation math](/aicp/lessons/implementation-math)).
+
+Two consequences for the CIP:
+
+- **Operating budget impacts.** A new library or park needs staff and upkeep every year after it opens. A good CIP shows each project's expected **annual operating cost**, so the community doesn't build facilities it can't afford to run. Deferring maintenance on existing assets is a hidden cost too: a road left to deteriorate can cost several times more to rebuild than to resurface on schedule.
+- **Debt capacity.** Every bond adds **debt service**, the annual payment of principal and interest, to future budgets. State law usually caps general obligation debt, often as a percentage of assessed value, and rating agencies watch measures such as debt service as a share of the operating budget. Debt capacity is limited, so each borrowed dollar should go to the projects that matter most.
+
+:::checkpoint cp:cip-lifecycle
+
 ### Reading a CIP table
 
 Exhibit questions often show a CIP table. Read carefully: rows are projects, columns are years, and the question may ask for a column total, a project total, or the share from one funding source.
@@ -128,6 +140,9 @@ For a column total, read down one year; for a project total, read across one row
 - **Impact fee**: A one-time charge on new development for capital facilities needed to serve it.
 - **Rational nexus**: The required link between a fee, the need a development creates, and the benefit it receives.
 - **Value capture**: Recovering part of the land value increase created by public investment.
+- **Life-cycle cost**: The total cost of an asset over its useful life, including operation, maintenance, and replacement.
+- **Debt service**: The annual payment of principal and interest on outstanding debt.
+- **Operating budget impact**: The ongoing yearly cost a capital project adds once it's built.
 
 ## Real-world examples
 
@@ -144,8 +159,8 @@ For a column total, read down one year; for a project total, read across one row
 - TIF captures the increase in property tax **above a frozen base**.
 - Special assessments require a **special benefit** proportional to the charge. BIDs are funded by **self-imposed** assessments.
 - Impact fees need a **rational nexus**, rough proportionality, and must fund **new capacity**, not existing deficiencies.
-- If a grant falls through, **reassess scope, phasing, and financing** before spending more.
+- If a grant falls through, **reassess scope, phasing, and financing** before spending more. Compare projects by **life-cycle cost**, and show each project's operating cost in the CIP.
 
 ## Summary
 
-The CIP is a multi-year schedule of capital projects; its first year is the capital budget, and it should implement the comprehensive plan. GO bonds rest on taxing power and suit facilities without revenue streams; revenue bonds are repaid by user fees. TIF captures growth in property tax above a frozen base; special assessments charge properties in proportion to their special benefit; BIDs rely on self-imposed assessments. Impact fees must have a rational nexus, be roughly proportional, and fund new capacity. When funding changes, reassess scope, phasing, and financing.
+The CIP is a multi-year schedule of capital projects; its first year is the capital budget, and it should implement the comprehensive plan. GO bonds rest on taxing power and suit facilities without revenue streams; revenue bonds are repaid by user fees. TIF captures growth in property tax above a frozen base; special assessments charge properties in proportion to their special benefit; BIDs rely on self-imposed assessments. Impact fees must have a rational nexus, be roughly proportional, and fund new capacity. When funding changes, reassess scope, phasing, and financing. Compare projects by life-cycle cost, show the operating costs they'll add, and remember that every bond adds debt service within a limited debt capacity.

@@ -2,8 +2,10 @@
 
 - Explain what "preparing to plan" involves and why scoping comes before analysis.
 - Put the typical steps of a plan-making process in order and explain how they overlap.
+- Apply a compact policy analysis method to a single policy question.
 - Describe the purpose and contents of an existing conditions report.
 - Explain how planners handle tradeoffs among many variables and competing policies.
+- Describe how a plan is reviewed and adopted, and what keeps it in use afterward.
 - Decide when a plan needs a targeted amendment and when it needs a full update.
 
 ## Key concepts
@@ -44,6 +46,19 @@ The route runs one way, but the loop is real: what monitoring finds sends the ne
 
 :::checkpoint cp:process-first-step
 
+#### A shorter version for policy questions
+
+Not every planning question needs a full plan. For a single policy question (should the city allow accessory dwelling units, or change its parking requirements?), planners often use a compact **policy analysis** method, such as the one Carl Patton and David Sawicki set out in *Basic Methods of Policy Analysis and Planning*:
+
+1. **Verify, define, and detail the problem.**
+2. **Establish evaluation criteria** (cost, effectiveness, equity, political and legal feasibility).
+3. **Identify alternative policies**, including doing nothing.
+4. **Evaluate the alternatives** against the criteria.
+5. **Display and distinguish** among them so decision-makers can see the tradeoffs.
+6. **Monitor and evaluate** the policy once it's in place.
+
+It's the same rational logic on a smaller scale, and it's quick: the analysis is sized to the decision, not to the whole community.
+
 ### The existing conditions report
 
 An **existing conditions report** (or community profile) establishes a **shared factual baseline** that residents, staff, and officials can all work from. It typically covers:
@@ -77,6 +92,21 @@ Staff lay the options side by side with what each gains and loses; the commissio
 
 :::checkpoint cp:process-multivariate
 
+### Review and adoption
+
+A draft plan becomes official through a formal adoption process set by state law and the local charter:
+
+1. **Public review** of the draft, often for 30 to 60 days, with open houses and online comment.
+2. **Referral** to other agencies and, in many states, to neighboring jurisdictions, school districts, or the county for comment.
+3. **Planning commission hearing** and a **recommendation**, usually by resolution.
+4. **Governing body hearing** and **adoption**, by resolution or ordinance depending on the state.
+
+Under the Standard City Planning Enabling Act (1928), the planning commission itself adopted the master plan. Today the governing body adopts the plan in most places, often after a commission recommendation. That gives the plan the endorsement of the officials who will fund and carry it out. <!-- VERIFY: confirm that the governing body, not the commission, adopts the comprehensive plan in most states today. -->
+
+Adoption isn't the finish line. The plan works only if later decisions follow it: rezonings and the capital improvements program should be checked against it, and many communities publish an **annual report** on implementation progress. See [Implementation programs, partnerships, and monitoring](/aicp/lessons/monitoring-and-implementation-programs).
+
+:::checkpoint cp:process-adoption
+
 ### Amend or update?
 
 Plans age. Two kinds of change keep them current:
@@ -109,6 +139,8 @@ A **departmental strategic plan** concentrates on a limited set of priority acti
 - **Plan amendment**: A targeted change to part of an adopted plan.
 - **Plan update**: A full revision that revisits a plan's assumptions, vision, and policies.
 - **Strategic plan**: A shorter-term plan focused on an organization's priority actions.
+- **Policy analysis**: A structured method for choosing among alternative policies: define the problem, set criteria, identify and evaluate alternatives, display them, and monitor the result.
+- **Adoption**: The formal act, by resolution or ordinance, that makes a plan official.
 - **SWOT analysis**: An assessment of strengths, weaknesses, opportunities, and threats.
 
 ## Real-world examples
@@ -126,7 +158,8 @@ A **departmental strategic plan** concentrates on a limited set of priority acti
 - When policies conflict, **surface the tradeoff** for decision-makers; don't resolve it quietly.
 - Assumptions far off from reality call for a **full update**, not another amendment.
 - Natural constraints and hazards shape the land use approach early; they aren't an afterthought.
+- The commission usually **recommends** and the governing body **adopts**; after adoption, rezonings and the CIP are checked against the plan.
 
 ## Summary
 
-Planning starts with preparing to plan: defining purpose, authority, scope, stakeholders, resources, and schedule. The typical sequence runs from scoping and existing conditions through issues, vision and goals, alternatives, evaluation, drafting, adoption, implementation, and monitoring, but the steps loop and overlap. An existing conditions report creates a shared baseline, and natural constraints and hazards should shape the analysis early. When goals conflict, surface the tradeoff for decision-makers rather than resolving it quietly. Amend a plan for narrow changes; update it fully when its assumptions no longer hold.
+Planning starts with preparing to plan: defining purpose, authority, scope, stakeholders, resources, and schedule. The typical sequence runs from scoping and existing conditions through issues, vision and goals, alternatives, evaluation, drafting, adoption, implementation, and monitoring, but the steps loop and overlap. An existing conditions report creates a shared baseline, and natural constraints and hazards should shape the analysis early. When goals conflict, surface the tradeoff for decision-makers rather than resolving it quietly. A single policy question can use a compact policy analysis: define the problem, set criteria, compare alternatives, and monitor. Plans are adopted after public review, a commission recommendation, and a governing body vote, and they work only if later decisions follow them. Amend a plan for narrow changes; update it fully when its assumptions no longer hold.

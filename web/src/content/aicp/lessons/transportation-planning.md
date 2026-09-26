@@ -5,6 +5,7 @@
 - Put the four steps of the conventional travel demand model in order and explain each one.
 - Compare level of service and vehicle miles traveled as measures, and explain induced demand.
 - Apply complete streets, road diets, Vision Zero, transit-oriented development, and travel demand management.
+- Explain the basics of transit service planning, parking policy, and access management.
 
 ## Key concepts
 
@@ -96,6 +97,37 @@ The center turn lane takes left-turning cars out of the through lanes, one reaso
 
 :::checkpoint cp:trans-safe-system
 
+### Transit service basics
+
+Whether people ride transit depends less on the vehicle than on the service:
+
+- **Frequency** (or **headway**, the time between vehicles) matters most. A bus every 10 to 15 minutes lets riders show up without checking a schedule; a bus every hour doesn't.
+- **Span** is the hours of service each day and week. Shift workers need early, late, and weekend service.
+- **Stop spacing** trades access against speed: closer stops mean shorter walks but slower trips.
+
+Every agency faces a **ridership versus coverage** tradeoff, a framing popularized by transit planner Jarrett Walker. With a fixed budget, frequent service on a few busy corridors attracts the most riders, while spreading service thinly across the whole area reaches more people but carries fewer of them. Neither is wrong; it's a policy choice the board should make explicitly.
+
+Common performance measures include **ridership**, **boardings per revenue hour**, and the **farebox recovery ratio** (the share of operating costs covered by fares). Under the ADA, agencies that run fixed-route bus service must also provide **complementary paratransit** for riders whose disabilities prevent them from using it, within three-quarters of a mile of the routes.
+
+:::checkpoint cp:trans-frequency
+
+### Parking
+
+Parking shapes cities more than its low profile suggests. Economist Donald Shoup's *The High Cost of Free Parking* (2005) argued that **minimum parking requirements** raise the cost of housing and business, spread development apart, and encourage driving, because the cost of "free" parking is buried in everything else. A growing number of cities have reduced or removed parking minimums, especially near transit.
+
+Tools for managing parking rather than maximizing it:
+
+- **Parking maximums** cap the spaces a project can build.
+- **Shared parking** lets uses with different peak times (offices by day, restaurants at night) use the same spaces.
+- **Unbundling** rents or sells parking separately from housing units, so households that don't need a space don't pay for one.
+- **Performance pricing** adjusts meter rates by block and time so a space or two stays open on each block, cutting the traffic of drivers circling for a spot.
+
+:::checkpoint cp:trans-unbundling
+
+### Access management
+
+On arterials, every driveway is a potential conflict point. **Access management** controls where and how vehicles enter and leave the road: spacing and consolidating driveways, raised medians that limit left turns, turn lanes, keeping driveways away from intersections, and connecting parking lots so drivers can move between businesses without re-entering the arterial. It improves safety and preserves an arterial's capacity without widening it. Freight needs similar attention: designated **truck routes**, loading zones, and curb space for deliveries.
+
 ### Transit-oriented development
 
 **Transit-oriented development (TOD)** concentrates housing, jobs, and services within walking distance of transit stations, generally **a quarter to a half mile**. Its characteristics:
@@ -134,6 +166,13 @@ Station-area planning should also address **displacement risk**, because new tra
 - **Vision Zero**: A strategy to eliminate traffic deaths and serious injuries.
 - **Transit-oriented development (TOD)**: Compact, mixed-use development within walking distance of transit.
 - **Travel demand management (TDM)**: Strategies that reduce or shift travel demand.
+- **Headway**: The time between transit vehicles on a route; shorter headways mean more frequent service.
+- **Ridership versus coverage**: The tradeoff between concentrating transit where it attracts the most riders and spreading it to reach more places.
+- **Farebox recovery ratio**: The share of transit operating costs paid by fares.
+- **Complementary paratransit**: ADA-required service for riders whose disabilities prevent them from using fixed-route transit.
+- **Unbundled parking**: Parking rented or sold separately from the housing or space it serves.
+- **Shared parking**: Parking used by different uses whose demand peaks at different times.
+- **Access management**: Controlling the location and design of driveways, medians, and turns along a road.
 
 ## Real-world examples
 
@@ -150,8 +189,8 @@ Station-area planning should also address **displacement risk**, because new tra
 - Signalized intersection LOS is measured by **average control delay per vehicle**.
 - "Will widening fix congestion permanently?" is answered by **induced demand**.
 - For a transit project's GHG effect, use **VMT per capita**, not LOS.
-- TOD is typically within **a quarter to a half mile** of a station, with reduced parking.
+- TOD is typically within **a quarter to a half mile** of a station, with reduced parking. **Frequency** drives transit ridership; **unbundling** and **shared parking** manage parking without building more.
 
 ## Summary
 
-MPOs, required for urbanized areas of 50,000 or more, produce long-range plans and TIPs; projects must be in the TIP to receive federal funds, and nonattainment regions must show conformity. Arterials favor mobility and local streets favor access. The four-step model runs from trip generation to distribution (gravity model) to mode choice to assignment. LOS measures driver delay; VMT measures driving, favors infill, and is the right metric for emissions. Added capacity induces demand. Complete streets, road diets, and Vision Zero's safe system approach improve safety. TOD concentrates growth within a quarter to half mile of stations, with reduced parking and anti-displacement measures, and TDM reduces driving demand.
+MPOs, required for urbanized areas of 50,000 or more, produce long-range plans and TIPs; projects must be in the TIP to receive federal funds, and nonattainment regions must show conformity. Arterials favor mobility and local streets favor access. The four-step model runs from trip generation to distribution (gravity model) to mode choice to assignment. LOS measures driver delay; VMT measures driving, favors infill, and is the right metric for emissions. Added capacity induces demand. Complete streets, road diets, and Vision Zero's safe system approach improve safety. TOD concentrates growth within a quarter to half mile of stations, with reduced parking and anti-displacement measures, and TDM reduces driving demand. Transit ridership depends most on frequency, and agencies must choose between ridership and coverage; the ADA requires complementary paratransit. Manage parking with maximums, sharing, unbundling, and pricing, and manage arterial access with consolidated driveways and medians.

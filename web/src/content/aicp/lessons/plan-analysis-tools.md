@@ -4,6 +4,8 @@
 - Explain when scenario planning is the right tool and how a scenario process works.
 - Describe a buildable lands (land capacity) inventory and how it's compared with projected demand.
 - Compare fiscal impact analysis methods, including the per capita multiplier.
+- Explain what health impact assessments and other impact assessments add, and when to do them.
+- Distinguish funding from financing and match funding sources to the plan's actions.
 - Describe how a local greenhouse gas inventory is built, and how pilots and best practices can be tested before full adoption.
 
 ## Key concepts
@@ -17,7 +19,7 @@ Once a planning process has two or more alternatives, it needs a fair way to com
 - **transparent about weighting**: if housing affordability counts twice as much as traffic delay, say so; and
 - **honest about uncertainty.**
 
-A **goals-achievement matrix** lays out alternatives in columns and criteria in rows, scoring how well each alternative advances each goal, sometimes with weights. **Multi-criteria analysis** is the broader family of methods for this. **Sensitivity analysis** tests whether the preferred alternative changes when weights or assumptions change. If a small change in weights flips the result, decision-makers should know that.
+A **goals-achievement matrix** lays out alternatives in columns and criteria in rows, scoring how well each alternative advances each goal, sometimes with weights. The method is associated with Morris Hill, who proposed it in 1968. A related classic, Nathaniel Lichfield's **planning balance sheet**, lists the costs and benefits of each alternative separately for each group affected (residents, businesses, the city, future occupants), so decision-makers can see who gains and who loses rather than only the net total. **Multi-criteria analysis** is the broader family of methods for this. **Sensitivity analysis** tests whether the preferred alternative changes when weights or assumptions change. If a small change in weights flips the result, decision-makers should know that.
 
 :::figure fig-goals-matrix | A goals-achievement matrix with illustrative scores from 1 to 5. Option A scores 2 for housing, 5 for farmland, and 4 for cost; B scores 3, 4, and 5; C scores 5, 4, and 2. With equal weights the totals are 11, 12, and 11, so B wins. With housing counted twice they're 13, 15, and 16, so C wins. A note says one weight changed, and the winner flips.
 That flip is exactly what a sensitivity analysis is for: it tells decision-makers the choice rests on how much they value housing.
@@ -95,6 +97,32 @@ The scopes sort emissions by how directly you control them, which is why most lo
 
 :::checkpoint cp:analysis-scope2
 
+### Impact assessments
+
+Several kinds of assessment look ahead at a proposal's effects on a particular dimension of community life:
+
+- **Environmental review** under NEPA or a state "little NEPA" law examines environmental effects. See [Environmental planning and hazards](/aicp/lessons/environmental-planning-and-hazards).
+- A **health impact assessment (HIA)** estimates how a plan, policy, or project will affect health and how those effects are distributed, and recommends changes. It usually runs in six steps: **screening** (is an HIA worth doing?), **scoping** (which health effects and populations?), **assessment**, **recommendations**, **reporting**, and **monitoring and evaluation**. HIAs are often voluntary, which is why the screening step matters. See [Health, food, parks, and regional planning](/aicp/lessons/health-food-parks-and-regional-planning).
+- A **social impact assessment** looks at effects on people's way of life, community cohesion, and access to services, including displacement.
+- An **equity analysis** asks who benefits and who is burdened. See [Equitable, inclusive, and accessible engagement](/aicp/lessons/equitable-and-accessible-engagement).
+
+All of them are most useful **before** the decision, while the proposal can still change.
+
+:::checkpoint cp:analysis-hia
+
+### Funding and financing the plan
+
+A plan that names actions without money behind them tends to stay on the shelf. A good **implementation program** lists each action with the responsible party, time frame, estimated cost, likely funding source, and a measure of progress.
+
+Two words that sound alike mean different things:
+
+- **Funding** is where the money ultimately comes from: taxes, user fees, grants, impact fees, special assessments, or private investment.
+- **Financing** is how the cost is spread over time, usually by borrowing, such as issuing bonds that are repaid from a funding source over the life of the asset.
+
+A bond doesn't create money; it moves the cost forward in time, and a funding source still has to repay it. A common rule of thumb matches the source to who benefits: community-wide facilities from general revenues or general obligation bonds, new growth's share from impact fees, a district's improvements from special assessments or tax increment, and a system's users from rates and fees. Grants fill gaps but usually require a local match and come with conditions. See [Capital planning and finance](/aicp/lessons/capital-planning-and-finance) for the tools.
+
+:::checkpoint cp:analysis-funding
+
 ### Innovations and best practices
 
 Planners are expected to apply innovations responsibly:
@@ -111,6 +139,7 @@ Every alternative has second-order effects. Good analysis traces them: a parking
 ## Key terms
 
 - **Goals-achievement matrix**: A table scoring alternatives against plan goals, often with weights.
+- **Planning balance sheet**: An evaluation that lists each alternative's costs and benefits by affected group.
 - **Multi-criteria analysis**: Methods for comparing alternatives across several criteria.
 - **Sensitivity analysis**: Testing how results change when assumptions or weights change.
 - **Scenario planning**: Developing several plausible futures to test the robustness of strategies.
@@ -121,6 +150,9 @@ Every alternative has second-order effects. Good analysis traces them: a parking
 - **Per capita multiplier method**: A fiscal impact method using average cost per resident.
 - **Marginal cost**: The added cost of serving additional development.
 - **Greenhouse gas inventory**: An accounting of emissions by sector and source, used as a baseline.
+- **Health impact assessment (HIA)**: A structured estimate of how a proposal will affect health and its distribution, with recommendations.
+- **Funding**: The source that ultimately pays for an action.
+- **Financing**: Spreading a cost over time, usually by borrowing, to be repaid from a funding source.
 - **Pilot project**: A temporary or small-scale trial used to test an idea.
 
 ## Real-world examples
@@ -138,7 +170,8 @@ Every alternative has second-order effects. Good analysis traces them: a parking
 - To test whether land can hold projected growth, prepare a **buildable lands inventory**.
 - If growth exceeds capacity inside a fixed boundary, the answer is **infill, redevelopment, and higher intensity**.
 - A GHG inventory covers **community-wide and government-operations** emissions by sector.
+- **Funding** pays; **financing** (such as bonds) spreads the cost over time. An HIA starts with **screening**.
 
 ## Summary
 
-Evaluate alternatives transparently against the plan's goals, with explicit weights and sensitivity tests. Use scenario planning when the future is deeply uncertain and largely outside local control, and look for robust strategies that work across scenarios. A buildable lands inventory compares realistic land capacity with projected demand, and a gap inside a fixed boundary points to infill and intensification. Fiscal impact analysis estimates net public costs and revenues; the per capita multiplier method is the most common and the simplest. GHG inventories set climate baselines by sector. Pilot innovations before scaling them, and trace consequences before choosing.
+Evaluate alternatives transparently against the plan's goals, with explicit weights and sensitivity tests. Use scenario planning when the future is deeply uncertain and largely outside local control, and look for robust strategies that work across scenarios. A buildable lands inventory compares realistic land capacity with projected demand, and a gap inside a fixed boundary points to infill and intensification. Fiscal impact analysis estimates net public costs and revenues; the per capita multiplier method is the most common and the simplest. GHG inventories set climate baselines by sector. Pilot innovations before scaling them, and trace consequences before choosing. Impact assessments, such as an HIA that starts with screening, look ahead at health, social, and equity effects while the proposal can still change. Every action in the implementation program needs a funding source; financing, such as a bond, only spreads the cost over time.
